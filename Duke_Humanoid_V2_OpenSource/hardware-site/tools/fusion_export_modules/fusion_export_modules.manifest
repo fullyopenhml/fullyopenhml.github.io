@@ -1,0 +1,8 @@
+{
+    "autodeskProduct": "Fusion",
+    "type": "script",
+    "author": "Duke General Robotics Lab",
+    "description": "Export one STEP per sub-assembly (module) of the robot.",
+    "supportedOS": "windows|mac",
+    "editEnabled": true
+}

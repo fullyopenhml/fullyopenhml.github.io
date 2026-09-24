@@ -1,0 +1,4 @@
+subassembly,class,part_id,description,mpn,vendor,vendor_url,alt_mpn,alt_url,qty_per_robot,unit_cost_usd,total_cost_usd,material,process,tolerance_finish,lead_time_days,priced_as_of,notes
+printed,consumable,MAT_TPU,TPU filament (printed parts),,,,,,,,,TPU,,,,,"No cost, quantity, grade, vendor or shore hardness in the source sheet. Which parts are printed in TPU is not recorded anywhere in the release."
+printed,consumable,MAT_PLA,PLA filament (printed parts),,,,,,,,,PLA,,,,,"No cost, quantity, grade, vendor or printer in the source sheet. Whether this is plain PLA or a filled grade such as PLA-CF is not recorded."
+printed,consumable,MAT_SLS_NYLON,Nylon powder for SLS (printed parts),,,,,,,,,Nylon (SLS powder),SLS,,,,"No cost, quantity, grade, vendor or service bureau in the source sheet. The polymer grade (PA11 vs PA12) is not recorded."

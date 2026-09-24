@@ -1,0 +1,129 @@
+module_id,fusion_name,english_name,class,depth,qty,children,mass_g,path,file,note
+power-block-casing,power_block_casing,Power distribution block with casing,module,2,2,3,42.5,body_LATEST:1+3DP_body_05_x1_interior_plate:1+power_block_casing:5,power_block_casing.step,
+vention-usb-hub,Vention USB Hub,Vention USB hub (vendor model),vendor,2,1,3,43.8,body_LATEST:1+3DP_body_05_x1_interior_plate:1+Vention USB Hub:1,Vention_USB_Hub.step,
+can-isolated,CAN_Isolated,USB-CAN adapter with its cables (vendor model),vendor,2,6,1,33.3,body_LATEST:1+3DP_body_05_x1_interior_plate:1+CAN_Isolated:1,CAN_Isolated.step,
+imu-syd-dynamics-tm171,IMU_syd_dynamics_TM171,SYD Dynamics TM171 IMU (vendor model),vendor,2,1,2,24.1,body_LATEST:1+3DP_body_05_x1_interior_plate:1+IMU_syd_dynamics_TM171:4,IMU_syd_dynamics_TM171.step,
+3dp-body-05-x1-interior-plate,3DP_body_05_x1_interior_plate,Electronics tray (torso interior plate with the electronics mounted),module,1,1,36,4637.4,body_LATEST:1+3DP_body_05_x1_interior_plate:1,3DP_body_05_x1_interior_plate.step,
+3dp-body-07-x1-front-plate-removable,3DP_body_07_x1_front_plate_removable,"Torso front plate, removable, with its magnets",module,1,1,8,96.9,body_LATEST:1+3DP_body_07_x1_front_plate_removable:1,3DP_body_07_x1_front_plate_removable.step,
+3dp-body-09-x1-back-plate-removable,3DP_body_09_x1_back_plate_removable,"Torso back plate, removable, with its magnets",module,1,1,14,113.8,body_LATEST:1+3DP_body_09_x1_back_plate_removable:1,3DP_body_09_x1_back_plate_removable.step,
+bearing-45x58x7-6809-5-4kn-40g,bearing_45x58x7_6809_5.4kN_40g,"Ball bearing 45 x 58 x 7 mm, 6809 (vendor model, two halves)",vendor,2,11,2,39.9,body_LATEST:1+BEARING:1+bearing_45x58x7_6809_5.4kN_40g:2,bearing_45x58x7_6809_5.4kN_40g.step,
+robstride05-v16-2,robstride05 v16 (2),"RobStride RS05 actuator, camera gimbal (vendor assembly)",vendor,2,1,3,194.1,body_LATEST:1+twincities_v2_nolock:1+robstride05 v16 (2):1,robstride05_v16_2.step,
+robstride05-v16-1,robstride05 v16 (1),"RobStride RS05 actuator, camera gimbal (vendor assembly)",vendor,2,1,3,194.1,body_LATEST:1+twincities_v2_nolock:1+robstride05 v16 (1):1,robstride05_v16_1.step,
+intelrealsense-d435-multibody,IntelRealsense_D435_Multibody v9,Intel RealSense D435 camera (vendor model),vendor,2,1,8,71.0,body_LATEST:1+twincities_v2_nolock:1+IntelRealsense_D435_Multibody v9:1,IntelRealsense_D435_Multibody.step,
+gimbal-arm,gimbal_arm,Camera gimbal arm with its link,module,2,1,1,26.0,body_LATEST:1+twincities_v2_nolock:1+gimbal_arm:1,gimbal_arm.step,
+twincities-v2-nolock,twincities_v2_nolock,Camera gimbal column,module,1,1,9,585.2,body_LATEST:1+twincities_v2_nolock:1,twincities_v2_nolock.step,
+schematics-1,schematics (1),Camera column sketches (second column),sketch,2,1,2,0.0,body_LATEST:1+twincities_v2_nolock (1):1+schematics (1):1,schematics_1.step,not staged
+robstride05-v16-2-1,robstride05 v16 (2) (1),"RobStride RS05 actuator, camera gimbal (vendor assembly)",vendor,2,1,3,194.1,body_LATEST:1+twincities_v2_nolock (1):1+robstride05 v16 (2) (1):1,robstride05_v16_2_1.step,
+robstride05-v16-1-1,robstride05 v16 (1) (1),"RobStride RS05 actuator, camera gimbal (vendor assembly)",vendor,2,1,3,194.1,body_LATEST:1+twincities_v2_nolock (1):1+robstride05 v16 (1) (1):1,robstride05_v16_1_1.step,
+intelrealsense-d435-multibody-v9-1,IntelRealsense_D435_Multibody v9 (1),"Intel RealSense D435 camera (vendor model, second column)",vendor,2,1,8,71.0,body_LATEST:1+twincities_v2_nolock (1):1+IntelRealsense_D435_Multibody v9 (1):1,IntelRealsense_D435_Multibody_v9_1.step,
+gimbal-arm-1,gimbal_arm (1),Camera gimbal arm with its link (second column),module,2,1,1,26.0,body_LATEST:1+twincities_v2_nolock (1):1+gimbal_arm (1):1,gimbal_arm_1.step,
+twincities-v2-nolock-1,twincities_v2_nolock (1),Camera gimbal column (Fusion `twincities_v2_nolock (1)`),module,1,1,9,585.2,body_LATEST:1+twincities_v2_nolock (1):1,twincities_v2_nolock_1.step,
+body-latest,body_LATEST,"Torso (frame, electronics, camera columns)",module,0,1,142,7845.1,body_LATEST:1,body_LATEST.step,
+3-1-02-090-0073-asm-1-1-asm,3_1_02_090_0073_ASM_1_1_ASM,RS03 actuator internals (Fusion `3_1_02_090_0073_ASM_1_1_ASM`),internal,2,6,12,884.2,v2.1_lower_body_latest:1+Robstride 03 - no back cover:1+3_1_02_090_0073_ASM_1_1_ASM:1,3_1_02_090_0073_ASM_1_1_ASM.step,inside `Robstride 03 - no back cover`; not staged
+robstride-03-no-back-cover,Robstride 03 - no back cover,"RobStride RS03 actuator, back cover removed (vendor assembly)",vendor,1,10,1,884.2,v2.1_lower_body_latest:1+Robstride 03 - no back cover:1,Robstride_03_-_no_back_cover.step,
+hip-center,hip_center,Hip centre (pelvis) module,module,1,1,2,123.8,v2.1_lower_body_latest:1+hip_center:1,hip_center.step,
+hip-pitch-hip-roll-l,hip_pitch:hip_roll_L,Left hip pitch-to-roll module,module,1,1,4,217.5,v2.1_lower_body_latest:1+hip_pitch:hip_roll_L:1,hip_pitch_hip_roll_L.step,
+hip-pitch-hip-roll-r,hip_pitch:hip_roll_R,Right hip pitch-to-roll module,module,1,1,4,217.5,v2.1_lower_body_latest:1+hip_pitch:hip_roll_R:1,hip_pitch_hip_roll_R.step,
+hip-roll-hip-yaw-l,hip_roll:hip_yaw_L,Left hip roll-to-yaw module,module,1,1,2,163.1,v2.1_lower_body_latest:1+hip_roll:hip_yaw_L:1,hip_roll_hip_yaw_L.step,
+hip-roll-hip-yaw-r,hip_roll:hip_yaw_R,Right hip roll-to-yaw module,module,1,1,2,163.1,v2.1_lower_body_latest:1+hip_roll:hip_yaw_R:1,hip_roll_hip_yaw_R.step,
+leg-schematics-latest,leg_schematics_latest,Leg sketches and sections,sketch,2,2,12,0.0,v2.1_lower_body_latest:1+v2.1_lower_leg_R:1+leg_schematics_latest:1,leg_schematics_latest.step,not staged
+robstride-06-no-back-cover,Robstride 06-No Back Cover,"RobStride RS06 actuator, back cover removed (vendor assembly) (Fusion `Robstride_06-No_Back_Cover`)",vendor,2,3,1,598.8,v2.1_lower_body_latest:1+v2.1_lower_leg_R:1+Robstride 06-No Back Cover:1,Robstride_06-No_Back_Cover.step,
+foot-assembly,foot_assembly,Foot and ankle-roll module,module,2,1,4,348.5,v2.1_lower_body_latest:1+v2.1_lower_leg_R:1+foot_assembly:1,foot_assembly.step,
+shanks,shanks,Shank (lower-leg) module,module,2,1,4,442.5,v2.1_lower_body_latest:1+v2.1_lower_leg_R:1+shanks:1,shanks.step,
+robstride04,robstride04,RobStride RS04 actuator (vendor assembly),vendor,2,2,2,1438.3,v2.1_lower_body_latest:1+v2.1_lower_leg_R:1+robstride04:1,robstride04.step,
+knee-assembly,knee_assembly,Knee module,module,2,1,4,246.2,v2.1_lower_body_latest:1+v2.1_lower_leg_R:1+knee_assembly:1,knee_assembly.step,
+v2-1-lower-leg-r,v2.1_lower_leg_R,"Right leg (knee, shank, ankle, foot)",module,1,1,115,5701.9,v2.1_lower_body_latest:1+v2.1_lower_leg_R:1,v2.1_lower_leg_R.step,
+bearing-35x47x7-6807-4-0kn-29g,bearing_35x47x7_6807_4.0kN_29g,"Ball bearing 35 x 47 x 7 mm, 6807 (vendor model, two halves)",vendor,2,2,2,29.2,v2.1_lower_body_latest:1+v2.1_lower_leg_L_copy:1+bearing_35x47x7_6807_4.0kN_29g:1,bearing_35x47x7_6807_4.0kN_29g.step,
+cnc-leg18-x2-foot-plate,CNC_leg18_x2_foot_plate,Foot plate with its sole,module,2,1,1,202.0,v2.1_lower_body_latest:1+v2.1_lower_leg_L_copy:1+CNC_leg18_x2_foot_plate:1,CNC_leg18_x2_foot_plate.step,
+bearing-35x44x5-6707-1-6kn-15g,bearing_35x44x5_6707_1.6kN_15g,"Ball bearing 35 x 44 x 5 mm, 6707 (vendor model, two halves) (Fusion `bearing_35x44x5_6707_1.6kN_15g`)",vendor,2,10,2,15.0,v2.1_lower_body_latest:1+v2.1_lower_leg_L_copy:1+bearing_35x44x5_6707_1.6kN_15g:5,bearing_35x44x5_6707_1.6kN_15g.step,
+bearing-50x65x7-6810-6-1kn-52g,bearing_50x65x7_6810_6.1kN_52g,"Ball bearing 50 x 65 x 7 mm, 6810 (vendor model, two halves)",vendor,2,1,2,52.0,v2.1_lower_body_latest:1+v2.1_lower_leg_L_copy:1+bearing_50x65x7_6810_6.1kN_52g:1,bearing_50x65x7_6810_6.1kN_52g.step,
+ankle-roll-structural-part-protection,ankle_roll_structural_part_protection,Ankle roll structural covers,module,2,1,1,13.9,v2.1_lower_body_latest:1+v2.1_lower_leg_L_copy:1+ankle_roll_structural_part_protection:1,ankle_roll_structural_part_protection.step,
+ankle-roll-motor-protection,ankle_roll_motor_protection,Ankle roll motor covers,module,2,1,1,33.4,v2.1_lower_body_latest:1+v2.1_lower_leg_L_copy:1+ankle_roll_motor_protection:1,ankle_roll_motor_protection.step,
+knee-motor-protection,knee_motor_protection,Knee motor covers,module,2,1,1,52.3,v2.1_lower_body_latest:1+v2.1_lower_leg_L_copy:1+knee_motor_protection:1,knee_motor_protection.step,
+v2-1-lower-leg-l-copy,v2.1_lower_leg_L_copy,"Left leg (knee, shank, ankle, foot)",module,1,1,129,5528.2,v2.1_lower_body_latest:1+v2.1_lower_leg_L_copy:1,v2.1_lower_leg_L_copy.step,
+hip-roll-motor,hip_roll_motor,Hip roll motor covers (pair),module,2,2,2,51.9,v2.1_lower_body_latest:1+protections:1+hip_roll_motor:1,hip_roll_motor.step,
+hip-pitch-motor,hip_pitch_motor,Hip pitch motor covers (pair),module,2,3,2,62.2,v2.1_lower_body_latest:1+protections:1+hip_pitch_motor:1,hip_pitch_motor.step,
+hip-pitch-motor-mirror,hip_pitch_motor(Mirror),"Hip pitch motor covers, mirrored (pair)",module,2,1,2,62.2,v2.1_lower_body_latest:1+protections:1+hip_pitch_motor(Mirror):1,hip_pitch_motor_Mirror.step,
+v2-1-lower-body-latest,v2.1_lower_body_latest,Lower body (pelvis and both legs),module,0,1,173,17512.0,v2.1_lower_body_latest:1,v2.1_lower_body_latest.step,
+hl-3608-asm-121-asm,HL-3608_ASM_121_ASM,HL-3915 servo internals,internal,2,2,10,37.0,dovetail_umi_gripper:1+FEETECH_HL_3915_Servo_Motor:1+HL-3608_ASM_121_ASM:1,HL-3608_ASM_121_ASM.step,inside `FEETECH_HL_3915_Servo_Motor`; not staged
+feetech-hl-3915-servo-motor,FEETECH_HL_3915_Servo_Motor,Feetech HL-3915 gripper servo (vendor assembly),vendor,1,2,1,37.0,dovetail_umi_gripper:1+FEETECH_HL_3915_Servo_Motor:1,FEETECH_HL_3915_Servo_Motor.step,
+double-helix-pinion-16teeth-6mm,double_helix_pinion_16teeth_6mm,"Gripper drive pinion, 16 teeth, double helix",module,1,2,1,1.3,dovetail_umi_gripper:1+double_helix_pinion_16teeth_6mm:1,double_helix_pinion_16teeth_6mm.step,
+c1,C1,C1,internal,2,2,1,0.0,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+C1:1,C1.step,inside `wareshare_st_servo_controller v7`; not staged
+c2,C2,C2,internal,2,2,1,0.0,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+C2:1,C2.step,inside `wareshare_st_servo_controller v7`; not staged
+c3,C3,C3,internal,2,2,1,0.0,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+C3:1,C3.step,inside `wareshare_st_servo_controller v7`; not staged
+c4,C4,C4,internal,2,2,1,0.0,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+C4:1,C4.step,inside `wareshare_st_servo_controller v7`; not staged
+c5,C5,C5,internal,2,2,1,0.0,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+C5:1,C5.step,inside `wareshare_st_servo_controller v7`; not staged
+c7,C7,C7,internal,2,2,1,0.0,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+C7:1,C7.step,inside `wareshare_st_servo_controller v7`; not staged
+c6,C6,C6,internal,2,2,1,0.0,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+C6:1,C6.step,inside `wareshare_st_servo_controller v7`; not staged
+d2,D2,D2,internal,2,2,1,0.0,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+D2:1,D2.step,inside `wareshare_st_servo_controller v7`; not staged
+dc1,DC1,DC1,internal,2,2,1,9.5,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+DC1:1,DC1.step,inside `wareshare_st_servo_controller v7`; not staged
+h1,H1,H1,internal,2,2,1,3.1,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+H1:1,H1.step,inside `wareshare_st_servo_controller v7`; not staged
+h3,H3,H3,internal,2,2,1,1.5,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+H3:1,H3.step,inside `wareshare_st_servo_controller v7`; not staged
+h5,H5,H5,internal,2,2,1,1.5,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+H5:1,H5.step,inside `wareshare_st_servo_controller v7`; not staged
+r2,R2,R2,internal,2,2,1,0.0,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+R2:1,R2.step,inside `wareshare_st_servo_controller v7`; not staged
+r3,R3,R3,internal,2,2,1,0.0,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+R3:1,R3.step,inside `wareshare_st_servo_controller v7`; not staged
+type-c1,Type_C1,Type_C1,internal,2,2,1,2.2,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+Type_C1:1,Type_C1.step,inside `wareshare_st_servo_controller v7`; not staged
+u1,U1,U1,internal,2,2,1,0.1,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+U1:1,U1.step,inside `wareshare_st_servo_controller v7`; not staged
+u2,U2,U2,internal,2,2,1,0.4,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+U2:1,U2.step,inside `wareshare_st_servo_controller v7`; not staged
+c8,C8,C8,internal,2,2,1,0.0,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+C8:1,C8.step,inside `wareshare_st_servo_controller v7`; not staged
+c9,C9,C9,internal,2,2,1,0.0,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+C9:1,C9.step,inside `wareshare_st_servo_controller v7`; not staged
+c10,C10,C10,internal,2,2,1,0.0,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+C10:1,C10.step,inside `wareshare_st_servo_controller v7`; not staged
+m1,M1,M1,internal,2,2,1,0.3,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+M1:1,M1.step,inside `wareshare_st_servo_controller v7`; not staged
+q1,Q1,Q1,internal,2,2,1,0.1,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+Q1:1,Q1.step,inside `wareshare_st_servo_controller v7`; not staged
+r4,R4,R4,internal,2,2,1,0.0,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+R4:1,R4.step,inside `wareshare_st_servo_controller v7`; not staged
+r5,R5,R5,internal,2,2,1,0.0,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+R5:1,R5.step,inside `wareshare_st_servo_controller v7`; not staged
+r6,R6,R6,internal,2,2,1,0.0,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+R6:1,R6.step,inside `wareshare_st_servo_controller v7`; not staged
+r7,R7,R7,internal,2,2,1,0.0,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+R7:1,R7.step,inside `wareshare_st_servo_controller v7`; not staged
+r8,R8,R8,internal,2,2,1,0.0,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+R8:1,R8.step,inside `wareshare_st_servo_controller v7`; not staged
+u3,U3,U3,internal,2,2,6,0.0,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+U3:1,U3.step,inside `wareshare_st_servo_controller v7`; not staged
+u4,U4,U4,internal,2,2,6,0.0,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+U4:1,U4.step,inside `wareshare_st_servo_controller v7`; not staged
+d1,D1,D1,internal,2,2,1,0.0,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+D1:1,D1.step,inside `wareshare_st_servo_controller v7`; not staged
+h2,H2,H2,internal,2,2,6,0.7,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+H2:1,H2.step,inside `wareshare_st_servo_controller v7`; not staged
+r1,R1,R1,internal,2,2,1,0.0,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+R1:1,R1.step,inside `wareshare_st_servo_controller v7`; not staged
+h4,H4,H4,internal,2,2,9,1.0,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+H4:1,H4.step,inside `wareshare_st_servo_controller v7`; not staged
+d3,D3,D3,internal,2,2,1,0.0,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+D3:1,D3.step,inside `wareshare_st_servo_controller v7`; not staged
+d4,D4,D4,internal,2,2,1,0.0,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+D4:1,D4.step,inside `wareshare_st_servo_controller v7`; not staged
+led1,LED1,LED1,internal,2,2,1,0.0,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+LED1:1,LED1.step,inside `wareshare_st_servo_controller v7`; not staged
+r9,R9,R9,internal,2,2,1,0.0,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+R9:1,R9.step,inside `wareshare_st_servo_controller v7`; not staged
+wareshare-st-servo-controller,wareshare_st_servo_controller v7,Waveshare bus servo driver board (vendor assembly),vendor,1,2,38,41.9,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1,wareshare_st_servo_controller.step,
+base,base,Gripper base with its AprilTag holders,module,1,2,1,76.7,dovetail_umi_gripper:1+base:1,base.step,
+double-helix-rack-30teeth-6mm,double_helix_rack_30teeth_6mm v2,"Gripper rack, 30 teeth, double helix",module,1,2,1,0.0,dovetail_umi_gripper:1+double_helix_rack_30teeth_6mm v2:1,double_helix_rack_30teeth_6mm.step,
+dovetail-umi-gripper,dovetail_umi_gripper,Gripper,module,0,2,20,351.1,dovetail_umi_gripper:1,dovetail_umi_gripper.step,
+shoulder-pitch-shoulder-roll,shoulder_pitch:shoulder_roll,Shoulder pitch-to-roll module (left arm),module,1,1,3,175.7,000_left_arm_long_wrist_latest:1+shoulder_pitch:shoulder_roll:2,shoulder_pitch_shoulder_roll.step,
+robstride-02-no-back-cover,robstride_02-No_back_cover,"RobStride RS02 actuator, back cover removed (vendor assembly) (Fusion `robstride_02-No_back_cover`)",vendor,2,3,2,394.2,000_left_arm_long_wrist_latest:1+shoulder_roll:shoulder_yaw:2+robstride_02-No_back_cover:1,robstride_02-No_back_cover.step,
+shoulder-roll-shoulder-yaw,shoulder_roll:shoulder_yaw,Shoulder roll-to-yaw module (left arm),module,1,1,5,580.8,000_left_arm_long_wrist_latest:1+shoulder_roll:shoulder_yaw:2,shoulder_roll_shoulder_yaw.step,
+3dp-arm06-x4-rs02-shaft-coupler,3DP_arm06_x4_RS02_shaft_coupler,RS02 shaft coupler with its heat-set inserts (one printed part) (left arm),module,2,1,6,67.5,000_left_arm_long_wrist_latest:1+shoulder_yaw:elbow:2+3DP_arm06_x4_RS02_shaft_coupler:1,3DP_arm06_x4_RS02_shaft_coupler.step,
+shoulder-yaw-elbow,shoulder_yaw:elbow,Shoulder yaw-to-elbow module (left arm),module,1,1,3,147.6,000_left_arm_long_wrist_latest:1+shoulder_yaw:elbow:2,shoulder_yaw_elbow.step,
+02-3d-20211009-1-stp,02-3D-20211009(1).stp,02-3D-20211009(1).stp (Fusion `02-3D-20211009_1_.stp`),internal,2,2,1,112.9,000_left_arm_long_wrist_latest:1+robstride_02-No_back_cover:4+02-3D-20211009(1).stp:1,02-3D-20211009_1_.stp.step,inside `robstride_02-No_back_cover`; not staged
+elbow-wrist-roll,elbow:wrist_roll,Elbow-to-wrist-roll module (left arm),module,1,1,4,189.1,000_left_arm_long_wrist_latest:1+elbow:wrist_roll:2,elbow_wrist_roll.step,
+bearing-35x44x5-6707-1-6kn-15g-2,bearing_35x44x5_6707_1.6kN_15g,"Ball bearing 35 x 44 x 5 mm, 6707 (vendor model, two halves) (Fusion `bearing_35x44x5_6707_1.6kN_15g~2`)",vendor,2,6,2,15.0,000_left_arm_long_wrist_latest:1+bearings:2+bearing_35x44x5_6707_1.6kN_15g:2,bearing_35x44x5_6707_1.6kN_15g~2.step,
+3-1-02-090-0073-asm-1-1-asm-2,3_1_02_090_0073_ASM_1_1_ASM,RS03 actuator internals (Fusion `3_1_02_090_0073_ASM_1_1_ASM~2`),internal,2,1,12,884.2,000_left_arm_long_wrist_latest:1+Robstride 03 - full:1+3_1_02_090_0073_ASM_1_1_ASM:1,3_1_02_090_0073_ASM_1_1_ASM~2.step,inside `Robstride 03 - full`; not staged
+back-cover1-1-06-eb903-538-1,BACK_COVER1_1_06_EB903-538_1,RS03 back cover with its screws (Fusion `BACK_COVER1_1_06_EB903-538_1`),internal,2,1,8,24.7,000_left_arm_long_wrist_latest:1+Robstride 03 - full:1+BACK_COVER1_1_06_EB903-538_1:1,BACK_COVER1_1_06_EB903-538_1.step,inside `Robstride 03 - full`; not staged
+robstride-03-full,Robstride 03 - full,RobStride RS03 actuator with back cover (vendor assembly),vendor,1,1,2,909.0,000_left_arm_long_wrist_latest:1+Robstride 03 - full:1,Robstride_03_-_full.step,
+r06,R06,RS06 actuator internals (Fusion `R06`),internal,2,1,5,598.8,000_left_arm_long_wrist_latest:1+Robstride 06-No Back Cover:1+R06:1,R06.step,inside `Robstride 06-No Back Cover`; not staged
+robstride-06-no-back-cover-2,Robstride 06-No Back Cover,"RobStride RS06 actuator, back cover removed (vendor assembly) (Fusion `Robstride_06-No_Back_Cover~2`)",vendor,1,1,1,598.8,000_left_arm_long_wrist_latest:1+Robstride 06-No Back Cover:1,Robstride_06-No_Back_Cover~2.step,
+robstride00,robstride00,RobStride RS00 actuator (vendor assembly),vendor,2,2,4,310.0,000_left_arm_long_wrist_latest:1+001_left_wrist_long_latest:1+robstride00:1,robstride00.step,
+wrist-3-left,wrist_3-left,"Wrist-roll drive (RS05 actuator, bearing, wrist block)",module,2,2,4,355.2,000_left_arm_long_wrist_latest:1+001_left_wrist_long_latest:1+wrist_3-left:1,wrist_3-left.step,
+001-left-wrist-long-latest,001_left_wrist_long_latest,Left wrist,module,1,1,4,867.6,000_left_arm_long_wrist_latest:1+001_left_wrist_long_latest:1,001_left_wrist_long_latest.step,
+shoulder-pitch-protection,shoulder_pitch_protection,Shoulder pitch covers (pair) (left arm),module,2,1,2,24.9,000_left_arm_long_wrist_latest:1+protections:1+shoulder_pitch_protection:1,shoulder_pitch_protection.step,
+shoulder-yaw-protection,shoulder_yaw_protection,Shoulder yaw cover group (left arm),module,2,2,2,19.2,000_left_arm_long_wrist_latest:1+protections:1+shoulder_yaw_protection:1,shoulder_yaw_protection.step,
+elbow-motor-protection,elbow_motor_protection,Elbow motor covers (pair) (left arm),module,2,1,2,12.2,000_left_arm_long_wrist_latest:1+protections:1+elbow_motor_protection:1,elbow_motor_protection.step,
+shoulder-roll-shaft,shoulder_roll_shaft,Shoulder roll shaft covers (pair) (left arm),module,2,1,2,15.9,000_left_arm_long_wrist_latest:1+protections:1+shoulder_roll_shaft:1,shoulder_roll_shaft.step,
+elbow-shaft,elbow_shaft,Elbow shaft covers (pair) (left arm),module,2,1,2,15.2,000_left_arm_long_wrist_latest:1+protections:1+elbow_shaft:1,elbow_shaft.step,
+000-left-arm-long-wrist-latest,000_left_arm_long_wrist_latest,Left arm,module,0,1,163,4610.3,000_left_arm_long_wrist_latest:1,000_left_arm_long_wrist_latest.step,
+back-cover1-1-06-eb903-538-1-2,BACK_COVER1_1_06_EB903-538_1,RS03 back cover with its screws (Fusion `BACK_COVER1_1_06_EB903-538_1~2`),internal,2,1,8,24.7,000_right_arm_long_wrist_latest:1+Robstride 03 - full:1+BACK_COVER1_1_06_EB903-538_1:1,BACK_COVER1_1_06_EB903-538_1~2.step,inside `Robstride 03 - full`; not staged
+shoulder-pitch-shoulder-roll-2,shoulder_pitch:shoulder_roll,Shoulder pitch-to-roll module (right arm),module,1,1,3,175.7,000_right_arm_long_wrist_latest:1+shoulder_pitch:shoulder_roll:1,shoulder_pitch_shoulder_roll~2.step,
+r06-2,R06,RS06 actuator internals (Fusion `R06~2`),internal,2,1,5,598.8,000_right_arm_long_wrist_latest:1+Robstride 06-No Back Cover:1+R06:1,R06~2.step,inside `Robstride 06-No Back Cover`; not staged
+robstride-02-no-back-cover-2,robstride_02-No_back_cover,"RobStride RS02 actuator, back cover removed (vendor assembly) (Fusion `robstride_02-No_back_cover~2`)",vendor,2,3,2,394.2,000_right_arm_long_wrist_latest:1+shoulder_roll:shoulder_yaw:1+robstride_02-No_back_cover:3,robstride_02-No_back_cover~2.step,
+shoulder-roll-shoulder-yaw-2,shoulder_roll:shoulder_yaw,Shoulder roll-to-yaw module (right arm),module,1,1,5,580.8,000_right_arm_long_wrist_latest:1+shoulder_roll:shoulder_yaw:1,shoulder_roll_shoulder_yaw~2.step,
+3dp-arm06-x4-rs02-shaft-coupler-2,3DP_arm06_x4_RS02_shaft_coupler,RS02 shaft coupler with its heat-set inserts (one printed part) (right arm),module,2,1,6,67.5,000_right_arm_long_wrist_latest:1+shoulder_yaw:elbow:1+3DP_arm06_x4_RS02_shaft_coupler:1,3DP_arm06_x4_RS02_shaft_coupler~2.step,
+shoulder-yaw-elbow-2,shoulder_yaw:elbow,Shoulder yaw-to-elbow module (right arm),module,1,1,3,147.6,000_right_arm_long_wrist_latest:1+shoulder_yaw:elbow:1,shoulder_yaw_elbow~2.step,
+02-3d-20211009-1-stp-2,02-3D-20211009(1).stp,02-3D-20211009(1).stp (Fusion `02-3D-20211009_1_.stp~2`),internal,2,2,1,112.9,000_right_arm_long_wrist_latest:1+robstride_02-No_back_cover:1+02-3D-20211009(1).stp:1,02-3D-20211009_1_.stp~2.step,inside `robstride_02-No_back_cover`; not staged
+elbow-wrist-roll-2,elbow:wrist_roll,Elbow-to-wrist-roll module (right arm),module,1,1,4,189.1,000_right_arm_long_wrist_latest:1+elbow:wrist_roll:1,elbow_wrist_roll~2.step,
+001-right-wrist-long-latest,001_right_wrist_long_latest,Right wrist,module,1,1,4,867.6,000_right_arm_long_wrist_latest:1+001_right_wrist_long_latest:1,001_right_wrist_long_latest.step,
+shoulder-pitch-protection-2,shoulder_pitch_protection,Shoulder pitch covers (pair) (right arm),module,2,1,2,24.9,000_right_arm_long_wrist_latest:1+protections:1+shoulder_pitch_protection:1,shoulder_pitch_protection~2.step,
+shoulder-yaw-protection-2,shoulder_yaw_protection,Shoulder yaw cover group (right arm),module,2,2,2,19.2,000_right_arm_long_wrist_latest:1+protections:1+shoulder_yaw_protection:1,shoulder_yaw_protection~2.step,
+elbow-motor-protection-2,elbow_motor_protection,Elbow motor covers (pair) (right arm),module,2,1,2,12.2,000_right_arm_long_wrist_latest:1+protections:1+elbow_motor_protection:1,elbow_motor_protection~2.step,
+shoulder-roll-shaft-2,shoulder_roll_shaft,Shoulder roll shaft covers (pair) (right arm),module,2,1,2,15.9,000_right_arm_long_wrist_latest:1+protections:1+shoulder_roll_shaft:1,shoulder_roll_shaft~2.step,
+elbow-shaft-2,elbow_shaft,Elbow shaft covers (pair) (right arm),module,2,1,2,15.2,000_right_arm_long_wrist_latest:1+protections:1+elbow_shaft:1,elbow_shaft~2.step,
+000-right-arm-long-wrist-latest,000_right_arm_long_wrist_latest,Right arm,module,0,1,157,4599.7,000_right_arm_long_wrist_latest:1,000_right_arm_long_wrist_latest.step,

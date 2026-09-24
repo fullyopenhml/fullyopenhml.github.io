@@ -1,0 +1,2 @@
+subassembly,class,part_id,description,mpn,vendor,vendor_url,alt_mpn,alt_url,qty_per_robot,unit_cost_usd,total_cost_usd,material,process,tolerance_finish,lead_time_days,priced_as_of,notes,team_ref
+harness,off_the_shelf,CBL_USBA_USBC_BELKIN,"Belkin USB-A to USB-C cable, 6.6 ft, 2-pack",,Amazon,https://www.amazon.com/Belkin-USB-Cable-2-Pack-6-6ft/dp/B0F63XNWN3?th=1,,,2,14.99,,,,,,2026-09-19,"Team BOM E9: ""Belkin USB A to USB C Cable 2-Pack, 6.6ft"". Grouped under Electronics in the team BOM; filed here with the rest of the cabling. Quantity 2 means two 2-packs.",E9

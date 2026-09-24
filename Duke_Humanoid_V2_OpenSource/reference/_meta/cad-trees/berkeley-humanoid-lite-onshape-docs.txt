@@ -1,0 +1,246 @@
+# Berkeley Humanoid Lite - Onshape public documents (tabs/elements), captured 2026-09-18
+# Source: anonymous GET https://cad.onshape.com/api/v6/documents/<did> and /api/v6/documents/d/<did>/w/<wid>/elements
+# Onshape has no file tree; each "element" is a tab (Part Studio / Assembly / BOM / Variable Studio / imported blob).
+
+## Berkeley Humanoid Lite Release  https://cad.onshape.com/documents/fc6443b1d89dcba950e85b60/w/94a26479973a4098a5884426
+#  owner=-T.K.-  created=2025-03-17  modified=2026-05-02  permission=ANONYMOUS_ACCESS  anonymousAllowsExport=True  public=True  versions endpoint=401 (not visible anonymously)
+PARTSTUDIO       6512 Housing 6512   [onshape/partstudio] e/1c95fbb02c70da6608e2f575
+PARTSTUDIO       6512 Rear Cover   [onshape/partstudio] e/91c30c6043514c424d56f423
+PARTSTUDIO       5010 Rear Cover   [onshape/partstudio] e/4f1012af045fd81561fc5676
+PARTSTUDIO       6512 Housing 5010   [onshape/partstudio] e/d04a1515f41c700493c681e2
+PARTSTUDIO       5010 Housing 5010   [onshape/partstudio] e/ac1ddaa96f6c1e62a5080fa3
+VARIABLESTUDIO   Standard Parameters   [onshape/variablestudio] e/282bb090d8f80567534bcacb
+PARTSTUDIO       Elbow LowerArm   [onshape/partstudio] e/f69cd8c0cd6a3b8e09eba5ea
+ASSEMBLY         Assembly   [onshape/assembly] e/be3fe37849edbeadc95b9bf8
+PARTSTUDIO       Battery Mount   [onshape/partstudio] e/32788a7f69f2141ab488bed4
+PARTSTUDIO       IMU Arduino Mount   [onshape/partstudio] e/fdefe35c86ce6fe5802467c5
+ASSEMBLY         imu   [onshape/assembly] e/fa1d625e764e2d4b8ae54505
+PARTSTUDIO       5010 Front Ankle   [onshape/partstudio] e/7cb84cf65110b1dd3fda68ef
+VARIABLESTUDIO   Joints   [onshape/variablestudio] e/953ed256c62cf3f95796544d
+PARTSTUDIO       Shoulder Stiffener   [onshape/partstudio] e/54f7bae33967dd6e1cb62269
+PARTSTUDIO       Feet   [onshape/partstudio] e/ee8ec130393e19d867c9c3a4
+PARTSTUDIO       Wrist   [onshape/partstudio] e/f8b5f4337cd43d277b34b3fe
+ASSEMBLY         arm_right_hand_link   [onshape/assembly] e/ff5a5b102cc6951da1e35c46
+ASSEMBLY         arm_left_hand_link   [onshape/assembly] e/f963e806981cab708fd99f21
+BILLOFMATERIALS  BOM : Full Body   [onshape/billofmaterials] e/8bbfc1db25c98da08ef64c7f
+PARTSTUDIO       IMU   [onshape/partstudio] e/0e0c9a08662fc6c493650ea8
+PARTSTUDIO       Geometry Studs   [onshape/partstudio] e/d20d6eb484bb8eb3a598dfa2
+PARTSTUDIO       NUC Mount   [onshape/partstudio] e/ccf2ec7cf866079a4342985e
+ASSEMBLY         base   [onshape/assembly] e/32e834f1207884c00c9992d4
+ASSEMBLY         Chest   [onshape/assembly] e/c4911f00a5f3271d89a90355
+PARTSTUDIO       Meter Mount   [onshape/partstudio] e/b576d26fd483124e8cb30ba1
+PARTSTUDIO       Meter Mount - Bambu   [onshape/partstudio] e/bc15856a5412051a662d2213
+PARTSTUDIO       6512 Housing 2020   [onshape/partstudio] e/f76f7ecf50cff829f3fc82cd
+PARTSTUDIO       6512 Housing Hip   [onshape/partstudio] e/cb8d0507e83713d3d6d18f06
+PARTSTUDIO       6512 Housing 2020 - Bambu   [onshape/partstudio] e/7f9e3453a9d30b6d071f0604
+PARTSTUDIO       6512 Housing Hip - Bambu   [onshape/partstudio] e/fe1b2ed1247eb625edd7fd0d
+PARTSTUDIO       6512 Housing 6512 - Bambu   [onshape/partstudio] e/67ff6135f58bc1fdfdf2add5
+PARTSTUDIO       6512 Rear Cover - Bambu   [onshape/partstudio] e/3d0eb3ce1277cae59627fe67
+PARTSTUDIO       5010 Rear Cover - Bambu   [onshape/partstudio] e/80b48ef25f88e4dc89686bcd
+PARTSTUDIO       6512 Housing 5010 - Bambu   [onshape/partstudio] e/c4c0acfafa0241b56912de1d
+PARTSTUDIO       5010 Housing 5010 - Bambu   [onshape/partstudio] e/062834c3884f7accae7ebc29
+PARTSTUDIO       6512 Housing Knee - Bambu   [onshape/partstudio] e/8476b73cacac810d77ba49e7
+PARTSTUDIO       5010 Housing Ankle - Bambu   [onshape/partstudio] e/2be48b8f7e981644295d3300
+PARTSTUDIO       5010 Front Ankle - Bambu   [onshape/partstudio] e/e17ff24bdba62575cdbe85a8
+PARTSTUDIO       Ankle - Bambu   [onshape/partstudio] e/8c64ad2a575db24d2c4fa120
+PARTSTUDIO       Feet - Bambu   [onshape/partstudio] e/8976f5bc58456eecd2a30518
+PARTSTUDIO       Elbow - Bambu   [onshape/partstudio] e/a592500ca590aed6644fc438
+PARTSTUDIO       Base Frame   [onshape/partstudio] e/068bec7f717530394eb4ae4c
+ASSEMBLY         leg_right_hip_roll   [onshape/assembly] e/0e2f9b668d5d6860a078d403
+ASSEMBLY         leg_right_hip_yaw   [onshape/assembly] e/0fd18c316dc172e496864f58
+ASSEMBLY         arm_right_shoulder_pitch   [onshape/assembly] e/ec4c85b5ae4d761428086506
+ASSEMBLY         arm_left_shoulder_pitch   [onshape/assembly] e/f281a84a2c27aae48cfc3235
+ASSEMBLY         leg_left_hip_roll   [onshape/assembly] e/30b8699780ccce34290a4ba4
+ASSEMBLY         leg_left_hip_yaw   [onshape/assembly] e/07535a641dc619d8ddf11850
+ASSEMBLY         arm_right_shoulder_roll   [onshape/assembly] e/8e5113d53c1e0d8369b8c727
+ASSEMBLY         arm_left_shoulder_roll   [onshape/assembly] e/59923562d7f8155aa48482e4
+ASSEMBLY         leg_left_hip_pitch   [onshape/assembly] e/d5b6cb75476a6ce32cfeee19
+ASSEMBLY         arm_right_shoulder_yaw   [onshape/assembly] e/199335866e1132cf777e87be
+ASSEMBLY         arm_left_shoulder_yaw   [onshape/assembly] e/4dc6438e945506bec901a289
+ASSEMBLY         leg_right_hip_pitch   [onshape/assembly] e/5fb50faadd1afd061b85e3f2
+PARTSTUDIO       6512 Housing Knee   [onshape/partstudio] e/9ba171bd0e98f0b0e53aa7c9
+ASSEMBLY         arm_right_elbow_pitch   [onshape/assembly] e/88ed19c946cb203366a432a5
+ASSEMBLY         arm_left_elbow_pitch   [onshape/assembly] e/998fc83cf507aee2e476516a
+ASSEMBLY         leg_right_knee_pitch   [onshape/assembly] e/6678e2f5c6612e4fe0d6fa72
+ASSEMBLY         arm_right_elbow_roll   [onshape/assembly] e/4de443df2b888b7171d183a3
+ASSEMBLY         arm_left_elbow_roll   [onshape/assembly] e/d8c282c76939b5c5640ab845
+ASSEMBLY         leg_left_knee_pitch   [onshape/assembly] e/47477cc835d0f68ce79b90a2
+PARTSTUDIO       Ankle   [onshape/partstudio] e/7039be46a0148e4f349e2c61
+PARTSTUDIO       5010 Housing Ankle   [onshape/partstudio] e/238557122d6a8b5416deb576
+ASSEMBLY         leg_right_ankle_pitch   [onshape/assembly] e/841e3383c7207c69978a1b51
+ASSEMBLY         leg_left_ankle_pitch   [onshape/assembly] e/de3399081e752b612e4dc1e1
+ASSEMBLY         leg_right_ankle_roll   [onshape/assembly] e/ae19b0448200db695309705f
+BILLOFMATERIALS  BOM : Foot Y R   [onshape/billofmaterials] e/111f0622e57d6b2fa58cc753
+ASSEMBLY         leg_left_ankle_roll   [onshape/assembly] e/613284b133657bf7b7819e3b
+BILLOFMATERIALS  BOM : arm_left_elbow_pitch   [onshape/billofmaterials] e/2e176065d0daddddb255e134
+BILLOFMATERIALS  BOM : leg_left_hip_pitch   [onshape/billofmaterials] e/900ddec23cdef66a66115937
+BILLOFMATERIALS  BOM : leg_left_hip_roll   [onshape/billofmaterials] e/d4fe9f7ee8255c156ddc3fea
+BILLOFMATERIALS  BOM : arm_right_shoulder_yaw   [onshape/billofmaterials] e/f4b5b5ba39a99a09b4b4c414
+BILLOFMATERIALS  BOM : arm_left_hand_link   [onshape/billofmaterials] e/0fbdc7e9ed987aa39d122b8f
+BILLOFMATERIALS  BOM : arm_left_shoulder_roll   [onshape/billofmaterials] e/5ec880bbee970f48f027c04d
+BILLOFMATERIALS  BOM : leg_right_hip_yaw   [onshape/billofmaterials] e/d1580c69e032e3f148991464
+BILLOFMATERIALS  BOM : base   [onshape/billofmaterials] e/4f484c074cfb598319107799
+BILLOFMATERIALS  BOM : leg_right_hip_pitch   [onshape/billofmaterials] e/e826ba7fe9d0b602e5655571
+BILLOFMATERIALS  BOM : arm_right_elbow_pitch   [onshape/billofmaterials] e/3c9fd40dfa35ff6b12ae2281
+BILLOFMATERIALS  BOM : arm_right_hand_link   [onshape/billofmaterials] e/8c9fd518b8266d6a8d6ad0c9
+BILLOFMATERIALS  BOM : arm_right_shoulder_roll   [onshape/billofmaterials] e/42790c07e7edd6c0d2c77fb5
+BILLOFMATERIALS  BOM : leg_right_knee_pitch   [onshape/billofmaterials] e/d8500a3c363c2c74b304232f
+BILLOFMATERIALS  BOM : leg_left_knee_pitch   [onshape/billofmaterials] e/679e26f6a97e333b5be3f57f
+BILLOFMATERIALS  BOM : leg_left_ankle_roll   [onshape/billofmaterials] e/8887bc42781b6f2669b52454
+BILLOFMATERIALS  BOM : arm_left_shoulder_pitch   [onshape/billofmaterials] e/0857b44942d080ecfc5d851c
+BILLOFMATERIALS  BOM : leg_right_ankle_pitch   [onshape/billofmaterials] e/40fdba33393903a9607ff8f6
+BILLOFMATERIALS  BOM : leg_right_hip_roll   [onshape/billofmaterials] e/0a30531fb8a43a4c360c0582
+BILLOFMATERIALS  BOM : arm_left_elbow_roll   [onshape/billofmaterials] e/44a343718a8d8b1b17ed7f96
+BILLOFMATERIALS  BOM : leg_left_ankle_pitch   [onshape/billofmaterials] e/6e2d2e82ca795b71e0934a92
+BILLOFMATERIALS  BOM : imu   [onshape/billofmaterials] e/aad833e551f659a94ee396e6
+BILLOFMATERIALS  BOM : arm_right_elbow_roll   [onshape/billofmaterials] e/3d6e14e72720a0d599b301a9
+BILLOFMATERIALS  BOM : arm_right_shoulder_pitch   [onshape/billofmaterials] e/d82ef4bcdabfd477314ac0c8
+BILLOFMATERIALS  BOM : Chest   [onshape/billofmaterials] e/c5efb3b217a5cb6dd7018327
+BILLOFMATERIALS  BOM : leg_left_hip_yaw   [onshape/billofmaterials] e/ad1bfefcc912cfb907eca498
+BILLOFMATERIALS  BOM : arm_left_shoulder_yaw   [onshape/billofmaterials] e/27cf7946a3d31cd2a2077936
+
+## Actuator-6512  https://cad.onshape.com/documents/55ab471d620553f44eac2d08/w/ae94825f64e460a99fce5bb9
+#  owner=-T.K.-  created=2023-06-20  modified=2026-04-16  permission=ANONYMOUS_ACCESS  anonymousAllowsExport=True  public=True  versions endpoint=401 (not visible anonymously)
+PARTSTUDIO       Cycloidal Disk   [onshape/partstudio] e/02ddc470eeb9c6e36e360ad0
+PARTSTUDIO       Input Shaft   [onshape/partstudio] e/6e9e79f20e4711fa815d1ff4
+PARTSTUDIO       Input Shaft - Bambu   [onshape/partstudio] e/b17bd5f108933fa634208b86
+PARTSTUDIO       Motor Shaft - Bambu   [onshape/partstudio] e/eb3f61abcd87d313b0e2a72a
+PARTSTUDIO       Cycloidal Disk - Bambu   [onshape/partstudio] e/8fa09ec6be71ed0c59ddd15c
+PARTSTUDIO       Housing - Bambu   [onshape/partstudio] e/349130b04c42b6a44ab33582
+PARTSTUDIO       Output - Bambu   [onshape/partstudio] e/10d5ff1ae64cc97cfd1d50d3
+PARTSTUDIO       Housing   [onshape/partstudio] e/851c82b65b47482c75cdae1c
+PARTSTUDIO       Output Shaft   [onshape/partstudio] e/5b38d160bf46aba5e042e943
+PARTSTUDIO       Motor Shaft   [onshape/partstudio] e/8e0b760e57bea826ea19f91c
+PARTSTUDIO       Motor Shell   [onshape/partstudio] e/be3fb5d723a004ede0c6a212
+PARTSTUDIO       Motor Shell Moteus   [onshape/partstudio] e/1ff3c26bab2c165b865a2996
+PARTSTUDIO       Global Sketch   [onshape/partstudio] e/fd49c1e318d709186537b5b5
+BLOB             m6c12_profile.dxf   [application/dxf] e/aa1313fa7363bb9fd1590c01
+VARIABLESTUDIO   Standard Parameters   [onshape/variablestudio] e/3339114fabb33ba091937e21
+VARIABLESTUDIO   Cycloidal Gearbox Profile   [onshape/variablestudio] e/55e248969a7927c9f19a44df
+ASSEMBLY         Actuator-6512   [onshape/assembly] e/087203429f83a08c02d31a2b
+ASSEMBLY         Full Assembly   [onshape/assembly] e/84aaa67b3e20b63e560171ba
+PARTSTUDIO       Hex Standoff   [onshape/partstudio] e/79f252003bb7dc4f8d8039eb
+BILLOFMATERIALS  BOM : Full Assembly   [onshape/billofmaterials] e/899f7b63a65fd18e7a1be2a1
+BILLOFMATERIALS  BOM : Actuator-6512   [onshape/billofmaterials] e/982b506161f7a9ea76b52677
+
+## Actuator-5010  https://cad.onshape.com/documents/192ab9c484f00d0dd33b8f01/w/69525ef69bcb5d7c0991e587
+#  owner=-T.K.-  created=2023-06-22  modified=2026-08-19  permission=ANONYMOUS_ACCESS  anonymousAllowsExport=True  public=True  versions endpoint=401 (not visible anonymously)
+PARTSTUDIO       Cycloidal Disk   [onshape/partstudio] e/6e08e542e3e562d160e86906
+PARTSTUDIO       Cycloidal Disk - Ender   [onshape/partstudio] e/640e9ac1b971eb09c2c05092
+PARTSTUDIO       Input Shaft   [onshape/partstudio] e/c78aedbc5e0c3c1f150bed06
+PARTSTUDIO       Input Shaft - Ender   [onshape/partstudio] e/bb116901a5e35d7d0fac8fe5
+PARTSTUDIO       Input Shaft - Bambu   [onshape/partstudio] e/ac9bead5b465c53f5de6a84f
+PARTSTUDIO       Housing   [onshape/partstudio] e/fd6d5960f144e59065baec68
+PARTSTUDIO       Housing - Ender   [onshape/partstudio] e/8943c9df6fe7e55cc9416e5c
+PARTSTUDIO       Cycloidal Disk - Bambu   [onshape/partstudio] e/4126c4a79eec1c628753eba6
+PARTSTUDIO       Housing - Bambu   [onshape/partstudio] e/878f86231235e829dd3582d4
+PARTSTUDIO       Motor Shaft - Bambu   [onshape/partstudio] e/79050f6d083777ca702ad346
+PARTSTUDIO       Output Shaft   [onshape/partstudio] e/1dc8db1ab78ed8444c4cf81f
+PARTSTUDIO       Output Shaft - Ender   [onshape/partstudio] e/4d5d3bb762879a66018c84af
+PARTSTUDIO       Output - Bambu   [onshape/partstudio] e/ecf571501de66f661cc37f77
+PARTSTUDIO       Motor Shaft   [onshape/partstudio] e/0eedde7b1f6fdef191d22dd2
+PARTSTUDIO       Motor Shaft - Ender   [onshape/partstudio] e/be840eb4fe5b0f2fcefb4468
+PARTSTUDIO       Motor Shell   [onshape/partstudio] e/6b80b19385617d973967aac9
+PARTSTUDIO       Motor Shell Moteus   [onshape/partstudio] e/36cc6e6349786478fecc2770
+PARTSTUDIO       End Cap   [onshape/partstudio] e/ec0e22d7247bfb0ec157074d
+PARTSTUDIO       20210124-moteus-controller-r45-mechanical   [onshape/partstudio] e/ffb86d97752dc6eb215b8e72
+PARTSTUDIO       Global Sketch   [onshape/partstudio] e/bf3335e74e3e03e2d5b61bf0
+BLOB             5010_profile.dxf   [application/dxf] e/ac24f582fb0a466b9425e407
+BLOB             RI-60_profile.dxf   [application/dxf] e/76b6084eae63df8977b1619b
+VARIABLESTUDIO   Standard Parameters   [onshape/variablestudio] e/409dc334fd9fbd1f131be467
+VARIABLESTUDIO   Cycloidal Gearbox Profile   [onshape/variablestudio] e/e0d2d8890c4d370966d6d13d
+ASSEMBLY         Actuator-5010   [onshape/assembly] e/27c256c722ed714c0a8ce36e
+PARTSTUDIO       Hex Standoff   [onshape/partstudio] e/eefd4b4df12e995a3800bff1
+ASSEMBLY         Full Assembly   [onshape/assembly] e/cc160d2ca1454a9219f579b3
+BILLOFMATERIALS  BOM : Full Assembly   [onshape/billofmaterials] e/79909fff1ae0a3f020a7d589
+BILLOFMATERIALS  BOM : Actuator-5010   [onshape/billofmaterials] e/54b37074118a0321aaa65468
+
+## CAN Case  https://cad.onshape.com/documents/dc5bf30cc5a66c2be4659344/w/30c67813e1458487202ea2b9
+#  owner=-T.K.-  created=2025-01-18  modified=2025-01-20  permission=ANONYMOUS_ACCESS  anonymousAllowsExport=True  public=True  versions endpoint=401 (not visible anonymously)
+PARTSTUDIO       Part Studio   [onshape/partstudio] e/4f46e96306414e60771b645a
+ASSEMBLY         Assembly   [onshape/assembly] e/e7e35feaa2139cdf7288bd5c
+
+## Flattened BOM of "Berkeley Humanoid Lite Release" > Assembly (GET /api/v6/assemblies/.../e/be3fe37849edbeadc95b9bf8/bom?indented=false)
+#  189 rows; Part number / Vendor / Description columns EMPTY on every row; 0 Onshape standard-content rows; no screw/insert/nut rows.
+#  Imported bearing models are multi-body, so ball/shield/race rows inflate quantities.
+      1  Aluminum Extrusion 100mm Center  [Aluminum]
+      1  Aluminum Extrusion 100mm 3  [Aluminum]
+      1  Aluminum Extrusion 100mm 4  [Aluminum]
+      1  Aluminum Extrusion 150mm 1  [Aluminum]
+      1  Aluminum Extrusion 150mm 2  [Aluminum]
+      1  Aluminum Extrusion 250mm 1  [Aluminum]
+      1  Aluminum Extrusion 250mm 2  [Aluminum]
+      1  Aluminum Extrusion 200mm 1  [Aluminum]
+      1  Aluminum Extrusion 200mm 2  [Aluminum]
+      1  Aluminum Extrusion 200mm 3  [Aluminum]
+      1  Aluminum Extrusion 200mm 4  [Aluminum]
+      7  Housing Middle  [PLA]
+     44  Cycloidal Disk  [PLA]
+     18  Housing Front  [PLA]
+     22  Housing Rear  [PLA]
+     22  Input Shaft  [PLA]
+     22  Motor Shaft  [PLA]
+     22  Output Shaft Front  [PLA]
+     22  Output Shaft Rear  [PLA]
+    132  Output Shaft Spacer  [PLA]
+     22  Motor Shell  [PLA]
+     22  Hex Standoff  [Brass]
+    520  6811ZZ  [Stainless Steel]
+    484  6701-2RS  [Stainless Steel]
+   4576  MR106-2RS  [Stainless Steel]
+     22  Stator Mount  [Aluminum]
+     22  Stator Coil  [Steel]
+     22  Rotor Ring  [Aluminum]
+     22  Rotor Mount  [Aluminum]
+     22  Rotor Shaft  [Stainless Steel]
+     10  Rotor Shaft Clip  [ABS]
+    220  696-2RS  [Stainless Steel]
+     22  Cables  [ABS]
+     22  CAN Connector  [ABS]
+     22  Fets  [ABS]
+     22  Gate Drivers  [ABS]
+     22  PCB  [FR-4]
+     22  Pot  [ABS]
+      2  NUC Mount  [PLA]
+      1  Meter Mount  [PLA]
+      2  Base Housing Middle  [PLA]
+      2  Base Housing Front  [PLA]
+      1  Shoulder Middle  [PLA]
+      1  Stopper Y L  [PLA]
+      1  Stopper Y R  [PLA]
+      1  IMU Arduino Mount  [PLA]
+      1  Battery Mount  [PLA]
+      1  TURNIGY Graphene LiPo  [Lithium]
+    264  6809-2RS  [Stainless Steel]
+     12  Rotor Shaft Clip  [Steel]
+    264  695-2RS  [Stainless Steel]
+      4  UpperArm X Housing Middle  [PLA]
+     10  Rear Struct  [PLA]
+      4  Elbow Mount  [PLA]
+      4  Elbow Mount 2  [PLA]
+      2  Geometry Stud UpperArm  [Null]
+      2  Geometry Stud LowerArm  [ABS]
+      2  Base Plate  [Iron]
+      4  Claw  [Iron]
+      4  Linkage 1  [Iron]
+      4  Linkage 2  [Iron]
+      2  Wrist  [PLA]
+      4  UpperLeg X Housing Middle  [Alumina Oxide]
+      2  Stopper Z  [PLA]
+      1  Stopper U R  [PLA]
+      2  Geometry Stud UpperLeg  [Null]
+      1  Housing Middle R  [PLA]
+      1  Rear Struct R  [PLA]
+      2  Geometry Stud LowerLeg  [Null]
+      2  Ankle Mount  [PLA]
+      2  Ankle Mount 2  [PLA]
+      2  Housing Front Ankle  [PLA]
+      1  Feet Mount L  [PLA]
+      1  Feet Mount 2 L  [PLA]
+      2  Flat Foot  [PLA]
+      1  Stopper U L  [PLA]
+      1  Housing Middle L  [PLA]
+      1  Rear Struct L  [PLA]
+      1  Feet Mount R  [PLA]
+      1  Feet Mount 2 R  [PLA]
+      1  imu_link  [ABS]

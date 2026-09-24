@@ -1,0 +1,45 @@
+# ToddlerBot MakerWorld releases (retrieved 2026-09-18 via https://makerworld.com/api/v1/design-service/design/<id>)
+
+## 1733983 Toddlerbot Release V2.0 - 2XC | license BY-NC-SA | created 2025-08-26T01:12:58Z | updated 2026-09-18T02:58:23Z | downloads 197 | prints 23
+profile 1842043 '0.2mm layer, 6 walls, 25% infill' | printer {'devModelName': 'BL-P001', 'devProductName': 'X1 Carbon', 'nozzleDiameter': 0.4} | projectSettings {'layerHeight': '0.2', 'wallLoops': '6', 'sparseInfillDensity': '25%'} | needAms True | hasZipStl True | total 83.6 h 2437 g
+  plate  1 | Arm | 4.1 h | 94 g | PLA-CF #000000 94g
+  plate  2 | Arm2 | 4.1 h | 94 g | PLA-CF #000000 94g
+  plate  3 | Leg_L | 4.7 h | 120 g | PLA-CF #000000 120g
+  plate  4 | Leg_R | 4.7 h | 120 g | PLA-CF #000000 120g
+  plate  5 | Torso | 10.0 h | 312 g | PLA-CF #000000 312g
+  plate  6 | Safety Stand | 1.6 h | 60 g | PLA #F99963 60g
+  plate  7 | SysID | 5.5 h | 211 g | PLA #F99963 211g
+  plate  8 | Calibratior1 | 8.4 h | 298 g | PLA #939393 298g
+  plate  9 | Teleop | 6.9 h | 353 g | PLA #939393 353g
+  plate 10 | Torso+Head+Neck parts | 3.1 h | 61 g | PLA-CF #000000 61g
+  plate 11 | Head cover | 3.9 h | 70 g | PLA-CF #000000 70g
+  plate 12 | Calibrator2 | 4.4 h | 165 g | PLA #939393 165g
+  plate 13 | Waist | 3.8 h | 86 g | PLA-CF #000000 86g
+  plate 14 | Gripper | 8.9 h | 197 g | PLA-CF #000000 197g
+  plate 15 | Foot without Rubber | 1.1 h | 34 g | PLA-CF #000000 34g
+  plate 16 | Palm with TPU | 5.1 h | 62 g | TPU #161616 62g
+  plate 17 | Foot with Rubber | 1.0 h | 27 g | PLA-CF #000000 27g
+  plate 18 | Palm with Rubber | 1.4 h | 42 g | PLA-CF #000000 42g
+  plate 19 |  | 1.0 h | 31 g | PLA #F99963 3g, PLA-CF #000000 28g
+
+## 1733969 Toddlerbot Release V2.0 - 2XM | license BY-NC-SA | created 2025-08-26T00:57:08Z | updated 2026-09-18T15:53:13Z | downloads 110 | prints 12
+profile 1842024 '0.2mm layer, 6 walls, 25% infill' | printer {'devModelName': 'BL-P001', 'devProductName': 'X1 Carbon', 'nozzleDiameter': 0.4} | projectSettings {'layerHeight': '', 'wallLoops': '', 'sparseInfillDensity': ''} | needAms True | hasZipStl True | total 81.5 h 2406 g
+  plate  1 | Arm | 4.1 h | 94 g | PLA-CF #000000 94g
+  plate  2 | Arm2 | 4.1 h | 94 g | PLA-CF #000000 94g
+  plate  3 | Leg_L | 5.3 h | 136 g | PLA-CF #000000 136g
+  plate  4 | Leg_R | 5.3 h | 136 g | PLA-CF #000000 136g
+  plate  5 | Torso | 8.4 h | 275 g | PLA-CF #000000 275g
+  plate  6 | Safety Stand | 1.6 h | 60 g | PLA #F99963 60g
+  plate  7 | SysID | 5.5 h | 212 g | PLA #F99963 212g
+  plate  8 | Calibratior1 | 8.4 h | 299 g | PLA #939393 299g
+  plate  9 | Teleop | 6.3 h | 345 g | PLA #939393 345g
+  plate 10 | Torso+Head+Neck parts | 2.9 h | 58 g | PLA-CF #000000 58g
+  plate 11 | Head cover | 3.9 h | 70 g | PLA-CF #000000 70g
+  plate 12 | Calibrator2 | 4.4 h | 165 g | PLA #939393 165g
+  plate 13 | Waist | 3.5 h | 81 g | PLA-CF #000000 81g
+  plate 14 | Gripper | 8.3 h | 188 g | PLA-CF #000000 188g
+  plate 15 | Foot without Rubber | 1.2 h | 34 g | PLA-CF #000000 34g
+  plate 16 | Palm with TPU | 4.9 h | 61 g | TPU #161616 61g
+  plate 17 | Foot with Rubber | 1.0 h | 27 g | PLA-CF #000000 27g
+  plate 18 | Palm with Rubber | 1.2 h | 40 g | PLA-CF #000000 40g
+  plate 19 | Front cover | 1.0 h | 31 g | PLA #F99963 3g, PLA-CF #000000 28g

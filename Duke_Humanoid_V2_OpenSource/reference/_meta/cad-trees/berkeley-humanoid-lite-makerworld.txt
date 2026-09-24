@@ -1,0 +1,62 @@
+# Berkeley Humanoid Lite - MakerWorld models, captured 2026-09-18
+# Source: GET https://makerworld.com/api/v1/design-service/design/<id> (HTML pages are behind a Cloudflare challenge)
+
+## Berkeley Humanoid Lite  https://makerworld.com/en/models/1327260  license=BY  creator=-T.K.-  created=2025-04-16 downloads=755 prints=83
+# raw model files:
+   (none - only the print-profile 3MF)
+# print profile id=1695473 "0.2mm layer, 5 walls, 80% infill"  printer=X1 Carbon 0.4mm  PLA 1004 g  28.8 h  3MF global settings={'layerHeight': '0.2', 'wallLoops': '2', 'sparseInfillDensity': '15%'}
+     plate 1: Upper Body 1  (141 g, 4.5 h)
+     plate 2: Upper Body 2  (125 g, 4.1 h)
+     plate 3: Torso (Print Once)  (76 g, 2.2 h)
+     plate 4: Hip (Print Once)  (130 g, 3.5 h)
+     plate 5: Lower Body 1  (115 g, 3.9 h)
+     plate 6: Lower Body 2  (80 g, 2.2 h)
+     plate 7: Lower Body 3  (70 g, 1.9 h)
+     plate 8: Lower Body 4  (119 g, 3.3 h)
+     plate 9: Lower Body 5  (148 g, 3.2 h)
+
+## 6512 Cycloidal Gear Actuator  https://makerworld.com/en/models/1220823  license=BY  creator=-T.K.-  created=2025-03-17 downloads=792 prints=145
+# raw model files:
+   3mf    1737860  6512 Cycloidal Actuator.3mf  (updated 2025-05-20)
+   stl     564684  Housing - Bambu - Housing Rear.stl  (updated 2025-05-20)
+   stl     203884  Input Shaft - Bambu - Input Shaft.stl  (updated 2025-05-20)
+   stl     317384  Motor Shaft - Bambu - Motor Shaft.stl  (updated 2025-05-20)
+   stl    1321784  Motor Shell - Motor Shell.stl  (updated 2025-05-20)
+   stl    1176784  Output - Bambu - Output Shaft Front.stl  (updated 2025-05-20)
+   stl     780084  Output - Bambu - Output Shaft Rear.stl  (updated 2025-05-20)
+   stl      57684  Output - Bambu - Output Shaft Spacer.stl  (updated 2025-05-20)
+   stl    2019384  Cycloidal Disk - Bambu - Cycloidal Disk.stl  (updated 2025-05-20)
+   stl     807084  Housing - Bambu - Housing Front.stl  (updated 2025-05-20)
+   stl    1130884  Housing - Bambu - Housing Middle.stl  (updated 2025-05-20)
+# print profile id=1364993 "Actuator Housing Profile"  printer=X1 Carbon 0.4mm  PLA 136 g  5.2 h  3MF global settings={'layerHeight': '0.2', 'wallLoops': '4', 'sparseInfillDensity': '15%'}
+     plate 1: Use Actuator Housing Profile  (136 g, 5.2 h)
+# print profile id=1364989 "Actuator Shaft Profile"  printer=X1 Carbon 0.4mm  PLA 28 g  1.1 h  3MF global settings={'layerHeight': '0.2', 'wallLoops': '5', 'sparseInfillDensity': '80%'}
+     plate 1: Use Actuator Shaft Profile  (28 g, 1.1 h)
+
+## 5010 Cycloidal Gear Actuator  https://makerworld.com/en/models/1279205  license=BY  creator=-T.K.-  created=2025-04-02 downloads=1016 prints=224
+# raw model files:
+   stl    1434784  Cycloidal Disk - Bambu - Cycloidal Disk.stl  (updated 2025-04-16)
+   stl     573584  Housing - Bambu - Housing Front.stl  (updated 2025-04-16)
+   stl    1007284  Housing - Bambu - Housing Middle.stl  (updated 2025-04-16)
+   stl     448884  Housing - Bambu - Housing Rear.stl  (updated 2025-04-16)
+   stl     203084  Input Shaft - Bambu - Input Shaft.stl  (updated 2025-04-16)
+   stl     301484  Motor Shaft - Bambu - Motor Shaft.stl  (updated 2025-04-16)
+   stl    1067984  Motor Shell - Motor Shell.stl  (updated 2025-04-16)
+   stl    1175684  Output - Bambu - Output Shaft Front.stl  (updated 2025-04-16)
+   stl     774684  Output - Bambu - Output Shaft Rear.stl  (updated 2025-04-16)
+   stl      57684  Output - Bambu - Output Shaft Spacer.stl  (updated 2025-04-16)
+# print profile id=1364911 "Actuator Housing Profile"  printer=X1 Carbon 0.4mm  PLA 84 g  3.7 h  3MF global settings={'layerHeight': '0.2', 'wallLoops': '4', 'sparseInfillDensity': '15%'}
+     plate 1: Use Actuator Housing Profile  (84 g, 3.7 h)
+# print profile id=1364914 "Actuator Shaft Profile"  printer=X1 Carbon 0.4mm  PLA 17 g  0.8 h  3MF global settings={'layerHeight': '', 'wallLoops': '', 'sparseInfillDensity': ''}
+     plate 1: Use Actuator Shaft Profile  (17 g, 0.8 h)
+
+## Observed in a rendered browser tab on 2026-09-18 (page text, not downloaded files)
+# - Model pages show the license line "Creative Commons Attribution" (CC BY), while GitHub README + Assets LICENCE say CC BY-SA 4.0.
+# - Docs link https://makerworld.com/en/models/1327260-berkeley-humanoid-lite#profileId-1364871 : profile 1364871 no longer exists;
+#   the only live profile is 1695473 (created 2025-07-15) after MakerWorld took the profile down (designer comment 2025-08-23:
+#   profile removed because a printed-result photo was missing).
+# - Comments: 6512 model first shipped with 5010 geometry (fixed 2025-05-29); users asked for STEP (2025-05-04) and SolidWorks (2025-11-03)
+#   files and were pointed to Onshape; community reported missing 6803-2RS bearing + M3 inserts in the BOM (fixed 2025-05-29);
+#   a user posted assembly views because "unique/mirrored" parts were hard to track.
+# - Onshape Actuator-6512 opens anonymously in a browser: "This document was shared via a link and is view only." Default config = 27 instances
+#   (printed parts, Bearing folders, "MAD M6C12 EEE Brushless Motor", "BESC"); no screws/inserts. Tabs include folder "Bambu Manufacture Files".

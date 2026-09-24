@@ -1,0 +1,32 @@
+Category,Item,Description,Quantity,Cost USD,Total Cost USD,US Link,Cost RMB,Total Cost RMB,China Link
+Base,Mini PC,,1,$129.00,$129.00,https://www.amazon.com/gp/product/B0BVLPCDVW,"¥1,599.00","¥1,599.00",https://item.taobao.com/item.htm?abbucket=8&id=717966676915
+,LiPo battery 6S,,1,$70.20,$70.20,https://www.amazon.com/Zeee-Connector-Airplane-Helicopter-Quadcopter/dp/B0DGPMD46S,¥578.00,¥578.00,https://item.taobao.com/item.htm?id=554987950181&skuId=4800836808256
+,USB-CAN adapter,,4,$16.99,$67.96,https://www.amazon.com/gp/product/B0BPY5HY6C,¥77.00,¥308.00,https://item.taobao.com/item.htm?abbucket=8&id=694755138362
+,USB hub,,2,$17.99,$35.98,https://www.amazon.com/gp/product/B07L32B9C2,¥39.90,¥79.80,https://detail.tmall.com/item.htm?abbucket=8&id=630445232755&
+,BNO085,IMU sensor,1,$12.76,$12.76,https://www.amazon.com/YZYDF-Practical-Precisions-GY-ICM20948V2-Magnetometer/dp/B0DP4KXZQM,¥84.00,¥84.00,https://detail.tmall.com/item.htm?abbucket=8&id=658253576279&skuId=5473425713581
+,IM10A,"Alternative IMU sensor, easier to wire",1,$89.99,--,https://www.hiwonder.com/products/imu-module?variant=40375875338327&srsltid=AfmBOooudjwg_A9G9W_jwz5iwNmQwgGu3-WDFwDcYLPtLbP13KSsPyzK,¥248.00,--,https://detail.tmall.com/item.htm?priceTId=2100c89817507961008695158e0a40&utparam=%7B%22aplus_abtest%22%3A%22468964e46c08b0b77a1912b07de68fac%22%7D&id=741320971641&ns=1&abbucket=15&xxc=taobaoSearch&detail_redpacket_pop=true&query=ros+imu&skuId=5109856880564&spm=a21n57.1.hoverItem.2&ltk2=17507961040170fofvhv173s5nizlk3yimyk
+,Aluminum extrusion 250 mm,,2,$4.25,$8.50,https://www.amazon.com/Aluminum-Extrusion-European-Standard-15-75inch/dp/B08Y8L11ZP,¥2.83,¥5.66,https://item.taobao.com/item.htm?abbucket=8&id=690128619754
+,Aluminum extrusion 200 mm,,4,$3.75,$15.00,https://www.amazon.com/Aluminum-Extrusion-European-Standard-15-75inch/dp/B08Y8KL79L,¥2.26,¥9.04,https://item.taobao.com/item.htm?abbucket=8&id=690128619754
+,Aluminum extrusion 150 mm,,2,$3.00,$6.00,https://www.amazon.com/Aluminum-Extrusion-European-Standard-15-75inch/dp/B08Y8KTZ2Z,¥1.70,¥3.40,https://item.taobao.com/item.htm?abbucket=8&id=690128619754
+,Aluminum extrusion 100 mm,,3,$3.25,$9.75,https://www.amazon.com/European-Standard-Anodized-Aluminum-Extrusion/dp/B09JSN97Y9,¥1.20,¥3.60,https://item.taobao.com/item.htm?abbucket=8&id=690128619754
+,Aluminum inner bracket,,24,$0.65,$15.60,https://www.amazon.com/gp/product/B07872XFWF,¥0.70,¥16.80,https://item.taobao.com/item.htm?id=819016158292&skuId=5692325483198
+,24V to 12V regulator,,1,$16.99,$16.99,https://www.amazon.com/Stabilizer-DROK-Waterproof-Transformer-Television/dp/B081RG8XP5,¥14.00,¥14.00,https://item.taobao.com/item.htm?id=626418952771&skuId=4619768987075
+,12V to 5V regulator,,1,$4.49,$4.49,https://www.amazon.com/dp/B08FHYK1PB,¥10.79,¥10.79,https://detail.tmall.com/item.htm?abbucket=15&detail_redpacket_pop=true&id=694380052817&ltk2=1752568576408kl151vst5c7q8krfi0mo7&ns=1&priceTId=2100c81617525685633807314e0a1c&query=12V%20%E8%BD%AC%205V&spm=a21n57.1.hoverItem.14&utparam=%7B%22aplus_abtest%22%3A%229faa1ff8ec492910b1ad547e7b635f58%22%7D&xxc=taobaoSearch
+,Voltage monitor,,1,$14.99,$14.99,https://www.amazon.com/gp/product/B09G6QHPPJ/,¥3.60,¥3.60,https://detail.tmall.com/item.htm?abbucket=8&id=647059163846&skuId=4830044502772
+,Current monitor,,1,$20.98,$20.98,https://www.amazon.com/gp/product/B01DDQM6Z4,¥13.90,¥13.90,https://item.taobao.com/item.htm?abbucket=8&id=43511429194&skuId=3106569940562
+,Circuit breaker,,1,$19.99,$19.99,https://www.amazon.com/gp/product/B07SHB3TS5,¥66.00,¥66.00,https://item.taobao.com/item.htm?abbucket=8&id=708760411946&skuId=5147276763391
+,Misc,Fasteners,1,$40.00,$40.00,,¥85.00,¥85.00,
+,Misc,Cables & connectors,1,$50.00,$50.00,,¥100.00,¥100.00,
+,,,,,,,,,
+Legs,M6C12 actuators,,8,$188.69,"$1,509.51",,"¥1,122.76","¥8,982.08",
+,5010 actuators,,4,$136.36,$545.44,,¥675.90,"¥2,703.60",
+,3D print filament,,1,$100.00,$100.00,,¥300.00,¥300.00,
+,6803-2RS,Bearing between the linkage on the pitch actuators on legs,6,$2.87,$17.22,https://www.amazon.com/dp/B09P21T5QV,¥1.20,¥7.20,https://item.taobao.com/item.htm?id=611641987734&skuId=4305314537774
+,,,,,,,,,
+Arms,M6C12 actuators,,2,$188.69,$377.38,,"¥1,122.76","¥2,245.52",
+,5010 actuators,,8,$136.36,"$1,090.87",,¥675.90,"¥5,407.20",
+,Servo motor claw,,2,$35.99,$71.98,https://www.amazon.com/LewanSoul-Mechanical-BigClaw-Gripper-Without/dp/B0CMHV5DZ3,¥159.00,¥318.00,https://detail.tmall.com/item.htm?abbucket=8&id=600961750206&skuId=4202414349841
+,3D print filament,,1,$100.00,$100.00,,¥300.00,¥300.00,
+,,,,,,,,,
+,,,,,,,,,
+Total,,,,,"$4,350.59",,,"¥23,244.19",

@@ -1,0 +1,140 @@
+# ToddlerBot main Onshape document "ToddlerBot" (public, anonymous view-only)
+# https://cad.onshape.com/documents/565bc33af293a651f66e88d2  workspace "Main" f294f15f37e425275ea6da3c
+# Retrieved 2026-09-18 via anonymous GET https://cad.onshape.com/api/documents/d/<did>/w/<wid>/elements and .../assemblies/.../e/5aa2ba9c7004939a8f0e4ca2/bom
+# Document record: public=true, anonymousAllowsExport=false, recentVersion=null, owner "Ken Wang", modifiedAt 2026-03-25, numberOfTimesCopied=59
+# Other docs linked from ToddlerBot docs/configs returned HTTP 403 anonymously: 1fb5d9a88ac086a053c4340b (sysID rig), 5aba041c57aa694292cf8c1e (calibration jigs), caabd85045529e21c4b05cfa (safety stand), 3084b13ad43394bd46cc00cf (leg, from repo config.json), 322117012e09b07c7aec2a4a (arm, from repo config.json), 2497ae46576da73a906b3e62 (purchased-parts library, from BOM), ff1e767f256dd9c8abf2206a (V1.0 doc, from MakerWorld V1 page)
+
+## Elements (tabs): elementType | name | id
+PARTSTUDIO | NeckYawLink | 67240fe47673d15db0578ab0
+PARTSTUDIO | PelvisLink | 482b3dc57ccfcad8e8219cf2
+PARTSTUDIO | NeckYawGearDrive | 4e15e129c1387305ddd65277
+PARTSTUDIO | CoverKnob | 907c99c1ebcdbe18b3cf6b07
+PARTSTUDIO | WaistGears | e89f8b8761a0e8a221a56e87
+PARTSTUDIO | IMUMount | 31ea2a4c372b33437ccc4204
+PARTSTUDIO | NeckPitchLink | 4d36f610e6ef01a8d21fca96
+PARTSTUDIO | NeckPitchPlate | 076da2ab0fc5c1320f577112
+PARTSTUDIO | Head | fbb45d3208a5e63f0943b9b6
+PARTSTUDIO | WaistAxle | 403a825ee9c4e9bbd9f6471f
+PARTSTUDIO | JetsonInsulation | 92d5b821bed9c04a790b552f
+PARTSTUDIO | SpeakerMount | f3dbc15596f3a9dd075af7b1
+PARTSTUDIO | NeckRod | 98575675277c9e4537a71410
+PARTSTUDIO | CameraPlate | abb2098b31a253b51489df39
+PARTSTUDIO | CameraMount | 23af66500cb9cab94ca4c720
+ASSEMBLY | head | a379e2b0577c61e5337e6363
+ASSEMBLY | toddlerbot | 5aa2ba9c7004939a8f0e4ca2
+PARTSTUDIO | Part Studio 1 | 2f3fb90364e08fa10164378a
+PARTSTUDIO | TeleopDeskMount | b3b88283b9d3055a481b7555
+ASSEMBLY | neck_rod | c03ab8b3195237ead87fe7e3
+PARTSTUDIO | TorsoLink | 5d11f9c2452d80b142239f65
+VARIABLESTUDIO | TorsoVars | 059c5617ff6d6e2b0d7014ac
+ASSEMBLY | pelvis_link | a9c8101024e6a6b2c0e489b3
+BILLOFMATERIALS | BOM : head | e3e00c6e32e7580d952001d7
+PARTSTUDIO | FrontCover | 826d309049f1a687a46e14e0
+ASSEMBLY | torso | 6761cee3bb53558a7d2df1a9
+BILLOFMATERIALS | BOM : torso | 61878a466f811c2cc4b140e7
+ASSEMBLY | waist_gears | 12d574a5a84af98defa02df0
+BILLOFMATERIALS | BOM : pelvis_link | 23f58625d283560f2f11d9c3
+BILLOFMATERIALS | BOM : waist_gears | 4641e9464a6ab7ae115d25b0
+BILLOFMATERIALS | BOM : neck_rod | ccdfef916db28145b648f718
+BILLOFMATERIALS | BOM : toddlerbot | 1fb3af60119e96075131f190
+
+## Flattened BOM of assembly "toddlerbot" (configuration=current), 99 rows: name | qty | partNumber | material | source documentId | configuration
+cover_knob | 3.0 |  | 15% PLA | 565bc33af293a651f66e88d2 | default
+front_cover | 1.0 |  | 15% PLA | 565bc33af293a651f66e88d2 | List_vNcrAxwMPf9oja=Default
+imu_mount | 1.0 |  |  | 565bc33af293a651f66e88d2 | default
+torso_link | 1.0 |  | 15% PLA | 565bc33af293a651f66e88d2 | List_MLn2vJDqe33sWj=_2xm
+waist_gear_driven | 1.0 |  | 15% PLA | 565bc33af293a651f66e88d2 | default
+battery_box | 1.0 |  |  | 2497ae46576da73a906b3e62 | default
+imu | 1.0 |  |  | 2497ae46576da73a906b3e62 | default
+jetson | 1.0 |  |  | 2497ae46576da73a906b3e62 | default
+usb_hub | 1.0 |  |  | 2497ae46576da73a906b3e62 | default
+EHR-3 | 8.0 |  | XC430 | 2497ae46576da73a906b3e62 | default
+B3B-EH | 8.0 |  | XC430 | 2497ae46576da73a906b3e62 | default
+FHS_M2_5X06_NYLOK | 4.0 |  | XC430 | 2497ae46576da73a906b3e62 | default
+DC11_A01_HORN_INSERT_1 | 32.0 |  | XC430 | 2497ae46576da73a906b3e62 | default
+M_DC11_A01_HORN | 4.0 |  | XC430 | 2497ae46576da73a906b3e62 | default
+DC14_A01_INSERT_1 | 4.0 |  | XC430 | 2497ae46576da73a906b3e62 | default
+DC11_A01_IDLER_SCREW | 4.0 |  | XC430 | 2497ae46576da73a906b3e62 | default
+M_DC11_A01_IDLER_CAP | 4.0 |  | XC430 | 2497ae46576da73a906b3e62 | default
+M_DC11_A01_IDLER | 4.0 |  | XC430 | 2497ae46576da73a906b3e62 | default
+DC11_A01_CVR_CABLE | 4.0 |  | XC430 | 2497ae46576da73a906b3e62 | default
+DC11_A01_WIN_LED | 4.0 |  | XC430 | 2497ae46576da73a906b3e62 | default
+DX124_SCREW-COVER | 4.0 |  | XC430 | 2497ae46576da73a906b3e62 | default
+PHS_M2_5X12_K | 32.0 |  | XC430 | 2497ae46576da73a906b3e62 | default
+DC11_B01_CASE_B_DUMMY2 | 4.0 |  | XC430 | 2497ae46576da73a906b3e62 | default
+DC11_B01_CASE_F_DUMMY | 4.0 |  | XC430 | 2497ae46576da73a906b3e62 | default
+DC11_B01_CASE_M_DUMMY | 4.0 |  | XC430 | 2497ae46576da73a906b3e62 | default
+B3B-EH | 12.0 |  | XC330 | 2497ae46576da73a906b3e62 | default
+BTS2_M2_6X8 | 12.0 |  | XC330 | 2497ae46576da73a906b3e62 | default
+DC15_A01_IDLE_CAP_DUMMY | 6.0 |  | XC330 | 2497ae46576da73a906b3e62 | default
+DC15_A01_HORN_IDLE2_DUMMY | 6.0 |  | XC330 | 2497ae46576da73a906b3e62 | default
+PHS_1_7X20_5_DC10 | 24.0 |  | XC330 | 2497ae46576da73a906b3e62 | default
+DC15_A01_LED_CAP2_DUMMY | 6.0 |  | XC330 | 2497ae46576da73a906b3e62 | default
+DC15_A01_HORN_DUMMY | 6.0 |  | XC330 | 2497ae46576da73a906b3e62 | default
+DC15_A01_CASE_B_DUMMY | 6.0 |  | XC330 | 2497ae46576da73a906b3e62 | default
+DC15_A01_CASE_F_DUMMY | 6.0 |  | XC330 | 2497ae46576da73a906b3e62 | default
+DC15_A01_CASE_M_DUMMY | 6.0 |  | XC330 | 2497ae46576da73a906b3e62 | default
+TTLPowerBoard | 1.0 |  | 15% PLA | 2497ae46576da73a906b3e62 | default
+bearing_ax0414 | 18.0 |  | Bearing | 2497ae46576da73a906b3e62 | default
+fisheye_camera | 2.0 |  |  | 2497ae46576da73a906b3e62 | default
+bearing_684 | 11.0 |  | Bearing | 2497ae46576da73a906b3e62 | default
+speaker | 1.0 |  |  | 2497ae46576da73a906b3e62 | default
+speaker_board | 1.0 |  |  | 2497ae46576da73a906b3e62 | default
+speaker_mount | 1.0 |  |  | 565bc33af293a651f66e88d2 | default
+head_back_cover | 1.0 |  |  | 565bc33af293a651f66e88d2 | default
+head_front_cover | 1.0 |  |  | 565bc33af293a651f66e88d2 | default
+camera_mount | 1.0 |  |  | 565bc33af293a651f66e88d2 | default
+camera_plate | 1.0 |  |  | 565bc33af293a651f66e88d2 | default
+neck_pitch_link | 1.0 |  | 15% PLA | 565bc33af293a651f66e88d2 | default
+pelvis_link | 1.0 |  | 15% PLA | 565bc33af293a651f66e88d2 | default
+neck_yaw_link | 1.0 |  |  | 565bc33af293a651f66e88d2 | default
+neck_yaw_gear_drive | 1.0 |  | 15% PLA | 565bc33af293a651f66e88d2 | default
+neck_pitch_plate | 1.0 |  |  | 565bc33af293a651f66e88d2 | default
+neck_rod | 2.0 |  |  | 565bc33af293a651f66e88d2 | default
+bearing_683 | 4.0 |  | Bearing | 2497ae46576da73a906b3e62 | default
+waist_gear_drive | 2.0 |  | 15% PLA | 565bc33af293a651f66e88d2 | default
+waist_gear_couple | 2.0 |  | 15% PLA | 565bc33af293a651f66e88d2 | default
+waist_axle | 1.0 |  | 15% PLA | 565bc33af293a651f66e88d2 | default
+hip_motor_mount | 2.0 |  | 15% PLA | 3084b13ad43394bd46cc00cf | default
+hip_bearing_mount | 2.0 |  | 15% PLA | 3084b13ad43394bd46cc00cf | default
+DC12_A01_CVR_CABLE_5 | 8.0 |  | XM430 | 2497ae46576da73a906b3e62 | default
+DC12_A01_SPACER_RING_1 | 64.0 |  | XM430 | 2497ae46576da73a906b3e62 | default
+WBH_M2_5X12 | 64.0 |  | XM430 | 2497ae46576da73a906b3e62 | default
+DUMMY_DC12 | 8.0 |  | XM430 | 2497ae46576da73a906b3e62 | default
+hip_roll_link | 2.0 |  | 15% PLA | 3084b13ad43394bd46cc00cf | List_4CVdtp6TKJGOs8=Default
+hip_yaw_gear_driven | 2.0 |  | 15% PLA | 3084b13ad43394bd46cc00cf | default
+left_hip_yaw_link | 1.0 |  | 15% PLA | 3084b13ad43394bd46cc00cf | default
+hip_yaw_gear_drive | 2.0 |  | 15% PLA | 3084b13ad43394bd46cc00cf | default
+knee_link | 2.0 |  | 15% PLA | 3084b13ad43394bd46cc00cf | default
+ank_motor_mount | 2.0 |  | 15% PLA | 3084b13ad43394bd46cc00cf | default
+ank_bearing_mount | 2.0 |  | 15% PLA | 3084b13ad43394bd46cc00cf | default
+foot_link | 2.0 |  | 15% PLA | 3084b13ad43394bd46cc00cf | List_dVrikwcGTt9YCa=Default
+ank_roll_link | 2.0 |  | 15% PLA | 3084b13ad43394bd46cc00cf | default
+right_hip_yaw_link | 1.0 |  | 15% PLA | 3084b13ad43394bd46cc00cf | default
+shoulder_pitch_link | 2.0 |  | 15% PLA | 322117012e09b07c7aec2a4a | default
+DC11_A01_IDLER_SCREW | 12.0 |  | 2XL430 | 2497ae46576da73a906b3e62 | default
+DC11_A01_IDLER_CAP_REF | 12.0 |  | 2XL430 | 2497ae46576da73a906b3e62 | default
+DC11_A01_IDLER_REF | 12.0 |  | 2XL430 | 2497ae46576da73a906b3e62 | default
+FHS_M2_5X06_NYLOK | 12.0 |  | 2XL430 | 2497ae46576da73a906b3e62 | default
+DC11_A01_HORN_REF | 12.0 |  | 2XL430 | 2497ae46576da73a906b3e62 | default
+DC14_A01_INSERT_1 | 12.0 |  | 2XL430 | 2497ae46576da73a906b3e62 | default
+DC14_A01_INSERT_2 | 48.0 |  | 2XL430 | 2497ae46576da73a906b3e62 | default
+PHS_M2X33_TAP_K | 24.0 |  | 2XL430 | 2497ae46576da73a906b3e62 | default
+EHR-3 | 12.0 |  | 2XL430 | 2497ae46576da73a906b3e62 | default
+S3B-EH | 12.0 |  | 2XL430 | 2497ae46576da73a906b3e62 | default
+DC14_A01_REF | 6.0 |  | 2XL430 | 2497ae46576da73a906b3e62 | default
+offset_ring | 16.0 |  | 15% PLA | 322117012e09b07c7aec2a4a | default
+offset_plate | 4.0 |  | 15% PLA | 322117012e09b07c7aec2a4a | List_0vdtzeVBcxY9aP=Wri
+shoulder_yaw_link | 2.0 |  | 15% PLA | 322117012e09b07c7aec2a4a | default
+shoulder_gear_driven | 2.0 |  | 15% PLA | 322117012e09b07c7aec2a4a | List_Pl6vLCytF83PtI=Default
+shoulder_gear_drive | 2.0 |  | 15% PLA | 322117012e09b07c7aec2a4a | List_Pl6vLCytF83PtI=Default
+elbow_gear_drive | 2.0 |  | 15% PLA | 322117012e09b07c7aec2a4a | List_Pl6vLCytF83PtI=Copy_of_shoulder_gear_drive
+elbow_link | 2.0 |  | 15% PLA | 322117012e09b07c7aec2a4a | default
+elbow_gear_driven | 2.0 |  | 15% PLA | 322117012e09b07c7aec2a4a | List_Pl6vLCytF83PtI=Copy_of_shoulder_gear_drive
+wrist_gear_driven | 2.0 |  | 15% PLA | 322117012e09b07c7aec2a4a | List_Pl6vLCytF83PtI=wrist_gear_drive
+offset_plate | 2.0 |  | 15% PLA | 322117012e09b07c7aec2a4a | List_0vdtzeVBcxY9aP=offset2
+offset_plate | 2.0 |  | 15% PLA | 322117012e09b07c7aec2a4a | List_0vdtzeVBcxY9aP=Default
+wrist_gear_drive | 2.0 |  | 15% PLA | 322117012e09b07c7aec2a4a | List_Pl6vLCytF83PtI=wrist_gear_drive
+left_hand | 1.0 |  | 15% PLA | 322117012e09b07c7aec2a4a | List_7AXBLQKX17QPBJ=Default
+wrist_roll_link | 2.0 |  | 15% PLA | 322117012e09b07c7aec2a4a | default
+right_hand | 1.0 |  | 15% PLA | 322117012e09b07c7aec2a4a | List_7AXBLQKX17QPBJ=Default

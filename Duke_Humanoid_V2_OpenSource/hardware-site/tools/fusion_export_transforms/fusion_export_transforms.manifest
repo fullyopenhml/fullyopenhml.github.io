@@ -1,0 +1,8 @@
+{
+    "autodeskProduct": "Fusion",
+    "type": "script",
+    "author": "Duke General Robotics Lab",
+    "description": "Write every part occurrence world transform and export mixed CNC_/3DP_ components.",
+    "supportedOS": "windows|mac",
+    "editEnabled": true
+}

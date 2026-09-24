@@ -1,0 +1,291 @@
+/* Duke colours: Duke Navy Blue #012169 as the primary (header, buttons, links),
+   Duke Royal Blue #00539B as the accent (hover, focus, active). */
+[data-md-color-primary="custom"] {
+  --md-primary-fg-color: #012169;
+  --md-primary-fg-color--light: #1c3d8f;
+  --md-primary-fg-color--dark: #001247;
+  --md-primary-bg-color: #ffffff;
+  --md-primary-bg-color--light: #ffffffb3;
+}
+[data-md-color-accent="custom"] {
+  --md-accent-fg-color: #00539b;
+  --md-accent-fg-color--transparent: #00539b1a;
+  --md-accent-bg-color: #ffffff;
+  --md-accent-bg-color--light: #ffffffb3;
+}
+[data-md-color-scheme="slate"][data-md-color-primary="custom"] {
+  --md-typeset-a-color: #5b8ddb;   /* readable navy-family link colour on the dark scheme */
+}
+
+/* Duke Humanoid V2 hardware site — minimal additions on top of Material.
+   Four things only: a parts table, a step badge, a checkpoint callout, and a
+   marker for figures that are not published yet. Everything else is the theme. */
+
+/* --------------------------------------------------------------------------
+   0. Type: smaller and tighter than the theme default (user request, 2026-09-21)
+   -------------------------------------------------------------------------- */
+.md-typeset { font-size: .74rem; line-height: 1.55; }
+.md-typeset h1 { font-size: 1.7em; margin: 0 0 .9em; }
+.md-typeset h2 { font-size: 1.3em; margin: 1.6em 0 .6em; }
+.md-typeset h3 { font-size: 1.05em; margin: 1.3em 0 .5em; }
+.md-typeset p, .md-typeset ul, .md-typeset ol { margin: .6em 0; }
+.md-typeset li { margin: .15em 0; }
+.md-typeset table:not([class]) { font-size: .66rem; }
+.md-typeset table:not([class]) th, .md-typeset table:not([class]) td { padding: .5em .8em; }
+.md-typeset .admonition, .md-typeset details { font-size: .66rem; margin: 1em 0; }
+.md-typeset pre > code { font-size: .68rem; }
+.md-typeset figure { margin: 1em auto; }
+.md-typeset figcaption { font-size: .66rem; }
+
+/* --------------------------------------------------------------------------
+   2. Step number badge — emitted by the step() macro in main.py
+   -------------------------------------------------------------------------- */
+.md-typeset h3.step {
+  display: flex; align-items: center; gap: .5em;
+  margin: 1.4em 0 .4em;
+  font-size: .85rem; font-weight: 600; line-height: 1.3;
+}
+.md-typeset h3.step + p, .md-typeset h3.step + div, .md-typeset h3.step + table { margin-top: .3em; }
+.md-typeset p.dh-check { margin: .35em 0 0; font-size: .7rem; color: var(--md-default-fg-color--light); }
+
+.md-typeset .step-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 1.7em;
+  height: 1.7em;
+  border-radius: 50%;
+  background-color: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color);
+  font-size: 0.75em;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+/* --------------------------------------------------------------------------
+   3. Checkpoint callout — a custom Material admonition type.
+   Use `!!! checkpoint "..."` in Markdown, or the checkpoint() macro.
+   -------------------------------------------------------------------------- */
+:root {
+  --md-admonition-icon--checkpoint: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 20.42 2.79 14.21l2.83-2.83L9 14.77l9.88-9.89 2.83 2.83Z"/></svg>');
+}
+
+.md-typeset .admonition.checkpoint,
+.md-typeset details.checkpoint {
+  border-color: #00897b;
+}
+
+.md-typeset .checkpoint > .admonition-title,
+.md-typeset .checkpoint > summary {
+  background-color: rgba(0, 137, 123, 0.12);
+}
+
+.md-typeset .checkpoint > .admonition-title::before,
+.md-typeset .checkpoint > summary::before {
+  background-color: #00897b;
+  -webkit-mask-image: var(--md-admonition-icon--checkpoint);
+  mask-image: var(--md-admonition-icon--checkpoint);
+}
+
+/* --------------------------------------------------------------------------
+   4. Figures the macros could not compute yet. Must stay conspicuous.
+   -------------------------------------------------------------------------- */
+.md-typeset .pending-figure {
+  padding: 0.05em 0.4em;
+  border-radius: 0.2rem;
+  background-color: var(--md-default-fg-color--lightest);
+  color: var(--md-default-fg-color--light);
+  font-size: 0.85em;
+  font-style: italic;
+  white-space: nowrap;
+}
+
+/* Key/value tables written with an empty header row (`| | |`): the header
+   renders as a blank stripe above the first row, so hide it. A header with
+   any text in it is left alone. */
+.md-typeset table:not([class]) thead:not(:has(th:not(:empty))) {
+  display: none;
+}
+
+/* Looping demo clips. These were animated WebP at 1–4 MB each; as MP4 they
+   are 0.2–0.8 MB. They play muted and inline, like the animations did. */
+.md-typeset video.dh-clip {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 0.2rem;
+}
+
+/* ------------------------------------------------------------------------
+   GAP MARKERS — every missing or unverified item on this site is red and bold.
+   Two block types and two inline markers, nothing else:
+
+     !!! missing "MISSING — what is missing"        information does not exist yet
+     !!! unverified "UNVERIFIED — what is unsure"   stated, but not confirmed
+     **TODO**{ .dh-missing }                        inline, e.g. in a table cell
+     **UNVERIFIED**{ .dh-unverified }               inline, next to a doubtful figure
+
+   A box whose TITLE starts with MISSING/UNVERIFIED is a tracked item: it needs
+   an *Owner:* line and appears on reference/todo.md. A missing/unverified box
+   with any other title (e.g. "Structure only — do not build from this yet") is
+   a page-level summary of gaps itemised below it: still red, not tracked twice.
+
+   Do not use grey, orange or plain text for a gap. See reference/todo.md.
+   ------------------------------------------------------------------------ */
+:root {
+  --dh-gap: #d50000;
+  --dh-gap-text: #b71c1c;
+  --dh-gap-bg: rgba(213, 0, 0, 0.1);
+  --md-admonition-icon--missing: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 13h-2V7h2m0 10h-2v-2h2M15.73 3H8.27L3 8.27v7.46L8.27 21h7.46L21 15.73V8.27L15.73 3z"/></svg>');
+  --md-admonition-icon--unverified: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.07 11.25l-.9.92C13.45 12.89 13 13.5 13 15h-2v-.5c0-1.11.45-2.11 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41a2 2 0 0 0-2-2 2 2 0 0 0-2 2H8a4 4 0 0 1 4-4 4 4 0 0 1 4 4 3.2 3.2 0 0 1-.93 2.25M13 19h-2v-2h2M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10c0-5.53-4.5-10-10-10z"/></svg>');
+}
+[data-md-color-scheme="slate"] {
+  --dh-gap: #ff5252;
+  --dh-gap-text: #ff8a80;
+  --dh-gap-bg: rgba(255, 82, 82, 0.14);
+}
+.md-typeset .admonition.missing, .md-typeset details.missing,
+.md-typeset .admonition.unverified, .md-typeset details.unverified {
+  border-color: var(--dh-gap);
+  border-width: 0.1rem 0.1rem 0.1rem 0.3rem;
+}
+.md-typeset .missing > .admonition-title, .md-typeset .missing > summary,
+.md-typeset .unverified > .admonition-title, .md-typeset .unverified > summary {
+  background-color: var(--dh-gap-bg);
+  color: var(--dh-gap);
+  font-weight: 800;
+}
+.md-typeset .missing > .admonition-title::before, .md-typeset .missing > summary::before {
+  background-color: var(--dh-gap);
+  -webkit-mask-image: var(--md-admonition-icon--missing);
+          mask-image: var(--md-admonition-icon--missing);
+}
+.md-typeset .unverified > .admonition-title::before, .md-typeset .unverified > summary::before {
+  background-color: var(--dh-gap);
+  -webkit-mask-image: var(--md-admonition-icon--unverified);
+          mask-image: var(--md-admonition-icon--unverified);
+}
+.md-typeset .admonition.missing > :not(.admonition-title),
+.md-typeset .admonition.unverified > :not(.admonition-title) {
+  color: var(--dh-gap-text);
+  font-weight: 700;
+}
+/* The owner line stays readable: it names who fills the gap, it is not the gap. */
+.md-typeset .admonition.missing em:only-child,
+.md-typeset .admonition.unverified em:only-child {
+  font-weight: 600;
+}
+.md-typeset .dh-missing, .md-typeset .dh-unverified, .md-typeset .pending-figure {
+  color: var(--dh-gap) !important;
+  font-weight: 800 !important;
+  background: var(--dh-gap-bg);
+  padding: 0 0.25em;
+  border-radius: 0.15em;
+  font-style: normal;
+  white-space: nowrap;
+}
+
+/* --- interactive part viewer (fabrication/cad-downloads) --- */
+/* The model shows the Fusion appearances; only RED / AMBER in docs/javascripts/viewer.js are painted. */
+.md-typeset .dh-viewer-block { margin: 0 0 1rem; }
+#dh-viewer {
+  display: block; width: 100%; max-width: 100%; height: min(520px, 80vh);
+  background: var(--md-code-bg-color); border-radius: .2rem;
+  --min-hotspot-opacity: .55;   /* axis labels behind the model stay readable */
+}
+.dh-viewer-bar { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; margin: .4rem 0 .3rem; font-size: .8rem; }
+.dh-viewer-legend { display: inline-flex; flex-wrap: wrap; gap: .3rem .9rem; align-items: center; color: var(--md-default-fg-color--light); }
+.dh-viewer-legend i { display: inline-block; width: .8em; height: .8em; margin-right: .3em; border-radius: .15em; vertical-align: -.05em; }
+.dh-sw-amber { background: #f2a61a; }
+.dh-sw-red { background: #d91f14; }
+.dh-sw-blue { background: rgba(21, 101, 192, .5); }
+.md-typeset .dh-viewer-note { margin: 0 0 1rem; font-size: .7rem; color: var(--md-default-fg-color--light); }
+#dh-viewer-info { flex: 1 1 16rem; min-width: 0; overflow-wrap: anywhere; padding: .5rem .7rem; border-left: .2rem solid #d91f14; background: var(--md-code-bg-color); line-height: 1.5; font-size: .7rem; }
+#dh-viewer-info .dh-info-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: .35em .5em; font-size: .8rem; }
+#dh-viewer-info .dh-info-head strong { font-size: .9rem; }
+#dh-viewer-info .dh-info-kind { padding: 0 .5em; border-radius: 1em; background: var(--md-default-fg-color--lightest); color: var(--md-default-fg-color--light); font-size: .6rem; font-weight: 600; letter-spacing: .02em; text-transform: uppercase; }
+#dh-viewer-info .dh-info-name { margin-top: .1rem; color: var(--md-default-fg-color); }
+#dh-viewer-info .dh-info-facts { display: flex; flex-wrap: wrap; gap: .1em 0; margin-top: .15rem; color: var(--md-default-fg-color--light); }
+#dh-viewer-info .dh-info-facts span + span::before { content: "·"; margin: 0 .5em; color: var(--md-default-fg-color--lighter); }
+#dh-viewer-info .dh-info-dl { display: flex; flex-wrap: wrap; gap: .3rem; margin-top: .4rem; }
+#dh-viewer-info .dh-info-in { margin-top: .3rem; color: var(--md-default-fg-color--light); }
+#dh-viewer-info .dh-info-in .dh-chip { margin: .1em 0; }
+#dh-viewer-info .dh-info-in + .dh-info-in { margin-top: .15rem; }
+#dh-viewer-info .dh-info-in-label { display: inline-block; min-width: 1.6em; color: var(--md-default-fg-color--lighter); }
+#dh-viewer-info .dh-info-in-pad { display: inline-block; min-width: 1.6em; margin-right: .25em; }
+
+/* Axis labels: <button slot="hotspot-x|y|z"> children of the viewer, positioned by viewer.js
+   from parts.json (class dh-axis-on once a tip position is known). X red, Y green, Z blue. */
+.md-typeset .dh-axis, .dh-axis {
+  display: none; align-items: center; justify-content: center;
+  width: 1.3rem; height: 1.3rem; padding: 0; margin: 0;
+  border: .1rem solid var(--md-default-bg-color); border-radius: 50%;
+  font: 700 .65rem/1 var(--md-text-font-family, sans-serif); color: #fff;
+  box-shadow: var(--md-shadow-z1); cursor: default; pointer-events: none;
+}
+.md-typeset .dh-axis.dh-axis-on, .dh-axis.dh-axis-on { display: inline-flex; }
+.dh-axis-x { background: #e53935; }
+.dh-axis-y { background: #43a047; }
+.dh-axis-z { background: #1e88e5; }
+
+/* Row buttons, built by viewer.js: Preview (locate on the robot) and the Download link. */
+.md-typeset .dh-preview, .md-typeset a.dh-dl, .md-typeset .dh-chip {
+  display: inline-flex; align-items: center; gap: .3em; vertical-align: middle;
+  padding: .05em .55em; border-radius: .2rem; border: .05rem solid transparent;
+  font-family: inherit; font-size: .7rem; font-weight: 600; line-height: 1.7; white-space: nowrap;
+  text-decoration: none; cursor: pointer;
+}
+.md-typeset .dh-preview {
+  margin-right: .45em; background: transparent;
+  color: var(--md-primary-fg-color); border-color: var(--md-primary-fg-color);
+}
+.md-typeset .dh-preview:hover, .md-typeset .dh-preview:focus-visible { background: rgba(242, 166, 26, .22); border-color: #f2a61a; outline: none; }
+.md-typeset a.dh-dl { background: var(--md-primary-fg-color); color: var(--md-primary-bg-color); }
+.md-typeset a.dh-dl:hover, .md-typeset a.dh-dl:focus-visible { background: var(--md-accent-fg-color); color: var(--md-accent-bg-color); outline: none; }
+.md-typeset a.dh-dl svg { flex: none; }
+.md-typeset .dh-chip { padding: 0 .45em; background: var(--md-default-fg-color--lightest); color: var(--md-default-fg-color); }
+.md-typeset .dh-chip:hover, .md-typeset .dh-chip:focus-visible { background: rgba(242, 166, 26, .3); outline: none; }
+.md-typeset table:not([class]) td .dh-preview + a.dh-dl { margin-left: 0; }
+
+.md-typeset .dh-part-row { cursor: pointer; }
+.md-typeset .dh-part-row:hover td { background: rgba(242, 166, 26, .18); }
+.md-typeset .dh-part-row:focus-visible { outline: none; }
+.md-typeset .dh-part-row:focus-visible td { box-shadow: inset 0 0 0 .15rem var(--md-accent-fg-color); }
+.md-typeset .dh-part-row.dh-selected td { background: rgba(21, 101, 192, .14); }
+.md-typeset .dh-part-row.dh-flash td { animation: dh-flash 1.6s ease-out; }
+@keyframes dh-flash { 0%, 60% { background: rgba(21, 101, 192, .38); } 100% { background: rgba(21, 101, 192, .14); } }
+
+/* eye (hide / show the selected part) and "Show hidden (N)" buttons in the viewer bar */
+.md-typeset .dh-viewer-bar .dh-eye, .md-typeset .dh-viewer-bar .dh-unhide { display: inline-flex; align-items: center; gap: .35em; }
+.md-typeset .dh-viewer-bar .dh-eye:disabled { opacity: .45; cursor: default; }
+
+/* Clip pause/play (javascripts/clips.js) */
+.md-typeset .dh-clip-wrap { position: relative; display: block; max-width: 100%; margin: 0 auto; }
+.md-typeset .dh-clip-wrap video.dh-clip { cursor: pointer; display: block; margin: 0 auto; }
+.md-typeset .dh-clip-wrap:focus-within video.dh-clip { outline: 2px solid var(--md-accent-fg-color); outline-offset: 2px; }
+.md-typeset .dh-clip-badge {
+  position: absolute; top: 0.5rem; left: 50%; transform: translateX(-50%);
+  padding: 0.15rem 0.6rem; border-radius: 1rem; font-size: 0.7rem; font-weight: 600;
+  background: rgba(0, 0, 0, 0.65); color: #fff; pointer-events: none; opacity: 0; transition: opacity 0.15s;
+}
+.md-typeset .dh-clip-scrub { display: none; width: 100%; margin: 0.2rem 0 0; cursor: ew-resize; accent-color: var(--md-primary-fg-color); }
+.md-typeset .dh-clip-wrap.is-paused .dh-clip-badge { opacity: 1; }
+.md-typeset .dh-clip-wrap.is-paused .dh-clip-scrub { display: block; }
+
+/* Gap numbers (javascripts/gaps.js): B1, B2 ... in front of every red mark. */
+.md-typeset .dh-gap-no {
+  display: inline-block; min-width: 1.6em; margin-right: .3em; padding: 0 .3em;
+  border-radius: .25em; background: var(--dh-gap); color: #fff !important;
+  font-size: .62rem; font-weight: 800; line-height: 1.5; text-align: center; vertical-align: .1em;
+}
+.md-typeset .admonition-title .dh-gap-no { vertical-align: 0; }
+
+/* The header link is the lab's project page, not a repository: no star / fork facts
+   (Material caches them in the browser from the earlier GitHub URL). */
+.md-source__facts { display: none !important; }
+
+/* Header logo a little larger than the theme default (1.2rem). */
+.md-header__button.md-logo img, .md-header__button.md-logo svg { height: 1.6rem; width: auto; }

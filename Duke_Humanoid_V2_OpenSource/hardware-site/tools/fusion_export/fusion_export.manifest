@@ -1,0 +1,8 @@
+{
+    "autodeskProduct": "Fusion",
+    "type": "script",
+    "author": "Duke General Robotics Lab",
+    "description": "Export whole-robot STEP/f3z, per-part STEP and STL, and a component tree CSV for the hardware release.",
+    "supportedOS": "windows|mac",
+    "editEnabled": true
+}

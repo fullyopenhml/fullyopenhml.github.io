@@ -1,0 +1,132 @@
+site_name: Duke Humanoid V2 — Hardware
+site_description: >-
+  The hardware release for Duke Humanoid V2: bill of materials, fabrication data,
+  assembly, wiring and bring-up, so that a second identical robot can be built.
+site_author: General Robotics Lab, Duke University
+site_url: https://generalroboticslab.github.io/Duke_Humanoid_V2_OpenSource/
+
+repo_url: https://generalroboticslab.com/DukeHumanoidV2
+repo_name: GRL project page
+
+copyright: >-
+  Copyright &copy; General Robotics Lab, Duke University —
+  hardware, documentation and code under Apache-2.0, see
+  <a href="https://generalroboticslab.github.io/duke_humanoid_v2/reference/#citation-and-licence">Citation &amp; licence</a>.
+
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.tabs
+    - navigation.top
+    - navigation.footer
+    - navigation.tracking
+    - toc.follow
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+  logo: assets/brand/grl-logo-white.svg
+  favicon: assets/brand/grl-logo-black.svg
+  icon:
+    repo: material/web
+  palette:
+    scheme: default
+    primary: custom
+    accent: custom
+
+extra_css:
+  - stylesheets/extra.css
+  - stylesheets/viewer-dock.css
+
+extra_javascript:
+  - path: https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js
+    type: module
+  - javascripts/viewer.js
+  - javascripts/viewer-dock.js
+  - javascripts/clips.js
+  - javascripts/gaps.js
+
+extra:
+  # Consumed by main.py. Keep release-wide constants here, never in page prose.
+  bom_data_dir: data
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/generalroboticslab
+      name: General Robotics Lab on GitHub
+
+plugins:
+  - search
+  - glightbox:
+      touchNavigation: true
+      loop: false
+      effect: zoom
+      zoomable: true
+      draggable: true
+  - macros:
+      module_name: main
+      on_error_fail: true
+      # Section pages are flat: <section>/index.md pulls its subsections in with
+      # {% include "<section>/<page>.md" %}. Jinja renders what it includes, so
+      # the macros inside those files still run.
+      include_dir: docs
+  - table-reader:
+      data_path: docs
+      allow_missing_files: false
+  # Page dates come from git history. Off unless GIT_REVISION_DATE is set, so
+  # that `mkdocs build --strict` also succeeds outside a git checkout (a release
+  # tarball, a fresh scaffold). CI sets GIT_REVISION_DATE=true with full history.
+  - git-revision-date-localized:
+      enabled: !ENV [GIT_REVISION_DATE, false]
+      fallback_to_build_date: true
+      enable_git_follow: false
+      type: date
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - pymdownx.details
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.keys
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - toc:
+      permalink: true
+      toc_depth: 3
+
+# One page per section. Everything under a section is included into that
+# section's index.md, so MkDocs must not build it as a page of its own as well.
+exclude_docs: |
+  /bom/*.md
+  /fabrication/*.md
+  /assembly/*.md
+  /electrical/*.md
+  /bringup/*.md
+  /reference/*.md
+  /data/README.md
+  !index.md
+
+nav:
+  - Home: index.md
+  - Bill of materials: bom/index.md
+  - Fabrication: fabrication/index.md
+  - Assembly: assembly/index.md
+  - Electrical: electrical/index.md
+  - Bring-up: bringup/index.md
+  - Software: software.md
+  - Reference: reference/index.md

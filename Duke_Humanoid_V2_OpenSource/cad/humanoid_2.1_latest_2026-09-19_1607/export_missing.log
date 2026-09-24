@@ -1,0 +1,44 @@
+Fusion 2705.1.15
+1_21_121000022__610001_1_1_00MINI-000_ASM_1_ASM_1_ASM_00MINI-_20250103_A0001_ASM_1_AS_ASM_1_1_30_GR-2202_ASM_1_ASM_1_1_30_GR-2202_ASM_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE: STL ok (1 bodies, 32580 triangles)
+1_21_121000022__610001_1_1_00MINI-000_ASM_1_ASM_1_ASM_00MINI-_20250103_A0001_ASM_1_AS_ASM_1_1_30_GR-2202_ASM_1_ASM_1_1_30_GR-2202_ASM_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE: STEP ok
+1_21_121000022__610001_1_1_00MINI-000_ASM_1_ASM_1_ASM_00MINI-_20250103_A0001_ASM_1_AS_ASM_1_1_30_GR-2202_ASM_1_ASM_1_1_30_GR-2202_ASM_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1: STL ok (1 bodies, 32580 triangles)
+1_21_121000022__610001_1_1_00MINI-000_ASM_1_ASM_1_ASM_00MINI-_20250103_A0001_ASM_1_AS_ASM_1_1_30_GR-2202_ASM_1_ASM_1_1_30_GR-2202_ASM_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1: STEP ok
+1_21_121000022__610001_1_1_00MINI-000_ASM_1_ASM_1_ASM_00MINI-_20250103_A0001_ASM_1_AS_ASM_1_1_30_GR-2202_ASM_1_ASM_1_1_30_GR-2202_ASM_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1_1: STL ok (1 bodies, 32580 triangles)
+1_21_121000022__610001_1_1_00MINI-000_ASM_1_ASM_1_ASM_00MINI-_20250103_A0001_ASM_1_AS_ASM_1_1_30_GR-2202_ASM_1_ASM_1_1_30_GR-2202_ASM_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1_1: STEP ok
+1_21_121000022__610001_1_1_00MINI-000_ASM_1_ASM_1_ASM_00MINI-_20250103_A0001_ASM_1_AS_ASM_1_1_30_GR-2202_ASM_1_ASM_1_1_30_GR-2202_ASM_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2: STL ok (1 bodies, 32580 triangles)
+1_21_121000022__610001_1_1_00MINI-000_ASM_1_ASM_1_ASM_00MINI-_20250103_A0001_ASM_1_AS_ASM_1_1_30_GR-2202_ASM_1_ASM_1_1_30_GR-2202_ASM_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2: STEP ok
+1_21_121000022__610001_1_1_00MINI-000_ASM_1_ASM_1_ASM_00MINI-_20250103_A0001_ASM_1_AS_ASM_1_1_30_GR-2202_ASM_1_ASM_1_1_30_GR-2202_ASM_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2_1: STL ok (1 bodies, 32580 triangles)
+1_21_121000022__610001_1_1_00MINI-000_ASM_1_ASM_1_ASM_00MINI-_20250103_A0001_ASM_1_AS_ASM_1_1_30_GR-2202_ASM_1_ASM_1_1_30_GR-2202_ASM_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2_1: STEP ok
+IntelRealsense_D435_Multibody body 0 (Body9): Fusion wrote no STL
+IntelRealsense_D435_Multibody: STL ok (2 bodies, 12 triangles)
+IntelRealsense_D435_Multibody: STEP ok
+IntelRealsense_D435_Multibody_v9_1 body 0 (Body9): Fusion wrote no STL
+IntelRealsense_D435_Multibody_v9_1: STL ok (2 bodies, 12 triangles)
+IntelRealsense_D435_Multibody_v9_1: STEP ok
+half-bearing_35x47x7_6807_4.0kN_29g body 2 (Body3): Fusion wrote no STL
+half-bearing_35x47x7_6807_4.0kN_29g body 3 (Body4): Fusion wrote no STL
+half-bearing_35x47x7_6807_4.0kN_29g body 4 (Body5): Fusion wrote no STL
+half-bearing_35x47x7_6807_4.0kN_29g body 5 (Body6): Fusion wrote no STL
+half-bearing_35x47x7_6807_4.0kN_29g body 6 (Body7): Fusion wrote no STL
+half-bearing_35x47x7_6807_4.0kN_29g body 7 (Body8): Fusion wrote no STL
+half-bearing_35x47x7_6807_4.0kN_29g body 8 (Body9): Fusion wrote no STL
+half-bearing_35x47x7_6807_4.0kN_29g body 9 (Body10): Fusion wrote no STL
+half-bearing_35x47x7_6807_4.0kN_29g body 10 (Body11): Fusion wrote no STL
+half-bearing_35x47x7_6807_4.0kN_29g body 11 (Body12): Fusion wrote no STL
+half-bearing_35x47x7_6807_4.0kN_29g body 12 (Body13): Fusion wrote no STL
+half-bearing_35x47x7_6807_4.0kN_29g body 13 (Body14): Fusion wrote no STL
+half-bearing_35x47x7_6807_4.0kN_29g body 14 (Body15): Fusion wrote no STL
+half-bearing_35x47x7_6807_4.0kN_29g body 15 (Body16): Fusion wrote no STL
+half-bearing_35x47x7_6807_4.0kN_29g body 16 (Body17): Fusion wrote no STL
+half-bearing_35x47x7_6807_4.0kN_29g body 17 (Body18): Fusion wrote no STL
+half-bearing_35x47x7_6807_4.0kN_29g body 18 (Body19): Fusion wrote no STL
+half-bearing_35x47x7_6807_4.0kN_29g body 19 (Body20): Fusion wrote no STL
+half-bearing_35x47x7_6807_4.0kN_29g body 20 (Body21): Fusion wrote no STL
+half-bearing_35x47x7_6807_4.0kN_29g: STL ok (4 bodies, 11232 triangles)
+half-bearing_35x47x7_6807_4.0kN_29g: STEP ok
+schematics body 0 (Body1): Fusion wrote no STL
+schematics: STL FAILED (no body exported)
+schematics: STEP ok
+schematics_1 body 0 (Body1): Fusion wrote no STL
+schematics_1: STL FAILED (no body exported)
+schematics_1: STEP ok

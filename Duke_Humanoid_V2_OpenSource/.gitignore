@@ -1,0 +1,30 @@
+# --- large local-only material (not part of the release) ---
+# Mirrors of other projects and our own repo clones (4.4 GB). Only the BOM
+# spreadsheets and the CAD-tree evidence are kept.
+reference/*
+!reference/bom/
+!reference/_meta/
+!reference/team/
+reference/_meta/*
+!reference/_meta/cad-trees/
+# Notion export of the V2 design log (1.7 GB, contains vendor PDFs we must not redistribute)
+3ff1a476-*/
+# Exploded-view originals (AVI, 197 MB). Web versions live in hardware-site/docs/assets/exploded/.
+exploded view animations/
+
+# --- build / env ---
+hardware-site/.venv/
+hardware-site/site/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+
+# Raw Fusion exports (tools/fusion_export). Only tree.csv and export.log are kept;
+# the release files live in hardware-site/docs/files/ under their part_id names.
+cad/*/assembly/
+cad/*/step/
+cad/*/print/
+cad/*/modules/
+cad/*/viewer/
+cad/_scratch/

@@ -1,0 +1,28 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "hardware-site",
+      "runtimeExecutable": "hardware-site/.venv/Scripts/python.exe",
+      "runtimeArgs": [
+        "-m",
+        "mkdocs",
+        "serve",
+        "-f",
+        "hardware-site/mkdocs.yml",
+        "-a",
+        "127.0.0.1:8321"
+      ],
+      "port": 8321
+    },
+    {
+      "name": "hardware-site-macos",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": [
+        "-c",
+        "cd hardware-site && .venv/bin/python -m mkdocs serve -a 127.0.0.1:8321"
+      ],
+      "port": 8321
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+name: Hardware docs
+
+# Builds the hardware documentation site with --strict on every push, so that a
+# broken internal link or a missing nav target fails CI rather than shipping.
+# Deploys to GitHub Pages from the default branch only. The site is public; the repository stays private.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "hardware-site/**"
+      - ".github/workflows/docs.yml"
+  pull_request:
+    paths:
+      - "hardware-site/**"
+      - ".github/workflows/docs.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: hardware-docs-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    working-directory: hardware-site
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # git-revision-date-localized needs history to date each page.
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: hardware-site/requirements.txt
+
+      - name: Install
+        run: pip install -r requirements.txt
+
+      - name: Index CAD downloads
+        # Rebuilds docs/data/cad-files.csv and fails on files over GitHub's size limits.
+        run: python tools/gen_cad_manifest.py
+
+      - name: Build (strict)
+        env:
+          # Turns on git-revision-date-localized; needs the full history fetched above.
+          GIT_REVISION_DATE: "true"
+        run: mkdocs build --strict
+
+      - name: Upload Pages artifact
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: hardware-site/site
+
+  deploy:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

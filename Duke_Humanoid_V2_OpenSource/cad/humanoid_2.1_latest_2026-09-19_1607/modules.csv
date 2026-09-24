@@ -1,0 +1,129 @@
+file,fusion_name,path,depth,qty,children,mass_g
+power_block_casing.step,power_block_casing,body_LATEST:1+3DP_body_05_x1_interior_plate:1+power_block_casing:5,2,2,3,42.5
+Vention_USB_Hub.step,Vention USB Hub,body_LATEST:1+3DP_body_05_x1_interior_plate:1+Vention USB Hub:1,2,1,3,43.8
+CAN_Isolated.step,CAN_Isolated,body_LATEST:1+3DP_body_05_x1_interior_plate:1+CAN_Isolated:1,2,6,1,33.3
+IMU_syd_dynamics_TM171.step,IMU_syd_dynamics_TM171,body_LATEST:1+3DP_body_05_x1_interior_plate:1+IMU_syd_dynamics_TM171:4,2,1,2,24.1
+3DP_body_05_x1_interior_plate.step,3DP_body_05_x1_interior_plate,body_LATEST:1+3DP_body_05_x1_interior_plate:1,1,1,36,4637.4
+3DP_body_07_x1_front_plate_removable.step,3DP_body_07_x1_front_plate_removable,body_LATEST:1+3DP_body_07_x1_front_plate_removable:1,1,1,8,96.9
+3DP_body_09_x1_back_plate_removable.step,3DP_body_09_x1_back_plate_removable,body_LATEST:1+3DP_body_09_x1_back_plate_removable:1,1,1,14,113.8
+bearing_45x58x7_6809_5.4kN_40g.step,bearing_45x58x7_6809_5.4kN_40g,body_LATEST:1+BEARING:1+bearing_45x58x7_6809_5.4kN_40g:2,2,11,2,39.9
+robstride05_v16_2.step,robstride05 v16 (2),body_LATEST:1+twincities_v2_nolock:1+robstride05 v16 (2):1,2,1,3,194.1
+robstride05_v16_1.step,robstride05 v16 (1),body_LATEST:1+twincities_v2_nolock:1+robstride05 v16 (1):1,2,1,3,194.1
+IntelRealsense_D435_Multibody.step,IntelRealsense_D435_Multibody v9,body_LATEST:1+twincities_v2_nolock:1+IntelRealsense_D435_Multibody v9:1,2,1,8,71.0
+gimbal_arm.step,gimbal_arm,body_LATEST:1+twincities_v2_nolock:1+gimbal_arm:1,2,1,1,26.0
+twincities_v2_nolock.step,twincities_v2_nolock,body_LATEST:1+twincities_v2_nolock:1,1,1,9,585.2
+schematics_1.step,schematics (1),body_LATEST:1+twincities_v2_nolock (1):1+schematics (1):1,2,1,2,0.0
+robstride05_v16_2_1.step,robstride05 v16 (2) (1),body_LATEST:1+twincities_v2_nolock (1):1+robstride05 v16 (2) (1):1,2,1,3,194.1
+robstride05_v16_1_1.step,robstride05 v16 (1) (1),body_LATEST:1+twincities_v2_nolock (1):1+robstride05 v16 (1) (1):1,2,1,3,194.1
+IntelRealsense_D435_Multibody_v9_1.step,IntelRealsense_D435_Multibody v9 (1),body_LATEST:1+twincities_v2_nolock (1):1+IntelRealsense_D435_Multibody v9 (1):1,2,1,8,71.0
+gimbal_arm_1.step,gimbal_arm (1),body_LATEST:1+twincities_v2_nolock (1):1+gimbal_arm (1):1,2,1,1,26.0
+twincities_v2_nolock_1.step,twincities_v2_nolock (1),body_LATEST:1+twincities_v2_nolock (1):1,1,1,9,585.2
+body_LATEST.step,body_LATEST,body_LATEST:1,0,1,142,7845.1
+3_1_02_090_0073_ASM_1_1_ASM.step,3_1_02_090_0073_ASM_1_1_ASM,v2.1_lower_body_latest:1+Robstride 03 - no back cover:1+3_1_02_090_0073_ASM_1_1_ASM:1,2,6,12,884.2
+Robstride_03_-_no_back_cover.step,Robstride 03 - no back cover,v2.1_lower_body_latest:1+Robstride 03 - no back cover:1,1,10,1,884.2
+hip_center.step,hip_center,v2.1_lower_body_latest:1+hip_center:1,1,1,2,123.8
+hip_pitch_hip_roll_L.step,hip_pitch:hip_roll_L,v2.1_lower_body_latest:1+hip_pitch:hip_roll_L:1,1,1,4,217.5
+hip_pitch_hip_roll_R.step,hip_pitch:hip_roll_R,v2.1_lower_body_latest:1+hip_pitch:hip_roll_R:1,1,1,4,217.5
+hip_roll_hip_yaw_L.step,hip_roll:hip_yaw_L,v2.1_lower_body_latest:1+hip_roll:hip_yaw_L:1,1,1,2,163.1
+hip_roll_hip_yaw_R.step,hip_roll:hip_yaw_R,v2.1_lower_body_latest:1+hip_roll:hip_yaw_R:1,1,1,2,163.1
+leg_schematics_latest.step,leg_schematics_latest,v2.1_lower_body_latest:1+v2.1_lower_leg_R:1+leg_schematics_latest:1,2,2,12,0.0
+Robstride_06-No_Back_Cover.step,Robstride 06-No Back Cover,v2.1_lower_body_latest:1+v2.1_lower_leg_R:1+Robstride 06-No Back Cover:1,2,3,1,598.8
+foot_assembly.step,foot_assembly,v2.1_lower_body_latest:1+v2.1_lower_leg_R:1+foot_assembly:1,2,1,4,348.5
+shanks.step,shanks,v2.1_lower_body_latest:1+v2.1_lower_leg_R:1+shanks:1,2,1,4,442.5
+robstride04.step,robstride04,v2.1_lower_body_latest:1+v2.1_lower_leg_R:1+robstride04:1,2,2,2,1438.3
+knee_assembly.step,knee_assembly,v2.1_lower_body_latest:1+v2.1_lower_leg_R:1+knee_assembly:1,2,1,4,246.2
+v2.1_lower_leg_R.step,v2.1_lower_leg_R,v2.1_lower_body_latest:1+v2.1_lower_leg_R:1,1,1,115,5701.9
+bearing_35x47x7_6807_4.0kN_29g.step,bearing_35x47x7_6807_4.0kN_29g,v2.1_lower_body_latest:1+v2.1_lower_leg_L_copy:1+bearing_35x47x7_6807_4.0kN_29g:1,2,2,2,29.2
+CNC_leg18_x2_foot_plate.step,CNC_leg18_x2_foot_plate,v2.1_lower_body_latest:1+v2.1_lower_leg_L_copy:1+CNC_leg18_x2_foot_plate:1,2,1,1,202.0
+bearing_35x44x5_6707_1.6kN_15g.step,bearing_35x44x5_6707_1.6kN_15g,v2.1_lower_body_latest:1+v2.1_lower_leg_L_copy:1+bearing_35x44x5_6707_1.6kN_15g:5,2,10,2,15.0
+bearing_50x65x7_6810_6.1kN_52g.step,bearing_50x65x7_6810_6.1kN_52g,v2.1_lower_body_latest:1+v2.1_lower_leg_L_copy:1+bearing_50x65x7_6810_6.1kN_52g:1,2,1,2,52.0
+ankle_roll_structural_part_protection.step,ankle_roll_structural_part_protection,v2.1_lower_body_latest:1+v2.1_lower_leg_L_copy:1+ankle_roll_structural_part_protection:1,2,1,1,13.9
+ankle_roll_motor_protection.step,ankle_roll_motor_protection,v2.1_lower_body_latest:1+v2.1_lower_leg_L_copy:1+ankle_roll_motor_protection:1,2,1,1,33.4
+knee_motor_protection.step,knee_motor_protection,v2.1_lower_body_latest:1+v2.1_lower_leg_L_copy:1+knee_motor_protection:1,2,1,1,52.3
+v2.1_lower_leg_L_copy.step,v2.1_lower_leg_L_copy,v2.1_lower_body_latest:1+v2.1_lower_leg_L_copy:1,1,1,129,5528.2
+hip_roll_motor.step,hip_roll_motor,v2.1_lower_body_latest:1+protections:1+hip_roll_motor:1,2,2,2,51.9
+hip_pitch_motor.step,hip_pitch_motor,v2.1_lower_body_latest:1+protections:1+hip_pitch_motor:1,2,3,2,62.2
+hip_pitch_motor_Mirror.step,hip_pitch_motor(Mirror),v2.1_lower_body_latest:1+protections:1+hip_pitch_motor(Mirror):1,2,1,2,62.2
+v2.1_lower_body_latest.step,v2.1_lower_body_latest,v2.1_lower_body_latest:1,0,1,173,17512.0
+HL-3608_ASM_121_ASM.step,HL-3608_ASM_121_ASM,dovetail_umi_gripper:1+FEETECH_HL_3915_Servo_Motor:1+HL-3608_ASM_121_ASM:1,2,2,10,37.0
+FEETECH_HL_3915_Servo_Motor.step,FEETECH_HL_3915_Servo_Motor,dovetail_umi_gripper:1+FEETECH_HL_3915_Servo_Motor:1,1,2,1,37.0
+double_helix_pinion_16teeth_6mm.step,double_helix_pinion_16teeth_6mm,dovetail_umi_gripper:1+double_helix_pinion_16teeth_6mm:1,1,2,1,1.3
+C1.step,C1,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+C1:1,2,2,1,0.0
+C2.step,C2,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+C2:1,2,2,1,0.0
+C3.step,C3,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+C3:1,2,2,1,0.0
+C4.step,C4,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+C4:1,2,2,1,0.0
+C5.step,C5,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+C5:1,2,2,1,0.0
+C7.step,C7,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+C7:1,2,2,1,0.0
+C6.step,C6,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+C6:1,2,2,1,0.0
+D2.step,D2,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+D2:1,2,2,1,0.0
+DC1.step,DC1,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+DC1:1,2,2,1,9.5
+H1.step,H1,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+H1:1,2,2,1,3.1
+H3.step,H3,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+H3:1,2,2,1,1.5
+H5.step,H5,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+H5:1,2,2,1,1.5
+R2.step,R2,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+R2:1,2,2,1,0.0
+R3.step,R3,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+R3:1,2,2,1,0.0
+Type_C1.step,Type_C1,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+Type_C1:1,2,2,1,2.2
+U1.step,U1,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+U1:1,2,2,1,0.1
+U2.step,U2,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+U2:1,2,2,1,0.4
+C8.step,C8,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+C8:1,2,2,1,0.0
+C9.step,C9,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+C9:1,2,2,1,0.0
+C10.step,C10,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+C10:1,2,2,1,0.0
+M1.step,M1,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+M1:1,2,2,1,0.3
+Q1.step,Q1,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+Q1:1,2,2,1,0.1
+R4.step,R4,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+R4:1,2,2,1,0.0
+R5.step,R5,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+R5:1,2,2,1,0.0
+R6.step,R6,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+R6:1,2,2,1,0.0
+R7.step,R7,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+R7:1,2,2,1,0.0
+R8.step,R8,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+R8:1,2,2,1,0.0
+U3.step,U3,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+U3:1,2,2,6,0.0
+U4.step,U4,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+U4:1,2,2,6,0.0
+D1.step,D1,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+D1:1,2,2,1,0.0
+H2.step,H2,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+H2:1,2,2,6,0.7
+R1.step,R1,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+R1:1,2,2,1,0.0
+H4.step,H4,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+H4:1,2,2,9,1.0
+D3.step,D3,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+D3:1,2,2,1,0.0
+D4.step,D4,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+D4:1,2,2,1,0.0
+LED1.step,LED1,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+LED1:1,2,2,1,0.0
+R9.step,R9,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1+R9:1,2,2,1,0.0
+wareshare_st_servo_controller.step,wareshare_st_servo_controller v7,dovetail_umi_gripper:1+wareshare_st_servo_controller v7:1,1,2,38,41.9
+base.step,base,dovetail_umi_gripper:1+base:1,1,2,1,76.7
+double_helix_rack_30teeth_6mm.step,double_helix_rack_30teeth_6mm v2,dovetail_umi_gripper:1+double_helix_rack_30teeth_6mm v2:1,1,2,1,0.0
+dovetail_umi_gripper.step,dovetail_umi_gripper,dovetail_umi_gripper:1,0,2,20,351.1
+shoulder_pitch_shoulder_roll.step,shoulder_pitch:shoulder_roll,000_left_arm_long_wrist_latest:1+shoulder_pitch:shoulder_roll:2,1,1,3,175.7
+robstride_02-No_back_cover.step,robstride_02-No_back_cover,000_left_arm_long_wrist_latest:1+shoulder_roll:shoulder_yaw:2+robstride_02-No_back_cover:1,2,3,2,394.2
+shoulder_roll_shoulder_yaw.step,shoulder_roll:shoulder_yaw,000_left_arm_long_wrist_latest:1+shoulder_roll:shoulder_yaw:2,1,1,5,580.8
+3DP_arm06_x4_RS02_shaft_coupler.step,3DP_arm06_x4_RS02_shaft_coupler,000_left_arm_long_wrist_latest:1+shoulder_yaw:elbow:2+3DP_arm06_x4_RS02_shaft_coupler:1,2,1,6,67.5
+shoulder_yaw_elbow.step,shoulder_yaw:elbow,000_left_arm_long_wrist_latest:1+shoulder_yaw:elbow:2,1,1,3,147.6
+02-3D-20211009_1_.stp.step,02-3D-20211009(1).stp,000_left_arm_long_wrist_latest:1+robstride_02-No_back_cover:4+02-3D-20211009(1).stp:1,2,2,1,112.9
+elbow_wrist_roll.step,elbow:wrist_roll,000_left_arm_long_wrist_latest:1+elbow:wrist_roll:2,1,1,4,189.1
+bearing_35x44x5_6707_1.6kN_15g~2.step,bearing_35x44x5_6707_1.6kN_15g,000_left_arm_long_wrist_latest:1+bearings:2+bearing_35x44x5_6707_1.6kN_15g:2,2,6,2,15.0
+3_1_02_090_0073_ASM_1_1_ASM~2.step,3_1_02_090_0073_ASM_1_1_ASM,000_left_arm_long_wrist_latest:1+Robstride 03 - full:1+3_1_02_090_0073_ASM_1_1_ASM:1,2,1,12,884.2
+BACK_COVER1_1_06_EB903-538_1.step,BACK_COVER1_1_06_EB903-538_1,000_left_arm_long_wrist_latest:1+Robstride 03 - full:1+BACK_COVER1_1_06_EB903-538_1:1,2,1,8,24.7
+Robstride_03_-_full.step,Robstride 03 - full,000_left_arm_long_wrist_latest:1+Robstride 03 - full:1,1,1,2,909.0
+R06.step,R06,000_left_arm_long_wrist_latest:1+Robstride 06-No Back Cover:1+R06:1,2,1,5,598.8
+Robstride_06-No_Back_Cover~2.step,Robstride 06-No Back Cover,000_left_arm_long_wrist_latest:1+Robstride 06-No Back Cover:1,1,1,1,598.8
+robstride00.step,robstride00,000_left_arm_long_wrist_latest:1+001_left_wrist_long_latest:1+robstride00:1,2,2,4,310.0
+wrist_3-left.step,wrist_3-left,000_left_arm_long_wrist_latest:1+001_left_wrist_long_latest:1+wrist_3-left:1,2,2,4,355.2
+001_left_wrist_long_latest.step,001_left_wrist_long_latest,000_left_arm_long_wrist_latest:1+001_left_wrist_long_latest:1,1,1,4,867.6
+shoulder_pitch_protection.step,shoulder_pitch_protection,000_left_arm_long_wrist_latest:1+protections:1+shoulder_pitch_protection:1,2,1,2,24.9
+shoulder_yaw_protection.step,shoulder_yaw_protection,000_left_arm_long_wrist_latest:1+protections:1+shoulder_yaw_protection:1,2,2,2,19.2
+elbow_motor_protection.step,elbow_motor_protection,000_left_arm_long_wrist_latest:1+protections:1+elbow_motor_protection:1,2,1,2,12.2
+shoulder_roll_shaft.step,shoulder_roll_shaft,000_left_arm_long_wrist_latest:1+protections:1+shoulder_roll_shaft:1,2,1,2,15.9
+elbow_shaft.step,elbow_shaft,000_left_arm_long_wrist_latest:1+protections:1+elbow_shaft:1,2,1,2,15.2
+000_left_arm_long_wrist_latest.step,000_left_arm_long_wrist_latest,000_left_arm_long_wrist_latest:1,0,1,163,4610.3
+BACK_COVER1_1_06_EB903-538_1~2.step,BACK_COVER1_1_06_EB903-538_1,000_right_arm_long_wrist_latest:1+Robstride 03 - full:1+BACK_COVER1_1_06_EB903-538_1:1,2,1,8,24.7
+shoulder_pitch_shoulder_roll~2.step,shoulder_pitch:shoulder_roll,000_right_arm_long_wrist_latest:1+shoulder_pitch:shoulder_roll:1,1,1,3,175.7
+R06~2.step,R06,000_right_arm_long_wrist_latest:1+Robstride 06-No Back Cover:1+R06:1,2,1,5,598.8
+robstride_02-No_back_cover~2.step,robstride_02-No_back_cover,000_right_arm_long_wrist_latest:1+shoulder_roll:shoulder_yaw:1+robstride_02-No_back_cover:3,2,3,2,394.2
+shoulder_roll_shoulder_yaw~2.step,shoulder_roll:shoulder_yaw,000_right_arm_long_wrist_latest:1+shoulder_roll:shoulder_yaw:1,1,1,5,580.8
+3DP_arm06_x4_RS02_shaft_coupler~2.step,3DP_arm06_x4_RS02_shaft_coupler,000_right_arm_long_wrist_latest:1+shoulder_yaw:elbow:1+3DP_arm06_x4_RS02_shaft_coupler:1,2,1,6,67.5
+shoulder_yaw_elbow~2.step,shoulder_yaw:elbow,000_right_arm_long_wrist_latest:1+shoulder_yaw:elbow:1,1,1,3,147.6
+02-3D-20211009_1_.stp~2.step,02-3D-20211009(1).stp,000_right_arm_long_wrist_latest:1+robstride_02-No_back_cover:1+02-3D-20211009(1).stp:1,2,2,1,112.9
+elbow_wrist_roll~2.step,elbow:wrist_roll,000_right_arm_long_wrist_latest:1+elbow:wrist_roll:1,1,1,4,189.1
+001_right_wrist_long_latest.step,001_right_wrist_long_latest,000_right_arm_long_wrist_latest:1+001_right_wrist_long_latest:1,1,1,4,867.6
+shoulder_pitch_protection~2.step,shoulder_pitch_protection,000_right_arm_long_wrist_latest:1+protections:1+shoulder_pitch_protection:1,2,1,2,24.9
+shoulder_yaw_protection~2.step,shoulder_yaw_protection,000_right_arm_long_wrist_latest:1+protections:1+shoulder_yaw_protection:1,2,2,2,19.2
+elbow_motor_protection~2.step,elbow_motor_protection,000_right_arm_long_wrist_latest:1+protections:1+elbow_motor_protection:1,2,1,2,12.2
+shoulder_roll_shaft~2.step,shoulder_roll_shaft,000_right_arm_long_wrist_latest:1+protections:1+shoulder_roll_shaft:1,2,1,2,15.9
+elbow_shaft~2.step,elbow_shaft,000_right_arm_long_wrist_latest:1+protections:1+elbow_shaft:1,2,1,2,15.2
+000_right_arm_long_wrist_latest.step,000_right_arm_long_wrist_latest,000_right_arm_long_wrist_latest:1,0,1,157,4599.7

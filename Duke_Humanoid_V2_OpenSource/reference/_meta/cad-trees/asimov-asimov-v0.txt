@@ -1,0 +1,27 @@
+# https://github.com/menloresearch/asimov-v0 (redirected from github.com/asimovinc/asimov-v0) @ 759204f531b071e65540e8b31d89736a3d09e0dd 2026-01-28 21:18:13 +0800
+# listed 2026-09-18 via git ls-tree -r -l HEAD; columns: blob size (bytes), path. 134-byte *.STEP entries are Git LFS pointers.
+         170  .gitattributes
+       13419  LICENSE.txt
+        2381  README.md
+         134  mechanical/ASV0_lowerBody.STEP
+         146  mechanical/README.md
+        5190  mechanical/ankle_mechanism.md
+       64807  mechanical/naming_convention.png
+           0  media/.gitkeep
+    13458875  media/asimov-legs-repo-v0.png
+      234984  sim-model/assets/meshes/left_ankle_pitch_link.STL
+     2668684  sim-model/assets/meshes/left_ankle_roll_link.STL
+      609484  sim-model/assets/meshes/left_hip_pitch_link.STL
+      383584  sim-model/assets/meshes/left_hip_roll_link.STL
+      630884  sim-model/assets/meshes/left_hip_yaw_link.STL
+     3154784  sim-model/assets/meshes/left_knee_link.STL
+      260784  sim-model/assets/meshes/left_toe_link.STL
+     1823184  sim-model/assets/meshes/pelvis_link.STL
+      235684  sim-model/assets/meshes/right_ankle_pitch_link.STL
+     2665384  sim-model/assets/meshes/right_ankle_roll_link.STL
+      607884  sim-model/assets/meshes/right_hip_pitch_link.STL
+      386184  sim-model/assets/meshes/right_hip_roll_link.STL
+      630284  sim-model/assets/meshes/right_hip_yaw_link.STL
+     3158784  sim-model/assets/meshes/right_knee_link.STL
+      260484  sim-model/assets/meshes/right_toe_link.STL
+       19824  sim-model/xmls/asimov.xml

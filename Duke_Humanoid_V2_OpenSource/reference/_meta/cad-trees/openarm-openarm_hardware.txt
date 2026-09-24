@@ -1,0 +1,644 @@
+# enactic/openarm_hardware — file tree listings (blob:none clone, no binaries downloaded)
+# Source: https://github.com/enactic/openarm_hardware  (cloned 2026-09-18)
+# Columns: blob size in bytes, path
+# HEAD = eefc9fa5509562e5e4d630db9a52027afdbc6af1 (tag 2.0.0, 2026-09-09)
+
+=================== tag 2.0.0 -> eefc9fa5509562e5e4d630db9a52027afdbc6af1 (2026-09-09)  files: 16
+         281 .github/ISSUE_TEMPLATE/1-bug-report.yml
+         278 .github/ISSUE_TEMPLATE/2-feature-request.yml
+         335 .github/ISSUE_TEMPLATE/config.yml
+         770 .github/dependabot.yml
+         637 .github/release.yml
+        3723 .github/workflows/release.yaml
+        5484 CODE_OF_CONDUCT.md
+         674 CONTRIBUTING.md
+       13419 LICENSE.txt
+        2054 README.md
+         595 dev/README.md
+         636 dev/google-drive-files/Gemfile
+        1915 dev/google-drive-files/README.md
+        3205 dev/google-drive-files/file-ids.tsv
+        3264 dev/google-drive-files/generate-file-ids.rb
+        1425 dev/release.sh
+
+=================== tag 1.1.0 -> 07299c340bc676771e1e7c041ae4badfda430d3b (2025-11-17)  files: 14
+         281 .github/ISSUE_TEMPLATE/1-bug-report.yml
+         278 .github/ISSUE_TEMPLATE/2-feature-request.yml
+         335 .github/ISSUE_TEMPLATE/config.yml
+        2541 .github/workflows/release.yaml
+        5484 CODE_OF_CONDUCT.md
+         674 CONTRIBUTING.md
+       13419 LICENSE.txt
+        1312 README.md
+         174 dev/README.md
+         636 dev/google-drive-files/Gemfile
+        1182 dev/google-drive-files/README.md
+        3050 dev/google-drive-files/file-ids.tsv
+        1986 dev/google-drive-files/generate-file-ids.rb
+        1425 dev/release.sh
+
+=================== tag 1.0.1 -> 0403835afae64949ede85e440e86a283b747b9dd (2025-09-16)  files: 194
+         281 .github/ISSUE_TEMPLATE/1-bug-report.yml
+         278 .github/ISSUE_TEMPLATE/2-feature-request.yml
+         335 .github/ISSUE_TEMPLATE/config.yml
+        1775 .github/workflows/release.yaml
+        5484 CODE_OF_CONDUCT.md
+         674 CONTRIBUTING.md
+         422 Electrical/BOM_For_Hub.csv
+        7118 Electrical/CPL_For_Hub.xlsx
+        9780 Electrical/Gerber_For_Hub.zip
+     1872990 Electrical/J1_J2.pdf
+      334706 Electrical/J3_J4.pdf
+      336335 Electrical/J4_J7.pdf
+      320660 Electrical/J7_J8.pdf
+      321371 Electrical/communication.pdf
+      536087 Electrical/power_extension.pdf
+       13419 LICENSE.txt
+        1690 README.md
+    29307440 STEP/OpenArm01_follower.step
+    28614547 STEP/OpenArm01_leader.step
+      224784 STL/covers/chest-a.STL
+      195784 STL/covers/chest-b.STL
+      150884 STL/covers/left/j1-a-left.STL
+      142584 STL/covers/left/j1-b-left.STL
+      123184 STL/covers/left/j2-a-left.STL
+      188984 STL/covers/left/j2-b-left.STL
+      251284 STL/covers/left/j3-a-left.STL
+      945284 STL/covers/left/j3-b-left.stl
+      282384 STL/covers/left/j4-a-left.STL
+      238284 STL/covers/left/j4-b-left.STL
+      179784 STL/covers/left/j6-a-left.STL
+      267784 STL/covers/left/j6-b-left.STL
+      868697 STL/covers/left/left_covers.3mf
+      150784 STL/covers/right/j1-a-right.STL
+      142784 STL/covers/right/j1-b-right.STL
+      123484 STL/covers/right/j2-a-right.STL
+      190784 STL/covers/right/j2-b-right.STL
+      251284 STL/covers/right/j3-a-right.STL
+      945284 STL/covers/right/j3-b-right.stl
+      282384 STL/covers/right/j4-a-right.STL
+      238284 STL/covers/right/j4-b-right.STL
+      179684 STL/covers/right/j6-a-right.STL
+      276184 STL/covers/right/j6-b-right.STL
+      869052 STL/covers/right/right_covers.3mf
+      162284 STL/follower/left-jaw.STL
+      161684 STL/follower/right-jaw.STL
+       82884 STL/leader/left-pincer.STL
+      170184 STL/leader/rail-connector-leader.STL
+       82684 STL/leader/right-pincer.STL
+       30184 STL/leader/swivel-link-leader.STL
+       41484 STL/leader/swivel-rotor-leader.STL
+      498484 STL/wrist-camera-mount/camera_mount_left.STL
+      498584 STL/wrist-camera-mount/camera_mount_right.STL
+      184477 SolidWorks/SLDPRT_Files/J1_A.SLDPRT
+      149767 SolidWorks/SLDPRT_Files/J1_B.SLDPRT
+      230602 SolidWorks/SLDPRT_Files/J1_C.SLDPRT
+      165800 SolidWorks/SLDPRT_Files/J1_D.SLDPRT
+      188818 SolidWorks/SLDPRT_Files/J1_E.SLDPRT
+      216634 SolidWorks/SLDPRT_Files/J2_A.SLDPRT
+      271301 SolidWorks/SLDPRT_Files/J2_B.SLDPRT
+      199250 SolidWorks/SLDPRT_Files/J2_C.SLDPRT
+      348178 SolidWorks/SLDPRT_Files/J4_A.SLDPRT
+      250555 SolidWorks/SLDPRT_Files/J4_B.SLDPRT
+      250549 SolidWorks/SLDPRT_Files/J4_C.SLDPRT
+      174647 SolidWorks/SLDPRT_Files/J4_D.SLDPRT
+      220819 SolidWorks/SLDPRT_Files/J4_E.SLDPRT
+      273500 SolidWorks/SLDPRT_Files/J5_A.SLDPRT
+      175776 SolidWorks/SLDPRT_Files/J6_A.SLDPRT
+      169616 SolidWorks/SLDPRT_Files/J6_B.SLDPRT
+      217253 SolidWorks/SLDPRT_Files/J6_C_left.SLDPRT
+      206567 SolidWorks/SLDPRT_Files/J6_C_right.SLDPRT
+      125044 SolidWorks/SLDPRT_Files/J6_D.SLDPRT
+      251999 SolidWorks/SLDPRT_Files/J7_A.SLDPRT
+      182331 SolidWorks/SLDPRT_Files/J7_B.SLDPRT
+      179149 SolidWorks/SLDPRT_Files/J7_C.SLDPRT
+      170270 SolidWorks/SLDPRT_Files/J7_D_left.SLDPRT
+      179338 SolidWorks/SLDPRT_Files/J7_D_right.SLDPRT
+      217702 SolidWorks/SLDPRT_Files/J7_E.SLDPRT
+      230117 SolidWorks/SLDPRT_Files/J8_A.SLDPRT
+      199971 SolidWorks/SLDPRT_Files/J8_B.SLDPRT
+      232722 SolidWorks/SLDPRT_Files/left-pincer.SLDPRT
+      485115 SolidWorks/SLDPRT_Files/left_jaw.SLDPRT
+      440488 SolidWorks/SLDPRT_Files/rail-connector-leader.SLDPRT
+      214221 SolidWorks/SLDPRT_Files/rail_CNC_attachment.SLDPRT
+      214766 SolidWorks/SLDPRT_Files/rail_connector.SLDPRT
+      231497 SolidWorks/SLDPRT_Files/right-pincer.SLDPRT
+      477775 SolidWorks/SLDPRT_Files/right_jaw.SLDPRT
+      113135 SolidWorks/SLDPRT_Files/swivel-link-leader.SLDPRT
+      131160 SolidWorks/SLDPRT_Files/swivel-rotor-leader.SLDPRT
+      156107 SolidWorks/SLDPRT_Files/swivel_link.SLDPRT
+      153312 SolidWorks/SLDPRT_Files/swivel_rotor.SLDPRT
+      684214 SolidWorks/SLDPRT_Files/wrist_camera_mount_left.SLDPRT
+      687980 SolidWorks/SLDPRT_Files/wrist_camera_mount_right.SLDPRT
+      170533 SolidWorks/STEP_Files/J1_A.STEP
+      113505 SolidWorks/STEP_Files/J1_B.STEP
+      249941 SolidWorks/STEP_Files/J1_C.STEP
+       87217 SolidWorks/STEP_Files/J1_D.STEP
+      113111 SolidWorks/STEP_Files/J1_E.STEP
+      156927 SolidWorks/STEP_Files/J2_A.STEP
+      242777 SolidWorks/STEP_Files/J2_B.STEP
+      144190 SolidWorks/STEP_Files/J2_C.STEP
+      415284 SolidWorks/STEP_Files/J4_A.STEP
+      174073 SolidWorks/STEP_Files/J4_B.STEP
+      158474 SolidWorks/STEP_Files/J4_C.STEP
+      126678 SolidWorks/STEP_Files/J4_D.STEP
+      190599 SolidWorks/STEP_Files/J4_E.STEP
+      194911 SolidWorks/STEP_Files/J5_A.STEP
+      157377 SolidWorks/STEP_Files/J6_A.STEP
+      123647 SolidWorks/STEP_Files/J6_B.STEP
+      185473 SolidWorks/STEP_Files/J6_C_left.STEP
+      182917 SolidWorks/STEP_Files/J6_C_right.STEP
+       49992 SolidWorks/STEP_Files/J6_D.STEP
+      188121 SolidWorks/STEP_Files/J7_A.STEP
+       79075 SolidWorks/STEP_Files/J7_B.STEP
+       81918 SolidWorks/STEP_Files/J7_C.STEP
+       86142 SolidWorks/STEP_Files/J7_D_left.STEP
+       86237 SolidWorks/STEP_Files/J7_D_right.STEP
+      168686 SolidWorks/STEP_Files/J7_E.STEP
+      163803 SolidWorks/STEP_Files/J8_A.STEP
+      125818 SolidWorks/STEP_Files/J8_B.STEP
+      245847 SolidWorks/STEP_Files/left-pincer.STEP
+      788102 SolidWorks/STEP_Files/left_jaw.STEP
+      608333 SolidWorks/STEP_Files/rail-connector-leader.STEP
+      151353 SolidWorks/STEP_Files/rail_CNC_attachment.STEP
+      196712 SolidWorks/STEP_Files/rail_connector.STEP
+      250568 SolidWorks/STEP_Files/right-pincer.STEP
+      735764 SolidWorks/STEP_Files/right_jaw.STEP
+       55780 SolidWorks/STEP_Files/swivel-link-leader.STEP
+      115305 SolidWorks/STEP_Files/swivel-rotor-leader.STEP
+       55721 SolidWorks/STEP_Files/swivel_link.STEP
+      103569 SolidWorks/STEP_Files/swivel_rotor.STEP
+     8519245 SolidWorks/assemblies/OpenArm01_follower_bimanual.SLDASM
+     4454347 SolidWorks/assemblies/OpenArm01_follower_left.SLDASM
+     4454409 SolidWorks/assemblies/OpenArm01_follower_right.SLDASM
+     8324706 SolidWorks/assemblies/OpenArm01_leader_bimanual.SLDASM
+     4251243 SolidWorks/assemblies/OpenArm01_leader_left.SLDASM
+     4242961 SolidWorks/assemblies/OpenArm01_leader_right.SLDASM
+      245866 SolidWorks/assemblies/left_arm/L1_left.SLDASM
+      652928 SolidWorks/assemblies/left_arm/L2_left.SLDASM
+      660540 SolidWorks/assemblies/left_arm/L3_left.SLDASM
+      957075 SolidWorks/assemblies/left_arm/L4_left.SLDASM
+      926192 SolidWorks/assemblies/left_arm/L5_left.SLDASM
+      891977 SolidWorks/assemblies/left_arm/L6_left.SLDASM
+      437348 SolidWorks/assemblies/left_arm/L7_left.SLDASM
+      987694 SolidWorks/assemblies/left_arm/gripper_left.SLDASM
+      839752 SolidWorks/assemblies/left_arm/leaderEE_left.SLDASM
+      257529 SolidWorks/assemblies/right_arm/L1_right.SLDASM
+      653423 SolidWorks/assemblies/right_arm/L2_right.SLDASM
+      660266 SolidWorks/assemblies/right_arm/L3_right.SLDASM
+      956699 SolidWorks/assemblies/right_arm/L4_right.SLDASM
+      926494 SolidWorks/assemblies/right_arm/L5_right.SLDASM
+      866739 SolidWorks/assemblies/right_arm/L6_right.SLDASM
+      428315 SolidWorks/assemblies/right_arm/L7_right.SLDASM
+     1078182 SolidWorks/assemblies/right_arm/gripper_right.SLDASM
+      849091 SolidWorks/assemblies/right_arm/leaderEE_right.SLDASM
+     1357313 SolidWorks/covers/Chest_Cover.SLDPRT
+      843932 SolidWorks/covers/J1-J2_Cover.SLDPRT
+      937572 SolidWorks/covers/J2-J3_Cover.SLDPRT
+     2869264 SolidWorks/covers/J3-J4_Cover.SLDPRT
+     2321614 SolidWorks/covers/J4-J5_Cover.SLDPRT
+     1046868 SolidWorks/covers/J6-J7_Cover.SLDPRT
+     1052650 SolidWorks/covers/J6-J7_Cover_Left.SLDPRT
+      159650 SolidWorks/motors/DM-J4310-2EC.SLDPRT
+      158247 SolidWorks/motors/DM-J4340-2EC.SLDPRT
+      167920 SolidWorks/motors/DM-J4340P-2EC.SLDPRT
+      182199 SolidWorks/motors/DM-J8009P-2EC.SLDPRT
+      349920 SolidWorks/off-the-shelf/CBE3-10.SLDPRT
+      341455 SolidWorks/off-the-shelf/CBE3-12.SLDPRT
+      332519 SolidWorks/off-the-shelf/CBE3-15.SLDPRT
+      327983 SolidWorks/off-the-shelf/CBE3-18.SLDPRT
+      341974 SolidWorks/off-the-shelf/CBE3-5.SLDPRT
+      336192 SolidWorks/off-the-shelf/CBE3-6.SLDPRT
+      347703 SolidWorks/off-the-shelf/CBE3-8.SLDPRT
+      340295 SolidWorks/off-the-shelf/CBE4-10.SLDPRT
+      320259 SolidWorks/off-the-shelf/CBE4-6.SLDPRT
+      327730 SolidWorks/off-the-shelf/CBE4-8.SLDPRT
+      354243 SolidWorks/off-the-shelf/CBE5-10.SLDPRT
+      265386 SolidWorks/off-the-shelf/DBSY4-5-4.SLDPRT
+      352119 SolidWorks/off-the-shelf/KBBS3-6.SLDPRT
+      337131 SolidWorks/off-the-shelf/SEBSZ-MX10_block.SLDPRT
+      137311 SolidWorks/off-the-shelf/SSE2BZ-MX10-135_rail.SLDPRT
+      194817 SolidWorks/off-the-shelf/aetts8-61-sc0-m3-n3.SLDPRT
+      182698 SolidWorks/off-the-shelf/aetts8-74_2-sc0-m3-n3.SLDPRT
+      317749 SolidWorks/off-the-shelf/fl6700zz.SLDPRT
+      295481 SolidWorks/off-the-shelf/fl6803zz.SLDPRT
+      349365 SolidWorks/off-the-shelf/mr106zz1.SLDPRT
+      353667 SolidWorks/off-the-shelf/mr126zz.SLDPRT
+      138044 SolidWorks/off-the-shelf/rse2b10-155_rail.SLDPRT
+      339889 SolidWorks/off-the-shelf/rseb10_block.SLDPRT
+      314352 SolidWorks/off-the-shelf/step_bolt_M4_6_5.SLDPRT
+       73506 SolidWorks/off-the-shelf/swsps12-6-0.5.SLDPRT
+     2959964 SolidWorks/pedestal/pedestal_OpenArm01.SLDASM
+     2240232 SolidWorks/pedestal/pedestal_v1.0_final.STEP
+         174 dev/README.md
+        1425 dev/release.sh
+
+=================== tag 1.0.0 -> 28676b51abdd833b6311ba7723192bb611934288 (2025-07-23)  files: 50
+         281 .github/ISSUE_TEMPLATE/1-bug-report.yml
+         278 .github/ISSUE_TEMPLATE/2-feature-request.yml
+         335 .github/ISSUE_TEMPLATE/config.yml
+        1775 .github/workflows/release.yaml
+        5484 CODE_OF_CONDUCT.md
+         674 CONTRIBUTING.md
+         422 Electrical/BOM_For_Hub.csv
+        7118 Electrical/CPL_For_Hub.xlsx
+        9780 Electrical/Gerber_For_Hub.zip
+     1872990 Electrical/J1_J2.pdf
+      334706 Electrical/J3_J4.pdf
+      336335 Electrical/J4_J7.pdf
+      320660 Electrical/J7_J8.pdf
+      321371 Electrical/communication.pdf
+      536087 Electrical/power_extension.pdf
+       13419 LICENSE.txt
+        1317 README.md
+    29307440 STEP/OpenArm01_follower.step
+    28614547 STEP/OpenArm01_leader.step
+      224784 STL/covers/chest-a.STL
+      195784 STL/covers/chest-b.STL
+      150884 STL/covers/left/j1-a-left.STL
+      142584 STL/covers/left/j1-b-left.STL
+      123184 STL/covers/left/j2-a-left.STL
+      188984 STL/covers/left/j2-b-left.STL
+      251284 STL/covers/left/j3-a-left.STL
+      945284 STL/covers/left/j3-b-left.stl
+      282384 STL/covers/left/j4-a-left.STL
+      238284 STL/covers/left/j4-b-left.STL
+      179784 STL/covers/left/j6-a-left.STL
+      267784 STL/covers/left/j6-b-left.STL
+      150784 STL/covers/right/j1-a-right.STL
+      142784 STL/covers/right/j1-b-right.STL
+      123484 STL/covers/right/j2-a-right.STL
+      190784 STL/covers/right/j2-b-right.STL
+      251284 STL/covers/right/j3-a-right.STL
+      945284 STL/covers/right/j3-b-right.stl
+      282384 STL/covers/right/j4-a-right.STL
+      238284 STL/covers/right/j4-b-right.STL
+      179684 STL/covers/right/j6-a-right.STL
+      276184 STL/covers/right/j6-b-right.STL
+      162284 STL/follower/left-jaw.STL
+      161684 STL/follower/right-jaw.STL
+       82884 STL/leader/left-pincer.STL
+      170184 STL/leader/rail-connector-leader.STL
+       82684 STL/leader/right-pincer.STL
+       30184 STL/leader/swivel-link-leader.STL
+       41484 STL/leader/swivel-rotor-leader.STL
+         174 dev/README.md
+        1425 dev/release.sh
+
+=================== every path ever committed (git log --all --name-only)
+.github/ISSUE_TEMPLATE/1-bug-report.yml
+.github/ISSUE_TEMPLATE/2-feature-request.yml
+.github/ISSUE_TEMPLATE/config.yml
+.github/dependabot.yml
+.github/release.yml
+.github/workflows/release.yaml
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+Electrical/BOM_For_Hub.csv
+Electrical/CPL_For_Hub.xlsx
+Electrical/Gerber_For_Hub.zip
+Electrical/J1_J2.pdf
+Electrical/J3_J4.pdf
+Electrical/J4_J7.pdf
+Electrical/J7_J8.pdf
+Electrical/communication.pdf
+Electrical/power_extension.pdf
+LICENSE.txt
+README.md
+STEP/OpenArm01.step
+STEP/OpenArm01_follower.step
+STEP/OpenArm01_leader.step
+STEP/end-effector-leader.step
+STL/covers/chest-a.STL
+STL/covers/chest-b.STL
+STL/covers/left/j1-a-left.STL
+STL/covers/left/j1-b-left.STL
+STL/covers/left/j2-a-left.STL
+STL/covers/left/j2-b-left.STL
+STL/covers/left/j3-a-left.STL
+STL/covers/left/j3-b-left.stl
+STL/covers/left/j4-a-left.STL
+STL/covers/left/j4-b-left.STL
+STL/covers/left/j6-a-left.STL
+STL/covers/left/j6-b-left.STL
+STL/covers/left/left-arm-casing.3mf
+STL/covers/left/left_covers.3mf
+STL/covers/right/j1-a-right.STL
+STL/covers/right/j1-b-right.STL
+STL/covers/right/j2-a-right.STL
+STL/covers/right/j2-b-right.STL
+STL/covers/right/j3-a-right.STL
+STL/covers/right/j3-b-right.stl
+STL/covers/right/j4-a-right.STL
+STL/covers/right/j4-b-right.STL
+STL/covers/right/j6-a-right.STL
+STL/covers/right/j6-b-right.STL
+STL/covers/right/right-arm-casing.3mf
+STL/covers/right/right_covers.3mf
+STL/end-effector-follower/left-jaw.STL
+STL/end-effector-follower/right-jaw.STL
+STL/end-effector-leader/ee-linkage.STL
+STL/end-effector-leader/left-pincer.STL
+STL/end-effector-leader/rail-connector-leader.STL
+STL/end-effector-leader/right-pincer.STL
+STL/end-effector-leader/rotor-controller-leader.STL
+STL/follower/left-jaw.STL
+STL/follower/right-jaw.STL
+STL/leader/ee-linkage.STL
+STL/leader/left-pincer.STL
+STL/leader/rail-connector-leader.STL
+STL/leader/right-pincer.STL
+STL/leader/rotor-controller-leader.STL
+STL/leader/swivel-link-leader.STL
+STL/leader/swivel-rotor-leader.STL
+STL/wrist-camera-mount/camera_mount_left.STL
+STL/wrist-camera-mount/camera_mount_right.STL
+STL_Files/covers/chest-a.STL
+STL_Files/covers/chest-b.STL
+STL_Files/covers/left/j1-a-left.STL
+STL_Files/covers/left/j1-b-left.STL
+STL_Files/covers/left/j2-a-left.STL
+STL_Files/covers/left/j2-b-left.STL
+STL_Files/covers/left/j3-a-left.STL
+STL_Files/covers/left/j3-b-left.stl
+STL_Files/covers/left/j4-a-left.STL
+STL_Files/covers/left/j4-b-left.STL
+STL_Files/covers/left/j6-a-left.STL
+STL_Files/covers/left/j6-b-left.STL
+STL_Files/covers/left/left-arm-casing.3mf
+STL_Files/covers/right/j1-a-right.STL
+STL_Files/covers/right/j1-b-right.STL
+STL_Files/covers/right/j2-a-right.STL
+STL_Files/covers/right/j2-b-right.STL
+STL_Files/covers/right/j3-a-right.STL
+STL_Files/covers/right/j3-b-right.stl
+STL_Files/covers/right/j4-a-right.STL
+STL_Files/covers/right/j4-b-right.STL
+STL_Files/covers/right/j6-a-right.STL
+STL_Files/covers/right/j6-b-right.STL
+STL_Files/covers/right/right-arm-casing.3mf
+STL_Files/end-effector-follower/left-jaw.STL
+STL_Files/end-effector-follower/right-jaw.STL
+STL_Files/end-effector-leader/ee-linkage.STL
+STL_Files/end-effector-leader/left-pincer.STL
+STL_Files/end-effector-leader/rail-connector-leader.STL
+STL_Files/end-effector-leader/right-pincer.STL
+STL_Files/end-effector-leader/rotor-controller-leader.STL
+SolidWorks/SLDPRT_Files/J1_A.SLDPRT
+SolidWorks/SLDPRT_Files/J1_B.SLDPRT
+SolidWorks/SLDPRT_Files/J1_C.SLDPRT
+SolidWorks/SLDPRT_Files/J1_D.SLDPRT
+SolidWorks/SLDPRT_Files/J1_E.SLDPRT
+SolidWorks/SLDPRT_Files/J2_A.SLDPRT
+SolidWorks/SLDPRT_Files/J2_B.SLDPRT
+SolidWorks/SLDPRT_Files/J2_C.SLDPRT
+SolidWorks/SLDPRT_Files/J4_A.SLDPRT
+SolidWorks/SLDPRT_Files/J4_B.SLDPRT
+SolidWorks/SLDPRT_Files/J4_C.SLDPRT
+SolidWorks/SLDPRT_Files/J4_D.SLDPRT
+SolidWorks/SLDPRT_Files/J4_E.SLDPRT
+SolidWorks/SLDPRT_Files/J5_A.SLDPRT
+SolidWorks/SLDPRT_Files/J6_A.SLDPRT
+SolidWorks/SLDPRT_Files/J6_B.SLDPRT
+SolidWorks/SLDPRT_Files/J6_C_left.SLDPRT
+SolidWorks/SLDPRT_Files/J6_C_right.SLDPRT
+SolidWorks/SLDPRT_Files/J6_D.SLDPRT
+SolidWorks/SLDPRT_Files/J7_A.SLDPRT
+SolidWorks/SLDPRT_Files/J7_B.SLDPRT
+SolidWorks/SLDPRT_Files/J7_C.SLDPRT
+SolidWorks/SLDPRT_Files/J7_D_left.SLDPRT
+SolidWorks/SLDPRT_Files/J7_D_right.SLDPRT
+SolidWorks/SLDPRT_Files/J7_E.SLDPRT
+SolidWorks/SLDPRT_Files/J8_A.SLDPRT
+SolidWorks/SLDPRT_Files/J8_B.SLDPRT
+SolidWorks/SLDPRT_Files/left-pincer.SLDPRT
+SolidWorks/SLDPRT_Files/left_jaw.SLDPRT
+SolidWorks/SLDPRT_Files/rail-connector-leader.SLDPRT
+SolidWorks/SLDPRT_Files/rail_CNC_attachment.SLDPRT
+SolidWorks/SLDPRT_Files/rail_connector.SLDPRT
+SolidWorks/SLDPRT_Files/right-pincer.SLDPRT
+SolidWorks/SLDPRT_Files/right_jaw.SLDPRT
+SolidWorks/SLDPRT_Files/swivel-link-leader.SLDPRT
+SolidWorks/SLDPRT_Files/swivel-rotor-leader.SLDPRT
+SolidWorks/SLDPRT_Files/swivel_link.SLDPRT
+SolidWorks/SLDPRT_Files/swivel_rotor.SLDPRT
+SolidWorks/SLDPRT_Files/wrist_camera_mount_left.SLDPRT
+SolidWorks/SLDPRT_Files/wrist_camera_mount_right.SLDPRT
+SolidWorks/STEP_Files/J1_A.STEP
+SolidWorks/STEP_Files/J1_B.STEP
+SolidWorks/STEP_Files/J1_C.STEP
+SolidWorks/STEP_Files/J1_D.STEP
+SolidWorks/STEP_Files/J1_E.STEP
+SolidWorks/STEP_Files/J2_A.STEP
+SolidWorks/STEP_Files/J2_B.STEP
+SolidWorks/STEP_Files/J2_C.STEP
+SolidWorks/STEP_Files/J4_A.STEP
+SolidWorks/STEP_Files/J4_B.STEP
+SolidWorks/STEP_Files/J4_C.STEP
+SolidWorks/STEP_Files/J4_D.STEP
+SolidWorks/STEP_Files/J4_E.STEP
+SolidWorks/STEP_Files/J5_A.STEP
+SolidWorks/STEP_Files/J6_A.STEP
+SolidWorks/STEP_Files/J6_B.STEP
+SolidWorks/STEP_Files/J6_C_left.STEP
+SolidWorks/STEP_Files/J6_C_right.STEP
+SolidWorks/STEP_Files/J6_D.STEP
+SolidWorks/STEP_Files/J7_A.STEP
+SolidWorks/STEP_Files/J7_B.STEP
+SolidWorks/STEP_Files/J7_C.STEP
+SolidWorks/STEP_Files/J7_D_left.STEP
+SolidWorks/STEP_Files/J7_D_right.STEP
+SolidWorks/STEP_Files/J7_E.STEP
+SolidWorks/STEP_Files/J8_A.STEP
+SolidWorks/STEP_Files/J8_B.STEP
+SolidWorks/STEP_Files/left-pincer.STEP
+SolidWorks/STEP_Files/left_jaw.STEP
+SolidWorks/STEP_Files/rail-connector-leader.STEP
+SolidWorks/STEP_Files/rail_CNC_attachment.STEP
+SolidWorks/STEP_Files/rail_connector.STEP
+SolidWorks/STEP_Files/right-pincer.STEP
+SolidWorks/STEP_Files/right_jaw.STEP
+SolidWorks/STEP_Files/swivel-link-leader.STEP
+SolidWorks/STEP_Files/swivel-rotor-leader.STEP
+SolidWorks/STEP_Files/swivel_link.STEP
+SolidWorks/STEP_Files/swivel_rotor.STEP
+SolidWorks/assemblies/OpenArm01_follower_bimanual.SLDASM
+SolidWorks/assemblies/OpenArm01_follower_left.SLDASM
+SolidWorks/assemblies/OpenArm01_follower_right.SLDASM
+SolidWorks/assemblies/OpenArm01_leader_bimanual.SLDASM
+SolidWorks/assemblies/OpenArm01_leader_left.SLDASM
+SolidWorks/assemblies/OpenArm01_leader_right.SLDASM
+SolidWorks/assemblies/left_arm/L1_left.SLDASM
+SolidWorks/assemblies/left_arm/L2_left.SLDASM
+SolidWorks/assemblies/left_arm/L3_left.SLDASM
+SolidWorks/assemblies/left_arm/L4_left.SLDASM
+SolidWorks/assemblies/left_arm/L5_left.SLDASM
+SolidWorks/assemblies/left_arm/L6_left.SLDASM
+SolidWorks/assemblies/left_arm/L7_left.SLDASM
+SolidWorks/assemblies/left_arm/gripper_left.SLDASM
+SolidWorks/assemblies/left_arm/leaderEE_left.SLDASM
+SolidWorks/assemblies/right_arm/L1_right.SLDASM
+SolidWorks/assemblies/right_arm/L2_right.SLDASM
+SolidWorks/assemblies/right_arm/L3_right.SLDASM
+SolidWorks/assemblies/right_arm/L4_right.SLDASM
+SolidWorks/assemblies/right_arm/L5_right.SLDASM
+SolidWorks/assemblies/right_arm/L6_right.SLDASM
+SolidWorks/assemblies/right_arm/L7_right.SLDASM
+SolidWorks/assemblies/right_arm/gripper_right.SLDASM
+SolidWorks/assemblies/right_arm/leaderEE_right.SLDASM
+SolidWorks/covers/Chest_Cover.SLDPRT
+SolidWorks/covers/J1-J2_Cover.SLDPRT
+SolidWorks/covers/J2-J3_Cover.SLDPRT
+SolidWorks/covers/J3-J4_Cover.SLDPRT
+SolidWorks/covers/J4-J5_Cover.SLDPRT
+SolidWorks/covers/J6-J7_Cover.SLDPRT
+SolidWorks/covers/J6-J7_Cover_Left.SLDPRT
+SolidWorks/motors/DM-J4310-2EC.SLDPRT
+SolidWorks/motors/DM-J4340-2EC.SLDPRT
+SolidWorks/motors/DM-J4340P-2EC.SLDPRT
+SolidWorks/motors/DM-J8009P-2EC.SLDPRT
+SolidWorks/off-the-shelf/CBE3-10.SLDPRT
+SolidWorks/off-the-shelf/CBE3-12.SLDPRT
+SolidWorks/off-the-shelf/CBE3-15.SLDPRT
+SolidWorks/off-the-shelf/CBE3-18.SLDPRT
+SolidWorks/off-the-shelf/CBE3-5.SLDPRT
+SolidWorks/off-the-shelf/CBE3-6.SLDPRT
+SolidWorks/off-the-shelf/CBE3-8.SLDPRT
+SolidWorks/off-the-shelf/CBE4-10.SLDPRT
+SolidWorks/off-the-shelf/CBE4-6.SLDPRT
+SolidWorks/off-the-shelf/CBE4-8.SLDPRT
+SolidWorks/off-the-shelf/CBE5-10.SLDPRT
+SolidWorks/off-the-shelf/DBSY4-5-4.SLDPRT
+SolidWorks/off-the-shelf/KBBS3-6.SLDPRT
+SolidWorks/off-the-shelf/SEBSZ-MX10_block.SLDPRT
+SolidWorks/off-the-shelf/SSE2BZ-MX10-135_rail.SLDPRT
+SolidWorks/off-the-shelf/aetts8-61-sc0-m3-n3.SLDPRT
+SolidWorks/off-the-shelf/aetts8-74_2-sc0-m3-n3.SLDPRT
+SolidWorks/off-the-shelf/fl6700zz.SLDPRT
+SolidWorks/off-the-shelf/fl6803zz.SLDPRT
+SolidWorks/off-the-shelf/mr106zz1.SLDPRT
+SolidWorks/off-the-shelf/mr126zz.SLDPRT
+SolidWorks/off-the-shelf/rse2b10-155_rail.SLDPRT
+SolidWorks/off-the-shelf/rseb10_block.SLDPRT
+SolidWorks/off-the-shelf/step_bolt_M4_6_5.SLDPRT
+SolidWorks/off-the-shelf/swsps12-6-0.5.SLDPRT
+SolidWorks/pedestal/pedestal_OpenArm01.SLDASM
+SolidWorks/pedestal/pedestal_v1.0_final.STEP
+dev/README.md
+dev/google-drive-files/Gemfile
+dev/google-drive-files/README.md
+dev/google-drive-files/file-ids.tsv
+dev/google-drive-files/generate-file-ids.rb
+dev/release.sh
+
+=================== dev/google-drive-files/file-ids.tsv at HEAD (Drive file ID -> path in release tarball)
+15p1PYmEKcDmnYQ5Hy_trM8gIoFCADF5a	OpenArm 2.0/OpenArm 2.0 BOM.xlsx
+1aU-V3lt_aPrZoRM8FFx6dMQu2f28Ws0I	OpenArm 2.0/OpenArm_2.0.STEP
+1mP0gDFgGaX6Ufobr8ocyg71ccsYgfBDw	OpenArm 2.0/Options/OpenArm_2.0_w_Head_Camera.STEP
+1xHMssSOp9RfZD1K6H80Yyl4uTlpU3lTc	OpenArm 2.0/README.docx
+1dZNUfoNDauqLoxLAgfdjrjm5wZEi3KGA	OpenArm Cell/Elec/CELL_WIRING.pdf
+1BpHJtbkg-uVoz8ZZrl4nGJyacPUTmq8F	OpenArm Cell/Elec/CELL_WIRING.xlsx
+1-R55Idf_G9TvjUsMl-cZ8esXmvPLjKyC	OpenArm Cell/Elec/PWR-CIRCUIT-DIN-RAIL-BUS_2.zip
+1o3eUXLWWgTuWCb5OTmLyBQvEH0nXxT0w	OpenArm Cell/Integration with OpenArm/OpenArm_Cell+OpenArm_2.0.STEP
+1qOt1T4XzuH-iukmT8rXmuCF_NDZwrPSZ	OpenArm Cell/Integration with OpenArm/OpenArm_Cell_cover_a.STEP
+1lne22UpsztWr2t0TdqJxpJoMEt5Z6LGA	OpenArm Cell/Integration with OpenArm/OpenArm_Cell_cover_b.STEP
+1V3CDlTN64f95u9gtATIn5wNTBGyUE3tx	OpenArm Cell/JIG/OpenArmJIG.STEP
+1Ak9ZRbhdeep9R8xsPZbKWIEbY99sg-Am	OpenArm Cell/JIG/OpenArmJIG_BOM.xlsx
+1KojBKJe4hC0Oqus8LIUvfkKwnr3xQx3F	OpenArm Cell/OpenArm Cell BOM.xlsx
+1il0ruNigmZ_AfcUPyRAz_hEbmok7gWX4	OpenArm Cell/OpenEvalCell_defeature.SLDPRT
+1CBgghd7gDeWnKbbH2SOlk3yypSj0Dy5a	OpenArm Cell/OpenEvalCell_defeature.STEP
+1SmF1Q4BQa-QwytB2GYu1YTOXWrtz8T__	OpenArm Cell/README.docx
+1lFlYdutOH_qJoYCRDOVx_52406vT6uQZ	OpenArm KER/Elec/Cable/KER_CABLE_E.png
+165fgBqdHhQrPrDKcQ2ChiE1o8Egzvneh	OpenArm KER/Elec/Cable/KER_CABLE_TOPO.png
+10UM2Gz6qYCFwZwsiwa-YFEEOoj03MdE8	OpenArm KER/Elec/Cable/KER_System_Cable_Documentation_GoogleDocs.docx
+1k6zJDhChShjfUxtmVolK55WeUalUOB73	OpenArm KER/Elec/Cable/XL2605270113-1.pdf
+1BhYj9wDtuzjDPiUB79oO1CzT8MO2fW4W	OpenArm KER/Elec/Cable/XL2605270113-2.pdf
+1d2mmarW1wPEjvqmleEGBnS4tBeFIQRIk	OpenArm KER/Elec/Cable/XL2605270113-3.pdf
+15oduBPeBB_mvUxIssYLczjaK1JEAhQLR	OpenArm KER/Elec/Cable/XL2605270113-4.pdf
+116fQx4wdkW6PI5701_fPMBiE-dL3jFkN	OpenArm KER/Elec/PCB/Encoder/Gerber_PCB2_5_2026-05-26.zip
+1AsExdG6gjag34Bm5OCkV7l06xHI7n0JB	OpenArm KER/Elec/PCB/Encoder/PickAndPlace_PCB2_5_2026_07_08.xlsx
+1OUSSkXK_eH8Nuj2jC9KFM96A7DayR_nk	OpenArm KER/Elec/PCB/Encoder/TLE_BOM.xlsx
+1VBS0nRoqaKCasUxytcFdmCmuggOyAgJh	OpenArm KER/Elec/PCB/Encoder/TLE_V3_BOM.csv
+1PGFMlxTwNVaEApsOMtOu2dyte7oK4i2V	OpenArm KER/Elec/PCB/Encoder/TLE_V3_PCB.pdf
+1ZouTQ7XP46yTY4zb7zyZIrBTyxrGcYup	OpenArm KER/Elec/PCB/Encoder/TLE_V3_SCH.pdf
+1DT6S8nH_uEVGQ8Oq0kWuCKNv25_usvLO	OpenArm KER/Elec/PCB/M5Stack/2d.png
+1wuVkOq1jqacCah-n8RlzZopptEpdE6o-	OpenArm KER/Elec/PCB/M5Stack/3d.png
+1TnuaKxUKv-6MaXFQ8sizg6GM8fwEnZcw	OpenArm KER/Elec/PCB/M5Stack/BOM_M5_485Bus_21_M5_485Bus_21_2026-06-26.xlsx
+1QFaPZBisLbQaFaUZuOU9ElYhD3Se32CZ	OpenArm KER/Elec/PCB/M5Stack/Gerber_M5_485Bus_21_2026-06-26.zip
+1LS12aoe2XvksNp-gO-gARmlSx9lr3p3y	OpenArm KER/Elec/PCB/M5Stack/Gerber_M5_485Bus_21_2026-08-13.zip
+1RWZfWAQ--UOX6SdjN2S5AEbvBdpRBnC9	OpenArm KER/Elec/PCB/M5Stack/M5_485Bus_SCH.pdf
+1NcvvQLV0GuhD0qJMuC_5LPs-KvzLs3BN	OpenArm KER/Elec/PCB/M5Stack/PickAndPlace_M5_485Bus_21_2026-08-13.xlsx
+1Su7q0tcZzUQrelV_wr5NAbwXlM4AE8qW	OpenArm KER/OpenArm KER BOM.xlsx
+1DWNSQFINY0sE20X86_kdmCDp1YGyWVNy	OpenArm KER/OpenArm KER JIG BASE.STEP
+1zlIPie9CycH_r2pLIHclKAHzV2yRIn3l	OpenArm KER/OpenArm KER.STEP
+1QCt_oB05_1-gnUoWseIl-wp4ZzqyQDysYyS23wMWsIw	OpenArm KER/README.pdf	application/vnd.google-apps.document
+
+=================== file-ids.tsv at tag 1.1.0 (v1 Drive)
+1rf8L-TygYD0FyNEFpG5yzvrz0aRzQWa_	STEP (assembly)/OpenArm_v1.1_leader.STEP
+1KxRKvIAmEH6EU9x1paPJFVpmgKq8uA98	STEP (assembly)/OpenArm_v1.1_follower.STEP
+1U0VKTMw4hMhBqKJndupev_Do2rU-KYs3	Wiring/Gerber_For_Hub.zip
+1m8ul01bEsziC8pWXq_DLDx7sHWk3GIby	Wiring/J1_J2.pdf
+1bntLNzz9Eq8VZuon_5RzfoUlQQmQBOkj	Wiring/J7_J8.pdf
+1TIwg93wGggNTW4QOfd9BonlnrvNzDGHN	Wiring/power_extension.pdf
+1i46Z3QHrLm_40nL8TIvik1M113sjE7XC	Wiring/CPL_For_Hub.xlsx
+1rZARqoNCM1x-fkAp-AVPbtO4gfdu6bRK	Wiring/J4_J7.pdf
+10tqszaI1wKK1R9X2z8JxXqJBTg01g2cJ	Wiring/communication.pdf
+1_pXvCBLhtGzccUxQhD-rS-xHfYXr4hwO	Wiring/J3_J4.pdf
+1B7UzOuItxCG0vL95UXblADejB90Tnqxf	Wiring/BOM_For_Hub.csv
+1C_PJziKVaqAPDBSc2jwnbjFNqoh9wkTM	STL (3d print)/Follower Gripper/right-jaw.STL
+1G42Okp79Sx1xKiGq_9F0z35R5fJTuymt	STL (3d print)/Follower Gripper/left-jaw.STL
+1Fc5sDOjZ8OSjmjf88j2v0rS8I9CletzI	STL (3d print)/Casing/J6-J7_Cover_L_B.STL
+1jgzJ84-pFg0Hjo5lBY9uLXeT6s7cEZce	STL (3d print)/Casing/J6-J7_Cover_L_A.STL
+1OWFS2xlXekDspvAmo5oNYHLKb4w83bSh	STL (3d print)/Casing/J1-J2_Cover_A.STL
+1iN6UEOYhW5FZdX9T5a3Pz_zvEILxoxu3	STL (3d print)/Casing/J4-J5_Cover_Follower_B.STL
+1f3EmHQI3TUJkOz4F7svcsrpmkVl8KG_e	STL (3d print)/Casing/J6-J7_Cover_R_A.STL
+1yPx8thZp73yBLe8BX5sYl3zFMIIETxG1	STL (3d print)/Casing/J6-J7_Cover_R_B.STL
+1OW2keFf78TQAzcgLxH8GNlSjMyemtDpn	STL (3d print)/Casing/J2-J3_Cover_A.STL
+1bpj-NXjFDyy1-rMycxgpD2ntMxa4Xy8L	STL (3d print)/Casing/J3-J4_Cover_B.STL
+1aQmKvoOX_CIdrEJNRRUaSg7opJ1o_C7y	STL (3d print)/Casing/J1-J2_Cover_B.STL
+11LaTv0b0PR9VTLoTFoZMFL-6YAYmsg5T	STL (3d print)/Casing/Chest_Cover_A.STL
+1L80oyFGyM9PDqqyM5pMWki5FajV2o1cf	STL (3d print)/Casing/Chest_Cover_B.STL
+14vbyMyfCmLuesWB6DsE2MxS9egutTFlU	STL (3d print)/Casing/J2-J3_Cover_B.STL
+10OUOs_jl5icPILMO9u3nrrinKMUUcxCG	STL (3d print)/Casing/J4-J5_Cover_Leader_B.STL
+1iem4jWxsf7qIEmcLYzaC5Sg5J5URBOF0	STL (3d print)/Casing/J3-J4_Cover_A.STL
+1vbfS7azniD0Erj6OoREKD_M_wX5QdMYK	STL (3d print)/Casing/J4-J5_Cover_A.STL
+19ltIE6GRpUSWRkIImFYyxxyPNpmF4bad	STL (3d print)/Leader Gripper/right-pincer.STL
+10EDD5XNu0QdHVIMmumbt6R882Hs82X5v	STL (3d print)/Leader Gripper/rail-connector-leader.STL
+1nlYKTa1Ve5pKBrYOZAONBrU8sY6UyI7T	STL (3d print)/Leader Gripper/left-pincer.STL
+1pnHrikiqHXQAuJV-KQFmUnzFFUein0u5	STL (3d print)/Leader Gripper/swivel-link-leader.STL
+1BpTIdL0EQdFl7Z4v3ffXGvK-CYVKhezS	STL (3d print)/Leader Gripper/swivel-rotor-leader.STL
+1ik3iF4ugfsM9Bg8vanCtt35r7rsmZZuk	Attachments/cables_L-shapedCase.step
+1IM42G6GYYwvD1YF2pXXGpKEgJSYHSHUj	Attachments/cables_L-shapedMold.step
+1feSN3n-9TySjXxZ7YKU_xdXTd53MGIT_	Attachments/pcb-hub_base.stl
+1y5lI8HM87XpVnu0ieSE1wEE5utOJdCCx	Attachments/wrist-camera_D405.stl
+15cKv4ghfg3ROjs_cO4Y_Uj_MizxMrprQ	Attachments/chest-camera_D435.stl
+1iF1S-0hFS_6M179YvXqHO02KQAFuzzlh	Attachments/wrist-camera_base.stl
+1De--HTFpZADbpoFR2-_Bm5tZzkEwIzLx	Attachments/chest-camera_D435.step
+1UrGK4YHD6gXXXyZCPMNSUUxbGTnNuvwu	Attachments/pcb-hub_base.step
+1oVVUoq3vPl0hfez1WDq781YVVK8rTGQ7	Attachments/wrist-camera_D405.step
+1JAFG3-KrB4z2YvameUwCUm-pMmt_LpaM	Attachments/wrist-camera_base.step
+
+=================== EVIDENCE: STEP header generator strings (HTTP Range 0-1500 only)
+git 1.0.1 STEP/OpenArm01_follower.step  -> originating_system 'Autodesk Translation Framework v14.10.0.0', preprocessor 'ST-DEVELOPER v20.1', 2025-07-22 (Fusion-style export)
+git 39d8cc3 STEP/OpenArm01.step         -> 'Autodesk Translation Framework v14.10.0.0', 2025-07-16
+git 1.0.1 SolidWorks/STEP_Files/J1_A.STEP -> 'SwSTEP 2.0', 2025-08-20
+git 1.0.1 SolidWorks/pedestal/pedestal_v1.0_final.STEP -> 'SwSTEP 2.0', 2025-08-22
+Drive OpenArm_v1.0_follower.step (29,307,440 B) -> 'Autodesk Translation Framework v14.10.0.0'
+Drive OpenArm_v1.1_follower.STEP (44,438,115 B) -> 'SwSTEP 2.0' / 'SolidWorks 2025', 2025-10-23
+Drive OpenArm_2.0.STEP (47,788,783 B) -> 'SwSTEP 2.0' / 'SolidWorks 2025', 2026-05-15
+Drive OpenArm_2.0_w_Head_Camera.STEP, OpenEvalCell_defeature.STEP (142,832,114 B), OpenArm_Cell+OpenArm_2.0.STEP (194,761,438 B), OpenArm KER.STEP (internal name 20260604_KER.STEP), KER_JIG_BASE.STEP -> all 'SolidWorks 2025'
+Drive Attachments cables_L-shapedMold.step, wrist-camera_D405.step -> 'Autodesk Translation Framework v14.10.0.0'
+
+=================== EVIDENCE: STL 80-byte headers
+STL/covers/left/j3-b-left.stl -> 'STLB ATF 14.10.0.0 COLOR=' (Autodesk Translation Framework)
+STL/covers/left/j1-a-left.STL -> 'solid j1-a-left'; STL/leader/left-pincer.STL -> 'solid right_pincer_v2' (name mismatch); STL/follower/left-jaw.STL -> 'solid left_jaw_v6'; camera_mount_left.STL -> 'stlbn camera_mount_left'
+
+=================== EVIDENCE: 1.0.1 STL/covers/left/left_covers.3mf (zip central directory + 3 small config entries read via Range)
+Bambu Studio 02.02.01.58 project; 2 plates; objects: j1-a..j4-b '-right' STLs + j6-a/j6-b '-left'
+printer: Bambu Lab X1 Carbon 0.4 nozzle; process: 0.20mm Strength @BBL X1C; filament: Bambu PLA Basic + Bambu PLA Matte; layer 0.2; sparse_infill 100% zig-zag; wall_loops 6; top 5 / bottom 3; enable_support 1, tree(auto); Textured PEI Plate; nozzle 220C; bed 55C; brim auto
+
+=================== Release assets (https://github.com/enactic/openarm_hardware/releases/expanded_assets/<tag>)
+1.0.0 openarm-hardware-1.0.0.tar.gz 20.9 MB (+.sha256/.sha512)
+1.0.1 openarm-hardware-1.0.1.tar.gz 98.9 MB
+1.1.0 openarm-hardware-1.1.0.tar.gz 249 MB (built from Drive v1 via file-ids.tsv)
+2.0.0 openarm-hardware-2.0.0.tar.gz 156 MB (built from Drive v2.0/Hardware via file-ids.tsv)

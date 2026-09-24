@@ -1,0 +1,8 @@
+{
+    "autodeskProduct": "Fusion",
+    "type": "script",
+    "author": "Duke General Robotics Lab",
+    "description": "Export low-resolution world-space meshes for the interactive part viewer.",
+    "supportedOS": "windows|mac",
+    "editEnabled": true
+}

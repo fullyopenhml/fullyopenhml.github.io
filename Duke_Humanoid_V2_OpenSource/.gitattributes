@@ -1,0 +1,14 @@
+# Same line endings on macOS and Windows; keep CSV/MD diffs clean.
+* text=auto eol=lf
+*.mp4 binary
+*.webp binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.step binary
+*.stp binary
+*.3mf binary
+*.stl binary
+*.f3z binary
+*.pdf binary
+*.xlsx binary

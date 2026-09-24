@@ -1,0 +1,1886 @@
+{
+ "3DP_arm05_RS02_shaft_bearing_retainer": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_arm05_RS02_shaft_bearing_retainer_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_arm05_RS02_shaft_bearing_retainer_rev01.stl"
+  }
+ ],
+ "3DP_arm06_RS02_shaft_coupler": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_arm06_RS02_shaft_coupler_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_arm06_RS02_shaft_coupler_rev01.stl"
+  }
+ ],
+ "3DP_arm11_wrist_roll": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_arm11_wrist_roll_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_arm11_wrist_roll_rev01.stl"
+  }
+ ],
+ "3DP_arm14_wrist_block": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_arm14_wrist_block_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_arm14_wrist_block_rev01.stl"
+  }
+ ],
+ "3DP_arm15_end_effector_attachment": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_arm15_end_effector_attachment_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_arm15_end_effector_attachment_rev01.stl"
+  }
+ ],
+ "3DP_armP01_elbow_cover_a": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_armP01_elbow_cover_a_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_armP01_elbow_cover_a_rev01.stl"
+  }
+ ],
+ "3DP_armP02_elbow_cover_b": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_armP02_elbow_cover_b_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_armP02_elbow_cover_b_rev01.stl"
+  }
+ ],
+ "3DP_armP03_shoulder_cover_a": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_armP03_shoulder_cover_a_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_armP03_shoulder_cover_a_rev01.stl"
+  }
+ ],
+ "3DP_armP04_shoulder_cover_b": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_armP04_shoulder_cover_b_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_armP04_shoulder_cover_b_rev01.stl"
+  }
+ ],
+ "3DP_armP05_shoulder_cover_c": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_armP05_shoulder_cover_c_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_armP05_shoulder_cover_c_rev01.stl"
+  }
+ ],
+ "3DP_armP06_shoulder_cover_d": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_armP06_shoulder_cover_d_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_armP06_shoulder_cover_d_rev01.stl"
+  }
+ ],
+ "3DP_armP07_shoulder_cover_e": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_armP07_shoulder_cover_e_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_armP07_shoulder_cover_e_rev01.stl"
+  }
+ ],
+ "3DP_armP08_shoulder_cover_f": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_armP08_shoulder_cover_f_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_armP08_shoulder_cover_f_rev01.stl"
+  }
+ ],
+ "3DP_armP09_shoulder_yaw_cover_a": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_armP09_shoulder_yaw_cover_a_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_armP09_shoulder_yaw_cover_a_rev01.stl"
+  }
+ ],
+ "3DP_armP10_shoulder_yaw_cover_b": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_armP10_shoulder_yaw_cover_b_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_armP10_shoulder_yaw_cover_b_rev01.stl"
+  }
+ ],
+ "3DP_armP11_shoulder_yaw_cover_c": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_armP11_shoulder_yaw_cover_c_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_armP11_shoulder_yaw_cover_c_rev01.stl"
+  }
+ ],
+ "3DP_body05_interior_plate": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_body05_interior_plate_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_body05_interior_plate_rev01.stl"
+  }
+ ],
+ "3DP_body06_front_plate": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_body06_front_plate_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_body06_front_plate_rev01.stl"
+  }
+ ],
+ "3DP_body07_front_plate_removable": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_body07_front_plate_removable_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_body07_front_plate_removable_rev01.stl"
+  }
+ ],
+ "3DP_body08_back_plate": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_body08_back_plate_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_body08_back_plate_rev01.stl"
+  }
+ ],
+ "3DP_body09_back_plate_removable": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_body09_back_plate_removable_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_body09_back_plate_removable_rev01.stl"
+  }
+ ],
+ "3DP_cam01_gimbal_mount": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_cam01_gimbal_mount_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_cam01_gimbal_mount_rev01.stl"
+  }
+ ],
+ "3DP_cam02_gimbal_neck": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_cam02_gimbal_neck_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_cam02_gimbal_neck_rev01.stl"
+  }
+ ],
+ "3DP_cam03_gimbal_arm": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_cam03_gimbal_arm_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_cam03_gimbal_arm_rev01.stl"
+  }
+ ],
+ "3DP_cam04_gimbal_arm_link": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_cam04_gimbal_arm_link_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_cam04_gimbal_arm_link_rev01.stl"
+  }
+ ],
+ "3DP_grip01_base": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_grip01_base_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_grip01_base_rev01.stl"
+  }
+ ],
+ "3DP_grip02_finger": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_grip02_finger_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_grip02_finger_rev01.stl"
+  }
+ ],
+ "3DP_grip03_rail": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_grip03_rail_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_grip03_rail_rev01.stl"
+  }
+ ],
+ "3DP_grip04_apriltag_holder": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_grip04_apriltag_holder_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_grip04_apriltag_holder_rev01.stl"
+  }
+ ],
+ "3DP_grip05_pinion": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_grip05_pinion_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_grip05_pinion_rev01.stl"
+  }
+ ],
+ "3DP_grip06_apriltag_tile": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_grip06_apriltag_tile_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_grip06_apriltag_tile_rev01.stl"
+  }
+ ],
+ "3DP_leg19_sole": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_leg19_sole_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_leg19_sole_rev01.stl"
+  }
+ ],
+ "3DP_leg20_foot_front": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_leg20_foot_front_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_leg20_foot_front_rev01.stl"
+  }
+ ],
+ "3DP_legP01_hip3_cover_a": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_legP01_hip3_cover_a_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_legP01_hip3_cover_a_rev01.stl"
+  }
+ ],
+ "3DP_legP02_hip3_cover_b": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_legP02_hip3_cover_b_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_legP02_hip3_cover_b_rev01.stl"
+  }
+ ],
+ "3DP_legP03_hip3_cover_c": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_legP03_hip3_cover_c_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_legP03_hip3_cover_c_rev01.stl"
+  }
+ ],
+ "3DP_legP04_hip3_cover_d": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_legP04_hip3_cover_d_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_legP04_hip3_cover_d_rev01.stl"
+  }
+ ],
+ "3DP_legP05_hip2_cover_a": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_legP05_hip2_cover_a_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_legP05_hip2_cover_a_rev01.stl"
+  }
+ ],
+ "3DP_legP06_hip2_cover_b": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_legP06_hip2_cover_b_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_legP06_hip2_cover_b_rev01.stl"
+  }
+ ],
+ "3DP_legP07_knee_cover_a": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_legP07_knee_cover_a_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_legP07_knee_cover_a_rev01.stl"
+  }
+ ],
+ "3DP_legP08_knee_cover_b": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_legP08_knee_cover_b_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_legP08_knee_cover_b_rev01.stl"
+  }
+ ],
+ "3DP_legP09_shank_cover_a": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_legP09_shank_cover_a_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_legP09_shank_cover_a_rev01.stl"
+  }
+ ],
+ "3DP_legP10_shank_cover_b": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_legP10_shank_cover_b_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_legP10_shank_cover_b_rev01.stl"
+  }
+ ],
+ "3DP_legP11_ankle_cover_a": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_legP11_ankle_cover_a_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_legP11_ankle_cover_a_rev01.stl"
+  }
+ ],
+ "3DP_legP12_ankle_cover_b": [
+  {
+   "label": "STEP",
+   "href": "files/step/3DP_legP12_ankle_cover_b_rev01.step"
+  },
+  {
+   "label": "STL",
+   "href": "files/print/3DP_legP12_ankle_cover_b_rev01.stl"
+  }
+ ],
+ "CNC_arm01_shoulder_roll_front_bearing": [
+  {
+   "label": "STEP",
+   "href": "files/step/CNC_arm01_shoulder_roll_front_bearing_rev01.step"
+  }
+ ],
+ "CNC_arm02_shoulder_roll_back_bearing": [
+  {
+   "label": "STEP",
+   "href": "files/step/CNC_arm02_shoulder_roll_back_bearing_rev01.step"
+  }
+ ],
+ "CNC_arm03_shoulder_roll_output_shaft": [
+  {
+   "label": "STEP",
+   "href": "files/step/CNC_arm03_shoulder_roll_output_shaft_rev01.step"
+  }
+ ],
+ "CNC_arm04_shoulder_roll_support_shaft": [
+  {
+   "label": "STEP",
+   "href": "files/step/CNC_arm04_shoulder_roll_support_shaft_rev01.step"
+  }
+ ],
+ "CNC_arm07_elbow_front_bearing": [
+  {
+   "label": "STEP",
+   "href": "files/step/CNC_arm07_elbow_front_bearing_rev01.step"
+  }
+ ],
+ "CNC_arm08_elbow_back_bearing": [
+  {
+   "label": "STEP",
+   "href": "files/step/CNC_arm08_elbow_back_bearing_rev01.step"
+  }
+ ],
+ "CNC_arm09_elbow_output_shaft": [
+  {
+   "label": "STEP",
+   "href": "files/step/CNC_arm09_elbow_output_shaft_rev01.step"
+  }
+ ],
+ "CNC_arm10_r03_back_cover": [
+  {
+   "label": "STEP",
+   "href": "files/step/CNC_arm10_r03_back_cover_rev01.step"
+  }
+ ],
+ "CNC_arm13_RS05_shaft_coupler": [
+  {
+   "label": "STEP",
+   "href": "files/step/CNC_arm13_RS05_shaft_coupler_rev01.step"
+  }
+ ],
+ "CNC_body01_bottom_plate": [
+  {
+   "label": "STEP",
+   "href": "files/step/CNC_body01_bottom_plate_rev01.step"
+  }
+ ],
+ "CNC_body02_side_plate": [
+  {
+   "label": "STEP",
+   "href": "files/step/CNC_body02_side_plate_rev01.step"
+  }
+ ],
+ "CNC_body03_top_plate": [
+  {
+   "label": "STEP",
+   "href": "files/step/CNC_body03_top_plate_rev01.step"
+  }
+ ],
+ "CNC_body04_front_plate": [
+  {
+   "label": "STEP",
+   "href": "files/step/CNC_body04_front_plate_rev01.step"
+  }
+ ],
+ "CNC_leg01_hip_center_back": [
+  {
+   "label": "STEP",
+   "href": "files/step/CNC_leg01_hip_center_back_rev01.step"
+  }
+ ],
+ "CNC_leg02_RS03_shaft_coupler": [
+  {
+   "label": "STEP",
+   "href": "files/step/CNC_leg02_RS03_shaft_coupler_rev01.step"
+  }
+ ],
+ "CNC_leg03_RS03_shaft_bearing_retainer": [
+  {
+   "label": "STEP",
+   "href": "files/step/CNC_leg03_RS03_shaft_bearing_retainer_rev01.step"
+  }
+ ],
+ "CNC_leg04_hip_roll_front_bearing_retainer": [
+  {
+   "label": "STEP",
+   "href": "files/step/CNC_leg04_hip_roll_front_bearing_retainer_rev01.step"
+  }
+ ],
+ "CNC_leg05_hip_roll_back_bearing_retainer": [
+  {
+   "label": "STEP",
+   "href": "files/step/CNC_leg05_hip_roll_back_bearing_retainer_rev01.step"
+  }
+ ],
+ "CNC_leg06_hip_roll_output_shaft": [
+  {
+   "label": "STEP",
+   "href": "files/step/CNC_leg06_hip_roll_output_shaft_rev01.step"
+  }
+ ],
+ "CNC_leg07_hip_roll_support_shaft": [
+  {
+   "label": "STEP",
+   "href": "files/step/CNC_leg07_hip_roll_support_shaft_rev01.step"
+  }
+ ],
+ "CNC_leg08_knee_front_bearing_retainer": [
+  {
+   "label": "STEP",
+   "href": "files/step/CNC_leg08_knee_front_bearing_retainer_rev01.step"
+  }
+ ],
+ "CNC_leg09_knee_motor_back_cover": [
+  {
+   "label": "STEP",
+   "href": "files/step/CNC_leg09_knee_motor_back_cover_rev01.step"
+  }
+ ],
+ "CNC_leg10_knee_output_shank": [
+  {
+   "label": "STEP",
+   "href": "files/step/CNC_leg10_knee_output_shank_rev01.step"
+  }
+ ],
+ "CNC_leg11_knee_support_shank": [
+  {
+   "label": "STEP",
+   "href": "files/step/CNC_leg11_knee_support_shank_rev01.step"
+  }
+ ],
+ "CNC_leg12_lower_leg_bearing": [
+  {
+   "label": "STEP",
+   "href": "files/step/CNC_leg12_lower_leg_bearing_rev01.step"
+  }
+ ],
+ "CNC_leg13_ankle_pitch_front": [
+  {
+   "label": "STEP",
+   "href": "files/step/CNC_leg13_ankle_pitch_front_rev01.step"
+  }
+ ],
+ "CNC_leg14_ankle_pitch_back": [
+  {
+   "label": "STEP",
+   "href": "files/step/CNC_leg14_ankle_pitch_back_rev01.step"
+  }
+ ],
+ "CNC_leg15_RS06_shaft_bearing_retainer": [
+  {
+   "label": "STEP",
+   "href": "files/step/CNC_leg15_RS06_shaft_bearing_retainer_rev01.step"
+  }
+ ],
+ "CNC_leg16_ankle_roll_output_shaft": [
+  {
+   "label": "STEP",
+   "href": "files/step/CNC_leg16_ankle_roll_output_shaft_rev01.step"
+  }
+ ],
+ "CNC_leg17_ankle_roll_support_shaft": [
+  {
+   "label": "STEP",
+   "href": "files/step/CNC_leg17_ankle_roll_support_shaft_rev01.step"
+  }
+ ],
+ "CNC_leg18_foot_plate": [
+  {
+   "label": "STEP",
+   "href": "files/step/CNC_leg18_foot_plate_rev01.step"
+  }
+ ],
+ "humanoid_2.1_latest_overall": [
+  {
+   "label": "PDF",
+   "href": "files/drawings/humanoid_2.1_latest_overall_rev01.pdf"
+  }
+ ],
+ "humanoid_2.1_latest": [
+  {
+   "label": "STEP (zip)",
+   "href": "files/assembly/humanoid_2.1_latest_rev01.step.zip"
+  }
+ ],
+ "robot": [
+  {
+   "label": "STEP (zip)",
+   "href": "files/assembly/humanoid_2.1_latest_rev01.step.zip"
+  }
+ ],
+ "000-left-arm-long-wrist-latest": [
+  {
+   "label": "STEP",
+   "href": "files/modules/000-left-arm-long-wrist-latest_rev01.step"
+  }
+ ],
+ "000-right-arm-long-wrist-latest": [
+  {
+   "label": "STEP",
+   "href": "files/modules/000-right-arm-long-wrist-latest_rev01.step"
+  }
+ ],
+ "001-left-wrist-long-latest": [
+  {
+   "label": "STEP",
+   "href": "files/modules/001-left-wrist-long-latest_rev01.step"
+  }
+ ],
+ "001-right-wrist-long-latest": [
+  {
+   "label": "STEP",
+   "href": "files/modules/001-right-wrist-long-latest_rev01.step"
+  }
+ ],
+ "3dp-arm06-x4-rs02-shaft-coupler-2": [
+  {
+   "label": "STEP",
+   "href": "files/modules/3dp-arm06-x4-rs02-shaft-coupler-2_rev01.step"
+  }
+ ],
+ "3dp-arm06-x4-rs02-shaft-coupler": [
+  {
+   "label": "STEP",
+   "href": "files/modules/3dp-arm06-x4-rs02-shaft-coupler_rev01.step"
+  }
+ ],
+ "3dp-body-05-x1-interior-plate": [
+  {
+   "label": "STEP",
+   "href": "files/modules/3dp-body-05-x1-interior-plate_rev01.step"
+  }
+ ],
+ "3dp-body-07-x1-front-plate-removable": [
+  {
+   "label": "STEP",
+   "href": "files/modules/3dp-body-07-x1-front-plate-removable_rev01.step"
+  }
+ ],
+ "3dp-body-09-x1-back-plate-removable": [
+  {
+   "label": "STEP",
+   "href": "files/modules/3dp-body-09-x1-back-plate-removable_rev01.step"
+  }
+ ],
+ "ankle-roll-motor-protection": [
+  {
+   "label": "STEP",
+   "href": "files/modules/ankle-roll-motor-protection_rev01.step"
+  }
+ ],
+ "ankle-roll-structural-part-protection": [
+  {
+   "label": "STEP",
+   "href": "files/modules/ankle-roll-structural-part-protection_rev01.step"
+  }
+ ],
+ "base": [
+  {
+   "label": "STEP",
+   "href": "files/modules/base_rev01.step"
+  }
+ ],
+ "bearing-35x44x5-6707-1-6kn-15g-2": [
+  {
+   "label": "STEP",
+   "href": "files/modules/bearing-35x44x5-6707-1-6kn-15g-2_rev01.step"
+  }
+ ],
+ "bearing-35x44x5-6707-1-6kn-15g": [
+  {
+   "label": "STEP",
+   "href": "files/modules/bearing-35x44x5-6707-1-6kn-15g_rev01.step"
+  }
+ ],
+ "bearing-35x47x7-6807-4-0kn-29g": [
+  {
+   "label": "STEP",
+   "href": "files/modules/bearing-35x47x7-6807-4-0kn-29g_rev01.step"
+  }
+ ],
+ "bearing-45x58x7-6809-5-4kn-40g": [
+  {
+   "label": "STEP",
+   "href": "files/modules/bearing-45x58x7-6809-5-4kn-40g_rev01.step"
+  }
+ ],
+ "bearing-50x65x7-6810-6-1kn-52g": [
+  {
+   "label": "STEP",
+   "href": "files/modules/bearing-50x65x7-6810-6-1kn-52g_rev01.step"
+  }
+ ],
+ "body-latest": [
+  {
+   "label": "STEP",
+   "href": "files/modules/body-latest_rev01.step"
+  }
+ ],
+ "can-isolated": [
+  {
+   "label": "STEP",
+   "href": "files/modules/can-isolated_rev01.step"
+  }
+ ],
+ "cnc-leg18-x2-foot-plate": [
+  {
+   "label": "STEP",
+   "href": "files/modules/cnc-leg18-x2-foot-plate_rev01.step"
+  }
+ ],
+ "double-helix-pinion-16teeth-6mm": [
+  {
+   "label": "STEP",
+   "href": "files/modules/double-helix-pinion-16teeth-6mm_rev01.step"
+  }
+ ],
+ "double-helix-rack-30teeth-6mm": [
+  {
+   "label": "STEP",
+   "href": "files/modules/double-helix-rack-30teeth-6mm_rev01.step"
+  }
+ ],
+ "dovetail-umi-gripper": [
+  {
+   "label": "STEP",
+   "href": "files/modules/dovetail-umi-gripper_rev01.step"
+  }
+ ],
+ "elbow-motor-protection-2": [
+  {
+   "label": "STEP",
+   "href": "files/modules/elbow-motor-protection-2_rev01.step"
+  }
+ ],
+ "elbow-motor-protection": [
+  {
+   "label": "STEP",
+   "href": "files/modules/elbow-motor-protection_rev01.step"
+  }
+ ],
+ "elbow-shaft-2": [
+  {
+   "label": "STEP",
+   "href": "files/modules/elbow-shaft-2_rev01.step"
+  }
+ ],
+ "elbow-shaft": [
+  {
+   "label": "STEP",
+   "href": "files/modules/elbow-shaft_rev01.step"
+  }
+ ],
+ "elbow-wrist-roll-2": [
+  {
+   "label": "STEP",
+   "href": "files/modules/elbow-wrist-roll-2_rev01.step"
+  }
+ ],
+ "elbow-wrist-roll": [
+  {
+   "label": "STEP",
+   "href": "files/modules/elbow-wrist-roll_rev01.step"
+  }
+ ],
+ "feetech-hl-3915-servo-motor": [
+  {
+   "label": "STEP",
+   "href": "files/modules/feetech-hl-3915-servo-motor_rev01.step"
+  }
+ ],
+ "foot-assembly": [
+  {
+   "label": "STEP",
+   "href": "files/modules/foot-assembly_rev01.step"
+  }
+ ],
+ "gimbal-arm-1": [
+  {
+   "label": "STEP",
+   "href": "files/modules/gimbal-arm-1_rev01.step"
+  }
+ ],
+ "gimbal-arm": [
+  {
+   "label": "STEP",
+   "href": "files/modules/gimbal-arm_rev01.step"
+  }
+ ],
+ "hip-center": [
+  {
+   "label": "STEP",
+   "href": "files/modules/hip-center_rev01.step"
+  }
+ ],
+ "hip-pitch-hip-roll-l": [
+  {
+   "label": "STEP",
+   "href": "files/modules/hip-pitch-hip-roll-l_rev01.step"
+  }
+ ],
+ "hip-pitch-hip-roll-r": [
+  {
+   "label": "STEP",
+   "href": "files/modules/hip-pitch-hip-roll-r_rev01.step"
+  }
+ ],
+ "hip-pitch-motor-mirror": [
+  {
+   "label": "STEP",
+   "href": "files/modules/hip-pitch-motor-mirror_rev01.step"
+  }
+ ],
+ "hip-pitch-motor": [
+  {
+   "label": "STEP",
+   "href": "files/modules/hip-pitch-motor_rev01.step"
+  }
+ ],
+ "hip-roll-hip-yaw-l": [
+  {
+   "label": "STEP",
+   "href": "files/modules/hip-roll-hip-yaw-l_rev01.step"
+  }
+ ],
+ "hip-roll-hip-yaw-r": [
+  {
+   "label": "STEP",
+   "href": "files/modules/hip-roll-hip-yaw-r_rev01.step"
+  }
+ ],
+ "hip-roll-motor": [
+  {
+   "label": "STEP",
+   "href": "files/modules/hip-roll-motor_rev01.step"
+  }
+ ],
+ "imu-syd-dynamics-tm171": [
+  {
+   "label": "STEP",
+   "href": "files/modules/imu-syd-dynamics-tm171_rev01.step"
+  }
+ ],
+ "intelrealsense-d435-multibody-v9-1": [
+  {
+   "label": "STEP",
+   "href": "files/modules/intelrealsense-d435-multibody-v9-1_rev01.step"
+  }
+ ],
+ "intelrealsense-d435-multibody": [
+  {
+   "label": "STEP",
+   "href": "files/modules/intelrealsense-d435-multibody_rev01.step"
+  }
+ ],
+ "knee-assembly": [
+  {
+   "label": "STEP",
+   "href": "files/modules/knee-assembly_rev01.step"
+  }
+ ],
+ "knee-motor-protection": [
+  {
+   "label": "STEP",
+   "href": "files/modules/knee-motor-protection_rev01.step"
+  }
+ ],
+ "power-block-casing": [
+  {
+   "label": "STEP",
+   "href": "files/modules/power-block-casing_rev01.step"
+  }
+ ],
+ "robstride-02-no-back-cover-2": [
+  {
+   "label": "STEP",
+   "href": "files/modules/robstride-02-no-back-cover-2_rev01.step"
+  }
+ ],
+ "robstride-02-no-back-cover": [
+  {
+   "label": "STEP",
+   "href": "files/modules/robstride-02-no-back-cover_rev01.step"
+  }
+ ],
+ "robstride-03-full": [
+  {
+   "label": "STEP",
+   "href": "files/modules/robstride-03-full_rev01.step"
+  }
+ ],
+ "robstride-03-no-back-cover": [
+  {
+   "label": "STEP",
+   "href": "files/modules/robstride-03-no-back-cover_rev01.step"
+  }
+ ],
+ "robstride-06-no-back-cover-2": [
+  {
+   "label": "STEP",
+   "href": "files/modules/robstride-06-no-back-cover-2_rev01.step"
+  }
+ ],
+ "robstride-06-no-back-cover": [
+  {
+   "label": "STEP",
+   "href": "files/modules/robstride-06-no-back-cover_rev01.step"
+  }
+ ],
+ "robstride00": [
+  {
+   "label": "STEP",
+   "href": "files/modules/robstride00_rev01.step"
+  }
+ ],
+ "robstride04": [
+  {
+   "label": "STEP",
+   "href": "files/modules/robstride04_rev01.step"
+  }
+ ],
+ "robstride05-v16-1-1": [
+  {
+   "label": "STEP",
+   "href": "files/modules/robstride05-v16-1-1_rev01.step"
+  }
+ ],
+ "robstride05-v16-1": [
+  {
+   "label": "STEP",
+   "href": "files/modules/robstride05-v16-1_rev01.step"
+  }
+ ],
+ "robstride05-v16-2-1": [
+  {
+   "label": "STEP",
+   "href": "files/modules/robstride05-v16-2-1_rev01.step"
+  }
+ ],
+ "robstride05-v16-2": [
+  {
+   "label": "STEP",
+   "href": "files/modules/robstride05-v16-2_rev01.step"
+  }
+ ],
+ "shanks": [
+  {
+   "label": "STEP",
+   "href": "files/modules/shanks_rev01.step"
+  }
+ ],
+ "shoulder-pitch-protection-2": [
+  {
+   "label": "STEP",
+   "href": "files/modules/shoulder-pitch-protection-2_rev01.step"
+  }
+ ],
+ "shoulder-pitch-protection": [
+  {
+   "label": "STEP",
+   "href": "files/modules/shoulder-pitch-protection_rev01.step"
+  }
+ ],
+ "shoulder-pitch-shoulder-roll-2": [
+  {
+   "label": "STEP",
+   "href": "files/modules/shoulder-pitch-shoulder-roll-2_rev01.step"
+  }
+ ],
+ "shoulder-pitch-shoulder-roll": [
+  {
+   "label": "STEP",
+   "href": "files/modules/shoulder-pitch-shoulder-roll_rev01.step"
+  }
+ ],
+ "shoulder-roll-shaft-2": [
+  {
+   "label": "STEP",
+   "href": "files/modules/shoulder-roll-shaft-2_rev01.step"
+  }
+ ],
+ "shoulder-roll-shaft": [
+  {
+   "label": "STEP",
+   "href": "files/modules/shoulder-roll-shaft_rev01.step"
+  }
+ ],
+ "shoulder-roll-shoulder-yaw-2": [
+  {
+   "label": "STEP",
+   "href": "files/modules/shoulder-roll-shoulder-yaw-2_rev01.step"
+  }
+ ],
+ "shoulder-roll-shoulder-yaw": [
+  {
+   "label": "STEP",
+   "href": "files/modules/shoulder-roll-shoulder-yaw_rev01.step"
+  }
+ ],
+ "shoulder-yaw-elbow-2": [
+  {
+   "label": "STEP",
+   "href": "files/modules/shoulder-yaw-elbow-2_rev01.step"
+  }
+ ],
+ "shoulder-yaw-elbow": [
+  {
+   "label": "STEP",
+   "href": "files/modules/shoulder-yaw-elbow_rev01.step"
+  }
+ ],
+ "shoulder-yaw-protection-2": [
+  {
+   "label": "STEP",
+   "href": "files/modules/shoulder-yaw-protection-2_rev01.step"
+  }
+ ],
+ "shoulder-yaw-protection": [
+  {
+   "label": "STEP",
+   "href": "files/modules/shoulder-yaw-protection_rev01.step"
+  }
+ ],
+ "twincities-v2-nolock-1": [
+  {
+   "label": "STEP",
+   "href": "files/modules/twincities-v2-nolock-1_rev01.step"
+  }
+ ],
+ "twincities-v2-nolock": [
+  {
+   "label": "STEP",
+   "href": "files/modules/twincities-v2-nolock_rev01.step"
+  }
+ ],
+ "v2-1-lower-body-latest": [
+  {
+   "label": "STEP",
+   "href": "files/modules/v2-1-lower-body-latest_rev01.step"
+  }
+ ],
+ "v2-1-lower-leg-l-copy": [
+  {
+   "label": "STEP",
+   "href": "files/modules/v2-1-lower-leg-l-copy_rev01.step"
+  }
+ ],
+ "v2-1-lower-leg-r": [
+  {
+   "label": "STEP",
+   "href": "files/modules/v2-1-lower-leg-r_rev01.step"
+  }
+ ],
+ "vention-usb-hub": [
+  {
+   "label": "STEP",
+   "href": "files/modules/vention-usb-hub_rev01.step"
+  }
+ ],
+ "wareshare-st-servo-controller": [
+  {
+   "label": "STEP",
+   "href": "files/modules/wareshare-st-servo-controller_rev01.step"
+  }
+ ],
+ "wrist-3-left": [
+  {
+   "label": "STEP",
+   "href": "files/modules/wrist-3-left_rev01.step"
+  }
+ ],
+ "vendor:150A_relay": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/150A_relay.step"
+  }
+ ],
+ "vendor:1_1_02_EB1201-501_1_1_1": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_02_EB1201-501_1_1_1.step"
+  }
+ ],
+ "vendor:1_1_02_EB461-502_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_02_EB461-502_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE.step"
+  }
+ ],
+ "vendor:1_1_02_EB461-502_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_02_EB461-502_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1.step"
+  }
+ ],
+ "vendor:1_1_02_EB461-502_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1_1": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_02_EB461-502_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1_1.step"
+  }
+ ],
+ "vendor:1_1_02_EB461-502_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_02_EB461-502_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2.step"
+  }
+ ],
+ "vendor:1_1_02_EB461-502_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2_1": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_02_EB461-502_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2_1.step"
+  }
+ ],
+ "vendor:1_1_02_EB571-960.stp": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_02_EB571-960.stp.step"
+  }
+ ],
+ "vendor:1_1_02_EB901-547_1_rotor": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_02_EB901-547_1_rotor.step"
+  }
+ ],
+ "vendor:1_1_02_EB901-547_1_rotor~2": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_02_EB901-547_1_rotor~2.step"
+  }
+ ],
+ "vendor:1_1_04_EB572-5105.stp": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_04_EB572-5105.stp.step"
+  }
+ ],
+ "vendor:1_1_04_EB672-503_1.stp": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_04_EB672-503_1.stp.step"
+  }
+ ],
+ "vendor:1_1_04_EB672-503_1.stp~2": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_04_EB672-503_1.stp~2.step"
+  }
+ ],
+ "vendor:1_1_06_EB1203-503_1_1_1": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_06_EB1203-503_1_1_1.step"
+  }
+ ],
+ "vendor:1_1_06_EB463-507_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_06_EB463-507_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE.step"
+  }
+ ],
+ "vendor:1_1_06_EB463-507_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_06_EB463-507_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1.step"
+  }
+ ],
+ "vendor:1_1_06_EB463-507_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1_1": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_06_EB463-507_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1_1.step"
+  }
+ ],
+ "vendor:1_1_06_EB463-507_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_06_EB463-507_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2.step"
+  }
+ ],
+ "vendor:1_1_06_EB463-507_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2_1": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_06_EB463-507_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2_1.step"
+  }
+ ],
+ "vendor:1_1_06_EB463-509_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_06_EB463-509_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE.step"
+  }
+ ],
+ "vendor:1_1_06_EB463-509_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_06_EB463-509_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1.step"
+  }
+ ],
+ "vendor:1_1_06_EB463-509_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1_1": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_06_EB463-509_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1_1.step"
+  }
+ ],
+ "vendor:1_1_06_EB463-509_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_06_EB463-509_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2.step"
+  }
+ ],
+ "vendor:1_1_06_EB463-509_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2_1": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_06_EB463-509_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2_1.step"
+  }
+ ],
+ "vendor:1_1_06_EB573-643.stp": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_06_EB573-643.stp.step"
+  }
+ ],
+ "vendor:1_1_06_EB673-516_1.stp": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_06_EB673-516_1.stp.step"
+  }
+ ],
+ "vendor:1_1_06_EB673-516_1.stp~2": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_06_EB673-516_1.stp~2.step"
+  }
+ ],
+ "vendor:1_1_06_EB823-507_AF0_1_1_06_EB823-509_ASM_FL82BLW33-48V-35N.m_1__FL82BLW33-48V-35N.m_1_.STEP~2": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_06_EB823-507_AF0_1_1_06_EB823-509_ASM_FL82BLW33-48V-35N.m_1__FL82BLW33-48V-3-5a39aa41.step"
+  }
+ ],
+ "vendor:1_1_06_EB823-507_AF0_1_1_06_EB823-509_ASM_FL82BLW33-48V-35N.m_1__FL82BLW33-48V-35N.m_1_.STEP": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_06_EB823-507_AF0_1_1_06_EB823-509_ASM_FL82BLW33-48V-35N.m_1__FL82BLW33-48V-3-fb6ac8c9.step"
+  }
+ ],
+ "vendor:1_1_06_EB903-537_1_1": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_06_EB903-537_1_1.step"
+  }
+ ],
+ "vendor:1_1_06_EB903-537_1_1~2": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_06_EB903-537_1_1~2.step"
+  }
+ ],
+ "vendor:1_1_31_EB1203-505_1_1_1": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_31_EB1203-505_1_1_1.step"
+  }
+ ],
+ "vendor:1_1_31_EB463-510_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_31_EB463-510_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE.step"
+  }
+ ],
+ "vendor:1_1_31_EB463-510_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_31_EB463-510_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1.step"
+  }
+ ],
+ "vendor:1_1_31_EB463-510_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1_1": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_31_EB463-510_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1_1.step"
+  }
+ ],
+ "vendor:1_1_31_EB463-510_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_31_EB463-510_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2.step"
+  }
+ ],
+ "vendor:1_1_31_EB463-510_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2_1": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_31_EB463-510_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2_1.step"
+  }
+ ],
+ "vendor:1_1_31_QT-1040_FL82BLW33-48V-35N.m_1__FL82BLW33-48V-35N.m_1_.STEP": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_31_QT-1040_FL82BLW33-48V-35N.m_1__FL82BLW33-48V-35N.m_1_.STEP.step"
+  }
+ ],
+ "vendor:1_1_31_QT-1040_FL82BLW33-48V-35N.m_1__FL82BLW33-48V-35N.m_1_.STEP~2": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_31_QT-1040_FL82BLW33-48V-35N.m_1__FL82BLW33-48V-35N.m_1_.STEP~2.step"
+  }
+ ],
+ "vendor:1_1_31_QT-942_1": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_31_QT-942_1.step"
+  }
+ ],
+ "vendor:1_1_31_QT-942_1~2": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_1_31_QT-942_1~2.step"
+  }
+ ],
+ "vendor:1_21_121000046___61810_50__1_1": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_21_121000046___61810_50__1_1.step"
+  }
+ ],
+ "vendor:1_21_121000047___7_1_1_1": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_21_121000047___7_1_1_1.step"
+  }
+ ],
+ "vendor:1_2_04_618030_1_1_1": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_2_04_618030_1_1_1.step"
+  }
+ ],
+ "vendor:1_2_04_635000_1_1": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_2_04_635000_1_1.step"
+  }
+ ],
+ "vendor:1_2_04_635000_1_1~2": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_2_04_635000_1_1~2.step"
+  }
+ ],
+ "vendor:1_2_04_670601_1.stp": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_2_04_670601_1.stp.step"
+  }
+ ],
+ "vendor:1_2_04_670601_1.stp~2": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_2_04_670601_1.stp~2.step"
+  }
+ ],
+ "vendor:1_2_04_680902_1_1": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_2_04_680902_1_1.step"
+  }
+ ],
+ "vendor:1_2_04_680902_1_1~2": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_2_04_680902_1_1~2.step"
+  }
+ ],
+ "vendor:1_2_16_001425_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_2_16_001425_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE.step"
+  }
+ ],
+ "vendor:1_2_16_001425_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_2_16_001425_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1.step"
+  }
+ ],
+ "vendor:1_2_16_001425_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1_1": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_2_16_001425_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1_1.step"
+  }
+ ],
+ "vendor:1_2_16_001425_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_2_16_001425_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2.step"
+  }
+ ],
+ "vendor:1_2_16_001425_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2_1": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_2_16_001425_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2_1.step"
+  }
+ ],
+ "vendor:1_3_03_000357_1_1": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_3_03_000357_1_1.step"
+  }
+ ],
+ "vendor:1_3_03_000357_1_1~2": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/1_3_03_000357_1_1~2.step"
+  }
+ ],
+ "vendor:ankle_top_cover": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/ankle_top_cover.step"
+  }
+ ],
+ "vendor:BACK_COVER1_1_06_EB903-538_1": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/BACK_COVER1_1_06_EB903-538_1.step"
+  }
+ ],
+ "vendor:BACK_COVER1_1_06_EB903-538_1~2": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/BACK_COVER1_1_06_EB903-538_1~2.step"
+  }
+ ],
+ "vendor:back_lid_1_1_06_EB573-642.stp": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/back_lid_1_1_06_EB573-642.stp.step"
+  }
+ ],
+ "vendor:battery_tester": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/battery_tester.step"
+  }
+ ],
+ "vendor:battery_zeee_10000mah": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/battery_zeee_10000mah.step"
+  }
+ ],
+ "vendor:block": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/block.step"
+  }
+ ],
+ "vendor:BOARD-17_1.stp": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/BOARD-17_1.stp.step"
+  }
+ ],
+ "vendor:BOARD-17_1.stp~2": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/BOARD-17_1.stp~2.step"
+  }
+ ],
+ "vendor:Board": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/Board.step"
+  }
+ ],
+ "vendor:BOARD_3D_KMMV03_2024-10-21_2__2.stp": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/BOARD_3D_KMMV03_2024-10-21_2__2.stp.step"
+  }
+ ],
+ "vendor:buck_converter_48_to_12": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/buck_converter_48_to_12.step"
+  }
+ ],
+ "vendor:cables": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/cables.step"
+  }
+ ],
+ "vendor:CAN_Isolated": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/CAN_Isolated.step"
+  }
+ ],
+ "vendor:casing": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/casing.step"
+  }
+ ],
+ "vendor:Component1": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/Component1.step"
+  }
+ ],
+ "vendor:Component2": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/Component2.step"
+  }
+ ],
+ "vendor:Component20": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/Component20.step"
+  }
+ ],
+ "vendor:Component21": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/Component21.step"
+  }
+ ],
+ "vendor:Component21~2": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/Component21~2.step"
+  }
+ ],
+ "vendor:Component26": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/Component26.step"
+  }
+ ],
+ "vendor:Component35": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/Component35.step"
+  }
+ ],
+ "vendor:Component35_1": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/Component35_1.step"
+  }
+ ],
+ "vendor:Component59": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/Component59.step"
+  }
+ ],
+ "vendor:Component59_1": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/Component59_1.step"
+  }
+ ],
+ "vendor:Component80": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/Component80.step"
+  }
+ ],
+ "vendor:Component80_1": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/Component80_1.step"
+  }
+ ],
+ "vendor:CORE": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/CORE.step"
+  }
+ ],
+ "vendor:CORE~2": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/CORE~2.step"
+  }
+ ],
+ "vendor:CORE~3": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/CORE~3.step"
+  }
+ ],
+ "vendor:dc-005-5a-20": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/dc-005-5a-20.step"
+  }
+ ],
+ "vendor:DIANJIBAN-2_SW0001_1_1_2_1": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/DIANJIBAN-2_SW0001_1_1_2_1.step"
+  }
+ ],
+ "vendor:dovetail_umi_gripper": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/dovetail_umi_gripper.step"
+  }
+ ],
+ "vendor:half-bearing-45x58x7_6809_5.4kN_40g": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/half-bearing-45x58x7_6809_5.4kN_40g.step"
+  }
+ ],
+ "vendor:half-bearing_30x37x4_6706_0.9kN_8g": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/half-bearing_30x37x4_6706_0.9kN_8g.step"
+  }
+ ],
+ "vendor:half-bearing_35x44x5_6707_1.6kN_15g": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/half-bearing_35x44x5_6707_1.6kN_15g.step"
+  }
+ ],
+ "vendor:half-bearing_35x44x5_6707_1.6kN_15g~2": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/half-bearing_35x44x5_6707_1.6kN_15g~2.step"
+  }
+ ],
+ "vendor:half-bearing_35x47x7_6807_4.0kN_29g": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/half-bearing_35x47x7_6807_4.0kN_29g.step"
+  }
+ ],
+ "vendor:half-bearing_50x65x7_6810_6.1kN_52g": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/half-bearing_50x65x7_6810_6.1kN_52g.step"
+  }
+ ],
+ "vendor:Hub": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/Hub.step"
+  }
+ ],
+ "vendor:IntelRealsense_D435_Multibody": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/IntelRealsense_D435_Multibody.step"
+  }
+ ],
+ "vendor:IntelRealsense_D435_Multibody_v9_1": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/IntelRealsense_D435_Multibody_v9_1.step"
+  }
+ ],
+ "vendor:lumped_wires": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/lumped_wires.step"
+  }
+ ],
+ "vendor:MINISFORUM_AI_X1": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/MINISFORUM_AI_X1.step"
+  }
+ ],
+ "vendor:OUTPUT-SHAFT.stp": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/OUTPUT-SHAFT.stp.step"
+  }
+ ],
+ "vendor:OUTPUTGEAR_40": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/OUTPUTGEAR_40.step"
+  }
+ ],
+ "vendor:PBC": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/PBC.step"
+  }
+ ],
+ "vendor:PBC~2": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/PBC~2.step"
+  }
+ ],
+ "vendor:PIS72-D6X_1_1_1": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/PIS72-D6X_1_1_1.step"
+  }
+ ],
+ "vendor:R06-ROTOR": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/R06-ROTOR.step"
+  }
+ ],
+ "vendor:R06-ROTOR~2": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/R06-ROTOR~2.step"
+  }
+ ],
+ "vendor:ROTOR": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/ROTOR.step"
+  }
+ ],
+ "vendor:SGQZC__35.stp": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/SGQZC__35.stp.step"
+  }
+ ],
+ "vendor:shaft_1_1_02_EB671-502_1.stp": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/shaft_1_1_02_EB671-502_1.stp.step"
+  }
+ ],
+ "vendor:shaft_1_1_02_EB671-502_1.stp~2": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/shaft_1_1_02_EB671-502_1.stp~2.step"
+  }
+ ],
+ "vendor:Small_Wires_Midplate_Rough": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/Small_Wires_Midplate_Rough.step"
+  }
+ ],
+ "vendor:SR_1__1": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/SR_1__1.step"
+  }
+ ],
+ "vendor:U-joint_type_C_adapter": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/U-joint_type_C_adapter.step"
+  }
+ ],
+ "vendor:U-joint_type_C_adapter_v3_1": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/U-joint_type_C_adapter_v3_1.step"
+  }
+ ],
+ "vendor:USB-C_Cable": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/USB-C_Cable.step"
+  }
+ ],
+ "vendor:USB_Straight": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/USB_Straight.step"
+  }
+ ],
+ "vendor:User_Library-DG350-3_5-02P": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/User_Library-DG350-3_5-02P.step"
+  }
+ ],
+ "vendor:VEMONT_USB-C_Hub_Long": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/VEMONT_USB-C_Hub_Long.step"
+  }
+ ],
+ "vendor:weight": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/weight.step"
+  }
+ ],
+ "vendor:weight~2": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/weight~2.step"
+  }
+ ],
+ "vendor:WJ-WK00-0412-TOPCABINET_74": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/WJ-WK00-0412-TOPCABINET_74.step"
+  }
+ ],
+ "vendor:WJ-WK00-0413-MIDDLECASE_80": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/WJ-WK00-0413-MIDDLECASE_80.step"
+  }
+ ],
+ "vendor:WJ-WK00-414-BOTTOMCASE_48": [
+  {
+   "label": "STEP",
+   "href": "files/vendor/WJ-WK00-414-BOTTOMCASE_48.step"
+  }
+ ]
+}

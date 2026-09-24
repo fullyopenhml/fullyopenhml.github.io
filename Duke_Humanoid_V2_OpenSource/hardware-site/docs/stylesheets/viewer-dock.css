@@ -1,0 +1,102 @@
+/* Docked part viewer (javascripts/viewer-dock.js). Sits beside the file tables
+   once the full-size viewer has scrolled out of view. */
+
+.dh-viewer-wrap { position: relative; }
+.dh-viewer-wrap.dh-collapsed { visibility: hidden; height: 0; overflow: hidden; }
+
+.dh-viewer-wrap.dh-docked {
+  position: fixed;
+  right: 1.2rem;
+  bottom: 1.2rem;
+  z-index: 3;
+  width: clamp(15rem, 21vw, 22rem);
+  overflow: hidden;
+  border: .05rem solid var(--md-default-fg-color--lightest);
+  border-radius: .6rem;
+  background: var(--md-default-bg-color);
+  box-shadow: var(--md-shadow-z3);
+  animation: dh-dock-in .22s ease-out;
+}
+@keyframes dh-dock-in {
+  from { opacity: 0; transform: translateY(.6rem) scale(.98); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dh-viewer-wrap.dh-docked { animation: none; }
+}
+
+.dh-viewer-wrap.dh-docked #dh-viewer {
+  height: auto;
+  aspect-ratio: 1 / 1;
+  border-radius: 0;
+  background: var(--md-code-bg-color);
+}
+.dh-viewer-wrap.dh-docked .dh-viewer-bar {
+  margin: 0;
+  padding: .45rem .6rem .55rem;
+  gap: .35rem .5rem;
+  font-size: .65rem;
+  border-top: .05rem solid var(--md-default-fg-color--lightest);
+}
+.dh-viewer-wrap.dh-docked .dh-viewer-legend { display: none; }
+.dh-viewer-wrap.dh-docked .md-button { padding: .2em .8em; font-size: .65rem; }
+.dh-viewer-wrap.dh-docked #dh-viewer-info {
+  flex-basis: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;   /* facts, downloads and the module chain still fit */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  padding: .3rem .5rem;
+  line-height: 1.6;
+}
+.dh-viewer-wrap.dh-docked .dh-axis { width: 1rem; height: 1rem; font-size: .55rem; }
+
+/* Card controls: appear on hover or keyboard focus, always on touch screens. */
+.dh-dock-tools { position: absolute; top: .45rem; right: .45rem; display: none; gap: .3rem; }
+.dh-viewer-wrap.dh-docked .dh-dock-tools { display: flex; opacity: 0; transition: opacity .15s; }
+.dh-viewer-wrap.dh-docked:hover .dh-dock-tools,
+.dh-viewer-wrap.dh-docked:focus-within .dh-dock-tools { opacity: 1; }
+@media (hover: none) { .dh-viewer-wrap.dh-docked .dh-dock-tools { opacity: 1; } }
+.dh-dock-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 1.7rem; height: 1.7rem; padding: 0;
+  border: .05rem solid var(--md-default-fg-color--lightest);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--md-default-bg-color) 85%, transparent);
+  color: var(--md-default-fg-color--light);
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+}
+.dh-dock-btn:hover, .dh-dock-btn:focus-visible { color: var(--md-accent-fg-color); border-color: var(--md-accent-fg-color); outline: none; }
+
+/* Pill that brings a hidden card back. */
+.md-typeset .dh-dock-pill, .dh-dock-pill {
+  position: fixed; right: 1.2rem; bottom: 1.2rem; z-index: 3;
+  display: inline-flex; align-items: center; gap: .4rem;
+  padding: .35em 1em .35em .8em;
+  border-radius: 2rem;
+  font-size: .7rem;
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+  border: .05rem solid var(--md-default-fg-color--lightest);
+  box-shadow: var(--md-shadow-z2);
+  cursor: pointer;
+}
+.dh-dock-pill[hidden] { display: none; }
+.dh-dock-pill:hover { color: var(--md-accent-fg-color); border-color: var(--md-accent-fg-color); }
+
+/* Drag handle along the top of the docked card (viewer-dock.js). */
+.dh-dock-handle { display: none; }
+.dh-viewer-wrap.dh-docked .dh-dock-handle {
+  display: flex; position: absolute; top: 0; left: 0; right: 4.2rem; height: 1.7rem; z-index: 2;
+  align-items: center; justify-content: center; gap: .3rem;
+  font-size: .6rem; color: var(--md-default-fg-color--light);
+  background: linear-gradient(var(--md-default-bg-color) 60%, transparent);
+  cursor: move; user-select: none; touch-action: none; opacity: 0; transition: opacity .15s;
+}
+.dh-viewer-wrap.dh-docked:hover .dh-dock-handle,
+.dh-viewer-wrap.dh-docked:focus-within .dh-dock-handle,
+.dh-viewer-wrap.dh-docked.dh-dragging .dh-dock-handle { opacity: 1; }
+@media (hover: none) { .dh-viewer-wrap.dh-docked .dh-dock-handle { opacity: 1; } }
+.dh-viewer-wrap.dh-docked.dh-dragging { animation: none; cursor: grabbing; }
+.dh-viewer-wrap.dh-docked .dh-dock-tools { z-index: 3; }

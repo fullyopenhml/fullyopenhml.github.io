@@ -1,0 +1,182 @@
+site_name: Duke Humanoid V2 — Hardware
+site_description: >-
+  The hardware release for Duke Humanoid V2: bill of materials, fabrication data,
+  assembly, wiring and bring-up, so that a second identical robot can be built.
+site_author: General Robotics Lab, Duke University
+site_url: https://generalroboticslab.github.io/duke_humanoid_v2/
+
+repo_url: https://github.com/generalroboticslab/duke_humanoid_v2
+repo_name: generalroboticslab/duke_humanoid_v2
+edit_uri: edit/main/hardware-site/docs/
+
+copyright: >-
+  Copyright &copy; General Robotics Lab, Duke University —
+  hardware and documentation licence not yet declared, see
+  <a href="https://generalroboticslab.github.io/duke_humanoid_v2/reference/citation-and-license/">Citation &amp; licence</a>.
+
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - navigation.tracking
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+    - content.action.edit
+  icon:
+    repo: fontawesome/brands/github
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+extra_css:
+  - stylesheets/extra.css
+
+extra:
+  # Consumed by main.py. Keep release-wide constants here, never in page prose.
+  bom_data_dir: data
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/generalroboticslab
+      name: General Robotics Lab on GitHub
+
+plugins:
+  - search
+  - glightbox:
+      touchNavigation: true
+      loop: false
+      effect: zoom
+      zoomable: true
+      draggable: true
+  - macros:
+      module_name: main
+      on_error_fail: true
+  - table-reader:
+      data_path: docs
+      allow_missing_files: false
+  # Page dates come from git history. Off unless GIT_REVISION_DATE is set, so
+  # that `mkdocs build --strict` also succeeds outside a git checkout (a release
+  # tarball, a fresh scaffold). CI sets GIT_REVISION_DATE=true with full history.
+  - git-revision-date-localized:
+      enabled: !ENV [GIT_REVISION_DATE, false]
+      fallback_to_build_date: true
+      enable_git_follow: false
+      type: date
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - pymdownx.details
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.keys
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - toc:
+      permalink: true
+      toc_depth: 3
+
+nav:
+  - Home: index.md
+
+  - Before you start:
+      - before-you-start/index.md
+      - Safety: before-you-start/safety.md
+      - What you get: before-you-start/what-you-get.md
+      - Skills and shop access: before-you-start/skills-and-shop.md
+      - Cost and time: before-you-start/cost-and-time.md
+
+  - Design:
+      - design/index.md
+      - Torque targets and mass: design/torque-targets-and-mass.md
+      - Actuator selection: design/actuator-selection.md
+      - Actuator sizing in simulation: design/actuator-sizing-simulation.md
+      - Structure and manufacturing: design/structure-and-manufacturing.md
+      - Electronics and sensing: design/electronics-and-sensing.md
+      - Single-leg phase: design/single-leg-phase.md
+
+  - Bill of materials:
+      - bom/index.md
+      - Actuators: bom/actuators.md
+      - Electronics: bom/electronics.md
+      - CNC parts: bom/cnc-parts.md
+      - Printed parts: bom/printed-parts.md
+      - Fasteners and hardware: bom/fasteners-and-hardware.md
+      - Cables and connectors: bom/cables-and-connectors.md
+      - Sourcing: bom/sourcing.md
+
+  - Fabrication:
+      - fabrication/index.md
+      - CAD downloads: fabrication/cad-downloads.md
+      - CNC guide: fabrication/cnc-guide.md
+      - Printing guide: fabrication/printing-guide.md
+      - Incoming inspection: fabrication/incoming-inspection.md
+
+  - Assembly:
+      - assembly/index.md
+      - Tools: assembly/tools.md
+      - Leg: assembly/leg.md
+      - Arm: assembly/arm.md
+      - Torso and waist: assembly/torso-and-waist.md
+      - Head and camera gimbal: assembly/head-and-camera-gimbal.md
+      - Gripper: assembly/gripper.md
+      - Final integration: assembly/final-integration.md
+
+  - Electrical:
+      - electrical/index.md
+      - Power system: electrical/power-system.md
+      - CAN bus: electrical/can-bus.md
+      - Harness fabrication: electrical/harness-fabrication.md
+      - Routing: electrical/routing.md
+      - Pre-power checks: electrical/pre-power-checks.md
+
+  - Bring-up:
+      - bringup/index.md
+      - First power-on: bringup/first-power-on.md
+      - Motor ID and config: bringup/motor-id-and-config.md
+      - Joint zeroing: bringup/joint-zeroing.md
+      - Camera calibration: bringup/camera-calibration.md
+      - Acceptance tests: bringup/acceptance-tests.md
+
+  - Software: software.md
+
+  - Reference:
+      - reference/index.md
+      - Open items (punch list): reference/todo.md
+      - Full specifications: reference/full-specifications.md
+      - Part index: reference/part-index.md
+      - Revisions: reference/revisions.md
+      - Troubleshooting: reference/troubleshooting.md
+      - FAQ: reference/faq.md
+      - Citation and licence: reference/citation-and-license.md

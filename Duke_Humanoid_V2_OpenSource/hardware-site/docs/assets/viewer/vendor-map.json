@@ -1,0 +1,1906 @@
+{
+ "CORE~3": {
+  "part_id": "ACT_RS00",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 00 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride00"
+ },
+ "BOARD_3D_KMMV03_2024-10-21_2__2.stp": {
+  "part_id": "ACT_RS00",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 00 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride00"
+ },
+ "SOLID-17_CON_P4_11_438X3_2_HD_3.stp": {
+  "part_id": "ACT_RS00",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 00 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride00"
+ },
+ "SOLID-17_CON_P4_11_438X3_2_HD_2.stp": {
+  "part_id": "ACT_RS00",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 00 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride00"
+ },
+ "1_1_02_EB571-960.stp": {
+  "part_id": "ACT_RS00",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 00 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride00"
+ },
+ "1_1_04_EB572-5105.stp": {
+  "part_id": "ACT_RS00",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 00 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride00"
+ },
+ "1_1_06_EB573-643.stp": {
+  "part_id": "ACT_RS00",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 00 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride00"
+ },
+ "1_1_14_PL574-570.stp": {
+  "part_id": "ACT_RS00",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 00 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride00"
+ },
+ "1_21_121000022__SGQZC619-4_4-.stp": {
+  "part_id": "ACT_RS00",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 00 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride00"
+ },
+ "SGQZC__35.stp": {
+  "part_id": "ACT_RS00",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 00 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride00"
+ },
+ "1_2_04_000306.stp": {
+  "part_id": "ACT_RS00",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 00 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride00"
+ },
+ "1_2_05_000314.stp": {
+  "part_id": "ACT_RS00",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 00 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride00"
+ },
+ "1_2_05_020068.stp": {
+  "part_id": "ACT_RS00",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 00 quasi-direct-drive actuator",
+  "qty_in_model": 14,
+  "via": "robstride00"
+ },
+ "1_2_05_025121.stp": {
+  "part_id": "ACT_RS00",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 00 quasi-direct-drive actuator",
+  "qty_in_model": 8,
+  "via": "robstride00"
+ },
+ "OUTPUT-SHAFT.stp": {
+  "part_id": "ACT_RS00",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 00 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride00"
+ },
+ "back_lid_1_1_06_EB573-642.stp": {
+  "part_id": "ACT_RS00",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 00 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride00"
+ },
+ "half-bearing_30x37x4_6706_0.9kN_8g": {
+  "part_id": "FAS_BEARING_30X37X4",
+  "bom_file": "fasteners.csv",
+  "description": "Ball bearing, 30 x 37 x 4 mm",
+  "qty_in_model": 4,
+  "via": ""
+ },
+ "0001755652_1_1_30_GR-2202_ASM_1_ASM_1_1_30_GR-2202_ASM_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 4,
+  "via": "robstride05"
+ },
+ "0001755650_00MINI-000_ASM_1_ASM_1_ASM_00MINI-_20250103_A0001_ASM_1_AS_ASM_1_1_30_GR-2202_ASM_1_ASM_1_1_30_GR-2202_ASM_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride05"
+ },
+ "0001755652_00MINI-000_ASM_1_ASM_1_ASM_00MINI-_20250103_A0001_ASM_1_AS_ASM_1_1_30_GR-2202_ASM_1_ASM_1_1_30_GR-2202_ASM_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride05"
+ },
+ "1_21_121000022__610001_1_1_00MINI-000_ASM_1_ASM_1_ASM_00MINI-_20250103_A0001_ASM_1_AS_ASM_1_1_30_GR-2202_ASM_1_ASM_1_1_30_GR-2202_ASM_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride05"
+ },
+ "6706__300001_1_1_00MINI-000_ASM_1_ASM_1_ASM_00MINI-_20250103_A0001_ASM_1_AS_ASM_1_1_30_GR-2202_ASM_1_ASM_1_1_30_GR-2202_ASM_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride05"
+ },
+ "Component20": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride05"
+ },
+ "1_1_02_EB461-502_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride05"
+ },
+ "1_1_06_EB463-507_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride05"
+ },
+ "1_1_06_EB463-509_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride05"
+ },
+ "1_1_31_EB463-510_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride05"
+ },
+ "1_2_05_000438_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 16,
+  "via": "robstride05"
+ },
+ "1_2_05_000555_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 16,
+  "via": "robstride05"
+ },
+ "1_2_05_000608_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 8,
+  "via": "robstride05"
+ },
+ "1_2_05_020051_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 6,
+  "via": "robstride05"
+ },
+ "1_2_16_001425_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride05"
+ },
+ "1_1_02_EB901-547_1_rotor~2": {
+  "part_id": "ACT_RS03",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 03 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "Robstride 03 - full"
+ },
+ "1_1_06_EB903-537_1_1~2": {
+  "part_id": "ACT_RS03",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 03 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "Robstride 03 - full"
+ },
+ "1_1_31_QT-942_1~2": {
+  "part_id": "ACT_RS03",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 03 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "Robstride 03 - full"
+ },
+ "1_2_04_635000_1_1~2": {
+  "part_id": "ACT_RS03",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 03 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "Robstride 03 - full"
+ },
+ "1_2_04_680902_1_1~2": {
+  "part_id": "ACT_RS03",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 03 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "Robstride 03 - full"
+ },
+ "1_2_05_130001_1_1~2": {
+  "part_id": "ACT_RS03",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 03 quasi-direct-drive actuator",
+  "qty_in_model": 3,
+  "via": "Robstride 03 - full"
+ },
+ "1_2_06_000004_AF0_1_1~2": {
+  "part_id": "ACT_RS03",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 03 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "Robstride 03 - full"
+ },
+ "1_3_03_000357_1_1~2": {
+  "part_id": "ACT_RS03",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 03 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "Robstride 03 - full"
+ },
+ "CORE~2": {
+  "part_id": "ACT_RS03",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 03 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "Robstride 03 - full"
+ },
+ "PBC~2": {
+  "part_id": "ACT_RS03",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 03 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "Robstride 03 - full"
+ },
+ "BACK_COVER1_1_06_EB903-538_1~2": {
+  "part_id": "ACT_RS03",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 03 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "Robstride 03 - full"
+ },
+ "1_2_05_020108_1_1~2": {
+  "part_id": "ACT_RS03",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 03 quasi-direct-drive actuator",
+  "qty_in_model": 4,
+  "via": "Robstride 03 - full"
+ },
+ "1_2_05_140095_1_1~2": {
+  "part_id": "ACT_RS03",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 03 quasi-direct-drive actuator",
+  "qty_in_model": 4,
+  "via": "Robstride 03 - full"
+ },
+ "1_1_31_QT-1040_FL82BLW33-48V-35N.m_1__FL82BLW33-48V-35N.m_1_.STEP~2": {
+  "part_id": "ACT_RS06",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 06 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "Robstride 06-No Back Cover"
+ },
+ "1_1_06_EB823-507_AF0_1_1_06_EB823-509_ASM_FL82BLW33-48V-35N.m_1__FL82BLW33-48V-35N.m_1_.STEP~2": {
+  "part_id": "ACT_RS06",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 06 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "Robstride 06-No Back Cover"
+ },
+ "R06-ROTOR~2": {
+  "part_id": "ACT_RS06",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 06 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "Robstride 06-No Back Cover"
+ },
+ "weight~2": {
+  "part_id": "ACT_RS06",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 06 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "Robstride 06-No Back Cover"
+ },
+ "half-bearing_35x44x5_6707_1.6kN_15g~2": {
+  "part_id": "FAS_BEARING_35X44X5",
+  "bom_file": "fasteners.csv",
+  "description": "Ball bearing, 35 x 44 x 5 mm",
+  "qty_in_model": 14,
+  "via": ""
+ },
+ "1_1_04_EB672-503_1.stp": {
+  "part_id": "ACT_RS02",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 02 quasi-direct-drive actuator",
+  "qty_in_model": 3,
+  "via": "robstride_02-No_back_cover"
+ },
+ "1_1_06_EB673-516_1.stp": {
+  "part_id": "ACT_RS02",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 02 quasi-direct-drive actuator",
+  "qty_in_model": 3,
+  "via": "robstride_02-No_back_cover"
+ },
+ "1_1_31_PL674-504_1.stp": {
+  "part_id": "ACT_RS02",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 02 quasi-direct-drive actuator",
+  "qty_in_model": 3,
+  "via": "robstride_02-No_back_cover"
+ },
+ "1_2_04_670601_1.stp": {
+  "part_id": "ACT_RS02",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 02 quasi-direct-drive actuator",
+  "qty_in_model": 3,
+  "via": "robstride_02-No_back_cover"
+ },
+ "1_2_05_030080_1.stp": {
+  "part_id": "ACT_RS02",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 02 quasi-direct-drive actuator",
+  "qty_in_model": 3,
+  "via": "robstride_02-No_back_cover"
+ },
+ "1_2_05_QT-170_1.stp": {
+  "part_id": "ACT_RS02",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 02 quasi-direct-drive actuator",
+  "qty_in_model": 12,
+  "via": "robstride_02-No_back_cover"
+ },
+ "1_2_05_QT-647_1.stp": {
+  "part_id": "ACT_RS02",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 02 quasi-direct-drive actuator",
+  "qty_in_model": 9,
+  "via": "robstride_02-No_back_cover"
+ },
+ "1_2_06_000392_1.stp": {
+  "part_id": "ACT_RS02",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 02 quasi-direct-drive actuator",
+  "qty_in_model": 3,
+  "via": "robstride_02-No_back_cover"
+ },
+ "BOARD-17_1.stp": {
+  "part_id": "ACT_RS02",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 02 quasi-direct-drive actuator",
+  "qty_in_model": 3,
+  "via": "robstride_02-No_back_cover"
+ },
+ "SOLID-183013_1.stp": {
+  "part_id": "ACT_RS02",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 02 quasi-direct-drive actuator",
+  "qty_in_model": 6,
+  "via": "robstride_02-No_back_cover"
+ },
+ "shaft_1_1_02_EB671-502_1.stp": {
+  "part_id": "ACT_RS02",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 02 quasi-direct-drive actuator",
+  "qty_in_model": 3,
+  "via": "robstride_02-No_back_cover"
+ },
+ "Component21": {
+  "part_id": "ACT_RS02",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 02 quasi-direct-drive actuator",
+  "qty_in_model": 3,
+  "via": "robstride_02-No_back_cover"
+ },
+ "1_1_04_EB672-503_1.stp~2": {
+  "part_id": "ACT_RS02",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 02 quasi-direct-drive actuator",
+  "qty_in_model": 3,
+  "via": "robstride_02-No_back_cover"
+ },
+ "1_1_06_EB673-516_1.stp~2": {
+  "part_id": "ACT_RS02",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 02 quasi-direct-drive actuator",
+  "qty_in_model": 3,
+  "via": "robstride_02-No_back_cover"
+ },
+ "1_1_31_PL674-504_1.stp~2": {
+  "part_id": "ACT_RS02",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 02 quasi-direct-drive actuator",
+  "qty_in_model": 3,
+  "via": "robstride_02-No_back_cover"
+ },
+ "1_2_04_670601_1.stp~2": {
+  "part_id": "ACT_RS02",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 02 quasi-direct-drive actuator",
+  "qty_in_model": 3,
+  "via": "robstride_02-No_back_cover"
+ },
+ "1_2_05_030080_1.stp~2": {
+  "part_id": "ACT_RS02",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 02 quasi-direct-drive actuator",
+  "qty_in_model": 3,
+  "via": "robstride_02-No_back_cover"
+ },
+ "1_2_05_QT-170_1.stp~2": {
+  "part_id": "ACT_RS02",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 02 quasi-direct-drive actuator",
+  "qty_in_model": 12,
+  "via": "robstride_02-No_back_cover"
+ },
+ "1_2_05_QT-647_1.stp~2": {
+  "part_id": "ACT_RS02",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 02 quasi-direct-drive actuator",
+  "qty_in_model": 9,
+  "via": "robstride_02-No_back_cover"
+ },
+ "1_2_06_000392_1.stp~2": {
+  "part_id": "ACT_RS02",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 02 quasi-direct-drive actuator",
+  "qty_in_model": 3,
+  "via": "robstride_02-No_back_cover"
+ },
+ "BOARD-17_1.stp~2": {
+  "part_id": "ACT_RS02",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 02 quasi-direct-drive actuator",
+  "qty_in_model": 3,
+  "via": "robstride_02-No_back_cover"
+ },
+ "SOLID-183013_1.stp~2": {
+  "part_id": "ACT_RS02",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 02 quasi-direct-drive actuator",
+  "qty_in_model": 6,
+  "via": "robstride_02-No_back_cover"
+ },
+ "shaft_1_1_02_EB671-502_1.stp~2": {
+  "part_id": "ACT_RS02",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 02 quasi-direct-drive actuator",
+  "qty_in_model": 3,
+  "via": "robstride_02-No_back_cover"
+ },
+ "Component21~2": {
+  "part_id": "ACT_RS02",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 02 quasi-direct-drive actuator",
+  "qty_in_model": 3,
+  "via": "robstride_02-No_back_cover"
+ },
+ "CAN_Isolated": {
+  "part_id": "EL_CAN_ADAPTER",
+  "bom_file": "electronics.csv",
+  "description": "CANable PRO V2.0 USB-CAN controller",
+  "qty_in_model": 6,
+  "via": ""
+ },
+ "Component1": {
+  "part_id": "EL_IMU_TM171",
+  "bom_file": "electronics.csv",
+  "description": "SYD Dynamics TransducerM TM171 9-axis AHRS, dual-port",
+  "qty_in_model": 1,
+  "via": "IMU_syd_dynamics_TM171"
+ },
+ "Component2": {
+  "part_id": "EL_IMU_TM171",
+  "bom_file": "electronics.csv",
+  "description": "SYD Dynamics TransducerM TM171 9-axis AHRS, dual-port",
+  "qty_in_model": 1,
+  "via": "IMU_syd_dynamics_TM171"
+ },
+ "MINISFORUM_AI_X1": {
+  "part_id": "EL_COMPUTE_MINIPC",
+  "bom_file": "electronics.csv",
+  "description": "MINISFORUM X1-470 mini PC (onboard computer)",
+  "qty_in_model": 1,
+  "via": ""
+ },
+ "VEMONT_USB-C_Hub_Long": {
+  "part_id": "EL_USB_HUB",
+  "bom_file": "electronics.csv",
+  "description": "Vention USB hub",
+  "qty_in_model": 2,
+  "via": ""
+ },
+ "Hub": {
+  "part_id": "EL_USB_HUB",
+  "bom_file": "electronics.csv",
+  "description": "Vention USB hub",
+  "qty_in_model": 1,
+  "via": "Vention USB Hub"
+ },
+ "USB_Straight": {
+  "part_id": "EL_USB_HUB",
+  "bom_file": "electronics.csv",
+  "description": "Vention USB hub",
+  "qty_in_model": 13,
+  "via": "Vention USB Hub"
+ },
+ "battery_tester": {
+  "part_id": "EL_VOLTAGE_CHECKER",
+  "bom_file": "electronics.csv",
+  "description": "LiPo voltage checker, 1-8S, with case",
+  "qty_in_model": 2,
+  "via": ""
+ },
+ "battery_zeee_10000mah": {
+  "part_id": "EL_BATTERY_6S",
+  "bom_file": "electronics.csv",
+  "description": "Zeee 6S LiPo battery, 10000 mAh, 22.2 V, 2-pack",
+  "qty_in_model": 2,
+  "via": ""
+ },
+ "block": {
+  "part_id": "EL_DIST_BLOCK",
+  "bom_file": "electronics.csv",
+  "description": "Power distribution block terminals",
+  "qty_in_model": 4,
+  "via": ""
+ },
+ "half-bearing-45x58x7_6809_5.4kN_40g": {
+  "part_id": "FAS_BEARING_45X58X7",
+  "bom_file": "fasteners.csv",
+  "description": "Ball bearing, 45 x 58 x 7 mm",
+  "qty_in_model": 26,
+  "via": ""
+ },
+ "IntelRealsense_D435_Multibody_v9_1": {
+  "part_id": "EL_CAM_D436",
+  "bom_file": "electronics.csv",
+  "description": "Intel RealSense D436 depth camera",
+  "qty_in_model": 1,
+  "via": ""
+ },
+ "Component31_1": {
+  "part_id": "EL_CAM_D436",
+  "bom_file": "electronics.csv",
+  "description": "Intel RealSense D436 depth camera",
+  "qty_in_model": 1,
+  "via": "IntelRealsense_D435_Multibody v9 (1)"
+ },
+ "Component32_1": {
+  "part_id": "EL_CAM_D436",
+  "bom_file": "electronics.csv",
+  "description": "Intel RealSense D436 depth camera",
+  "qty_in_model": 1,
+  "via": "IntelRealsense_D435_Multibody v9 (1)"
+ },
+ "Component33_1": {
+  "part_id": "EL_CAM_D436",
+  "bom_file": "electronics.csv",
+  "description": "Intel RealSense D436 depth camera",
+  "qty_in_model": 1,
+  "via": "IntelRealsense_D435_Multibody v9 (1)"
+ },
+ "Component34_1": {
+  "part_id": "EL_CAM_D436",
+  "bom_file": "electronics.csv",
+  "description": "Intel RealSense D436 depth camera",
+  "qty_in_model": 1,
+  "via": "IntelRealsense_D435_Multibody v9 (1)"
+ },
+ "Component35_1": {
+  "part_id": "EL_CAM_D436",
+  "bom_file": "electronics.csv",
+  "description": "Intel RealSense D436 depth camera",
+  "qty_in_model": 1,
+  "via": "IntelRealsense_D435_Multibody v9 (1)"
+ },
+ "Component36_1": {
+  "part_id": "EL_CAM_D436",
+  "bom_file": "electronics.csv",
+  "description": "Intel RealSense D436 depth camera",
+  "qty_in_model": 1,
+  "via": "IntelRealsense_D435_Multibody v9 (1)"
+ },
+ "Component37_1": {
+  "part_id": "EL_CAM_D436",
+  "bom_file": "electronics.csv",
+  "description": "Intel RealSense D436 depth camera",
+  "qty_in_model": 1,
+  "via": "IntelRealsense_D435_Multibody v9 (1)"
+ },
+ "glass_1": {
+  "part_id": "EL_CAM_D436",
+  "bom_file": "electronics.csv",
+  "description": "Intel RealSense D436 depth camera",
+  "qty_in_model": 1,
+  "via": "IntelRealsense_D435_Multibody v9 (1)"
+ },
+ "U-joint_type_C_adapter_v3_1": {
+  "part_id": "EL_USBC_ADAPTER",
+  "bom_file": "electronics.csv",
+  "description": "USB-C right-angle adapter, camera cable to the D436",
+  "qty_in_model": 1,
+  "via": ""
+ },
+ "0001755652_1_1_30_GR-2202_ASM_1_ASM_1_1_30_GR-2202_ASM_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride05 v16 (1) (1)"
+ },
+ "0001755650_00MINI-000_ASM_1_ASM_1_ASM_00MINI-_20250103_A0001_ASM_1_AS_ASM_1_1_30_GR-2202_ASM_1_ASM_1_1_30_GR-2202_ASM_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (1) (1)"
+ },
+ "0001755652_00MINI-000_ASM_1_ASM_1_ASM_00MINI-_20250103_A0001_ASM_1_AS_ASM_1_1_30_GR-2202_ASM_1_ASM_1_1_30_GR-2202_ASM_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (1) (1)"
+ },
+ "1_21_121000022__610001_1_1_00MINI-000_ASM_1_ASM_1_ASM_00MINI-_20250103_A0001_ASM_1_AS_ASM_1_1_30_GR-2202_ASM_1_ASM_1_1_30_GR-2202_ASM_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (1) (1)"
+ },
+ "6706__300001_1_1_00MINI-000_ASM_1_ASM_1_ASM_00MINI-_20250103_A0001_ASM_1_AS_ASM_1_1_30_GR-2202_ASM_1_ASM_1_1_30_GR-2202_ASM_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (1) (1)"
+ },
+ "Component59_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (1) (1)"
+ },
+ "1_1_02_EB461-502_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (1) (1)"
+ },
+ "1_1_06_EB463-507_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (1) (1)"
+ },
+ "1_1_06_EB463-509_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (1) (1)"
+ },
+ "1_1_31_EB463-510_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (1) (1)"
+ },
+ "1_2_05_000438_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 8,
+  "via": "robstride05 v16 (1) (1)"
+ },
+ "1_2_05_000555_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 8,
+  "via": "robstride05 v16 (1) (1)"
+ },
+ "1_2_05_000608_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 4,
+  "via": "robstride05 v16 (1) (1)"
+ },
+ "1_2_05_020051_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 3,
+  "via": "robstride05 v16 (1) (1)"
+ },
+ "1_2_16_001425_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (1) (1)"
+ },
+ "0001755652_1_1_30_GR-2202_ASM_1_ASM_1_1_30_GR-2202_ASM_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride05 v16 (2) (1)"
+ },
+ "0001755650_00MINI-000_ASM_1_ASM_1_ASM_00MINI-_20250103_A0001_ASM_1_AS_ASM_1_1_30_GR-2202_ASM_1_ASM_1_1_30_GR-2202_ASM_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (2) (1)"
+ },
+ "0001755652_00MINI-000_ASM_1_ASM_1_ASM_00MINI-_20250103_A0001_ASM_1_AS_ASM_1_1_30_GR-2202_ASM_1_ASM_1_1_30_GR-2202_ASM_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (2) (1)"
+ },
+ "1_21_121000022__610001_1_1_00MINI-000_ASM_1_ASM_1_ASM_00MINI-_20250103_A0001_ASM_1_AS_ASM_1_1_30_GR-2202_ASM_1_ASM_1_1_30_GR-2202_ASM_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (2) (1)"
+ },
+ "6706__300001_1_1_00MINI-000_ASM_1_ASM_1_ASM_00MINI-_20250103_A0001_ASM_1_AS_ASM_1_1_30_GR-2202_ASM_1_ASM_1_1_30_GR-2202_ASM_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (2) (1)"
+ },
+ "Component80_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (2) (1)"
+ },
+ "1_1_02_EB461-502_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (2) (1)"
+ },
+ "1_1_06_EB463-507_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (2) (1)"
+ },
+ "1_1_06_EB463-509_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (2) (1)"
+ },
+ "1_1_31_EB463-510_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (2) (1)"
+ },
+ "1_2_05_000438_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 8,
+  "via": "robstride05 v16 (2) (1)"
+ },
+ "1_2_05_000555_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 8,
+  "via": "robstride05 v16 (2) (1)"
+ },
+ "1_2_05_000608_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 4,
+  "via": "robstride05 v16 (2) (1)"
+ },
+ "1_2_05_020051_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 3,
+  "via": "robstride05 v16 (2) (1)"
+ },
+ "1_2_16_001425_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (2) (1)"
+ },
+ "IntelRealsense_D435_Multibody": {
+  "part_id": "EL_CAM_D436",
+  "bom_file": "electronics.csv",
+  "description": "Intel RealSense D436 depth camera",
+  "qty_in_model": 1,
+  "via": ""
+ },
+ "Component31": {
+  "part_id": "EL_CAM_D436",
+  "bom_file": "electronics.csv",
+  "description": "Intel RealSense D436 depth camera",
+  "qty_in_model": 1,
+  "via": "IntelRealsense_D435_Multibody v9"
+ },
+ "Component32": {
+  "part_id": "EL_CAM_D436",
+  "bom_file": "electronics.csv",
+  "description": "Intel RealSense D436 depth camera",
+  "qty_in_model": 1,
+  "via": "IntelRealsense_D435_Multibody v9"
+ },
+ "Component33": {
+  "part_id": "EL_CAM_D436",
+  "bom_file": "electronics.csv",
+  "description": "Intel RealSense D436 depth camera",
+  "qty_in_model": 1,
+  "via": "IntelRealsense_D435_Multibody v9"
+ },
+ "Component34": {
+  "part_id": "EL_CAM_D436",
+  "bom_file": "electronics.csv",
+  "description": "Intel RealSense D436 depth camera",
+  "qty_in_model": 1,
+  "via": "IntelRealsense_D435_Multibody v9"
+ },
+ "Component35": {
+  "part_id": "EL_CAM_D436",
+  "bom_file": "electronics.csv",
+  "description": "Intel RealSense D436 depth camera",
+  "qty_in_model": 1,
+  "via": "IntelRealsense_D435_Multibody v9"
+ },
+ "Component36": {
+  "part_id": "EL_CAM_D436",
+  "bom_file": "electronics.csv",
+  "description": "Intel RealSense D436 depth camera",
+  "qty_in_model": 1,
+  "via": "IntelRealsense_D435_Multibody v9"
+ },
+ "Component37": {
+  "part_id": "EL_CAM_D436",
+  "bom_file": "electronics.csv",
+  "description": "Intel RealSense D436 depth camera",
+  "qty_in_model": 1,
+  "via": "IntelRealsense_D435_Multibody v9"
+ },
+ "glass": {
+  "part_id": "EL_CAM_D436",
+  "bom_file": "electronics.csv",
+  "description": "Intel RealSense D436 depth camera",
+  "qty_in_model": 1,
+  "via": "IntelRealsense_D435_Multibody v9"
+ },
+ "U-joint_type_C_adapter": {
+  "part_id": "EL_USBC_ADAPTER",
+  "bom_file": "electronics.csv",
+  "description": "USB-C right-angle adapter, camera cable to the D436",
+  "qty_in_model": 1,
+  "via": ""
+ },
+ "bearing": {
+  "part_id": "FAS_BEARING_10X15X4",
+  "bom_file": "fasteners.csv",
+  "description": "Ball bearing, 10 x 15 x 4 mm",
+  "qty_in_model": 1,
+  "via": ""
+ },
+ "0001755652_1_1_30_GR-2202_ASM_1_ASM_1_1_30_GR-2202_ASM_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride05 v16 (1)"
+ },
+ "0001755650_00MINI-000_ASM_1_ASM_1_ASM_00MINI-_20250103_A0001_ASM_1_AS_ASM_1_1_30_GR-2202_ASM_1_ASM_1_1_30_GR-2202_ASM_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (1)"
+ },
+ "0001755652_00MINI-000_ASM_1_ASM_1_ASM_00MINI-_20250103_A0001_ASM_1_AS_ASM_1_1_30_GR-2202_ASM_1_ASM_1_1_30_GR-2202_ASM_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (1)"
+ },
+ "1_21_121000022__610001_1_1_00MINI-000_ASM_1_ASM_1_ASM_00MINI-_20250103_A0001_ASM_1_AS_ASM_1_1_30_GR-2202_ASM_1_ASM_1_1_30_GR-2202_ASM_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (1)"
+ },
+ "6706__300001_1_1_00MINI-000_ASM_1_ASM_1_ASM_00MINI-_20250103_A0001_ASM_1_AS_ASM_1_1_30_GR-2202_ASM_1_ASM_1_1_30_GR-2202_ASM_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (1)"
+ },
+ "Component59": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (1)"
+ },
+ "1_1_02_EB461-502_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (1)"
+ },
+ "1_1_06_EB463-507_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (1)"
+ },
+ "1_1_06_EB463-509_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (1)"
+ },
+ "1_1_31_EB463-510_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (1)"
+ },
+ "1_2_05_000438_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 8,
+  "via": "robstride05 v16 (1)"
+ },
+ "1_2_05_000555_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 8,
+  "via": "robstride05 v16 (1)"
+ },
+ "1_2_05_000608_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 4,
+  "via": "robstride05 v16 (1)"
+ },
+ "1_2_05_020051_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 3,
+  "via": "robstride05 v16 (1)"
+ },
+ "1_2_16_001425_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_1": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (1)"
+ },
+ "0001755652_1_1_30_GR-2202_ASM_1_ASM_1_1_30_GR-2202_ASM_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride05 v16 (2)"
+ },
+ "0001755650_00MINI-000_ASM_1_ASM_1_ASM_00MINI-_20250103_A0001_ASM_1_AS_ASM_1_1_30_GR-2202_ASM_1_ASM_1_1_30_GR-2202_ASM_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (2)"
+ },
+ "0001755652_00MINI-000_ASM_1_ASM_1_ASM_00MINI-_20250103_A0001_ASM_1_AS_ASM_1_1_30_GR-2202_ASM_1_ASM_1_1_30_GR-2202_ASM_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (2)"
+ },
+ "1_21_121000022__610001_1_1_00MINI-000_ASM_1_ASM_1_ASM_00MINI-_20250103_A0001_ASM_1_AS_ASM_1_1_30_GR-2202_ASM_1_ASM_1_1_30_GR-2202_ASM_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (2)"
+ },
+ "6706__300001_1_1_00MINI-000_ASM_1_ASM_1_ASM_00MINI-_20250103_A0001_ASM_1_AS_ASM_1_1_30_GR-2202_ASM_1_ASM_1_1_30_GR-2202_ASM_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (2)"
+ },
+ "Component80": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (2)"
+ },
+ "1_1_02_EB461-502_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (2)"
+ },
+ "1_1_06_EB463-507_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (2)"
+ },
+ "1_1_06_EB463-509_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (2)"
+ },
+ "1_1_31_EB463-510_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (2)"
+ },
+ "1_2_05_000438_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 8,
+  "via": "robstride05 v16 (2)"
+ },
+ "1_2_05_000555_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 8,
+  "via": "robstride05 v16 (2)"
+ },
+ "1_2_05_000608_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 4,
+  "via": "robstride05 v16 (2)"
+ },
+ "1_2_05_020051_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 3,
+  "via": "robstride05 v16 (2)"
+ },
+ "1_2_16_001425_FL46BLW10-48V-5N.m-DE_2__FL46BLW10-48V-5N.m-DE_2": {
+  "part_id": "ACT_RS05",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 05 quasi-direct-drive actuator",
+  "qty_in_model": 1,
+  "via": "robstride05 v16 (2)"
+ },
+ "MANIFOLD_SOLID_BREP_102855": {
+  "part_id": "EL_SERVO_FEETECH",
+  "bom_file": "electronics.csv",
+  "description": "Feetech HL-3915-C001 12 V servo, 14.2 kg-cm",
+  "qty_in_model": 4,
+  "via": "FEETECH_HL_3915_Servo_Motor"
+ },
+ "MANIFOLD_SOLID_BREP_102995": {
+  "part_id": "EL_SERVO_FEETECH",
+  "bom_file": "electronics.csv",
+  "description": "Feetech HL-3915-C001 12 V servo, 14.2 kg-cm",
+  "qty_in_model": 4,
+  "via": "FEETECH_HL_3915_Servo_Motor"
+ },
+ "MANIFOLD_SOLID_BREP_103135": {
+  "part_id": "EL_SERVO_FEETECH",
+  "bom_file": "electronics.csv",
+  "description": "Feetech HL-3915-C001 12 V servo, 14.2 kg-cm",
+  "qty_in_model": 4,
+  "via": "FEETECH_HL_3915_Servo_Motor"
+ },
+ "MANIFOLD_SOLID_BREP_103275": {
+  "part_id": "EL_SERVO_FEETECH",
+  "bom_file": "electronics.csv",
+  "description": "Feetech HL-3915-C001 12 V servo, 14.2 kg-cm",
+  "qty_in_model": 4,
+  "via": "FEETECH_HL_3915_Servo_Motor"
+ },
+ "PHS_1_7X20_5_DC10_3_3": {
+  "part_id": "EL_SERVO_FEETECH",
+  "bom_file": "electronics.csv",
+  "description": "Feetech HL-3915-C001 12 V servo, 14.2 kg-cm",
+  "qty_in_model": 8,
+  "via": "FEETECH_HL_3915_Servo_Motor"
+ },
+ "WJ-WK00-0412-TOPCABINET_74": {
+  "part_id": "EL_SERVO_FEETECH",
+  "bom_file": "electronics.csv",
+  "description": "Feetech HL-3915-C001 12 V servo, 14.2 kg-cm",
+  "qty_in_model": 2,
+  "via": "FEETECH_HL_3915_Servo_Motor"
+ },
+ "WJ-WK00-0413-MIDDLECASE_80": {
+  "part_id": "EL_SERVO_FEETECH",
+  "bom_file": "electronics.csv",
+  "description": "Feetech HL-3915-C001 12 V servo, 14.2 kg-cm",
+  "qty_in_model": 2,
+  "via": "FEETECH_HL_3915_Servo_Motor"
+ },
+ "WJ-WK00-414-BOTTOMCASE_48": {
+  "part_id": "EL_SERVO_FEETECH",
+  "bom_file": "electronics.csv",
+  "description": "Feetech HL-3915-C001 12 V servo, 14.2 kg-cm",
+  "qty_in_model": 2,
+  "via": "FEETECH_HL_3915_Servo_Motor"
+ },
+ "M2-10-6_2": {
+  "part_id": "EL_SERVO_FEETECH",
+  "bom_file": "electronics.csv",
+  "description": "Feetech HL-3915-C001 12 V servo, 14.2 kg-cm",
+  "qty_in_model": 4,
+  "via": "FEETECH_HL_3915_Servo_Motor"
+ },
+ "M2-4LOUSI_1": {
+  "part_id": "EL_SERVO_FEETECH",
+  "bom_file": "electronics.csv",
+  "description": "Feetech HL-3915-C001 12 V servo, 14.2 kg-cm",
+  "qty_in_model": 4,
+  "via": "FEETECH_HL_3915_Servo_Motor"
+ },
+ "MF85ZZ_1": {
+  "part_id": "EL_SERVO_FEETECH",
+  "bom_file": "electronics.csv",
+  "description": "Feetech HL-3915-C001 12 V servo, 14.2 kg-cm",
+  "qty_in_model": 2,
+  "via": "FEETECH_HL_3915_Servo_Motor"
+ },
+ "OUTPUTGEAR_40": {
+  "part_id": "EL_SERVO_FEETECH",
+  "bom_file": "electronics.csv",
+  "description": "Feetech HL-3915-C001 12 V servo, 14.2 kg-cm",
+  "qty_in_model": 2,
+  "via": "FEETECH_HL_3915_Servo_Motor"
+ },
+ "PCBA_1": {
+  "part_id": "EL_SERVO_FEETECH",
+  "bom_file": "electronics.csv",
+  "description": "Feetech HL-3915-C001 12 V servo, 14.2 kg-cm",
+  "qty_in_model": 2,
+  "via": "FEETECH_HL_3915_Servo_Motor"
+ },
+ "WJ-BB00-0235_HORN_22": {
+  "part_id": "EL_SERVO_FEETECH",
+  "bom_file": "electronics.csv",
+  "description": "Feetech HL-3915-C001 12 V servo, 14.2 kg-cm",
+  "qty_in_model": 2,
+  "via": "FEETECH_HL_3915_Servo_Motor"
+ },
+ "buck_converter_48_to_12": {
+  "part_id": "EL_BUCK_48V_12V",
+  "bom_file": "electronics.csv",
+  "description": "48 V to 12 V buck converter",
+  "qty_in_model": 2,
+  "via": ""
+ },
+ "Board": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "User_Library-0603_SMD_Capacitor": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 14,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "2_1_200": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 6,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "3_1_2_A": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 6,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "1_1_20001": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 6,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "SOD323": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 8,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "dc-005-5a-20": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "User_Library-DG350-3_5-02P": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "Extruded_3": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 10,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "Extruded_2": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 18,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "X2564WV-03-N0SN": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 4,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "Extruded_4": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "User_Library-LED_0603_R_Fillet": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "User_Library-LED_0603_R_Pad004": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "User_Library-LED_0603_R_Pad": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "User_Library-LED_0603_R_Pocket001": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "User_Library-LED_0603_R_Pocket002": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "User_Library-sop-8": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "SOT-23": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "5_1_2_3_400": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 18,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "2_1_2_3_4_AF0": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 18,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "7_1_2_AF0": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 18,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "SOLID_1": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "SOLID_10": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "SOLID_11": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "SOLID_12": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "SOLID_13": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "SOLID_14": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "SOLID_15": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "SOLID_16": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "SOLID_17": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "SOLID_18": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "SOLID_19": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "SOLID_2": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "SOLID_20": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "SOLID_21": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "SOLID_3": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "SOLID_4": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "SOLID_5": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "SOLID_6": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "SOLID_7": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "SOLID_8": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "SOLID_9": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "SOLID": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "User_Library-QFN-16": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "User_Library-TO-223_1_1": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "User_Library-TO-223_2_1": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "User_Library-TO-223_3_1": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "User_Library-TO-223_4_1": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "User_Library-TO-223_5_1": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 2,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "Extruded": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 20,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "Extruded_1": {
+  "part_id": "EL_SERVO_DRIVER",
+  "bom_file": "electronics.csv",
+  "description": "Waveshare serial bus servo driver board, ST/SC series",
+  "qty_in_model": 4,
+  "via": "wareshare_st_servo_controller v7"
+ },
+ "1_1_02_EB901-547_1_rotor": {
+  "part_id": "ACT_RS03",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 03 quasi-direct-drive actuator",
+  "qty_in_model": 10,
+  "via": "Robstride 03 - no back cover"
+ },
+ "1_1_06_EB903-537_1_1": {
+  "part_id": "ACT_RS03",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 03 quasi-direct-drive actuator",
+  "qty_in_model": 10,
+  "via": "Robstride 03 - no back cover"
+ },
+ "1_1_31_QT-942_1": {
+  "part_id": "ACT_RS03",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 03 quasi-direct-drive actuator",
+  "qty_in_model": 10,
+  "via": "Robstride 03 - no back cover"
+ },
+ "1_2_04_635000_1_1": {
+  "part_id": "ACT_RS03",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 03 quasi-direct-drive actuator",
+  "qty_in_model": 10,
+  "via": "Robstride 03 - no back cover"
+ },
+ "1_2_04_680902_1_1": {
+  "part_id": "ACT_RS03",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 03 quasi-direct-drive actuator",
+  "qty_in_model": 10,
+  "via": "Robstride 03 - no back cover"
+ },
+ "1_2_05_130001_1_1": {
+  "part_id": "ACT_RS03",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 03 quasi-direct-drive actuator",
+  "qty_in_model": 30,
+  "via": "Robstride 03 - no back cover"
+ },
+ "1_2_06_000004_AF0_1_1": {
+  "part_id": "ACT_RS03",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 03 quasi-direct-drive actuator",
+  "qty_in_model": 10,
+  "via": "Robstride 03 - no back cover"
+ },
+ "1_3_03_000357_1_1": {
+  "part_id": "ACT_RS03",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 03 quasi-direct-drive actuator",
+  "qty_in_model": 10,
+  "via": "Robstride 03 - no back cover"
+ },
+ "CORE": {
+  "part_id": "ACT_RS03",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 03 quasi-direct-drive actuator",
+  "qty_in_model": 10,
+  "via": "Robstride 03 - no back cover"
+ },
+ "PBC": {
+  "part_id": "ACT_RS03",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 03 quasi-direct-drive actuator",
+  "qty_in_model": 10,
+  "via": "Robstride 03 - no back cover"
+ },
+ "BACK_COVER1_1_06_EB903-538_1": {
+  "part_id": "ACT_RS03",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 03 quasi-direct-drive actuator",
+  "qty_in_model": 3,
+  "via": "Robstride 03 - full"
+ },
+ "1_2_05_020108_1_1": {
+  "part_id": "ACT_RS03",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 03 quasi-direct-drive actuator",
+  "qty_in_model": 12,
+  "via": "Robstride 03 - full"
+ },
+ "1_2_05_140095_1_1": {
+  "part_id": "ACT_RS03",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 03 quasi-direct-drive actuator",
+  "qty_in_model": 12,
+  "via": "Robstride 03 - full"
+ },
+ "1_1_31_QT-1040_FL82BLW33-48V-35N.m_1__FL82BLW33-48V-35N.m_1_.STEP": {
+  "part_id": "ACT_RS06",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 06 quasi-direct-drive actuator",
+  "qty_in_model": 3,
+  "via": "Robstride 06-No Back Cover"
+ },
+ "1_1_06_EB823-507_AF0_1_1_06_EB823-509_ASM_FL82BLW33-48V-35N.m_1__FL82BLW33-48V-35N.m_1_.STEP": {
+  "part_id": "ACT_RS06",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 06 quasi-direct-drive actuator",
+  "qty_in_model": 3,
+  "via": "Robstride 06-No Back Cover"
+ },
+ "R06-ROTOR": {
+  "part_id": "ACT_RS06",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 06 quasi-direct-drive actuator",
+  "qty_in_model": 3,
+  "via": "Robstride 06-No Back Cover"
+ },
+ "half-bearing_35x44x5_6707_1.6kN_15g": {
+  "part_id": "FAS_BEARING_35X44X5",
+  "bom_file": "fasteners.csv",
+  "description": "Ball bearing, 35 x 44 x 5 mm",
+  "qty_in_model": 38,
+  "via": ""
+ },
+ "weight": {
+  "part_id": "ACT_RS06",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 06 quasi-direct-drive actuator",
+  "qty_in_model": 3,
+  "via": "Robstride 06-No Back Cover"
+ },
+ "half-bearing_35x47x7_6807_4.0kN_29g": {
+  "part_id": "FAS_BEARING_35X47X7",
+  "bom_file": "fasteners.csv",
+  "description": "Ball bearing, 35 x 47 x 7 mm",
+  "qty_in_model": 8,
+  "via": ""
+ },
+ "half-bearing_50x65x7_6810_6.1kN_52g": {
+  "part_id": "FAS_BEARING_50X65X7",
+  "bom_file": "fasteners.csv",
+  "description": "Ball bearing, 50 x 65 x 7 mm",
+  "qty_in_model": 4,
+  "via": ""
+ },
+ "1_1_02_EB1201-501_1_1_1": {
+  "part_id": "ACT_RS04",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 04 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride04"
+ },
+ "1_1_06_EB1203-503_1_1_1": {
+  "part_id": "ACT_RS04",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 04 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride04"
+ },
+ "1_1_31_EB1203-505_1_1_1": {
+  "part_id": "ACT_RS04",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 04 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride04"
+ },
+ "1_2_04_618030_1_1_1": {
+  "part_id": "ACT_RS04",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 04 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride04"
+ },
+ "1_2_04_694000_1_1_1": {
+  "part_id": "ACT_RS04",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 04 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride04"
+ },
+ "1_2_05_000438_1_1_1": {
+  "part_id": "ACT_RS04",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 04 quasi-direct-drive actuator",
+  "qty_in_model": 8,
+  "via": "robstride04"
+ },
+ "1_2_05_025081_1_1_1": {
+  "part_id": "ACT_RS04",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 04 quasi-direct-drive actuator",
+  "qty_in_model": 24,
+  "via": "robstride04"
+ },
+ "1_2_05_025121_1_1_1": {
+  "part_id": "ACT_RS04",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 04 quasi-direct-drive actuator",
+  "qty_in_model": 24,
+  "via": "robstride04"
+ },
+ "1_2_05_030050_1_1_1": {
+  "part_id": "ACT_RS04",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 04 quasi-direct-drive actuator",
+  "qty_in_model": 6,
+  "via": "robstride04"
+ },
+ "1_2_05_QT-104_1_1_1": {
+  "part_id": "ACT_RS04",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 04 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride04"
+ },
+ "DIANJIBAN-2_SW0001_1_1_2_1": {
+  "part_id": "ACT_RS04",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 04 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride04"
+ },
+ "1_21_121000046___61810_50__1_1": {
+  "part_id": "ACT_RS04",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 04 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride04"
+ },
+ "1_21_121000047___7_1_1_1": {
+  "part_id": "ACT_RS04",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 04 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride04"
+ },
+ "D19_1_1_1": {
+  "part_id": "ACT_RS04",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 04 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride04"
+ },
+ "ROTOR": {
+  "part_id": "ACT_RS04",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 04 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride04"
+ },
+ "ZYDQHJ_1_1_1": {
+  "part_id": "ACT_RS04",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 04 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride04"
+ },
+ "PIS72-D6X_1_1_1": {
+  "part_id": "ACT_RS04",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 04 quasi-direct-drive actuator",
+  "qty_in_model": 6,
+  "via": "robstride04"
+ },
+ "SR_1__1": {
+  "part_id": "ACT_RS04",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 04 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride04"
+ },
+ "Component26": {
+  "part_id": "ACT_RS04",
+  "bom_file": "actuators.csv",
+  "description": "RobStride 04 quasi-direct-drive actuator",
+  "qty_in_model": 2,
+  "via": "robstride04"
+ }
+}

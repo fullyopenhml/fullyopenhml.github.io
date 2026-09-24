@@ -1,0 +1,6 @@
+Fusion 2705.1.15
+3DP_body_05_x1_interior_plate: STEP True, STL True
+3DP_body_07_x1_front_plate_removable: STEP True, STL True
+3DP_body_09_x1_back_plate_removable: STEP True, STL True
+CNC_leg18_x2_foot_plate: STEP True, STL True
+3DP_arm06_x4_RS02_shaft_coupler: STEP True, STL True

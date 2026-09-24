@@ -1,0 +1,36 @@
+,ITEM,LINK (shortened if possible),UNIT COST,QUANTITY,TOTAL
+ELECTRONICS,"MINISFORUM X1-470 Mini PC",amazon.com/MINISFORUM-Desktop-Computer-HDMI2-1-Graphics/dp/B0GM43XCGT,"$1,295.00",1,"$1,295.00"
+,Robstride 00 QDD Actuator,https://www.robstride.com/products/robStride00,$125,2,$250.00
+,Robstride 02 QDD Actuator,https://www.robstride.com/products/robStride02,$145,6,$870.00
+,Robstride 03 QDD Actuator,https://www.robstride.com/products/robStride03,$225,11,"$2,475.00"
+,Robstride 04 QDD Actuator,https://www.robstride.com/products/robStride04,$255,2,$510.00
+,Robstride 05 QDD Actuator,https://www.robstride.com/products/robStride05,$110,6,$660.00
+,Robstride 06 QDD Actuator,https://www.robstride.com/products/robStride06,$210,4,$840.00
+,Zeee 6S Lipo Battery 10000mAh 22.2V x2,https://www.amazon.com/dp/B0BHQX8XQX?lv=shuf&channelId=500&plpRedirect=mhFallback,$306.00,1,$306.00
+,TVS DIODE 53VWM 85VC,https://www.digikey.com/en/products/detail/microchip-technology/M1-5KE62CA/4349574,$3.56,10,$35.60
+,"Belkin USB A to USB C Cable 2-Pack, 6.6ft",https://www.amazon.com/Belkin-USB-Cable-2-Pack-6-6ft/dp/B0F63XNWN3?th=1,$14.99,2,$29.98
+,Serial Bus Servo Driver Board for ST/SC Series Serial Bus Servos,https://www.waveshare.com/product/robotics/drivers-sensors/drivers/bus-servo-adapter-a.htm,$4.99,2,$9.98
+,DC 20V-60V to 12V Encased Buck Converter ,https://www.amazon.com/gp/product/B0G2SV9PFY?th=1,$18.99,1,$18.99
+,48V to 12V Buck Converter,https://www.aliexpress.us/item/3256809688561615.html?spm=a2g0o.detail.0.0.4fd9AhcQAhcQuZ,$2.70,2,$5.40
+,CANable PRO V2.0 USBCAN Controller,https://www.amazon.com/Macrobase-PRO-V2-0-Controller-transceiver/dp/B0GJSRZLBV/,$20.80,6,$124.80
+,RealSense Depth Camera D436,https://store.realsenseai.com/buy-intel-realsense-depth-camera-d436.html,$354,2,$708.00
+,Feetech HL-3915-C001 12V 14.2Kg Servo,https://aifitlab.com/products/feetech-hl-3915-servo-motor?variant=44326557417608,$50,2,$100.00
+,Vention USB Hub,https://www.amazon.com/VENTION-Splitter-Expander-Chromebook-Surface/dp/B0D2XWJ99H,$12.99,3,$38.97
+,IMU,https://www.robotshop.com/products/syd-dynamics-transducerm-tm171-9-axis-ahrs-w-dual-port-communication,$57,1,$57.00
+HARDWARE,"example: fasteners, nuts",,,,$0.00
+,5PCS Amass XT30(2+2). select Color (fist option): XT30U(2 2)-F,https://www.aliexpress.us/item/3256807585110718.html,$5.00,4,$20.00
+,Frienda 30 Pairs XT30 Connectors Male and Female Connectors Plugs Set,https://www.amazon.com/Connectors-Female-Pieces-Shrink-Battery/dp/B0BB2XF5SQ?th=1,$14.99,1,$14.99
+,Alex Tech 25ft - 1/4 inch Cord Protector Wire Loom Tubing Cable Sleeve,https://www.amazon.com/Alex-Tech-10ft-Protector-Sleeving/dp/B07FW86XV6/?th=1,$13.99,1,$13.99
+,Alex Tech 25ft - 3/8 inch Cord Protector Wire Loom Tubing Cable Sleeve,https://www.amazon.com/Alex-Tech-25ft-Protector-Sleeving/dp/B07FW4M7Z8/?th=1,$15.98,1,$15.98
+,Duttek Short USB C Extension Cable 40Gbps,https://www.amazon.com/dp/B0CWGW3LTJ?th=1,$9.76,2,$19.52
+,USB A to USB C 3.1 Gen 2 Cable,https://www.amazon.com/Transfer-Charging-Samsung-SanDisk-Portable/dp/B09H2LLXPN?th=1,$9.99,6,$59.94
+,1ft Short USB-C Cable with Right-Angle Plug,https://www.amazon.com/Afterplug-Right-Angle-Charging-Ultra-Flexible-Silicone/dp/B0G2LVGZ39,$12.99,1,$12.99
+MATERIALS,CNC Leg Parts,TODO: BREAK INTO INDIVIDUAL CNC PARTS,,,
+,CNC Arm Parts,,,,
+,CNC Body Parts,,,,
+,TPU,,,,
+,PLA,,,,
+,Nylon Powder for SLS,,,,
+,,,,TOTAL CNC,6389.86
+,,,,,
+,,,,GRAND TOTAL,"$14,881.99"
