@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Electrical — Fully Open Humanoid</title>
+<meta name="description" content="Power system with a breaker, contactor and E-stop; four CAN daisy chains; the actuator ID map; every cable type; routing; pre-power checks.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<header class="site-header"><div class="inner">
+  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><use href="assets/img/favicon.svg#mark"/></svg><span class="name">Fully Open Humanoid</span><span class="ver">v0.1</span></a>
+  <button class="iconbtn nav-toggle" aria-label="Menu">☰</button>
+  <nav class="nav">
+    <a href="design.html">Design</a><a href="viewer.html">3D model</a><a href="bom.html">BOM</a><a href="printing.html">Printing</a><a href="assembly.html">Assembly</a><a href="electrical.html">Electrical</a><a href="bringup.html">Bring-up</a><a href="software.html">Software</a><a href="reference.html">Reference</a>
+    <a class="gh" href="https://github.com/fullyopenhml/fullyopenhml.github.io" title="GitHub">GitHub</a>
+    <button class="iconbtn theme-toggle" aria-label="Toggle theme">◐</button>
+  </nav>
+</div></header>
+
+<main class="page">
+  <h1>Electrical</h1>
+  <p class="lead">Two packs in series make a 44.4 V bus. It passes a breaker, a contactor held closed by the E-stop loop, and a distribution block, then splits into four limb chains. Each chain carries 48 V and CAN in one XT30(2+2) connector per actuator. 12 V for the computer comes off the same block.</p>
+  <div class="toc" data-toc></div>
+
+  <h2 id="power">Power system</h2>
+  <div class="diagram">
+    <svg viewBox="0 0 900 470" role="img" aria-label="Power and data wiring diagram">
+      <!-- packs -->
+      <rect x="40" y="50" width="120" height="44" rx="6" class="box"/><text x="100" y="77" text-anchor="middle" class="lbl">Pack 1 · 6S 8 Ah</text>
+      <rect x="40" y="118" width="120" height="44" rx="6" class="box"/><text x="100" y="145" text-anchor="middle" class="lbl">Pack 2 · 6S 8 Ah</text>
+      <path d="M160 82 L180 82 L180 130 L160 130" class="wire-n"/><text x="186" y="110" class="sm">series</text>
+      <path d="M160 62 L220 62 L220 96 L240 96" class="wire-p"/>
+      <path d="M160 150 L220 150 L220 200 L560 200" class="wire-n"/>
+      <!-- breaker, contactor, block -->
+      <rect x="240" y="74" width="90" height="44" rx="6" class="box"/><text x="285" y="93" text-anchor="middle" class="lbl">Breaker</text><text x="285" y="108" text-anchor="middle" class="sm">100 A</text>
+      <path d="M330 96 L370 96" class="wire-p"/>
+      <rect x="370" y="74" width="100" height="44" rx="6" class="box"/><text x="420" y="93" text-anchor="middle" class="lbl">Contactor</text><text x="420" y="108" text-anchor="middle" class="sm">100 A, 12 V coil</text>
+      <path d="M470 96 L520 96" class="wire-p"/>
+      <rect x="520" y="60" width="120" height="150" rx="6" class="box"/><text x="580" y="82" text-anchor="middle" class="lbl">Distribution</text><text x="580" y="97" text-anchor="middle" class="sm">48 V bus · 60 A fuse</text><text x="580" y="112" text-anchor="middle" class="sm">TVS diodes</text>
+      <!-- limb chains -->
+      <g class="lbl">
+        <rect x="700" y="30" width="180" height="34" rx="6" class="act"/><text x="790" y="52" text-anchor="middle">Left leg · 6 × RS03/RS06</text>
+        <rect x="700" y="78" width="180" height="34" rx="6" class="act"/><text x="790" y="100" text-anchor="middle">Right leg · 6 actuators</text>
+        <rect x="700" y="126" width="180" height="34" rx="6" class="act"/><text x="790" y="148" text-anchor="middle">Left arm + waist · 6</text>
+        <rect x="700" y="174" width="180" height="34" rx="6" class="act"/><text x="790" y="196" text-anchor="middle">Right arm · 5</text>
+      </g>
+      <path d="M640 90 L670 90 L670 47 L700 47" class="wire-p"/>
+      <path d="M640 110 L680 110 L680 95 L700 95" class="wire-p"/>
+      <path d="M640 130 L680 130 L680 143 L700 143" class="wire-p"/>
+      <path d="M640 150 L670 150 L670 191 L700 191" class="wire-p"/>
+      <text x="40" y="392" class="sm">Limb chains: CANable → actuator → actuator → … → 120 Ω terminator.</text><text x="40" y="407" class="sm">48 V and CAN share one XT30(2+2) shell at every actuator, in and out.</text>
+      <!-- 12 V -->
+      <path d="M580 210 L580 250" class="wire-p"/>
+      <rect x="545" y="250" width="70" height="26" rx="5" class="box"/><text x="580" y="267" text-anchor="middle" class="sm">10 A fuse</text>
+      <path d="M580 276 L580 300" class="wire-p"/>
+      <rect x="520" y="300" width="120" height="44" rx="6" class="box"/><text x="580" y="319" text-anchor="middle" class="lbl">Buck 48 → 12 V</text><text x="580" y="334" text-anchor="middle" class="sm">10 A</text>
+      <path d="M640 322 L700 322" class="wire-12"/>
+      <rect x="700" y="300" width="90" height="44" rx="6" class="box"/><text x="745" y="319" text-anchor="middle" class="lbl">Mini PC</text><text x="745" y="334" text-anchor="middle" class="sm">12 V DC in</text>
+      <path d="M640 330 L680 330 L680 380 L700 380" class="wire-12"/>
+      <rect x="700" y="360" width="90" height="40" rx="6" class="box"/><text x="745" y="377" text-anchor="middle" class="lbl">USB hub</text><text x="745" y="392" text-anchor="middle" class="sm">powered</text>
+      <path d="M640 336 L672 336 L672 435 L700 435" class="wire-12"/>
+      <rect x="700" y="415" width="90" height="40" rx="6" class="box"/><text x="745" y="432" text-anchor="middle" class="lbl">Servo driver</text><text x="745" y="447" text-anchor="middle" class="sm">grippers (opt.)</text>
+      <!-- E-stop loop -->
+      <path d="M520 322 L470 322" class="wire-12"/>
+      <rect x="370" y="300" width="100" height="44" rx="6" class="box"/><text x="420" y="319" text-anchor="middle" class="lbl">E-stop</text><text x="420" y="334" text-anchor="middle" class="sm">NC, back panel</text>
+      <path d="M420 300 L420 118" class="wire-12"/><text x="426" y="215" class="sm">coil</text>
+      <path d="M370 322 L330 322 L330 200 L560 200" class="wire-n"/>
+      <!-- USB / CAN -->
+      <path d="M745 300 L745 288 L820 288 L820 300" class="wire-usb"/>
+      <text x="800" y="284" class="sm">USB 3</text>
+      <rect x="810" y="300" width="80" height="44" rx="6" class="box"/><text x="850" y="319" text-anchor="middle" class="lbl">4 × CANable</text><text x="850" y="334" text-anchor="middle" class="sm">on the hub</text>
+      <path d="M890 322 L895 322 L895 20 L690 20 L690 40 L700 40" class="wire-can"/>
+      <path d="M895 88 L700 88" class="wire-can"/><path d="M895 136 L700 136" class="wire-can"/><path d="M895 184 L700 184" class="wire-can"/>
+      <rect x="810" y="360" width="80" height="40" rx="6" class="box"/><text x="850" y="377" text-anchor="middle" class="lbl">IMU</text><text x="850" y="392" text-anchor="middle" class="sm">USB</text>
+      <path d="M790 380 L810 380" class="wire-usb"/>
+      <path d="M790 435 L800 435 L800 400" class="wire-usb"/>
+      <!-- legend -->
+      <g class="sm">
+        <line x1="40" y1="250" x2="70" y2="250" class="wire-p"/><text x="76" y="254">48 V +</text>
+        <line x1="40" y1="272" x2="70" y2="272" class="wire-n"/><text x="76" y="276">ground</text>
+        <line x1="40" y1="294" x2="70" y2="294" class="wire-12"/><text x="76" y="298">12 V</text>
+        <line x1="40" y1="316" x2="70" y2="316" class="wire-can"/><text x="76" y="320">CAN</text>
+        <line x1="40" y1="338" x2="70" y2="338" class="wire-usb"/><text x="76" y="342">USB</text>
+      </g>
+    </svg>
+  </div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>From</th><th>To</th><th>Voltage</th><th>Wire</th><th>Connectors</th></tr></thead>
+    <tbody>
+      <tr><td>Pack 1 −</td><td>Pack 2 + (series link)</td><td>44.4 V nominal, 50.4 V full</td><td>12 AWG silicone</td><td>EC5</td></tr>
+      <tr><td>Pack 1 +</td><td>Breaker → contactor → distribution block</td><td>48 V</td><td>12 AWG silicone</td><td>EC5 at the pack; ring terminals</td></tr>
+      <tr><td>Pack 2 −</td><td>Distribution block, ground bar</td><td>0 V</td><td>12 AWG silicone</td><td>EC5; ring terminal</td></tr>
+      <tr><td>Distribution block</td><td>First actuator of each of the four chains</td><td>48 V</td><td>18 AWG silicone + CAN pair</td><td>XT30(2+2)</td></tr>
+      <tr><td>Each actuator</td><td>Next actuator in the chain</td><td>48 V</td><td>18 AWG silicone + CAN pair</td><td>XT30(2+2), in and out sockets on the actuator</td></tr>
+      <tr><td>Distribution block</td><td>10 A fuse → 48→12 V converter</td><td>48 V</td><td>18 AWG</td><td>Ring terminals</td></tr>
+      <tr><td>Converter 12 V</td><td>Mini PC, USB hub, servo driver, contactor coil via the E-stop</td><td>12 V</td><td>16 AWG (PC), 18 AWG (rest)</td><td>5.5 × 2.5 mm barrel (PC); screw terminals</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 id="safety-chain">Safety chain</h3>
+  <ul>
+    <li><b>Breaker</b>: the main disconnect and pack over-current protection. Off whenever anyone works inside the torso.</li>
+    <li><b>Contactor</b>: carries the motor bus; its 12 V coil is fed through the E-stop's normally-closed contact. Pressing the E-stop opens the coil circuit and drops the motor bus; the computer stays powered so logs survive.</li>
+    <li><b>E-stop</b> on the back panel, a second one wired in series on a 3 m lead for the person on the hoist.</li>
+    <li><b>Fuses</b>: 60 A on the pack lead inside the distribution block; 10 A on the 12 V feed.</li>
+    <li><b>TVS diodes</b> across 48 V and ground at the distribution block and at each chain's end, to clamp regenerative spikes when the contactor opens under load.</li>
+    <li>A powered-down robot collapses. The E-stop is for stopping motion; the hoist is for not dropping the robot.</li>
+  </ul>
+
+  <h2 id="can">CAN bus</h2>
+  <p>Four buses at <b>1 Mbit/s</b>, one CANable PRO V2.0 each. Every bus is a single daisy chain, adapter → actuator → actuator, with a 120 Ω terminator at each physical end and no stubs. Six actuators per bus at a 500 Hz command rate is about 35 % bus load.</p>
+  <div class="table-wrap"><table id="bus-table"><thead><tr><th>Bus</th><th>Actuators</th><th>CAN IDs</th><th>Terminator</th></tr></thead><tbody></tbody></table></div>
+  <div class="callout check"><span class="t">Check:</span> an unpowered bus reads about 60 Ω between CAN_H and CAN_L. 120 Ω means a terminator is missing; 40 Ω means there is one too many.</div>
+
+  <h3 id="map">The actuator map</h3>
+  <div class="table-wrap"><table id="map-table" class="compact"><thead><tr><th>Joint</th><th class="num">ID</th><th>Bus</th><th>Model</th><th>Joint</th><th class="num">ID</th><th>Bus</th><th>Model</th></tr></thead><tbody></tbody></table></div>
+  <p class="tiny">IDs are unique robot-wide so a mis-plugged chain is detected, not obeyed. Setting them: <a href="bringup.html#ids">Motor ID and config</a>.</p>
+
+  <h3 id="usb">USB</h3>
+  <div class="table-wrap"><table class="compact"><thead><tr><th>Port</th><th>Device</th></tr></thead><tbody>
+    <tr><td>PC USB 3, port 1</td><td>Powered hub: four CANable adapters, IMU, gripper servo driver</td></tr>
+    <tr><td>PC USB 3, port 2</td><td>Camera, if fitted (needs USB 3 on its own port)</td></tr>
+  </tbody></table></div>
+
+  <h2 id="harness">Harness fabrication</h2>
+  <p>Every cable on the robot is one of the types below. Red is +, black is −; CAN_H yellow, CAN_L blue throughout. Solder the XT30 cups (iron about 400 °C); never mate or unmate a power connector under power.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Cable</th><th>Conductors</th><th>End A</th><th>End B</th><th>Carries</th></tr></thead>
+    <tbody>
+      <tr><td>Actuator drop</td><td>2 × 18 AWG + 1 twisted pair</td><td>XT30(2+2) female</td><td>XT30(2+2) female</td><td>48 V and CAN, actuator out socket to the next actuator's in socket. Pin 1 +, 2 −, 3 CAN_L, 4 CAN_H (Amass XT30(2+2) numbering; verify on your actuator's board)</td></tr>
+      <tr><td>Bus head</td><td>2 × 18 AWG + 1 pair</td><td>Distribution block ring terminals + CANable screw terminals, 120 Ω across H–L</td><td>XT30(2+2) female</td><td>48 V and CAN into the first actuator of a chain</td></tr>
+      <tr><td>Bus tail terminator</td><td>—</td><td>120 Ω across CAN_H–CAN_L in an XT30(2+2) shell</td><td>—</td><td>Plugs into the last actuator's out socket</td></tr>
+      <tr><td>CAN pair</td><td>One pair from Ethernet cable</td><td>—</td><td>—</td><td>Coloured conductor → CAN_H, white → CAN_L; keep twisted to the connector</td></tr>
+      <tr><td>Pack lead, series link</td><td>12 AWG silicone</td><td>EC5</td><td>Ring terminal / EC5</td><td>48 V trunk</td></tr>
+      <tr><td>Computer feed</td><td>16 AWG</td><td>Converter 12 V terminals</td><td>5.5 × 2.5 mm barrel</td><td>12 V</td></tr>
+      <tr><td>E-stop loop</td><td>2 × 22 AWG</td><td>Converter 12 V</td><td>Contactor coil, via the E-stop NC contact</td><td>12 V, a few hundred milliamps</td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout check"><span class="t">Check:</span> each finished cable conducts pin to pin, has no short between pins, and is labelled at both ends with its bus.</div>
+
+  <h2 id="routing">Routing</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Run</th><th>Route</th></tr></thead>
+    <tbody>
+      <tr><td>Leg chains (<code>can0</code>, <code>can1</code>)</td><td>From the distribution block down through the bottom-plate cut-outs into the pelvis, hip-pitch actuator first, then hip roll, hip yaw, knee, ankle pitch, ankle roll; terminator at the ankle-roll actuator</td></tr>
+      <tr><td>Arm chains (<code>can2</code>, <code>can3</code>)</td><td>Waist actuator first on <code>can2</code>, then out through the shoulder mount to shoulder pitch, roll, yaw, elbow, wrist; terminator at the wrist</td></tr>
+      <tr><td>Gripper servo (optional)</td><td>Alongside the arm chain to the wrist; three-wire servo bus</td></tr>
+    </tbody>
+  </table></div>
+  <ul>
+    <li>Leave a service loop at every joint sized for the joint's full travel, not one pose.</li>
+    <li>Sleeve limb runs in braided loom; tie to the printed brackets' loom slots, never across a moving edge.</li>
+    <li>Turn every joint to both ends by hand before a limb is closed: no cable taut, pinched or rubbing.</li>
+  </ul>
+
+  <h2 id="prepower">Pre-power checks</h2>
+  <p>With no pack connected and the breaker off:</p>
+  <ol>
+    <li>Every 48 V conductor conducts end to end; + to − on each chain reads open (the drive capacitors charge slowly; no steady short).</li>
+    <li>Every XT30(2+2): + on pin 1, − on pin 2, CAN_H on pin 4, checked against the pinout, not the colour.</li>
+    <li>Each of the four buses reads about 60 Ω between CAN_H and CAN_L.</li>
+    <li>The 48→12 V converter gives 12 V on a bench supply before it sees a pack.</li>
+    <li>The E-stop loop: with 12 V applied, the contactor clicks in; pressing the E-stop drops it out.</li>
+    <li>Both packs: no swelling, cells balanced within 0.02 V, then the series link.</li>
+  </ol>
+  <p>Then <a href="bringup.html#first-power-on">First power-on</a>, robot hanging.</p>
+</main>
+
+<footer class="site-footer"><div class="inner"><span>Fully Open Humanoid · v0.1 design release · <a href="reference.html#license">MIT / CC BY 4.0</a></span><span>Derived from <a href="https://generalroboticslab.github.io/Duke_Humanoid_V2_OpenSource/">Duke Humanoid V2</a> and <a href="https://berkeley-humanoid-lite.gitbook.io/docs">Berkeley Humanoid Lite</a></span></div></footer>
+
+<script src="assets/js/site.js"></script>
+<script>
+foh.json("assets/data/robot.json").then(robot => {
+  const esc = foh.esc;
+  const buses = {};
+  for (const j of robot.joints) (buses[j.bus] = buses[j.bus] || []).push(j);
+  const bt = document.querySelector("#bus-table tbody");
+  const busDesc = { can0: "Left leg", can1: "Right leg", can2: "Waist + left arm", can3: "Right arm" };
+  const tail = { can0: "at ankle roll", can1: "at ankle roll", can2: "at the wrist", can3: "at the wrist" };
+  for (const b of Object.keys(buses).sort()) {
+    const js = buses[b];
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td><code>${b}</code><span class="sub">${busDesc[b] || ""}</span></td><td>${js.map(j => esc(j.name)).join(", ")}</td><td>${js.map(j => j.can_id).join(", ")}</td><td>${tail[b] || ""}</td>`;
+    bt.appendChild(tr);
+  }
+  const mt = document.querySelector("#map-table tbody");
+  const left = robot.joints.filter(j => j.side !== "R");
+  const right = robot.joints.filter(j => j.side === "R");
+  const cell = j => j ? `<td>${esc(j.id)}</td><td class="num">${j.can_id}</td><td><code>${j.bus}</code></td><td>${j.actuator}</td>` : "<td></td><td></td><td></td><td></td>";
+  for (let i = 0; i < left.length; i++) {
+    const l = left[i];
+    const r = l.side === "L" ? right.find(j => j.id === l.id.replace(/_L$/, "_R")) : null;
+    const tr = document.createElement("tr"); tr.innerHTML = cell(l) + cell(r); mt.appendChild(tr);
+  }
+});
+</script>
+</body>
+</html>

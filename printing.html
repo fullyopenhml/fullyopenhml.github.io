@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Printing — Fully Open Humanoid</title>
+<meta name="description" content="Every printed part of the Fully Open Humanoid with material, quantity, estimated mass and envelope, plus print settings as numbers, orientation rules and the file release status.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<header class="site-header"><div class="inner">
+  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><use href="assets/img/favicon.svg#mark"/></svg><span class="name">Fully Open Humanoid</span><span class="ver">v0.1</span></a>
+  <button class="iconbtn nav-toggle" aria-label="Menu">☰</button>
+  <nav class="nav">
+    <a href="design.html">Design</a><a href="viewer.html">3D model</a><a href="bom.html">BOM</a><a href="printing.html">Printing</a><a href="assembly.html">Assembly</a><a href="electrical.html">Electrical</a><a href="bringup.html">Bring-up</a><a href="software.html">Software</a><a href="reference.html">Reference</a>
+    <a class="gh" href="https://github.com/fullyopenhml/fullyopenhml.github.io" title="GitHub">GitHub</a>
+    <button class="iconbtn theme-toggle" aria-label="Toggle theme">◐</button>
+  </nav>
+</div></header>
+
+<main class="page">
+  <h1>Printing</h1>
+  <p class="lead">Every structural part is a plate, a cup or an adapter that prints flat on a 250 mm bed without supports on a load-bearing face. Three materials, three settings profiles, one printer.</p>
+  <div class="toc" data-toc></div>
+
+  <div class="banner"><span class="dot"></span><div><b>Files.</b> v0.1 publishes the kinematic model (this site, the URDF). The printable STL, STEP and 3MF for each part are released with the v0.2 joint kits and onward; the table below gets a download column as each file lands, with a SHA-256. Until then the part list, masses and envelopes are what the design commits to.</div></div>
+
+  <h2 id="at-a-glance">At a glance</h2>
+  <div class="stats" id="print-stats"></div>
+
+  <h2 id="settings">Print settings</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Profile</th><th>Parts</th><th>Nozzle</th><th>Layer</th><th>Walls</th><th>Infill</th><th>Temps</th><th>Other</th></tr></thead>
+    <tbody>
+      <tr><td><b>Structural</b><br><small>PETG-CF</small></td><td>Adapters, brackets, cups, plates, thigh blocks, foot plates, pelvis, torso plates, neck</td><td>0.4 mm hardened steel</td><td>0.2 mm</td><td>6 (2.4 mm)</td><td>35 % gyroid</td><td>255–270 °C / 80 °C bed</td><td>Enclosure recommended; dry the spool; 100 % infill on the hip-roll bracket, hip-yaw housing, thigh block and ankle bracket</td></tr>
+      <tr><td><b>Covers</b><br><small>PLA</small></td><td>Side, front and back panels, head shell, electronics tray, battery cradles, gripper body and fingers</td><td>0.4 mm</td><td>0.2 mm</td><td>3</td><td>15 % gyroid</td><td>215 °C / 60 °C</td><td>Any PLA. PLA+ or PETG if the robot lives somewhere warm</td></tr>
+      <tr><td><b>Soft</b><br><small>TPU 95A</small></td><td>Soles, finger pads</td><td>0.4 mm</td><td>0.2 mm</td><td>3</td><td>100 %</td><td>225 °C / 40 °C</td><td>25–30 mm/s, retraction off or 1 mm, direct drive</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3 id="orientation">Orientation rules</h3>
+  <ul>
+    <li><b>Plates</b> (shank, forearm, torso, foot) print flat on their largest face. Layer lines then run in the plane of the load, not across it.</li>
+    <li><b>Cups and adapters</b> print with the bore vertical. The output-adapter discs print flange-face down so the bolted face is the smooth first layer.</li>
+    <li><b>L-brackets</b> (hip-roll, shoulder-roll, ankle) print on the plate face with the cup standing up; the cup's overhang is a 45° chamfer inside the model, so no supports.</li>
+    <li>Right-side parts marked <em>mirror</em> are the left STL mirrored in the slicer, not a separate file.</li>
+  </ul>
+
+  <h3 id="post">After printing</h3>
+  <ul>
+    <li>Bearing seats and actuator bores are modelled at nominal size. Ream or sand to fit: a bearing should press in by hand with a light tap, an actuator should slide in with no play.</li>
+    <li>Heat-set inserts: M4 in every actuator-flange adapter and cup, M5 in the torso plates, M3 in covers. Set them with a soldering iron at 230 °C, square, flush.</li>
+    <li>Clearance holes for M4 print at 4.4 mm; drill to 4.5 mm if the screw does not pass freely.</li>
+    <li>Weigh the first of each structural part and compare with the estimate in the table. A part 30 % heavier than the estimate has the wrong infill; 30 % lighter has under-extruded walls.</li>
+  </ul>
+
+  <h2 id="parts">Printed parts</h2>
+  <p>Estimated masses are model volume × density × fill factor (see <a href="design.html#mass">the mass budget</a>). Envelope is the bounding box of the part as modelled. Click an ID to see the part on the robot.</p>
+  <div class="table-wrap"><table id="parts-table" class="compact">
+    <thead><tr><th>ID</th><th>Part</th><th>Material</th><th class="num">Qty</th><th class="num">g each</th><th>Envelope (mm)</th><th>Notes</th><th>File</th></tr></thead><tbody></tbody>
+  </table></div>
+
+  <h2 id="filament">Filament plan</h2>
+  <div class="table-wrap"><table id="fil-table" class="compact"><thead><tr><th>Material</th><th class="num">On the robot</th><th class="num">Buy</th><th>Print time (rough)</th></tr></thead><tbody></tbody></table></div>
+  <p class="tiny">Print time assumes 20 g/h for PETG-CF at these settings, 25 g/h for PLA and 10 g/h for TPU on one printer. Two printers halve it.</p>
+</main>
+
+<footer class="site-footer"><div class="inner"><span>Fully Open Humanoid · v0.1 design release · <a href="reference.html#license">MIT / CC BY 4.0</a></span><span>Derived from <a href="https://generalroboticslab.github.io/Duke_Humanoid_V2_OpenSource/">Duke Humanoid V2</a> and <a href="https://berkeley-humanoid-lite.gitbook.io/docs">Berkeley Humanoid Lite</a></span></div></footer>
+
+<script src="assets/js/site.js"></script>
+<script>
+foh.json("assets/data/robot.json").then(robot => {
+  const esc = foh.esc;
+  const printed = Object.values(robot.catalog).filter(p => p.category === "printed");
+  const tb = document.querySelector("#parts-table tbody");
+  const matName = { petg_cf: "PETG-CF", pla: "PLA", tpu: "TPU 95A" };
+  let n = 0, mass = 0;
+  const byMat = {};
+  for (const p of printed) {
+    n += p.qty; if (!p.optional) { mass += p.qty * p.mass_g; byMat[p.material] = (byMat[p.material] || 0) + p.qty * p.mass_g; }
+    const tr = document.createElement("tr"); tr.id = p.id;
+    tr.innerHTML = `<td class="mono" style="font-size:.78rem"><a href="${foh.partHref(p.id)}">${esc(p.id)}</a></td><td>${esc(p.name)}${p.optional ? ' <span class="pill acc">kit</span>' : ""}${p.mirror ? ' <span class="pill">mirror</span>' : ""}</td><td>${matName[p.material] || p.material}</td><td class="num">${p.qty}</td><td class="num">${p.mass_g}</td><td class="mono" style="font-size:.78rem">${p.dims ? p.dims.map(Math.round).join(" × ") : ""}</td><td class="tiny">${esc(p.notes || "")}</td><td><span class="pill warn">v0.2</span></td>`;
+    tb.appendChild(tr);
+  }
+  const st = document.getElementById("print-stats");
+  const stat = (v, k) => `<div class="stat"><div class="v">${v}</div><div class="k">${k}</div></div>`;
+  st.innerHTML = stat(printed.length, "distinct printed parts") + stat(n, "printed pieces on one robot") + stat((mass / 1000).toFixed(1) + " kg", "of printed material on the robot") + stat("230 mm", "longest part (foot plate)") + stat("0", "parts that need machining");
+  const ft = document.querySelector("#fil-table tbody");
+  const rate = { petg_cf: 20, pla: 25, tpu: 10 };
+  for (const [m, g] of Object.entries(byMat)) {
+    const buy = Math.ceil(g * 1.35 / 1000 * 2) / 2;
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td>${matName[m]}</td><td class="num">${(g / 1000).toFixed(2)} kg</td><td class="num">${buy.toFixed(1)} kg</td><td>about ${Math.round(g * 1.35 / rate[m])} h</td>`;
+    ft.appendChild(tr);
+  }
+});
+</script>
+</body>
+</html>

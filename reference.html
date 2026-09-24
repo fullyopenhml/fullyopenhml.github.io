@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reference — Fully Open Humanoid</title>
+<meta name="description" content="Status of every number, full specifications, joint and actuator tables, files, naming conventions, licences, citation and changelog for the Fully Open Humanoid.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<header class="site-header"><div class="inner">
+  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><use href="assets/img/favicon.svg#mark"/></svg><span class="name">Fully Open Humanoid</span><span class="ver">v0.1</span></a>
+  <button class="iconbtn nav-toggle" aria-label="Menu">☰</button>
+  <nav class="nav">
+    <a href="design.html">Design</a><a href="viewer.html">3D model</a><a href="bom.html">BOM</a><a href="printing.html">Printing</a><a href="assembly.html">Assembly</a><a href="electrical.html">Electrical</a><a href="bringup.html">Bring-up</a><a href="software.html">Software</a><a href="reference.html">Reference</a>
+    <a class="gh" href="https://github.com/fullyopenhml/fullyopenhml.github.io" title="GitHub">GitHub</a>
+    <button class="iconbtn theme-toggle" aria-label="Toggle theme">◐</button>
+  </nav>
+</div></header>
+
+<main class="page">
+  <h1>Reference</h1>
+  <div class="toc" data-toc></div>
+
+  <h2 id="status">Status of every number</h2>
+  <p>A design release should say which of its numbers are decisions, which are calculations and which are measurements. As of v0.1:</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Quantity</th><th>Kind</th><th>Source</th></tr></thead>
+    <tbody>
+      <tr><td>Joint layout, axes, link lengths, part list</td><td><span class="pill acc">decision</span></td><td><code>tools/build_data.py</code></td></tr>
+      <tr><td>Actuator torque, Kt, current limit, mass, envelope</td><td><span class="pill">copied</span></td><td>Duke Humanoid V2 hardware release (RobStride manuals)</td></tr>
+      <tr><td>Actuator prices</td><td><span class="pill">copied</span></td><td>Duke V2 team BOM, Amazon US / AiFitLab, 2026-09</td></tr>
+      <tr><td>Other prices</td><td><span class="pill warn">estimate</span></td><td>Typical US listings, 2026-09; verify before ordering</td></tr>
+      <tr><td>Printed-part masses</td><td><span class="pill warn">estimate</span></td><td>Model volume × density × fill factor</td></tr>
+      <tr><td>Robot mass, mass budget</td><td><span class="pill warn">estimate</span></td><td>Sum of the above plus 0.9 kg for fasteners and harness</td></tr>
+      <tr><td>Torque margins</td><td><span class="pill warn">estimate</span></td><td>Static hand calculations on the design page</td></tr>
+      <tr><td>Joint limits</td><td><span class="pill acc">decision</span></td><td>Adapted from Duke V2's software limits</td></tr>
+      <tr><td>Run time, print time, latency, temperatures</td><td><span class="pill bad">unmeasured</span></td><td>Filled in by the roadmap's builds</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2 id="specs">Full specifications</h2>
+  <div class="table-wrap"><table id="spec-table"><tbody></tbody></table></div>
+
+  <h2 id="joints">Joints</h2>
+  <div class="table-wrap"><table id="joint-table" class="compact"><thead><tr><th class="num">#</th><th>Joint</th><th>Parent → child link</th><th>Axis</th><th>Limits</th><th>Actuator</th><th>Bus</th><th class="num">ID</th></tr></thead><tbody></tbody></table></div>
+
+  <h2 id="actuators">Actuators</h2>
+  <div class="table-wrap"><table id="act-table" class="compact"><thead><tr><th>Model</th><th class="num">Qty</th><th class="num">Peak N·m</th><th class="num">Kt N·m/A</th><th class="num">I limit A</th><th>Ø × L mm</th><th class="num">Mass g</th><th>Support bearing</th></tr></thead><tbody></tbody></table></div>
+  <p class="tiny">48 V bus, CAN at 1 Mbit/s, MIT-mode control. Over-temperature warning 75 °C, fault 80 °C. Manuals: <a href="https://www.robstride.com/download">robstride.com/download</a>.</p>
+
+  <h2 id="files">Files</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>File</th><th>What</th></tr></thead>
+    <tbody>
+      <tr><td><a href="tools/build_data.py"><code>tools/build_data.py</code></a></td><td>The model: every part, joint, price. Edit this, run it, everything below regenerates.</td></tr>
+      <tr><td><a href="assets/data/robot.json"><code>assets/data/robot.json</code></a></td><td>Links, joints, part occurrences with primitive shapes, catalogue, poses, specs. Read by the viewer and the tables on this site.</td></tr>
+      <tr><td><a href="assets/data/bom.json"><code>assets/data/bom.json</code></a></td><td>Bill of materials by section and tier.</td></tr>
+      <tr><td><a href="assets/model/foh_v0_1.urdf"><code>assets/model/foh_v0_1.urdf</code></a></td><td>Robot description with masses and inertias, primitive geometry.</td></tr>
+      <tr><td><code>assets/js/robot-viewer.js</code></td><td>The viewer: builds the robot from <code>robot.json</code> with three.js.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2 id="naming">Naming</h2>
+  <ul>
+    <li><b>Part IDs</b>: <code>3DP_</code> printed, <code>ACT_</code> actuator, <code>HW_</code> bearings and metal, <code>EL_</code> electronics, <code>CB_</code> cables, <code>MAT_</code> filament, <code>TL_</code> tools. Printed IDs continue with a subassembly code (<code>pel</code>, <code>leg</code>, <code>tor</code>, <code>hea</code>, <code>arm</code>, <code>grp</code>) and a two-digit number, then a descriptive name.</li>
+    <li><b>Occurrences</b> add the side: <code>knee_L_act</code>, <code>shank_inner_R</code>. Mirrored prints share one part ID.</li>
+    <li><b>Joints</b>: <code>hip_pitch_L</code>, <code>knee_R</code>, <code>waist</code>; CAN ID = 10 × limb + index (left leg 11–16, right leg 21–26, left arm 31–35, right arm 41–45, waist 1).</li>
+    <li><b>Links</b> are named by the part that carries them: <code>hip_roll_bracket_L</code>, <code>thigh_L</code>, <code>shank_L</code>, <code>ankle_block_L</code>, <code>foot_L</code>.</li>
+  </ul>
+
+  <h2 id="license">Licence</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Artefact</th><th>Licence</th></tr></thead>
+    <tbody>
+      <tr><td>Code: this site, <code>tools/build_data.py</code>, the viewer, future control and training code</td><td><a href="https://opensource.org/license/mit">MIT</a></td></tr>
+      <tr><td>Hardware design files: the model, URDF, printable files, BOM</td><td><a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></td></tr>
+      <tr><td>Documentation and figures</td><td><a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout plain"><span class="t">Maintainer's note.</span> These are the proposed terms for v0.1; the code licence is in <code>LICENSE</code> at the repository root. Both parent projects allow this reuse: Duke Humanoid V2's hardware and documentation are Apache-2.0, Berkeley Humanoid Lite's code is MIT and its assets CC BY-SA 4.0. Nothing from either project's CAD is redistributed here; the numbers reused are cited on the page where they appear.</div>
+
+  <h2 id="citation">Citation</h2>
+<pre><code>@misc{fully_open_humanoid_2026,
+  title  = {Fully Open Humanoid: a printable RobStride humanoid derived from Duke Humanoid V2},
+  author = {Fully Open Humanoid contributors},
+  year   = {2026},
+  url    = {https://fullyopenhml.github.io/}
+}</code></pre>
+  <p>Please also cite the two projects this design is built on:</p>
+<pre><code>@misc{duke_humanoid_v2,
+  title  = {Visible-Reachable Workspace for Perception-Aware Humanoid Design},
+  author = {Boxi Xia and Zijiang Yang and Ryan Shin and Bokuan Li and Eric Lu and Jacob Lee and Jiaxun Liu and Boyuan Chen},
+  year   = {2026},
+  url    = {https://github.com/generalroboticslab/duke_humanoid_v2}
+}
+
+@article{chi2025demonstrating,
+  title   = {Demonstrating Berkeley Humanoid Lite: An Open-source, Accessible, and Customizable 3D-printed Humanoid Robot},
+  author  = {Yufeng Chi and Qiayuan Liao and Junfeng Long and Xiaoyu Huang and Sophia Shao and Borivoje Nikolic and Zhongyu Li and Koushil Sreenath},
+  journal = {arXiv preprint arXiv:2504.17249},
+  year    = {2025}
+}</code></pre>
+
+  <h2 id="changelog">Changelog</h2>
+  <div class="table-wrap"><table class="compact">
+    <thead><tr><th>Date</th><th>Version</th><th>Change</th></tr></thead>
+    <tbody><tr><td>2026-09-24</td><td>v0.1</td><td>First design release: kinematics, part list, BOM, wiring, bring-up plan, URDF, interactive model.</td></tr></tbody>
+  </table></div>
+</main>
+
+<footer class="site-footer"><div class="inner"><span>Fully Open Humanoid · v0.1 design release · <a href="reference.html#license">MIT / CC BY 4.0</a></span><span>Derived from <a href="https://generalroboticslab.github.io/Duke_Humanoid_V2_OpenSource/">Duke Humanoid V2</a> and <a href="https://berkeley-humanoid-lite.gitbook.io/docs">Berkeley Humanoid Lite</a></span></div></footer>
+
+<script src="assets/js/site.js"></script>
+<script>
+Promise.all([foh.json("assets/data/robot.json"), foh.json("assets/data/bom.json")]).then(([robot, bom]) => {
+  const esc = foh.esc;
+  const s = robot.specs;
+  const m = s.mass_g;
+  const rows = [
+    ["Degrees of freedom", `${s.dof} RobStride joints (waist 1, each leg 6, each arm 5) + 2 gripper servos optional`],
+    ["Size", `${s.height_mm} mm tall, ${s.width_mm} mm across the shoulders, ${s.depth_mm} mm deep (foot); hip spacing ${s.hip_spacing_mm} mm`],
+    ["Mass (estimate)", `${(s.mass_total_g / 1000).toFixed(1)} kg: actuators ${(m.actuators / 1000).toFixed(1)}, printed ${(m.printed / 1000).toFixed(1)}, electronics and packs ${(m.electronics / 1000).toFixed(1)}, bearings and extrusion ${(m.hardware / 1000).toFixed(1)}, fasteners and harness ${(m.fasteners_and_harness / 1000).toFixed(1)}; +${(s.optional_mass_g / 1000).toFixed(2)} kg with camera and grippers`],
+    ["Structure", "Printed PETG-CF (structure), PLA (covers), TPU 95A (soles, pads); four 2020 aluminium extrusions"],
+    ["Actuators", "RobStride RS03 ×11, RS06 ×6, RS02 ×4, RS05 ×2"],
+    ["Computer", "Intel N100 mini PC, 12 V"],
+    ["IMU", "USB 9-axis AHRS on the torso bottom plate"],
+    ["Perception", "None in the core robot; RealSense D435i pocket in the head"],
+    ["CAN", `${s.can_buses} × CANable PRO V2.0, ${s.can_bitrate}`],
+    ["Power", `${s.bus_voltage}; 2 × 6S 8 Ah; 100 A breaker, 100 A contactor, E-stop; 12 V rail from a 10 A buck converter`],
+    ["Control", "50 Hz policy, 500 Hz actuator loop, MIT-mode PD in the actuators"],
+    ["Parts cost", `${foh.money(bom.tiers.core)} core, ${foh.money(bom.tiers.core + bom.tiers.optional)} with camera and grippers, ${foh.money(bom.tiers.tools)} of tools; ${bom.meta.priced_as_of} prices`],
+  ];
+  const st = document.querySelector("#spec-table tbody");
+  for (const [k, v] of rows) { const tr = document.createElement("tr"); tr.innerHTML = `<td style="width:170px"><b>${k}</b></td><td>${esc(v)}</td>`; st.appendChild(tr); }
+  const jt = document.querySelector("#joint-table tbody");
+  robot.joints.forEach((j, i) => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td class="num">${i}</td><td>${esc(j.id)}</td><td class="tiny">${esc(j.parent)} → ${esc(j.child)}</td><td class="mono">[${j.axis.join(", ")}]</td><td>${j.limits[0]}° … ${j.limits[1]}°</td><td>${j.actuator}</td><td><code>${j.bus}</code></td><td class="num">${j.can_id}</td>`;
+    jt.appendChild(tr);
+  });
+  const at = document.querySelector("#act-table tbody");
+  for (const [k, a] of Object.entries(robot.actuators)) {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td>${esc(a.name)}</td><td class="num">${robot.catalog["ACT_" + k].qty}</td><td class="num">${a.peak_nm}</td><td class="num">${a.kt}</td><td class="num">${a.i_limit}</td><td>Ø${a.dia} × ${a.length}</td><td class="num">${a.mass_g}</td><td>${esc(a.bearing)}</td>`;
+    at.appendChild(tr);
+  }
+});
+</script>
+</body>
+</html>

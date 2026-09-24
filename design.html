@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design — Fully Open Humanoid</title>
+<meta name="description" content="Why the Fully Open Humanoid looks the way it does: what it keeps from Duke Humanoid V2, what it takes from Berkeley Humanoid Lite, every cost substitution, kinematics, actuator torque margins and the mass budget.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<header class="site-header"><div class="inner">
+  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><use href="assets/img/favicon.svg#mark"/></svg><span class="name">Fully Open Humanoid</span><span class="ver">v0.1</span></a>
+  <button class="iconbtn nav-toggle" aria-label="Menu">☰</button>
+  <nav class="nav">
+    <a href="design.html">Design</a><a href="viewer.html">3D model</a><a href="bom.html">BOM</a><a href="printing.html">Printing</a><a href="assembly.html">Assembly</a><a href="electrical.html">Electrical</a><a href="bringup.html">Bring-up</a><a href="software.html">Software</a><a href="reference.html">Reference</a>
+    <a class="gh" href="https://github.com/fullyopenhml/fullyopenhml.github.io" title="GitHub">GitHub</a>
+    <button class="iconbtn theme-toggle" aria-label="Toggle theme">◐</button>
+  </nav>
+</div></header>
+
+<main class="page">
+  <h1>Design</h1>
+  <p class="lead">One robot, two parents. The joint layout and actuator strategy come from Duke Humanoid V2; the manufacturing strategy comes from Berkeley Humanoid Lite. This page records every decision so that the next person can disagree with it precisely.</p>
+  <div class="toc" data-toc></div>
+
+  <h2 id="goals">Goals</h2>
+  <ol>
+    <li><b>Cost.</b> Under $6,000 in parts for a robot that can walk and carry a gripper, without giving up integrated quasi-direct-drive actuators. Actuators are the floor: 23 RobStride units are about 80 % of the bill, so everything around them has to be nearly free.</li>
+    <li><b>No machining.</b> Every structural part prints on a desktop FDM printer with a 250 mm bed. The only metal is off-the-shelf: 2020 extrusion cut to length, thin-section bearings, screws and inserts.</li>
+    <li><b>Few distinct parts.</b> Four actuator models, three bearing sizes, one connector family. Every joint of a given actuator model uses the same printed adapter, cup and support bearing, so there are three joint kits repeated 23 times rather than 23 joints.</li>
+    <li><b>Sourceable anywhere.</b> Everything but the actuators comes from Amazon, AliExpress or any filament vendor, with the manufacturer part named so substitutes are obvious.</li>
+    <li><b>Buildable by one person.</b> Bench subassemblies that one person can lift, and a hoist only for the final steps.</li>
+    <li><b>Honest numbers.</b> Every figure on this site is either computed from the model in <code>tools/build_data.py</code>, copied from a named source, or marked as an estimate.</li>
+  </ol>
+
+  <h2 id="parents">What is kept from each parent</h2>
+  <div class="split">
+    <div class="card"><h3>From Duke Humanoid V2</h3>
+      <ul>
+        <li><b>Leg topology.</b> Hip pitch → roll → yaw, knee, ankle pitch → roll. The hip-yaw actuator sits directly on top of the knee actuator, so the "thigh" is a short block and the long link is the shank. This keeps the hip narrow and the leg mass high.</li>
+        <li><b>RobStride actuators</b> with the same model-to-joint logic: RS03 wherever gravity torque is large, RS06 for roll axes, RS02 for arms, RS05 for the wrist.</li>
+        <li><b>Bearing-supported joints.</b> A thin-section bearing on the back of each actuator so the printed output adapter carries torque, not bending moment.</li>
+        <li><b>One-shell harness.</b> XT30(2+2) carries 48 V and CAN in one connector; every limb is a daisy chain with a terminator at the end.</li>
+        <li><b>The parallel gripper</b> (rack and pinion, one bus servo), as an optional kit.</li>
+        <li>Joint limits, the ID map pattern and the bring-up sequence.</li>
+      </ul></div>
+    <div class="card"><h3>From Berkeley Humanoid Lite</h3>
+      <ul>
+        <li><b>All structure printed.</b> Plates, cups and adapters in carbon-filled PETG; covers in PLA; soles and pads in TPU.</li>
+        <li><b>2020 aluminium extrusion torso</b> with printed end plates: stiff, cheap, and cut with a hacksaw.</li>
+        <li><b>A $160 mini PC</b> is enough to run a reinforcement-learning policy at 50 Hz and the motor loop at 500 Hz.</li>
+        <li><b>Blind by default.</b> Walking uses the IMU and joint encoders. Cameras are an add-on kit, not a prerequisite.</li>
+        <li>Filament and fasteners listed in the BOM as real line items.</li>
+        <li>Two-configuration thinking: a core robot everyone builds the same way, plus kits.</li>
+      </ul></div>
+  </div>
+
+  <h2 id="changes">Every change from Duke V2, with its reason</h2>
+  <p>The reference is the priced lines of Duke V2's published parts lists (actuators $5,605, electronics $2,815, CNC $4,199, prints $169, fasteners $179, cables $30: <b>$12,997</b>, 2026-09; consumables unpriced). The rows below bridge that to this design's <span data-cost="core" data-fmt="full">$5,649</span>.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>#</th><th>Duke V2</th><th>FOH v0.1</th><th>Why</th><th class="num">Δ cost</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>35 CNC aluminium 6061 parts ($4,199), six SLS nylon parts and FDM covers ($169), fasteners and bearings ($179)</td><td>39 printed parts ($224 of filament), four 2020 extrusions, bearings, inserts and screws ($154)</td><td>The single biggest barrier to a build is a machining order. Printed PETG-CF plates 10 mm thick, backed by the support bearing, carry the loads at this scale; the hip and knee brackets can be reprinted in PA-CF if they creep.</td><td class="num">−$4,170</td></tr>
+      <tr><td>2</td><td>7-DOF arm: RS03 + RS06 + RS02 ×3 + RS00 + RS05, plus two SLS wrist housings</td><td>5-DOF arm: RS06 ×2 + RS02 ×2 + RS05</td><td>Wrist pitch and yaw were Duke V2's most complex subassembly (SLS nylon housings, three actuator models). A 5-DOF arm still places a gripper anywhere in front of the robot; the two wrist axes return as an upgrade kit once the base robot walks.</td><td class="num">−$540</td></tr>
+      <tr><td>3</td><td>Shoulder pitch RS03 (60 N·m, 0.91 kg)</td><td>Shoulder pitch RS06 (36 N·m, 0.62 kg)</td><td>The arm root only has to hold a 2.4 kg arm plus a 0.5 kg payload: about 9 N·m static (see margins below).</td><td class="num">−$30</td></tr>
+      <tr><td>4</td><td>Knee RS04 (120 N·m, 1.44 kg)</td><td>Knee RS03 (60 N·m, 0.91 kg)</td><td>The robot is 35 kg → 26 kg. Peak knee torque per kilogram (2.3 N·m/kg) is in the range of Duke V2 (3.4) and Unitree G1 (2.6). Same bracket family as the hips.</td><td class="num">−$60</td></tr>
+      <tr><td>5</td><td>Two RealSense D436 ($708) on two 2-axis gimbals of RS05 actuators ($440)</td><td>Fixed printed head; one D435i optional ($300, not in the core total)</td><td>Duke V2's twin gimbals serve its perception-aware-workspace research. A walking platform needs an IMU. The head keeps a camera pocket.</td><td class="num">−$1,148</td></tr>
+      <tr><td>6</td><td>MINISFORUM X1-470 ($1,295)</td><td>Intel N100 mini PC ($160)</td><td>Duke V2 runs its planner on a separate CUDA machine anyway. On-robot work is a small MLP at 50 Hz plus CAN I/O.</td><td class="num">−$1,135</td></tr>
+      <tr><td>7</td><td>6 CAN adapters (5 actuators each), 3 USB hubs</td><td>4 adapters (one per limb, waist on the left-arm bus), 1 hub</td><td>Six actuators per 1 Mbit/s bus at 500 Hz is 35 % bus load. Fewer adapters, fewer cables through the torso.</td><td class="num">−$68</td></tr>
+      <tr><td>8</td><td>2 × 6S 10 Ah ($367)</td><td>2 × 6S 8 Ah ($180)</td><td>Same 44.4 V bus; the lighter robot draws less. Expect 30–45 minutes of walking; unmeasured.</td><td class="num">−$187</td></tr>
+      <tr><td>9</td><td>No E-stop, breaker or contactor in the BOM</td><td>100 A breaker, 100 A contactor, E-stop loop</td><td>Duke V2's own release notes list the missing E-stop as a blocker. A quasi-direct-drive robot has no self-locking gears: cutting power drops it, so the stop is paired with a hang point.</td><td class="num">+$57</td></tr>
+      <tr><td>10</td><td>Grippers in the core list: two Feetech HL-3915 ($50 each), two driver boards, two converters</td><td>Optional kit: two STS3215 ($16 each) on one driver board</td><td>Same bus protocol, same Waveshare driver, ten times the stock in the market thanks to LeRobot arms. A walking robot does not need hands on day one.</td><td class="num">−$115</td></tr>
+      <tr><td>11</td><td>Waist RS03</td><td>Waist RS03 (kept)</td><td>One actuator turns the whole upper body for manipulation and for arm-swing decoupling in walking. Delete it for a further −$225 and a fixed torso.</td><td class="num">0</td></tr>
+      <tr><td>12</td><td>Harness as lab consumables; ten TVS diodes, surge protector, two voltage checkers, three converters</td><td>Harness itemised ($124); six TVS, one converter, fused distribution block, two voltage alarms</td><td>Itemising the harness makes the cost honest; the rest is the smaller robot's smaller electrical system.</td><td class="num">+$48</td></tr>
+    </tbody>
+    <tfoot><tr class="total"><td></td><td>$12,997</td><td><span data-cost="core" data-fmt="full">$5,649</span></td><td>Core robot, 2026-09 prices</td><td class="num">−57 %</td></tr></tfoot>
+  </table></div>
+
+  <h2 id="kinematics">Kinematics</h2>
+  <p>Frame: X forward, Y left, Z up, ground at z = 0. The pelvis is the base link. Right-side joints are mirrored with the X and Z axes flipped so that a positive angle is the same motion (abduction, outward yaw) on both sides.</p>
+  <div class="diagram">
+    <svg viewBox="0 0 560 430" role="img" aria-label="Front-view kinematic diagram with joint markers">
+      <defs>
+        <g id="jp"><circle r="7" style="fill:var(--bg);stroke:var(--fg3);stroke-width:1.2"/><line x1="-4" y1="0" x2="4" y2="0" stroke="currentColor" stroke-width="1.6"/></g>
+        <g id="jr"><circle r="7" style="fill:var(--bg);stroke:var(--fg3);stroke-width:1.2"/><circle r="2" fill="currentColor"/></g>
+        <g id="jy"><circle r="7" style="fill:var(--bg);stroke:var(--fg3);stroke-width:1.2"/><line x1="0" y1="-4" x2="0" y2="4" stroke="currentColor" stroke-width="1.6"/></g>
+      </defs>
+      <!-- scale 0.3 px/mm, centre x=270, ground y=400 -->
+      <line x1="60" y1="400" x2="480" y2="400" stroke="var(--fg3)" stroke-dasharray="4 4"/>
+      <!-- torso -->
+      <rect x="240" y="98" width="60" height="128" rx="6" class="box"/>
+      <rect x="256" y="67" width="28" height="22" rx="5" class="box"/>
+      <rect x="248" y="242" width="44" height="32" rx="5" class="box"/>
+      <line x1="270" y1="226" x2="270" y2="242" stroke="var(--fg3)" stroke-width="3"/>
+      <!-- legs -->
+      <g stroke="var(--fg3)" stroke-width="4" fill="none">
+        <path d="M292 262 L310 262 L310 296 L312 317 L312 370 L312 380"/>
+        <path d="M248 262 L230 262 L230 296 L228 317 L228 370 L228 380"/>
+        <path d="M290 392 L340 392 M200 392 L250 392"/>
+      </g>
+      <!-- arms -->
+      <g stroke="var(--fg3)" stroke-width="4" fill="none">
+        <path d="M300 118 L320 118 L320 181 L321 242 L321 262"/>
+        <path d="M240 118 L220 118 L220 181 L219 242 L219 262"/>
+      </g>
+      <!-- joints, RS03 orange -->
+      <g color="#e0561c">
+        <use href="#jy" x="270" y="234"/>
+        <use href="#jp" x="292" y="262"/><use href="#jp" x="248" y="262"/>
+        <use href="#jr" x="310" y="262"/><use href="#jr" x="230" y="262"/>
+        <use href="#jy" x="310" y="290"/><use href="#jy" x="230" y="290"/>
+        <use href="#jp" x="312" y="317"/><use href="#jp" x="228" y="317"/>
+        <use href="#jp" x="312" y="370"/><use href="#jp" x="228" y="370"/>
+      </g>
+      <!-- RS06 blue -->
+      <g color="#2f6fb5">
+        <use href="#jr" x="312" y="380"/><use href="#jr" x="228" y="380"/>
+        <use href="#jp" x="300" y="118"/><use href="#jp" x="240" y="118"/>
+        <use href="#jr" x="320" y="118"/><use href="#jr" x="220" y="118"/>
+      </g>
+      <!-- RS02 green -->
+      <g color="#1f8a4c">
+        <use href="#jy" x="320" y="150"/><use href="#jy" x="220" y="150"/>
+        <use href="#jp" x="320" y="181"/><use href="#jp" x="220" y="181"/>
+      </g>
+      <!-- RS05 grey -->
+      <g color="#6b7280"><use href="#jy" x="321" y="242"/><use href="#jy" x="219" y="242"/></g>
+      <!-- labels -->
+      <g class="sm">
+        <text x="340" y="122">shoulder pitch · roll</text>
+        <text x="340" y="154">shoulder yaw</text>
+        <text x="340" y="185">elbow</text>
+        <text x="340" y="246">wrist roll</text>
+        <text x="60" y="238">waist yaw</text>
+        <text x="60" y="266">hip pitch · roll</text>
+        <text x="60" y="294">hip yaw</text>
+        <text x="60" y="321">knee</text>
+        <text x="60" y="374">ankle pitch</text>
+        <text x="60" y="384">ankle roll</text>
+        <text x="500" y="404">z = 0</text>
+      </g>
+      <!-- dimensions -->
+      <g class="sm" stroke="var(--fg3)" stroke-width="1">
+        <line x1="380" y1="262" x2="380" y2="400"/><text x="386" y="335" stroke="none">460 mm hip height</text>
+        <line x1="400" y1="118" x2="400" y2="262"/><text x="406" y="195" stroke="none">480 mm shoulder–hip</text>
+        <line x1="230" y1="412" x2="310" y2="412"/><text x="236" y="426" stroke="none">270 mm hip spacing</text>
+        <line x1="180" y1="92" x2="360" y2="92"/><text x="205" y="86" stroke="none">330 mm shoulder spacing</text>
+      </g>
+      <!-- legend -->
+      <g class="sm" transform="translate(60,40)">
+        <g color="#e0561c"><use href="#jp" x="0" y="0"/></g><text x="12" y="4">RS03</text>
+        <g color="#2f6fb5"><use href="#jp" x="60" y="0"/></g><text x="72" y="4">RS06</text>
+        <g color="#1f8a4c"><use href="#jp" x="120" y="0"/></g><text x="132" y="4">RS02</text>
+        <g color="#6b7280"><use href="#jp" x="180" y="0"/></g><text x="192" y="4">RS05</text>
+        <g color="currentColor"><use href="#jp" x="260" y="0"/></g><text x="272" y="4">pitch (Y)</text>
+        <g color="currentColor"><use href="#jr" x="330" y="0"/></g><text x="342" y="4">roll (X)</text>
+        <g color="currentColor"><use href="#jy" x="390" y="0"/></g><text x="402" y="4">yaw (Z)</text>
+      </g>
+    </svg>
+  </div>
+
+  <div class="table-wrap"><table class="compact" id="joint-table">
+    <thead><tr><th>Joint</th><th>Actuator</th><th>Axis</th><th>Limits</th><th>Peak</th><th>CAN</th></tr></thead><tbody></tbody>
+  </table></div>
+  <p class="tiny">Limits are proposed software limits. Mechanical end stops are not designed yet; the bring-up procedure sets the software limits before any motion.</p>
+
+  <h3 id="links">Link lengths</h3>
+  <div class="table-wrap"><table class="compact" id="dims-table"><tbody></tbody></table></div>
+
+  <h2 id="actuators">Actuator selection and torque margins</h2>
+  <p>Static gravity loads at the worst plausible pose, against RobStride peak torque. Dynamic loads in walking are typically two to three times static at the knee and ankle, which is the reason the leg uses the 60 N·m RS03 throughout even where the static number is small.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Joint</th><th>Actuator</th><th class="num">Peak N·m</th><th>Worst static case (26 kg robot)</th><th class="num">Static N·m</th><th class="num">Margin</th></tr></thead>
+    <tbody>
+      <tr><td>Knee</td><td>RS03</td><td class="num">60</td><td>Single-leg support, knee bent 45°, mass above the knee (22 kg) at a 0.15 m horizontal offset</td><td class="num">32</td><td class="num">1.9×</td></tr>
+      <tr><td>Hip pitch</td><td>RS03</td><td class="num">60</td><td>Single-leg support, upper body (16 kg) leaning 0.2 m forward</td><td class="num">31</td><td class="num">1.9×</td></tr>
+      <tr><td>Hip roll</td><td>RS03</td><td class="num">60</td><td>Single-leg support, whole body (26 kg) 0.135 m off the stance foot</td><td class="num">34</td><td class="num">1.8×</td></tr>
+      <tr><td>Hip yaw</td><td>RS03</td><td class="num">60</td><td>Turning on one foot; friction-limited</td><td class="num">&lt;10</td><td class="num">&gt;6×</td></tr>
+      <tr><td>Ankle pitch</td><td>RS03</td><td class="num">60</td><td>Single-leg support, centre of mass at the toe (0.12 m)</td><td class="num">31</td><td class="num">1.9×</td></tr>
+      <tr><td>Ankle roll</td><td>RS06</td><td class="num">36</td><td>Single-leg support, centre of mass at the foot edge (0.045 m)</td><td class="num">11</td><td class="num">3.2×</td></tr>
+      <tr><td>Waist</td><td>RS03</td><td class="num">60</td><td>Accelerating the upper body; no gravity load</td><td class="num">&lt;10</td><td class="num">&gt;6×</td></tr>
+      <tr><td>Shoulder pitch / roll</td><td>RS06</td><td class="num">36</td><td>Arm horizontal (2.4 kg at 0.25 m) plus 0.5 kg payload at 0.55 m</td><td class="num">8.6</td><td class="num">4.2×</td></tr>
+      <tr><td>Shoulder yaw</td><td>RS02</td><td class="num">17</td><td>Arm horizontal, forearm turned (1.3 kg at 0.2 m)</td><td class="num">2.6</td><td class="num">6.5×</td></tr>
+      <tr><td>Elbow</td><td>RS02</td><td class="num">17</td><td>Forearm horizontal (0.9 kg at 0.12 m) plus 0.5 kg payload at 0.3 m</td><td class="num">2.6</td><td class="num">6.5×</td></tr>
+      <tr><td>Wrist roll</td><td>RS05</td><td class="num">5.5</td><td>Twisting a held 0.5 kg object 0.05 m off axis</td><td class="num">0.3</td><td class="num">&gt;10×</td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout"><span class="t">Budget swap.</span> If the arms will never carry a payload, RS02 at shoulder pitch and roll still gives a 2× static margin and saves $260 and 0.8 kg. The printed shoulder cup then changes to the RS02 pattern.</div>
+  <div class="table-wrap"><table class="compact" id="act-table"><thead><tr><th>Model</th><th class="num">Qty</th><th>Joints</th><th class="num">Peak N·m</th><th class="num">Kt</th><th class="num">I limit</th><th>Ø × L</th><th class="num">Mass</th><th>Support bearing</th><th class="num">Price</th></tr></thead><tbody></tbody></table></div>
+  <p class="tiny">Torque, Kt, current limit, envelope and mass are the values in the Duke Humanoid V2 hardware release, which come from the RobStride manuals. Verify against the manual for the revision you buy.</p>
+
+  <h2 id="mass">Mass budget</h2>
+  <div class="table-wrap"><table class="compact" id="mass-table"><thead><tr><th>Group</th><th class="num">kg</th><th>Basis</th></tr></thead><tbody></tbody></table></div>
+  <p>Printed-part masses are the solid volume of the model's primitives × material density × a fill factor (0.45 for PETG-CF, 0.35 for PLA covers, 0.70 for TPU). Real parts with pockets and cable channels will come in lighter; the estimate is deliberately on the heavy side.</p>
+
+  <h2 id="comparison">Side by side</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th></th><th>FOH v0.1</th><th>Duke Humanoid V2</th><th>Berkeley Humanoid Lite</th></tr></thead>
+    <tbody>
+      <tr><td>Degrees of freedom</td><td>23 + 2 gripper servos</td><td>31 + 2 gripper servos</td><td>22</td></tr>
+      <tr><td>Height</td><td>1.11 m</td><td>1.26 m with camera masts</td><td>about 0.8 m</td></tr>
+      <tr><td>Mass</td><td>26 kg (estimate)</td><td>35 kg (CAD)</td><td>16 kg</td></tr>
+      <tr><td>Actuators</td><td>RobStride RS03 ×11, RS06 ×6, RS02 ×4, RS05 ×2</td><td>RobStride RS00–RS06, 31 units</td><td>Printed cycloidal gearboxes on MAD 5010 / M6C12 motors</td></tr>
+      <tr><td>Structure</td><td>Printed PETG-CF, PLA, TPU; 2020 extrusion</td><td>CNC aluminium 6061; printed covers; SLS nylon</td><td>Printed PLA; 2020 extrusion</td></tr>
+      <tr><td>Machined parts</td><td>0</td><td>35</td><td>0</td></tr>
+      <tr><td>Computer</td><td>Intel N100 mini PC</td><td>MINISFORUM X1-470</td><td>Mini PC</td></tr>
+      <tr><td>Perception</td><td>IMU; camera optional</td><td>2 × RealSense D436 on gimbals</td><td>IMU</td></tr>
+      <tr><td>CAN buses</td><td>4</td><td>6</td><td>4</td></tr>
+      <tr><td>Parts cost</td><td><span data-cost="core">$5.6k</span> core, <span data-cost="core+optional">$6.0k</span> with kits</td><td>$13.0k (priced lines, 2026-09)</td><td>$4.35k (US pricing)</td></tr>
+      <tr><td>Hardware licence</td><td>CC BY 4.0 (proposed)</td><td>Apache-2.0</td><td>CC BY-SA 4.0</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2 id="risks">Open questions and risks</h2>
+  <ul>
+    <li><b>Printed adapters at 60 N·m.</b> The RS03 output flange drives a 68 mm printed disc through its bolt circle. Bolt-hole bearing stress in PETG-CF at 60 N·m is on the edge; the v0.2 joint-kit test measures it. Fallbacks: steel washers under the heads, a printed PA-CF adapter, or a 3 mm aluminium disc as the only metal part.</li>
+    <li><b>Heat.</b> RobStride warns at 75 °C. PETG softens around 80 °C. The cups leave the finned housing exposed; if a joint runs hot, its cup goes to PA-CF.</li>
+    <li><b>Hip width.</b> 270 mm between the legs (Duke V2: 253) because the roll actuator sits fully outboard of the hip-pitch flange. A canted hip-pitch axis, as on Duke V2, would recover 15–20 mm at the cost of a harder-to-print bracket.</li>
+    <li><b>No mechanical end stops.</b> Limits are software only, as on Duke V2.</li>
+    <li><b>Ankle stack height.</b> The ankle-roll actuator sits behind the ankle-pitch actuator, which puts the heel actuator 76 mm behind the shank line. Reaction forces at heel strike go through the ankle bracket; it is the thickest printed part for that reason.</li>
+    <li><b>Nothing is measured.</b> Masses, run time, print times and torque margins are calculated. The roadmap replaces each with a measurement.</li>
+  </ul>
+</main>
+
+<footer class="site-footer"><div class="inner"><span>Fully Open Humanoid · v0.1 design release · <a href="reference.html#license">MIT / CC BY 4.0</a></span><span>Derived from <a href="https://generalroboticslab.github.io/Duke_Humanoid_V2_OpenSource/">Duke Humanoid V2</a> and <a href="https://berkeley-humanoid-lite.gitbook.io/docs">Berkeley Humanoid Lite</a></span></div></footer>
+
+<script src="assets/js/site.js"></script>
+<script>
+foh.json("assets/data/robot.json").then(robot => {
+  const esc = foh.esc;
+  const jt = document.querySelector("#joint-table tbody");
+  for (const j of robot.joints.filter(j => j.side !== "R")) {
+    const a = robot.actuators[j.actuator];
+    const axis = j.axis[0] ? "X (roll)" : j.axis[1] ? "Y (pitch)" : "Z (yaw)";
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td>${esc(j.name.replace(" (L)", ""))}${j.side === "L" ? " ×2" : ""}</td><td>${esc(j.actuator)}</td><td>${axis}</td><td>${j.limits[0]}° to ${j.limits[1]}°</td><td>${a.peak_nm} N·m</td><td><code>${esc(j.bus)}</code> ID ${j.can_id}${j.side === "L" ? " / " + (j.can_id + 10) : ""}</td>`;
+    jt.appendChild(tr);
+  }
+  const s = robot.specs;
+  const dims = [["Hip-pitch axis height", s.leg_hip_to_ground_mm], ["Hip pitch/roll to knee (thigh)", s.thigh_mm], ["Knee to ankle pitch (shank)", s.shank_mm], ["Ankle-roll axis height", s.ankle_height_mm], ["Hip spacing", s.hip_spacing_mm], ["Shoulder spacing (roll axes)", s.shoulder_spacing_mm], ["Shoulder pitch to elbow", s.upper_arm_mm], ["Elbow to wrist-roll output", s.forearm_mm], ["Foot length", s.foot_length_mm], ["Overall height", s.height_mm], ["Overall width (shoulders)", s.width_mm]];
+  const dt = document.querySelector("#dims-table tbody");
+  for (const [k, v] of dims) { const tr = document.createElement("tr"); tr.innerHTML = `<td>${k}</td><td class="num">${v} mm</td>`; dt.appendChild(tr); }
+  const at = document.querySelector("#act-table tbody");
+  for (const [m, a] of Object.entries(robot.actuators)) {
+    const cat = robot.catalog["ACT_" + m];
+    const joints = [...new Set(robot.joints.filter(j => j.actuator === m).map(j => j.name.replace(/ \([LR]\)/, "")))].join(", ");
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td>${esc(a.name)}</td><td class="num">${cat.qty}</td><td>${esc(joints)}</td><td class="num">${a.peak_nm}</td><td class="num">${a.kt}</td><td class="num">${a.i_limit} A</td><td>Ø${a.dia} × ${a.length} mm</td><td class="num">${a.mass_g} g</td><td>${esc(a.bearing)}</td><td class="num">${foh.money(a.price)}</td>`;
+    at.appendChild(tr);
+  }
+  const mt = document.querySelector("#mass-table tbody");
+  const basis = { actuators: "Catalogue masses, 23 units", printed: "Model volume × density × fill factor", hardware: "Bearings and extrusion, catalogue", electronics: "Vendor masses; two packs are 2.0 kg of it", fasteners_and_harness: "Flat estimate" };
+  const names = { actuators: "Actuators", printed: "Printed parts", hardware: "Bearings and extrusion", electronics: "Electronics and batteries", fasteners_and_harness: "Fasteners, inserts, harness" };
+  for (const [k, v] of Object.entries(s.mass_g)) { const tr = document.createElement("tr"); tr.innerHTML = `<td>${names[k]}</td><td class="num">${(v / 1000).toFixed(2)}</td><td>${basis[k]}</td>`; mt.appendChild(tr); }
+  const tr = document.createElement("tr"); tr.className = "total"; tr.innerHTML = `<td>Core robot</td><td class="num">${(s.mass_total_g / 1000).toFixed(1)}</td><td>+ ${(s.optional_mass_g / 1000).toFixed(2)} kg with camera and grippers</td>`; mt.appendChild(tr);
+});
+</script>
+</body>
+</html>

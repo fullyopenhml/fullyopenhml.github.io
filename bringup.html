@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bring-up — Fully Open Humanoid</title>
+<meta name="description" content="Bring-up of the Fully Open Humanoid: computer setup, first power-on on a bench supply, actuator IDs and limits, zeroing, and nine acceptance tests from bus integrity to a first step.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<header class="site-header"><div class="inner">
+  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><use href="assets/img/favicon.svg#mark"/></svg><span class="name">Fully Open Humanoid</span><span class="ver">v0.1</span></a>
+  <button class="iconbtn nav-toggle" aria-label="Menu">☰</button>
+  <nav class="nav">
+    <a href="design.html">Design</a><a href="viewer.html">3D model</a><a href="bom.html">BOM</a><a href="printing.html">Printing</a><a href="assembly.html">Assembly</a><a href="electrical.html">Electrical</a><a href="bringup.html">Bring-up</a><a href="software.html">Software</a><a href="reference.html">Reference</a>
+    <a class="gh" href="https://github.com/fullyopenhml/fullyopenhml.github.io" title="GitHub">GitHub</a>
+    <button class="iconbtn theme-toggle" aria-label="Toggle theme">◐</button>
+  </nav>
+</div></header>
+
+<main class="page">
+  <h1>Bring-up</h1>
+  <p class="lead">Hang the robot, legs straight, for this whole chapter. Power the 48 V bus from a current-limited bench supply until the acceptance tests say otherwise. Each test adds energy; on a failure, fix the cause and re-run from that test.</p>
+  <div class="toc" data-toc></div>
+
+  <div class="callout warn"><span class="t">Rules.</span> Robot on the hoist. Bench supply, not packs, until test A6. Someone's hand on the E-stop whenever a motor is enabled. Never stand in the swing plane of a leg. Torque limits start at 5 % and rise only when a test passes.</div>
+
+  <h2 id="computer">Robot computer setup</h2>
+  <ol>
+    <li>Install Ubuntu 24.04 (or 22.04) on the mini PC. Disable sleep and automatic updates; set it to power on when 12 V arrives (BIOS: <em>Restore on AC power loss</em>).</li>
+    <li>Flash each CANable with the <a href="https://github.com/candle-usb/candleLight_fw">candleLight</a> firmware so it appears as a SocketCAN interface (<code>gs_usb</code>), and pin the interface names to the adapters' serial numbers:</li>
+  </ol>
+<pre><code># /etc/udev/rules.d/80-foh-can.rules  (one line per adapter; read serials with `udevadm info`)
+SUBSYSTEM=="net", ACTION=="add", ATTRS{serial}=="00XXXXXX", NAME="can0"   # left leg
+SUBSYSTEM=="net", ACTION=="add", ATTRS{serial}=="00YYYYYY", NAME="can1"   # right leg
+SUBSYSTEM=="net", ACTION=="add", ATTRS{serial}=="00ZZZZZZ", NAME="can2"   # waist + left arm
+SUBSYSTEM=="net", ACTION=="add", ATTRS{serial}=="00WWWWWW", NAME="can3"   # right arm
+
+# bring the buses up (put this in a systemd unit once it works by hand)
+for c in can0 can1 can2 can3; do sudo ip link set $c type can bitrate 1000000; sudo ip link set $c up; done
+ip -details link show can0 | grep -o "can state [A-Z-]*"    # expect ERROR-ACTIVE</code></pre>
+  <ol start="3">
+    <li>Install Python 3.11+, <code>python-can</code>, <code>onnxruntime</code>, <code>numpy</code>, and the FOH control package once it exists (<a href="software.html">Software</a>). Until then, <code>candump</code> and <code>cansend</code> from <code>can-utils</code> do every check on this page.</li>
+    <li>Confirm the IMU enumerates on USB and streams at 200 Hz or more with its vendor tool.</li>
+  </ol>
+
+  <h2 id="first-power-on">First power-on</h2>
+  <p>Prove that every device answers, with no motor enabled.</p>
+  <div class="step"><span class="n">1</span><h3>Power up on the bench supply</h3></div>
+  <p>Bench supply at 48 V, current limit 1.5 A, on the distribution block's pack terminals. Breaker on, E-stop released: the contactor closes and the actuators' LEDs come on. A supply current that climbs to the limit is a short: cut power, back to <a href="electrical.html#prepower">Pre-power checks</a>.</p>
+  <div class="callout check"><span class="t">Check:</span> idle bus current under 1 A for 23 actuators plus the computer.</div>
+  <div class="step"><span class="n">2</span><h3>Inventory</h3></div>
+<pre><code>lsusb                      # four gs_usb devices, the IMU, the hub
+ip link show type can      # can0..can3
+for c in can0 can1 can2 can3; do timeout 2 candump $c; done   # silence: no actuator talks unprompted</code></pre>
+  <div class="step"><span class="n">3</span><h3>Read every actuator</h3></div>
+  <p>Poll each ID on each bus with the RobStride tool or the control package's read-only status command; nothing moves.</p>
+  <div class="callout check"><span class="t">Check:</span> 23 answers; each ID on the bus the <a href="electrical.html#map">actuator map</a> says; bus voltage equals the supply on every one; temperatures near ambient.</div>
+  <div class="step"><span class="n">4</span><h3>Power down</h3></div>
+  <p>Buses down, computer shut down, then the supply.</p>
+
+  <h2 id="ids">Motor ID and config</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Property</th><th>Set with</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>CAN ID</td><td>RobStride vendor tool over its USB-CAN module, or the control package's <code>set-id</code>, one actuator at a time on the bench, before it goes into a limb</td><td>Actuators ship at ID 127. The ID is editable in standby only. Label the actuator the moment the ID is written.</td></tr>
+      <tr><td>Current limit</td><td>Written per model: 60 % of the default, capped at 40 A (Duke V2's rule)</td><td>RS03 26 A, RS06 34 A, RS02 14 A, RS05 7 A. Saved to the drive.</td></tr>
+      <tr><td>Torque limit</td><td>A ratio on every run, 0.05 to 0.8</td><td>0.05 for smoke tests, 0.3 for joint sweeps, 0.6 for standing.</td></tr>
+      <tr><td>Zero</td><td><a href="#zeroing">Joint zeroing</a></td><td></td></tr>
+    </tbody>
+  </table></div>
+  <div class="table-wrap"><table id="id-table" class="compact"><thead><tr><th>Bus</th><th>Joint</th><th class="num">ID</th><th>Model</th><th>Joint</th><th class="num">ID</th><th>Model</th></tr></thead><tbody></tbody></table></div>
+  <p><b>Positive direction:</b> the URDF's joint axis is the truth. Set every actuator's direction flag so that a positive command produces the URDF's positive rotation, checked joint by joint at 5 % torque. Do not rely on mounting orientation alone.</p>
+
+  <h2 id="zeroing">Joint zeroing</h2>
+  <p>The zero pose is the URDF at all joint angles zero: standing straight, arms hanging, palms inward. The control stack assumes encoder zero is that pose.</p>
+  <div class="step"><span class="n">1</span><h3>Set the zeros</h3></div>
+  <p>Motors unpowered for movement but on the bus. Hold each joint at zero with a square or a spirit level against the printed reference faces (every adapter has a flat), then write the current position as zero on every actuator and save it to the drive. Do not use the vendor tool's temporary mechanical zero: it is lost at power-off.</p>
+  <div class="step"><span class="n">2</span><h3>Verify</h3></div>
+  <p>Ramp every joint to zero at 10 % torque, robot hanging; stay clear.</p>
+  <div class="callout check"><span class="t">Check:</span> the robot hangs straight; both soles level; both shoulder flanges level; encoder readings within ±1° of zero after a power cycle.</div>
+
+  <h2 id="acceptance">Acceptance tests</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Test</th><th>Procedure</th><th>Pass</th></tr></thead>
+    <tbody>
+      <tr><td>A1 Bus integrity</td><td>Cold power-up three times; read every actuator each time</td><td>Four buses ERROR-ACTIVE and 23 answers every time; zero error frames in <code>ip -s link</code></td></tr>
+      <tr><td>A2 CAN latency</td><td>Command-response round trip on each bus at 1 % torque, 1000 samples</td><td>99th percentile under 1 ms per actuator; a 6-actuator bus completes a cycle inside the 2 ms loop</td></tr>
+      <tr><td>A3 Harness wiggle</td><td>Log all actuators while flexing every connector, loom and limb entry</td><td>Zero dropouts</td></tr>
+      <tr><td>A4 Per-joint motion</td><td>0.1 rad sine on each joint alone, 5 % torque</td><td>Only the commanded joint moves, in the URDF's positive direction; no grinding or knocking</td></tr>
+      <tr><td>A5 Zero and model</td><td>Hold each arm joint at 30 % torque with gravity compensation from the URDF masses</td><td>Residual torque within ±0.5 N·m of zero at every arm joint; adjust the URDF masses to the weighed parts if not</td></tr>
+      <tr><td>A6 Packs</td><td>Swap the bench supply for the packs; repeat A1 and A4</td><td>Same results; pack voltage sag under 2 V during the sine</td></tr>
+      <tr><td>A7 Posture</td><td>Hanging, PD hold of the zero pose then a crouch, 60 % torque</td><td>Poses reached smoothly; no joint exceeds 60 °C in five minutes</td></tr>
+      <tr><td>A8 Standing</td><td>Feet on the floor, hoist slack, the standing policy from simulation, E-stop in hand</td><td>Balances for two minutes; recovers from a 20 N push at the shoulders</td></tr>
+      <tr><td>A9 First step</td><td>Walking policy, one velocity step of 0.2 m/s and stop, hoist attached and slack</td><td>Robot steps and stops; the stop command zeroes the gait within one stride</td></tr>
+    </tbody>
+  </table></div>
+  <p>Before A8, confirm the software stop layers: the control process zeroes commands on Ctrl-C; the watchdog zeroes them 200 ms after a lost command stream; the gamepad's stop button pre-empts everything. The E-stop is the last stop, and the hoist catches what the E-stop drops.</p>
+</main>
+
+<footer class="site-footer"><div class="inner"><span>Fully Open Humanoid · v0.1 design release · <a href="reference.html#license">MIT / CC BY 4.0</a></span><span>Derived from <a href="https://generalroboticslab.github.io/Duke_Humanoid_V2_OpenSource/">Duke Humanoid V2</a> and <a href="https://berkeley-humanoid-lite.gitbook.io/docs">Berkeley Humanoid Lite</a></span></div></footer>
+
+<script src="assets/js/site.js"></script>
+<script>
+foh.json("assets/data/robot.json").then(robot => {
+  const esc = foh.esc;
+  const tb = document.querySelector("#id-table tbody");
+  const left = robot.joints.filter(j => j.side !== "R");
+  for (const l of left) {
+    const r = l.side === "L" ? robot.joints.find(j => j.id === l.id.replace(/_L$/, "_R")) : null;
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td><code>${l.bus}</code>${r ? " / <code>" + r.bus + "</code>" : ""}</td><td>${esc(l.id)}</td><td class="num">${l.can_id}</td><td>${l.actuator}</td>` + (r ? `<td>${esc(r.id)}</td><td class="num">${r.can_id}</td><td>${r.actuator}</td>` : "<td></td><td></td><td></td>");
+    tb.appendChild(tr);
+  }
+});
+</script>
+</body>
+</html>

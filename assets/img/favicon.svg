@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <symbol id="mark" viewBox="0 0 32 32">
+      <rect x="1" y="1" width="30" height="30" rx="7" fill="#e0561c"/>
+      <rect x="10" y="6" width="12" height="9" rx="2.5" fill="#fff"/>
+      <rect x="8" y="17" width="16" height="7" rx="2" fill="#fff" opacity=".92"/>
+      <rect x="10" y="25" width="4" height="4" rx="1" fill="#fff"/>
+      <rect x="18" y="25" width="4" height="4" rx="1" fill="#fff"/>
+      <rect x="4" y="17" width="3" height="7" rx="1" fill="#fff" opacity=".7"/>
+      <rect x="25" y="17" width="3" height="7" rx="1" fill="#fff" opacity=".7"/>
+    </symbol>
+  </defs>
+  <use href="#mark" width="32" height="32"/>
+</svg>

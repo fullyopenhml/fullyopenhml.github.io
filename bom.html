@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bill of materials — Fully Open Humanoid</title>
+<meta name="description" content="Every part to buy for one Fully Open Humanoid, with quantity, unit price, vendor and notes, in three tiers: core robot, optional kits, tools.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<header class="site-header"><div class="inner">
+  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><use href="assets/img/favicon.svg#mark"/></svg><span class="name">Fully Open Humanoid</span><span class="ver">v0.1</span></a>
+  <button class="iconbtn nav-toggle" aria-label="Menu">☰</button>
+  <nav class="nav">
+    <a href="design.html">Design</a><a href="viewer.html">3D model</a><a href="bom.html">BOM</a><a href="printing.html">Printing</a><a href="assembly.html">Assembly</a><a href="electrical.html">Electrical</a><a href="bringup.html">Bring-up</a><a href="software.html">Software</a><a href="reference.html">Reference</a>
+    <a class="gh" href="https://github.com/fullyopenhml/fullyopenhml.github.io" title="GitHub">GitHub</a>
+    <button class="iconbtn theme-toggle" aria-label="Toggle theme">◐</button>
+  </nav>
+</div></header>
+
+<main class="page">
+  <h1>Bill of materials</h1>
+  <p class="lead">Everything to buy for one robot. Quantities of actuators, bearings and extrusion are counted from the 3D model; nothing here is typed twice. Prices are US listings as of <span id="asof"></span>, in USD, and are meant to be checked before ordering.</p>
+  <div class="btns" style="margin-bottom:1.5em"><button class="btn" id="csv">Download as CSV</button><a class="btn" href="assets/data/bom.json">bom.json</a><a class="btn" href="viewer.html">Find parts on the model</a></div>
+
+  <h2 id="summary">Summary</h2>
+  <div class="table-wrap"><table id="summary-table"><thead><tr><th>Section</th><th>Tier</th><th>Lines</th><th class="num">Subtotal</th></tr></thead><tbody></tbody></table></div>
+
+  <div class="callout warn"><span class="t">Order first.</span> The 23 actuators are 80 % of the cost, have the longest lead time and have no drop-in substitute: a different model changes the bolt circle, the flange, the support bearing and the CAN settings. Order them before printing anything. Everything else ships in days.</div>
+
+  <div id="sections"></div>
+
+  <h2 id="sourcing">Sourcing notes</h2>
+  <ul>
+    <li><b>RobStride</b> sells direct (robstride.com) and through Amazon US and AiFitLab. Duke V2 bought RS00–RS04 on Amazon and RS05/RS06 from AiFitLab in 2026. Ask for the same firmware revision on every unit of a model.</li>
+    <li><b>Bearings</b> are standard thin-section sizes (6809, 6807, 6707). Any -2RS sealed bearing of that size fits; the 2RS seals keep filament dust out.</li>
+    <li><b>Extrusion</b>: order 2020 pre-cut to 400 mm with M5-tapped ends, or cut it and tap it yourself.</li>
+    <li><b>Batteries</b>: two identical 6S packs bought together so they age together. EC5 leads. Do not buy packs with XT90 unless you also change the pack leads in the harness table.</li>
+    <li><b>Filament</b>: PETG-CF prints on any printer with a hardened nozzle and an enclosure helps. If your printer cannot do CF, plain PETG works for every part except the hip-roll bracket, hip-yaw housing, thigh block and ankle bracket, which should then be printed at 100 % infill.</li>
+    <li><b>Mini PC</b>: any x86 box with 4+ cores, 16 GB RAM, two USB 3 ports and a 12 V barrel input. N100 boxes are the cheapest that fit. Avoid boxes that need 19 V.</li>
+  </ul>
+</main>
+
+<footer class="site-footer"><div class="inner"><span>Fully Open Humanoid · v0.1 design release · <a href="reference.html#license">MIT / CC BY 4.0</a></span><span>Derived from <a href="https://generalroboticslab.github.io/Duke_Humanoid_V2_OpenSource/">Duke Humanoid V2</a> and <a href="https://berkeley-humanoid-lite.gitbook.io/docs">Berkeley Humanoid Lite</a></span></div></footer>
+
+<script src="assets/js/site.js"></script>
+<script>
+foh.json("assets/data/bom.json").then(bom => {
+  const esc = foh.esc;
+  document.getElementById("asof").textContent = bom.meta.priced_as_of;
+  const st = document.querySelector("#summary-table tbody");
+  const tierLabel = { core: "core", optional: "optional", tools: "tools" };
+  for (const s of bom.sections) {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td><a href="#${s.id}">${esc(s.title)}</a></td><td><span class="pill ${s.tier === "core" ? "acc" : ""}">${tierLabel[s.tier]}</span></td><td>${s.rows.length}</td><td class="num">${foh.money(s.subtotal, 2)}</td>`;
+    st.appendChild(tr);
+  }
+  const labels = { core: "Core robot", optional: "Optional kits (camera, grippers)", tools: "Tools, one-time" };
+  for (const [t, v] of Object.entries(bom.tiers)) {
+    const tr = document.createElement("tr"); tr.className = "total";
+    tr.innerHTML = `<td>${labels[t]}</td><td></td><td></td><td class="num">${foh.money(v, 2)}</td>`;
+    st.appendChild(tr);
+  }
+  const host = document.getElementById("sections");
+  for (const s of bom.sections) {
+    const h = document.createElement("h2"); h.id = s.id; h.textContent = s.title; host.appendChild(h);
+    const p = document.createElement("p"); p.textContent = s.blurb; host.appendChild(p);
+    const wrap = document.createElement("div"); wrap.className = "table-wrap";
+    let html = `<table><thead><tr><th>ID</th><th>Part</th><th class="num">Qty</th><th class="num">Unit</th><th class="num">Total</th><th>Vendor</th></tr></thead><tbody>`;
+    for (const r of s.rows) {
+      const onModel = /^(ACT_|HW_68|HW_67|HW_2020|EL_)/.test(r.part_id) && !/^(EL_TVS|EL_VOLT|EL_FUSE|EL_SERVO_DRIVER)/.test(r.part_id);
+      html += `<tr><td class="mono" style="font-size:.8rem">${onModel ? `<a href="${foh.partHref(r.part_id)}" title="Show on the 3D model">${esc(r.id)}</a>` : esc(r.id)}</td><td>${esc(r.description)}${r.notes ? `<span class="sub">${esc(r.notes)}</span>` : ""}</td><td class="num">${r.qty}${r.unit_label !== "ea" ? " " + esc(r.unit_label) : ""}</td><td class="num">${foh.money(r.unit_cost, 2)}</td><td class="num">${foh.money(r.total, 2)}</td><td>${r.url ? `<a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.vendor || "link")}</a>` : esc(r.vendor)}</td></tr>`;
+    }
+    html += `<tr class="total"><td></td><td>Subtotal</td><td></td><td></td><td class="num">${foh.money(s.subtotal, 2)}</td><td></td></tr></tbody></table>`;
+    wrap.innerHTML = html; host.appendChild(wrap);
+  }
+  document.getElementById("csv").addEventListener("click", () => {
+    const q = v => '"' + String(v ?? "").replace(/"/g, '""') + '"';
+    const lines = [["section", "tier", "id", "description", "qty", "unit", "unit_cost_usd", "total_usd", "vendor", "url", "notes"].join(",")];
+    for (const s of bom.sections) for (const r of s.rows) lines.push([s.title, s.tier, r.id, r.description, r.qty, r.unit_label, r.unit_cost, r.total, r.vendor, r.url, r.notes].map(q).join(","));
+    const blob = new Blob([lines.join("\n")], { type: "text/csv" });
+    const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = `foh_v${bom.meta.version}_bom.csv`; a.click();
+  });
+});
+</script>
+</body>
+</html>

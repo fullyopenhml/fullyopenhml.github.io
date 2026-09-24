@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fully Open Humanoid</title>
+<meta name="description" content="A 23-DOF, 1.1 m humanoid on RobStride actuators and 3D-printed structure. Duke Humanoid V2's joint layout, Berkeley Humanoid Lite's no-machining build, about $5.6k in parts. Every file open.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.1/examples/jsm/"}}
+</script>
+</head>
+<body>
+<header class="site-header"><div class="inner">
+  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><use href="assets/img/favicon.svg#mark"/></svg><span class="name">Fully Open Humanoid</span><span class="ver">v0.1</span></a>
+  <button class="iconbtn nav-toggle" aria-label="Menu">☰</button>
+  <nav class="nav">
+    <a href="design.html">Design</a><a href="viewer.html">3D model</a><a href="bom.html">BOM</a><a href="printing.html">Printing</a><a href="assembly.html">Assembly</a><a href="electrical.html">Electrical</a><a href="bringup.html">Bring-up</a><a href="software.html">Software</a><a href="reference.html">Reference</a>
+    <a class="gh" href="https://github.com/fullyopenhml/fullyopenhml.github.io" title="GitHub">GitHub</a>
+    <button class="iconbtn theme-toggle" aria-label="Toggle theme">◐</button>
+  </nav>
+</div></header>
+
+<main class="page wide">
+  <section class="hero">
+    <div>
+      <h1>A humanoid you can print, buy and build.</h1>
+      <p class="lead">Fully Open Humanoid is a 23-degree-of-freedom, 1.1 m robot on RobStride actuators and 3D-printed structure. It keeps the proven joint layout of <a href="https://generalroboticslab.github.io/Duke_Humanoid_V2_OpenSource/">Duke Humanoid V2</a> and borrows the no-machining, desktop-printer build of <a href="https://berkeley-humanoid-lite.gitbook.io/docs">Berkeley Humanoid Lite</a>. Zero CNC parts, four CAN buses, one mini PC, and about <span id="core-total">$5.6k</span> in parts.</p>
+      <div class="btns">
+        <a class="btn primary" href="viewer.html">Explore the 3D model</a>
+        <a class="btn" href="bom.html">Bill of materials</a>
+        <a class="btn" href="design.html">Read the design</a>
+      </div>
+    </div>
+    <div class="hero-viewer" id="hero-viewer">
+      <div class="hint">Drag to orbit · every part is inspectable in the full viewer</div>
+      <a class="btn small open" href="viewer.html">Open viewer ↗</a>
+    </div>
+  </section>
+
+  <div class="banner"><span class="dot"></span><div><b>v0.1 is a design release, not a built robot.</b> The kinematics, every part, the cost model, the wiring and a simulation-ready URDF are published here. Printable STLs, photos and test results follow as each subassembly is built. Nothing on this site should be read as measured until the <a href="reference.html#status">status page</a> says so.</div></div>
+
+  <div class="stats" id="stats">
+    <div class="stat"><div class="v">23</div><div class="k">actuated joints (+2 gripper servos)</div></div>
+    <div class="stat"><div class="v">1.11 m</div><div class="k">tall, 43 cm across the shoulders</div></div>
+    <div class="stat"><div class="v" id="stat-mass">26 kg</div><div class="k">estimated, batteries included</div></div>
+    <div class="stat"><div class="v" id="stat-cost">$5.6k</div><div class="k">core parts, filament included</div></div>
+    <div class="stat"><div class="v">0</div><div class="k">machined parts</div></div>
+    <div class="stat"><div class="v">4</div><div class="k">RobStride models: RS03, RS06, RS02, RS05</div></div>
+  </div>
+
+  <h2 id="where-it-comes-from">Where it comes from</h2>
+  <div class="cards">
+    <a class="card" href="https://generalroboticslab.github.io/Duke_Humanoid_V2_OpenSource/"><h3>Duke Humanoid V2 <span class="pill">joint layout</span></h3><p>General Robotics Lab, Duke. 31 RobStride joints, machined aluminium, 35 kg, about $13k in parts. We keep its leg topology (compact hip stack, short thigh, long shank), its bearing-supported joints, its XT30(2+2) daisy-chain harness and its parallel gripper.</p></a>
+    <a class="card" href="https://berkeley-humanoid-lite.gitbook.io/docs"><h3>Berkeley Humanoid Lite <span class="pill">build philosophy</span></h3><p>Hybrid Robotics, UC Berkeley. 22 DOF, all-printed, 16 kg, about $4.3k. We take its rule that every structural part comes off a desktop printer, its 2020-extrusion torso, its cheap mini PC and its habit of publishing filament in the BOM.</p></a>
+  </div>
+
+  <h2 id="what-changed">What changed, and what it saves</h2>
+  <p>Starting from the priced lines of Duke V2's published parts lists ($12,997 in 2026-09), the design page walks through every substitution. The short version:</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Duke Humanoid V2</th><th>Fully Open Humanoid v0.1</th><th class="num">Parts cost</th></tr></thead>
+    <tbody>
+      <tr><td>35 CNC aluminium parts, SLS prints and fasteners ($4,550)</td><td>39 printed parts, four 2020 extrusions, bearings and fasteners ($380)</td><td class="num">−$4,170</td></tr>
+      <tr><td>31 actuators: 7-DOF arms, RS04 knees, four gimbal RS05s</td><td>23 actuators: 5-DOF arms, RS03 knees, fixed head</td><td class="num">−$1,070</td></tr>
+      <tr><td>Two RealSense D436 ($708)</td><td>Fixed head; one D435i as an optional kit</td><td class="num">−$708</td></tr>
+      <tr><td>MINISFORUM X1-470 mini PC ($1,295)</td><td>Intel N100 mini PC ($160); the policy is a small network at 50 Hz</td><td class="num">−$1,135</td></tr>
+      <tr><td>Two 10 Ah packs, six CAN adapters, three USB hubs</td><td>Two 8 Ah packs, four CAN adapters, one hub</td><td class="num">−$255</td></tr>
+      <tr><td>Grippers in the core list ($115)</td><td>Gripper kit optional, STS3215 servos ($45)</td><td class="num">−$115</td></tr>
+      <tr><td>No E-stop, breaker or contactor</td><td>Breaker, contactor and E-stop in the pack lead</td><td class="num">+$57</td></tr>
+      <tr><td>Harness as lab consumables ($30 itemised)</td><td>Every connector, wire and terminator itemised ($124)</td><td class="num">+$94</td></tr>
+      <tr><td>Other electronics (TVS, surge protector, voltage checkers, converters)</td><td>Fewer TVS, no surge protector, one converter, fused block</td><td class="num">−$46</td></tr>
+    </tbody>
+    <tfoot><tr class="total"><td>$12,997</td><td><span data-cost="core" data-fmt="full">$5,649</span> core, <span data-cost="core+optional" data-fmt="full">$6,004</span> with camera and grippers</td><td class="num">−57 %</td></tr></tfoot>
+  </table></div>
+  <p><a href="design.html">Full rationale, torque margins and mass budget →</a></p>
+
+  <h2 id="build-path">Build path</h2>
+  <div class="cards">
+    <a class="card" href="bom.html"><span class="num">1 · Buy</span><h3>Bill of materials</h3><p>Every part, quantity and price, in tiers: core, optional kits, tools. Order the actuators first.</p></a>
+    <a class="card" href="printing.html"><span class="num">2 · Print</span><h3>Printing</h3><p>39 printed parts, 5 kg of filament, settings as numbers. Plates and cups, no supports on structural faces.</p></a>
+    <a class="card" href="assembly.html"><span class="num">3 · Assemble</span><h3>Assembly</h3><p>Three joint kits repeated 23 times, then legs, torso, arms, head, and the whole robot.</p></a>
+    <a class="card" href="electrical.html"><span class="num">4 · Wire</span><h3>Electrical</h3><p>48 V bus with a safety chain, four CAN daisy chains, every cable type and the actuator ID map.</p></a>
+    <a class="card" href="bringup.html"><span class="num">5 · Bring up</span><h3>Bring-up</h3><p>Bench supply first, IDs and zeros, then nine acceptance tests from bus integrity to a first step.</p></a>
+    <a class="card" href="software.html"><span class="num">6 · Run</span><h3>Software</h3><p>Isaac Lab and MuJoCo for training, a Python control loop on the robot, the URDF generated from this site's model.</p></a>
+  </div>
+
+  <h2 id="cost">Cost at a glance</h2>
+  <div class="table-wrap"><table id="cost-table"><thead><tr><th>Section</th><th>Tier</th><th class="num">Subtotal</th></tr></thead><tbody></tbody></table></div>
+  <p class="tiny">Prices from the vendors' US listings, <span id="priced-as-of"></span>. Actuator prices are those in the Duke Humanoid V2 hardware release. Shipping, tax and tools are not included. <a href="bom.html">Line by line →</a></p>
+
+  <h2 id="roadmap">Roadmap</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Milestone</th><th>What it delivers</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>v0.1 Design</td><td>Kinematics, part list, cost model, wiring, URDF, this site</td><td><span class="pill ok">published</span></td></tr>
+      <tr><td>v0.2 Joint kits</td><td>Printable STL/STEP for the RS03, RS06 and RS02 joint kits; a single-joint torque test on printed adapters</td><td><span class="pill warn">next</span></td></tr>
+      <tr><td>v0.3 Leg</td><td>One leg printed and assembled; hanging-leg swing test; updated masses</td><td><span class="pill">planned</span></td></tr>
+      <tr><td>v0.4 Lower body</td><td>Pelvis, both legs, torso frame with batteries; standing under a policy trained in Isaac Lab</td><td><span class="pill">planned</span></td></tr>
+      <tr><td>v1.0 Full robot</td><td>Arms, head, grippers; walking; release with photos, print plates and a build video</td><td><span class="pill">planned</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <h2 id="contribute">Contribute</h2>
+  <p>Everything here is generated from one file, <code>tools/build_data.py</code>: the 3D model, the BOM, the printed-parts list and the URDF. Change a dimension or a price there, run it, and every page updates. Open an issue or a pull request on <a href="https://github.com/fullyopenhml/fullyopenhml.github.io">GitHub</a>. Licences and citation are on the <a href="reference.html#license">reference page</a>.</p>
+</main>
+
+<footer class="site-footer"><div class="inner"><span>Fully Open Humanoid · v0.1 design release · <a href="reference.html#license">MIT / CC BY 4.0</a></span><span>Derived from <a href="https://generalroboticslab.github.io/Duke_Humanoid_V2_OpenSource/">Duke Humanoid V2</a> and <a href="https://berkeley-humanoid-lite.gitbook.io/docs">Berkeley Humanoid Lite</a></span></div></footer>
+
+<script src="assets/js/site.js"></script>
+<script type="module">
+import { createRobotViewer } from "./assets/js/robot-viewer.js";
+const [robot, bom] = await Promise.all([foh.json("assets/data/robot.json"), foh.json("assets/data/bom.json")]);
+// numbers
+const core = bom.tiers.core;
+document.getElementById("core-total").textContent = "$" + (core / 1000).toFixed(1) + "k";
+document.getElementById("stat-cost").textContent = "$" + (core / 1000).toFixed(1) + "k";
+document.getElementById("stat-mass").textContent = Math.round(robot.specs.mass_total_g / 1000) + " kg";
+document.getElementById("priced-as-of").textContent = bom.meta.priced_as_of;
+const tb = document.querySelector("#cost-table tbody");
+const tierName = { core: "core", optional: "optional", tools: "tools" };
+for (const s of bom.sections) {
+  const tr = document.createElement("tr");
+  tr.innerHTML = `<td><a href="bom.html#${s.id}">${foh.esc(s.title)}</a></td><td><span class="pill ${s.tier === "core" ? "acc" : ""}">${tierName[s.tier]}</span></td><td class="num">${foh.money(s.subtotal)}</td>`;
+  tb.appendChild(tr);
+}
+for (const [t, v] of Object.entries(bom.tiers)) {
+  const tr = document.createElement("tr"); tr.className = "total";
+  tr.innerHTML = `<td>${t === "core" ? "Core robot" : t === "optional" ? "Optional kits" : "Tools"}</td><td></td><td class="num">${foh.money(v)}</td>`;
+  tb.appendChild(tr);
+}
+// hero viewer
+try {
+  await createRobotViewer(document.getElementById("hero-viewer"), { data: robot, mode: "hero" });
+} catch (e) {
+  const el = document.getElementById("hero-viewer");
+  el.innerHTML = '<div class="vload">3D preview needs WebGL. <a href="viewer.html" style="margin-left:6px">Open the viewer</a></div>';
+}
+</script>
+</body>
+</html>

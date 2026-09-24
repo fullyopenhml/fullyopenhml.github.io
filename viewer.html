@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3D model — Fully Open Humanoid</title>
+<meta name="description" content="Interactive CAD-style model of the Fully Open Humanoid: every part, joint and actuator. Orbit, pan, zoom, explode, pose and inspect.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.1/examples/jsm/"}}
+</script>
+<style>
+  body { overflow: hidden; }
+  @media (max-width: 1000px) { body { overflow: auto; } }
+</style>
+</head>
+<body>
+<header class="site-header"><div class="inner">
+  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><use href="assets/img/favicon.svg#mark"/></svg><span class="name">Fully Open Humanoid</span><span class="ver">v0.1</span></a>
+  <button class="iconbtn nav-toggle" aria-label="Menu">☰</button>
+  <nav class="nav">
+    <a href="design.html">Design</a><a href="viewer.html">3D model</a><a href="bom.html">BOM</a><a href="printing.html">Printing</a><a href="assembly.html">Assembly</a><a href="electrical.html">Electrical</a><a href="bringup.html">Bring-up</a><a href="software.html">Software</a><a href="reference.html">Reference</a>
+    <a class="gh" href="https://github.com/fullyopenhml/fullyopenhml.github.io" title="GitHub">GitHub</a>
+    <button class="iconbtn theme-toggle" aria-label="Toggle theme">◐</button>
+  </nav>
+</div></header>
+
+<main class="viewer-app">
+  <aside class="vpanel left">
+    <h2>Parts <span class="tiny" id="part-count"></span></h2>
+    <div class="vsearch"><input id="search" type="search" placeholder="Search parts, IDs, joints…" autocomplete="off"></div>
+    <div class="scroll"><div class="tree" id="tree"></div></div>
+  </aside>
+
+  <section class="vstage" id="stage">
+    <div class="vload" id="loading">Building the model…</div>
+    <div class="vtoolbar">
+      <div class="grp">
+        <button data-view="iso" title="Isometric">Iso</button><button data-view="front" title="Front (robot faces you)">Front</button><button data-view="side" title="Side">Side</button><button data-view="top" title="Top">Top</button>
+      </div>
+      <div class="grp"><button id="fit" title="Fit selection or whole robot (F)">Fit</button><button id="showall" title="Show every part (A)">Show all</button></div>
+      <div class="grp"><button id="xray" title="See through everything but the selection (X)">X-ray</button><button id="edges" class="on" title="Feature edges (E)">Edges</button><button id="gridbtn" class="on" title="Ground grid (G)">Grid</button></div>
+      <label class="grp"><span>Explode</span><input id="explode" type="range" min="0" max="1" step="0.01" value="0"></label>
+    </div>
+    <div class="vhint">Drag to orbit · right-drag / two fingers to pan · wheel to zoom · click a part · double-click to zoom to it</div>
+    <svg class="vaxes" viewBox="-32 -32 64 64" aria-hidden="true">
+      <line x1="0" y1="0" x2="26" y2="8" stroke="#d1302e" stroke-width="2"/><text x="28" y="12" font-size="9" fill="#d1302e">X</text>
+      <line x1="0" y1="0" x2="-22" y2="12" stroke="#1f8a4c" stroke-width="2"/><text x="-31" y="20" font-size="9" fill="#1f8a4c">Y</text>
+      <line x1="0" y1="0" x2="0" y2="-26" stroke="#2f6fb5" stroke-width="2"/><text x="3" y="-24" font-size="9" fill="#2f6fb5">Z</text>
+    </svg>
+  </section>
+
+  <aside class="vpanel right">
+    <div class="vtabs"><button class="on" data-tab="props">Inspect</button><button data-tab="joints">Pose</button><button data-tab="display">Display</button></div>
+    <div class="scroll">
+      <div class="vtab on props" id="tab-props"><p class="empty">Click a part on the model or in the tree. The panel shows what it is, what it is made of, how heavy it is and where to buy or print it.</p></div>
+      <div class="vtab" id="tab-joints">
+        <div class="presets" id="presets"></div>
+        <div id="joints"></div>
+      </div>
+      <div class="vtab" id="tab-display">
+        <label class="opt"><input type="checkbox" id="opt-optional" checked> Show optional kits (grippers, camera)</label>
+        <label class="opt"><input type="checkbox" id="opt-rotate"> Auto-rotate</label>
+        <h4 style="margin-top:14px">Colours</h4>
+        <div class="legend" id="legend"></div>
+        <h4 style="margin-top:14px">Keys</h4>
+        <p class="tiny"><kbd>F</kbd> fit · <kbd>H</kbd> hide selection · <kbd>I</kbd> isolate selection · <kbd>A</kbd> show all · <kbd>X</kbd> x-ray · <kbd>Esc</kbd> deselect · <kbd>1</kbd>–<kbd>4</kbd> views</p>
+        <h4 style="margin-top:14px">About this model</h4>
+        <p class="tiny">Every part is built from simple solids placed by <code>tools/build_data.py</code>. Positions, joint axes, limits and masses are the design's; surface detail (bolt patterns, fillets, cable channels) is not modelled yet. Detailed CAD for printing follows on the <a href="printing.html">printing page</a> as it is released.</p>
+      </div>
+    </div>
+  </aside>
+</main>
+
+<script src="assets/js/site.js"></script>
+<script type="module">
+import { createRobotViewer } from "./assets/js/robot-viewer.js";
+const $ = s => document.querySelector(s);
+const esc = window.foh.esc;
+
+const [robot, bom] = await Promise.all([foh.json("assets/data/robot.json"), foh.json("assets/data/bom.json")]);
+const bomByPart = {};
+for (const sec of bom.sections) for (const r of sec.rows) bomByPart[r.part_id] = { ...r, section: sec.title, tier: sec.tier };
+
+let v;
+try {
+  v = await createRobotViewer($("#stage"), { data: robot, mode: "full" });
+} catch (e) {
+  $("#loading").innerHTML = "This browser could not start WebGL. The model needs a browser with WebGL 2.<br><small>" + esc(e.message) + "</small>";
+  throw e;
+}
+$("#loading").remove();
+window.viewer = v;
+
+// ---------- tree ----------
+const groupsOrder = ["torso", "pelvis", "leg_L", "leg_R", "arm_L", "arm_R"];
+const tree = $("#tree");
+const rowByOcc = new Map();
+const linkDetails = new Map();
+function buildTree(filter) {
+  tree.innerHTML = "";
+  const f = (filter || "").trim().toLowerCase();
+  let shown = 0;
+  for (const gid of groupsOrder) {
+    const links = robot.links.filter(L => L.group === gid);
+    const gd = document.createElement("details"); gd.className = "group"; gd.open = !f || true;
+    const gs = document.createElement("summary");
+    gs.innerHTML = `<span class="car">▸</span>${esc(robot.groups[gid])}<span class="cnt"></span><span class="eye" title="Hide / show group">◉</span>`;
+    gd.appendChild(gs);
+    let gcount = 0;
+    for (const L of links) {
+      const ld = document.createElement("details"); ld.className = "link"; ld.open = !!f || gid === "torso" || gid === "pelvis";
+      const ls = document.createElement("summary");
+      ls.innerHTML = `<span class="car">▸</span>${esc(L.name)}<span class="cnt">${L.parts.length}</span><span class="eye" title="Hide / show link">◉</span>`;
+      ld.appendChild(ls);
+      let lcount = 0;
+      for (const P of L.parts) {
+        const cat = robot.catalog[P.part];
+        const hay = (P.occ + " " + P.part + " " + cat.name + " " + (cat.model || "")).toLowerCase();
+        if (f && !hay.includes(f)) continue;
+        const row = document.createElement("div"); row.className = "row"; row.dataset.occ = P.occ;
+        const col = robot.materials[cat.material]?.color || "#999";
+        row.innerHTML = `<span class="sw" style="background:${col}"></span><span class="nm" title="${esc(P.occ)}">${esc(cat.name)}${P.optional ? ' <span class="pill" style="font-size:.66rem;padding:0 5px">opt</span>' : ""}</span><span class="eye" title="Hide / show">◉</span>`;
+        row.addEventListener("click", ev => { if (ev.target.classList.contains("eye")) { v.setVisible(P.occ, v.isHidden(P.occ)); return; } v.select(P.occ); });
+        row.addEventListener("dblclick", () => v.fitTo(P.occ));
+        row.addEventListener("mouseenter", () => {});
+        ld.appendChild(row);
+        rowByOcc.set(P.occ, row);
+        lcount++;
+      }
+      ls.querySelector(".eye").addEventListener("click", ev => { ev.preventDefault(); ev.stopPropagation(); const occs = L.parts.map(p => p.occ); const anyVisible = occs.some(o => !v.isHidden(o)); v.setVisibleMany(occs, !anyVisible); });
+      ls.addEventListener("click", ev => { if (ev.target.classList.contains("eye")) return; });
+      if (lcount) { gd.appendChild(ld); gcount += lcount; linkDetails.set(L.id, ld); }
+    }
+    gs.querySelector(".cnt").textContent = gcount;
+    gs.querySelector(".eye").addEventListener("click", ev => { ev.preventDefault(); ev.stopPropagation(); const occs = links.flatMap(L => L.parts.map(p => p.occ)); const anyVisible = occs.some(o => !v.isHidden(o)); v.setVisibleMany(occs, !anyVisible); });
+    if (gcount) { tree.appendChild(gd); shown += gcount; }
+  }
+  $("#part-count").textContent = shown + " occurrences";
+  refreshRows();
+}
+function refreshRows() {
+  const sel = v.getSelected();
+  for (const [occ, row] of rowByOcc) { row.classList.toggle("sel", occ === sel); row.classList.toggle("hid", v.isHidden(occ)); }
+}
+buildTree("");
+$("#search").addEventListener("input", e => buildTree(e.target.value));
+v.on("visibility", refreshRows);
+
+// ---------- properties ----------
+const props = $("#tab-props");
+function fmtDims(d) { return d ? d.map(x => Math.round(x)).join(" × ") + " mm" : "—"; }
+function showProps(rec) {
+  refreshRows();
+  if (!rec) { props.innerHTML = '<p class="empty">Click a part on the model or in the tree. The panel shows what it is, what it is made of, how heavy it is and where to buy or print it.</p>'; return; }
+  const cat = rec.cat;
+  const mat = robot.materials[cat.material] || {};
+  const b = bomByPart[rec.part];
+  const act = cat.model ? robot.actuators[cat.model] : null;
+  const J = act ? robot.joints.find(j => j.child === rec.link.id && false) : null;
+  // which joint does this actuator drive?  The actuator body sits on the parent link; match by occurrence name.
+  let joint = null;
+  if (act) { const jid = rec.occ.replace(/_act$/, ""); joint = robot.joints.find(j => j.id === jid); }
+  const side = rec.link.group.endsWith("_L") ? "Left" : rec.link.group.endsWith("_R") ? "Right" : "";
+  let html = `<div class="name">${esc(cat.name)}</div><div class="id">${esc(rec.part)} · ${esc(rec.occ)}</div>`;
+  html += `<div class="actions"><button class="btn small" id="p-fit">Zoom to</button><button class="btn small" id="p-iso">Isolate</button><button class="btn small" id="p-isolink">Isolate link</button><button class="btn small" id="p-hide">Hide</button></div>`;
+  html += `<dl>`;
+  html += `<dt>Category</dt><dd>${esc(cat.category)}${cat.optional ? ' <span class="pill acc">optional kit</span>' : ""}</dd>`;
+  html += `<dt>Material</dt><dd><span class="swatch" style="background:${mat.color}"></span>${esc(mat.name || cat.material)}${cat.process ? " · " + esc(cat.process) : ""}</dd>`;
+  html += `<dt>Mass</dt><dd>${cat.mass_g != null ? cat.mass_g + " g" + (cat.category === "printed" ? ' <span class="tiny">(estimate)</span>' : "") : "—"}</dd>`;
+  html += `<dt>Envelope</dt><dd>${fmtDims(cat.dims)}</dd>`;
+  html += `<dt>Qty on robot</dt><dd>${cat.qty}${cat.mirror ? " (mirrored pair)" : ""}</dd>`;
+  html += `<dt>Assembly</dt><dd>${esc(robot.groups[rec.link.group])} → ${esc(rec.link.name)}</dd>`;
+  if (b) html += `<dt>Buy</dt><dd>${foh.money(b.unit_cost, 2)} each${b.vendor ? " · " + esc(b.vendor) : ""}${b.url ? ` · <a href="${esc(b.url)}" target="_blank" rel="noopener">link</a>` : ""}<span class="tiny" style="display:block">BOM: ${esc(b.section)}</span></dd>`;
+  else if (cat.category === "printed") html += `<dt>Make</dt><dd>Print it · <a href="printing.html#${esc(rec.part)}">print settings</a></dd>`;
+  html += `</dl>`;
+  if (act) {
+    html += `<h4 style="margin:6px 0 4px">Actuator</h4><dl>`;
+    html += `<dt>Peak torque</dt><dd>${act.peak_nm} N·m</dd><dt>Kt</dt><dd>${act.kt} N·m/A</dd><dt>Current limit</dt><dd>${act.i_limit} A default</dd><dt>Size</dt><dd>Ø${act.dia} × ${act.length} mm</dd><dt>Support bearing</dt><dd>${esc(act.bearing)}</dd>`;
+    html += `</dl>`;
+  }
+  if (joint) {
+    html += `<h4 style="margin:6px 0 4px">Drives joint</h4><dl>`;
+    html += `<dt>Joint</dt><dd>${esc(joint.name)}</dd><dt>Axis</dt><dd class="mono">[${joint.axis.join(", ")}]</dd><dt>Limits</dt><dd>${joint.limits[0]}° to ${joint.limits[1]}°</dd><dt>CAN</dt><dd>bus <code>${esc(joint.bus)}</code>, ID <code>${joint.can_id}</code></dd>`;
+    html += `</dl><div class="actions"><button class="btn small" id="p-joint">Move this joint</button></div>`;
+  }
+  if (cat.notes) html += `<div class="note">${esc(cat.notes)}</div>`;
+  props.innerHTML = html;
+  $("#p-fit").onclick = () => v.fitTo(rec.occ);
+  $("#p-iso").onclick = () => { v.isolate([rec.occ]); v.fitTo(rec.occ); };
+  $("#p-isolink").onclick = () => { v.isolate(rec.link.parts.map(p => p.occ)); v.fitTo(null); };
+  $("#p-hide").onclick = () => v.setVisible(rec.occ, false);
+  if (joint) $("#p-joint").onclick = () => { showTab("joints"); const el = document.querySelector(`[data-joint="${joint.id}"]`); if (el) { el.focus(); el.scrollIntoView({ block: "center" }); } };
+}
+v.on("select", rec => { showProps(rec); showTab("props"); if (rec) { const ld = linkDetails.get(rec.link.id); if (ld) { ld.open = true; ld.parentElement.open = true; } const row = rowByOcc.get(rec.occ); if (row) row.scrollIntoView({ block: "nearest" }); } history.replaceState(null, "", rec ? "#part=" + encodeURIComponent(rec.occ) : location.pathname); });
+
+// ---------- tabs ----------
+function showTab(id) { document.querySelectorAll(".vtabs button").forEach(b => b.classList.toggle("on", b.dataset.tab === id)); document.querySelectorAll(".vtab").forEach(t => t.classList.toggle("on", t.id === "tab-" + id)); }
+document.querySelectorAll(".vtabs button").forEach(b => b.addEventListener("click", () => showTab(b.dataset.tab)));
+
+// ---------- joints ----------
+const jbox = $("#joints");
+const jgroups = { centre: "Waist", L: "Left side", R: "Right side" };
+const order = ["centre", "L", "R"];
+for (const side of order) {
+  const js = robot.joints.filter(j => j.side === side);
+  if (!js.length) continue;
+  const g = document.createElement("div"); g.className = "jgroup"; g.innerHTML = `<h4>${jgroups[side]}</h4>`;
+  for (const j of js) {
+    const r = document.createElement("div"); r.className = "jrow";
+    r.innerHTML = `<label>${esc(j.name.replace(/ \([LR]\)$/, ""))}<span>${esc(j.actuator)} · ${j.limits[0]}…${j.limits[1]}°</span></label><span class="v" id="jv-${j.id}">0°</span><input type="range" data-joint="${j.id}" min="${j.limits[0]}" max="${j.limits[1]}" step="1" value="0" style="grid-column:1/3">`;
+    g.appendChild(r);
+  }
+  jbox.appendChild(g);
+}
+jbox.addEventListener("input", e => { if (e.target.dataset.joint) { v.setJoint(e.target.dataset.joint, +e.target.value); $("#jv-" + e.target.dataset.joint).textContent = e.target.value + "°"; } });
+function syncSliders() { for (const j of robot.joints) { const el = document.querySelector(`[data-joint="${j.id}"]`); if (el) { el.value = v.getJoint(j.id); $("#jv-" + j.id).textContent = Math.round(v.getJoint(j.id)) + "°"; } } }
+const presets = $("#presets");
+for (const [k, p] of Object.entries(robot.poses)) { const b = document.createElement("button"); b.className = "btn small"; b.textContent = p.name; b.onclick = () => { v.setPose(k); syncSliders(); }; presets.appendChild(b); }
+
+// ---------- display ----------
+$("#opt-optional").addEventListener("change", e => v.setOptional(e.target.checked));
+$("#opt-rotate").addEventListener("change", e => v.setAutoRotate(e.target.checked));
+const legend = $("#legend");
+for (const key of ["petg_cf", "pla", "tpu", "actuator", "flange", "al_ext", "steel", "battery", "enclosure", "pcb", "estop", "camera"]) {
+  const m = robot.materials[key]; const s = document.createElement("span"); s.innerHTML = `<i style="background:${m.color}"></i>${esc(m.name)}`; legend.appendChild(s);
+}
+
+// ---------- toolbar ----------
+document.querySelectorAll("[data-view]").forEach(b => b.addEventListener("click", () => v.setView(b.dataset.view, v.getSelected())));
+$("#fit").onclick = () => v.fitTo(v.getSelected());
+$("#showall").onclick = () => { v.showAll(); v.select(null); };
+$("#xray").onclick = () => { const on = !$("#xray").classList.contains("on"); $("#xray").classList.toggle("on", on); v.xray(on); };
+$("#edges").onclick = () => { const on = !$("#edges").classList.contains("on"); $("#edges").classList.toggle("on", on); v.setEdges(on); };
+$("#gridbtn").onclick = () => { const on = !$("#gridbtn").classList.contains("on"); $("#gridbtn").classList.toggle("on", on); v.setGrid(on); };
+$("#explode").addEventListener("input", e => v.explode(+e.target.value));
+document.addEventListener("keydown", e => {
+  if (e.target.matches("input, textarea")) return;
+  const sel = v.getSelected();
+  if (e.key === "f" || e.key === "F") v.fitTo(sel);
+  else if ((e.key === "h" || e.key === "H") && sel) { v.setVisible(sel, false); }
+  else if ((e.key === "i" || e.key === "I") && sel) { v.isolate([sel]); v.fitTo(sel); }
+  else if (e.key === "a" || e.key === "A") v.showAll();
+  else if (e.key === "x" || e.key === "X") $("#xray").click();
+  else if (e.key === "Escape") v.select(null);
+  else if (e.key === "1") v.setView("iso"); else if (e.key === "2") v.setView("front"); else if (e.key === "3") v.setView("side"); else if (e.key === "4") v.setView("top");
+});
+
+// deep links: #part=<occ|part_id>&isolate=<link|group>&view=iso|front|side|top&pose=<name>&explode=0..1&xray=1
+let firstHash = true;
+function applyHash() {
+  const h = new URLSearchParams(location.hash.replace(/^#/, ""));
+  const anim = !firstHash; firstHash = false;
+  if (h.get("pose") && robot.poses[h.get("pose")]) { v.setPose(h.get("pose")); syncSliders(); }
+  if (h.get("explode")) { $("#explode").value = h.get("explode"); v.explode(+h.get("explode")); }
+  if (h.get("xray") === "1" && !$("#xray").classList.contains("on")) $("#xray").click();
+  if (h.get("isolate")) {
+    const key = h.get("isolate");
+    const occs = robot.links.filter(L => L.id === key || L.group === key).flatMap(L => L.parts.map(p => p.occ));
+    if (occs.length) v.isolate(occs);
+  }
+  let occ = null;
+  if (h.get("part")) {
+    const id = h.get("part");
+    occ = v.parts.has(id) ? id : null;
+    if (!occ) { for (const rec of v.parts.values()) if (rec.part === id) { occ = rec.occ; break; } }
+    if (occ) v.select(occ);
+  }
+  const view = h.get("view");
+  setTimeout(() => { if (view) v.setView(view, occ, anim); else if (occ) v.fitTo(occ, anim); else if (h.get("isolate") || h.get("explode") || h.get("pose")) v.fitTo(null, anim); }, anim ? 60 : 0);
+}
+applyHash();
+window.addEventListener("hashchange", applyHash);
+</script>
+</body>
+</html>

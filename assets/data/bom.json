@@ -1,0 +1,734 @@
+{
+ "meta": {
+  "version": "0.1",
+  "priced_as_of": "2026-09",
+  "currency": "USD"
+ },
+ "sections": [
+  {
+   "id": "actuators",
+   "title": "Actuators",
+   "tier": "core",
+   "blurb": "Twenty-three RobStride quasi-direct-drive actuators in four models. Every joint of one model uses the same printed adapter, cup and support bearing, so the printed parts are a small family.",
+   "rows": [
+    {
+     "id": "ACT_RS03",
+     "part_id": "ACT_RS03",
+     "description": "RobStride RS03 (60 N\u00b7m peak)",
+     "qty": 11,
+     "unit_cost": 225.0,
+     "total": 2475.0,
+     "vendor": "RobStride / Amazon US / AiFitLab",
+     "url": "https://www.amazon.com/RobStride-60N-m-Integrated-Actuator-Module/dp/B0GY8PJ1MF",
+     "notes": "Joints: Ankle pitch, Hip pitch, Hip roll, Hip yaw, Knee, Waist yaw. Supply risk: no drop-in substitute; a different model changes the bolt pattern, the bearing and the CAN setup.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "ACT_RS06",
+     "part_id": "ACT_RS06",
+     "description": "RobStride RS06 (36 N\u00b7m peak)",
+     "qty": 6,
+     "unit_cost": 210.0,
+     "total": 1260.0,
+     "vendor": "RobStride / Amazon US / AiFitLab",
+     "url": "https://www.robstride.com/",
+     "notes": "Joints: Ankle roll, Shoulder pitch, Shoulder roll. Supply risk: no drop-in substitute; a different model changes the bolt pattern, the bearing and the CAN setup.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "ACT_RS02",
+     "part_id": "ACT_RS02",
+     "description": "RobStride RS02 (17 N\u00b7m peak)",
+     "qty": 4,
+     "unit_cost": 145.0,
+     "total": 580.0,
+     "vendor": "RobStride / Amazon US / AiFitLab",
+     "url": "https://www.amazon.com/RobStride-Integrated-Actuator-Module-Encoders/dp/B0GS5945VP",
+     "notes": "Joints: Elbow, Shoulder yaw. Supply risk: no drop-in substitute; a different model changes the bolt pattern, the bearing and the CAN setup.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "ACT_RS05",
+     "part_id": "ACT_RS05",
+     "description": "RobStride RS05 (5.5 N\u00b7m peak)",
+     "qty": 2,
+     "unit_cost": 110.0,
+     "total": 220.0,
+     "vendor": "RobStride / Amazon US / AiFitLab",
+     "url": "https://www.robstride.com/",
+     "notes": "Joints: Wrist roll. Supply risk: no drop-in substitute; a different model changes the bolt pattern, the bearing and the CAN setup.",
+     "unit_label": "ea"
+    }
+   ],
+   "subtotal": 4535.0
+  },
+  {
+   "id": "electronics",
+   "title": "Electronics and power",
+   "tier": "core",
+   "blurb": "One computer, one IMU, four CAN buses, two packs in series, and the safety chain Duke V2 lacked: breaker, contactor, E-stop.",
+   "rows": [
+    {
+     "id": "EL_PC_N100",
+     "part_id": "EL_PC_N100",
+     "description": "Mini PC, Intel N100, 16 GB RAM, 500 GB SSD",
+     "qty": 1,
+     "unit_cost": 160.0,
+     "total": 160.0,
+     "vendor": "Amazon",
+     "url": "",
+     "notes": "Runs the 50 Hz policy and the 500 Hz motor loop. No GPU needed on the robot.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "EL_IMU",
+     "part_id": "EL_IMU",
+     "description": "USB 9-axis AHRS IMU (SYD Dynamics TM171 or equivalent)",
+     "qty": 1,
+     "unit_cost": 57.0,
+     "total": 57.0,
+     "vendor": "RobotShop",
+     "url": "https://www.robotshop.com/",
+     "notes": "Mounted rigidly to the torso bottom plate, axes aligned with the base frame.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "EL_CANABLE",
+     "part_id": "EL_CANABLE",
+     "description": "CANable PRO V2.0 USB-CAN adapter",
+     "qty": 4,
+     "unit_cost": 20.8,
+     "total": 83.2,
+     "vendor": "Amazon",
+     "url": "https://www.amazon.com/",
+     "notes": "One per bus: left leg, right leg, left arm + waist, right arm.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "EL_USB_HUB",
+     "part_id": "EL_USB_HUB",
+     "description": "USB 3 hub, 4 port, powered",
+     "qty": 1,
+     "unit_cost": 13.0,
+     "total": 13.0,
+     "vendor": "Amazon",
+     "url": "",
+     "notes": "",
+     "unit_label": "ea"
+    },
+    {
+     "id": "EL_BATTERY_6S",
+     "part_id": "EL_BATTERY_6S",
+     "description": "LiPo 6S 8000 mAh 100C, EC5",
+     "qty": 2,
+     "unit_cost": 90.0,
+     "total": 180.0,
+     "vendor": "Amazon",
+     "url": "",
+     "notes": "Two in series: 44.4 V nominal, 50.4 V full. Zeee or equivalent.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "EL_BUCK_12V",
+     "part_id": "EL_BUCK_12V",
+     "description": "48 V to 12 V buck converter, 10 A, encased",
+     "qty": 1,
+     "unit_cost": 19.0,
+     "total": 19.0,
+     "vendor": "Amazon",
+     "url": "",
+     "notes": "Feeds the computer, the hub and the gripper servos.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "EL_DIST_BLOCK",
+     "part_id": "EL_DIST_BLOCK",
+     "description": "Power distribution block with 60 A fuse",
+     "qty": 1,
+     "unit_cost": 18.0,
+     "total": 18.0,
+     "vendor": "Amazon",
+     "url": "",
+     "notes": "48 V bus and ground bars; ANL/MIDI fuse on the pack lead.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "EL_BREAKER",
+     "part_id": "EL_BREAKER",
+     "description": "DC circuit breaker, 100 A, panel mount",
+     "qty": 1,
+     "unit_cost": 20.0,
+     "total": 20.0,
+     "vendor": "Amazon",
+     "url": "",
+     "notes": "Main disconnect and pack over-current protection.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "EL_CONTACTOR",
+     "part_id": "EL_CONTACTOR",
+     "description": "DC contactor, 100 A, 12 V coil",
+     "qty": 1,
+     "unit_cost": 25.0,
+     "total": 25.0,
+     "vendor": "Amazon",
+     "url": "",
+     "notes": "Switched by the E-stop loop; carries the motor bus.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "EL_ESTOP",
+     "part_id": "EL_ESTOP",
+     "description": "E-stop, 22 mm mushroom, NC contact",
+     "qty": 1,
+     "unit_cost": 12.0,
+     "total": 12.0,
+     "vendor": "Amazon",
+     "url": "",
+     "notes": "Opens the 48 V bus contactor coil. Duke V2 shipped without one; do not.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "EL_TVS",
+     "part_id": "EL_TVS",
+     "description": "TVS diode, 53 V working / 85 V clamping (1.5KE62CA)",
+     "qty": 6,
+     "unit_cost": 1.2,
+     "total": 7.2,
+     "vendor": "DigiKey",
+     "url": "",
+     "notes": "One across each power block and at the bus ends.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "EL_VOLT_ALARM",
+     "part_id": "EL_VOLT_ALARM",
+     "description": "LiPo voltage alarm, 1-8S",
+     "qty": 2,
+     "unit_cost": 7.0,
+     "total": 14.0,
+     "vendor": "Amazon",
+     "url": "",
+     "notes": "One on each pack's balance lead.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "EL_FUSE_10A",
+     "part_id": "EL_FUSE_10A",
+     "description": "Blade fuse holder + 10 A fuse",
+     "qty": 1,
+     "unit_cost": 4.0,
+     "total": 4.0,
+     "vendor": "Amazon",
+     "url": "",
+     "notes": "Computer feed, 48 V side.",
+     "unit_label": "ea"
+    }
+   ],
+   "subtotal": 612.4
+  },
+  {
+   "id": "harness",
+   "title": "Cables and connectors",
+   "tier": "core",
+   "blurb": "RobStride actuators carry power and CAN in one XT30(2+2) shell, in and out, so every limb is a daisy chain of identical drops.",
+   "rows": [
+    {
+     "id": "CB_XT30_2P2_F",
+     "part_id": "CB_XT30_2P2_F",
+     "description": "Amass XT30(2+2)-F cable-side connector",
+     "qty": 60,
+     "unit_cost": 0.75,
+     "total": 45.0,
+     "vendor": "Amazon / AliExpress",
+     "url": "",
+     "notes": "Two per actuator drop plus bus heads and terminators; buy spares.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "CB_EC5",
+     "part_id": "CB_EC5",
+     "description": "EC5 connector pair",
+     "qty": 4,
+     "unit_cost": 2.0,
+     "total": 8.0,
+     "vendor": "Amazon",
+     "url": "",
+     "notes": "Pack leads and series link.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "CB_WIRE_18",
+     "part_id": "CB_WIRE_18",
+     "description": "18 AWG silicone wire, red + black, 10 m each",
+     "qty": 1,
+     "unit_cost": 20.0,
+     "total": 20.0,
+     "vendor": "Amazon",
+     "url": "",
+     "notes": "Actuator drops.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "CB_WIRE_12",
+     "part_id": "CB_WIRE_12",
+     "description": "12 AWG silicone wire, red + black, 3 m each",
+     "qty": 1,
+     "unit_cost": 14.0,
+     "total": 14.0,
+     "vendor": "Amazon",
+     "url": "",
+     "notes": "Pack trunk, breaker, contactor, distribution block.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "CB_CAT5",
+     "part_id": "CB_CAT5",
+     "description": "Ethernet cable, 10 m (twisted pairs for CAN)",
+     "qty": 1,
+     "unit_cost": 8.0,
+     "total": 8.0,
+     "vendor": "Amazon",
+     "url": "",
+     "notes": "One pair per CAN run.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "CB_TERM",
+     "part_id": "CB_TERM",
+     "description": "120 \u03a9 resistors, 1/4 W",
+     "qty": 10,
+     "unit_cost": 0.2,
+     "total": 2.0,
+     "vendor": "Amazon",
+     "url": "",
+     "notes": "One at each end of each bus.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "CB_SHRINK",
+     "part_id": "CB_SHRINK",
+     "description": "Heat-shrink assortment",
+     "qty": 1,
+     "unit_cost": 8.0,
+     "total": 8.0,
+     "vendor": "Amazon",
+     "url": "",
+     "notes": "",
+     "unit_label": "ea"
+    },
+    {
+     "id": "CB_LOOM",
+     "part_id": "CB_LOOM",
+     "description": "Braided loom, 6 mm and 10 mm, 5 m each",
+     "qty": 1,
+     "unit_cost": 10.0,
+     "total": 10.0,
+     "vendor": "Amazon",
+     "url": "",
+     "notes": "",
+     "unit_label": "ea"
+    },
+    {
+     "id": "CB_USB",
+     "part_id": "CB_USB",
+     "description": "USB-A to USB-C cables, 0.5 m",
+     "qty": 3,
+     "unit_cost": 3.0,
+     "total": 9.0,
+     "vendor": "Amazon",
+     "url": "",
+     "notes": "Hub to CAN adapters and IMU.",
+     "unit_label": "ea"
+    }
+   ],
+   "subtotal": 124.0
+  },
+  {
+   "id": "hardware",
+   "title": "Bearings, fasteners and extrusion",
+   "tier": "core",
+   "blurb": "Thin-section bearings support the back of every joint so the printed adapters see torque, not bending. Sizes follow Duke V2.",
+   "rows": [
+    {
+     "id": "HW_6809_2RS",
+     "part_id": "HW_6809_2RS",
+     "description": "Ball bearing 6809-2RS, 45 x 58 x 7 mm",
+     "qty": 4,
+     "unit_cost": 3.0,
+     "total": 12.0,
+     "vendor": "Amazon",
+     "url": "",
+     "notes": "Support bearing on the back of every RS03 joint.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "HW_6807_2RS",
+     "part_id": "HW_6807_2RS",
+     "description": "Ball bearing 6807-2RS, 35 x 47 x 7 mm",
+     "qty": 4,
+     "unit_cost": 4.0,
+     "total": 16.0,
+     "vendor": "Amazon",
+     "url": "",
+     "notes": "Support bearing on every RS06 joint.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "HW_6707_2RS",
+     "part_id": "HW_6707_2RS",
+     "description": "Ball bearing 6707-2RS, 35 x 44 x 5 mm",
+     "qty": 2,
+     "unit_cost": 3.0,
+     "total": 6.0,
+     "vendor": "Amazon",
+     "url": "",
+     "notes": "Support bearing on every RS02 joint.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "HW_2020_400",
+     "part_id": "HW_2020_400",
+     "description": "Aluminium 2020 extrusion, 400 mm, ends tapped M5",
+     "qty": 4,
+     "unit_cost": 4.5,
+     "total": 18.0,
+     "vendor": "Amazon / Misumi",
+     "url": "",
+     "notes": "Torso uprights. Cut to length or order pre-cut.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "HW_TNUT_M4",
+     "part_id": "HW_TNUT_M4",
+     "description": "2020 T-nuts, M4, 50 pack",
+     "qty": 1,
+     "unit_cost": 8.0,
+     "total": 8.0,
+     "vendor": "Amazon",
+     "url": "",
+     "notes": "",
+     "unit_label": "ea"
+    },
+    {
+     "id": "HW_CORNER",
+     "part_id": "HW_CORNER",
+     "description": "2020 inner corner brackets",
+     "qty": 8,
+     "unit_cost": 0.7,
+     "total": 5.6,
+     "vendor": "Amazon",
+     "url": "",
+     "notes": "",
+     "unit_label": "ea"
+    },
+    {
+     "id": "HW_SCREWS",
+     "part_id": "HW_SCREWS",
+     "description": "M3 / M4 / M5 socket-head screw assortment, stainless",
+     "qty": 1,
+     "unit_cost": 35.0,
+     "total": 35.0,
+     "vendor": "Amazon",
+     "url": "",
+     "notes": "Actuator flanges take M4 (RS03/RS06) and M3 (RS02/RS05); read the pattern off the actuator manual.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "HW_INSERT_M3",
+     "part_id": "HW_INSERT_M3",
+     "description": "Heat-set inserts M3 x 5, 200 pack",
+     "qty": 1,
+     "unit_cost": 15.0,
+     "total": 15.0,
+     "vendor": "Amazon",
+     "url": "",
+     "notes": "",
+     "unit_label": "ea"
+    },
+    {
+     "id": "HW_INSERT_M4",
+     "part_id": "HW_INSERT_M4",
+     "description": "Heat-set inserts M4 x 6, 100 pack",
+     "qty": 1,
+     "unit_cost": 12.0,
+     "total": 12.0,
+     "vendor": "Amazon",
+     "url": "",
+     "notes": "",
+     "unit_label": "ea"
+    },
+    {
+     "id": "HW_INSERT_M5",
+     "part_id": "HW_INSERT_M5",
+     "description": "Heat-set inserts M5 x 8, 50 pack",
+     "qty": 1,
+     "unit_cost": 10.0,
+     "total": 10.0,
+     "vendor": "Amazon",
+     "url": "",
+     "notes": "",
+     "unit_label": "ea"
+    },
+    {
+     "id": "HW_NUTS",
+     "part_id": "HW_NUTS",
+     "description": "Nyloc nuts and washers M3 / M4 / M5",
+     "qty": 1,
+     "unit_cost": 8.0,
+     "total": 8.0,
+     "vendor": "Amazon",
+     "url": "",
+     "notes": "",
+     "unit_label": "ea"
+    },
+    {
+     "id": "HW_LOCTITE",
+     "part_id": "HW_LOCTITE",
+     "description": "Threadlocker, medium strength",
+     "qty": 1,
+     "unit_cost": 8.0,
+     "total": 8.0,
+     "vendor": "Amazon",
+     "url": "",
+     "notes": "Every actuator flange screw.",
+     "unit_label": "ea"
+    }
+   ],
+   "subtotal": 153.6
+  },
+  {
+   "id": "filament",
+   "title": "Printed parts (filament)",
+   "tier": "core",
+   "blurb": "About 4.1 kg of structural prints, 0.8 kg of covers and 0.3 kg of TPU on the robot; the quantities below add 35 % for supports and failed prints.",
+   "rows": [
+    {
+     "id": "MAT_PETG_CF",
+     "part_id": "MAT_PETG_CF",
+     "description": "PETG-CF filament, 1 kg spool",
+     "qty": 6.0,
+     "unit_cost": 30.0,
+     "total": 180.0,
+     "vendor": "Bambu / Polymaker / Overture",
+     "url": "",
+     "notes": "Every structural part. Hardened nozzle. PA-CF is a drop-in upgrade for the hip and knee brackets.",
+     "unit_label": "kg"
+    },
+    {
+     "id": "MAT_PLA",
+     "part_id": "MAT_PLA",
+     "description": "PLA filament, 1 kg spool",
+     "qty": 1.5,
+     "unit_cost": 20.0,
+     "total": 30.0,
+     "vendor": "Any",
+     "url": "",
+     "notes": "Panels, head, trays.",
+     "unit_label": "kg"
+    },
+    {
+     "id": "MAT_TPU",
+     "part_id": "MAT_TPU",
+     "description": "TPU 95A filament, 1 kg spool",
+     "qty": 0.5,
+     "unit_cost": 28.0,
+     "total": 14.0,
+     "vendor": "Any",
+     "url": "",
+     "notes": "Soles and finger pads.",
+     "unit_label": "kg"
+    }
+   ],
+   "subtotal": 224.0
+  },
+  {
+   "id": "perception",
+   "title": "Optional: perception kit",
+   "tier": "optional",
+   "blurb": "The base robot walks on IMU and joint encoders only, like Berkeley Humanoid Lite. Add a camera when you need it.",
+   "rows": [
+    {
+     "id": "EL_CAMERA_D435I",
+     "part_id": "EL_CAMERA_D435I",
+     "description": "Intel RealSense D435i",
+     "qty": 1,
+     "unit_cost": 300.0,
+     "total": 300.0,
+     "vendor": "Intel / RealSense store",
+     "url": "https://www.intelrealsense.com/",
+     "notes": "Fits the head pocket. Needs USB 3 to the hub.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "CB_USB3",
+     "part_id": "CB_USB3",
+     "description": "USB 3 cable, USB-C, 1 m",
+     "qty": 1,
+     "unit_cost": 10.0,
+     "total": 10.0,
+     "vendor": "Amazon",
+     "url": "",
+     "notes": "",
+     "unit_label": "ea"
+    }
+   ],
+   "subtotal": 310.0
+  },
+  {
+   "id": "grippers",
+   "title": "Optional: gripper kit (two hands)",
+   "tier": "optional",
+   "blurb": "Duke V2's printed rack-and-pinion parallel gripper, driven by the cheapest widely stocked bus servo.",
+   "rows": [
+    {
+     "id": "EL_SERVO_STS3215",
+     "part_id": "EL_SERVO_STS3215",
+     "description": "Feetech STS3215 bus servo, 12 V",
+     "qty": 2,
+     "unit_cost": 16.0,
+     "total": 32.0,
+     "vendor": "Feetech / Amazon",
+     "url": "",
+     "notes": "One per gripper.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "EL_SERVO_DRIVER",
+     "part_id": "EL_SERVO_DRIVER",
+     "description": "Waveshare serial bus servo driver board",
+     "qty": 1,
+     "unit_cost": 5.0,
+     "total": 5.0,
+     "vendor": "Waveshare",
+     "url": "",
+     "notes": "Both servos on one bus; USB to the hub.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "MAT_GRIPPER",
+     "part_id": "MAT_GRIPPER",
+     "description": "Filament for both grippers (PLA + TPU)",
+     "qty": 1,
+     "unit_cost": 8.0,
+     "total": 8.0,
+     "vendor": "Any",
+     "url": "",
+     "notes": "",
+     "unit_label": "lot"
+    }
+   ],
+   "subtotal": 45.0
+  },
+  {
+   "id": "tools",
+   "title": "Tools (one-time)",
+   "tier": "tools",
+   "blurb": "Not part of the robot. Estimates for a lab or workshop that starts from nothing.",
+   "rows": [
+    {
+     "id": "TL_PRINTER",
+     "part_id": "TL_PRINTER",
+     "description": "FDM printer with a hardened nozzle and 250 mm bed (e.g. Bambu P1S / X1C class)",
+     "qty": 1,
+     "unit_cost": 700.0,
+     "total": 700.0,
+     "vendor": "",
+     "url": "",
+     "notes": "Largest part is the foot plate, 230 mm.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "TL_CHARGER",
+     "part_id": "TL_CHARGER",
+     "description": "LiPo balance charger, 6S, 200 W+",
+     "qty": 1,
+     "unit_cost": 60.0,
+     "total": 60.0,
+     "vendor": "",
+     "url": "",
+     "notes": "",
+     "unit_label": "ea"
+    },
+    {
+     "id": "TL_PSU",
+     "part_id": "TL_PSU",
+     "description": "Bench power supply, 0-60 V, 10 A",
+     "qty": 1,
+     "unit_cost": 90.0,
+     "total": 90.0,
+     "vendor": "",
+     "url": "",
+     "notes": "Bring-up on a current-limited supply before the packs go in.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "TL_SOLDER",
+     "part_id": "TL_SOLDER",
+     "description": "Soldering station + heat-set insert tips",
+     "qty": 1,
+     "unit_cost": 50.0,
+     "total": 50.0,
+     "vendor": "",
+     "url": "",
+     "notes": "",
+     "unit_label": "ea"
+    },
+    {
+     "id": "TL_DRIVERS",
+     "part_id": "TL_DRIVERS",
+     "description": "Hex driver set, torque wrench 1-10 N\u00b7m",
+     "qty": 1,
+     "unit_cost": 45.0,
+     "total": 45.0,
+     "vendor": "",
+     "url": "",
+     "notes": "",
+     "unit_label": "ea"
+    },
+    {
+     "id": "TL_METER",
+     "part_id": "TL_METER",
+     "description": "Multimeter",
+     "qty": 1,
+     "unit_cost": 20.0,
+     "total": 20.0,
+     "vendor": "",
+     "url": "",
+     "notes": "",
+     "unit_label": "ea"
+    },
+    {
+     "id": "TL_CANTOOL",
+     "part_id": "TL_CANTOOL",
+     "description": "RobStride USB-CAN tool (for ID setting) or use a CANable",
+     "qty": 1,
+     "unit_cost": 20.0,
+     "total": 20.0,
+     "vendor": "",
+     "url": "",
+     "notes": "",
+     "unit_label": "ea"
+    },
+    {
+     "id": "TL_STAND",
+     "part_id": "TL_STAND",
+     "description": "Gantry or hoist rated 50 kg, 1.4 m clear height",
+     "qty": 1,
+     "unit_cost": 150.0,
+     "total": 150.0,
+     "vendor": "",
+     "url": "",
+     "notes": "Hang the robot for every bring-up step.",
+     "unit_label": "ea"
+    }
+   ],
+   "subtotal": 1135.0
+  }
+ ],
+ "tiers": {
+  "core": 5649.0,
+  "optional": 355.0,
+  "tools": 1135.0
+ }
+}

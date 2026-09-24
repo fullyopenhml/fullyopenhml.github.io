@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Assembly — Fully Open Humanoid</title>
+<meta name="description" content="Build order for the Fully Open Humanoid: three joint kits, pelvis, legs, torso, arms, head, grippers and final integration, with a parts table and a check for every step.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+<header class="site-header"><div class="inner">
+  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><use href="assets/img/favicon.svg#mark"/></svg><span class="name">Fully Open Humanoid</span><span class="ver">v0.1</span></a>
+  <button class="iconbtn nav-toggle" aria-label="Menu">☰</button>
+  <nav class="nav">
+    <a href="design.html">Design</a><a href="viewer.html">3D model</a><a href="bom.html">BOM</a><a href="printing.html">Printing</a><a href="assembly.html">Assembly</a><a href="electrical.html">Electrical</a><a href="bringup.html">Bring-up</a><a href="software.html">Software</a><a href="reference.html">Reference</a>
+    <a class="gh" href="https://github.com/fullyopenhml/fullyopenhml.github.io" title="GitHub">GitHub</a>
+    <button class="iconbtn theme-toggle" aria-label="Toggle theme">◐</button>
+  </nav>
+</div></header>
+
+<main class="page">
+  <h1>Assembly</h1>
+  <p class="lead">Build bench subassemblies in this order, then join them. Every "parts needed" table below is counted from the 3D model; every step ends with a check you can do with your hands.</p>
+  <div class="toc" data-toc></div>
+
+  <div class="glance"><b>Order</b><ol style="margin:0"><li>Set every actuator's CAN ID on the bench and label it.</li><li>Build the 23 joint kits (three kinds).</li><li>Pelvis, then two legs.</li><li>Torso frame, electronics, head.</li><li>Two arms, optional grippers.</li><li>Final integration, then <a href="electrical.html">Electrical</a> and <a href="bringup.html">Bring-up</a>.</li></ol></div>
+
+  <div class="callout warn"><span class="t">Read before lifting anything.</span> Quasi-direct-drive actuators have no self-locking gears. A powered robot that loses power folds up immediately. From final integration on, the robot hangs from a hoist or a gantry rated for 50 kg, and the packs stay disconnected until the pre-power checks pass.</div>
+
+  <h2 id="before">Before you start</h2>
+  <ul>
+    <li>All printed parts done, weighed and inserts set (<a href="printing.html#post">printing page</a>).</li>
+    <li>Every actuator has its CAN ID set on the bench and a label with joint, ID and bus (<a href="bringup.html#ids">the ID plan</a>). Do this now: the ID table is only editable in standby, and the wrong ID inside a closed limb costs an hour.</li>
+    <li>Tools: 2.5 / 3 / 4 mm hex drivers, a 1–10 N·m torque wrench, threadlocker, calipers, a soldering iron with insert tips, a deburring tool.</li>
+    <li>Screw torque: M3 1.2 N·m, M4 2.8 N·m, M5 5 N·m into heat-set inserts; M4 into the actuator flange 3.5 N·m with threadlocker. These are generic values for the screw sizes, not measured on this robot.</li>
+  </ul>
+
+  <h2 id="kits">The three joint kits</h2>
+  <p>Every joint is the same sandwich: the actuator body sits in a printed <em>cup</em> that belongs to the parent link; a printed <em>output adapter</em> bolts to the actuator's flange and belongs to the child link; a thin-section <em>support bearing</em> on the actuator's rear boss lets the child link also bear on the back of the actuator, so the adapter carries torque rather than bending. Build them as a batch.</p>
+  <div class="table-wrap"><table class="compact">
+    <thead><tr><th>Kit</th><th>Actuator</th><th class="num">Joints</th><th>Support bearing</th><th>Flange screws</th><th>Adapter</th></tr></thead>
+    <tbody>
+      <tr><td>RS03 kit</td><td>RobStride RS03, Ø99.6</td><td class="num">11</td><td>6809-2RS, 45 × 58 × 7</td><td>M4 × 12, threadlocker</td><td>Ø68 disc, 6 mm, M4 inserts</td></tr>
+      <tr><td>RS06 kit</td><td>RobStride RS06, Ø84.5</td><td class="num">6</td><td>6807-2RS, 35 × 47 × 7</td><td>M4 × 10, threadlocker</td><td>Ø60 disc, 6 mm</td></tr>
+      <tr><td>RS02 kit</td><td>RobStride RS02, Ø95.1</td><td class="num">4</td><td>6707-2RS, 35 × 44 × 5</td><td>M3 × 10, threadlocker</td><td>Ø60 disc, 6 mm</td></tr>
+      <tr><td>RS05 (wrist)</td><td>RobStride RS05, Ø65.1</td><td class="num">2</td><td>6704-2RS, 20 × 27 × 4</td><td>M3 × 8</td><td>Ø44 disc, 5 mm</td></tr>
+    </tbody>
+  </table></div>
+  <div class="step"><span class="n">1</span><h3>Press the support bearing into its seat</h3></div>
+  <p>The seat is in the cup or plate of the <em>child</em> link (for example the inner shank plate for the knee). Press square with a vice and a socket on the outer race only.</p>
+  <div class="callout check"><span class="t">Check:</span> the bearing sits flush, turns freely and cannot be pushed out by thumb.</div>
+  <div class="step"><span class="n">2</span><h3>Seat the actuator in its cup</h3></div>
+  <p>Cable sockets facing the routing channel. Four M4 through the cup into the actuator's rear mounting holes, torqued in a cross pattern.</p>
+  <div class="step"><span class="n">3</span><h3>Bolt the output adapter to the flange</h3></div>
+  <p>Threadlocker on every screw. Torque in a cross pattern in two passes. Read the flange pattern from the actuator manual; the adapter is designed to it.</p>
+  <div class="callout check"><span class="t">Check:</span> turned by hand, the adapter runs true with no wobble against a fixed pointer; no axial play; the actuator's rear boss enters the support bearing with a light push.</div>
+
+  <h2 id="pelvis">Pelvis</h2>
+  <p>The pelvis shell carries the two hip-pitch actuators (outputs outboard) and the waist actuator (output up). <a href="viewer.html#isolate=pelvis&view=iso">Show on the model →</a></p>
+  <div data-parts="pelvis"></div>
+  <div class="step"><span class="n">1</span><h3>Fit the hip-pitch actuators</h3></div>
+  <p>Slide each RS03 into the shell from the open side, output facing out, sockets facing up. Bolt through the shell's bottom and top plates.</p>
+  <div class="callout check"><span class="t">Check:</span> both flanges are coaxial: a 6 mm rod through both adapters' centre holes passes freely.</div>
+  <div class="step"><span class="n">2</span><h3>Fit the waist actuator</h3></div>
+  <p>On top of the shell, output up, sockets toward the back. This joint's cup is the pelvis top plate itself.</p>
+  <div class="callout check"><span class="t">Check:</span> the waist adapter turns freely, level with the top plate.</div>
+
+  <h2 id="leg">Leg (build two)</h2>
+  <p>Hip to foot: six joints, five of them RS03. Build the left leg from the table, then the right with mirrored prints and the right-side IDs. <a href="viewer.html#isolate=leg_L&view=iso">Show the left leg →</a></p>
+  <div data-parts="leg_L"></div>
+  <div class="step"><span class="n">1</span><h3>Hip-pitch adapter and hip-roll bracket</h3></div>
+  <p>Bolt the hip-pitch adapter to the pelvis actuator's flange (kit step 3). Bolt the hip-roll bracket to the adapter with four M4. The bracket's cup faces backward. <a href="viewer.html#part=hip_roll_bracket_L&view=side">Model →</a></p>
+  <div class="step"><span class="n">2</span><h3>Hip-roll actuator</h3></div>
+  <p>Seat the RS03 in the bracket cup, output forward, and its support bearing in the cup's rear disc.</p>
+  <div class="callout check"><span class="t">Check:</span> hip pitch turns through ±90° with the bracket clearing the pelvis shell by at least 3 mm.</div>
+  <div class="step"><span class="n">3</span><h3>Hip-yaw housing</h3></div>
+  <p>Bolt the hip-roll adapter to the roll actuator's flange, then the hip-yaw housing to the adapter's boss. The housing's collar hangs below the roll actuator. Seat the hip-yaw RS03 in the collar, output down. <a href="viewer.html#part=hip_yaw_housing_L&view=front">Model →</a></p>
+  <div class="callout check"><span class="t">Check:</span> hip roll turns from −30° to +105° without the housing touching the pelvis; the yaw actuator's axis is vertical (spirit level on its rear face).</div>
+  <div class="step"><span class="n">4</span><h3>Thigh block and knee actuator</h3></div>
+  <p>Bolt the thigh block to the hip-yaw adapter. Seat the knee RS03 in the block's cup, output outboard. This is Duke V2's short thigh: the knee actuator hangs directly under the yaw actuator. <a href="viewer.html#part=knee_L_act&view=front">Model →</a></p>
+  <div class="step"><span class="n">5</span><h3>Shank</h3></div>
+  <p>Bolt the outer shank plate (which carries the knee adapter) to the knee flange; fit the inner plate over the support bearing on the knee's rear boss; join the plates with the cross member. Seat the ankle-pitch RS03 between the plates at the bottom, output outboard through the outer plate.</p>
+  <div class="callout check"><span class="t">Check:</span> the knee turns 0° to 135° freely; the two plates are parallel within 0.5 mm (calipers top and bottom).</div>
+  <div class="step"><span class="n">6</span><h3>Ankle bracket and ankle-roll actuator</h3></div>
+  <p>Bolt the ankle adapter to the ankle-pitch flange and the ankle bracket to it. Seat the RS06 in the bracket's rear cup, output forward, with its support bearing. <a href="viewer.html#part=ankle_bracket_L&view=side">Model →</a></p>
+  <div class="step"><span class="n">7</span><h3>Foot</h3></div>
+  <p>Bolt the foot bracket to the ankle-roll flange, the foot plate to the bracket (four M5), the TPU sole to the plate.</p>
+  <div class="callout check"><span class="t">Check:</span> with every joint at zero the sole is level and the knee, ankle-pitch and hip-pitch axes are parallel (a straight edge along the outer plates touches all three adapters).</div>
+  <div class="step"><span class="n">8</span><h3>Route the harness</h3></div>
+  <p>Six actuator drops from the hip-pitch actuator (in the pelvis) down to the ankle-roll actuator, then the terminator. Leave a loop at every joint sized for its full travel. See <a href="electrical.html#routing">Routing</a>.</p>
+  <div class="callout check"><span class="t">Check:</span> every joint moved to both limits by hand with no cable taut, pinched or rubbing.</div>
+  <div class="step"><span class="n">9</span><h3>The right leg</h3></div>
+  <p>Repeat with mirrored prints and IDs 21–26 on <code>can1</code>. The shank cross member and the soles are symmetric and not mirrored.</p>
+
+  <h2 id="torso">Torso and head</h2>
+  <p>Four 2020 uprights between two printed plates, electronics inside, shoulder-pitch actuators at the top corners, head on the top plate. <a href="viewer.html#isolate=torso&view=iso">Show on the model →</a></p>
+  <div data-parts="torso"></div>
+  <div class="step"><span class="n">1</span><h3>Frame</h3></div>
+  <p>Bolt the four uprights to the bottom plate (M5 into the tapped ends), square them with the corner brackets, then the top plate. Square the frame before anything goes in: every limb references it.</p>
+  <div class="callout check"><span class="t">Check:</span> diagonals across the front face equal within 1 mm; the frame stands flat on a table without rocking.</div>
+  <div class="step"><span class="n">2</span><h3>Waist adapter</h3></div>
+  <p>Bolt the waist adapter to the underside of the bottom plate. The torso will sit on the pelvis's waist actuator by this adapter.</p>
+  <div class="step"><span class="n">3</span><h3>Shoulder-pitch actuators</h3></div>
+  <p>Seat one RS06 in each shoulder mount, output outboard, and bolt the mounts under the top plate. The flanges emerge through the side panels' clearance holes.</p>
+  <div class="callout check"><span class="t">Check:</span> both shoulder flanges are coaxial (rod test) and level with the top plate.</div>
+  <div class="step"><span class="n">4</span><h3>Electronics tray</h3></div>
+  <p>Fix the tray to the front uprights with T-nuts. Mount the computer, the four CAN adapters (labelled with their bus), the USB hub, the distribution block and the 48→12 V converter. Mount the contactor and the breaker behind the tray; the E-stop and the breaker handle go through the back panel. Wiring is on <a href="electrical.html">Electrical</a>.</p>
+  <div class="step"><span class="n">5</span><h3>IMU</h3></div>
+  <p>Bolt the IMU rigidly to the bottom plate, axes aligned to the frame: X forward, Y left, Z up. The software applies no mounting rotation.</p>
+  <div class="callout check"><span class="t">Check:</span> the IMU cannot be moved by finger pressure; its silkscreen X arrow points at the front panel.</div>
+  <div class="step"><span class="n">6</span><h3>Battery cradles and packs</h3></div>
+  <p>Two cradles on the bottom plate at the back; packs upright, strapped, leads toward the breaker. Leave both packs unplugged.</p>
+  <div class="callout check"><span class="t">Check:</span> a pack cannot shift when the frame is tilted 30° in any direction; each pack comes out without tools.</div>
+  <div class="step"><span class="n">7</span><h3>Head and panels</h3></div>
+  <p>Neck post and head shell on the top plate. Side and back panels with M3 into inserts; the front panel with magnets, so the tray is reachable.</p>
+
+  <h2 id="arm">Arm (build two)</h2>
+  <p>Shoulder to wrist: five joints. <a href="viewer.html#isolate=arm_L&view=front">Show the left arm →</a></p>
+  <div data-parts="arm_L"></div>
+  <div class="step"><span class="n">1</span><h3>Shoulder adapter and roll bracket</h3></div>
+  <p>Bolt the shoulder adapter to the torso's shoulder-pitch flange, then the shoulder-roll bracket to it, cup facing backward. Seat the shoulder-roll RS06 in the cup, output forward, with its support bearing. <a href="viewer.html#part=shoulder_bracket_L&view=side">Model →</a></p>
+  <div class="callout check"><span class="t">Check:</span> shoulder pitch swings through 360° clearing the torso panels by 5 mm or more.</div>
+  <div class="step"><span class="n">2</span><h3>Upper-arm yoke and shoulder-yaw actuator</h3></div>
+  <p>Roll adapter on the roll flange, yoke on the adapter boss. Seat the RS02 in the yoke's collar, output down.</p>
+  <div class="callout check"><span class="t">Check:</span> shoulder roll from −20° to +150° without the yoke touching the roll bracket.</div>
+  <div class="step"><span class="n">3</span><h3>Upper-arm link and elbow</h3></div>
+  <p>Yaw adapter on the RS02 flange, upper-arm link on it. Seat the elbow RS02 in the link's cup, output outboard.</p>
+  <div class="step"><span class="n">4</span><h3>Forearm</h3></div>
+  <p>Outer forearm plate (with the elbow adapter) on the elbow flange; inner plate on the support bearing; forearm body joins them and holds the wrist-roll RS05, output down.</p>
+  <div class="callout check"><span class="t">Check:</span> elbow 0° to 125° freely; the wrist axis is parallel to the upper-arm link within 1°.</div>
+  <div class="step"><span class="n">5</span><h3>Wrist adapter</h3></div>
+  <p>Bolt the wrist adapter to the RS05 flange. The gripper, or any end effector, bolts to this adapter's four M3 inserts on a 30 mm square.</p>
+  <div class="step"><span class="n">6</span><h3>Route and repeat</h3></div>
+  <p>Five drops from the shoulder-pitch actuator to the wrist, terminator at the wrist. The right arm uses mirrored prints and IDs 41–45 on <code>can3</code>.</p>
+
+  <h2 id="gripper">Gripper (optional, build two)</h2>
+  <p>Duke V2's rack-and-pinion parallel gripper on an STS3215 bus servo. Both servos share one Waveshare driver on the USB hub. <a href="viewer.html#part=gripper_body_L&view=iso">Model →</a></p>
+  <div class="step"><span class="n">1</span><h3>Servo and pinion</h3></div><p>Set the servo IDs (1 left, 2 right) on the driver first. Bolt the servo into the gripper body and the printed pinion onto its horn.</p>
+  <div class="step"><span class="n">2</span><h3>Racks, fingers and pads</h3></div><p>Slide both racks in from opposite sides, both engaged on the pinion, jaws symmetric. Fit the fingers and glue the TPU pads.</p>
+  <div class="callout check"><span class="t">Check:</span> jaws move together, parallel, and meet flat at the centre.</div>
+  <div class="step"><span class="n">3</span><h3>Mount</h3></div><p>Bolt the body to the wrist adapter with the jaws opening front-to-back at wrist zero. Run the servo cable up the arm with the CAN drops.</p>
+
+  <h2 id="final">Final integration</h2>
+  <p>Two people or a hoist from here on. Lift the torso by the top plate. Packs disconnected throughout.</p>
+  <div class="step"><span class="n">1</span><h3>Torso onto pelvis</h3></div>
+  <p>Support the pelvis with both legs standing (or in a stand). Lower the torso so the waist adapter meets the waist flange; bolt it with the torso facing the same way as the feet.</p>
+  <div class="callout check"><span class="t">Check:</span> at waist zero, the top plate's front edge is parallel to the line of the two feet within 2 mm.</div>
+  <div class="step"><span class="n">2</span><h3>Arms</h3></div>
+  <p>Bolt each arm's shoulder adapter to its torso flange. Check the side: the arms differ by IDs and bus.</p>
+  <div class="step"><span class="n">3</span><h3>Harness tails into the torso</h3></div>
+  <p>Bring the four limb chains in through the bottom plate cut-outs and up to their CAN adapters. Waist actuator joins the left-arm chain (<code>can2</code>).</p>
+  <div class="step"><span class="n">4</span><h3>Inspect and hang</h3></div>
+  <p>Every joint through its travel by hand, alone and together; no cable stretched, pinched or kinked in any pose; nothing rattles. Hang the robot from the top plate with the feet 10 cm off the floor.</p>
+  <div class="callout check"><span class="t">Check:</span> it hangs level, legs straight. Go to <a href="electrical.html#prepower">Pre-power checks</a>.</div>
+</main>
+
+<footer class="site-footer"><div class="inner"><span>Fully Open Humanoid · v0.1 design release · <a href="reference.html#license">MIT / CC BY 4.0</a></span><span>Derived from <a href="https://generalroboticslab.github.io/Duke_Humanoid_V2_OpenSource/">Duke Humanoid V2</a> and <a href="https://berkeley-humanoid-lite.gitbook.io/docs">Berkeley Humanoid Lite</a></span></div></footer>
+
+<script src="assets/js/site.js"></script>
+<script>
+foh.json("assets/data/robot.json").then(robot => {
+  const esc = foh.esc;
+  document.querySelectorAll("[data-parts]").forEach(host => {
+    const gid = host.dataset.parts;
+    const counts = {};
+    const optional = {};
+    for (const L of robot.links.filter(L => L.group === gid)) for (const P of L.parts) {
+      const t = P.optional ? optional : counts;
+      t[P.part] = (t[P.part] || 0) + 1;
+    }
+    const order = { actuator: 0, printed: 1, hardware: 2, electronics: 3 };
+    const rows = Object.entries(counts).map(([id, n]) => [robot.catalog[id], n]).sort((a, b) => order[a[0].category] - order[b[0].category] || a[0].id.localeCompare(b[0].id));
+    let html = `<details class="table-wrap" style="margin:.5em 0 1.5em"><summary style="cursor:pointer;font-weight:600">Parts needed (${rows.reduce((s, r) => s + r[1], 0)} pieces, ${rows.length} kinds)</summary><table class="compact"><thead><tr><th>ID</th><th>Part</th><th>Kind</th><th class="num">Qty</th></tr></thead><tbody>`;
+    for (const [c, n] of rows) html += `<tr><td class="mono" style="font-size:.78rem"><a href="${foh.partHref(c.id)}">${esc(c.id)}</a></td><td>${esc(c.name)}</td><td>${esc(c.category)}</td><td class="num">${n}</td></tr>`;
+    const opt = Object.entries(optional);
+    if (opt.length) for (const [id, n] of opt) html += `<tr><td class="mono" style="font-size:.78rem"><a href="${foh.partHref(id)}">${esc(id)}</a></td><td>${esc(robot.catalog[id].name)} <span class="pill acc">kit</span></td><td>${esc(robot.catalog[id].category)}</td><td class="num">${n}</td></tr>`;
+    html += `</tbody></table><p class="tiny">Plus screws, inserts and the harness for this subassembly.</p></details>`;
+    host.innerHTML = html;
+  });
+});
+</script>
+</body>
+</html>
