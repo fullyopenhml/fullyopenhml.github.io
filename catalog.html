@@ -48,7 +48,7 @@ td.cost small { color: var(--fg3); }
 
 <main class="page">
   <h1>Open humanoids, catalogued</h1>
-  <p class="lead">Every humanoid, biped and hand we could find that calls itself open, scored on the same nine questions, with the numbers the projects publish and the pages they were read from. Ours is in the list on the same terms as everyone else's.</p>
+  <p class="lead">Every humanoid, biped, bimanual platform, mobile manipulator, arm and hand we could find that calls itself open, scored on the same nine questions, with the numbers the projects publish and the pages they were read from. Ours is in the list on the same terms as everyone else's.</p>
   <div class="toc" data-toc></div>
 
   <div class="banner"><span class="dot"></span><div><b>How to read it.</b> The score counts criteria met in full (1) or in part (½). "Open hardware" means a stated licence that lets anyone study, modify, make and sell the design; non-commercial terms and missing licences fail that test however good the files are. Costs are the projects' own figures unless marked. Nothing here has been re-measured by us.</div></div>
@@ -57,16 +57,19 @@ td.cost small { color: var(--fg3); }
   <p>The questions come from the Open Source Hardware Association's definition and from what it takes to actually build a robot from a release. A project is judged on what is public today, not on what is announced.</p>
   <div class="table-wrap"><table class="compact" id="criteria-table"><thead><tr><th>#</th><th>Criterion</th><th>Meets it when</th></tr></thead><tbody></tbody></table></div>
 
+  <h3 id="forms">Form factors</h3>
+  <p id="forms-text"></p>
+
   <h2 id="list">The catalog</h2>
   <div class="filters">
-    <label>Type <select id="f-type"><option value="">all</option><option value="full">full humanoid</option><option value="biped">biped</option><option value="upper">upper body</option><option value="mini">mini</option><option value="hand">hand</option></select></label>
+    <label>Form <select id="f-type"><option value="">all</option></select></label>
     <label><input type="checkbox" id="f-oshwa"> open-hardware licence only</label>
     <label><input type="checkbox" id="f-live" checked> hide announced and archived</label>
     <label>Sort <select id="f-sort"><option value="score">openness score</option><option value="cost">cost</option><option value="height">height</option><option value="dof">DOF</option><option value="year">year</option><option value="name">name</option></select></label>
     <span class="tiny" id="f-count"></span>
   </div>
   <div class="table-wrap"><table id="catalog-table">
-    <thead><tr><th>Robot</th><th>Type</th><th class="num">Height</th><th class="num">Mass</th><th class="num">DOF</th><th>Actuators</th><th class="num">Cost</th><th>Licence</th><th>Openness</th><th>Status</th></tr></thead>
+    <thead><tr><th>Robot</th><th>Form</th><th class="num">Height</th><th class="num">Mass</th><th class="num">DOF</th><th>Actuators</th><th class="num">Cost</th><th>Licence</th><th>Openness</th><th>Status</th></tr></thead>
     <tbody></tbody>
   </table></div>
   <p class="legend">Cost marks: none = itemised BOM · † = total published by the project · ≈ = estimate · ‡ = third-party figure. Click a row for the checklist, notes, links and sources.</p>
@@ -86,13 +89,15 @@ td.cost small { color: var(--fg3); }
 <script>
 foh.json("assets/data/catalog.json").then(cat => {
   const esc = foh.esc, money = foh.money;
-  const TYPE = { full: "Full humanoid", biped: "Biped", upper: "Upper body", mini: "Mini humanoid", hand: "Hand", arm: "Arm" };
+  const FORM = Object.fromEntries(cat.forms.map(f => [f.id, f.name]));
+  for (const f of cat.forms) { const o = document.createElement("option"); o.value = f.id; o.textContent = f.name.toLowerCase(); o.title = f.desc; document.getElementById("f-type").appendChild(o); }
   const STATUS = { design: ["Design only", ""], prototype: ["Prototype", ""], walking: ["Built, walking", "ok"], commercial: ["Sold", "ok"], archive: ["Archived", "warn"], announced: ["Announced", "warn"] };
   const MARK = { itemised: "", "published-total": "†", estimate: "≈", "third-party": "‡", unknown: "" };
 
   const ct = document.querySelector("#criteria-table tbody");
   cat.criteria.forEach((c, i) => { const tr = document.createElement("tr"); tr.innerHTML = `<td class="num">${i + 1}</td><td><b>${esc(c.name)}</b></td><td>${esc(c.desc)}</td>`; ct.appendChild(tr); });
 
+  document.getElementById("forms-text").innerHTML = cat.forms.map(f => `<b>${esc(f.name)}</b>: ${esc(f.desc)}`).join(" · ");
   const cl = document.querySelector("#closed-table tbody");
   cat.closed.forEach(c => { const tr = document.createElement("tr"); tr.innerHTML = `<td><a href="${esc(c.url)}">${esc(c.name)}</a></td><td>${esc(c.price)}</td><td>${esc(c.released)}</td><td>${esc(c.why)}</td>`; cl.appendChild(tr); });
 
@@ -105,14 +110,14 @@ foh.json("assets/data/catalog.json").then(cat => {
 
   function render() {
     tb.innerHTML = "";
-    let rows = cat.robots.filter(r => (!fType.value || r.type === fType.value) && (!fOsh.checked || r.oshwa) && (!fLive.checked || !["announced", "archive"].includes(r.status)));
+    let rows = cat.robots.filter(r => (!fType.value || r.form === fType.value) && (!fOsh.checked || r.oshwa) && (!fLive.checked || !["announced", "archive"].includes(r.status)));
     const k = keyFor[fSort.value];
     rows.sort((a, b) => { const x = k(a), y = k(b); return x < y ? -1 : x > y ? 1 : a.name.localeCompare(b.name); });
     fCount.textContent = `${rows.length} of ${cat.robots.length}`;
     for (const r of rows) {
       const tr = document.createElement("tr"); tr.className = "rowx" + (r.id === "foh" ? " ours" : "");
       const [st, stc] = STATUS[r.status] || [r.status, ""];
-      tr.innerHTML = `<td><span class="robot-name">${esc(r.name)}</span><span class="robot-org">${esc(r.org)} · ${r.year}</span></td><td>${TYPE[r.type] || esc(r.type)}</td>` +
+      tr.innerHTML = `<td><span class="robot-name">${esc(r.name)}</span><span class="robot-org">${esc(r.org)} · ${r.year}</span></td><td>${FORM[r.form] || esc(r.form)}</td>` +
         `<td class="num">${r.height_mm ? (r.height_mm / 1000).toFixed(2) + " m" : "—"}</td><td class="num">${r.mass_kg != null ? r.mass_kg + " kg" : "—"}</td><td class="num">${r.dof ?? "—"}</td>` +
         `<td>${esc(r.actuators)}</td><td class="num cost">${cost(r)}</td><td>${licPill(r)}<br><small>${esc(r.license_hw.split(" (")[0].split(";")[0])} / ${esc(r.license_sw.split(" (")[0].split(";")[0])}</small></td>` +
         `<td>${dots(r)}<span class="score">${r.score}</span><small>/9</small></td><td><span class="pill ${stc}">${st}</span></td>`;

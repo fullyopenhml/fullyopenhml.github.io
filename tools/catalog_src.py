@@ -57,12 +57,22 @@ FAMILIES = {
     "none": dict(name="No actuators", bus="", protocol="", voltage_v=None),
 }
 
+FORMS = [
+    dict(id="humanoid", name="Humanoid", desc="Two legs, a torso and two arms; walks or is meant to."),
+    dict(id="bimanual", name="Bimanual", desc="Two arms on a fixed torso or stand."),
+    dict(id="bimanual-mobile", name="Bimanual + mobile", desc="Two arms on a wheeled base."),
+    dict(id="mobile-manipulator", name="Mobile manipulator", desc="One arm on a wheeled base."),
+    dict(id="legged", name="Legged", desc="Biped or quadruped without arms."),
+    dict(id="arm", name="Arm", desc="A single manipulator arm."),
+    dict(id="hand", name="Hand", desc="A hand or gripper."),
+]
+
 # --- robots -------------------------------------------------------------------
-# type: full | biped | upper | mini | hand | arm
+# form: see FORMS
 # status: design | prototype | walking | commercial | archive | announced
 
 ROBOTS = [
-    dict(checked="2026-09-25", id="foh", name="Fully Open Humanoid v0.2", org="This site", year=2026, type="full", status="design",
+    dict(checked="2026-09-25", id="foh", name="Fully Open Humanoid v0.2", org="This site", year=2026, form="humanoid", status="design",
          height_mm=1114, mass_kg=27.8, dof=23, actuators="RobStride RS03 ×11, RS06 ×6, RS02 ×4, RS05 ×2", family="robstride-rs",
          structure="FDM-printed PETG-CF and PLA, four 2020 extrusions", compute="Intel N100 mini PC",
          price_usd=5824, price_basis="itemised", price_note="Core BOM, priced 2026-09; unbuilt design.",
@@ -77,7 +87,7 @@ ROBOTS = [
          summary="Duke Humanoid V2's joint layout on RobStride actuators with every structural part printed, in the spirit of Berkeley Humanoid Lite. A design release: BOM, printable parts, URDF and a MuJoCo standing check exist; nothing has been built.",
          verdict="Open by construction, unproven by construction. Treat every number as a design estimate until the joint-kit test."),
 
-    dict(checked="2026-09-25", id="bhl", name="Berkeley Humanoid Lite", org="UC Berkeley, Hybrid Robotics", year=2025, type="full", status="walking",
+    dict(checked="2026-09-25", id="bhl", name="Berkeley Humanoid Lite", org="UC Berkeley, Hybrid Robotics", year=2025, form="humanoid", status="walking",
          height_mm=800, mass_kg=16, dof=22, actuators="22 printed cycloidal actuators (BLDC motor + custom controller board); the paper abstract states only the sub-$5,000 cost", family="bhl",
          structure="FDM-printed PLA/PETG structure and gearboxes; off-the-shelf metal parts", compute="Onboard computer + microcontroller motor boards",
          price_usd=5000, price_basis="published-total", price_note="\"Sub-$5,000\" per the project; itemised Google Sheet BOM linked from the docs.",
@@ -92,7 +102,7 @@ ROBOTS = [
          summary="The reference for a desktop-printable full-body humanoid: 22 DOF, printed cycloidal gearboxes, everything on hobby-grade tooling, documented failure modes.",
          verdict="Meets the open-hardware definition and is reproducible on a desktop printer. The first project to study for a low-cost full-body build."),
 
-    dict(checked="2026-09-25", id="duke2", name="Duke Humanoid V2", org="Duke University, General Robotics Lab", year=2026, type="full", status="walking",
+    dict(checked="2026-09-25", id="duke2", name="Duke Humanoid V2", org="Duke University, General Robotics Lab", year=2026, form="humanoid", status="walking",
          height_mm=1256, mass_kg=35.3, dof=31, actuators="RobStride RS00 ×2, RS02 ×6, RS03 ×11, RS04 ×2, RS05 ×6, RS06 ×4; 2 Feetech gripper servos", family="robstride-rs",
          structure="Machined aluminium 6061; PLA, TPU and SLS nylon-12 prints", compute="MINISFORUM X1-470 mini PC",
          price_usd=14882, price_basis="itemised", price_note="Team BOM grand total $14,882 (CNC parts $6,390). The curated CSVs on the project's hardware site total about $13,000 without consumables.",
@@ -108,7 +118,7 @@ ROBOTS = [
          summary="A 1.26 m, 31-joint RobStride humanoid with two gimballed depth cameras, machined aluminium legs and a fully priced BOM. The design this site's own robot derives from.",
          verdict="Complete release with real build data under Apache-2.0. The machined parts are the cost and the sourcing burden."),
 
-    dict(checked="2026-09-25", id="roboto", name="Roboto Origin", org="RoboParty (Shanghai)", year=2025, type="full", status="walking",
+    dict(checked="2026-09-25", id="roboto", name="Roboto Origin", org="RoboParty (Shanghai)", year=2025, form="humanoid", status="walking",
          height_mm=1250, mass_kg=34, dof=23, actuators="21 servo actuators, 120 N·m legs and 27 N·m arms; models not confirmed", family="unknown",
          structure="Machined and printed parts; ordered through Taobao and JLC per the project", compute="Not confirmed; 48 V 15 Ah battery",
          price_usd=7000, price_basis="published-total", price_note="About ¥50,000 (≈ $7,000) reported by the project and press; kit pre-orders taken.",
@@ -122,7 +132,7 @@ ROBOTS = [
          summary="A 1.25 m full-stack release: native CAD, drawings, PCB source, firmware, URDF/MJCF, ROS 2 deployment and Isaac Lab training, all licensed.",
          verdict="The strongest large full-stack release found. Needs CNC work and Chinese sourcing; freeze matching revisions before ordering."),
 
-    dict(checked="2026-09-25", id="asimov", name="Asimov v1", org="Menlo Research", year=2026, type="full", status="prototype",
+    dict(checked="2026-09-25", id="asimov", name="Asimov v1", org="Menlo Research", year=2026, form="humanoid", status="prototype",
          height_mm=1200, mass_kg=35, dof=25, actuators="Not stated publicly (25 powered joints + 2 passive toes)", family="unknown",
          structure="Machined 7075 aluminium and 316L parts, MJF/SLM prints", compute="Radxa CM5 (motion) + Raspberry Pi 5 (media)",
          price_usd=15000, price_basis="published-total", price_note="DIY kit target ≈ $15,000 with a $499 deposit (summer 2026); an unassembled kit at $20,000 was also reported. BOM by request.",
@@ -138,7 +148,7 @@ ROBOTS = [
          summary="A 1.2 m, 35 kg humanoid released under CERN-OHL-S with STEP files, KiCad electronics and a MuJoCo model; BOM and firmware still gated.",
          verdict="An open-licensed release in progress: describe it as it exists, not as the finished platform."),
 
-    dict(checked="2026-09-25", id="poppy", name="Poppy Humanoid", org="Inria, Flowers team", year=2014, type="full", status="archive",
+    dict(checked="2026-09-25", id="poppy", name="Poppy Humanoid", org="Inria, Flowers team", year=2014, form="humanoid", status="archive",
          height_mm=830, mass_kg=3.5, dof=25, actuators="25 Dynamixel MX-28 and MX-64 (5-DOF trunk)", family="dynamixel-x",
          structure="3D-printed (SLS or FDM) structure", compute="Odroid XU4 in the head",
          price_usd=8500, price_basis="published-total", price_note="$8,000–9,000 per the project (2015 pricing, about 60 % actuators).",
@@ -152,7 +162,7 @@ ROBOTS = [
          summary="The clearest early example of a full robot released as editable CAD rather than printable meshes. Dated actuators and no walking.",
          verdict="Meets the definition; conceptually sound, technically old."),
 
-    dict(checked="2026-09-25", id="nico", name="NICO", org="University of Hamburg, WTM", year=2017, type="full", status="prototype",
+    dict(checked="2026-09-25", id="nico", name="NICO", org="University of Hamburg, WTM", year=2017, form="humanoid", status="prototype",
          height_mm=1010, mass_kg=7, dof=30, actuators="Dynamixel servos; third-party hands", family="dynamixel-x",
          structure="3D-printed", compute="External PC",
          price_usd=None, price_basis="unknown", price_note="No published total.",
@@ -164,7 +174,7 @@ ROBOTS = [
          summary="A child-sized interaction and manipulation humanoid with genuinely open, creator-owned CAD; dependent on proprietary servos and hands.",
          verdict="Open where the creators control the design; reproducibility limited by third-party parts and an older software stack."),
 
-    dict(checked="2026-09-25", id="sapiens", name="AI Sapiens K0 / K1", org="ROBOTIS", year=2026, type="full", status="commercial",
+    dict(checked="2026-09-25", id="sapiens", name="AI Sapiens K0 / K1", org="ROBOTIS", year=2026, form="humanoid", status="commercial",
          height_mm=1300, mass_kg=34, dof=23, actuators="Dynamixel Q-series", family="dynamixel-q",
          structure="Not detailed publicly", compute="8-core ARM SoC with NPU",
          price_usd=None, price_basis="unknown", price_note="Not announced; Korean press reports under $10,000.",
@@ -176,7 +186,7 @@ ROBOTS = [
          summary="ROBOTIS's 1.3 m humanoid on its Dynamixel Q actuators, announced as an open platform with ROS 2 packages public first.",
          verdict="Watch: the software is out under Apache-2.0; the hardware release and its licence were not verifiable."),
 
-    dict(checked="2026-09-25", id="kbot", name="K-Bot", org="K-Scale Labs", year=2025, type="full", status="archive",
+    dict(checked="2026-09-25", id="kbot", name="K-Bot", org="K-Scale Labs", year=2025, form="humanoid", status="archive",
          height_mm=1400, mass_kg=34, dof=20, actuators="RobStride RS04 ×4, RS03 ×8, RS02 ×6, RS00 ×2 (5 per leg, 5 per arm)", family="robstride-rs",
          structure="Machined and printed", compute="K-OS on an embedded computer",
          price_usd=8999, price_basis="published-total", price_note="Pre-order price for the first 100 units; the company closed in November 2025 and refunded orders.",
@@ -188,7 +198,7 @@ ROBOTS = [
          summary="A 1.4 m open-licensed humanoid whose company dissolved; the CAD and OS remain as a design archive.",
          verdict="Not reproducible today. The licence preserved the files, not the suppliers or the documentation work."),
 
-    dict(checked="2026-09-25", id="lerobot", name="LeRobot Humanoid (biped)", org="Hugging Face, LeRobot", year=2026, type="biped", status="walking",
+    dict(checked="2026-09-25", id="lerobot", name="LeRobot Humanoid (biped)", org="Hugging Face, LeRobot", year=2026, form="legged", status="walking",
          height_mm=None, mass_kg=None, dof=12, actuators="RobStride O0, O2, O3, O5 (CAN-FD)", family="robstride-o",
          structure="3D-printed (75 STL parts) with off-the-shelf bearings and fasteners", compute="Raspberry Pi 5, BNO085 IMU",
          price_usd=2636, price_basis="itemised", price_note="≈ $2,636 as of April 2026 per the hardware repository (motors ≈ $1,880).",
@@ -200,7 +210,7 @@ ROBOTS = [
          summary="A printed 12-DOF biped on RobStride O-series actuators with an itemised $2,600 BOM, Onshape source and Apache-2.0 terms.",
          verdict="Incomplete as a humanoid, excellent as a biped: the best-documented low-cost legs in this list."),
 
-    dict(checked="2026-09-25", id="agiloped", name="AGILOped", org="University of Bonn, NimbRo", year=2025, type="full", status="prototype",
+    dict(checked="2026-09-25", id="agiloped", name="AGILOped", org="University of Bonn, NimbRo", year=2025, form="humanoid", status="prototype",
          height_mm=1100, mass_kg=14.5, dof=12, actuators="10 actuators driving 12 joints (models not confirmed)", family="unknown",
          structure="Not detailed", compute="Not detailed",
          price_usd=None, price_basis="unknown", price_note="No procurement BOM.",
@@ -212,7 +222,7 @@ ROBOTS = [
          summary="A 1.1 m, 14.5 kg walker with strong physical demonstrations and MIT-licensed STEP, but no BOM or assembly manual.",
          verdict="Incomplete: a model release, not a build release."),
 
-    dict(checked="2026-09-25", id="nimbro", name="NimbRo-OP2X", org="University of Bonn, NimbRo", year=2018, type="full", status="walking",
+    dict(checked="2026-09-25", id="nimbro", name="NimbRo-OP2X", org="University of Bonn, NimbRo", year=2018, form="humanoid", status="walking",
          height_mm=1350, mass_kg=19, dof=18, actuators="34 × Dynamixel XH540-W270-R on 18 joints", family="dynamixel-x",
          structure="SLS nylon-12 (PA12)", compute="Intel i7-8700T + GTX 1050 Ti",
          price_usd=None, price_basis="unknown", price_note="\"Similar price range to Baxter\" per the paper; no figure.",
@@ -224,7 +234,7 @@ ROBOTS = [
          summary="An adult-sized SLS-printed soccer humanoid on Dynamixel XH540s with a released CAD and BOM.",
          verdict="Reproducible and proven, but non-commercial."),
 
-    dict(checked="2026-09-25", id="igus", name="igus Humanoid Open Platform", org="University of Bonn, NimbRo with igus", year=2015, type="full", status="archive",
+    dict(checked="2026-09-25", id="igus", name="igus Humanoid Open Platform", org="University of Bonn, NimbRo with igus", year=2015, form="humanoid", status="archive",
          height_mm=900, mass_kg=None, dof=None, actuators="Dynamixel MX-series", family="dynamixel-x",
          structure="SLS-printed", compute="Intel NUC",
          price_usd=None, price_basis="unknown", price_note="Printed-parts set priced on request from igus.",
@@ -236,7 +246,7 @@ ROBOTS = [
          summary="The 2015 child-sized printed platform that led to NimbRo-OP2X.",
          verdict="Historical; licence not stated."),
 
-    dict(checked="2026-09-25", id="toddlerbot", name="ToddlerBot 2.0", org="Stanford University", year=2025, type="full", status="walking",
+    dict(checked="2026-09-25", id="toddlerbot", name="ToddlerBot 2.0", org="Stanford University", year=2025, form="humanoid", status="walking",
          height_mm=560, mass_kg=3.4, dof=30, actuators="Dynamixel 2XC430, 2XL430, XC330, XC430, XM430", family="dynamixel-x",
          structure="FDM-printed", compute="NVIDIA Jetson Orin NX",
          price_usd=6000, price_basis="published-total", price_note="≈ $6,000 BOM per the paper, 90 % in the Jetson and the Dynamixels; a third-party assembled kit is sold at $4,299.",
@@ -248,7 +258,7 @@ ROBOTS = [
          summary="A 56 cm, 30-DOF, entirely printed humanoid for loco-manipulation learning; the most complete build documentation in the list.",
          verdict="Excellent source-available research platform; fails the open-hardware definition on the non-commercial clause."),
 
-    dict(checked="2026-09-25", id="microban", name="Microban", org="Rhoban, Bordeaux", year=2025, type="mini", status="walking",
+    dict(checked="2026-09-25", id="microban", name="Microban", org="Rhoban, Bordeaux", year=2025, form="humanoid", status="walking",
          height_mm=300, mass_kg=None, dof=19, actuators="Small serial bus servos (see BOM)", family="unknown",
          structure="FDM-printed", compute="Onboard SBC",
          price_usd=567, price_basis="itemised", price_note="≈ $567 in parts before tools, per the project BOM.",
@@ -260,7 +270,7 @@ ROBOTS = [
          summary="A 30 cm, 19-DOF desktop humanoid with a detailed BOM and an RL environment.",
          verdict="Research-only terms, like ToddlerBot."),
 
-    dict(checked="2026-09-25", id="zeroth", name="Zeroth-01 / Z-Bot", org="K-Scale Labs (community)", year=2024, type="mini", status="archive",
+    dict(checked="2026-09-25", id="zeroth", name="Zeroth-01 / Z-Bot", org="K-Scale Labs (community)", year=2024, form="humanoid", status="archive",
          height_mm=400, mass_kg=None, dof=16, actuators="16 × Feetech STS3215 / STS3250", family="feetech-sts",
          structure="FDM-printed", compute="Milk-V Duo S (RISC-V) in the original; community builds use a Raspberry Pi 4",
          price_usd=350, price_basis="published-total", price_note="\"BoM starts at $350\" per the repository.",
@@ -272,7 +282,7 @@ ROBOTS = [
          summary="A $350, 16-DOF printed mini humanoid with vision and speech on a RISC-V board.",
          verdict="Cheap, MIT-licensed, unmaintained."),
 
-    dict(checked="2026-09-25", id="duck", name="Open Duck Mini v2", org="Antoine Pirrone (community)", year=2025, type="biped", status="walking",
+    dict(checked="2026-09-25", id="duck", name="Open Duck Mini v2", org="Antoine Pirrone (community)", year=2025, form="legged", status="walking",
          height_mm=420, mass_kg=None, dof=14, actuators="14 × Feetech STS3215 (5 per leg, 4 in the neck and head)", family="feetech-sts",
          structure="FDM-printed", compute="Raspberry Pi Zero 2 W",
          price_usd=400, price_basis="published-total", price_note="\"Under $400\" per the project; itemised Google Sheet BOM.",
@@ -284,7 +294,7 @@ ROBOTS = [
          summary="A 42 cm walking droid built by hundreds of people for under $400, with the whole RL pipeline public.",
          verdict="Meets the definition and is reproduced at scale; a biped, not a humanoid."),
 
-    dict(checked="2026-09-25", id="bolt", name="Bolt", org="Open Dynamic Robot Initiative (MPI-IS, NYU, LAAS)", year=2021, type="biped", status="walking",
+    dict(checked="2026-09-25", id="bolt", name="Bolt", org="Open Dynamic Robot Initiative (MPI-IS, NYU, LAAS)", year=2021, form="legged", status="walking",
          height_mm=None, mass_kg=None, dof=6, actuators="ODRI brushless modules (T-motor + 9:1 belt stage + open driver board)", family="odri",
          structure="Printed structure with carbon tubes", compute="Off-board PC via ODRI master board",
          price_usd=6400, price_basis="third-party", price_note="≈ $6,400 to build in the US, estimated by a third party; ODRI publishes the BOM.",
@@ -296,7 +306,7 @@ ROBOTS = [
          summary="A 6-DOF research biped built from ODRI's open actuator module and electronics.",
          verdict="Fully open and reproduced; a lab platform rather than a humanoid."),
 
-    dict(checked="2026-09-25", id="mevita", name="MEVITA", org="JSK, University of Tokyo", year=2025, type="biped", status="walking",
+    dict(checked="2026-09-25", id="mevita", name="MEVITA", org="JSK, University of Tokyo", year=2025, form="legged", status="walking",
          height_mm=None, mass_kg=None, dof=None, actuators="CubeMars AK70-10 and AK10-9 V2 (MIT mode)", family="cubemars-ak",
          structure="18 sheet-metal welded parts", compute="Onboard PC",
          price_usd=None, price_basis="unknown", price_note="No published total.",
@@ -308,7 +318,7 @@ ROBOTS = [
          summary="A minimal sheet-metal biped on CubeMars actuators with the full sim-to-real pipeline released.",
          verdict="Open and clever; no BOM total."),
 
-    dict(checked="2026-09-25", id="hopejr", name="HopeJR", org="The Robot Studio with Hugging Face", year=2025, type="upper", status="prototype",
+    dict(checked="2026-09-25", id="hopejr", name="HopeJR", org="The Robot Studio with Hugging Face", year=2025, form="bimanual", status="prototype",
          height_mm=None, mass_kg=None, dof=66, actuators="Feetech STS-series bus servos (arms and hands)", family="feetech-sts",
          structure="FDM-printed", compute="LeRobot host PC",
          price_usd=3000, price_basis="published-total", price_note="≈ $3,000 per Hugging Face's announcement; no whole-robot BOM.",
@@ -320,7 +330,7 @@ ROBOTS = [
          summary="Printed arms and dexterous hands on bus servos, teleoperated with gloves; a full-body concept with the upper body real.",
          verdict="Incomplete and inconsistently licensed across the repository."),
 
-    dict(checked="2026-09-25", id="amazing-hand", name="Amazing Hand", org="Pollen Robotics / Hugging Face", year=2025, type="hand", status="prototype",
+    dict(checked="2026-09-25", id="amazing-hand", name="Amazing Hand", org="Pollen Robotics / Hugging Face", year=2025, form="hand", status="prototype",
          height_mm=None, mass_kg=0.4, dof=8, actuators="8 small bus servos per hand", family="feetech-sts",
          structure="Fully 3D-printed, flexible fingers", compute="Any host via servo bus",
          price_usd=220, price_basis="itemised", price_note="Under €200 per hand in off-the-shelf parts per Pollen's BOM.",
@@ -332,7 +342,7 @@ ROBOTS = [
          summary="An 8-DOF printed hand for under €200 with BOM, print guide and assembly guide.",
          verdict="Meets the definition; the cheapest open hand worth bolting on."),
 
-    dict(checked="2026-09-25", id="inmoov", name="InMoov", org="Gaël Langevin (community)", year=2012, type="upper", status="walking",
+    dict(checked="2026-09-25", id="inmoov", name="InMoov", org="Gaël Langevin (community)", year=2012, form="bimanual", status="walking",
          height_mm=None, mass_kg=None, dof=None, actuators="28 hobby PWM servos", family="hobby-pwm",
          structure="FDM-printed life-size shell", compute="2 × Arduino Mega with Nervo boards",
          price_usd=1200, price_basis="third-party", price_note="$1,000–1,500 per builders' reports; parts list on the project site.",
@@ -344,7 +354,7 @@ ROBOTS = [
          summary="The original life-size printable maker humanoid: upper body, hobby servos, huge community.",
          verdict="A maker platform under non-commercial terms, not a walking robot."),
 
-    dict(checked="2026-09-25", id="op3", name="ROBOTIS OP3", org="ROBOTIS", year=2017, type="full", status="commercial",
+    dict(checked="2026-09-25", id="op3", name="ROBOTIS OP3", org="ROBOTIS", year=2017, form="humanoid", status="commercial",
          height_mm=510, mass_kg=3.5, dof=20, actuators="Dynamixel XM430-W350", family="dynamixel-x",
          structure="Aluminium frames and plastic covers", compute="Intel NUC i3",
          price_usd=11969, price_basis="published-total", price_note="List price at ROBOTIS US.",
@@ -356,7 +366,7 @@ ROBOTS = [
          summary="A supported commercial kid-size humanoid with unusually complete public drawings and ROS software.",
          verdict="Inspectable and modifiable, not open all the way down."),
 
-    dict(checked="2026-09-25", id="icub", name="iCub", org="Istituto Italiano di Tecnologia", year=2009, type="full", status="commercial",
+    dict(checked="2026-09-25", id="icub", name="iCub", org="Istituto Italiano di Tecnologia", year=2009, form="humanoid", status="commercial",
          height_mm=1040, mass_kg=22, dof=53, actuators="Custom brushless and brushed motors with in-house boards", family="unknown",
          structure="Machined aluminium", compute="Onboard PC104 + external cluster",
          price_usd=None, price_basis="unknown", price_note="Supplied by IIT; about €250,000 per unit is the commonly cited figure (Wikipedia), depending on version.",
@@ -368,7 +378,7 @@ ROBOTS = [
          summary="The long-running open research humanoid: open software and models, selected open hardware, commercial supply.",
          verdict="Calling it closed would be wrong; calling every part open hardware would also be wrong."),
 
-    dict(checked="2026-09-25", id="bruce", name="BRUCE", org="Westwood Robotics with RoMeLa", year=2022, type="full", status="commercial",
+    dict(checked="2026-09-25", id="bruce", name="BRUCE", org="Westwood Robotics with RoMeLa", year=2022, form="humanoid", status="commercial",
          height_mm=None, mass_kg=None, dof=16, actuators="Westwood BEAR actuators", family="bear",
          structure="Machined", compute="Onboard SBC",
          price_usd=8890, price_basis="published-total", price_note="Limited-time price; list price $15,290.",
@@ -380,7 +390,7 @@ ROBOTS = [
          summary="A kid-size compliant biped sold as an open platform on proprietary BEAR actuators.",
          verdict="Open-source software, gated hardware."),
 
-    dict(checked="2026-09-25", id="agibot-x1", name="AgiBot X1 (Lingxi X1)", org="AgiBot", year=2024, type="full", status="commercial",
+    dict(checked="2026-09-25", id="agibot-x1", name="AgiBot X1 (Lingxi X1)", org="AgiBot", year=2024, form="humanoid", status="commercial",
          height_mm=1300, mass_kg=33, dof=34, actuators="AgiBot PowerFlow actuators", family="unknown",
          structure="Machined and moulded", compute="Onboard PC with AimRT middleware",
          price_usd=None, price_basis="unknown", price_note="Kits listed by resellers; no project BOM total.",
@@ -392,7 +402,7 @@ ROBOTS = [
          summary="A 1.3 m modular humanoid with native CAD, BOM and SOP published, but no hardware licence.",
          verdict="Files without permission: fails the definition on licensing alone."),
 
-    dict(checked="2026-09-25", id="fourier-n1", name="Fourier N1", org="Fourier", year=2025, type="full", status="announced",
+    dict(checked="2026-09-25", id="fourier-n1", name="Fourier N1", org="Fourier", year=2025, form="humanoid", status="announced",
          height_mm=1300, mass_kg=38, dof=23, actuators="Fourier FSA 2.0", family="unknown",
          structure="Machined", compute="Onboard PC",
          price_usd=None, price_basis="unknown", price_note="Not published.",
@@ -404,7 +414,7 @@ ROBOTS = [
          summary="Announced as the first open-source humanoid; the hardware package had not appeared where the announcement pointed.",
          verdict="Promised, not delivered."),
 
-    dict(checked="2026-09-25", id="tienkung", name="Tien Kung (Tiangong)", org="X-Humanoid, Beijing Humanoid Robot Innovation Center", year=2024, type="full", status="announced",
+    dict(checked="2026-09-25", id="tienkung", name="Tien Kung (Tiangong)", org="X-Humanoid, Beijing Humanoid Robot Innovation Center", year=2024, form="humanoid", status="announced",
          height_mm=None, mass_kg=None, dof=None, actuators="Not stated", family="unknown",
          structure="Machined", compute="Onboard PC",
          price_usd=None, price_basis="unknown", price_note="Not published.",
@@ -416,7 +426,7 @@ ROBOTS = [
          summary="A full-size running humanoid with open training code and URDF; hardware openness announced repeatedly.",
          verdict="Open software around closed hardware until the CAD appears."),
 
-    dict(checked="2026-09-25", id="openloong", name="OpenLoong", org="Shanghai Humanoid Robot Innovation Center", year=2024, type="full", status="commercial",
+    dict(checked="2026-09-25", id="openloong", name="OpenLoong", org="Shanghai Humanoid Robot Innovation Center", year=2024, form="humanoid", status="commercial",
          height_mm=None, mass_kg=None, dof=None, actuators="Not stated", family="unknown",
          structure="Machined", compute="Onboard PC",
          price_usd=None, price_basis="unknown", price_note="Not published.",
@@ -427,6 +437,102 @@ ROBOTS = [
          sources=["https://www.humanoidsdata.com/articles/open-source-humanoid-robots"],
          summary="A licensed but thin hardware tree: STEP and PDFs without BOM.",
          verdict="Licence ahead of reproducibility."),
+
+    dict(checked="2026-09-25", id="xlerobot", name="XLeRobot", org="Rice University (Gaotian Wang)", year=2025, form="bimanual-mobile", status="commercial",
+         height_mm=None, mass_kg=None, dof=14, actuators="Feetech STS3215 bus servos: two SO-101 arms (6 each, gripper included), 2-DOF head, LeKiwi three-wheel omni base", family="feetech-sts",
+         structure="3D-printed parts on an IKEA cart with a LeKiwi base", compute="Your laptop, or a Raspberry Pi (+$79)",
+         price_usd=660, price_basis="published-total", price_note="$660 base configuration per the project; RGB cameras +$30, Raspberry Pi +$79, RealSense +$220.",
+         license_hw="Apache-2.0", license_sw="Apache-2.0",
+         open=dict(cad="yes", bom="yes", docs="yes", elec="yes", fw="yes", sim="yes", policy="partial", lic="yes", built="yes"),
+         open_notes=dict(docs="Assembly under four hours per the project; tutorial videos.", policy="VLA and RL training code and a MuJoCo environment; no single released household policy.", built="Thousands of builders; kits sold by several vendors."),
+         links=dict(repo="https://github.com/Vector-Wangel/XLeRobot", site="https://vector-wangel.github.io/"),
+         sources=["https://github.com/Vector-Wangel/XLeRobot", "https://paris2026.gosim.org/schedule/xlerobot-building-an-open-source-dual-arm-mobile-robot-for-everyone/"],
+         summary="Two SO-101 arms and a head on a LeKiwi omni base and an IKEA cart: a $660 dual-arm mobile home robot on the LeRobot stack.",
+         verdict="Meets the definition and is the most reproduced bimanual mobile platform in the list."),
+
+    dict(checked="2026-09-25", id="lekiwi", name="LeKiwi", org="SIGRobotics, UIUC, with LeRobot", year=2025, form="mobile-manipulator", status="commercial",
+         height_mm=None, mass_kg=None, dof=9, actuators="Feetech STS3215: SO-101 arm (6 incl. gripper) and three base wheels", family="feetech-sts",
+         structure="3D-printed base with three 4-inch omni wheels", compute="Raspberry Pi 5",
+         price_usd=482, price_basis="itemised", price_note="$482 for the 12 V build, $499 for 5 V, $184 wired, per the project's BOM (US prices).",
+         license_hw="Apache-2.0", license_sw="Apache-2.0",
+         open=dict(cad="yes", bom="yes", docs="yes", elec="yes", fw="yes", sim="partial", policy="partial", lic="yes", built="yes"),
+         open_notes=dict(built="Kits sold by ROBOTIS America and others; widely built."),
+         links=dict(repo="https://github.com/SIGRobotics-UIUC/LeKiwi", bom="https://github.com/SIGRobotics-UIUC/LeKiwi/blob/main/BOM.md"),
+         sources=["https://github.com/SIGRobotics-UIUC/LeKiwi/blob/main/BOM.md", "https://github.com/SIGRobotics-UIUC/LeKiwi"],
+         summary="A holonomic three-wheel base that carries an SO-101 arm and a Raspberry Pi for under $500, on the LeRobot stack.",
+         verdict="Meets the definition; the base under XLeRobot."),
+
+    dict(checked="2026-09-25", id="so-arm101", name="SO-ARM101", org="The Robot Studio with Hugging Face", year=2025, form="arm", status="commercial",
+         height_mm=None, mass_kg=None, dof=6, actuators="6 × Feetech STS3215 (7.4 V), 5 joints plus gripper", family="feetech-sts",
+         structure="3D-printed", compute="Host PC over a serial bus adapter",
+         price_usd=122, price_basis="itemised", price_note="≈ $122 for a follower arm, ≈ $230 for a leader-follower pair, per the repository.",
+         license_hw="Apache-2.0", license_sw="Apache-2.0",
+         open=dict(cad="yes", bom="yes", docs="yes", elec="yes", fw="yes", sim="yes", policy="yes", lic="yes", built="yes"),
+         open_notes=dict(cad="STEP and STL.", built="Around ten kit vendors on three continents; the default LeRobot arm."),
+         links=dict(repo="https://github.com/TheRobotStudio/SO-ARM100", docs="https://huggingface.co/docs/lerobot/so101"),
+         sources=["https://github.com/TheRobotStudio/SO-ARM100"],
+         summary="The $120 printed 6-DOF arm that most LeRobot demos run on; STEP, BOM, guide and many vendors.",
+         verdict="Meets the definition and is reproduced at scale."),
+
+    dict(checked="2026-09-25", id="openarm", name="OpenArm v1", org="Enactic (Tokyo)", year=2025, form="bimanual", status="commercial",
+         height_mm=None, mass_kg=None, dof=16, actuators="Damiao DM-J4310 and DM-8009P quasi-direct-drive motors on CAN, 7 per arm plus grippers", family="damiao",
+         structure="Machined aluminium and sheet metal; 606 mm reach, 6 kg peak payload per arm", compute="Host PC, SocketCAN",
+         price_usd=6500, price_basis="published-total", price_note="≈ $6,500 for a complete bimanual system from the licensed vendors.",
+         license_hw="CERN-OHL-S-2.0", license_sw="Apache-2.0",
+         open=dict(cad="yes", bom="yes", docs="yes", elec="yes", fw="yes", sim="yes", policy="partial", lic="yes", built="yes"),
+         open_notes=dict(cad="STEP per part (v1.0), whole-arm STEP and BOM for later versions; SolidWorks since 2025-08.", bom="Machined parts carry MISUMI meviy part numbers so they can be ordered without CAD.", policy="Force-feedback teleoperation and ROS 2 control; no released manipulation policy."),
+         links=dict(repo="https://github.com/enactic/openarm", docs="https://docs.openarm.dev/"),
+         sources=["https://github.com/enactic/openarm", "https://docs.openarm.dev/hardware/specifications/motor/", "https://huggingface.co/docs/lerobot/en/openarm"],
+         summary="A 7-DOF-per-arm bimanual system on Damiao QDD motors with strong CAD, BOM and ROS 2 support.",
+         verdict="Meets the definition; the reference for a torque-controlled open arm."),
+
+    dict(checked="2026-09-25", id="mobile-aloha", name="Mobile ALOHA", org="Stanford University", year=2024, form="bimanual-mobile", status="prototype",
+         height_mm=None, mass_kg=None, dof=14, actuators="Two Trossen ViperX 300 arms (Dynamixel) on an AgileX Tracer base, plus two leader arms", family="dynamixel-x",
+         structure="Aluminium extrusion frame on a commercial base", compute="Laptop on the cart",
+         price_usd=32000, price_basis="published-total", price_note="Under $32,000 including power and compute per the paper; the stationary ALOHA is about $20,000.",
+         license_hw="Not stated for the hardware (CAD and BOM public); MIT code", license_sw="MIT",
+         open=dict(cad="yes", bom="yes", docs="yes", elec="yes", fw="yes", sim="yes", policy="yes", lic="partial", built="yes"),
+         open_notes=dict(lic="The hardware tutorial publishes CAD and BOM without a stated licence; code is MIT.", policy="ACT training code and pre-trained models.", built="Reproduced in many labs; Trossen sells kits."),
+         links=dict(site="https://mobile-aloha.github.io/", repo="https://github.com/MarkFzp/mobile-aloha", paper="https://arxiv.org/abs/2401.02117"),
+         sources=["https://github.com/MarkFzp/mobile-aloha", "https://arxiv.org/abs/2401.02117"],
+         summary="The bimanual teleoperation cart that started the low-cost imitation-learning wave: two ViperX arms, a Tracer base, ACT.",
+         verdict="Reproducible and widely reproduced; the hardware licence is unstated."),
+
+    dict(checked="2026-09-25", id="tidybot2", name="TidyBot++", org="Stanford, Princeton and Dexterity", year=2024, form="mobile-manipulator", status="prototype",
+         height_mm=None, mass_kg=None, dof=3, actuators="Four powered casters (holonomic base); carries any arm (Kinova, Franka, ARX5, xArm, UR5, ViperX shown)", family="unknown",
+         structure="Aluminium extrusion frame", compute="Onboard mini PC",
+         price_usd=5500, price_basis="published-total", price_note="$5,000–6,000 to fabricate the base per the authors; arm not included.",
+         license_hw="CC BY-SA 4.0", license_sw="MIT",
+         open=dict(cad="yes", bom="yes", docs="yes", elec="unknown", fw="yes", sim="partial", policy="yes", lic="yes", built="partial"),
+         open_notes=dict(policy="Diffusion policies trained on its phone-teleop data are demonstrated.", built="Built at Stanford and Princeton; third-party builds not confirmed."),
+         links=dict(site="https://tidybot2.github.io/", repo="https://github.com/jimmyyhwu/tidybot2", paper="https://arxiv.org/abs/2412.10447"),
+         sources=["https://tidybot2.github.io/", "https://arxiv.org/abs/2412.10447"],
+         summary="An open holonomic base with powered casters for any arm, with CAD, BOM and a build guide.",
+         verdict="Meets the definition; a base, not a complete robot."),
+
+    dict(checked="2026-09-25", id="solo12", name="Solo 12", org="Open Dynamic Robot Initiative (MPI-IS, NYU, LAAS)", year=2020, form="legged", status="commercial",
+         height_mm=None, mass_kg=2.5, dof=12, actuators="12 ODRI brushless modules (T-motor + 9:1 belt stage + open driver board)", family="odri",
+         structure="Printed structure with carbon-fibre tubes", compute="Off-board PC via the ODRI master board",
+         price_usd=4400, price_basis="published-total", price_note="Solo 8 at about €4,000 in components per ODRI; Solo 12 sold as a kit or assembled by PAL Robotics.",
+         license_hw="BSD-3-Clause", license_sw="BSD-3-Clause",
+         open=dict(cad="yes", bom="yes", docs="yes", elec="yes", fw="yes", sim="yes", policy="partial", lic="yes", built="yes"),
+         open_notes=dict(built="Reproduced in many labs; kits from PAL."),
+         links=dict(site="https://open-dynamic-robot-initiative.github.io/", repo="https://github.com/open-dynamic-robot-initiative/open_robot_actuator_hardware"),
+         sources=["https://open-dynamic-robot-initiative.github.io/", "https://engineering.nyu.edu/news/open-source-low-cost-quadruped-robot-makes-sophisticated-robotics-available-all", "https://blog.pal-robotics.com/advanced-quadruped-platform-solo-12-available/"],
+         summary="The 2.5 kg, 12-DOF open quadruped built from ODRI's actuator module; the same module as Bolt.",
+         verdict="Fully open and reproduced; the reference legged platform."),
+
+    dict(checked="2026-09-25", id="yor", name="YOR", org="NYU, UC Berkeley and CUNY", year=2026, form="bimanual-mobile", status="prototype",
+         height_mm=None, mass_kg=None, dof=None, actuators="Two compliant arms with grippers on a telescopic lift and an omnidirectional base (models in the paper)", family="unknown",
+         structure="Off-the-shelf components", compute="Onboard PC",
+         price_usd=9250, price_basis="published-total", price_note="$9,250 BOM per the paper.",
+         license_hw="CC BY 4.0 (paper and release)", license_sw="Not stated",
+         open=dict(cad="yes", bom="yes", docs="partial", elec="yes", fw="yes", sim="partial", policy="partial", lic="yes", built="partial"),
+         open_notes=dict(built="Authors' units only at the time of writing."),
+         links=dict(site="https://www.yourownrobot.ai/", paper="https://arxiv.org/abs/2602.11150"),
+         sources=["https://arxiv.org/abs/2602.11150"],
+         summary="A sub-$10k bimanual mobile manipulator with a vertical lift, released with off-the-shelf CAD and BOM.",
+         verdict="Open and inexpensive; new, so not yet reproduced."),
 ]
 
 # Open files around closed hardware: listed so the checklist has a comparison row, not as options.

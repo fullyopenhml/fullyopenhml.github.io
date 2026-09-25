@@ -248,7 +248,7 @@ def main():
         r["modules"] = [m["id"] for m in modules if m["robot"] == r["id"]]
         robots.append(r)
     out = dict(meta=dict(generated=date.today().isoformat(), robots=len(robots), modules=len(modules), foh_mass_kg=r2(foh_mass)),
-               criteria=S.CRITERIA, slots=S.SLOTS, families=S.FAMILIES, robots=robots, closed=S.CLOSED, modules=modules, verified_combos=S.VERIFIED_COMBOS)
+               criteria=S.CRITERIA, forms=S.FORMS, slots=S.SLOTS, families=S.FAMILIES, robots=robots, closed=S.CLOSED, modules=modules, verified_combos=S.VERIFIED_COMBOS)
     OUT.write_text(json.dumps(out, indent=1, ensure_ascii=False) + "\n")
     print(f"wrote {OUT.relative_to(ROOT)}: {len(robots)} robots, {len(modules)} modules")
     for m in modules:
