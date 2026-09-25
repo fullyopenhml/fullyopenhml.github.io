@@ -94,7 +94,7 @@ for c in can0 can1 can2 can3; do timeout 2 candump $c; done   # silence: no actu
       <tr><td>A5 Zero and model</td><td>Hold each arm joint at 30 % torque with gravity compensation from the URDF masses</td><td>Residual torque within ±0.5 N·m of zero at every arm joint; adjust the URDF masses to the weighed parts if not</td></tr>
       <tr><td>A6 Packs</td><td>Swap the bench supply for the packs; repeat A1 and A4</td><td>Same results; pack voltage sag under 2 V during the sine</td></tr>
       <tr><td>A7 Posture</td><td>Hanging, PD hold of the zero pose then a crouch, 60 % torque</td><td>Poses reached smoothly; no joint exceeds 60 °C in five minutes</td></tr>
-      <tr><td>A8 Standing</td><td>Feet on the floor, hoist slack, the standing policy from simulation, E-stop in hand</td><td>Balances for two minutes; recovers from a 20 N push at the shoulders</td></tr>
+      <tr><td>A8 Standing</td><td>Feet on the floor, hoist slack, the standing policy from simulation, E-stop in hand</td><td>Balances for two minutes; recovers from a 20 N push at the shoulders (stiff joints alone survive 8 N·s in <a href="software.html#sim">simulation</a>; the policy must do better)</td></tr>
       <tr><td>A9 First step</td><td>Walking policy, one velocity step of 0.2 m/s and stop, hoist attached and slack</td><td>Robot steps and stops; the stop command zeroes the gait within one stride</td></tr>
     </tbody>
   </table></div>

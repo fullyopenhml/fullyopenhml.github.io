@@ -4,11 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Software — Fully Open Humanoid</title>
-<meta name="description" content="Software plan for the Fully Open Humanoid: the generated URDF, simulation in Isaac Lab and MuJoCo, the on-robot control loop, the control contract and what is reused from Duke V2 and Berkeley Humanoid Lite.">
+<meta name="description" content="Software plan for the Fully Open Humanoid: the generated URDF, simulation in Isaac Lab and MuJoCo, a MuJoCo standing and push check of the URDF, the on-robot control loop, the control contract and what is reused from Duke V2 and Berkeley Humanoid Lite.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/site.css">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<style>.sim-shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:1.2em 0 .6em}.sim-shots figure{margin:0}.sim-shots img{width:100%;border-radius:var(--radius);border:1px solid var(--line);display:block}</style>
 </head>
 <body>
 <header class="site-header"><div class="inner">
@@ -41,6 +42,38 @@ pip install yourdfpy && yourdfpy foh_v0_2.urdf</code></pre>
     <tbody><tr><td>Kinematics, joint axes and limits, link masses and inertias, primitive collision shapes, actuator effort limits, a floating pelvis base</td><td>Detailed meshes, contact-tuned foot geometry, joint friction and damping from measurement, actuator armature and reflected inertia, the gripper's prismatic joints</td></tr></tbody>
   </table></div>
   <p>Regenerate after any change to the model with <code>python3 tools/build_data.py</code>; the viewer, the BOM tables and the URDF update together.</p>
+
+  <h2 id="sim">Does it stand? A physics check</h2>
+  <p>Before any policy exists, the URDF can be dropped into MuJoCo with a floor, a floating base and one position servo per joint, each limited to its actuator's peak torque. <code>tools/sim_stand.py</code> does exactly that and runs the tests below. They answer what a design should answer before it is printed: the mass sits over the feet, the leg torques while standing and crouching stay far inside the limits, and a joint-stiff robot with no balance controller survives a moderate push. These are not the numbers a trained policy will get; they are the floor it starts from.</p>
+  <div class="sim-shots">
+    <figure><img src="assets/img/sim/stand.png" alt="MuJoCo frame: the robot standing at the zero pose" loading="lazy"><figcaption>Stand: 5 s after a 10 mm drop.</figcaption></figure>
+    <figure><img src="assets/img/sim/crouch.png" alt="MuJoCo frame: the robot in the crouch pose" loading="lazy"><figcaption>Crouch: hips −35°, knees 70°, ankles −35°.</figcaption></figure>
+    <figure><img src="assets/img/sim/push_8.png" alt="MuJoCo frame: the robot leaning after an 8 N·s push" loading="lazy"><figcaption>Push: 8 N·s forward on the torso, recovered.</figcaption></figure>
+  </div>
+  <div class="table-wrap"><table class="compact" id="sim-table">
+    <thead><tr><th>Test</th><th>What happens</th><th class="num">Max tilt</th><th class="num">Settled tilt</th><th>Busiest joint</th><th>Result</th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+  <p class="tiny" id="sim-meta"></p>
+  <p><b>Reading it.</b> Standing costs the legs under 1 N·m per joint, because the centre of mass lands 10 mm behind the ankle axis and the feet extend 93 mm in front of it and 142 mm behind. The crouch peaks at 16 N·m at the knee, a quarter of the RS03's 60 N·m, with the robot settling 72 mm lower. The pushes are impulses on the torso: the robot rides out 8 N·s (40 N for 0.2 s) on stiff joints alone and topples at 10 N·s. That threshold is the geometry, not the actuators: 10 N·s gives the 27 kg robot 0.37 m/s, whose capture point at a 0.53 m centre-of-mass height is 85 mm forward, right at the toe. A controller that shifts the hips or takes a step moves that limit far out; the bring-up test <a href="bringup.html#acceptance">A8</a> asks for a 20 N push under the standing policy for that reason.</p>
+<pre><code># reproduce (MuJoCo 3.x, numpy, pillow for the frames)
+pip install mujoco numpy pillow
+python3 tools/sim_stand.py --render     # prints the table, writes assets/data/sim_results.json and assets/img/sim/*.png
+
+# watch it interactively
+python3 -c "import mujoco, mujoco.viewer as v, sys; sys.path.insert(0, 'tools'); import sim_stand; v.launch(sim_stand.build())"</code></pre>
+  <p>The servo gains in the script (RS03 220 N·m/rad, RS06 150, RS02 80, RS05 25, with damping at 4 % of that) are simulation gains for a stiff hold; the real MIT-mode gains in the <a href="#contract">control contract</a> are lower and get tuned once the actuators are on the bench.</p>
+
+  <h3 id="walking">And walking?</h3>
+  <p>Nothing in the primitive model says whether the robot walks; that needs a controller, and the standard route today is a reinforcement-learning policy. The check for this design is the same path the two parent projects took, in this order:</p>
+  <ol>
+    <li><b>Static margins</b> (done above): mass over the feet, crouch within torque limits, push recovery on stiff joints.</li>
+    <li><b>Torque and speed margins for a gait</b>: the <a href="design.html#actuators">design page</a> compares the RS03's 60 N·m and the RS06's 36 N·m against Duke V2's measured walking loads on the same joints; the knee and hip carry more than a 2× margin at 27 kg.</li>
+    <li><b>Train a velocity-tracking policy</b> in Isaac Lab (Berkeley Humanoid Lite's task and rsl_rl config, with this URDF converted to USD) or in MuJoCo Playground with the MJCF that <code>sim_stand.build()</code> compiles. A policy that tracks 0.5 m/s in simulation with masses and friction randomised is the pass mark.</li>
+    <li><b>Sim-to-sim</b>: run the same policy in plain MuJoCo with the actuator torque limits and a 2 ms loop, as <code>play_mujoco.py</code> does for Berkeley Humanoid Lite. If it walks there too, the robot's model is not the weak link.</li>
+    <li><b>The real robot</b>: acceptance tests <a href="bringup.html#acceptance">A7 to A9</a>, posture then standing then a first step, on the hoist.</li>
+  </ol>
+  <p>The v0.5 milestone on the <a href="index.html#roadmap">roadmap</a> is the first of these on hardware; steps 3 and 4 need no hardware and are the next software work.</p>
 
   <h2 id="stack">Stack</h2>
   <div class="table-wrap"><table>
@@ -83,6 +116,26 @@ pip install yourdfpy && yourdfpy foh_v0_2.urdf</code></pre>
 
 <script src="assets/js/site.js"></script>
 <script>
+foh.json("assets/data/sim_results.json").then(r => {
+  const esc = foh.esc;
+  const tb = document.querySelector("#sim-table tbody");
+  const what = {
+    stand: "Drop from 10 mm at the zero pose, hold 5 s",
+    crouch: "Ramp to the crouch in 1.5 s, hold, return",
+  };
+  const rows = ["stand", "crouch"].concat(Object.keys(r).filter(k => k.startsWith("push_")).sort((a, b) => r[a].impulse_Ns - r[b].impulse_Ns));
+  for (const k of rows) {
+    const t = r[k];
+    const legs = Object.entries(t.torques).filter(([j]) => /^(hip|knee|ankle)/.test(j));
+    const busiest = legs[0] || Object.entries(t.torques)[0];
+    const name = k.startsWith("push_") ? `Push ${t.impulse_Ns} N·s` : k[0].toUpperCase() + k.slice(1);
+    const desc = what[k] || `${(t.impulse_Ns / 0.2).toFixed(0)} N forward on the torso for 0.2 s while standing`;
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td>${esc(name)}</td><td>${esc(desc)}</td><td class="num">${t.max_tilt_deg.toFixed(1)}°</td><td class="num">${t.final_tilt_deg < 89 ? t.final_tilt_deg.toFixed(1) + "°" : "fallen"}</td><td>${esc(busiest[0])} ${busiest[1].peak_nm} / ${busiest[1].limit_nm} N·m</td><td><span class="pill ${t.pass ? "ok" : "bad"}">${t.pass ? "pass" : "fall"}</span></td>`;
+    tb.appendChild(tr);
+  }
+  document.getElementById("sim-meta").textContent = `MuJoCo, ${(r.timestep * 1000).toFixed(0)} ms step, ${r.mass_kg} kg from the URDF, friction 1.0, joint armature 0.02 kg·m²; "busiest joint" is the highest peak torque against its actuator's limit, left and right combined, leg joints only (the arms saturate once a fallen robot is on the floor).`;
+});
 foh.json("assets/data/robot.json").then(robot => {
   const tb = document.querySelector("#contract-table tbody");
   const gains = { RS03: [60, 2.0], RS06: [40, 1.5], RS02: [25, 1.0], RS05: [12, 0.5] };

@@ -954,9 +954,9 @@ POSES = {
     "wave": {"name": "Wave", "q": {}},
 }
 for S in ("L", "R"):
-    POSES["crouch"]["q"].update({f"hip_pitch_{S}": 35, f"knee_{S}": 70, f"ankle_pitch_{S}": -35,
+    POSES["crouch"]["q"].update({f"hip_pitch_{S}": -35, f"knee_{S}": 70, f"ankle_pitch_{S}": -35,
                                  f"shoulder_pitch_{S}": -20, f"elbow_{S}": 40})
-    POSES["reach"]["q"].update({f"shoulder_pitch_{S}": -80, f"elbow_{S}": 20, f"hip_pitch_{S}": 8, f"knee_{S}": 16, f"ankle_pitch_{S}": -8})
+    POSES["reach"]["q"].update({f"shoulder_pitch_{S}": -80, f"elbow_{S}": 20, f"hip_pitch_{S}": -8, f"knee_{S}": 16, f"ankle_pitch_{S}": -8})
 POSES["wave"]["q"].update({"shoulder_pitch_R": -30, "shoulder_roll_R": 120, "elbow_R": 100, "wrist_roll_R": 40,
                            "shoulder_pitch_L": -10, "elbow_L": 25, "waist": 10})
 
