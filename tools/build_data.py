@@ -117,11 +117,11 @@ def part(pid, name, category, material, **kw):
 P = "printed"
 # Joint kits: one coupler per actuator model, shared by every joint of that model
 part("3DP_kit03_coupler", "RS03 coupler (output hub)", P, "petg_cf", process="FDM",
-     notes="Bolts to the RS03 output boss: 6 x M4 counterbored on PCD 30.36 with 3 x Ø4 dowel holes. Ø45 hub carries the 6809 support bearing; 4 x M4 heat-set inserts on a 32 mm PCD in the hub face take the next part. Print in PA-CF if PETG-CF creeps.")
+     notes="Sits on the RS03 output boss, located by 3 x Ø4 dowels; six M4 x 35 pass through the child plate and this coupler into the boss (PCD 30.36). The Ø45 hub carries the 6809 support bearing. Print in PA-CF if PETG-CF creeps.")
 part("3DP_kit06_coupler", "RS06 coupler (output hub)", P, "petg_cf", process="FDM",
-     notes="6 x M4 counterbored on PCD 24 with 3 x Ø4 dowel holes; Ø35 hub for the 6807 bearing; 4 x M4 inserts on a 26 mm PCD.")
+     notes="Sits on the RS06 output boss, located by 3 x Ø4 dowels; six M4 x 35 pass through the child plate and this coupler into the boss (PCD 24). Ø35 hub for the 6807 bearing.")
 part("3DP_kit02_coupler", "RS02 coupler (output hub)", P, "petg_cf", process="FDM",
-     notes="6 x M4 counterbored on PCD 24 with 3 x Ø4 dowel holes; Ø35 hub for the 6707 bearing; 4 x M4 inserts on a 26 mm PCD.")
+     notes="Sits on the RS02 output boss, located by 3 x Ø4 dowels; six M4 x 30 pass through the child plate and this coupler into the boss (PCD 24). Ø35 hub for the 6707 bearing.")
 part("3DP_kit05_adapter", "RS05 output adapter", P, "petg_cf", process="FDM",
      notes="Ø44 x 5 disc: 6 x M4 counterbored on PCD 24 into the RS05 output, 4 x M3 inserts on a 30 mm square for the gripper. No support bearing at the wrist.")
 # Pelvis and legs
@@ -867,12 +867,12 @@ def kit_fastener_rows():
         I = ACTUATORS[m]
         if not n[m]:
             continue
-        L = plate[m] + (I["mount_t"] + 2 - I["step_h"] - I["boss_h"] if I["mount_t"] else I["sh_t"]) + I["out_depth"]
-        L = int(5 * round(L / 5))
+        L = (plate[m] + I["mount_t"] + 2 - I["step_h"] - I["boss_h"] if I["mount_t"] else I["sh_t"]) + I["out_depth"]
+        L = int(5 * math.ceil(L / 5))
         rows.append(row(f"HW_OUT_{m}", f"{I['out_screw']} x {L} socket-head screw, output couplers ({m})", n[m] * I["out_n"], 0.15, "Amazon / McMaster", "",
                         f"{I['out_n']} per joint through the child plate and coupler into the output boss, PCD {I['out_pcd']}."))
         if I["mount_t"]:
-            Lm = int(5 * round((I["mount_t"] - I["ob_w"] + I["lug_depth"] - 2) / 5))
+            Lm = int(5 * math.ceil((I["mount_t"] + I["lug_depth"] - 1) / 5))
             rows.append(row(f"HW_LUG_{m}", f"{I['lug_screw']} x {Lm} socket-head screw, mount rings ({m})", n[m] * I["lug_n"], 0.12, "Amazon / McMaster", "",
                             f"{I['lug_n']} per joint through the mount ring into the actuator's front lugs, PCD {I['lug_pcd']}."))
         else:

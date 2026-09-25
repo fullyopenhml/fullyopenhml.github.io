@@ -425,7 +425,7 @@
     {
      "id": "HW_OUT_RS03",
      "part_id": "HW_OUT_RS03",
-     "description": "M4 x 30 socket-head screw, output couplers (RS03)",
+     "description": "M4 x 35 socket-head screw, output couplers (RS03)",
      "qty": 66,
      "unit_cost": 0.15,
      "total": 9.9,
@@ -437,7 +437,7 @@
     {
      "id": "HW_LUG_RS03",
      "part_id": "HW_LUG_RS03",
-     "description": "M4 x 20 socket-head screw, mount rings (RS03)",
+     "description": "M4 x 30 socket-head screw, mount rings (RS03)",
      "qty": 88,
      "unit_cost": 0.12,
      "total": 10.56,
@@ -449,7 +449,7 @@
     {
      "id": "HW_OUT_RS06",
      "part_id": "HW_OUT_RS06",
-     "description": "M4 x 30 socket-head screw, output couplers (RS06)",
+     "description": "M4 x 35 socket-head screw, output couplers (RS06)",
      "qty": 36,
      "unit_cost": 0.15,
      "total": 5.4,
@@ -461,7 +461,7 @@
     {
      "id": "HW_LUG_RS06",
      "part_id": "HW_LUG_RS06",
-     "description": "M3 x 20 socket-head screw, mount rings (RS06)",
+     "description": "M3 x 30 socket-head screw, mount rings (RS06)",
      "qty": 48,
      "unit_cost": 0.12,
      "total": 5.76,
@@ -485,7 +485,7 @@
     {
      "id": "HW_LUG_RS02",
      "part_id": "HW_LUG_RS02",
-     "description": "M3 x 15 socket-head screw, mount rings (RS02)",
+     "description": "M3 x 20 socket-head screw, mount rings (RS02)",
      "qty": 36,
      "unit_cost": 0.12,
      "total": 4.32,
@@ -497,7 +497,7 @@
     {
      "id": "HW_OUT_RS05",
      "part_id": "HW_OUT_RS05",
-     "description": "M4 x 15 socket-head screw, output couplers (RS05)",
+     "description": "M4 x 10 socket-head screw, output couplers (RS05)",
      "qty": 12,
      "unit_cost": 0.15,
      "total": 1.8,
