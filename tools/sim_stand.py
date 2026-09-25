@@ -40,11 +40,23 @@ def build(dt=0.002):
     spec.option.timestep = dt
     root = spec.worldbody.first_body()
     root.add_freejoint()
-    floor = spec.worldbody.add_geom(name="floor", type=mujoco.mjtGeom.mjGEOM_PLANE, size=[5, 5, 0.1], friction=[1.0, 0.005, 0.0001])
-    # name collision geoms after their body so contacts are readable
+    # scene: light sky, checker floor, brighter lights (the URDF keeps its coloured visual geoms, see the <mujoco> block in it)
+    spec.add_texture(name="sky", type=mujoco.mjtTexture.mjTEXTURE_SKYBOX, builtin=mujoco.mjtBuiltin.mjBUILTIN_GRADIENT,
+                     rgb1=[0.97, 0.97, 0.98], rgb2=[0.80, 0.84, 0.90], width=256, height=256)
+    spec.add_texture(name="grid", type=mujoco.mjtTexture.mjTEXTURE_2D, builtin=mujoco.mjtBuiltin.mjBUILTIN_CHECKER,
+                     rgb1=[0.86, 0.87, 0.89], rgb2=[0.78, 0.80, 0.83], mark=mujoco.mjtMark.mjMARK_EDGE, markrgb=[0.7, 0.7, 0.72], width=512, height=512)
+    mat = spec.add_material(name="grid", texrepeat=[10, 10], texuniform=True, reflectance=0.05)
+    mat.textures[mujoco.mjtTextureRole.mjTEXROLE_RGB] = "grid"
+    spec.visual.headlight.ambient = [0.35, 0.35, 0.35]
+    spec.visual.headlight.diffuse = [0.55, 0.55, 0.55]
+    spec.worldbody.add_light(pos=[1.5, -1.0, 3.0], dir=[-0.4, 0.3, -0.85], diffuse=[0.5, 0.5, 0.5], castshadow=True)
+    floor = spec.worldbody.add_geom(name="floor", type=mujoco.mjtGeom.mjGEOM_PLANE, size=[5, 5, 0.1], friction=[1.0, 0.005, 0.0001],
+                                    material="grid", group=2)
+    # collision geoms go to group 3 (MuJoCo's convention, hidden by default) so the viewer shows the coloured visuals only
     for b in spec.bodies:
         for i, g in enumerate(b.geoms):
-            if not g.name:
+            if g.group == 0:
+                g.group = 3
                 g.name = f"{b.name}#{i}"
     for j in spec.joints:
         if j.type != mujoco.mjtJoint.mjJNT_HINGE:
