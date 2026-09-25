@@ -1,0 +1,52 @@
+# Deploys the static site to GitHub Pages.
+#
+# Enable once in the repository settings: Settings -> Pages -> Build and
+# deployment -> Source: "GitHub Actions".  After that every push to main
+# publishes.  Only the site files are uploaded; the two reference repositories
+# (Duke_Humanoid_V2_OpenSource/, berkeley-humanoid-lite/, ~700 MB) stay out of
+# the artifact so the deploy stays small and fast.
+name: Deploy site to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Enable GitHub Pages for this repository (no-op once enabled)
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+      - name: Collect site files
+        run: |
+          mkdir -p _site
+          rsync -a --exclude 'Duke_Humanoid_V2_OpenSource' --exclude 'berkeley-humanoid-lite' \
+                --exclude '.git' --exclude '.github' --exclude '_site' --exclude 'tools/.venv' \
+                ./ _site/
+          touch _site/.nojekyll
+          du -sh _site
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

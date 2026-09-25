@@ -16,7 +16,9 @@ materials, printing, assembly, electrical, bring-up, software, reference.
 | `tools/build_data.py` | **The model.** Every part, joint, price. Writes the three files below |
 | `assets/data/robot.json` | Links, joints, part occurrences as primitive solids, catalogue, poses, specs |
 | `assets/data/bom.json` | Bill of materials by section and tier |
-| `assets/model/foh_v0_1.urdf` | Robot description with masses and inertias |
+| `assets/model/foh_v0_2.urdf` | Robot description with masses and inertias |
+| `assets/print/` | One STL per printed part plus a zip; `assets/data/print_files.json` is the manifest |
+| `tools/build_parts.py` | STL generator (CSG with manifold3d); `tools/check_collisions.py` is the self-collision audit |
 | `assets/js/robot-viewer.js` | The CAD-style viewer (three.js from a CDN), builds the robot from `robot.json` |
 | `assets/js/site.js`, `assets/css/site.css` | Shared behaviour and styles |
 | `Duke_Humanoid_V2_OpenSource/`, `berkeley-humanoid-lite/` | The two parent projects, kept for reference |
@@ -25,6 +27,9 @@ materials, printing, assembly, electrical, bring-up, software, reference.
 
 ```bash
 python3 tools/build_data.py          # regenerate robot.json, bom.json and the URDF after any change
+python3 tools/check_collisions.py --poses --sweep   # self-collision audit
+uv venv tools/.venv --python 3.12 && uv pip install --python tools/.venv/bin/python manifold3d trimesh numpy
+tools/.venv/bin/python tools/build_parts.py         # regenerate the STLs and the manifest
 python3 -m http.server 8000          # then open http://localhost:8000/
 ```
 
@@ -33,7 +38,7 @@ viewer and the URDF follow. Never edit the generated files by hand.
 
 ## Status
 
-v0.1 is a design release: kinematics, part list, cost model, wiring and URDF.
+v0.2 is a design release: kinematics, part list, cost model, wiring, URDF and every printed part as STL.
 Nothing has been built yet. The roadmap on the home page lists what each
 version adds and which numbers turn from estimates into measurements.
 

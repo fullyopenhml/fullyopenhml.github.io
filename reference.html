@@ -12,7 +12,7 @@
 </head>
 <body>
 <header class="site-header"><div class="inner">
-  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><use href="assets/img/favicon.svg#mark"/></svg><span class="name">Fully Open Humanoid</span><span class="ver">v0.1</span></a>
+  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><use href="assets/img/favicon.svg#mark"/></svg><span class="name">Fully Open Humanoid</span><span class="ver">v0.2</span></a>
   <button class="iconbtn nav-toggle" aria-label="Menu">☰</button>
   <nav class="nav">
     <a href="design.html">Design</a><a href="viewer.html">3D model</a><a href="bom.html">BOM</a><a href="printing.html">Printing</a><a href="assembly.html">Assembly</a><a href="electrical.html">Electrical</a><a href="bringup.html">Bring-up</a><a href="software.html">Software</a><a href="reference.html">Reference</a>
@@ -31,10 +31,11 @@
     <thead><tr><th>Quantity</th><th>Kind</th><th>Source</th></tr></thead>
     <tbody>
       <tr><td>Joint layout, axes, link lengths, part list</td><td><span class="pill acc">decision</span></td><td><code>tools/build_data.py</code></td></tr>
-      <tr><td>Actuator torque, Kt, current limit, mass, envelope</td><td><span class="pill">copied</span></td><td>Duke Humanoid V2 hardware release (RobStride manuals)</td></tr>
+      <tr><td>Actuator torque, Kt, current limit, mass, envelope, mounting and output hole patterns</td><td><span class="pill">copied</span></td><td>RobStride user manuals, section 1.1, 2026-07 revision (Product_Information repository)</td></tr>
       <tr><td>Actuator prices</td><td><span class="pill">copied</span></td><td>Duke V2 team BOM, Amazon US / AiFitLab, 2026-09</td></tr>
       <tr><td>Other prices</td><td><span class="pill warn">estimate</span></td><td>Typical US listings, 2026-09; verify before ordering</td></tr>
-      <tr><td>Printed-part masses</td><td><span class="pill warn">estimate</span></td><td>Model volume × density × fill factor</td></tr>
+      <tr><td>Printed-part masses</td><td><span class="pill warn">estimate</span></td><td>STL volume × density × fill factor</td></tr>
+      <tr><td>Self-collision, joint limits</td><td><span class="pill acc">computed</span></td><td><code>tools/check_collisions.py</code>: zero pose, presets, every joint through its range</td></tr>
       <tr><td>Robot mass, mass budget</td><td><span class="pill warn">estimate</span></td><td>Sum of the above plus 0.9 kg for fasteners and harness</td></tr>
       <tr><td>Torque margins</td><td><span class="pill warn">estimate</span></td><td>Static hand calculations on the design page</td></tr>
       <tr><td>Joint limits</td><td><span class="pill acc">decision</span></td><td>Adapted from Duke V2's software limits</td></tr>
@@ -59,7 +60,9 @@
       <tr><td><a href="tools/build_data.py"><code>tools/build_data.py</code></a></td><td>The model: every part, joint, price. Edit this, run it, everything below regenerates.</td></tr>
       <tr><td><a href="assets/data/robot.json"><code>assets/data/robot.json</code></a></td><td>Links, joints, part occurrences with primitive shapes, catalogue, poses, specs. Read by the viewer and the tables on this site.</td></tr>
       <tr><td><a href="assets/data/bom.json"><code>assets/data/bom.json</code></a></td><td>Bill of materials by section and tier.</td></tr>
-      <tr><td><a href="assets/model/foh_v0_1.urdf"><code>assets/model/foh_v0_1.urdf</code></a></td><td>Robot description with masses and inertias, primitive geometry.</td></tr>
+      <tr><td><a href="assets/model/foh_v0_2.urdf"><code>assets/model/foh_v0_2.urdf</code></a></td><td>Robot description with masses and inertias, primitive geometry.</td></tr>
+      <tr><td><a href="printing.html#parts"><code>assets/print/</code></a></td><td>One STL per printed part plus a zip of all of them; <a href="assets/data/print_files.json"><code>print_files.json</code></a> holds sizes, SHA-256, volumes and print orientation.</td></tr>
+      <tr><td><code>tools/build_parts.py</code>, <code>tools/check_collisions.py</code></td><td>STL generator (manifold3d CSG) and the self-collision audit.</td></tr>
       <tr><td><code>assets/js/robot-viewer.js</code></td><td>The viewer: builds the robot from <code>robot.json</code> with three.js.</td></tr>
     </tbody>
   </table></div>
@@ -108,11 +111,11 @@
   <h2 id="changelog">Changelog</h2>
   <div class="table-wrap"><table class="compact">
     <thead><tr><th>Date</th><th>Version</th><th>Change</th></tr></thead>
-    <tbody><tr><td>2026-09-24</td><td>v0.1</td><td>First design release: kinematics, part list, BOM, wiring, bring-up plan, URDF, interactive model.</td></tr></tbody>
+    <tbody><tr><td>2026-09-24</td><td>v0.2</td><td>Joint kits redesigned on RobStride's measured interfaces (front-lug mounting, output boss with dowels, output support bearing on the coupler). Straight arms on long shoulder brackets, 264 mm hip spacing, pelvis narrowed. Self-collision audit added; knee, elbow, hip-roll and shoulder-roll limits set by geometry. Every printed part released as STL with a manifest.</td></tr><tr><td>2026-09-24</td><td>v0.1</td><td>First design release: kinematics, part list, BOM, wiring, bring-up plan, URDF, interactive model.</td></tr></tbody>
   </table></div>
 </main>
 
-<footer class="site-footer"><div class="inner"><span>Fully Open Humanoid · v0.1 design release · <a href="reference.html#license">MIT / CC BY 4.0</a></span><span>Derived from <a href="https://generalroboticslab.github.io/Duke_Humanoid_V2_OpenSource/">Duke Humanoid V2</a> and <a href="https://berkeley-humanoid-lite.gitbook.io/docs">Berkeley Humanoid Lite</a></span></div></footer>
+<footer class="site-footer"><div class="inner"><span>Fully Open Humanoid · v0.2 design release · <a href="reference.html#license">MIT / CC BY 4.0</a></span><span>Derived from <a href="https://generalroboticslab.github.io/Duke_Humanoid_V2_OpenSource/">Duke Humanoid V2</a> and <a href="https://berkeley-humanoid-lite.gitbook.io/docs">Berkeley Humanoid Lite</a></span></div></footer>
 
 <script src="assets/js/site.js"></script>
 <script>
@@ -122,7 +125,7 @@ Promise.all([foh.json("assets/data/robot.json"), foh.json("assets/data/bom.json"
   const m = s.mass_g;
   const rows = [
     ["Degrees of freedom", `${s.dof} RobStride joints (waist 1, each leg 6, each arm 5) + 2 gripper servos optional`],
-    ["Size", `${s.height_mm} mm tall, ${s.width_mm} mm across the shoulders, ${s.depth_mm} mm deep (foot); hip spacing ${s.hip_spacing_mm} mm`],
+    ["Size", `${s.height_mm} mm tall, ${s.width_mm} mm at its widest (elbows), ${s.depth_mm} mm deep (foot); shoulder-roll axes ${s.shoulder_spacing_mm} mm apart, hips ${s.hip_spacing_mm} mm`],
     ["Mass (estimate)", `${(s.mass_total_g / 1000).toFixed(1)} kg: actuators ${(m.actuators / 1000).toFixed(1)}, printed ${(m.printed / 1000).toFixed(1)}, electronics and packs ${(m.electronics / 1000).toFixed(1)}, bearings and extrusion ${(m.hardware / 1000).toFixed(1)}, fasteners and harness ${(m.fasteners_and_harness / 1000).toFixed(1)}; +${(s.optional_mass_g / 1000).toFixed(2)} kg with camera and grippers`],
     ["Structure", "Printed PETG-CF (structure), PLA (covers), TPU 95A (soles, pads); four 2020 aluminium extrusions"],
     ["Actuators", "RobStride RS03 ×11, RS06 ×6, RS02 ×4, RS05 ×2"],

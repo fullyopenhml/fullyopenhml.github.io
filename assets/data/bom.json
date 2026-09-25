@@ -1,6 +1,6 @@
 {
  "meta": {
-  "version": "0.1",
+  "version": "0.2",
   "priced_as_of": "2026-09",
   "currency": "USD"
  },
@@ -354,36 +354,36 @@
      "id": "HW_6809_2RS",
      "part_id": "HW_6809_2RS",
      "description": "Ball bearing 6809-2RS, 45 x 58 x 7 mm",
-     "qty": 4,
+     "qty": 11,
      "unit_cost": 3.0,
-     "total": 12.0,
+     "total": 33.0,
      "vendor": "Amazon",
      "url": "",
-     "notes": "Support bearing on the back of every RS03 joint.",
+     "notes": "Output support bearing of every RS03 joint, on the coupler hub.",
      "unit_label": "ea"
     },
     {
      "id": "HW_6807_2RS",
      "part_id": "HW_6807_2RS",
      "description": "Ball bearing 6807-2RS, 35 x 47 x 7 mm",
-     "qty": 4,
+     "qty": 6,
      "unit_cost": 4.0,
-     "total": 16.0,
+     "total": 24.0,
      "vendor": "Amazon",
      "url": "",
-     "notes": "Support bearing on every RS06 joint.",
+     "notes": "Output support bearing of every RS06 joint.",
      "unit_label": "ea"
     },
     {
      "id": "HW_6707_2RS",
      "part_id": "HW_6707_2RS",
      "description": "Ball bearing 6707-2RS, 35 x 44 x 5 mm",
-     "qty": 2,
+     "qty": 8,
      "unit_cost": 3.0,
-     "total": 6.0,
+     "total": 24.0,
      "vendor": "Amazon",
      "url": "",
-     "notes": "Support bearing on every RS02 joint.",
+     "notes": "Output support bearing of every RS02 joint, and the inner-plate support bearing at the knees and elbows.",
      "unit_label": "ea"
     },
     {
@@ -423,15 +423,123 @@
      "unit_label": "ea"
     },
     {
+     "id": "HW_OUT_RS03",
+     "part_id": "HW_OUT_RS03",
+     "description": "M4 x 30 socket-head screw, output couplers (RS03)",
+     "qty": 66,
+     "unit_cost": 0.15,
+     "total": 9.9,
+     "vendor": "Amazon / McMaster",
+     "url": "",
+     "notes": "6 per joint through the child plate and coupler into the output boss, PCD 30.36.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "HW_LUG_RS03",
+     "part_id": "HW_LUG_RS03",
+     "description": "M4 x 20 socket-head screw, mount rings (RS03)",
+     "qty": 88,
+     "unit_cost": 0.12,
+     "total": 10.56,
+     "vendor": "Amazon / McMaster",
+     "url": "",
+     "notes": "8 per joint through the mount ring into the actuator's front lugs, PCD 98.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "HW_OUT_RS06",
+     "part_id": "HW_OUT_RS06",
+     "description": "M4 x 30 socket-head screw, output couplers (RS06)",
+     "qty": 36,
+     "unit_cost": 0.15,
+     "total": 5.4,
+     "vendor": "Amazon / McMaster",
+     "url": "",
+     "notes": "6 per joint through the child plate and coupler into the output boss, PCD 24.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "HW_LUG_RS06",
+     "part_id": "HW_LUG_RS06",
+     "description": "M3 x 20 socket-head screw, mount rings (RS06)",
+     "qty": 48,
+     "unit_cost": 0.12,
+     "total": 5.76,
+     "vendor": "Amazon / McMaster",
+     "url": "",
+     "notes": "8 per joint through the mount ring into the actuator's front lugs, PCD 88.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "HW_OUT_RS02",
+     "part_id": "HW_OUT_RS02",
+     "description": "M4 x 30 socket-head screw, output couplers (RS02)",
+     "qty": 24,
+     "unit_cost": 0.15,
+     "total": 3.6,
+     "vendor": "Amazon / McMaster",
+     "url": "",
+     "notes": "6 per joint through the child plate and coupler into the output boss, PCD 24.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "HW_LUG_RS02",
+     "part_id": "HW_LUG_RS02",
+     "description": "M3 x 15 socket-head screw, mount rings (RS02)",
+     "qty": 36,
+     "unit_cost": 0.12,
+     "total": 4.32,
+     "vendor": "Amazon / McMaster",
+     "url": "",
+     "notes": "9 per joint through the mount ring into the actuator's front lugs, PCD 73.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "HW_OUT_RS05",
+     "part_id": "HW_OUT_RS05",
+     "description": "M4 x 15 socket-head screw, output couplers (RS05)",
+     "qty": 12,
+     "unit_cost": 0.15,
+     "total": 1.8,
+     "vendor": "Amazon / McMaster",
+     "url": "",
+     "notes": "6 per joint through the child plate and coupler into the output boss, PCD 24.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "HW_REAR_RS05",
+     "part_id": "HW_REAR_RS05",
+     "description": "M3 x 10 socket-head screw, wrist mount (RS05)",
+     "qty": 8,
+     "unit_cost": 0.12,
+     "total": 0.96,
+     "vendor": "Amazon / McMaster",
+     "url": "",
+     "notes": "4 per joint through the forearm body into the RS05 rear holes, PCD 38.5.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "HW_PIN_4X10",
+     "part_id": "HW_PIN_4X10",
+     "description": "Dowel pin \u00d84 x 10 mm, steel",
+     "qty": 69,
+     "unit_cost": 0.3,
+     "total": 20.7,
+     "vendor": "Amazon / McMaster",
+     "url": "",
+     "notes": "Three per joint, locate the coupler on the output boss.",
+     "unit_label": "ea"
+    },
+    {
      "id": "HW_SCREWS",
      "part_id": "HW_SCREWS",
      "description": "M3 / M4 / M5 socket-head screw assortment, stainless",
      "qty": 1,
-     "unit_cost": 35.0,
-     "total": 35.0,
+     "unit_cost": 25.0,
+     "total": 25.0,
      "vendor": "Amazon",
      "url": "",
-     "notes": "Actuator flanges take M4 (RS03/RS06) and M3 (RS02/RS05); read the pattern off the actuator manual.",
+     "notes": "Plates, panels, tray, cradles, head.",
      "unit_label": "ea"
     },
     {
@@ -495,21 +603,21 @@
      "unit_label": "ea"
     }
    ],
-   "subtotal": 153.6
+   "subtotal": 253.6
   },
   {
    "id": "filament",
    "title": "Printed parts (filament)",
    "tier": "core",
-   "blurb": "About 4.1 kg of structural prints, 0.8 kg of covers and 0.3 kg of TPU on the robot; the quantities below add 35 % for supports and failed prints.",
+   "blurb": "About 6.0 kg of structural prints, 0.8 kg of covers and 0.3 kg of TPU on the robot; the quantities below add 35 % for supports and failed prints.",
    "rows": [
     {
      "id": "MAT_PETG_CF",
      "part_id": "MAT_PETG_CF",
      "description": "PETG-CF filament, 1 kg spool",
-     "qty": 6.0,
+     "qty": 8.5,
      "unit_cost": 30.0,
-     "total": 180.0,
+     "total": 255.0,
      "vendor": "Bambu / Polymaker / Overture",
      "url": "",
      "notes": "Every structural part. Hardened nozzle. PA-CF is a drop-in upgrade for the hip and knee brackets.",
@@ -540,7 +648,7 @@
      "unit_label": "kg"
     }
    ],
-   "subtotal": 224.0
+   "subtotal": 299.0
   },
   {
    "id": "perception",
@@ -727,7 +835,7 @@
   }
  ],
  "tiers": {
-  "core": 5649.0,
+  "core": 5824.0,
   "optional": 355.0,
   "tools": 1135.0
  }

@@ -12,7 +12,7 @@
 </head>
 <body>
 <header class="site-header"><div class="inner">
-  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><use href="assets/img/favicon.svg#mark"/></svg><span class="name">Fully Open Humanoid</span><span class="ver">v0.1</span></a>
+  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><use href="assets/img/favicon.svg#mark"/></svg><span class="name">Fully Open Humanoid</span><span class="ver">v0.2</span></a>
   <button class="iconbtn nav-toggle" aria-label="Menu">☰</button>
   <nav class="nav">
     <a href="design.html">Design</a><a href="viewer.html">3D model</a><a href="bom.html">BOM</a><a href="printing.html">Printing</a><a href="assembly.html">Assembly</a><a href="electrical.html">Electrical</a><a href="bringup.html">Bring-up</a><a href="software.html">Software</a><a href="reference.html">Reference</a>
@@ -42,7 +42,7 @@
       <ul>
         <li><b>Leg topology.</b> Hip pitch → roll → yaw, knee, ankle pitch → roll. The hip-yaw actuator sits directly on top of the knee actuator, so the "thigh" is a short block and the long link is the shank. This keeps the hip narrow and the leg mass high.</li>
         <li><b>RobStride actuators</b> with the same model-to-joint logic: RS03 wherever gravity torque is large, RS06 for roll axes, RS02 for arms, RS05 for the wrist.</li>
-        <li><b>Bearing-supported joints.</b> A thin-section bearing on the back of each actuator so the printed output adapter carries torque, not bending moment.</li>
+        <li><b>Bearing-supported joints.</b> Duke's retainer–bearing–coupler stack on every output: a thin-section bearing between the printed mount ring and the coupler hub, so the printed coupler carries torque and the bearing carries the bending moment.</li>
         <li><b>One-shell harness.</b> XT30(2+2) carries 48 V and CAN in one connector; every limb is a daisy chain with a terminator at the end.</li>
         <li><b>The parallel gripper</b> (rack and pinion, one bus servo), as an optional kit.</li>
         <li>Joint limits, the ID map pattern and the bring-up sequence.</li>
@@ -63,7 +63,7 @@
   <div class="table-wrap"><table>
     <thead><tr><th>#</th><th>Duke V2</th><th>FOH v0.1</th><th>Why</th><th class="num">Δ cost</th></tr></thead>
     <tbody>
-      <tr><td>1</td><td>35 CNC aluminium 6061 parts ($4,199), six SLS nylon parts and FDM covers ($169), fasteners and bearings ($179)</td><td>39 printed parts ($224 of filament), four 2020 extrusions, bearings, inserts and screws ($154)</td><td>The single biggest barrier to a build is a machining order. Printed PETG-CF plates 10 mm thick, backed by the support bearing, carry the loads at this scale; the hip and knee brackets can be reprinted in PA-CF if they creep.</td><td class="num">−$4,170</td></tr>
+      <tr><td>1</td><td>35 CNC aluminium 6061 parts ($4,199), six SLS nylon parts and FDM covers ($169), fasteners and bearings ($179)</td><td>34 printed parts ($224 of filament), four 2020 extrusions, bearings, inserts and screws ($154)</td><td>The single biggest barrier to a build is a machining order. Printed PETG-CF plates 10 mm thick, backed by the support bearing, carry the loads at this scale; the hip and knee brackets can be reprinted in PA-CF if they creep.</td><td class="num">−$4,170</td></tr>
       <tr><td>2</td><td>7-DOF arm: RS03 + RS06 + RS02 ×3 + RS00 + RS05, plus two SLS wrist housings</td><td>5-DOF arm: RS06 ×2 + RS02 ×2 + RS05</td><td>Wrist pitch and yaw were Duke V2's most complex subassembly (SLS nylon housings, three actuator models). A 5-DOF arm still places a gripper anywhere in front of the robot; the two wrist axes return as an upgrade kit once the base robot walks.</td><td class="num">−$540</td></tr>
       <tr><td>3</td><td>Shoulder pitch RS03 (60 N·m, 0.91 kg)</td><td>Shoulder pitch RS06 (36 N·m, 0.62 kg)</td><td>The arm root only has to hold a 2.4 kg arm plus a 0.5 kg payload: about 9 N·m static (see margins below).</td><td class="num">−$30</td></tr>
       <tr><td>4</td><td>Knee RS04 (120 N·m, 1.44 kg)</td><td>Knee RS03 (60 N·m, 0.91 kg)</td><td>The robot is 35 kg → 26 kg. Peak knee torque per kilogram (2.3 N·m/kg) is in the range of Duke V2 (3.4) and Unitree G1 (2.6). Same bracket family as the hips.</td><td class="num">−$60</td></tr>
@@ -80,7 +80,7 @@
   </table></div>
 
   <h2 id="kinematics">Kinematics</h2>
-  <p>Frame: X forward, Y left, Z up, ground at z = 0. The pelvis is the base link. Right-side joints are mirrored with the X and Z axes flipped so that a positive angle is the same motion (abduction, outward yaw) on both sides.</p>
+  <p>Frame: X forward, Y left, Z up, ground at z = 0. The pelvis is the base link. Right-side joints are mirrored with the X and Z axes flipped so that a positive angle is the same motion (abduction, outward yaw) on both sides. The arm is straight: shoulder yaw, elbow and wrist share one line 232 mm from the centre, carried by a long shoulder-roll bracket as on Duke V2, so that yawing the shoulder spins the forearm about its own axis and the hand clears the hip actuators at every wrist angle.</p>
   <div class="diagram">
     <svg viewBox="0 0 560 430" role="img" aria-label="Front-view kinematic diagram with joint markers">
       <defs>
@@ -97,43 +97,43 @@
       <line x1="270" y1="226" x2="270" y2="242" stroke="var(--fg3)" stroke-width="3"/>
       <!-- legs -->
       <g stroke="var(--fg3)" stroke-width="4" fill="none">
-        <path d="M292 262 L310 262 L310 296 L312 317 L312 370 L312 380"/>
-        <path d="M248 262 L230 262 L230 296 L228 317 L228 370 L228 380"/>
-        <path d="M290 392 L340 392 M200 392 L250 392"/>
+        <path d="M290 262 L308 262 L308 296 L308 317 L308 370 L308 380"/>
+        <path d="M250 262 L232 262 L232 296 L232 317 L232 370 L232 380"/>
+        <path d="M286 392 L336 392 M204 392 L254 392"/>
       </g>
       <!-- arms -->
       <g stroke="var(--fg3)" stroke-width="4" fill="none">
-        <path d="M300 118 L320 118 L320 181 L321 242 L321 262"/>
-        <path d="M240 118 L220 118 L220 181 L219 242 L219 262"/>
+        <path d="M300 118 L337 118 L337 150 L337 181 L337 242 L337 262"/>
+        <path d="M240 118 L203 118 L203 150 L203 181 L203 242 L203 262"/>
       </g>
       <!-- joints, RS03 orange -->
       <g color="#e0561c">
         <use href="#jy" x="270" y="234"/>
-        <use href="#jp" x="292" y="262"/><use href="#jp" x="248" y="262"/>
-        <use href="#jr" x="310" y="262"/><use href="#jr" x="230" y="262"/>
-        <use href="#jy" x="310" y="290"/><use href="#jy" x="230" y="290"/>
-        <use href="#jp" x="312" y="317"/><use href="#jp" x="228" y="317"/>
-        <use href="#jp" x="312" y="370"/><use href="#jp" x="228" y="370"/>
+        <use href="#jp" x="290" y="262"/><use href="#jp" x="250" y="262"/>
+        <use href="#jr" x="308" y="262"/><use href="#jr" x="232" y="262"/>
+        <use href="#jy" x="308" y="290"/><use href="#jy" x="232" y="290"/>
+        <use href="#jp" x="308" y="317"/><use href="#jp" x="232" y="317"/>
+        <use href="#jp" x="308" y="370"/><use href="#jp" x="232" y="370"/>
       </g>
       <!-- RS06 blue -->
       <g color="#2f6fb5">
-        <use href="#jr" x="312" y="380"/><use href="#jr" x="228" y="380"/>
+        <use href="#jr" x="308" y="380"/><use href="#jr" x="232" y="380"/>
         <use href="#jp" x="300" y="118"/><use href="#jp" x="240" y="118"/>
-        <use href="#jr" x="320" y="118"/><use href="#jr" x="220" y="118"/>
+        <use href="#jr" x="337" y="118"/><use href="#jr" x="203" y="118"/>
       </g>
       <!-- RS02 green -->
       <g color="#1f8a4c">
-        <use href="#jy" x="320" y="150"/><use href="#jy" x="220" y="150"/>
-        <use href="#jp" x="320" y="181"/><use href="#jp" x="220" y="181"/>
+        <use href="#jy" x="337" y="150"/><use href="#jy" x="203" y="150"/>
+        <use href="#jp" x="337" y="181"/><use href="#jp" x="203" y="181"/>
       </g>
       <!-- RS05 grey -->
-      <g color="#6b7280"><use href="#jy" x="321" y="242"/><use href="#jy" x="219" y="242"/></g>
+      <g color="#6b7280"><use href="#jy" x="337" y="242"/><use href="#jy" x="203" y="242"/></g>
       <!-- labels -->
       <g class="sm">
         <text x="340" y="122">shoulder pitch · roll</text>
         <text x="340" y="154">shoulder yaw</text>
-        <text x="340" y="185">elbow</text>
-        <text x="340" y="246">wrist roll</text>
+        <text x="355" y="185">elbow</text>
+        <text x="355" y="246">wrist roll</text>
         <text x="60" y="238">waist yaw</text>
         <text x="60" y="266">hip pitch · roll</text>
         <text x="60" y="294">hip yaw</text>
@@ -146,8 +146,8 @@
       <g class="sm" stroke="var(--fg3)" stroke-width="1">
         <line x1="380" y1="262" x2="380" y2="400"/><text x="386" y="335" stroke="none">460 mm hip height</text>
         <line x1="400" y1="118" x2="400" y2="262"/><text x="406" y="195" stroke="none">480 mm shoulder–hip</text>
-        <line x1="230" y1="412" x2="310" y2="412"/><text x="236" y="426" stroke="none">270 mm hip spacing</text>
-        <line x1="180" y1="92" x2="360" y2="92"/><text x="205" y="86" stroke="none">330 mm shoulder spacing</text>
+        <line x1="232" y1="412" x2="308" y2="412"/><text x="236" y="426" stroke="none">264 mm hip spacing</text>
+        <line x1="203" y1="92" x2="337" y2="92"/><text x="205" y="86" stroke="none">464 mm shoulder-roll spacing</text>
       </g>
       <!-- legend -->
       <g class="sm" transform="translate(60,40)">
@@ -214,18 +214,35 @@
     </tbody>
   </table></div>
 
+  <h2 id="audit">Self-collision audit</h2>
+  <p><code>tools/check_collisions.py</code> tests every pair of parts: exactly at the zero pose, by surface sampling at the preset poses, and joint by joint through each range. The zero pose, the presets and every single-joint sweep are clear at the limits below; the limits marked <em>geometry</em> are where the printed parts would touch, and the sweep put them there.</p>
+  <div class="table-wrap"><table class="compact">
+    <thead><tr><th>Joint</th><th>Limit</th><th>Set by</th><th>What touches beyond it</th></tr></thead>
+    <tbody>
+      <tr><td>Hip roll (adduction)</td><td>−12°</td><td>geometry</td><td>Hip-yaw actuator into the pelvis straps and the hip-pitch flange</td></tr>
+      <tr><td>Hip roll (abduction)</td><td>105°</td><td>Duke V2</td><td>Nothing structural; see the coupled limit below</td></tr>
+      <tr><td>Knee</td><td>105°</td><td>geometry</td><td>Shank plates fold into the thigh block (2.7 mm at 110°); chamfering the block's rear edge in v0.2 buys 10–15°</td></tr>
+      <tr><td>Ankle pitch</td><td>±50°</td><td>Duke V2</td><td>Clear; the foot upright is cut to 92 mm for it</td></tr>
+      <tr><td>Ankle roll</td><td>±30°</td><td>Duke V2</td><td>Clear</td></tr>
+      <tr><td>Shoulder roll</td><td>0° to 150°</td><td>geometry</td><td>Adduction below 0° swings the hanging hand into the hip stack; possible only with the elbow flexed</td></tr>
+      <tr><td>Elbow</td><td>120°</td><td>geometry</td><td>Inner forearm plate into the upper-arm link (upper arm narrowed to 50 mm for it)</td></tr>
+      <tr><td>Shoulder yaw, wrist roll, waist, hip pitch, hip yaw, shoulder pitch</td><td>full</td><td>Duke V2</td><td>Clear through the whole range</td></tr>
+    </tbody>
+  </table></div>
+  <p><b>One coupled limit.</b> With the arm hanging straight, the leg can abduct 25° before the hip-yaw actuator meets the gripper. Swing the arm 20° forward, or flex the elbow 60°, and the full 105° is clear. That is a constraint for the policy's self-collision term, not a mechanical stop, and it is the same on Duke V2.</p>
+
   <h2 id="risks">Open questions and risks</h2>
   <ul>
-    <li><b>Printed adapters at 60 N·m.</b> The RS03 output flange drives a 68 mm printed disc through its bolt circle. Bolt-hole bearing stress in PETG-CF at 60 N·m is on the edge; the v0.2 joint-kit test measures it. Fallbacks: steel washers under the heads, a printed PA-CF adapter, or a 3 mm aluminium disc as the only metal part.</li>
+    <li><b>Printed couplers at 60 N·m.</b> The RS03 output boss drives the printed coupler through six M4 screws and three Ø4 dowels on a 30.36 mm circle: 60 N·m is 4 kN on the dowels. That is at the edge of PETG-CF bearing strength; the v0.3 joint-kit test measures it. Fallbacks: PA-CF couplers, longer dowels, or a 3 mm aluminium coupler as the only metal part.</li>
     <li><b>Heat.</b> RobStride warns at 75 °C. PETG softens around 80 °C. The cups leave the finned housing exposed; if a joint runs hot, its cup goes to PA-CF.</li>
-    <li><b>Hip width.</b> 270 mm between the legs (Duke V2: 253) because the roll actuator sits fully outboard of the hip-pitch flange. A canted hip-pitch axis, as on Duke V2, would recover 15–20 mm at the cost of a harder-to-print bracket.</li>
+    <li><b>Width.</b> 562 mm across the shoulder-roll cups, wider than Duke V2, because the straight arm needs the roll axis 232 mm out and the hip-pitch actuators sit fully inside the pelvis. A canted hip-pitch axis as on Duke V2 would let the arms come in 20–30 mm at the cost of a harder-to-print bracket.</li>
     <li><b>No mechanical end stops.</b> Limits are software only, as on Duke V2.</li>
     <li><b>Ankle stack height.</b> The ankle-roll actuator sits behind the ankle-pitch actuator, which puts the heel actuator 76 mm behind the shank line. Reaction forces at heel strike go through the ankle bracket; it is the thickest printed part for that reason.</li>
     <li><b>Nothing is measured.</b> Masses, run time, print times and torque margins are calculated. The roadmap replaces each with a measurement.</li>
   </ul>
 </main>
 
-<footer class="site-footer"><div class="inner"><span>Fully Open Humanoid · v0.1 design release · <a href="reference.html#license">MIT / CC BY 4.0</a></span><span>Derived from <a href="https://generalroboticslab.github.io/Duke_Humanoid_V2_OpenSource/">Duke Humanoid V2</a> and <a href="https://berkeley-humanoid-lite.gitbook.io/docs">Berkeley Humanoid Lite</a></span></div></footer>
+<footer class="site-footer"><div class="inner"><span>Fully Open Humanoid · v0.2 design release · <a href="reference.html#license">MIT / CC BY 4.0</a></span><span>Derived from <a href="https://generalroboticslab.github.io/Duke_Humanoid_V2_OpenSource/">Duke Humanoid V2</a> and <a href="https://berkeley-humanoid-lite.gitbook.io/docs">Berkeley Humanoid Lite</a></span></div></footer>
 
 <script src="assets/js/site.js"></script>
 <script>
@@ -240,7 +257,7 @@ foh.json("assets/data/robot.json").then(robot => {
     jt.appendChild(tr);
   }
   const s = robot.specs;
-  const dims = [["Hip-pitch axis height", s.leg_hip_to_ground_mm], ["Hip pitch/roll to knee (thigh)", s.thigh_mm], ["Knee to ankle pitch (shank)", s.shank_mm], ["Ankle-roll axis height", s.ankle_height_mm], ["Hip spacing", s.hip_spacing_mm], ["Shoulder spacing (roll axes)", s.shoulder_spacing_mm], ["Shoulder pitch to elbow", s.upper_arm_mm], ["Elbow to wrist-roll output", s.forearm_mm], ["Foot length", s.foot_length_mm], ["Overall height", s.height_mm], ["Overall width (shoulders)", s.width_mm]];
+  const dims = [["Hip-pitch axis height", s.leg_hip_to_ground_mm], ["Hip pitch/roll to knee (thigh)", s.thigh_mm], ["Knee to ankle pitch (shank)", s.shank_mm], ["Ankle-roll axis height", s.ankle_height_mm], ["Hip spacing", s.hip_spacing_mm], ["Shoulder spacing (roll axes)", s.shoulder_spacing_mm], ["Shoulder pitch to elbow", s.upper_arm_mm], ["Elbow to wrist-roll output", s.forearm_mm], ["Hand spacing", s.hand_spacing_mm], ["Foot length", s.foot_length_mm], ["Overall height", s.height_mm], ["Overall width (elbows)", s.width_mm]];
   const dt = document.querySelector("#dims-table tbody");
   for (const [k, v] of dims) { const tr = document.createElement("tr"); tr.innerHTML = `<td>${k}</td><td class="num">${v} mm</td>`; dt.appendChild(tr); }
   const at = document.querySelector("#act-table tbody");

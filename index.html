@@ -15,7 +15,7 @@
 </head>
 <body>
 <header class="site-header"><div class="inner">
-  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><use href="assets/img/favicon.svg#mark"/></svg><span class="name">Fully Open Humanoid</span><span class="ver">v0.1</span></a>
+  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><use href="assets/img/favicon.svg#mark"/></svg><span class="name">Fully Open Humanoid</span><span class="ver">v0.2</span></a>
   <button class="iconbtn nav-toggle" aria-label="Menu">☰</button>
   <nav class="nav">
     <a href="design.html">Design</a><a href="viewer.html">3D model</a><a href="bom.html">BOM</a><a href="printing.html">Printing</a><a href="assembly.html">Assembly</a><a href="electrical.html">Electrical</a><a href="bringup.html">Bring-up</a><a href="software.html">Software</a><a href="reference.html">Reference</a>
@@ -41,11 +41,11 @@
     </div>
   </section>
 
-  <div class="banner"><span class="dot"></span><div><b>v0.1 is a design release, not a built robot.</b> The kinematics, every part, the cost model, the wiring and a simulation-ready URDF are published here. Printable STLs, photos and test results follow as each subassembly is built. Nothing on this site should be read as measured until the <a href="reference.html#status">status page</a> says so.</div></div>
+  <div class="banner"><span class="dot"></span><div><b>v0.2 is a design release, not a built robot.</b> Every printed part is downloadable as STL, the joint kits are dimensioned from RobStride's own drawings, and the whole model passes a self-collision audit through every joint range. Photos and test results follow as each subassembly is built; nothing here is measured until the <a href="reference.html#status">status page</a> says so.</div></div>
 
   <div class="stats" id="stats">
     <div class="stat"><div class="v">23</div><div class="k">actuated joints (+2 gripper servos)</div></div>
-    <div class="stat"><div class="v">1.11 m</div><div class="k">tall, 43 cm across the shoulders</div></div>
+    <div class="stat"><div class="v" id="stat-height">1.11 m</div><div class="k" id="stat-width">tall, 53 cm at the elbows</div></div>
     <div class="stat"><div class="v" id="stat-mass">26 kg</div><div class="k">estimated, batteries included</div></div>
     <div class="stat"><div class="v" id="stat-cost">$5.6k</div><div class="k">core parts, filament included</div></div>
     <div class="stat"><div class="v">0</div><div class="k">machined parts</div></div>
@@ -63,7 +63,7 @@
   <div class="table-wrap"><table>
     <thead><tr><th>Duke Humanoid V2</th><th>Fully Open Humanoid v0.1</th><th class="num">Parts cost</th></tr></thead>
     <tbody>
-      <tr><td>35 CNC aluminium parts, SLS prints and fasteners ($4,550)</td><td>39 printed parts, four 2020 extrusions, bearings and fasteners ($380)</td><td class="num">−$4,170</td></tr>
+      <tr><td>35 CNC aluminium parts, SLS prints and fasteners ($4,550)</td><td>34 printed parts, four 2020 extrusions, bearings and fasteners ($380)</td><td class="num">−$4,170</td></tr>
       <tr><td>31 actuators: 7-DOF arms, RS04 knees, four gimbal RS05s</td><td>23 actuators: 5-DOF arms, RS03 knees, fixed head</td><td class="num">−$1,070</td></tr>
       <tr><td>Two RealSense D436 ($708)</td><td>Fixed head; one D435i as an optional kit</td><td class="num">−$708</td></tr>
       <tr><td>MINISFORUM X1-470 mini PC ($1,295)</td><td>Intel N100 mini PC ($160); the policy is a small network at 50 Hz</td><td class="num">−$1,135</td></tr>
@@ -80,7 +80,7 @@
   <h2 id="build-path">Build path</h2>
   <div class="cards">
     <a class="card" href="bom.html"><span class="num">1 · Buy</span><h3>Bill of materials</h3><p>Every part, quantity and price, in tiers: core, optional kits, tools. Order the actuators first.</p></a>
-    <a class="card" href="printing.html"><span class="num">2 · Print</span><h3>Printing</h3><p>39 printed parts, 5 kg of filament, settings as numbers. Plates and cups, no supports on structural faces.</p></a>
+    <a class="card" href="printing.html"><span class="num">2 · Print</span><h3>Printing</h3><p>34 printed parts as STL, 7 kg of filament, settings as numbers. Mount rings, couplers and plates; a 250 mm bed.</p></a>
     <a class="card" href="assembly.html"><span class="num">3 · Assemble</span><h3>Assembly</h3><p>Three joint kits repeated 23 times, then legs, torso, arms, head, and the whole robot.</p></a>
     <a class="card" href="electrical.html"><span class="num">4 · Wire</span><h3>Electrical</h3><p>48 V bus with a safety chain, four CAN daisy chains, every cable type and the actuator ID map.</p></a>
     <a class="card" href="bringup.html"><span class="num">5 · Bring up</span><h3>Bring-up</h3><p>Bench supply first, IDs and zeros, then nine acceptance tests from bus integrity to a first step.</p></a>
@@ -96,18 +96,19 @@
     <thead><tr><th>Milestone</th><th>What it delivers</th><th>Status</th></tr></thead>
     <tbody>
       <tr><td>v0.1 Design</td><td>Kinematics, part list, cost model, wiring, URDF, this site</td><td><span class="pill ok">published</span></td></tr>
-      <tr><td>v0.2 Joint kits</td><td>Printable STL/STEP for the RS03, RS06 and RS02 joint kits; a single-joint torque test on printed adapters</td><td><span class="pill warn">next</span></td></tr>
-      <tr><td>v0.3 Leg</td><td>One leg printed and assembled; hanging-leg swing test; updated masses</td><td><span class="pill">planned</span></td></tr>
-      <tr><td>v0.4 Lower body</td><td>Pelvis, both legs, torso frame with batteries; standing under a policy trained in Isaac Lab</td><td><span class="pill">planned</span></td></tr>
+      <tr><td>v0.2 Printable parts</td><td>Every printed part as STL with the real RobStride mounting and output interfaces; joint kits with output support bearings; self-collision audit and joint limits</td><td><span class="pill ok">published</span></td></tr>
+      <tr><td>v0.3 Joint-kit test</td><td>Print one RS03 kit, bolt it to an actuator, measure coupler creep and stiffness at 60 N·m; adjust the couplers</td><td><span class="pill warn">next</span></td></tr>
+      <tr><td>v0.4 Leg</td><td>One leg printed and assembled; hanging-leg swing test; updated masses</td><td><span class="pill">planned</span></td></tr>
+      <tr><td>v0.5 Lower body</td><td>Pelvis, both legs, torso frame with batteries; standing under a policy trained in Isaac Lab</td><td><span class="pill">planned</span></td></tr>
       <tr><td>v1.0 Full robot</td><td>Arms, head, grippers; walking; release with photos, print plates and a build video</td><td><span class="pill">planned</span></td></tr>
     </tbody>
   </table></div>
 
   <h2 id="contribute">Contribute</h2>
-  <p>Everything here is generated from one file, <code>tools/build_data.py</code>: the 3D model, the BOM, the printed-parts list and the URDF. Change a dimension or a price there, run it, and every page updates. Open an issue or a pull request on <a href="https://github.com/fullyopenhml/fullyopenhml.github.io">GitHub</a>. Licences and citation are on the <a href="reference.html#license">reference page</a>.</p>
+  <p>Everything here is generated from one file, <code>tools/build_data.py</code>: the 3D model, the BOM, the printed-parts list, the URDF and, through <code>tools/build_parts.py</code>, every STL. Change a dimension or a price there, run it, and every page updates. Open an issue or a pull request on <a href="https://github.com/fullyopenhml/fullyopenhml.github.io">GitHub</a>. Licences and citation are on the <a href="reference.html#license">reference page</a>.</p>
 </main>
 
-<footer class="site-footer"><div class="inner"><span>Fully Open Humanoid · v0.1 design release · <a href="reference.html#license">MIT / CC BY 4.0</a></span><span>Derived from <a href="https://generalroboticslab.github.io/Duke_Humanoid_V2_OpenSource/">Duke Humanoid V2</a> and <a href="https://berkeley-humanoid-lite.gitbook.io/docs">Berkeley Humanoid Lite</a></span></div></footer>
+<footer class="site-footer"><div class="inner"><span>Fully Open Humanoid · v0.2 design release · <a href="reference.html#license">MIT / CC BY 4.0</a></span><span>Derived from <a href="https://generalroboticslab.github.io/Duke_Humanoid_V2_OpenSource/">Duke Humanoid V2</a> and <a href="https://berkeley-humanoid-lite.gitbook.io/docs">Berkeley Humanoid Lite</a></span></div></footer>
 
 <script src="assets/js/site.js"></script>
 <script type="module">
@@ -118,6 +119,8 @@ const core = bom.tiers.core;
 document.getElementById("core-total").textContent = "$" + (core / 1000).toFixed(1) + "k";
 document.getElementById("stat-cost").textContent = "$" + (core / 1000).toFixed(1) + "k";
 document.getElementById("stat-mass").textContent = Math.round(robot.specs.mass_total_g / 1000) + " kg";
+document.getElementById("stat-height").textContent = (robot.specs.height_mm / 1000).toFixed(2) + " m";
+document.getElementById("stat-width").textContent = "tall, " + Math.round(robot.specs.width_mm / 10) + " cm at the elbows";
 document.getElementById("priced-as-of").textContent = bom.meta.priced_as_of;
 const tb = document.querySelector("#cost-table tbody");
 const tierName = { core: "core", optional: "optional", tools: "tools" };
