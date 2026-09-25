@@ -87,7 +87,7 @@ small, .muted { color: var(--fg2); }
 .brand .mark { width: 26px; height: 26px; }
 .brand .ver { font-size: .72rem; font-weight: 600; color: var(--accent); background: var(--accent-soft); padding: 2px 7px; border-radius: 999px; }
 .nav { display: flex; gap: 2px; margin-left: auto; align-items: center; }
-.nav a { color: var(--fg2); padding: 6px 10px; border-radius: 6px; font-size: .92rem; font-weight: 500; }
+.nav a { color: var(--fg2); padding: 6px 8px; border-radius: 6px; font-size: .88rem; font-weight: 500; white-space: nowrap; }
 .nav a:hover { color: var(--fg); background: var(--bg2); text-decoration: none; }
 .nav a.active { color: var(--fg); background: var(--bg3); }
 .nav .gh { display: inline-flex; align-items: center; gap: 6px; }

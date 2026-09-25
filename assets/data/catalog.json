@@ -1,0 +1,4547 @@
+{
+ "meta": {
+  "generated": "2026-09-25",
+  "robots": 29,
+  "modules": 20,
+  "foh_mass_kg": 27.27
+ },
+ "criteria": [
+  {
+   "id": "cad",
+   "name": "Editable CAD",
+   "short": "CAD",
+   "desc": "Design source in a form you could change: native parametric files or a public Onshape document. STL or STEP exports alone count as partial."
+  },
+  {
+   "id": "bom",
+   "name": "Itemised BOM",
+   "short": "BOM",
+   "desc": "Every purchased part with quantity, price and a vendor or part number."
+  },
+  {
+   "id": "docs",
+   "name": "Build documentation",
+   "short": "Docs",
+   "desc": "Assembly instructions or a build guide a third party could follow: print settings, order of assembly, wiring."
+  },
+  {
+   "id": "elec",
+   "name": "Electronics source",
+   "short": "Elec",
+   "desc": "Schematics and PCB files for any custom board, or every board is an off-the-shelf part."
+  },
+  {
+   "id": "fw",
+   "name": "Firmware and low-level code",
+   "short": "Code",
+   "desc": "The code that talks to the actuators and runs the control loop on the robot."
+  },
+  {
+   "id": "sim",
+   "name": "Robot description and simulation",
+   "short": "Sim",
+   "desc": "URDF, MJCF or USD with masses and limits, and a simulation setup that uses it."
+  },
+  {
+   "id": "policy",
+   "name": "Working controller",
+   "short": "Ctrl",
+   "desc": "A released controller or trained policy that makes the released hardware stand and walk (or, for arms and hands, move usefully)."
+  },
+  {
+   "id": "lic",
+   "name": "Open hardware licence",
+   "short": "Lic",
+   "desc": "A stated hardware licence that permits study, modification, manufacture and sale (OSHWA definition): CERN-OHL, CC BY, CC BY-SA, MIT, Apache, BSD, Solderpad. Non-commercial terms or no licence fail."
+  },
+  {
+   "id": "built",
+   "name": "Reproduced",
+   "short": "Built",
+   "desc": "Built by the authors and reproduced by someone else, or sold as a kit; the release has been shown to be buildable."
+  }
+ ],
+ "slots": [
+  {
+   "id": "lower",
+   "name": "Lower body",
+   "desc": "Pelvis, hips, legs and feet, with their actuators."
+  },
+  {
+   "id": "torso",
+   "name": "Torso",
+   "desc": "Waist joint, frame, computer, power and IMU."
+  },
+  {
+   "id": "arms",
+   "name": "Arms",
+   "desc": "Shoulders to wrists, both sides."
+  },
+  {
+   "id": "hands",
+   "name": "Hands",
+   "desc": "Grippers or hands, both sides."
+  },
+  {
+   "id": "head",
+   "name": "Head",
+   "desc": "Head structure and perception."
+  }
+ ],
+ "families": {
+  "robstride-rs": {
+   "name": "RobStride RS-series",
+   "bus": "CAN 2.0, 1 Mbit/s",
+   "protocol": "RobStride private CAN protocol, MIT-mode PD",
+   "voltage_v": 48
+  },
+  "robstride-o": {
+   "name": "RobStride O-series",
+   "bus": "CAN-FD",
+   "protocol": "RobStride CAN-FD protocol",
+   "voltage_v": 48
+  },
+  "bhl": {
+   "name": "Berkeley Humanoid Lite printed actuator",
+   "bus": "CAN (custom controller board)",
+   "protocol": "BHL motor-controller firmware",
+   "voltage_v": null
+  },
+  "dynamixel-x": {
+   "name": "Dynamixel X-series",
+   "bus": "TTL / RS-485 daisy chain",
+   "protocol": "Dynamixel Protocol 2.0",
+   "voltage_v": 12
+  },
+  "dynamixel-q": {
+   "name": "Dynamixel Q-series",
+   "bus": "RS-485 / EtherCAT (per ROBOTIS)",
+   "protocol": "Dynamixel Protocol 2.0",
+   "voltage_v": 48
+  },
+  "feetech-sts": {
+   "name": "Feetech STS bus servo",
+   "bus": "TTL half-duplex serial",
+   "protocol": "Feetech SCS/STS protocol",
+   "voltage_v": 12
+  },
+  "cubemars-ak": {
+   "name": "CubeMars AK-series",
+   "bus": "CAN 2.0",
+   "protocol": "CubeMars MIT-mode",
+   "voltage_v": 48
+  },
+  "odri": {
+   "name": "ODRI brushless module",
+   "bus": "SPI to master board, Ethernet to PC",
+   "protocol": "ODRI master-board protocol",
+   "voltage_v": 24
+  },
+  "damiao": {
+   "name": "Damiao DM-J series",
+   "bus": "CAN 2.0",
+   "protocol": "Damiao MIT-mode",
+   "voltage_v": 48
+  },
+  "hobby-pwm": {
+   "name": "Hobby PWM servo",
+   "bus": "PWM",
+   "protocol": "PWM pulse width",
+   "voltage_v": 6
+  },
+  "bear": {
+   "name": "Westwood BEAR",
+   "bus": "RS-485",
+   "protocol": "BEAR protocol",
+   "voltage_v": null
+  },
+  "none": {
+   "name": "No actuators",
+   "bus": "",
+   "protocol": "",
+   "voltage_v": null
+  }
+ },
+ "robots": [
+  {
+   "id": "foh",
+   "name": "Fully Open Humanoid v0.2",
+   "org": "This site",
+   "year": 2026,
+   "type": "full",
+   "status": "design",
+   "height_mm": 1114,
+   "mass_kg": 27.3,
+   "dof": 23,
+   "actuators": "RobStride RS03 ×11, RS06 ×6, RS02 ×4, RS05 ×2",
+   "family": "robstride-rs",
+   "structure": "FDM-printed PETG-CF and PLA, four 2020 extrusions",
+   "compute": "Intel N100 mini PC",
+   "price_usd": 5824,
+   "price_basis": "itemised",
+   "price_note": "Core BOM, priced 2026-09; unbuilt design.",
+   "license_hw": "MIT (data and tools), CC BY 4.0 (docs)",
+   "license_sw": "MIT",
+   "open": {
+    "cad": "yes",
+    "bom": "yes",
+    "docs": "yes",
+    "elec": "yes",
+    "fw": "partial",
+    "sim": "yes",
+    "policy": "no",
+    "lic": "yes",
+    "built": "no"
+   },
+   "open_notes": {
+    "cad": "Generated from tools/build_data.py; every printed part as STL with features. Not a conventional CAD document.",
+    "fw": "Plan only: reuses Duke V2's deploy code and BHL's policy runner; not written.",
+    "policy": "Stands and crouches under stiff PD in MuJoCo; no walking policy yet.",
+    "built": "Nothing printed or assembled. v0.3 is the first joint-kit test."
+   },
+   "links": {
+    "site": "https://fullyopenhml.github.io/",
+    "repo": "https://github.com/fullyopenhml/fullyopenhml.github.io",
+    "bom": "https://fullyopenhml.github.io/bom.html",
+    "cad": "https://fullyopenhml.github.io/printing.html"
+   },
+   "sources": [
+    "https://fullyopenhml.github.io/design.html"
+   ],
+   "summary": "Duke Humanoid V2's joint layout on RobStride actuators with every structural part printed, in the spirit of Berkeley Humanoid Lite. A design release: BOM, printable parts, URDF and a MuJoCo standing check exist; nothing has been built.",
+   "verdict": "Open by construction, unproven by construction. Treat every number as a design estimate until the joint-kit test.",
+   "score": 6.5,
+   "oshwa": true,
+   "modules": [
+    "foh-lower",
+    "foh-torso",
+    "foh-arms",
+    "foh-hands",
+    "foh-head"
+   ]
+  },
+  {
+   "id": "bhl",
+   "name": "Berkeley Humanoid Lite",
+   "org": "UC Berkeley, Hybrid Robotics",
+   "year": 2025,
+   "type": "full",
+   "status": "walking",
+   "height_mm": 800,
+   "mass_kg": 16,
+   "dof": 22,
+   "actuators": "22 printed cycloidal actuators (BLDC motor + custom controller board)",
+   "family": "bhl",
+   "structure": "FDM-printed PLA/PETG structure and gearboxes; off-the-shelf metal parts",
+   "compute": "Onboard computer + microcontroller motor boards",
+   "price_usd": 5000,
+   "price_basis": "published-total",
+   "price_note": "\"Sub-$5,000\" per the project; itemised Google Sheet BOM linked from the docs.",
+   "license_hw": "CC BY-SA 4.0 (repository); MakerWorld files CC BY",
+   "license_sw": "MIT",
+   "open": {
+    "cad": "yes",
+    "bom": "yes",
+    "docs": "yes",
+    "elec": "partial",
+    "fw": "yes",
+    "sim": "yes",
+    "policy": "yes",
+    "lic": "yes",
+    "built": "partial"
+   },
+   "open_notes": {
+    "cad": "Public Onshape document; anonymous export allowed. MakerWorld 3MF print plates.",
+    "elec": "Motor controller firmware is released; the board's design files were not found in the repository.",
+    "policy": "Trained checkpoints ship in the repository; zero-shot sim-to-real walking shown in the paper.",
+    "built": "Built and walking at Berkeley; third-party builds are reported informally, no kit."
+   },
+   "links": {
+    "site": "https://lite.berkeley-humanoid.org/",
+    "repo": "https://github.com/HybridRobotics/Berkeley-Humanoid-Lite",
+    "docs": "https://berkeley-humanoid-lite.gitbook.io/docs",
+    "paper": "https://arxiv.org/abs/2504.17249",
+    "bom": "https://berkeley-humanoid-lite.gitbook.io/docs/getting-started-with-hardware/materials-and-parts-bom"
+   },
+   "sources": [
+    "https://berkeley-humanoid-lite.gitbook.io/docs",
+    "https://www.humanoidsdata.com/articles/open-source-humanoid-robots",
+    "https://arxiv.org/abs/2504.17249"
+   ],
+   "summary": "The reference for a desktop-printable full-body humanoid: 22 DOF, printed cycloidal gearboxes, everything on hobby-grade tooling, documented failure modes.",
+   "verdict": "Meets the open-hardware definition and is reproducible on a desktop printer. The first project to study for a low-cost full-body build.",
+   "score": 8.0,
+   "oshwa": true,
+   "modules": [
+    "bhl-lower",
+    "bhl-torso",
+    "bhl-arms"
+   ]
+  },
+  {
+   "id": "duke2",
+   "name": "Duke Humanoid V2",
+   "org": "Duke University, General Robotics Lab",
+   "year": 2026,
+   "type": "full",
+   "status": "walking",
+   "height_mm": 1256,
+   "mass_kg": 35.3,
+   "dof": 33,
+   "actuators": "RobStride RS00 ×2, RS02 ×6, RS03 ×11, RS04 ×2, RS05 ×6, RS06 ×4; 2 Feetech gripper servos",
+   "family": "robstride-rs",
+   "structure": "Machined aluminium 6061; PLA, TPU and SLS nylon-12 prints",
+   "compute": "MINISFORUM X1-470 mini PC",
+   "price_usd": 14882,
+   "price_basis": "itemised",
+   "price_note": "Team BOM grand total $14,882 (CNC parts $6,390). The curated CSVs on the project's hardware site total about $13,000 without consumables.",
+   "license_hw": "Apache-2.0 per the documentation's licence page (the repository hand-off notes list the licence decision as pending)",
+   "license_sw": "Apache-2.0",
+   "open": {
+    "cad": "yes",
+    "bom": "yes",
+    "docs": "yes",
+    "elec": "yes",
+    "fw": "yes",
+    "sim": "yes",
+    "policy": "partial",
+    "lic": "partial",
+    "built": "yes"
+   },
+   "open_notes": {
+    "cad": "Fusion 360 source, per-part STEP, module tree and drawings.",
+    "elec": "All boards off the shelf: CANable adapters, buck converters, TVS diodes.",
+    "policy": "Deploy code and Isaac Lab training are released; a public walking checkpoint for V2 was not confirmed.",
+    "lic": "Documentation states Apache-2.0 for CAD, drawings and BOM; the hand-off notes in the repository say the hardware licence is undecided. Check the LICENSE file before relying on it.",
+    "built": "Built and walking at Duke (V2 paper, 2026). V1 (2024) was MIT-licensed."
+   },
+   "links": {
+    "site": "https://generalroboticslab.github.io/Duke_Humanoid_V2_OpenSource/",
+    "repo": "https://github.com/generalroboticslab/duke_humanoid_v2"
+   },
+   "sources": [
+    "Duke_Humanoid_V2_OpenSource/hardware-site/docs/reference/full-specifications.md",
+    "Duke_Humanoid_V2_OpenSource/hardware-site/docs/reference/citation-and-license.md",
+    "Duke_Humanoid_V2_OpenSource/reference/bom/duke-humanoid-v2_BOM_sheet1_main.csv"
+   ],
+   "summary": "A 1.26 m, 31-joint RobStride humanoid with two gimballed depth cameras, machined aluminium legs and a fully priced BOM. The design this site's own robot derives from.",
+   "verdict": "Complete release with real build data. The machined parts are the cost and the sourcing burden; the licence should be confirmed in the repository.",
+   "score": 8.0,
+   "oshwa": false,
+   "modules": [
+    "duke2-lower",
+    "duke2-torso",
+    "duke2-arms",
+    "duke2-hands",
+    "duke2-head"
+   ]
+  },
+  {
+   "id": "roboto",
+   "name": "Roboto Origin",
+   "org": "RoboParty (Shanghai)",
+   "year": 2025,
+   "type": "full",
+   "status": "walking",
+   "height_mm": 1250,
+   "mass_kg": 34,
+   "dof": 23,
+   "actuators": "RoboParty's own actuators (models not confirmed)",
+   "family": "unknown",
+   "structure": "Machined and printed parts; ordered through Taobao and JLC per the project",
+   "compute": "Not confirmed",
+   "price_usd": 7000,
+   "price_basis": "published-total",
+   "price_note": "About ¥50,000 (≈ $7,000) reported by the project and press; kit pre-orders taken.",
+   "license_hw": "CERN-OHL-W-2.0 (hardware, PCB, BOM, URDF); CC BY-SA 4.0 (docs)",
+   "license_sw": "GPL-3.0 (firmware, deploy); BSD-3-Clause (training)",
+   "open": {
+    "cad": "yes",
+    "bom": "yes",
+    "docs": "yes",
+    "elec": "yes",
+    "fw": "yes",
+    "sim": "yes",
+    "policy": "yes",
+    "lic": "yes",
+    "built": "yes"
+   },
+   "open_notes": {
+    "cad": "Native SolidWorks parts and assemblies plus manufacturing drawings.",
+    "elec": "Gerbers and schematics; V2 integrates the boards into one core PCB.",
+    "built": "Built, walking and jumping; ~100 kit pre-orders reported. Builders must match mechanical, PCB and firmware revisions."
+   },
+   "links": {
+    "repo": "https://github.com/Roboparty/roboto_origin",
+    "hardware": "https://github.com/Roboparty/rpo_hardware",
+    "hub": "https://hub.roboparty.com/documents/"
+   },
+   "sources": [
+    "https://github.com/Roboparty/roboto_origin",
+    "https://github.com/Roboparty/rpo_hardware",
+    "https://www.humanoidsdata.com/articles/open-source-humanoid-robots",
+    "https://interestingengineering.com/ai-robotics/worlds-first-full-stack-humanoid-robot-open-sourced"
+   ],
+   "summary": "A 1.25 m full-stack release: native CAD, drawings, PCB source, firmware, URDF/MJCF, ROS 2 deployment and Isaac Lab training, all licensed.",
+   "verdict": "The strongest large full-stack release found. Needs CNC work and Chinese sourcing; freeze matching revisions before ordering.",
+   "score": 9,
+   "oshwa": true,
+   "modules": []
+  },
+  {
+   "id": "asimov",
+   "name": "Asimov v1",
+   "org": "Menlo Research",
+   "year": 2026,
+   "type": "full",
+   "status": "prototype",
+   "height_mm": 1200,
+   "mass_kg": 35,
+   "dof": 25,
+   "actuators": "Not stated publicly (25 powered joints + 2 passive toes)",
+   "family": "unknown",
+   "structure": "Machined 7075 aluminium and 316L parts, MJF/SLM prints",
+   "compute": "Radxa CM5 (motion) + Raspberry Pi 5 (media)",
+   "price_usd": 15000,
+   "price_basis": "published-total",
+   "price_note": "DIY kit target ≈ $15,000 with a $499 deposit (summer 2026); an unassembled kit at $20,000 was also reported. BOM by request.",
+   "license_hw": "CERN-OHL-S-2.0",
+   "license_sw": "GPL-2.0",
+   "open": {
+    "cad": "partial",
+    "bom": "partial",
+    "docs": "partial",
+    "elec": "yes",
+    "fw": "partial",
+    "sim": "yes",
+    "policy": "partial",
+    "lic": "yes",
+    "built": "partial"
+   },
+   "open_notes": {
+    "cad": "165 per-part STEP files and a whole-robot STEP; no native parametric source.",
+    "bom": "Marked \"request access\" on the manual.",
+    "elec": "Native KiCad projects with LCSC part numbers.",
+    "fw": "Listed as \"coming soon\"; the locomotion policy ships inside it.",
+    "built": "Physical prototypes exist; kits not yet delivered."
+   },
+   "links": {
+    "site": "https://menlo.ai/asimov-1",
+    "repo": "https://github.com/menloresearch/asimov-1",
+    "docs": "https://docs.menlo.ai/asimov/1",
+    "manual": "https://manual.asimov.inc/v1/bom"
+   },
+   "sources": [
+    "https://docs.menlo.ai/asimov/1",
+    "https://www.humanoidsdata.com/articles/open-source-humanoid-robots",
+    "https://www.opensourceforu.com/2026/05/asimov-v1-open-sources-humanoid-robotics-development/"
+   ],
+   "summary": "A 1.2 m, 35 kg humanoid released under CERN-OHL-S with STEP files, KiCad electronics and a MuJoCo model; BOM and firmware still gated.",
+   "verdict": "An open-licensed release in progress: describe it as it exists, not as the finished platform.",
+   "score": 6.0,
+   "oshwa": true,
+   "modules": []
+  },
+  {
+   "id": "poppy",
+   "name": "Poppy Humanoid",
+   "org": "Inria, Flowers team",
+   "year": 2014,
+   "type": "full",
+   "status": "archive",
+   "height_mm": 830,
+   "mass_kg": null,
+   "dof": 25,
+   "actuators": "Dynamixel MX-28 and MX-64",
+   "family": "dynamixel-x",
+   "structure": "3D-printed (SLS or FDM) structure",
+   "compute": "Odroid or Raspberry Pi in the head",
+   "price_usd": 8500,
+   "price_basis": "published-total",
+   "price_note": "$8,000–9,000 per the project (2015 pricing, about 60 % actuators).",
+   "license_hw": "CC BY-SA 4.0",
+   "license_sw": "GPL-3.0",
+   "open": {
+    "cad": "yes",
+    "bom": "yes",
+    "docs": "yes",
+    "elec": "yes",
+    "fw": "yes",
+    "sim": "yes",
+    "policy": "no",
+    "lic": "yes",
+    "built": "yes"
+   },
+   "open_notes": {
+    "cad": "SolidWorks source plus STEP, Parasolid and STL.",
+    "policy": "Walks only with support; not a locomotion platform.",
+    "built": "Many copies built in labs and schools; last hardware release 2015."
+   },
+   "links": {
+    "site": "https://www.poppy-project.org/en/robots/poppy-humanoid/",
+    "repo": "https://github.com/poppy-project/poppy-humanoid"
+   },
+   "sources": [
+    "https://github.com/poppy-project/poppy-humanoid",
+    "https://www.humanoidsdata.com/articles/open-source-humanoid-robots"
+   ],
+   "summary": "The clearest early example of a full robot released as editable CAD rather than printable meshes. Dated actuators and no walking.",
+   "verdict": "Meets the definition; conceptually sound, technically old.",
+   "score": 8,
+   "oshwa": true,
+   "modules": []
+  },
+  {
+   "id": "nico",
+   "name": "NICO",
+   "org": "University of Hamburg, WTM",
+   "year": 2017,
+   "type": "full",
+   "status": "prototype",
+   "height_mm": 1010,
+   "mass_kg": 7,
+   "dof": 30,
+   "actuators": "Dynamixel servos; third-party hands",
+   "family": "dynamixel-x",
+   "structure": "3D-printed",
+   "compute": "External PC",
+   "price_usd": null,
+   "price_basis": "unknown",
+   "price_note": "No published total.",
+   "license_hw": "CC BY-SA 3.0",
+   "license_sw": "GPL-3.0",
+   "open": {
+    "cad": "yes",
+    "bom": "partial",
+    "docs": "partial",
+    "elec": "yes",
+    "fw": "yes",
+    "sim": "yes",
+    "policy": "no",
+    "lic": "yes",
+    "built": "yes"
+   },
+   "open_notes": {
+    "cad": "Native Autodesk Inventor parts and assemblies plus STLs.",
+    "policy": "Interaction and manipulation platform; it does not walk.",
+    "built": "Several copies in use at Hamburg and partner labs."
+   },
+   "links": {
+    "site": "https://www.inf.uni-hamburg.de/en/inst/ab/wtm/research/neurobotics/nico.html",
+    "cad": "https://github.com/knowledgetechnologyuhh/NICO-cad"
+   },
+   "sources": [
+    "https://www.humanoidsdata.com/articles/open-source-humanoid-robots"
+   ],
+   "summary": "A child-sized interaction and manipulation humanoid with genuinely open, creator-owned CAD; dependent on proprietary servos and hands.",
+   "verdict": "Open where the creators control the design; reproducibility limited by third-party parts and an older software stack.",
+   "score": 7.0,
+   "oshwa": true,
+   "modules": []
+  },
+  {
+   "id": "sapiens",
+   "name": "AI Sapiens K0 / K1",
+   "org": "ROBOTIS",
+   "year": 2026,
+   "type": "full",
+   "status": "commercial",
+   "height_mm": 1300,
+   "mass_kg": 34,
+   "dof": 23,
+   "actuators": "Dynamixel Q-series",
+   "family": "dynamixel-q",
+   "structure": "Not detailed publicly",
+   "compute": "8-core ARM SoC with NPU",
+   "price_usd": null,
+   "price_basis": "unknown",
+   "price_note": "Not announced; Korean press reports under $10,000.",
+   "license_hw": "Not stated (release announced as open: BOM, CAD, sim assets)",
+   "license_sw": "Apache-2.0 (ROS 2 packages)",
+   "open": {
+    "cad": "unknown",
+    "bom": "unknown",
+    "docs": "unknown",
+    "elec": "unknown",
+    "fw": "yes",
+    "sim": "yes",
+    "policy": "partial",
+    "lic": "unknown",
+    "built": "yes"
+   },
+   "open_notes": {
+    "cad": "Announced as open; files not located at the time of writing.",
+    "built": "Sold and demonstrated by ROBOTIS."
+   },
+   "links": {
+    "site": "https://ai.robotis.com/ai_sapiens/introduction_ai_sapiens.html",
+    "repo": "https://github.com/ROBOTIS-GIT/ai_sapiens",
+    "docs": "https://docs.robotis.com/docs/systems/aisapiens/introduction/"
+   },
+   "sources": [
+    "https://github.com/ROBOTIS-GIT/ai_sapiens",
+    "https://www.humanoidsdaily.com/news/robotis-enters-the-open-source-humanoid-arena-with-ai-sapiens-k0-platform"
+   ],
+   "summary": "ROBOTIS's 1.3 m humanoid on its Dynamixel Q actuators, announced as an open platform with ROS 2 packages public first.",
+   "verdict": "Watch: the software is out under Apache-2.0; the hardware release and its licence were not verifiable.",
+   "score": 3.5,
+   "oshwa": false,
+   "modules": []
+  },
+  {
+   "id": "kbot",
+   "name": "K-Bot",
+   "org": "K-Scale Labs",
+   "year": 2025,
+   "type": "full",
+   "status": "archive",
+   "height_mm": 1400,
+   "mass_kg": 34,
+   "dof": null,
+   "actuators": "RobStride-class QDD actuators (per K-Scale docs; not itemised)",
+   "family": "unknown",
+   "structure": "Machined and printed",
+   "compute": "K-OS on an embedded computer",
+   "price_usd": 8999,
+   "price_basis": "published-total",
+   "price_note": "Pre-order price for the first 100 units; the company closed in November 2025 and refunded orders.",
+   "license_hw": "CERN-OHL-S",
+   "license_sw": "GPL-3.0 per README; MIT in the root licence and sub-repositories",
+   "open": {
+    "cad": "yes",
+    "bom": "partial",
+    "docs": "partial",
+    "elec": "partial",
+    "fw": "yes",
+    "sim": "yes",
+    "policy": "partial",
+    "lic": "yes",
+    "built": "partial"
+   },
+   "open_notes": {
+    "cad": "Onshape and STEP.",
+    "bom": "Incomplete BOM and electrical path.",
+    "built": "Two units shipped before closure; no complete build path survives."
+   },
+   "links": {
+    "repo": "https://github.com/kscalelabs/kbot",
+    "site": "https://www.kscale.dev/"
+   },
+   "sources": [
+    "https://www.humanoidsdata.com/articles/open-source-humanoid-robots",
+    "https://www.rs-online.com/designspark/k-scale-labs-launches-k-bot-americas-first-open-source-humanoid-robot"
+   ],
+   "summary": "A 1.4 m open-licensed humanoid whose company dissolved; the CAD and OS remain as a design archive.",
+   "verdict": "Not reproducible today. The licence preserved the files, not the suppliers or the documentation work.",
+   "score": 6.5,
+   "oshwa": true,
+   "modules": []
+  },
+  {
+   "id": "lerobot",
+   "name": "LeRobot Humanoid (biped)",
+   "org": "Hugging Face, LeRobot",
+   "year": 2026,
+   "type": "biped",
+   "status": "walking",
+   "height_mm": null,
+   "mass_kg": null,
+   "dof": 12,
+   "actuators": "RobStride O0, O2, O3, O5 (CAN-FD)",
+   "family": "robstride-o",
+   "structure": "3D-printed (75 STL parts) with off-the-shelf bearings and fasteners",
+   "compute": "Raspberry Pi 5, BNO085 IMU",
+   "price_usd": 2636,
+   "price_basis": "itemised",
+   "price_note": "≈ $2,636 as of April 2026 per the hardware repository (motors ≈ $1,880).",
+   "license_hw": "Apache-2.0",
+   "license_sw": "Apache-2.0",
+   "open": {
+    "cad": "yes",
+    "bom": "yes",
+    "docs": "yes",
+    "elec": "yes",
+    "fw": "yes",
+    "sim": "yes",
+    "policy": "partial",
+    "lic": "yes",
+    "built": "partial"
+   },
+   "open_notes": {
+    "cad": "Public Onshape document organised by subassembly.",
+    "policy": "MuJoCo and MJLab training environments; walking shown by the authors.",
+    "built": "Lower body only; upper body on the roadmap. Third-party builds not confirmed."
+   },
+   "links": {
+    "repo": "https://github.com/huggingface/lerobot-humanoid-hardware",
+    "blog": "https://huggingface.co/blog/VirgileBatto/lerobot-humanoid",
+    "software": "https://github.com/huggingface/lerobot-humanoid"
+   },
+   "sources": [
+    "https://github.com/huggingface/lerobot-humanoid-hardware",
+    "https://huggingface.co/blog/VirgileBatto/lerobot-humanoid"
+   ],
+   "summary": "A printed 12-DOF biped on RobStride O-series actuators with an itemised $2,600 BOM, Onshape source and Apache-2.0 terms.",
+   "verdict": "Incomplete as a humanoid, excellent as a biped: the best-documented low-cost legs in this list.",
+   "score": 8.0,
+   "oshwa": true,
+   "modules": [
+    "lerobot-lower"
+   ]
+  },
+  {
+   "id": "agiloped",
+   "name": "AGILOped",
+   "org": "University of Bonn, NimbRo",
+   "year": 2025,
+   "type": "full",
+   "status": "prototype",
+   "height_mm": 1100,
+   "mass_kg": 14.5,
+   "dof": 12,
+   "actuators": "10 actuators driving 12 joints (models not confirmed)",
+   "family": "unknown",
+   "structure": "Not detailed",
+   "compute": "Not detailed",
+   "price_usd": null,
+   "price_basis": "unknown",
+   "price_note": "No procurement BOM.",
+   "license_hw": "MIT",
+   "license_sw": "BSD-3-Clause",
+   "open": {
+    "cad": "partial",
+    "bom": "no",
+    "docs": "no",
+    "elec": "unknown",
+    "fw": "yes",
+    "sim": "yes",
+    "policy": "yes",
+    "lic": "yes",
+    "built": "partial"
+   },
+   "open_notes": {
+    "cad": "STEP files, URDF and MuJoCo assets.",
+    "policy": "Walking, jumping, fall mitigation and recovery demonstrated.",
+    "built": "Authors only."
+   },
+   "links": {
+    "site": "https://nimbro.net/Humanoid/AGILOped/",
+    "repo": "https://github.com/gficht/AGILOped_model",
+    "paper": "https://arxiv.org/abs/2509.09364"
+   },
+   "sources": [
+    "https://www.humanoidsdata.com/articles/open-source-humanoid-robots"
+   ],
+   "summary": "A 1.1 m, 14.5 kg walker with strong physical demonstrations and MIT-licensed STEP, but no BOM or assembly manual.",
+   "verdict": "Incomplete: a model release, not a build release.",
+   "score": 5.0,
+   "oshwa": true,
+   "modules": []
+  },
+  {
+   "id": "nimbro",
+   "name": "NimbRo-OP2X",
+   "org": "University of Bonn, NimbRo",
+   "year": 2018,
+   "type": "full",
+   "status": "walking",
+   "height_mm": 1350,
+   "mass_kg": 19,
+   "dof": 18,
+   "actuators": "34 × Dynamixel XH540-W270-R on 18 joints",
+   "family": "dynamixel-x",
+   "structure": "SLS nylon-12 (PA12)",
+   "compute": "Intel i7-8700T + GTX 1050 Ti",
+   "price_usd": null,
+   "price_basis": "unknown",
+   "price_note": "\"Similar price range to Baxter\" per the paper; no figure.",
+   "license_hw": "CC BY-NC-SA 3.0",
+   "license_sw": "BSD-3-Clause",
+   "open": {
+    "cad": "yes",
+    "bom": "yes",
+    "docs": "partial",
+    "elec": "yes",
+    "fw": "yes",
+    "sim": "yes",
+    "policy": "yes",
+    "lic": "no",
+    "built": "yes"
+   },
+   "open_notes": {
+    "lic": "Non-commercial clause fails the open-hardware definition.",
+    "policy": "RoboCup AdultSize champion; walking and perception stack released."
+   },
+   "links": {
+    "repo": "https://github.com/NimbRo/nimbro-op2",
+    "software": "https://github.com/AIS-Bonn/humanoid_op_ros",
+    "paper": "https://arxiv.org/abs/2010.09308"
+   },
+   "sources": [
+    "https://arxiv.org/abs/2010.09308",
+    "https://github.com/stephane-caron/awesome-open-source-robots"
+   ],
+   "summary": "An adult-sized SLS-printed soccer humanoid on Dynamixel XH540s with a released CAD and BOM.",
+   "verdict": "Reproducible and proven, but non-commercial.",
+   "score": 7.5,
+   "oshwa": false,
+   "modules": []
+  },
+  {
+   "id": "igus",
+   "name": "igus Humanoid Open Platform",
+   "org": "University of Bonn, NimbRo with igus",
+   "year": 2015,
+   "type": "full",
+   "status": "archive",
+   "height_mm": 900,
+   "mass_kg": null,
+   "dof": null,
+   "actuators": "Dynamixel MX-series",
+   "family": "dynamixel-x",
+   "structure": "SLS-printed",
+   "compute": "Intel NUC",
+   "price_usd": null,
+   "price_basis": "unknown",
+   "price_note": "Printed-parts set priced on request from igus.",
+   "license_hw": "Not stated on the project page",
+   "license_sw": "BSD-3-Clause",
+   "open": {
+    "cad": "yes",
+    "bom": "unknown",
+    "docs": "partial",
+    "elec": "yes",
+    "fw": "yes",
+    "sim": "partial",
+    "policy": "yes",
+    "lic": "unknown",
+    "built": "yes"
+   },
+   "open_notes": {
+    "cad": "CAD and initial software on GitHub (igusGmbH/HumanoidOpenPlatform).",
+    "built": "RoboCup TeenSize winner 2016; superseded by NimbRo-OP2X."
+   },
+   "links": {
+    "site": "http://nimbro.net/OP/",
+    "repo": "https://github.com/igusGmbH/HumanoidOpenPlatform"
+   },
+   "sources": [
+    "http://nimbro.net/OP/"
+   ],
+   "summary": "The 2015 child-sized printed platform that led to NimbRo-OP2X.",
+   "verdict": "Historical; licence not stated.",
+   "score": 6.0,
+   "oshwa": false,
+   "modules": []
+  },
+  {
+   "id": "toddlerbot",
+   "name": "ToddlerBot 2.0",
+   "org": "Stanford University",
+   "year": 2025,
+   "type": "full",
+   "status": "walking",
+   "height_mm": 560,
+   "mass_kg": 3.4,
+   "dof": 30,
+   "actuators": "Dynamixel 2XC430, 2XL430, XC330, XC430, XM430",
+   "family": "dynamixel-x",
+   "structure": "FDM-printed",
+   "compute": "NVIDIA Jetson Orin NX",
+   "price_usd": 6000,
+   "price_basis": "published-total",
+   "price_note": "≈ $6,000 BOM per the paper, 90 % in the Jetson and the Dynamixels; a third-party assembled kit is sold at $4,299.",
+   "license_hw": "CC BY-NC-SA 4.0 (Onshape and STL)",
+   "license_sw": "MIT",
+   "open": {
+    "cad": "yes",
+    "bom": "yes",
+    "docs": "yes",
+    "elec": "yes",
+    "fw": "yes",
+    "sim": "yes",
+    "policy": "yes",
+    "lic": "no",
+    "built": "yes"
+   },
+   "open_notes": {
+    "docs": "MakerWorld 3MF plates with materials and times; JLCPCB ordering walkthrough.",
+    "lic": "Non-commercial terms; a company gets no right to build on the hardware.",
+    "built": "Independent reproductions reported; assembled units sold by a third party."
+   },
+   "links": {
+    "site": "https://toddlerbot.github.io/",
+    "repo": "https://github.com/hshi74/toddlerbot",
+    "paper": "https://arxiv.org/abs/2502.00893"
+   },
+   "sources": [
+    "https://arxiv.org/abs/2502.00893",
+    "https://www.humanoidsdata.com/articles/open-source-humanoid-robots",
+    "Duke_Humanoid_V2_OpenSource/reference/bom/toddlerbot_BOM_release.csv"
+   ],
+   "summary": "A 56 cm, 30-DOF, entirely printed humanoid for loco-manipulation learning; the most complete build documentation in the list.",
+   "verdict": "Excellent source-available research platform; fails the open-hardware definition on the non-commercial clause.",
+   "score": 8,
+   "oshwa": false,
+   "modules": []
+  },
+  {
+   "id": "microban",
+   "name": "Microban",
+   "org": "Rhoban, Bordeaux",
+   "year": 2025,
+   "type": "mini",
+   "status": "walking",
+   "height_mm": 300,
+   "mass_kg": null,
+   "dof": 19,
+   "actuators": "Small serial bus servos (see BOM)",
+   "family": "unknown",
+   "structure": "FDM-printed",
+   "compute": "Onboard SBC",
+   "price_usd": 567,
+   "price_basis": "itemised",
+   "price_note": "≈ $567 in parts before tools, per the project BOM.",
+   "license_hw": "CC BY-NC-SA 4.0",
+   "license_sw": "GPL-3.0",
+   "open": {
+    "cad": "yes",
+    "bom": "yes",
+    "docs": "yes",
+    "elec": "yes",
+    "fw": "yes",
+    "sim": "yes",
+    "policy": "partial",
+    "lic": "no",
+    "built": "yes"
+   },
+   "open_notes": {
+    "lic": "Non-commercial."
+   },
+   "links": {
+    "repo": "https://github.com/Rhoban/microban",
+    "bom": "https://github.com/Rhoban/microban/blob/main/docs/bom.md"
+   },
+   "sources": [
+    "https://www.humanoidsdata.com/articles/open-source-humanoid-robots",
+    "https://github.com/stephane-caron/awesome-open-source-robots"
+   ],
+   "summary": "A 30 cm, 19-DOF desktop humanoid with a detailed BOM and an RL environment.",
+   "verdict": "Research-only terms, like ToddlerBot.",
+   "score": 7.5,
+   "oshwa": false,
+   "modules": []
+  },
+  {
+   "id": "zeroth",
+   "name": "Zeroth-01 / Z-Bot",
+   "org": "K-Scale Labs (community)",
+   "year": 2024,
+   "type": "mini",
+   "status": "archive",
+   "height_mm": null,
+   "mass_kg": null,
+   "dof": 16,
+   "actuators": "Feetech STS-series bus servos (per the design; not re-verified)",
+   "family": "feetech-sts",
+   "structure": "FDM-printed",
+   "compute": "Milk-V Duo S (RISC-V)",
+   "price_usd": 350,
+   "price_basis": "published-total",
+   "price_note": "\"BoM starts at $350\" per the repository.",
+   "license_hw": "MIT",
+   "license_sw": "MIT",
+   "open": {
+    "cad": "yes",
+    "bom": "yes",
+    "docs": "partial",
+    "elec": "yes",
+    "fw": "yes",
+    "sim": "yes",
+    "policy": "partial",
+    "lic": "yes",
+    "built": "yes"
+   },
+   "open_notes": {
+    "built": "Built at hackathons; replaced by Z-Bot, then orphaned when K-Scale closed."
+   },
+   "links": {
+    "repo": "https://github.com/zeroth-robotics/zeroth-bot"
+   },
+   "sources": [
+    "https://github.com/zeroth-robotics/zeroth-bot"
+   ],
+   "summary": "A $350, 16-DOF printed mini humanoid with vision and speech on a RISC-V board.",
+   "verdict": "Cheap, MIT-licensed, unmaintained.",
+   "score": 8.0,
+   "oshwa": true,
+   "modules": []
+  },
+  {
+   "id": "duck",
+   "name": "Open Duck Mini v2",
+   "org": "Antoine Pirrone (community)",
+   "year": 2025,
+   "type": "biped",
+   "status": "walking",
+   "height_mm": 420,
+   "mass_kg": null,
+   "dof": null,
+   "actuators": "Feetech STS-series bus servos",
+   "family": "feetech-sts",
+   "structure": "FDM-printed",
+   "compute": "Raspberry Pi Zero 2 W",
+   "price_usd": 400,
+   "price_basis": "published-total",
+   "price_note": "\"Under $400\" per the project; itemised Google Sheet BOM.",
+   "license_hw": "Apache-2.0",
+   "license_sw": "Apache-2.0",
+   "open": {
+    "cad": "yes",
+    "bom": "yes",
+    "docs": "yes",
+    "elec": "yes",
+    "fw": "yes",
+    "sim": "yes",
+    "policy": "yes",
+    "lic": "yes",
+    "built": "yes"
+   },
+   "open_notes": {
+    "policy": "Trained ONNX walking policies run on the Pi; MuJoCo Playground environment.",
+    "built": "Widely reproduced; third-party kits exist."
+   },
+   "links": {
+    "repo": "https://github.com/apirrone/Open_Duck_Mini",
+    "docs": "https://tnkr.ai/explore/docs/open-duck-mini/open-duck-mini-v2"
+   },
+   "sources": [
+    "https://github.com/apirrone/Open_Duck_Mini/blob/v2/README.md",
+    "https://github.com/stephane-caron/awesome-open-source-robots"
+   ],
+   "summary": "A 42 cm walking droid built by hundreds of people for under $400, with the whole RL pipeline public.",
+   "verdict": "Meets the definition and is reproduced at scale; a biped, not a humanoid.",
+   "score": 9,
+   "oshwa": true,
+   "modules": [
+    "duck-lower"
+   ]
+  },
+  {
+   "id": "bolt",
+   "name": "Bolt",
+   "org": "Open Dynamic Robot Initiative (MPI-IS, NYU, LAAS)",
+   "year": 2021,
+   "type": "biped",
+   "status": "walking",
+   "height_mm": null,
+   "mass_kg": null,
+   "dof": 6,
+   "actuators": "ODRI brushless modules (T-motor + 9:1 belt stage + open driver board)",
+   "family": "odri",
+   "structure": "Printed structure with carbon tubes",
+   "compute": "Off-board PC via ODRI master board",
+   "price_usd": 6400,
+   "price_basis": "third-party",
+   "price_note": "≈ $6,400 to build in the US, estimated by a third party; ODRI publishes the BOM.",
+   "license_hw": "BSD-3-Clause",
+   "license_sw": "BSD-3-Clause",
+   "open": {
+    "cad": "yes",
+    "bom": "yes",
+    "docs": "yes",
+    "elec": "yes",
+    "fw": "yes",
+    "sim": "yes",
+    "policy": "partial",
+    "lic": "yes",
+    "built": "yes"
+   },
+   "open_notes": {
+    "elec": "Driver and master boards are open designs.",
+    "built": "Reproduced in several labs."
+   },
+   "links": {
+    "site": "https://open-dynamic-robot-initiative.github.io/",
+    "repo": "https://github.com/open-dynamic-robot-initiative/bolt"
+   },
+   "sources": [
+    "https://open-dynamic-robot-initiative.github.io/",
+    "https://github.com/stephane-caron/awesome-open-source-robots",
+    "https://easybuildtech.com/open-dynamic-robot-initiative-open-source-biped/"
+   ],
+   "summary": "A 6-DOF research biped built from ODRI's open actuator module and electronics.",
+   "verdict": "Fully open and reproduced; a lab platform rather than a humanoid.",
+   "score": 8.5,
+   "oshwa": true,
+   "modules": [
+    "bolt-lower"
+   ]
+  },
+  {
+   "id": "mevita",
+   "name": "MEVITA",
+   "org": "JSK, University of Tokyo",
+   "year": 2025,
+   "type": "biped",
+   "status": "walking",
+   "height_mm": null,
+   "mass_kg": null,
+   "dof": null,
+   "actuators": "CubeMars AK70-10 and AK10-9 V2 (MIT mode)",
+   "family": "cubemars-ak",
+   "structure": "18 sheet-metal welded parts",
+   "compute": "Onboard PC",
+   "price_usd": null,
+   "price_basis": "unknown",
+   "price_note": "No published total.",
+   "license_hw": "MIT",
+   "license_sw": "MIT",
+   "open": {
+    "cad": "yes",
+    "bom": "partial",
+    "docs": "partial",
+    "elec": "yes",
+    "fw": "yes",
+    "sim": "yes",
+    "policy": "yes",
+    "lic": "yes",
+    "built": "partial"
+   },
+   "open_notes": {
+    "cad": "CAD on Google Drive.",
+    "policy": "legged_gym training, MuJoCo verification, deployed."
+   },
+   "links": {
+    "site": "https://haraduka.github.io/mevita-hardware/",
+    "repo": "https://github.com/haraduka/mevita"
+   },
+   "sources": [
+    "https://github.com/haraduka/mevita",
+    "https://haraduka.github.io/mevita-hardware/"
+   ],
+   "summary": "A minimal sheet-metal biped on CubeMars actuators with the full sim-to-real pipeline released.",
+   "verdict": "Open and clever; no BOM total.",
+   "score": 7.5,
+   "oshwa": true,
+   "modules": [
+    "mevita-lower"
+   ]
+  },
+  {
+   "id": "hopejr",
+   "name": "HopeJR",
+   "org": "The Robot Studio with Hugging Face",
+   "year": 2025,
+   "type": "upper",
+   "status": "prototype",
+   "height_mm": null,
+   "mass_kg": null,
+   "dof": 66,
+   "actuators": "Feetech STS-series bus servos (arms and hands)",
+   "family": "feetech-sts",
+   "structure": "FDM-printed",
+   "compute": "LeRobot host PC",
+   "price_usd": 3000,
+   "price_basis": "published-total",
+   "price_note": "≈ $3,000 per Hugging Face's announcement; no whole-robot BOM.",
+   "license_hw": "Apache-2.0 on the Humanoid subtree; root and newer arm subtree unlicensed",
+   "license_sw": "Apache-2.0 (LeRobot)",
+   "open": {
+    "cad": "partial",
+    "bom": "partial",
+    "docs": "partial",
+    "elec": "yes",
+    "fw": "partial",
+    "sim": "partial",
+    "policy": "no",
+    "lic": "partial",
+    "built": "partial"
+   },
+   "open_notes": {
+    "built": "Arms and hands demonstrated with glove teleoperation; no walking controller."
+   },
+   "links": {
+    "repo": "https://github.com/TheRobotStudio/HOPEJr",
+    "docs": "https://huggingface.co/docs/lerobot/main/en/hope_jr"
+   },
+   "sources": [
+    "https://www.humanoidsdata.com/articles/open-source-humanoid-robots",
+    "https://github.com/TheRobotStudio/HOPEJr"
+   ],
+   "summary": "Printed arms and dexterous hands on bus servos, teleoperated with gloves; a full-body concept with the upper body real.",
+   "verdict": "Incomplete and inconsistently licensed across the repository.",
+   "score": 4.5,
+   "oshwa": false,
+   "modules": [
+    "hopejr-arms",
+    "hopejr-hands"
+   ]
+  },
+  {
+   "id": "amazing-hand",
+   "name": "Amazing Hand",
+   "org": "Pollen Robotics / Hugging Face",
+   "year": 2025,
+   "type": "hand",
+   "status": "prototype",
+   "height_mm": null,
+   "mass_kg": 0.4,
+   "dof": 8,
+   "actuators": "8 small bus servos per hand",
+   "family": "feetech-sts",
+   "structure": "Fully 3D-printed, flexible fingers",
+   "compute": "Any host via servo bus",
+   "price_usd": 220,
+   "price_basis": "itemised",
+   "price_note": "Under €200 per hand in off-the-shelf parts per Pollen's BOM.",
+   "license_hw": "Apache-2.0",
+   "license_sw": "Apache-2.0",
+   "open": {
+    "cad": "yes",
+    "bom": "yes",
+    "docs": "yes",
+    "elec": "yes",
+    "fw": "yes",
+    "sim": "partial",
+    "policy": "partial",
+    "lic": "yes",
+    "built": "yes"
+   },
+   "open_notes": {
+    "built": "Reproduced widely since release."
+   },
+   "links": {
+    "blog": "https://huggingface.co/blog/pollen-robotics/amazing-hand",
+    "repo": "https://github.com/pollen-robotics/AmazingHand"
+   },
+   "sources": [
+    "https://huggingface.co/blog/pollen-robotics/amazing-hand"
+   ],
+   "summary": "An 8-DOF printed hand for under €200 with BOM, print guide and assembly guide.",
+   "verdict": "Meets the definition; the cheapest open hand worth bolting on.",
+   "score": 8.0,
+   "oshwa": true,
+   "modules": [
+    "amazing-hands"
+   ]
+  },
+  {
+   "id": "inmoov",
+   "name": "InMoov",
+   "org": "Gaël Langevin (community)",
+   "year": 2012,
+   "type": "upper",
+   "status": "walking",
+   "height_mm": 1800,
+   "mass_kg": null,
+   "dof": null,
+   "actuators": "28 hobby PWM servos",
+   "family": "hobby-pwm",
+   "structure": "FDM-printed life-size shell",
+   "compute": "2 × Arduino Mega with Nervo boards",
+   "price_usd": 1200,
+   "price_basis": "third-party",
+   "price_note": "$1,000–1,500 per builders' reports; parts list on the project site.",
+   "license_hw": "CC BY-NC",
+   "license_sw": "MyRobotLab (Apache-2.0)",
+   "open": {
+    "cad": "partial",
+    "bom": "yes",
+    "docs": "yes",
+    "elec": "yes",
+    "fw": "yes",
+    "sim": "partial",
+    "policy": "no",
+    "lic": "no",
+    "built": "yes"
+   },
+   "open_notes": {
+    "cad": "STL only.",
+    "lic": "Non-commercial.",
+    "built": "Thousands built; legs are not motorised."
+   },
+   "links": {
+    "site": "https://inmoov.fr/"
+   },
+   "sources": [
+    "https://inmoov.fr/project/",
+    "https://www.humanoidsdata.com/articles/open-source-humanoid-robots"
+   ],
+   "summary": "The original life-size printable maker humanoid: upper body, hobby servos, huge community.",
+   "verdict": "A maker platform under non-commercial terms, not a walking robot.",
+   "score": 6.0,
+   "oshwa": false,
+   "modules": []
+  },
+  {
+   "id": "op3",
+   "name": "ROBOTIS OP3",
+   "org": "ROBOTIS",
+   "year": 2017,
+   "type": "full",
+   "status": "commercial",
+   "height_mm": 510,
+   "mass_kg": 3.5,
+   "dof": 20,
+   "actuators": "Dynamixel XM430-W350",
+   "family": "dynamixel-x",
+   "structure": "Aluminium frames and plastic covers",
+   "compute": "Intel NUC i3",
+   "price_usd": 11969,
+   "price_basis": "published-total",
+   "price_note": "List price at ROBOTIS US.",
+   "license_hw": "STP parts and schematics published; no unified hardware licence (Dynamixel firmware closed)",
+   "license_sw": "Apache-2.0",
+   "open": {
+    "cad": "partial",
+    "bom": "partial",
+    "docs": "yes",
+    "elec": "partial",
+    "fw": "partial",
+    "sim": "yes",
+    "policy": "yes",
+    "lic": "partial",
+    "built": "yes"
+   },
+   "open_notes": {
+    "cad": "STP exports of every frame.",
+    "elec": "OpenCR board is open (BOM, Gerbers, firmware); the actuators are not."
+   },
+   "links": {
+    "docs": "https://emanual.robotis.com/docs/en/platform/op3/introduction/",
+    "shop": "https://www.robotis.us/robotis-op3-us/"
+   },
+   "sources": [
+    "https://emanual.robotis.com/docs/en/platform/op3/hardware/",
+    "https://www.humanoidsdata.com/articles/open-source-humanoid-robots"
+   ],
+   "summary": "A supported commercial kid-size humanoid with unusually complete public drawings and ROS software.",
+   "verdict": "Inspectable and modifiable, not open all the way down.",
+   "score": 6.5,
+   "oshwa": false,
+   "modules": []
+  },
+  {
+   "id": "icub",
+   "name": "iCub",
+   "org": "Istituto Italiano di Tecnologia",
+   "year": 2008,
+   "type": "full",
+   "status": "commercial",
+   "height_mm": 1040,
+   "mass_kg": null,
+   "dof": 53,
+   "actuators": "Custom brushless and brushed motors with in-house boards",
+   "family": "unknown",
+   "structure": "Machined aluminium",
+   "compute": "Onboard PC104 + external cluster",
+   "price_usd": null,
+   "price_basis": "unknown",
+   "price_note": "Supplied by IIT; research-institution pricing.",
+   "license_hw": "CERN-OHL-W-2.0 for the public subset; CC BY-SA models",
+   "license_sw": "GPL (core), BSD elsewhere",
+   "open": {
+    "cad": "partial",
+    "bom": "no",
+    "docs": "partial",
+    "elec": "partial",
+    "fw": "yes",
+    "sim": "yes",
+    "policy": "partial",
+    "lic": "partial",
+    "built": "yes"
+   },
+   "open_notes": {
+    "cad": "Public repositories mirror selected material from private engineering repositories.",
+    "built": "Dozens of units in labs worldwide."
+   },
+   "links": {
+    "site": "https://icub.iit.it/",
+    "cad": "https://github.com/icub-tech-iit/cad-mechanics-public",
+    "elec": "https://github.com/icub-tech-iit/electronics-boards-public"
+   },
+   "sources": [
+    "https://www.humanoidsdata.com/articles/open-source-humanoid-robots"
+   ],
+   "summary": "The long-running open research humanoid: open software and models, selected open hardware, commercial supply.",
+   "verdict": "Calling it closed would be wrong; calling every part open hardware would also be wrong.",
+   "score": 5.5,
+   "oshwa": false,
+   "modules": []
+  },
+  {
+   "id": "bruce",
+   "name": "BRUCE",
+   "org": "Westwood Robotics with RoMeLa",
+   "year": 2022,
+   "type": "full",
+   "status": "commercial",
+   "height_mm": null,
+   "mass_kg": null,
+   "dof": 16,
+   "actuators": "Westwood BEAR actuators",
+   "family": "bear",
+   "structure": "Machined",
+   "compute": "Onboard SBC",
+   "price_usd": 8890,
+   "price_basis": "published-total",
+   "price_note": "Limited-time price; list price $15,290.",
+   "license_hw": "GPL-3.0 with a commercial licence option",
+   "license_sw": "GPL-3.0",
+   "open": {
+    "cad": "partial",
+    "bom": "partial",
+    "docs": "partial",
+    "elec": "no",
+    "fw": "yes",
+    "sim": "yes",
+    "policy": "yes",
+    "lic": "partial",
+    "built": "yes"
+   },
+   "open_notes": {
+    "cad": "Wiki and CAD behind developer access at the time of writing.",
+    "elec": "BEAR actuators are proprietary."
+   },
+   "links": {
+    "site": "https://www.westwoodrobotics.io/bruce/",
+    "wiki": "https://wiki.bruce-op.com/"
+   },
+   "sources": [
+    "https://www.westwoodrobotics.io/bruce/"
+   ],
+   "summary": "A kid-size compliant biped sold as an open platform on proprietary BEAR actuators.",
+   "verdict": "Open-source software, gated hardware.",
+   "score": 6.0,
+   "oshwa": false,
+   "modules": []
+  },
+  {
+   "id": "agibot-x1",
+   "name": "AgiBot X1 (Lingxi X1)",
+   "org": "AgiBot",
+   "year": 2024,
+   "type": "full",
+   "status": "commercial",
+   "height_mm": 1300,
+   "mass_kg": null,
+   "dof": 34,
+   "actuators": "AgiBot PowerFlow actuators",
+   "family": "unknown",
+   "structure": "Machined and moulded",
+   "compute": "Onboard PC with AimRT middleware",
+   "price_usd": null,
+   "price_basis": "unknown",
+   "price_note": "Kits listed by resellers; no project BOM total.",
+   "license_hw": "None stated",
+   "license_sw": "Mulan PSL v2",
+   "open": {
+    "cad": "yes",
+    "bom": "yes",
+    "docs": "yes",
+    "elec": "partial",
+    "fw": "yes",
+    "sim": "yes",
+    "policy": "yes",
+    "lic": "no",
+    "built": "yes"
+   },
+   "open_notes": {
+    "cad": "Native SolidWorks archives, whole-machine STEP, drawings and assembly SOP.",
+    "lic": "The hardware repository has no licence granting reuse."
+   },
+   "links": {
+    "repo": "https://github.com/AgibotTech/agibot_x1_hardware",
+    "train": "https://github.com/AgibotTech/agibot_x1_train"
+   },
+   "sources": [
+    "https://github.com/AgibotTech/agibot_x1_hardware",
+    "https://www.humanoidsdata.com/articles/open-source-humanoid-robots"
+   ],
+   "summary": "A 1.3 m modular humanoid with native CAD, BOM and SOP published, but no hardware licence.",
+   "verdict": "Files without permission: fails the definition on licensing alone.",
+   "score": 7.5,
+   "oshwa": false,
+   "modules": []
+  },
+  {
+   "id": "fourier-n1",
+   "name": "Fourier N1",
+   "org": "Fourier",
+   "year": 2025,
+   "type": "full",
+   "status": "announced",
+   "height_mm": 1300,
+   "mass_kg": 38,
+   "dof": 23,
+   "actuators": "Fourier FSA 2.0",
+   "family": "unknown",
+   "structure": "Machined",
+   "compute": "Onboard PC",
+   "price_usd": null,
+   "price_basis": "unknown",
+   "price_note": "Not published.",
+   "license_hw": "None stated",
+   "license_sw": "MIT (SDK documentation repository)",
+   "open": {
+    "cad": "no",
+    "bom": "no",
+    "docs": "no",
+    "elec": "no",
+    "fw": "partial",
+    "sim": "yes",
+    "policy": "partial",
+    "lic": "no",
+    "built": "yes"
+   },
+   "open_notes": {
+    "cad": "Announced as fully open with BOM, STEP and SOP; the public repository is SDK documentation only."
+   },
+   "links": {
+    "repo": "https://github.com/FFTAI/fourier-grx-N1"
+   },
+   "sources": [
+    "https://github.com/FFTAI/fourier-grx-N1",
+    "https://www.humanoidsdata.com/articles/open-source-humanoid-robots"
+   ],
+   "summary": "Announced as the first open-source humanoid; the hardware package had not appeared where the announcement pointed.",
+   "verdict": "Promised, not delivered.",
+   "score": 3.0,
+   "oshwa": false,
+   "modules": []
+  },
+  {
+   "id": "tienkung",
+   "name": "Tien Kung (Tiangong)",
+   "org": "X-Humanoid, Beijing Humanoid Robot Innovation Center",
+   "year": 2024,
+   "type": "full",
+   "status": "announced",
+   "height_mm": null,
+   "mass_kg": null,
+   "dof": null,
+   "actuators": "Not stated",
+   "family": "unknown",
+   "structure": "Machined",
+   "compute": "Onboard PC",
+   "price_usd": null,
+   "price_basis": "unknown",
+   "price_note": "Not published.",
+   "license_hw": "None stated",
+   "license_sw": "Apache-2.0 (training toolchain), MIT (xMimic)",
+   "open": {
+    "cad": "no",
+    "bom": "no",
+    "docs": "no",
+    "elec": "no",
+    "fw": "yes",
+    "sim": "yes",
+    "policy": "yes",
+    "lic": "no",
+    "built": "yes"
+   },
+   "open_notes": {
+    "cad": "URDF and STL released; hardware design release announced for Tien Kung 3.0, not found."
+   },
+   "links": {
+    "org": "https://github.com/Open-X-Humanoid",
+    "urdf": "https://github.com/Open-X-Humanoid/TienKung_URDF"
+   },
+   "sources": [
+    "https://github.com/Open-X-Humanoid"
+   ],
+   "summary": "A full-size running humanoid with open training code and URDF; hardware openness announced repeatedly.",
+   "verdict": "Open software around closed hardware until the CAD appears.",
+   "score": 4,
+   "oshwa": false,
+   "modules": []
+  },
+  {
+   "id": "openloong",
+   "name": "OpenLoong",
+   "org": "Shanghai Humanoid Robot Innovation Center",
+   "year": 2024,
+   "type": "full",
+   "status": "commercial",
+   "height_mm": null,
+   "mass_kg": null,
+   "dof": null,
+   "actuators": "Not stated",
+   "family": "unknown",
+   "structure": "Machined",
+   "compute": "Onboard PC",
+   "price_usd": null,
+   "price_basis": "unknown",
+   "price_note": "Not published.",
+   "license_hw": "Solderpad 2.1",
+   "license_sw": "Not stated",
+   "open": {
+    "cad": "partial",
+    "bom": "no",
+    "docs": "partial",
+    "elec": "no",
+    "fw": "partial",
+    "sim": "yes",
+    "policy": "partial",
+    "lic": "yes",
+    "built": "yes"
+   },
+   "open_notes": {
+    "cad": "STEP exports and PDFs; no native CAD, ECAD or full arm and hand source."
+   },
+   "links": {
+    "repo": "https://github.com/loongOpen/Openloong-hardware"
+   },
+   "sources": [
+    "https://www.humanoidsdata.com/articles/open-source-humanoid-robots"
+   ],
+   "summary": "A licensed but thin hardware tree: STEP and PDFs without BOM.",
+   "verdict": "Licence ahead of reproducibility.",
+   "score": 5.0,
+   "oshwa": true,
+   "modules": []
+  }
+ ],
+ "closed": [
+  {
+   "name": "Unitree G1",
+   "price": "$16,000–25,000",
+   "released": "URDF/MJCF, SDKs, datasets",
+   "why": "No mechanical source, electronics or BOM; proprietary hardware.",
+   "url": "https://github.com/unitreerobotics/unitree_ros/tree/master/robots/g1_description"
+  },
+  {
+   "name": "Booster T1",
+   "price": "on request",
+   "released": "Models and a training-to-deployment stack",
+   "why": "Proprietary hardware.",
+   "url": "https://github.com/BoosterRobotics/booster_gym"
+  },
+  {
+   "name": "Fourier GR-1 / GR-2",
+   "price": "on request",
+   "released": "Models and developer software",
+   "why": "Proprietary hardware.",
+   "url": "https://github.com/FFTAI/Wiki-GRx-Models"
+  },
+  {
+   "name": "Reachy 2",
+   "price": "≈ $70,000",
+   "released": "ROS 2 stack and SDK",
+   "why": "CAD page marked in progress; no reproduction permission.",
+   "url": "https://docs.pollen-robotics.com/hardware-guide/makers/cad-files/"
+  }
+ ],
+ "modules": [
+  {
+   "id": "foh-lower",
+   "robot": "foh",
+   "slot": "lower",
+   "name": "Fully Open Humanoid legs and pelvis",
+   "dof": 12,
+   "mass_kg": 15.13,
+   "price_usd": 2911.4,
+   "price_optional_usd": 0.0,
+   "price_basis": "itemised",
+   "scale_mm": 1114,
+   "family": "robstride-rs",
+   "bom": [
+    {
+     "item": "RobStride RS03 (60 N·m peak)",
+     "part_id": "ACT_RS03",
+     "qty": 10.0,
+     "unit": 225.0,
+     "total": 2250.0,
+     "vendor": "RobStride / Amazon US / AiFitLab",
+     "url": "https://www.amazon.com/RobStride-60N-m-Integrated-Actuator-Module/dp/B0GY8PJ1MF",
+     "note": null,
+     "section": "actuators",
+     "tier": "core"
+    },
+    {
+     "item": "RobStride RS06 (36 N·m peak)",
+     "part_id": "ACT_RS06",
+     "qty": 2.0,
+     "unit": 210.0,
+     "total": 420.0,
+     "vendor": "RobStride / Amazon US / AiFitLab",
+     "url": "https://www.robstride.com/",
+     "note": null,
+     "section": "actuators",
+     "tier": "core"
+    },
+    {
+     "item": "Ball bearing 6809-2RS, 45 x 58 x 7 mm",
+     "part_id": "HW_6809_2RS",
+     "qty": 11.0,
+     "unit": 3.0,
+     "total": 33.0,
+     "vendor": "Amazon",
+     "url": "",
+     "note": null,
+     "section": "hardware",
+     "tier": "core"
+    },
+    {
+     "item": "Ball bearing 6807-2RS, 35 x 47 x 7 mm",
+     "part_id": "HW_6807_2RS",
+     "qty": 2.0,
+     "unit": 4.0,
+     "total": 8.0,
+     "vendor": "Amazon",
+     "url": "",
+     "note": null,
+     "section": "hardware",
+     "tier": "core"
+    },
+    {
+     "item": "Ball bearing 6707-2RS, 35 x 44 x 5 mm",
+     "part_id": "HW_6707_2RS",
+     "qty": 2.0,
+     "unit": 3.0,
+     "total": 6.0,
+     "vendor": "Amazon",
+     "url": "",
+     "note": null,
+     "section": "hardware",
+     "tier": "core"
+    },
+    {
+     "item": "M4 x 35 socket-head screw, output couplers (RS03)",
+     "part_id": "HW_OUT_RS03",
+     "qty": 60.0,
+     "unit": 0.15,
+     "total": 9.0,
+     "vendor": "Amazon / McMaster",
+     "url": "",
+     "note": null,
+     "section": "hardware",
+     "tier": "core"
+    },
+    {
+     "item": "M4 x 30 socket-head screw, mount rings (RS03)",
+     "part_id": "HW_LUG_RS03",
+     "qty": 80.0,
+     "unit": 0.12,
+     "total": 9.6,
+     "vendor": "Amazon / McMaster",
+     "url": "",
+     "note": null,
+     "section": "hardware",
+     "tier": "core"
+    },
+    {
+     "item": "M4 x 35 socket-head screw, output couplers (RS06)",
+     "part_id": "HW_OUT_RS06",
+     "qty": 12.0,
+     "unit": 0.15,
+     "total": 1.8,
+     "vendor": "Amazon / McMaster",
+     "url": "",
+     "note": null,
+     "section": "hardware",
+     "tier": "core"
+    },
+    {
+     "item": "M3 x 30 socket-head screw, mount rings (RS06)",
+     "part_id": "HW_LUG_RS06",
+     "qty": 16.0,
+     "unit": 0.12,
+     "total": 1.92,
+     "vendor": "Amazon / McMaster",
+     "url": "",
+     "note": null,
+     "section": "hardware",
+     "tier": "core"
+    },
+    {
+     "item": "Dowel pin Ø4 x 10 mm, steel",
+     "part_id": "HW_PIN_4X10",
+     "qty": 36.0,
+     "unit": 0.3,
+     "total": 10.8,
+     "vendor": "Amazon / McMaster",
+     "url": "",
+     "note": null,
+     "section": "hardware",
+     "tier": "core"
+    },
+    {
+     "item": "PETG-CF filament, 1 kg spool",
+     "part_id": "MAT_PETG_CF",
+     "qty": 4.92,
+     "unit": 30.0,
+     "total": 147.65,
+     "vendor": "Bambu / Polymaker / Overture",
+     "url": "",
+     "note": "3.50 kg of printed parts",
+     "section": "filament",
+     "tier": "core"
+    },
+    {
+     "item": "TPU 95A filament, 1 kg spool",
+     "part_id": "MAT_TPU",
+     "qty": 0.49,
+     "unit": 28.0,
+     "total": 13.63,
+     "vendor": "Any",
+     "url": "",
+     "note": "0.29 kg of printed parts",
+     "section": "filament",
+     "tier": "core"
+    }
+   ],
+   "notes": "Computed from the v0.2 BOM: actuators and kit hardware by joint, printed filament by mass, electronics and harness in the torso. Unbuilt design.",
+   "top": {
+    "joint": "waist",
+    "mount": "rs03-output",
+    "desc": "Waist RS03 in the pelvis; its output boss (6 × M4 on Ø30.36, 3 dowels) drives the torso plate"
+   },
+   "payload_kg": 12.14
+  },
+  {
+   "id": "foh-torso",
+   "robot": "foh",
+   "slot": "torso",
+   "name": "Fully Open Humanoid torso",
+   "dof": 1,
+   "mass_kg": 6.22,
+   "price_usd": 1125.36,
+   "price_optional_usd": 0.0,
+   "price_basis": "itemised",
+   "scale_mm": 1114,
+   "family": "robstride-rs",
+   "bom": [
+    {
+     "item": "RobStride RS03 (60 N·m peak)",
+     "part_id": "ACT_RS03",
+     "qty": 1.0,
+     "unit": 225.0,
+     "total": 225.0,
+     "vendor": "RobStride / Amazon US / AiFitLab",
+     "url": "https://www.amazon.com/RobStride-60N-m-Integrated-Actuator-Module/dp/B0GY8PJ1MF",
+     "note": null,
+     "section": "actuators",
+     "tier": "core"
+    },
+    {
+     "item": "Mini PC, Intel N100, 16 GB RAM, 500 GB SSD",
+     "part_id": "EL_PC_N100",
+     "qty": 1.0,
+     "unit": 160.0,
+     "total": 160.0,
+     "vendor": "Amazon",
+     "url": "",
+     "note": null,
+     "section": "electronics",
+     "tier": "core"
+    },
+    {
+     "item": "USB 9-axis AHRS IMU (SYD Dynamics TM171 or equivalent)",
+     "part_id": "EL_IMU",
+     "qty": 1.0,
+     "unit": 57.0,
+     "total": 57.0,
+     "vendor": "RobotShop",
+     "url": "https://www.robotshop.com/",
+     "note": null,
+     "section": "electronics",
+     "tier": "core"
+    },
+    {
+     "item": "CANable PRO V2.0 USB-CAN adapter",
+     "part_id": "EL_CANABLE",
+     "qty": 4.0,
+     "unit": 20.8,
+     "total": 83.2,
+     "vendor": "Amazon",
+     "url": "https://www.amazon.com/",
+     "note": null,
+     "section": "electronics",
+     "tier": "core"
+    },
+    {
+     "item": "USB 3 hub, 4 port, powered",
+     "part_id": "EL_USB_HUB",
+     "qty": 1.0,
+     "unit": 13.0,
+     "total": 13.0,
+     "vendor": "Amazon",
+     "url": "",
+     "note": null,
+     "section": "electronics",
+     "tier": "core"
+    },
+    {
+     "item": "LiPo 6S 8000 mAh 100C, EC5",
+     "part_id": "EL_BATTERY_6S",
+     "qty": 2.0,
+     "unit": 90.0,
+     "total": 180.0,
+     "vendor": "Amazon",
+     "url": "",
+     "note": null,
+     "section": "electronics",
+     "tier": "core"
+    },
+    {
+     "item": "48 V to 12 V buck converter, 10 A, encased",
+     "part_id": "EL_BUCK_12V",
+     "qty": 1.0,
+     "unit": 19.0,
+     "total": 19.0,
+     "vendor": "Amazon",
+     "url": "",
+     "note": null,
+     "section": "electronics",
+     "tier": "core"
+    },
+    {
+     "item": "Power distribution block with 60 A fuse",
+     "part_id": "EL_DIST_BLOCK",
+     "qty": 1.0,
+     "unit": 18.0,
+     "total": 18.0,
+     "vendor": "Amazon",
+     "url": "",
+     "note": null,
+     "section": "electronics",
+     "tier": "core"
+    },
+    {
+     "item": "DC circuit breaker, 100 A, panel mount",
+     "part_id": "EL_BREAKER",
+     "qty": 1.0,
+     "unit": 20.0,
+     "total": 20.0,
+     "vendor": "Amazon",
+     "url": "",
+     "note": null,
+     "section": "electronics",
+     "tier": "core"
+    },
+    {
+     "item": "DC contactor, 100 A, 12 V coil",
+     "part_id": "EL_CONTACTOR",
+     "qty": 1.0,
+     "unit": 25.0,
+     "total": 25.0,
+     "vendor": "Amazon",
+     "url": "",
+     "note": null,
+     "section": "electronics",
+     "tier": "core"
+    },
+    {
+     "item": "E-stop, 22 mm mushroom, NC contact",
+     "part_id": "EL_ESTOP",
+     "qty": 1.0,
+     "unit": 12.0,
+     "total": 12.0,
+     "vendor": "Amazon",
+     "url": "",
+     "note": null,
+     "section": "electronics",
+     "tier": "core"
+    },
+    {
+     "item": "TVS diode, 53 V working / 85 V clamping (1.5KE62CA)",
+     "part_id": "EL_TVS",
+     "qty": 6.0,
+     "unit": 1.2,
+     "total": 7.2,
+     "vendor": "DigiKey",
+     "url": "",
+     "note": null,
+     "section": "electronics",
+     "tier": "core"
+    },
+    {
+     "item": "LiPo voltage alarm, 1-8S",
+     "part_id": "EL_VOLT_ALARM",
+     "qty": 2.0,
+     "unit": 7.0,
+     "total": 14.0,
+     "vendor": "Amazon",
+     "url": "",
+     "note": null,
+     "section": "electronics",
+     "tier": "core"
+    },
+    {
+     "item": "Blade fuse holder + 10 A fuse",
+     "part_id": "EL_FUSE_10A",
+     "qty": 1.0,
+     "unit": 4.0,
+     "total": 4.0,
+     "vendor": "Amazon",
+     "url": "",
+     "note": null,
+     "section": "electronics",
+     "tier": "core"
+    },
+    {
+     "item": "Amass XT30(2+2)-F cable-side connector",
+     "part_id": "CB_XT30_2P2_F",
+     "qty": 60.0,
+     "unit": 0.75,
+     "total": 45.0,
+     "vendor": "Amazon / AliExpress",
+     "url": "",
+     "note": "harness and power for the whole robot",
+     "section": "harness",
+     "tier": "core"
+    },
+    {
+     "item": "EC5 connector pair",
+     "part_id": "CB_EC5",
+     "qty": 4.0,
+     "unit": 2.0,
+     "total": 8.0,
+     "vendor": "Amazon",
+     "url": "",
+     "note": "harness and power for the whole robot",
+     "section": "harness",
+     "tier": "core"
+    },
+    {
+     "item": "18 AWG silicone wire, red + black, 10 m each",
+     "part_id": "CB_WIRE_18",
+     "qty": 1.0,
+     "unit": 20.0,
+     "total": 20.0,
+     "vendor": "Amazon",
+     "url": "",
+     "note": "harness and power for the whole robot",
+     "section": "harness",
+     "tier": "core"
+    },
+    {
+     "item": "12 AWG silicone wire, red + black, 3 m each",
+     "part_id": "CB_WIRE_12",
+     "qty": 1.0,
+     "unit": 14.0,
+     "total": 14.0,
+     "vendor": "Amazon",
+     "url": "",
+     "note": "harness and power for the whole robot",
+     "section": "harness",
+     "tier": "core"
+    },
+    {
+     "item": "Ethernet cable, 10 m (twisted pairs for CAN)",
+     "part_id": "CB_CAT5",
+     "qty": 1.0,
+     "unit": 8.0,
+     "total": 8.0,
+     "vendor": "Amazon",
+     "url": "",
+     "note": "harness and power for the whole robot",
+     "section": "harness",
+     "tier": "core"
+    },
+    {
+     "item": "120 Ω resistors, 1/4 W",
+     "part_id": "CB_TERM",
+     "qty": 10.0,
+     "unit": 0.2,
+     "total": 2.0,
+     "vendor": "Amazon",
+     "url": "",
+     "note": "harness and power for the whole robot",
+     "section": "harness",
+     "tier": "core"
+    },
+    {
+     "item": "Heat-shrink assortment",
+     "part_id": "CB_SHRINK",
+     "qty": 1.0,
+     "unit": 8.0,
+     "total": 8.0,
+     "vendor": "Amazon",
+     "url": "",
+     "note": "harness and power for the whole robot",
+     "section": "harness",
+     "tier": "core"
+    },
+    {
+     "item": "Braided loom, 6 mm and 10 mm, 5 m each",
+     "part_id": "CB_LOOM",
+     "qty": 1.0,
+     "unit": 10.0,
+     "total": 10.0,
+     "vendor": "Amazon",
+     "url": "",
+     "note": "harness and power for the whole robot",
+     "section": "harness",
+     "tier": "core"
+    },
+    {
+     "item": "USB-A to USB-C cables, 0.5 m",
+     "part_id": "CB_USB",
+     "qty": 3.0,
+     "unit": 3.0,
+     "total": 9.0,
+     "vendor": "Amazon",
+     "url": "",
+     "note": "harness and power for the whole robot",
+     "section": "harness",
+     "tier": "core"
+    },
+    {
+     "item": "Ball bearing 6807-2RS, 35 x 47 x 7 mm",
+     "part_id": "HW_6807_2RS",
+     "qty": 2.0,
+     "unit": 4.0,
+     "total": 8.0,
+     "vendor": "Amazon",
+     "url": "",
+     "note": null,
+     "section": "hardware",
+     "tier": "core"
+    },
+    {
+     "item": "Aluminium 2020 extrusion, 400 mm, ends tapped M5",
+     "part_id": "HW_2020_400",
+     "qty": 4.0,
+     "unit": 4.5,
+     "total": 18.0,
+     "vendor": "Amazon / Misumi",
+     "url": "",
+     "note": "shared consumables and frame",
+     "section": "hardware",
+     "tier": "core"
+    },
+    {
+     "item": "2020 T-nuts, M4, 50 pack",
+     "part_id": "HW_TNUT_M4",
+     "qty": 1.0,
+     "unit": 8.0,
+     "total": 8.0,
+     "vendor": "Amazon",
+     "url": "",
+     "note": "shared consumables and frame",
+     "section": "hardware",
+     "tier": "core"
+    },
+    {
+     "item": "2020 inner corner brackets",
+     "part_id": "HW_CORNER",
+     "qty": 8.0,
+     "unit": 0.7,
+     "total": 5.6,
+     "vendor": "Amazon",
+     "url": "",
+     "note": "shared consumables and frame",
+     "section": "hardware",
+     "tier": "core"
+    },
+    {
+     "item": "M4 x 35 socket-head screw, output couplers (RS03)",
+     "part_id": "HW_OUT_RS03",
+     "qty": 6.0,
+     "unit": 0.15,
+     "total": 0.9,
+     "vendor": "Amazon / McMaster",
+     "url": "",
+     "note": null,
+     "section": "hardware",
+     "tier": "core"
+    },
+    {
+     "item": "M4 x 30 socket-head screw, mount rings (RS03)",
+     "part_id": "HW_LUG_RS03",
+     "qty": 8.0,
+     "unit": 0.12,
+     "total": 0.96,
+     "vendor": "Amazon / McMaster",
+     "url": "",
+     "note": null,
+     "section": "hardware",
+     "tier": "core"
+    },
+    {
+     "item": "Dowel pin Ø4 x 10 mm, steel",
+     "part_id": "HW_PIN_4X10",
+     "qty": 3.0,
+     "unit": 0.3,
+     "total": 0.9,
+     "vendor": "Amazon / McMaster",
+     "url": "",
+     "note": null,
+     "section": "hardware",
+     "tier": "core"
+    },
+    {
+     "item": "M3 / M4 / M5 socket-head screw assortment, stainless",
+     "part_id": "HW_SCREWS",
+     "qty": 1.0,
+     "unit": 25.0,
+     "total": 25.0,
+     "vendor": "Amazon",
+     "url": "",
+     "note": "shared consumables and frame",
+     "section": "hardware",
+     "tier": "core"
+    },
+    {
+     "item": "Heat-set inserts M3 x 5, 200 pack",
+     "part_id": "HW_INSERT_M3",
+     "qty": 1.0,
+     "unit": 15.0,
+     "total": 15.0,
+     "vendor": "Amazon",
+     "url": "",
+     "note": "shared consumables and frame",
+     "section": "hardware",
+     "tier": "core"
+    },
+    {
+     "item": "Heat-set inserts M4 x 6, 100 pack",
+     "part_id": "HW_INSERT_M4",
+     "qty": 1.0,
+     "unit": 12.0,
+     "total": 12.0,
+     "vendor": "Amazon",
+     "url": "",
+     "note": "shared consumables and frame",
+     "section": "hardware",
+     "tier": "core"
+    },
+    {
+     "item": "Heat-set inserts M5 x 8, 50 pack",
+     "part_id": "HW_INSERT_M5",
+     "qty": 1.0,
+     "unit": 10.0,
+     "total": 10.0,
+     "vendor": "Amazon",
+     "url": "",
+     "note": "shared consumables and frame",
+     "section": "hardware",
+     "tier": "core"
+    },
+    {
+     "item": "Nyloc nuts and washers M3 / M4 / M5",
+     "part_id": "HW_NUTS",
+     "qty": 1.0,
+     "unit": 8.0,
+     "total": 8.0,
+     "vendor": "Amazon",
+     "url": "",
+     "note": "shared consumables and frame",
+     "section": "hardware",
+     "tier": "core"
+    },
+    {
+     "item": "Threadlocker, medium strength",
+     "part_id": "HW_LOCTITE",
+     "qty": 1.0,
+     "unit": 8.0,
+     "total": 8.0,
+     "vendor": "Amazon",
+     "url": "",
+     "note": "shared consumables and frame",
+     "section": "hardware",
+     "tier": "core"
+    },
+    {
+     "item": "PETG-CF filament, 1 kg spool",
+     "part_id": "MAT_PETG_CF",
+     "qty": 0.97,
+     "unit": 30.0,
+     "total": 29.11,
+     "vendor": "Bambu / Polymaker / Overture",
+     "url": "",
+     "note": "0.69 kg of printed parts",
+     "section": "filament",
+     "tier": "core"
+    },
+    {
+     "item": "PLA filament, 1 kg spool",
+     "part_id": "MAT_PLA",
+     "qty": 0.72,
+     "unit": 20.0,
+     "total": 14.49,
+     "vendor": "Any",
+     "url": "",
+     "note": "0.47 kg of printed parts",
+     "section": "filament",
+     "tier": "core"
+    }
+   ],
+   "notes": "Computed from the v0.2 BOM: actuators and kit hardware by joint, printed filament by mass, electronics and harness in the torso. Unbuilt design.",
+   "bottom": {
+    "joint": "waist",
+    "mount": "rs03-output",
+    "desc": "Torso bottom plate bolts through a printed coupler to the waist RS03 output"
+   },
+   "side": {
+    "joint": "shoulder pitch",
+    "mount": "rs06-output",
+    "desc": "Shoulder-pitch RS06 in the torso; the arm's shoulder-roll bracket bolts to its output"
+   },
+   "top": {
+    "joint": "head",
+    "mount": "2020-top",
+    "desc": "Head bracket bolts to the tops of the four 2020 extrusions"
+   },
+   "payload_kg": null
+  },
+  {
+   "id": "foh-arms",
+   "robot": "foh",
+   "slot": "arms",
+   "name": "Fully Open Humanoid arms",
+   "dof": 10,
+   "mass_kg": 5.18,
+   "price_usd": 1770.09,
+   "price_optional_usd": 0.0,
+   "price_basis": "itemised",
+   "scale_mm": 1114,
+   "family": "robstride-rs",
+   "bom": [
+    {
+     "item": "RobStride RS06 (36 N·m peak)",
+     "part_id": "ACT_RS06",
+     "qty": 4.0,
+     "unit": 210.0,
+     "total": 840.0,
+     "vendor": "RobStride / Amazon US / AiFitLab",
+     "url": "https://www.robstride.com/",
+     "note": null,
+     "section": "actuators",
+     "tier": "core"
+    },
+    {
+     "item": "RobStride RS02 (17 N·m peak)",
+     "part_id": "ACT_RS02",
+     "qty": 4.0,
+     "unit": 145.0,
+     "total": 580.0,
+     "vendor": "RobStride / Amazon US / AiFitLab",
+     "url": "https://www.amazon.com/RobStride-Integrated-Actuator-Module-Encoders/dp/B0GS5945VP",
+     "note": null,
+     "section": "actuators",
+     "tier": "core"
+    },
+    {
+     "item": "RobStride RS05 (5.5 N·m peak)",
+     "part_id": "ACT_RS05",
+     "qty": 2.0,
+     "unit": 110.0,
+     "total": 220.0,
+     "vendor": "RobStride / Amazon US / AiFitLab",
+     "url": "https://www.robstride.com/",
+     "note": null,
+     "section": "actuators",
+     "tier": "core"
+    },
+    {
+     "item": "Ball bearing 6807-2RS, 35 x 47 x 7 mm",
+     "part_id": "HW_6807_2RS",
+     "qty": 2.0,
+     "unit": 4.0,
+     "total": 8.0,
+     "vendor": "Amazon",
+     "url": "",
+     "note": null,
+     "section": "hardware",
+     "tier": "core"
+    },
+    {
+     "item": "Ball bearing 6707-2RS, 35 x 44 x 5 mm",
+     "part_id": "HW_6707_2RS",
+     "qty": 6.0,
+     "unit": 3.0,
+     "total": 18.0,
+     "vendor": "Amazon",
+     "url": "",
+     "note": null,
+     "section": "hardware",
+     "tier": "core"
+    },
+    {
+     "item": "M4 x 35 socket-head screw, output couplers (RS06)",
+     "part_id": "HW_OUT_RS06",
+     "qty": 24.0,
+     "unit": 0.15,
+     "total": 3.6,
+     "vendor": "Amazon / McMaster",
+     "url": "",
+     "note": null,
+     "section": "hardware",
+     "tier": "core"
+    },
+    {
+     "item": "M3 x 30 socket-head screw, mount rings (RS06)",
+     "part_id": "HW_LUG_RS06",
+     "qty": 32.0,
+     "unit": 0.12,
+     "total": 3.84,
+     "vendor": "Amazon / McMaster",
+     "url": "",
+     "note": null,
+     "section": "hardware",
+     "tier": "core"
+    },
+    {
+     "item": "M4 x 30 socket-head screw, output couplers (RS02)",
+     "part_id": "HW_OUT_RS02",
+     "qty": 24.0,
+     "unit": 0.15,
+     "total": 3.6,
+     "vendor": "Amazon / McMaster",
+     "url": "",
+     "note": null,
+     "section": "hardware",
+     "tier": "core"
+    },
+    {
+     "item": "M3 x 20 socket-head screw, mount rings (RS02)",
+     "part_id": "HW_LUG_RS02",
+     "qty": 36.0,
+     "unit": 0.12,
+     "total": 4.32,
+     "vendor": "Amazon / McMaster",
+     "url": "",
+     "note": null,
+     "section": "hardware",
+     "tier": "core"
+    },
+    {
+     "item": "M4 x 10 socket-head screw, output couplers (RS05)",
+     "part_id": "HW_OUT_RS05",
+     "qty": 12.0,
+     "unit": 0.15,
+     "total": 1.8,
+     "vendor": "Amazon / McMaster",
+     "url": "",
+     "note": null,
+     "section": "hardware",
+     "tier": "core"
+    },
+    {
+     "item": "M3 x 10 socket-head screw, wrist mount (RS05)",
+     "part_id": "HW_REAR_RS05",
+     "qty": 8.0,
+     "unit": 0.12,
+     "total": 0.96,
+     "vendor": "Amazon / McMaster",
+     "url": "",
+     "note": null,
+     "section": "hardware",
+     "tier": "core"
+    },
+    {
+     "item": "Dowel pin Ø4 x 10 mm, steel",
+     "part_id": "HW_PIN_4X10",
+     "qty": 30.0,
+     "unit": 0.3,
+     "total": 9.0,
+     "vendor": "Amazon / McMaster",
+     "url": "",
+     "note": null,
+     "section": "hardware",
+     "tier": "core"
+    },
+    {
+     "item": "PETG-CF filament, 1 kg spool",
+     "part_id": "MAT_PETG_CF",
+     "qty": 2.57,
+     "unit": 30.0,
+     "total": 76.97,
+     "vendor": "Bambu / Polymaker / Overture",
+     "url": "",
+     "note": "1.82 kg of printed parts",
+     "section": "filament",
+     "tier": "core"
+    }
+   ],
+   "notes": "Computed from the v0.2 BOM: actuators and kit hardware by joint, printed filament by mass, electronics and harness in the torso. Unbuilt design.",
+   "top": {
+    "joint": "shoulder pitch",
+    "mount": "rs06-output",
+    "desc": "Shoulder-roll bracket on the torso's RS06 output"
+   },
+   "bottom": {
+    "joint": "wrist roll",
+    "mount": "rs05-output",
+    "desc": "Wrist-roll RS05 output boss (6 × M4 on Ø24)"
+   },
+   "payload_kg": null
+  },
+  {
+   "id": "foh-hands",
+   "robot": "foh",
+   "slot": "hands",
+   "name": "Fully Open Humanoid grippers (optional)",
+   "dof": 0,
+   "mass_kg": 0.33,
+   "price_usd": 6.56,
+   "price_optional_usd": 45.0,
+   "price_basis": "itemised",
+   "scale_mm": 1114,
+   "family": "none",
+   "bom": [
+    {
+     "item": "Feetech STS3215 bus servo, 12 V",
+     "part_id": "EL_SERVO_STS3215",
+     "qty": 2.0,
+     "unit": 16.0,
+     "total": 32.0,
+     "vendor": "Feetech / Amazon",
+     "url": "",
+     "note": "optional",
+     "section": "grippers",
+     "tier": "optional"
+    },
+    {
+     "item": "Waveshare serial bus servo driver board",
+     "part_id": "EL_SERVO_DRIVER",
+     "qty": 1.0,
+     "unit": 5.0,
+     "total": 5.0,
+     "vendor": "Waveshare",
+     "url": "",
+     "note": "optional",
+     "section": "grippers",
+     "tier": "optional"
+    },
+    {
+     "item": "Filament for both grippers (PLA + TPU)",
+     "part_id": "MAT_GRIPPER",
+     "qty": 1.0,
+     "unit": 8.0,
+     "total": 8.0,
+     "vendor": "Any",
+     "url": "",
+     "note": "optional",
+     "section": "grippers",
+     "tier": "optional"
+    },
+    {
+     "item": "PLA filament, 1 kg spool",
+     "part_id": "MAT_PLA",
+     "qty": 0.31,
+     "unit": 20.0,
+     "total": 6.19,
+     "vendor": "Any",
+     "url": "",
+     "note": "0.20 kg of printed parts",
+     "section": "filament",
+     "tier": "core"
+    },
+    {
+     "item": "TPU 95A filament, 1 kg spool",
+     "part_id": "MAT_TPU",
+     "qty": 0.01,
+     "unit": 28.0,
+     "total": 0.37,
+     "vendor": "Any",
+     "url": "",
+     "note": "0.01 kg of printed parts",
+     "section": "filament",
+     "tier": "core"
+    }
+   ],
+   "notes": "Computed from the v0.2 BOM: actuators and kit hardware by joint, printed filament by mass, electronics and harness in the torso. Unbuilt design.",
+   "top": {
+    "joint": "wrist roll",
+    "mount": "rs05-output",
+    "desc": "Gripper adapter on the RS05 output boss"
+   },
+   "payload_kg": null
+  },
+  {
+   "id": "foh-head",
+   "robot": "foh",
+   "slot": "head",
+   "name": "Fully Open Humanoid head (camera optional)",
+   "dof": 0,
+   "mass_kg": 0.4,
+   "price_usd": 10.59,
+   "price_optional_usd": 310.0,
+   "price_basis": "itemised",
+   "scale_mm": 1114,
+   "family": "none",
+   "bom": [
+    {
+     "item": "Intel RealSense D435i",
+     "part_id": "EL_CAMERA_D435I",
+     "qty": 1.0,
+     "unit": 300.0,
+     "total": 300.0,
+     "vendor": "Intel / RealSense store",
+     "url": "https://www.intelrealsense.com/",
+     "note": "optional",
+     "section": "perception",
+     "tier": "optional"
+    },
+    {
+     "item": "USB 3 cable, USB-C, 1 m",
+     "part_id": "CB_USB3",
+     "qty": 1.0,
+     "unit": 10.0,
+     "total": 10.0,
+     "vendor": "Amazon",
+     "url": "",
+     "note": "optional",
+     "section": "perception",
+     "tier": "optional"
+    },
+    {
+     "item": "PETG-CF filament, 1 kg spool",
+     "part_id": "MAT_PETG_CF",
+     "qty": 0.04,
+     "unit": 30.0,
+     "total": 1.27,
+     "vendor": "Bambu / Polymaker / Overture",
+     "url": "",
+     "note": "0.03 kg of printed parts",
+     "section": "filament",
+     "tier": "core"
+    },
+    {
+     "item": "PLA filament, 1 kg spool",
+     "part_id": "MAT_PLA",
+     "qty": 0.47,
+     "unit": 20.0,
+     "total": 9.32,
+     "vendor": "Any",
+     "url": "",
+     "note": "0.30 kg of printed parts",
+     "section": "filament",
+     "tier": "core"
+    }
+   ],
+   "notes": "Computed from the v0.2 BOM: actuators and kit hardware by joint, printed filament by mass, electronics and harness in the torso. Unbuilt design.",
+   "bottom": {
+    "joint": "head",
+    "mount": "2020-top",
+    "desc": "Bracket on the four extrusion tops"
+   },
+   "payload_kg": null
+  },
+  {
+   "id": "duke2-lower",
+   "robot": "duke2",
+   "slot": "lower",
+   "name": "Duke Humanoid V2 legs and hip centre",
+   "dof": 12,
+   "mass_kg": 17.5,
+   "price_usd": 5387.59,
+   "price_basis": "itemised",
+   "scale_mm": 1256,
+   "family": "robstride-rs",
+   "bom": [
+    {
+     "item": "RobStride 03 quasi-direct-drive actuator",
+     "part_id": "ACT_RS03",
+     "qty": 8.0,
+     "unit": 225.0,
+     "total": 1800.0,
+     "vendor": "Amazon",
+     "url": "https://www.amazon.com/RobStride-60N-m-Integrated-Actuator-Module/dp/B0GY8PJ1MF",
+     "note": null,
+     "section": "actuators",
+     "tier": "core"
+    },
+    {
+     "item": "RobStride 04 quasi-direct-drive actuator",
+     "part_id": "ACT_RS04",
+     "qty": 2.0,
+     "unit": 255.0,
+     "total": 510.0,
+     "vendor": "Amazon",
+     "url": "https://www.amazon.com/RobStride-120N-m-Integrated-Actuator-Module/dp/B0GY8T32L9",
+     "note": null,
+     "section": "actuators",
+     "tier": "core"
+    },
+    {
+     "item": "RobStride 06 quasi-direct-drive actuator",
+     "part_id": "ACT_RS06",
+     "qty": 2.0,
+     "unit": 210.0,
+     "total": 420.0,
+     "vendor": "AiFitLab",
+     "url": "https://aifitlab.com/products/robstride-06-motor",
+     "note": null,
+     "section": "actuators",
+     "tier": "core"
+    },
+    {
+     "item": "Hip 1 Motor Bracket",
+     "part_id": "CNC_leg01_hip_center_back",
+     "qty": 2.0,
+     "unit": 81.59,
+     "total": 163.18,
+     "vendor": "CNC shop",
+     "url": null,
+     "note": null,
+     "section": "cnc-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Robstride 03 Output Shaft",
+     "part_id": "CNC_leg02_RS03_shaft_coupler",
+     "qty": 7.0,
+     "unit": 46.785,
+     "total": 327.5,
+     "vendor": "CNC shop",
+     "url": null,
+     "note": null,
+     "section": "cnc-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Robstride 03 Bearing Retainer",
+     "part_id": "CNC_leg03_RS03_shaft_bearing_retainer",
+     "qty": 5.0,
+     "unit": 49.34,
+     "total": 246.7,
+     "vendor": "CNC shop",
+     "url": null,
+     "note": null,
+     "section": "cnc-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Hip 2 Motor Bracket",
+     "part_id": "CNC_leg04_hip_roll_front_bearing_retainer",
+     "qty": 2.0,
+     "unit": 48.59,
+     "total": 97.18,
+     "vendor": "CNC shop",
+     "url": null,
+     "note": null,
+     "section": "cnc-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Hip 2 Bearing Retainer",
+     "part_id": "CNC_leg05_hip_roll_back_bearing_retainer",
+     "qty": 2.0,
+     "unit": 68.02,
+     "total": 136.04,
+     "vendor": "CNC shop",
+     "url": null,
+     "note": null,
+     "section": "cnc-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Hip 3 Output Shaft",
+     "part_id": "CNC_leg06_hip_roll_output_shaft",
+     "qty": 2.0,
+     "unit": 59.96,
+     "total": 119.92,
+     "vendor": "CNC shop",
+     "url": null,
+     "note": null,
+     "section": "cnc-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Hip 3 Supporting Shaft",
+     "part_id": "CNC_leg07_hip_roll_support_shaft",
+     "qty": 2.0,
+     "unit": 57.43,
+     "total": 114.86,
+     "vendor": "CNC shop",
+     "url": null,
+     "note": null,
+     "section": "cnc-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Knee Motor Bracket",
+     "part_id": "CNC_leg08_knee_front_bearing_retainer",
+     "qty": 2.0,
+     "unit": 54.81,
+     "total": 109.62,
+     "vendor": "CNC shop",
+     "url": null,
+     "note": null,
+     "section": "cnc-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Knee Bearing Retainer",
+     "part_id": "CNC_leg09_knee_motor_back_cover",
+     "qty": 2.0,
+     "unit": 81.35,
+     "total": 162.7,
+     "vendor": "CNC shop",
+     "url": null,
+     "note": null,
+     "section": "cnc-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Shank Shaft",
+     "part_id": "CNC_leg10_knee_output_shank",
+     "qty": 2.0,
+     "unit": 113.29,
+     "total": 226.58,
+     "vendor": "CNC shop",
+     "url": null,
+     "note": null,
+     "section": "cnc-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Shank Support",
+     "part_id": "CNC_leg11_knee_support_shank",
+     "qty": 2.0,
+     "unit": 50.05,
+     "total": 100.1,
+     "vendor": "CNC shop",
+     "url": null,
+     "note": null,
+     "section": "cnc-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Shank Joint Cap",
+     "part_id": "CNC_leg12_lower_leg_bearing",
+     "qty": 4.0,
+     "unit": 16.5,
+     "total": 66.0,
+     "vendor": "CNC shop",
+     "url": null,
+     "note": null,
+     "section": "cnc-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Ankle Motor Bracket",
+     "part_id": "CNC_leg13_ankle_pitch_front",
+     "qty": 2.0,
+     "unit": 78.82,
+     "total": 157.64,
+     "vendor": "CNC shop",
+     "url": null,
+     "note": null,
+     "section": "cnc-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Ankle Bearing Retainer",
+     "part_id": "CNC_leg14_ankle_pitch_back",
+     "qty": 2.0,
+     "unit": 95.85,
+     "total": 191.7,
+     "vendor": "CNC shop",
+     "url": null,
+     "note": null,
+     "section": "cnc-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Robstride 06 Bearing Retainer",
+     "part_id": "CNC_leg15_RS06_shaft_bearing_retainer",
+     "qty": 2.0,
+     "unit": 37.81,
+     "total": 75.62,
+     "vendor": "CNC shop",
+     "url": null,
+     "note": null,
+     "section": "cnc-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Foot Shaft",
+     "part_id": "CNC_leg16_ankle_roll_output_shaft",
+     "qty": 2.0,
+     "unit": 39.4,
+     "total": 78.8,
+     "vendor": "CNC shop",
+     "url": null,
+     "note": null,
+     "section": "cnc-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Foot Support",
+     "part_id": "CNC_leg17_ankle_roll_support_shaft",
+     "qty": 2.0,
+     "unit": 34.6,
+     "total": 69.2,
+     "vendor": "CNC shop",
+     "url": null,
+     "note": null,
+     "section": "cnc-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Foot",
+     "part_id": "CNC_leg18_foot_plate",
+     "qty": 2.0,
+     "unit": 53.76,
+     "total": 107.52,
+     "vendor": "CNC shop",
+     "url": null,
+     "note": null,
+     "section": "cnc-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Hip-yaw cover A (Fusion `Component194`, material `hip3_protection`)",
+     "part_id": "3DP_legP01_hip3_cover_a",
+     "qty": 3.0,
+     "unit": 1.08797906,
+     "total": 3.26,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Hip-yaw cover B (Fusion `Component195`, material `hip3_protection`)",
+     "part_id": "3DP_legP02_hip3_cover_b",
+     "qty": 3.0,
+     "unit": 1.08797906,
+     "total": 3.26,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Hip-yaw cover C (Fusion `Component198`, material `hip3_protection`)",
+     "part_id": "3DP_legP03_hip3_cover_c",
+     "qty": 1.0,
+     "unit": 1.08797906,
+     "total": 1.09,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Hip-yaw cover D (Fusion `Component199`, material `hip3_protection`)",
+     "part_id": "3DP_legP04_hip3_cover_d",
+     "qty": 1.0,
+     "unit": 1.08797906,
+     "total": 1.09,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Hip-roll cover A (Fusion `Component196`, material `hip2_protection`)",
+     "part_id": "3DP_legP05_hip2_cover_a",
+     "qty": 2.0,
+     "unit": 0.90841038,
+     "total": 1.82,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Hip-roll cover B (Fusion `Component197`, material `hip2_protection`)",
+     "part_id": "3DP_legP06_hip2_cover_b",
+     "qty": 2.0,
+     "unit": 0.90841038,
+     "total": 1.82,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Knee cover A (Fusion `Component44`, material `knee protection`)",
+     "part_id": "3DP_legP07_knee_cover_a",
+     "qty": 2.0,
+     "unit": 0.91530341,
+     "total": 1.83,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Knee cover B (Fusion `Component45`, material `knee protection`)",
+     "part_id": "3DP_legP08_knee_cover_b",
+     "qty": 2.0,
+     "unit": 0.91530341,
+     "total": 1.83,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Shank cover A (Fusion `Component42` in the lower body, material `shank protection`)",
+     "part_id": "3DP_legP09_shank_cover_a",
+     "qty": 2.0,
+     "unit": 1.56454286,
+     "total": 3.13,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Shank cover B (Fusion `Component43` in the lower body, material `shank protection`)",
+     "part_id": "3DP_legP10_shank_cover_b",
+     "qty": 2.0,
+     "unit": 1.56454286,
+     "total": 3.13,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Ankle cover A on the ankle-roll motor (Fusion `Component46`, material `ANKLE_1_PROTECTION`)",
+     "part_id": "3DP_legP11_ankle_cover_a",
+     "qty": 2.0,
+     "unit": 0.58401809,
+     "total": 1.17,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Ankle cover B on the ankle-roll motor (Fusion `Component47`, material `ANKLE_1_PROTECTION`)",
+     "part_id": "3DP_legP12_ankle_cover_b",
+     "qty": 2.0,
+     "unit": 0.58401809,
+     "total": 1.17,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Foot sole (Fusion `symmetric_sole`, material `foot_protection`)",
+     "part_id": "3DP_leg19_sole",
+     "qty": 2.0,
+     "unit": 4.14155636,
+     "total": 8.28,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Foot front cap (Fusion `foot_front`, material `foot_protection`)",
+     "part_id": "3DP_leg20_foot_front",
+     "qty": 2.0,
+     "unit": 0.48622104,
+     "total": 0.97,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Ball bearing, 45 x 58 x 7 mm",
+     "part_id": "FAS_BEARING_45X58X7",
+     "qty": 5.0,
+     "unit": 3.0,
+     "total": 15.0,
+     "vendor": "Amazon",
+     "url": "https://www.amazon.com/XIKE-6809-2RS-Bearings-45x58x7mm-Pre-Lubricated/dp/B09D2J9P82",
+     "note": "apportioned by joint count",
+     "section": "fasteners",
+     "tier": "core"
+    },
+    {
+     "item": "Ball bearing, 50 x 65 x 7 mm",
+     "part_id": "FAS_BEARING_50X65X7",
+     "qty": 1.0,
+     "unit": 4.0,
+     "total": 4.0,
+     "vendor": "Amazon",
+     "url": "https://www.amazon.com/uxcell-6810-2RS-Groove-Bearings-Double/dp/B082PYMQFL",
+     "note": "apportioned by joint count",
+     "section": "fasteners",
+     "tier": "core"
+    },
+    {
+     "item": "Ball bearing, 35 x 44 x 5 mm",
+     "part_id": "FAS_BEARING_35X44X5",
+     "qty": 7.0,
+     "unit": 3.0,
+     "total": 21.0,
+     "vendor": "Amazon",
+     "url": "https://www.amazon.com/XIKE-6707-2RS-Bearings-35x44x5mm-Pre-Lubricated/dp/B09D2XN464/",
+     "note": "apportioned by joint count",
+     "section": "fasteners",
+     "tier": "core"
+    },
+    {
+     "item": "Ball bearing, 35 x 47 x 7 mm",
+     "part_id": "FAS_BEARING_35X47X7",
+     "qty": 2.0,
+     "unit": 4.0,
+     "total": 8.0,
+     "vendor": "Amazon",
+     "url": "https://www.amazon.com/XIKE-6807-2RS-Bearings-35x47x7mm-Pre-Lubricated/dp/B09D2ZHNPH/",
+     "note": "apportioned by joint count",
+     "section": "fasteners",
+     "tier": "core"
+    },
+    {
+     "item": "Ball bearing, 30 x 37 x 4 mm",
+     "part_id": "FAS_BEARING_30X37X4",
+     "qty": 1.0,
+     "unit": 2.0,
+     "total": 2.0,
+     "vendor": "Amazon",
+     "url": "https://www.amazon.com/XIKE-6706-2RS-Bearings-30x37x4mm-Pre-Lubricated/dp/B09D35XB19",
+     "note": "apportioned by joint count",
+     "section": "fasteners",
+     "tier": "core"
+    },
+    {
+     "item": "Ball bearing, 10 x 15 x 4 mm",
+     "part_id": "FAS_BEARING_10X15X4",
+     "qty": 1.0,
+     "unit": 1.0,
+     "total": 1.0,
+     "vendor": "Amazon",
+     "url": "https://www.amazon.com/uxcell-6700-2RS-Groove-Bearings-Double/dp/B082PR3DFZ",
+     "note": "apportioned by joint count",
+     "section": "fasteners",
+     "tier": "core"
+    },
+    {
+     "item": "M3 x 10 Torx button-head screw",
+     "part_id": "FAS_SCREW_M3X10_TORX_BH",
+     "qty": 2.0,
+     "unit": 5.16,
+     "total": 10.32,
+     "vendor": "McMaster-Carr",
+     "url": "https://www.mcmaster.com/90991A114/",
+     "note": "apportioned by joint count",
+     "section": "fasteners",
+     "tier": "core"
+    },
+    {
+     "item": "M4 x 10 Torx button-head screw",
+     "part_id": "FAS_SCREW_M4X10_TORX_BH",
+     "qty": 2.0,
+     "unit": 5.78,
+     "total": 11.56,
+     "vendor": "McMaster-Carr",
+     "url": "https://www.mcmaster.com/90942A118/",
+     "note": "apportioned by joint count",
+     "section": "fasteners",
+     "tier": "core"
+    }
+   ],
+   "notes": "Computed from the project's curated BOM CSVs (priced 2026-09-19): actuators by joint, machined and printed parts by subassembly, fasteners apportioned by joint count, electronics in the body. Consumables not itemised.",
+   "top": {
+    "joint": "waist",
+    "mount": "rs03-output",
+    "desc": "Waist RS03 in the hip centre; machined coupler on its output boss to the body bottom plate"
+   },
+   "payload_kg": 17.8,
+   "price_optional_usd": 0
+  },
+  {
+   "id": "duke2-torso",
+   "robot": "duke2",
+   "slot": "torso",
+   "name": "Duke Humanoid V2 body",
+   "dof": 1,
+   "mass_kg": 6.72,
+   "price_usd": 2798.44,
+   "price_basis": "itemised",
+   "scale_mm": 1256,
+   "family": "robstride-rs",
+   "bom": [
+    {
+     "item": "RobStride 03 quasi-direct-drive actuator",
+     "part_id": "ACT_RS03",
+     "qty": 1.0,
+     "unit": 225.0,
+     "total": 225.0,
+     "vendor": "Amazon",
+     "url": "https://www.amazon.com/RobStride-60N-m-Integrated-Actuator-Module/dp/B0GY8PJ1MF",
+     "note": null,
+     "section": "actuators",
+     "tier": "core"
+    },
+    {
+     "item": "MINISFORUM X1-470 mini PC (onboard computer)",
+     "part_id": "EL_COMPUTE_MINIPC",
+     "qty": 1.0,
+     "unit": 1295.0,
+     "total": 1295.0,
+     "vendor": "Amazon",
+     "url": "https://www.amazon.com/MINISFORUM-X1-Pro-470-Quad-Display-Bluetooth/dp/B0GL2PPG67",
+     "note": null,
+     "section": "electronics",
+     "tier": "core"
+    },
+    {
+     "item": "Zeee 6S LiPo battery, 10000 mAh, 22.2 V, 2-pack",
+     "part_id": "EL_BATTERY_6S",
+     "qty": 1.0,
+     "unit": 367.0,
+     "total": 367.0,
+     "vendor": "Zeee",
+     "url": "https://zeeebattery.com/products/zeee-6s-lipo-battery-10000mah-22-2v-120c-ec5",
+     "note": null,
+     "section": "electronics",
+     "tier": "core"
+    },
+    {
+     "item": "TVS diode, 53 V working / 85 V clamping",
+     "part_id": "EL_TVS_DIODE",
+     "qty": 10.0,
+     "unit": 3.56,
+     "total": 35.6,
+     "vendor": "DigiKey",
+     "url": "https://www.digikey.com/en/products/detail/microchip-technology/M1-5KE62CA/4349574",
+     "note": null,
+     "section": "electronics",
+     "tier": "core"
+    },
+    {
+     "item": "DC 20-60 V to 12 V encased buck converter",
+     "part_id": "EL_BUCK_12V_ENC",
+     "qty": 1.0,
+     "unit": 18.99,
+     "total": 18.99,
+     "vendor": "Amazon",
+     "url": "https://www.amazon.com/gp/product/B0G2SV9PFY?th=1",
+     "note": null,
+     "section": "electronics",
+     "tier": "core"
+    },
+    {
+     "item": "48 V to 12 V buck converter",
+     "part_id": "EL_BUCK_48V_12V",
+     "qty": 2.0,
+     "unit": 2.7,
+     "total": 5.4,
+     "vendor": "AliExpress",
+     "url": "https://www.aliexpress.us/item/3256809688561615.html?spm=a2g0o.detail.0.0.4fd9AhcQAhcQuZ",
+     "note": null,
+     "section": "electronics",
+     "tier": "core"
+    },
+    {
+     "item": "CANable PRO V2.0 USB-CAN controller",
+     "part_id": "EL_CAN_ADAPTER",
+     "qty": 6.0,
+     "unit": 20.8,
+     "total": 124.8,
+     "vendor": "Amazon",
+     "url": "https://www.amazon.com/Macrobase-PRO-V2-0-Controller-transceiver/dp/B0GJSRZLBV/",
+     "note": null,
+     "section": "electronics",
+     "tier": "core"
+    },
+    {
+     "item": "Vention USB hub",
+     "part_id": "EL_USB_HUB",
+     "qty": 3.0,
+     "unit": 12.99,
+     "total": 38.97,
+     "vendor": "Amazon",
+     "url": "https://www.amazon.com/VENTION-Splitter-Expander-Chromebook-Surface/dp/B0D2XWJ99H",
+     "note": null,
+     "section": "electronics",
+     "tier": "core"
+    },
+    {
+     "item": "SYD Dynamics TransducerM TM171 9-axis AHRS, dual-port",
+     "part_id": "EL_IMU_TM171",
+     "qty": 1.0,
+     "unit": 57.0,
+     "total": 57.0,
+     "vendor": "RobotShop",
+     "url": "https://www.robotshop.com/products/syd-dynamics-transducerm-tm171-9-axis-ahrs-w-dual-port-communication",
+     "note": null,
+     "section": "electronics",
+     "tier": "core"
+    },
+    {
+     "item": "TTocas surge protector",
+     "part_id": "EL_SURGE_PROTECTOR",
+     "qty": 1.0,
+     "unit": 22.99,
+     "total": 22.99,
+     "vendor": "Amazon",
+     "url": "https://www.amazon.com/stores/TTocas/page/CAFB5466-628D-45E8-B728-7DB6F3AD931F",
+     "note": null,
+     "section": "electronics",
+     "tier": "core"
+    },
+    {
+     "item": "Power distribution block terminals",
+     "part_id": "EL_DIST_BLOCK",
+     "qty": 4.0,
+     "unit": 0.53,
+     "total": 2.12,
+     "vendor": "AliExpress",
+     "url": "https://www.aliexpress.us/item/3256808232612352.html",
+     "note": null,
+     "section": "electronics",
+     "tier": "core"
+    },
+    {
+     "item": "LiPo voltage checker, 1-8S, with case",
+     "part_id": "EL_VOLTAGE_CHECKER",
+     "qty": 2.0,
+     "unit": 14.5,
+     "total": 29.0,
+     "vendor": "ePowerHobby",
+     "url": "https://epowerhobby.com/product/lipo-voltage-checker-1-8s-with-case/?srsltid=AU7gw4UInG3PxKxg6QzfEx3h8wbA6nCnb4-ykXVukOMgql9G3C0_gAdM",
+     "note": null,
+     "section": "electronics",
+     "tier": "core"
+    },
+    {
+     "item": "USB-C right-angle adapter, camera cable to the D436",
+     "part_id": "EL_USBC_ADAPTER",
+     "qty": 2.0,
+     "unit": 0.0,
+     "total": 0.0,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "electronics",
+     "tier": "core"
+    },
+    {
+     "item": "Body Plate - Bottom",
+     "part_id": "CNC_body01_bottom_plate",
+     "qty": 1.0,
+     "unit": 64.03,
+     "total": 64.03,
+     "vendor": "CNC shop",
+     "url": null,
+     "note": null,
+     "section": "cnc-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Body Plate - Side",
+     "part_id": "CNC_body02_side_plate",
+     "qty": 2.0,
+     "unit": 109.14,
+     "total": 218.28,
+     "vendor": "CNC shop",
+     "url": null,
+     "note": null,
+     "section": "cnc-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Body Plate - Top",
+     "part_id": "CNC_body03_top_plate",
+     "qty": 1.0,
+     "unit": 64.53,
+     "total": 64.53,
+     "vendor": "CNC shop",
+     "url": null,
+     "note": null,
+     "section": "cnc-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Body Plate - Front/Back",
+     "part_id": "CNC_body04_front_plate",
+     "qty": 4.0,
+     "unit": 47.08,
+     "total": 188.32,
+     "vendor": "CNC shop",
+     "url": null,
+     "note": null,
+     "section": "cnc-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Torso interior plate (carries the electronics)",
+     "part_id": "3DP_body05_interior_plate",
+     "qty": 1.0,
+     "unit": 3.960129075,
+     "total": 3.96,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Torso front plate",
+     "part_id": "3DP_body06_front_plate",
+     "qty": 1.0,
+     "unit": 0.921383784,
+     "total": 0.92,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Torso front plate, removable",
+     "part_id": "3DP_body07_front_plate_removable",
+     "qty": 1.0,
+     "unit": 1.208051027,
+     "total": 1.21,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Torso back plate, removable",
+     "part_id": "3DP_body09_back_plate_removable",
+     "qty": 1.0,
+     "unit": 1.419210588,
+     "total": 1.42,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Torso back plate",
+     "part_id": "3DP_body08_back_plate",
+     "qty": 1.0,
+     "unit": 0.921383784,
+     "total": 0.92,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Ball bearing, 35 x 44 x 5 mm",
+     "part_id": "FAS_BEARING_35X44X5",
+     "qty": 1.0,
+     "unit": 3.0,
+     "total": 3.0,
+     "vendor": "Amazon",
+     "url": "https://www.amazon.com/XIKE-6707-2RS-Bearings-35x44x5mm-Pre-Lubricated/dp/B09D2XN464/",
+     "note": "apportioned by joint count",
+     "section": "fasteners",
+     "tier": "core"
+    },
+    {
+     "item": "Belkin USB-A to USB-C cable, 6.6 ft, 2-pack",
+     "part_id": "CBL_USBA_USBC_BELKIN",
+     "qty": 2.0,
+     "unit": 14.99,
+     "total": 29.98,
+     "vendor": "Amazon",
+     "url": "https://www.amazon.com/Belkin-USB-Cable-2-Pack-6-6ft/dp/B0F63XNWN3?th=1",
+     "note": null,
+     "section": "cables-connectors",
+     "tier": "core"
+    }
+   ],
+   "notes": "Computed from the project's curated BOM CSVs (priced 2026-09-19): actuators by joint, machined and printed parts by subassembly, fasteners apportioned by joint count, electronics in the body. Consumables not itemised.",
+   "bottom": {
+    "joint": "waist",
+    "mount": "rs03-output",
+    "desc": "Body bottom plate on the waist RS03 output coupler"
+   },
+   "side": {
+    "joint": "shoulder_1",
+    "mount": "rs03-output",
+    "desc": "Shoulder-1 RS03 in the body; machined coupler on its output"
+   },
+   "top": {
+    "joint": "camera columns",
+    "mount": "duke-top-plate",
+    "desc": "Two camera columns on the body top plate"
+   },
+   "price_optional_usd": 0,
+   "payload_kg": null
+  },
+  {
+   "id": "duke2-arms",
+   "robot": "duke2",
+   "slot": "arms",
+   "name": "Duke Humanoid V2 arms",
+   "dof": 14,
+   "mass_kg": 9.2,
+   "price_usd": 3518.76,
+   "price_basis": "itemised",
+   "scale_mm": 1256,
+   "family": "robstride-rs",
+   "bom": [
+    {
+     "item": "RobStride 00 quasi-direct-drive actuator",
+     "part_id": "ACT_RS00",
+     "qty": 2.0,
+     "unit": 125.0,
+     "total": 250.0,
+     "vendor": "Amazon",
+     "url": "https://www.amazon.com/RobStride-14N-m-Integrated-Actuator-Module/dp/B0GS4XFK7Z/",
+     "note": null,
+     "section": "actuators",
+     "tier": "core"
+    },
+    {
+     "item": "RobStride 02 quasi-direct-drive actuator",
+     "part_id": "ACT_RS02",
+     "qty": 6.0,
+     "unit": 145.0,
+     "total": 870.0,
+     "vendor": "Amazon",
+     "url": "https://www.amazon.com/RobStride-Integrated-Actuator-Module-Encoders/dp/B0GS5945VP",
+     "note": null,
+     "section": "actuators",
+     "tier": "core"
+    },
+    {
+     "item": "RobStride 03 quasi-direct-drive actuator",
+     "part_id": "ACT_RS03",
+     "qty": 2.0,
+     "unit": 225.0,
+     "total": 450.0,
+     "vendor": "Amazon",
+     "url": "https://www.amazon.com/RobStride-60N-m-Integrated-Actuator-Module/dp/B0GY8PJ1MF",
+     "note": null,
+     "section": "actuators",
+     "tier": "core"
+    },
+    {
+     "item": "RobStride 05 quasi-direct-drive actuator",
+     "part_id": "ACT_RS05",
+     "qty": 2.0,
+     "unit": 110.0,
+     "total": 220.0,
+     "vendor": "AiFitLab",
+     "url": "https://aifitlab.com/products/robstride-05-motor",
+     "note": null,
+     "section": "actuators",
+     "tier": "core"
+    },
+    {
+     "item": "RobStride 06 quasi-direct-drive actuator",
+     "part_id": "ACT_RS06",
+     "qty": 2.0,
+     "unit": 210.0,
+     "total": 420.0,
+     "vendor": "AiFitLab",
+     "url": "https://aifitlab.com/products/robstride-06-motor",
+     "note": null,
+     "section": "actuators",
+     "tier": "core"
+    },
+    {
+     "item": "Shoulder Motor Bracket",
+     "part_id": "CNC_arm01_shoulder_roll_front_bearing",
+     "qty": 2.0,
+     "unit": 46.69,
+     "total": 93.38,
+     "vendor": "CNC shop",
+     "url": null,
+     "note": null,
+     "section": "cnc-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Shoulder Bearing Retainer",
+     "part_id": "CNC_arm02_shoulder_roll_back_bearing",
+     "qty": 2.0,
+     "unit": 99.24,
+     "total": 198.48,
+     "vendor": "CNC shop",
+     "url": null,
+     "note": null,
+     "section": "cnc-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Shoulder Shaft",
+     "part_id": "CNC_arm03_shoulder_roll_output_shaft",
+     "qty": 2.0,
+     "unit": 31.72,
+     "total": 63.44,
+     "vendor": "CNC shop",
+     "url": null,
+     "note": null,
+     "section": "cnc-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Shoulder/Elbow Support",
+     "part_id": "CNC_arm04_shoulder_roll_support_shaft",
+     "qty": 4.0,
+     "unit": 57.56,
+     "total": 230.24,
+     "vendor": "CNC shop",
+     "url": null,
+     "note": null,
+     "section": "cnc-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Elbow Motor Bracket",
+     "part_id": "CNC_arm07_elbow_front_bearing",
+     "qty": 2.0,
+     "unit": 57.94,
+     "total": 115.88,
+     "vendor": "CNC shop",
+     "url": null,
+     "note": null,
+     "section": "cnc-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Elbow Bearing Retainer",
+     "part_id": "CNC_arm08_elbow_back_bearing",
+     "qty": 2.0,
+     "unit": 65.65,
+     "total": 131.3,
+     "vendor": "CNC shop",
+     "url": null,
+     "note": null,
+     "section": "cnc-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Elbow Shaft",
+     "part_id": "CNC_arm09_elbow_output_shaft",
+     "qty": 2.0,
+     "unit": 31.42,
+     "total": 62.84,
+     "vendor": "CNC shop",
+     "url": null,
+     "note": null,
+     "section": "cnc-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Shoulder/Elbow Coupler",
+     "part_id": "CNC_arm10_r03_back_cover",
+     "qty": 4.0,
+     "unit": 54.25,
+     "total": 217.0,
+     "vendor": "CNC shop",
+     "url": null,
+     "note": null,
+     "section": "cnc-parts",
+     "tier": "core"
+    },
+    {
+     "item": "RS02 shaft bearing retainer",
+     "part_id": "3DP_arm05_RS02_shaft_bearing_retainer",
+     "qty": 4.0,
+     "unit": 7.055410727,
+     "total": 28.22,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Wrist-roll link",
+     "part_id": "3DP_arm11_wrist_roll",
+     "qty": 2.0,
+     "unit": 7.203008981,
+     "total": 14.41,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Wrist block (Fusion `Component5`, next to the wrist-roll link; role not labelled in CAD)",
+     "part_id": "3DP_arm14_wrist_block",
+     "qty": 2.0,
+     "unit": 13.78127813,
+     "total": 27.56,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "End-effector attachment between wrist and gripper (Fusion `v15_right_end_effector_attachment`, one per wrist)",
+     "part_id": "3DP_arm15_end_effector_attachment",
+     "qty": 2.0,
+     "unit": 13.00905912,
+     "total": 26.02,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Elbow cover, half A (Fusion `Component38`, material `elbow_protection`)",
+     "part_id": "3DP_armP01_elbow_cover_a",
+     "qty": 2.0,
+     "unit": 0.21427876,
+     "total": 0.43,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Elbow cover, half B (Fusion `Component39`, material `elbow_protection`)",
+     "part_id": "3DP_armP02_elbow_cover_b",
+     "qty": 2.0,
+     "unit": 0.21427876,
+     "total": 0.43,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Shoulder cover A (Fusion `Component40`, material `shoulder_protection`)",
+     "part_id": "3DP_armP03_shoulder_cover_a",
+     "qty": 2.0,
+     "unit": 0.26672877,
+     "total": 0.53,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Shoulder cover B (Fusion `Component41`, material `shoulder_protection`)",
+     "part_id": "3DP_armP04_shoulder_cover_b",
+     "qty": 2.0,
+     "unit": 0.26672877,
+     "total": 0.53,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Shoulder cover C (Fusion `Component42`, material `shoulder_protection`)",
+     "part_id": "3DP_armP05_shoulder_cover_c",
+     "qty": 2.0,
+     "unit": 0.26672877,
+     "total": 0.53,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Shoulder cover D (Fusion `Component43`, material `shoulder_protection`)",
+     "part_id": "3DP_armP06_shoulder_cover_d",
+     "qty": 2.0,
+     "unit": 0.26672877,
+     "total": 0.53,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Shoulder cover E (Fusion `Component34`, material `measured_shoulder_protection`)",
+     "part_id": "3DP_armP07_shoulder_cover_e",
+     "qty": 2.0,
+     "unit": 0.43576546,
+     "total": 0.87,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Shoulder cover F (Fusion `Component35`, material `measured_shoulder_protection`)",
+     "part_id": "3DP_armP08_shoulder_cover_f",
+     "qty": 2.0,
+     "unit": 0.43576546,
+     "total": 0.87,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Shoulder-yaw cover A (Fusion `Component36`, material `shoulder_yaw_protection`)",
+     "part_id": "3DP_armP09_shoulder_yaw_cover_a",
+     "qty": 4.0,
+     "unit": 0.29087187,
+     "total": 1.16,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Shoulder-yaw cover B (Fusion `Component37`, material `shoulder_yaw_protection`)",
+     "part_id": "3DP_armP10_shoulder_yaw_cover_b",
+     "qty": 4.0,
+     "unit": 0.29087187,
+     "total": 1.16,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Shoulder-yaw cover C: the own body of the Fusion `shoulder_yaw_protection` cover group (role not labelled in CAD)",
+     "part_id": "3DP_armP11_shoulder_yaw_cover_c",
+     "qty": 4.0,
+     "unit": 0.29087187,
+     "total": 1.16,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "RS02 shaft coupler (with M3 heat-set inserts)",
+     "part_id": "3DP_arm06_RS02_shaft_coupler",
+     "qty": 2.0,
+     "unit": 6.452501739,
+     "total": 12.91,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Ball bearing, 45 x 58 x 7 mm",
+     "part_id": "FAS_BEARING_45X58X7",
+     "qty": 6.0,
+     "unit": 3.0,
+     "total": 18.0,
+     "vendor": "Amazon",
+     "url": "https://www.amazon.com/XIKE-6809-2RS-Bearings-45x58x7mm-Pre-Lubricated/dp/B09D2J9P82",
+     "note": "apportioned by joint count",
+     "section": "fasteners",
+     "tier": "core"
+    },
+    {
+     "item": "Ball bearing, 50 x 65 x 7 mm",
+     "part_id": "FAS_BEARING_50X65X7",
+     "qty": 1.0,
+     "unit": 4.0,
+     "total": 4.0,
+     "vendor": "Amazon",
+     "url": "https://www.amazon.com/uxcell-6810-2RS-Groove-Bearings-Double/dp/B082PYMQFL",
+     "note": "apportioned by joint count",
+     "section": "fasteners",
+     "tier": "core"
+    },
+    {
+     "item": "Ball bearing, 35 x 44 x 5 mm",
+     "part_id": "FAS_BEARING_35X44X5",
+     "qty": 8.0,
+     "unit": 3.0,
+     "total": 24.0,
+     "vendor": "Amazon",
+     "url": "https://www.amazon.com/XIKE-6707-2RS-Bearings-35x44x5mm-Pre-Lubricated/dp/B09D2XN464/",
+     "note": "apportioned by joint count",
+     "section": "fasteners",
+     "tier": "core"
+    },
+    {
+     "item": "Ball bearing, 35 x 47 x 7 mm",
+     "part_id": "FAS_BEARING_35X47X7",
+     "qty": 2.0,
+     "unit": 4.0,
+     "total": 8.0,
+     "vendor": "Amazon",
+     "url": "https://www.amazon.com/XIKE-6807-2RS-Bearings-35x47x7mm-Pre-Lubricated/dp/B09D2ZHNPH/",
+     "note": "apportioned by joint count",
+     "section": "fasteners",
+     "tier": "core"
+    },
+    {
+     "item": "Ball bearing, 30 x 37 x 4 mm",
+     "part_id": "FAS_BEARING_30X37X4",
+     "qty": 1.0,
+     "unit": 2.0,
+     "total": 2.0,
+     "vendor": "Amazon",
+     "url": "https://www.amazon.com/XIKE-6706-2RS-Bearings-30x37x4mm-Pre-Lubricated/dp/B09D35XB19",
+     "note": "apportioned by joint count",
+     "section": "fasteners",
+     "tier": "core"
+    },
+    {
+     "item": "Ball bearing, 10 x 15 x 4 mm",
+     "part_id": "FAS_BEARING_10X15X4",
+     "qty": 1.0,
+     "unit": 1.0,
+     "total": 1.0,
+     "vendor": "Amazon",
+     "url": "https://www.amazon.com/uxcell-6700-2RS-Groove-Bearings-Double/dp/B082PR3DFZ",
+     "note": "apportioned by joint count",
+     "section": "fasteners",
+     "tier": "core"
+    },
+    {
+     "item": "M3 x 10 Torx button-head screw",
+     "part_id": "FAS_SCREW_M3X10_TORX_BH",
+     "qty": 2.0,
+     "unit": 5.16,
+     "total": 10.32,
+     "vendor": "McMaster-Carr",
+     "url": "https://www.mcmaster.com/90991A114/",
+     "note": "apportioned by joint count",
+     "section": "fasteners",
+     "tier": "core"
+    },
+    {
+     "item": "M4 x 10 Torx button-head screw",
+     "part_id": "FAS_SCREW_M4X10_TORX_BH",
+     "qty": 2.0,
+     "unit": 5.78,
+     "total": 11.56,
+     "vendor": "McMaster-Carr",
+     "url": "https://www.mcmaster.com/90942A118/",
+     "note": "apportioned by joint count",
+     "section": "fasteners",
+     "tier": "core"
+    }
+   ],
+   "notes": "Computed from the project's curated BOM CSVs (priced 2026-09-19): actuators by joint, machined and printed parts by subassembly, fasteners apportioned by joint count, electronics in the body. Consumables not itemised.",
+   "top": {
+    "joint": "shoulder_1",
+    "mount": "rs03-output",
+    "desc": "Arm bracket on the body's RS03 output coupler"
+   },
+   "bottom": {
+    "joint": "wrist_3",
+    "mount": "rs05-output",
+    "desc": "Wrist-3 RS05 output"
+   },
+   "price_optional_usd": 0,
+   "payload_kg": null
+  },
+  {
+   "id": "duke2-hands",
+   "robot": "duke2",
+   "slot": "hands",
+   "name": "Duke Humanoid V2 grippers",
+   "dof": 2,
+   "mass_kg": 0.7,
+   "price_usd": 116.52,
+   "price_basis": "itemised",
+   "scale_mm": 1256,
+   "family": "feetech-sts",
+   "bom": [
+    {
+     "item": "Waveshare serial bus servo driver board, ST/SC series",
+     "part_id": "EL_SERVO_DRIVER",
+     "qty": 2.0,
+     "unit": 4.99,
+     "total": 9.98,
+     "vendor": "Waveshare",
+     "url": "https://www.waveshare.com/product/robotics/drivers-sensors/drivers/bus-servo-adapter-a.htm",
+     "note": null,
+     "section": "electronics",
+     "tier": "core"
+    },
+    {
+     "item": "Feetech HL-3915-C001 12 V servo, 14.2 kg-cm",
+     "part_id": "EL_SERVO_FEETECH",
+     "qty": 2.0,
+     "unit": 50.0,
+     "total": 100.0,
+     "vendor": "AiFitLab",
+     "url": "https://aifitlab.com/products/feetech-hl-3915-servo-motor?variant=44326557417608",
+     "note": null,
+     "section": "electronics",
+     "tier": "core"
+    },
+    {
+     "item": "Gripper base (Fusion `base`; carries the two AprilTag holders)",
+     "part_id": "3DP_grip01_base",
+     "qty": 2.0,
+     "unit": 0.9560332502,
+     "total": 1.91,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Gripper finger (Fusion `custom_umi_gripper v6`, two per gripper; role read from the name and count, not labelled in CAD)",
+     "part_id": "3DP_grip02_finger",
+     "qty": 4.0,
+     "unit": 0.4233565,
+     "total": 1.69,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Gripper slide rail (Fusion `rail`, two per gripper)",
+     "part_id": "3DP_grip03_rail",
+     "qty": 4.0,
+     "unit": 0.55934185,
+     "total": 2.24,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "AprilTag holder on the gripper base (Fusion `apriltag_holder`, two per gripper)",
+     "part_id": "3DP_grip04_apriltag_holder",
+     "qty": 4.0,
+     "unit": 0.04070208,
+     "total": 0.16,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Double-helix drive pinion, 16 teeth, 6 mm (Fusion `Component9` in `double_helix_pinion_16teeth_6mm`)",
+     "part_id": "3DP_grip05_pinion",
+     "qty": 2.0,
+     "unit": 0.128871,
+     "total": 0.26,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "AprilTag tile (Fusion `apriltag`, eight per gripper: four on the fingers, four on the base holders)",
+     "part_id": "3DP_grip06_apriltag_tile",
+     "qty": 16.0,
+     "unit": 0.017458,
+     "total": 0.28,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    }
+   ],
+   "notes": "Computed from the project's curated BOM CSVs (priced 2026-09-19): actuators by joint, machined and printed parts by subassembly, fasteners apportioned by joint count, electronics in the body. Consumables not itemised.",
+   "top": {
+    "joint": "wrist_3",
+    "mount": "rs05-output",
+    "desc": "Gripper on the RS05 output"
+   },
+   "price_optional_usd": 0,
+   "payload_kg": null
+  },
+  {
+   "id": "duke2-head",
+   "robot": "duke2",
+   "slot": "head",
+   "name": "Duke Humanoid V2 camera gimbals",
+   "dof": 4,
+   "mass_kg": 1.18,
+   "price_usd": 1177.79,
+   "price_basis": "itemised",
+   "scale_mm": 1256,
+   "family": "robstride-rs",
+   "bom": [
+    {
+     "item": "RobStride 05 quasi-direct-drive actuator",
+     "part_id": "ACT_RS05",
+     "qty": 4.0,
+     "unit": 110.0,
+     "total": 440.0,
+     "vendor": "AiFitLab",
+     "url": "https://aifitlab.com/products/robstride-05-motor",
+     "note": null,
+     "section": "actuators",
+     "tier": "core"
+    },
+    {
+     "item": "Intel RealSense D436 depth camera",
+     "part_id": "EL_CAM_D436",
+     "qty": 2.0,
+     "unit": 354.0,
+     "total": 708.0,
+     "vendor": "RealSense Store",
+     "url": "https://store.realsenseai.com/buy-intel-realsense-depth-camera-d436.html",
+     "note": null,
+     "section": "electronics",
+     "tier": "core"
+    },
+    {
+     "item": "Camera-column base (Fusion `gimbal_mount`, one per column)",
+     "part_id": "3DP_cam01_gimbal_mount",
+     "qty": 2.0,
+     "unit": 0.6481906,
+     "total": 1.3,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Camera-column neck (Fusion `gimbal_neck`, one per column)",
+     "part_id": "3DP_cam02_gimbal_neck",
+     "qty": 2.0,
+     "unit": 0.46940821,
+     "total": 0.94,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Camera-column arm (Fusion `gimbal_arm`; carries `Component92`)",
+     "part_id": "3DP_cam03_gimbal_arm",
+     "qty": 2.0,
+     "unit": 0.15556325,
+     "total": 0.31,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Camera-column arm link (Fusion `Component92`, child of `gimbal_arm`; role not labelled in CAD)",
+     "part_id": "3DP_cam04_gimbal_arm_link",
+     "qty": 2.0,
+     "unit": 0.15092441,
+     "total": 0.3,
+     "vendor": "print",
+     "url": null,
+     "note": null,
+     "section": "printed-parts",
+     "tier": "core"
+    },
+    {
+     "item": "Ball bearing, 45 x 58 x 7 mm",
+     "part_id": "FAS_BEARING_45X58X7",
+     "qty": 2.0,
+     "unit": 3.0,
+     "total": 6.0,
+     "vendor": "Amazon",
+     "url": "https://www.amazon.com/XIKE-6809-2RS-Bearings-45x58x7mm-Pre-Lubricated/dp/B09D2J9P82",
+     "note": "apportioned by joint count",
+     "section": "fasteners",
+     "tier": "core"
+    },
+    {
+     "item": "Ball bearing, 35 x 44 x 5 mm",
+     "part_id": "FAS_BEARING_35X44X5",
+     "qty": 2.0,
+     "unit": 3.0,
+     "total": 6.0,
+     "vendor": "Amazon",
+     "url": "https://www.amazon.com/XIKE-6707-2RS-Bearings-35x44x5mm-Pre-Lubricated/dp/B09D2XN464/",
+     "note": "apportioned by joint count",
+     "section": "fasteners",
+     "tier": "core"
+    },
+    {
+     "item": "Ball bearing, 35 x 47 x 7 mm",
+     "part_id": "FAS_BEARING_35X47X7",
+     "qty": 1.0,
+     "unit": 4.0,
+     "total": 4.0,
+     "vendor": "Amazon",
+     "url": "https://www.amazon.com/XIKE-6807-2RS-Bearings-35x47x7mm-Pre-Lubricated/dp/B09D2ZHNPH/",
+     "note": "apportioned by joint count",
+     "section": "fasteners",
+     "tier": "core"
+    },
+    {
+     "item": "M3 x 10 Torx button-head screw",
+     "part_id": "FAS_SCREW_M3X10_TORX_BH",
+     "qty": 1.0,
+     "unit": 5.16,
+     "total": 5.16,
+     "vendor": "McMaster-Carr",
+     "url": "https://www.mcmaster.com/90991A114/",
+     "note": "apportioned by joint count",
+     "section": "fasteners",
+     "tier": "core"
+    },
+    {
+     "item": "M4 x 10 Torx button-head screw",
+     "part_id": "FAS_SCREW_M4X10_TORX_BH",
+     "qty": 1.0,
+     "unit": 5.78,
+     "total": 5.78,
+     "vendor": "McMaster-Carr",
+     "url": "https://www.mcmaster.com/90942A118/",
+     "note": "apportioned by joint count",
+     "section": "fasteners",
+     "tier": "core"
+    }
+   ],
+   "notes": "Computed from the project's curated BOM CSVs (priced 2026-09-19): actuators by joint, machined and printed parts by subassembly, fasteners apportioned by joint count, electronics in the body. Consumables not itemised.",
+   "bottom": {
+    "joint": "camera columns",
+    "mount": "duke-top-plate",
+    "desc": "Gimbal columns on the body top plate"
+   },
+   "price_optional_usd": 0,
+   "payload_kg": null
+  },
+  {
+   "id": "lerobot-lower",
+   "robot": "lerobot",
+   "slot": "lower",
+   "name": "LeRobot Humanoid biped",
+   "dof": 12,
+   "mass_kg": null,
+   "price_usd": 2636,
+   "price_basis": "itemised",
+   "scale_mm": 800,
+   "payload_kg": null,
+   "family": "robstride-o",
+   "top": {
+    "joint": "pelvis top plate",
+    "mount": "printed pelvis plate (no waist actuator)"
+   },
+   "bom": [
+    {
+     "item": "RobStride O-series actuators (O0, O2, O3, O5), 12",
+     "qty": 1,
+     "unit": 1880,
+     "vendor": "RobStride",
+     "url": "https://www.robstride.com/",
+     "total": 1880.0
+    },
+    {
+     "item": "Printed parts, bearings, fasteners, Raspberry Pi 5, IMU, harness",
+     "qty": 1,
+     "unit": 756,
+     "vendor": "various (see repository BOM)",
+     "url": "https://github.com/huggingface/lerobot-humanoid-hardware",
+     "total": 756.0
+    }
+   ],
+   "notes": "Two-line summary of the repository's April 2026 BOM; the itemised sheet is in the hardware repository.",
+   "price_optional_usd": 0
+  },
+  {
+   "id": "duck-lower",
+   "robot": "duck",
+   "slot": "lower",
+   "name": "Open Duck Mini v2 legs (whole robot)",
+   "dof": 10,
+   "mass_kg": 1.6,
+   "price_basis": "published-total",
+   "price_usd": 400,
+   "scale_mm": 420,
+   "payload_kg": 0.5,
+   "family": "feetech-sts",
+   "top": {
+    "joint": "body",
+    "mount": "printed body shell"
+   },
+   "bom": [
+    {
+     "item": "Feetech STS bus servos, printed parts, Raspberry Pi Zero 2 W, battery",
+     "qty": 1,
+     "unit": 400,
+     "vendor": "various (project BOM sheet)",
+     "url": "https://github.com/apirrone/Open_Duck_Mini",
+     "total": 400.0
+    }
+   ],
+   "notes": "A 42 cm droid; listed to show what the checks say when scales do not match. DOF and mass are approximate.",
+   "price_optional_usd": 0
+  },
+  {
+   "id": "bolt-lower",
+   "robot": "bolt",
+   "slot": "lower",
+   "name": "ODRI Bolt biped",
+   "dof": 6,
+   "mass_kg": null,
+   "price_usd": 6400,
+   "price_basis": "third-party",
+   "scale_mm": 500,
+   "payload_kg": null,
+   "family": "odri",
+   "top": {
+    "joint": "hip frame",
+    "mount": "ODRI hip frame"
+   },
+   "bom": [
+    {
+     "item": "ODRI actuator modules, master board, printed structure (see ODRI BOM)",
+     "qty": 1,
+     "unit": 6400,
+     "vendor": "ODRI suppliers",
+     "url": "https://github.com/open-dynamic-robot-initiative/bolt",
+     "total": 6400.0
+    }
+   ],
+   "notes": "Third-party US build estimate.",
+   "price_optional_usd": 0
+  },
+  {
+   "id": "mevita-lower",
+   "robot": "mevita",
+   "slot": "lower",
+   "name": "MEVITA biped",
+   "dof": null,
+   "mass_kg": null,
+   "price_usd": null,
+   "price_basis": "unknown",
+   "scale_mm": null,
+   "payload_kg": null,
+   "family": "cubemars-ak",
+   "top": {
+    "joint": "pelvis",
+    "mount": "sheet-metal pelvis"
+   },
+   "bom": [
+    {
+     "item": "CubeMars AK70-10 and AK10-9 V2 actuators, welded sheet-metal parts",
+     "qty": 1,
+     "unit": null,
+     "vendor": "CubeMars; sheet-metal shop",
+     "url": "https://github.com/haraduka/mevita",
+     "total": null
+    }
+   ],
+   "notes": "No published total.",
+   "price_optional_usd": 0
+  },
+  {
+   "id": "bhl-lower",
+   "robot": "bhl",
+   "slot": "lower",
+   "name": "Berkeley Humanoid Lite legs",
+   "dof": 12,
+   "mass_kg": null,
+   "price_usd": 2700,
+   "price_basis": "estimate",
+   "scale_mm": 800,
+   "payload_kg": null,
+   "family": "bhl",
+   "top": {
+    "joint": "pelvis",
+    "mount": "printed pelvis"
+   },
+   "bom": [
+    {
+     "item": "12 printed cycloidal actuators (motor, controller board, bearings, prints)",
+     "qty": 12,
+     "unit": null,
+     "vendor": "see BHL BOM sheet",
+     "url": "https://berkeley-humanoid-lite.gitbook.io/docs/getting-started-with-hardware/materials-and-parts-bom",
+     "total": null
+    },
+    {
+     "item": "Printed leg structure, feet, fasteners",
+     "qty": 1,
+     "unit": null,
+     "vendor": "see BHL BOM sheet",
+     "url": "https://berkeley-humanoid-lite.gitbook.io/docs/getting-started-with-hardware/materials-and-parts-bom",
+     "total": null
+    }
+   ],
+   "notes": "Estimate: 12 of 22 joints of a sub-$5,000 robot, pro rata. The project publishes the itemised sheet.",
+   "price_optional_usd": 0
+  },
+  {
+   "id": "bhl-torso",
+   "robot": "bhl",
+   "slot": "torso",
+   "name": "Berkeley Humanoid Lite torso",
+   "dof": 0,
+   "mass_kg": null,
+   "price_usd": 600,
+   "price_basis": "estimate",
+   "scale_mm": 800,
+   "family": "none",
+   "bottom": {
+    "joint": "pelvis",
+    "mount": "printed pelvis"
+   },
+   "side": {
+    "joint": "shoulder",
+    "mount": "printed actuator cup"
+   },
+   "bom": [
+    {
+     "item": "Printed torso, computer, battery, IMU, harness",
+     "qty": 1,
+     "unit": null,
+     "vendor": "see BHL BOM sheet",
+     "url": "https://berkeley-humanoid-lite.gitbook.io/docs/getting-started-with-hardware/materials-and-parts-bom",
+     "total": null
+    }
+   ],
+   "notes": "Estimate.",
+   "price_optional_usd": 0,
+   "payload_kg": null
+  },
+  {
+   "id": "bhl-arms",
+   "robot": "bhl",
+   "slot": "arms",
+   "name": "Berkeley Humanoid Lite arms",
+   "dof": 10,
+   "mass_kg": null,
+   "price_usd": 1700,
+   "price_basis": "estimate",
+   "scale_mm": 800,
+   "family": "bhl",
+   "top": {
+    "joint": "shoulder",
+    "mount": "printed actuator cup"
+   },
+   "bottom": {
+    "joint": "wrist",
+    "mount": "printed wrist plate"
+   },
+   "bom": [
+    {
+     "item": "10 printed cycloidal actuators and printed arm structure",
+     "qty": 10,
+     "unit": null,
+     "vendor": "see BHL BOM sheet",
+     "url": "https://berkeley-humanoid-lite.gitbook.io/docs/getting-started-with-hardware/materials-and-parts-bom",
+     "total": null
+    }
+   ],
+   "notes": "Estimate: 10 of 22 joints, pro rata.",
+   "price_optional_usd": 0,
+   "payload_kg": null
+  },
+  {
+   "id": "amazing-hands",
+   "robot": "amazing-hand",
+   "slot": "hands",
+   "name": "Amazing Hand, pair",
+   "dof": 16,
+   "mass_kg": 0.8,
+   "price_usd": 440,
+   "price_basis": "itemised",
+   "scale_mm": null,
+   "family": "feetech-sts",
+   "top": {
+    "joint": "wrist",
+    "mount": "flat wrist flange, printed"
+   },
+   "bom": [
+    {
+     "item": "Amazing Hand parts (8 bus servos, prints, fasteners), per hand",
+     "qty": 2,
+     "unit": 220,
+     "vendor": "see Pollen BOM",
+     "url": "https://github.com/pollen-robotics/AmazingHand",
+     "total": 440.0
+    }
+   ],
+   "notes": "Under €200 per hand per Pollen; converted at €1 ≈ $1.10.",
+   "price_optional_usd": 0,
+   "payload_kg": null
+  },
+  {
+   "id": "hopejr-arms",
+   "robot": "hopejr",
+   "slot": "arms",
+   "name": "HopeJR arms, pair",
+   "dof": 14,
+   "mass_kg": null,
+   "price_usd": null,
+   "price_basis": "unknown",
+   "scale_mm": 1700,
+   "family": "feetech-sts",
+   "top": {
+    "joint": "shoulder",
+    "mount": "printed shoulder mount"
+   },
+   "bottom": {
+    "joint": "wrist",
+    "mount": "printed wrist"
+   },
+   "bom": [
+    {
+     "item": "Feetech bus servos and printed arm parts (see repository)",
+     "qty": 1,
+     "unit": null,
+     "vendor": "see HopeJR repository",
+     "url": "https://github.com/TheRobotStudio/HOPEJr",
+     "total": null
+    }
+   ],
+   "notes": "No whole-arm BOM total published.",
+   "price_optional_usd": 0,
+   "payload_kg": null
+  },
+  {
+   "id": "hopejr-hands",
+   "robot": "hopejr",
+   "slot": "hands",
+   "name": "HopeJR dexterous hands, pair",
+   "dof": 32,
+   "mass_kg": null,
+   "price_usd": null,
+   "price_basis": "unknown",
+   "scale_mm": null,
+   "family": "feetech-sts",
+   "top": {
+    "joint": "wrist",
+    "mount": "printed wrist"
+   },
+   "bom": [
+    {
+     "item": "Feetech bus servos and printed hand parts (see repository)",
+     "qty": 1,
+     "unit": null,
+     "vendor": "see HopeJR repository",
+     "url": "https://github.com/TheRobotStudio/HOPEJr",
+     "total": null
+    }
+   ],
+   "notes": "No BOM total published.",
+   "price_optional_usd": 0,
+   "payload_kg": null
+  }
+ ],
+ "verified_combos": []
+}

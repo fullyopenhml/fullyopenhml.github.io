@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Catalog — Fully Open Humanoid</title>
+<meta name="description" content="A curated catalog of open-source humanoid robots scored against nine openness criteria: editable CAD, itemised BOM, build docs, electronics, code, simulation, controller, licence and reproduction. With cost, size, DOF, actuators and sources.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<style>
+.filters { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; margin: 0 0 14px; font-size: .92rem; }
+.filters label { display: inline-flex; align-items: center; gap: 6px; color: var(--fg2); }
+.filters select { padding: 6px 10px; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); color: var(--fg); font: inherit; font-size: .9rem; }
+.dots { display: inline-grid; grid-template-columns: repeat(9, 10px); gap: 3px; vertical-align: middle; }
+.dots i { display: block; width: 10px; height: 10px; border-radius: 3px; background: var(--bg3); }
+.dots i.yes { background: var(--ok); } .dots i.partial { background: var(--warn); } .dots i.no { background: var(--bad); }
+.score { font-weight: 600; margin-left: 8px; }
+tr.rowx { cursor: pointer; }
+tr.rowx:hover td { background: var(--bg2); }
+tr.details td { background: var(--bg2); padding: 14px 16px 18px; }
+.det { display: grid; grid-template-columns: 1.2fr 1fr; gap: 18px 28px; }
+.det .checks { display: grid; grid-template-columns: auto 1fr; gap: 4px 10px; font-size: .88rem; align-items: baseline; }
+.det .checks b { font-weight: 600; white-space: nowrap; }
+.det .checks .v { display: inline-block; min-width: 58px; font-size: .74rem; font-weight: 700; padding: 1px 7px; border-radius: 999px; margin-right: 6px; text-align: center; }
+.v.yes { background: var(--ok-soft); color: var(--ok); } .v.partial { background: var(--warn-soft); color: var(--warn); } .v.no { background: var(--bad-soft); color: var(--bad); } .v.unknown { background: var(--bg3); color: var(--fg2); }
+.det .links a { margin-right: 10px; }
+.det .src { font-size: .8rem; color: var(--fg3); word-break: break-all; }
+#catalog-table td:first-child { min-width: 170px; } #catalog-table td:nth-child(6) { max-width: 190px; font-size: .84rem; color: var(--fg2); } #catalog-table td:nth-child(8) small { display: block; max-width: 150px; }
+.robot-name { font-weight: 600; }
+.robot-org { display: block; font-size: .8rem; color: var(--fg2); }
+td.cost small { color: var(--fg3); }
+.legend { font-size: .82rem; color: var(--fg2); margin: 8px 0 0; }
+@media (max-width: 720px) { .det { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header class="site-header"><div class="inner">
+  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><use href="assets/img/favicon.svg#mark"/></svg><span class="name">Fully Open Humanoid</span><span class="ver">v0.2</span></a>
+  <button class="iconbtn nav-toggle" aria-label="Menu">☰</button>
+  <nav class="nav">
+    <a href="catalog.html">Catalog</a><a href="builder.html">Builder</a><a href="design.html">Design</a><a href="viewer.html">Viewer</a><a href="bom.html">BOM</a><a href="printing.html">Printing</a><a href="assembly.html">Assembly</a><a href="electrical.html">Electrical</a><a href="bringup.html">Bring-up</a><a href="software.html">Software</a><a href="reference.html">Reference</a>
+    <a class="gh" href="https://github.com/fullyopenhml/fullyopenhml.github.io" title="GitHub">GitHub</a>
+    <button class="iconbtn theme-toggle" aria-label="Toggle theme">◐</button>
+  </nav>
+</div></header>
+
+<main class="page">
+  <h1>Open humanoids, catalogued</h1>
+  <p class="lead">Every humanoid, biped and hand we could find that calls itself open, scored on the same nine questions, with the numbers the projects publish and the pages they were read from. Ours is in the list on the same terms as everyone else's.</p>
+  <div class="toc" data-toc></div>
+
+  <div class="banner"><span class="dot"></span><div><b>How to read it.</b> The score counts criteria met in full (1) or in part (½). "Open hardware" means a stated licence that lets anyone study, modify, make and sell the design; non-commercial terms and missing licences fail that test however good the files are. Costs are the projects' own figures unless marked. Nothing here has been re-measured by us.</div></div>
+
+  <h2 id="criteria">What counts as open</h2>
+  <p>The questions come from the Open Source Hardware Association's definition and from what it takes to actually build a robot from a release. A project is judged on what is public today, not on what is announced.</p>
+  <div class="table-wrap"><table class="compact" id="criteria-table"><thead><tr><th>#</th><th>Criterion</th><th>Meets it when</th></tr></thead><tbody></tbody></table></div>
+
+  <h2 id="list">The catalog</h2>
+  <div class="filters">
+    <label>Type <select id="f-type"><option value="">all</option><option value="full">full humanoid</option><option value="biped">biped</option><option value="upper">upper body</option><option value="mini">mini</option><option value="hand">hand</option></select></label>
+    <label><input type="checkbox" id="f-oshwa"> open-hardware licence only</label>
+    <label><input type="checkbox" id="f-live" checked> hide announced and archived</label>
+    <label>Sort <select id="f-sort"><option value="score">openness score</option><option value="cost">cost</option><option value="height">height</option><option value="dof">DOF</option><option value="year">year</option><option value="name">name</option></select></label>
+    <span class="tiny" id="f-count"></span>
+  </div>
+  <div class="table-wrap"><table id="catalog-table">
+    <thead><tr><th>Robot</th><th>Type</th><th class="num">Height</th><th class="num">Mass</th><th class="num">DOF</th><th>Actuators</th><th class="num">Cost</th><th>Licence</th><th>Openness</th><th>Status</th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+  <p class="legend">Cost marks: none = itemised BOM · † = total published by the project · ≈ = estimate · ‡ = third-party figure. Click a row for the checklist, notes, links and sources.</p>
+
+  <h2 id="closed">Open files around closed hardware</h2>
+  <p>These publish URDFs, SDKs and training code and are useful to work with, but none gives a builder the mechanical source, electronics, BOM and permission needed to reproduce the robot. They are here so the checklist has its comparison row.</p>
+  <div class="table-wrap"><table class="compact" id="closed-table"><thead><tr><th>Robot</th><th>Price</th><th>What is released</th><th>Why it is not open hardware</th></tr></thead><tbody></tbody></table></div>
+
+  <h2 id="contribute">Add or correct a robot</h2>
+  <p>The table is generated from <code>tools/catalog_src.py</code>, one Python dictionary per robot with a <code>sources</code> list. Open a pull request that edits the entry and cites where each changed fact was read; runs of <code>python3 tools/build_catalog.py</code> regenerate <code>assets/data/catalog.json</code> for this page and the <a href="builder.html">builder</a>. Corrections from the projects themselves are welcome above all.</p>
+  <p>Reference lists this catalog drew on: the <a href="https://www.humanoidsdata.com/articles/open-source-humanoid-robots">Humanoids Data open-source audit</a>, <a href="https://github.com/stephane-caron/awesome-open-source-robots">awesome-open-source-robots</a> and the <a href="https://hbrnetwork.github.io/osh.html">OSH Atlas</a>.</p>
+</main>
+
+<footer class="site-footer"><div class="inner"><span>Fully Open Humanoid · catalog and builder · <a href="reference.html#license">MIT / CC BY 4.0</a></span><span>Derived from <a href="https://generalroboticslab.github.io/Duke_Humanoid_V2_OpenSource/">Duke Humanoid V2</a> and <a href="https://berkeley-humanoid-lite.gitbook.io/docs">Berkeley Humanoid Lite</a></span></div></footer>
+
+<script src="assets/js/site.js"></script>
+<script>
+foh.json("assets/data/catalog.json").then(cat => {
+  const esc = foh.esc, money = foh.money;
+  const TYPE = { full: "Full humanoid", biped: "Biped", upper: "Upper body", mini: "Mini humanoid", hand: "Hand", arm: "Arm" };
+  const STATUS = { design: ["Design only", ""], prototype: ["Prototype", ""], walking: ["Built, walking", "ok"], commercial: ["Sold", "ok"], archive: ["Archived", "warn"], announced: ["Announced", "warn"] };
+  const MARK = { itemised: "", "published-total": "†", estimate: "≈", "third-party": "‡", unknown: "" };
+
+  const ct = document.querySelector("#criteria-table tbody");
+  cat.criteria.forEach((c, i) => { const tr = document.createElement("tr"); tr.innerHTML = `<td class="num">${i + 1}</td><td><b>${esc(c.name)}</b></td><td>${esc(c.desc)}</td>`; ct.appendChild(tr); });
+
+  const cl = document.querySelector("#closed-table tbody");
+  cat.closed.forEach(c => { const tr = document.createElement("tr"); tr.innerHTML = `<td><a href="${esc(c.url)}">${esc(c.name)}</a></td><td>${esc(c.price)}</td><td>${esc(c.released)}</td><td>${esc(c.why)}</td>`; cl.appendChild(tr); });
+
+  const tb = document.querySelector("#catalog-table tbody");
+  const fType = document.getElementById("f-type"), fOsh = document.getElementById("f-oshwa"), fLive = document.getElementById("f-live"), fSort = document.getElementById("f-sort"), fCount = document.getElementById("f-count");
+  const licPill = r => r.open.lic === "yes" ? '<span class="pill ok">open hardware</span>' : r.open.lic === "no" ? '<span class="pill bad">not open</span>' : '<span class="pill warn">unclear</span>';
+  const dots = r => '<span class="dots">' + cat.criteria.map(c => `<i class="${r.open[c.id]}" title="${esc(c.name)}: ${r.open[c.id]}${r.open_notes && r.open_notes[c.id] ? " — " + esc(r.open_notes[c.id]) : ""}"></i>`).join("") + "</span>";
+  const cost = r => r.price_usd == null ? '<small>n/a</small>' : money(r.price_usd) + (MARK[r.price_basis] ? `<small> ${MARK[r.price_basis]}</small>` : "");
+  const keyFor = { score: r => -r.score, cost: r => r.price_usd == null ? 1e12 : r.price_usd, height: r => r.height_mm == null ? 1e9 : -r.height_mm, dof: r => r.dof == null ? 1e9 : -r.dof, year: r => -r.year, name: r => r.name.toLowerCase() };
+
+  function render() {
+    tb.innerHTML = "";
+    let rows = cat.robots.filter(r => (!fType.value || r.type === fType.value) && (!fOsh.checked || r.oshwa) && (!fLive.checked || !["announced", "archive"].includes(r.status)));
+    const k = keyFor[fSort.value];
+    rows.sort((a, b) => { const x = k(a), y = k(b); return x < y ? -1 : x > y ? 1 : a.name.localeCompare(b.name); });
+    fCount.textContent = `${rows.length} of ${cat.robots.length}`;
+    for (const r of rows) {
+      const tr = document.createElement("tr"); tr.className = "rowx" + (r.id === "foh" ? " ours" : "");
+      const [st, stc] = STATUS[r.status] || [r.status, ""];
+      tr.innerHTML = `<td><span class="robot-name">${esc(r.name)}</span><span class="robot-org">${esc(r.org)} · ${r.year}</span></td><td>${TYPE[r.type] || esc(r.type)}</td>` +
+        `<td class="num">${r.height_mm ? (r.height_mm / 1000).toFixed(2) + " m" : "—"}</td><td class="num">${r.mass_kg != null ? r.mass_kg + " kg" : "—"}</td><td class="num">${r.dof ?? "—"}</td>` +
+        `<td>${esc(r.actuators)}</td><td class="num cost">${cost(r)}</td><td>${licPill(r)}<br><small>${esc(r.license_hw.split(" (")[0].split(";")[0])} / ${esc(r.license_sw.split(" (")[0].split(";")[0])}</small></td>` +
+        `<td>${dots(r)}<span class="score">${r.score}</span><small>/9</small></td><td><span class="pill ${stc}">${st}</span></td>`;
+      const det = document.createElement("tr"); det.className = "details"; det.hidden = true;
+      det.innerHTML = `<td colspan="10"><div class="det"><div>
+        <p><b>${esc(r.summary)}</b></p><p>${esc(r.verdict)}</p>
+        <p class="tiny">${esc(r.structure)} · ${esc(r.compute)} · ${esc(r.price_note)}</p>
+        <p class="links">${Object.entries(r.links).map(([k, u]) => `<a class="btn small" href="${esc(u)}">${esc(k)}</a>`).join(" ")}${r.modules.length ? ` <a class="btn small primary" href="builder.html#robot=${r.id}">use in the builder</a>` : ""}</p>
+        <p class="src">Sources: ${r.sources.map(s => /^https?:/.test(s) ? `<a href="${esc(s)}">${esc(s.replace(/^https?:\/\//, ""))}</a>` : esc(s)).join(" · ")}</p>
+        </div><div class="checks">${cat.criteria.map(c => `<b>${esc(c.name)}</b><span><span class="v ${r.open[c.id]}">${r.open[c.id]}</span>${esc((r.open_notes || {})[c.id] || "")}</span>`).join("")}
+        <b>Hardware licence</b><span>${esc(r.license_hw)}</span><b>Software licence</b><span>${esc(r.license_sw)}</span></div></div></td>`;
+      tr.addEventListener("click", () => { det.hidden = !det.hidden; });
+      tb.appendChild(tr); tb.appendChild(det);
+    }
+  }
+  [fType, fOsh, fLive, fSort].forEach(el => el.addEventListener("change", render));
+  render();
+});
+</script>
+</body>
+</html>

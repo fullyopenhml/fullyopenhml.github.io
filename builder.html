@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Builder — Fully Open Humanoid</title>
+<meta name="description" content="Mix and match legs, torso, arms, hands and head from open-source humanoids. Every combination gets a compatibility checklist (verified, unverified, needs an adapter), a merged bill of materials with prices, and a sourcing list.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<style>
+.slots { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin: 1em 0; }
+.slot { border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; background: var(--bg); }
+.slot h3 { margin: 0 0 4px; font-size: .95rem; }
+.slot .d { font-size: .8rem; color: var(--fg2); margin: 0 0 8px; }
+.slot select { width: 100%; padding: 7px 8px; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); color: var(--fg); font: inherit; font-size: .9rem; }
+.slot .m { font-size: .82rem; color: var(--fg2); margin: 8px 0 0; line-height: 1.45; }
+.totals { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 1em 0; }
+.tot { border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; background: var(--bg2); }
+.tot .k { font-size: .78rem; color: var(--fg2); text-transform: uppercase; letter-spacing: .04em; }
+.tot .v { font-size: 1.35rem; font-weight: 700; margin-top: 2px; }
+.tot .s { font-size: .8rem; color: var(--fg2); }
+.checks { list-style: none; padding: 0; margin: 1em 0; }
+.checks li { display: grid; grid-template-columns: 28px 1fr auto; gap: 10px; align-items: baseline; padding: 9px 0; border-top: 1px solid var(--line); font-size: .93rem; }
+.checks li:first-child { border-top: 0; }
+.checks .ic { font-weight: 700; text-align: center; border-radius: 6px; padding: 1px 0; font-size: .85rem; }
+.ic.verified, .ic.ok { background: var(--ok-soft); color: var(--ok); } .ic.design { background: var(--accent-soft); color: var(--accent); }
+.ic.unverified, .ic.match { background: var(--warn-soft); color: var(--warn); } .ic.adapter, .ic.bad { background: var(--bad-soft); color: var(--bad); } .ic.unknown { background: var(--bg3); color: var(--fg2); }
+.checks .t small { display: block; color: var(--fg2); }
+.checks .tag { font-size: .74rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--fg3); white-space: nowrap; }
+.verdict { border-radius: var(--radius); padding: 14px 16px; margin: 1em 0; border: 1px solid var(--line); background: var(--bg2); }
+.verdict.ok { border-color: var(--ok); } .verdict.warn { border-color: var(--warn); } .verdict.design { border-color: var(--accent); }
+.verdict b { font-size: 1.05rem; }
+#bom-table td.mod { color: var(--fg2); font-size: .82rem; white-space: nowrap; }
+.src-list { columns: 2; column-gap: 28px; font-size: .9rem; }
+.src-list li { break-inside: avoid; margin-bottom: 6px; }
+@media (max-width: 720px) { .src-list { columns: 1; } .checks li { grid-template-columns: 28px 1fr; } .checks .tag { grid-column: 2; } }
+</style>
+</head>
+<body>
+<header class="site-header"><div class="inner">
+  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><use href="assets/img/favicon.svg#mark"/></svg><span class="name">Fully Open Humanoid</span><span class="ver">v0.2</span></a>
+  <button class="iconbtn nav-toggle" aria-label="Menu">☰</button>
+  <nav class="nav">
+    <a href="catalog.html">Catalog</a><a href="builder.html">Builder</a><a href="design.html">Design</a><a href="viewer.html">Viewer</a><a href="bom.html">BOM</a><a href="printing.html">Printing</a><a href="assembly.html">Assembly</a><a href="electrical.html">Electrical</a><a href="bringup.html">Bring-up</a><a href="software.html">Software</a><a href="reference.html">Reference</a>
+    <a class="gh" href="https://github.com/fullyopenhml/fullyopenhml.github.io" title="GitHub">GitHub</a>
+    <button class="iconbtn theme-toggle" aria-label="Toggle theme">◐</button>
+  </nav>
+</div></header>
+
+<main class="page">
+  <h1>Mix and match</h1>
+  <p class="lead">Pick a lower body, a torso, arms, hands and a head from any robot in the <a href="catalog.html">catalog</a> that publishes its subsystems separately. The page checks what is known about the combination, adds up the bill of materials, and lists where to buy it.</p>
+  <div class="toc" data-toc></div>
+
+  <div class="banner"><span class="dot"></span><div><b>What "verified" means here.</b> A check is <b>verified</b> only when someone has built that combination: the same-design combinations of robots that walk, and the cross-project builds people have reported. Everything else is <b>unverified</b>: a mechanical bolt pattern that matches on paper, a bus that should talk, a mass that fits the design payload. An unverified combination is a project, not a kit.</div></div>
+
+  <h2 id="pick">Pick the modules</h2>
+  <div class="btns" id="presets"></div>
+  <div class="slots" id="slots"></div>
+
+  <h2 id="checks">Compatibility checklist</h2>
+  <div class="verdict" id="verdict"></div>
+  <ul class="checks" id="checklist"></ul>
+  <p class="tiny">Built this combination, or found a check to be wrong? <a id="report" href="https://github.com/fullyopenhml/fullyopenhml.github.io/issues/new">Report it</a> with photos and the changes you needed, and it becomes a verified entry in <code>tools/catalog_src.py</code>.</p>
+
+  <h2 id="totals">Totals</h2>
+  <div class="totals" id="totals"></div>
+
+  <h2 id="bom">Bill of materials</h2>
+  <div class="btns"><button class="btn small" id="csv">Download CSV</button><a class="btn small" id="permalink" href="#">Copy link to this combination</a></div>
+  <div class="table-wrap"><table class="compact" id="bom-table"><thead><tr><th>Module</th><th>Item</th><th class="num">Qty</th><th class="num">Unit</th><th class="num">Total</th><th>Vendor</th></tr></thead><tbody></tbody></table></div>
+
+  <h2 id="sourcing">Sourcing</h2>
+  <p>Grouped by vendor, with the lines each supplies. Order the actuators and any machined parts first: they set the lead time and have no drop-in substitutes.</p>
+  <div class="callout warn" id="order-first"></div>
+  <ul class="src-list" id="vendors"></ul>
+
+  <h2 id="method">How the checks work</h2>
+  <ul>
+    <li><b>Mechanical joints</b> compare the interface at each boundary (waist output, shoulder output, wrist output, head mount). Same design and a built robot: verified. Same actuator output pattern across designs: the bolt circle matches but the coupler and plate are unverified. Anything else needs an adapter bracket.</li>
+    <li><b>Electrical</b> counts the actuator families in the combination. One family means one bus, one protocol and one voltage; each extra family adds a driver, a bus adapter and usually a DC-DC converter.</li>
+    <li><b>Payload</b> compares the mass above the hips with what the chosen legs carry in their own robot. Over 115 % of that is flagged; the legs' torque margins were sized for their own upper body.</li>
+    <li><b>Scale</b> flags modules from robots whose height differs by more than a third; hip spacing, shoulder width and reach stop making sense before the bolts do.</li>
+    <li><b>Software</b>: any mixed combination needs a new robot description and a retrained or retuned controller. The existing stacks only cover their own robot.</li>
+  </ul>
+  <p>Prices are the modules' published BOMs where the project itemises them (Fully Open Humanoid, Duke Humanoid V2, LeRobot Humanoid, Amazing Hand) and are marked as estimates where a whole-robot total was split by joint count. Modules without a published price are counted as unknown, never as zero.</p>
+</main>
+
+<footer class="site-footer"><div class="inner"><span>Fully Open Humanoid · catalog and builder · <a href="reference.html#license">MIT / CC BY 4.0</a></span><span>Derived from <a href="https://generalroboticslab.github.io/Duke_Humanoid_V2_OpenSource/">Duke Humanoid V2</a> and <a href="https://berkeley-humanoid-lite.gitbook.io/docs">Berkeley Humanoid Lite</a></span></div></footer>
+
+<script src="assets/js/site.js"></script>
+<script src="assets/js/builder.js"></script>
+</body>
+</html>

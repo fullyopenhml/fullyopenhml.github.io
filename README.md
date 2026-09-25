@@ -1,18 +1,24 @@
 # Fully Open Humanoid
 
-A 23-DOF, 1.1 m humanoid on RobStride actuators and 3D-printed structure.
-It keeps the joint layout of [Duke Humanoid V2](https://generalroboticslab.github.io/Duke_Humanoid_V2_OpenSource/)
-and the no-machining build of [Berkeley Humanoid Lite](https://berkeley-humanoid-lite.gitbook.io/docs).
-About $5.6k in parts, zero CNC parts.
+Three things in one site, at https://fullyopenhml.github.io/:
 
-**Site:** https://fullyopenhml.github.io/ — design, interactive 3D model, bill of
-materials, printing, assembly, electrical, bring-up, software, reference.
+- **Catalog** (`catalog.html`): open-source humanoids, bipeds and hands scored on nine
+  openness criteria, with cost, size, DOF, actuators, licences and sources.
+- **Builder** (`builder.html`): mix legs, torso, arms, hands and head across projects;
+  get a compatibility checklist (verified / unverified / adapter needed), a merged BOM
+  with prices and a sourcing list.
+- **Our reference design**: a 23-DOF, 1.1 m humanoid on RobStride actuators and
+  3D-printed structure, keeping the joint layout of [Duke Humanoid V2](https://generalroboticslab.github.io/Duke_Humanoid_V2_OpenSource/)
+  and the no-machining build of [Berkeley Humanoid Lite](https://berkeley-humanoid-lite.gitbook.io/docs).
+  About $5.8k in parts, zero CNC parts, unbuilt.
 
 ## Layout
 
 | Path | What |
 | --- | --- |
 | `index.html`, `design.html`, `viewer.html`, `bom.html`, `printing.html`, `assembly.html`, `electrical.html`, `bringup.html`, `software.html`, `reference.html` | The site: plain HTML, no build step |
+| `catalog.html`, `builder.html`, `assets/js/builder.js` | The catalog and the mix-and-match builder, both rendered from `assets/data/catalog.json` |
+| `tools/catalog_src.py` | **The catalog.** One dictionary per robot with sources, criteria, families, static modules; `tools/build_catalog.py` merges it with the computed modules of our design and Duke V2 |
 | `tools/build_data.py` | **The model.** Every part, joint, price. Writes the three files below |
 | `assets/data/robot.json` | Links, joints, part occurrences as primitive solids, catalogue, poses, specs |
 | `assets/data/bom.json` | Bill of materials by section and tier |
@@ -28,6 +34,7 @@ materials, printing, assembly, electrical, bring-up, software, reference.
 ```bash
 python3 tools/build_data.py          # regenerate robot.json, bom.json and the URDF after any change
 python3 tools/check_collisions.py --poses --sweep   # self-collision audit
+python3 tools/build_catalog.py       # regenerate catalog.json after editing tools/catalog_src.py
 uv venv tools/.venv --python 3.12 && uv pip install --python tools/.venv/bin/python manifold3d trimesh numpy
 tools/.venv/bin/python tools/build_parts.py         # regenerate the STLs and the manifest
 python3 -m http.server 8000          # then open http://localhost:8000/
