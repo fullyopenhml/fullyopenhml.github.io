@@ -87,9 +87,9 @@ Promise.all([foh.json("assets/data/robot.json"), foh.json("assets/data/print_fil
     n += p.qty; if (!p.optional) { mass += p.qty * fm; byMat[p.material] = (byMat[p.material] || 0) + p.qty * fm; }
     const tr = document.createElement("tr"); tr.id = p.id;
     const f = byId[p.id];
-    const mass = f ? f.mass_g_est : p.mass_g;
+    const massEach = f ? f.mass_g_est : p.mass_g;
     const dims = f ? f.bbox_mm : p.dims;
-    tr.innerHTML = `<td class="mono" style="font-size:.78rem"><a href="${foh.partHref(p.id)}">${esc(p.id)}</a></td><td>${esc(p.name)}${p.optional ? ' <span class="pill acc">kit</span>' : ""}${p.mirror ? ' <span class="pill">mirror</span>' : ""}<span class="sub">${esc(p.notes || "")}</span></td><td>${matName[p.material] || p.material}</td><td class="num">${p.qty}</td><td class="num">${mass}</td><td class="mono" style="font-size:.78rem">${dims ? dims.map(Math.round).join(" × ") : ""}</td><td class="tiny">${f ? esc(f.orientation) : ""}</td><td>${f ? `<a href="${f.file}" download>STL</a><span class="sub">${(f.bytes / 1024).toFixed(0)} KB · ${f.sha256.slice(0, 8)}</span>` : '<span class="pill warn">pending</span>'}</td>`;
+    tr.innerHTML = `<td class="mono" style="font-size:.78rem"><a href="${foh.partHref(p.id)}">${esc(p.id)}</a></td><td>${esc(p.name)}${p.optional ? ' <span class="pill acc">kit</span>' : ""}${p.mirror ? ' <span class="pill">mirror</span>' : ""}<span class="sub">${esc(p.notes || "")}</span></td><td>${matName[p.material] || p.material}</td><td class="num">${p.qty}</td><td class="num">${massEach}</td><td class="mono" style="font-size:.78rem">${dims ? dims.map(Math.round).join(" × ") : ""}</td><td class="tiny">${f ? esc(f.orientation) : ""}</td><td>${f ? `<a href="${f.file}" download>STL</a><span class="sub">${(f.bytes / 1024).toFixed(0)} KB · ${f.sha256.slice(0, 8)}</span>` : '<span class="pill warn">pending</span>'}</td>`;
     tb.appendChild(tr);
   }
   const st = document.getElementById("print-stats");
