@@ -1,8 +1,8 @@
 {
  "meta": {
   "generated": "2026-09-25",
-  "robots": 37,
-  "modules": 20,
+  "robots": 39,
+  "modules": 29,
   "foh_mass_kg": 27.27
  },
  "criteria": [
@@ -150,6 +150,12 @@
    "protocol": "Dynamixel Protocol 2.0",
    "voltage_v": 12
   },
+  "dynamixel-xl330": {
+   "name": "Dynamixel XL330 / XC330",
+   "bus": "TTL daisy chain",
+   "protocol": "Dynamixel Protocol 2.0",
+   "voltage_v": 5
+  },
   "dynamixel-q": {
    "name": "Dynamixel Q-series",
    "bus": "RS-485 / EtherCAT (per ROBOTIS)",
@@ -178,7 +184,7 @@
    "name": "Damiao DM-J series",
    "bus": "CAN 2.0",
    "protocol": "Damiao MIT-mode",
-   "voltage_v": 48
+   "voltage_v": null
   },
   "hobby-pwm": {
    "name": "Hobby PWM servo",
@@ -1723,7 +1729,10 @@
    "verdict": "Meets the definition and is the most reproduced bimanual mobile platform in the list.",
    "score": 8.5,
    "oshwa": true,
-   "modules": []
+   "modules": [
+    "xlerobot-cart",
+    "xlerobot-head"
+   ]
   },
   {
    "checked": "2026-09-25",
@@ -1771,7 +1780,9 @@
    "verdict": "Meets the definition; the base under XLeRobot.",
    "score": 8.0,
    "oshwa": true,
-   "modules": []
+   "modules": [
+    "lekiwi-base"
+   ]
   },
   {
    "checked": "2026-09-25",
@@ -1819,7 +1830,9 @@
    "verdict": "Meets the definition and is reproduced at scale.",
    "score": 9,
    "oshwa": true,
-   "modules": []
+   "modules": [
+    "so101-arms"
+   ]
   },
   {
    "checked": "2026-09-25",
@@ -1870,7 +1883,9 @@
    "verdict": "Meets the definition; the reference for a torque-controlled open arm.",
    "score": 8.5,
    "oshwa": true,
-   "modules": []
+   "modules": [
+    "openarm-arms"
+   ]
   },
   {
    "checked": "2026-09-25",
@@ -1971,7 +1986,9 @@
    "verdict": "Meets the definition; a base, not a complete robot.",
    "score": 7.0,
    "oshwa": true,
-   "modules": []
+   "modules": [
+    "tidybot2-base"
+   ]
   },
   {
    "checked": "2026-09-25",
@@ -2020,7 +2037,9 @@
    "verdict": "Fully open and reproduced; the reference legged platform.",
    "score": 8.5,
    "oshwa": true,
-   "modules": []
+   "modules": [
+    "solo12-lower"
+   ]
   },
   {
    "checked": "2026-09-25",
@@ -2068,6 +2087,112 @@
    "score": 7.0,
    "oshwa": true,
    "modules": []
+  },
+  {
+   "checked": "2026-09-25",
+   "id": "leap",
+   "name": "LEAP Hand",
+   "org": "Carnegie Mellon University",
+   "year": 2023,
+   "form": "hand",
+   "status": "prototype",
+   "height_mm": null,
+   "mass_kg": null,
+   "dof": 16,
+   "actuators": "16 × Dynamixel XC330-M288 (XL330 in the light version), four fingers",
+   "family": "dynamixel-xl330",
+   "structure": "3D-printed",
+   "compute": "Host PC over U2D2",
+   "price_usd": 2000,
+   "price_basis": "published-total",
+   "price_note": "$2,000 and four hours of assembly per the paper.",
+   "license_hw": "CC BY-NC 4.0 (hardware API repository licence)",
+   "license_sw": "MIT (simulation repository); CC BY-NC 4.0 (API)",
+   "open": {
+    "cad": "yes",
+    "bom": "yes",
+    "docs": "yes",
+    "elec": "yes",
+    "fw": "yes",
+    "sim": "yes",
+    "policy": "partial",
+    "lic": "no",
+    "built": "yes"
+   },
+   "open_notes": {
+    "lic": "The API repository, which carries the hardware release, is CC BY-NC 4.0; the simulation assets are MIT.",
+    "built": "Reproduced in many labs; assembled hands sold by third parties."
+   },
+   "links": {
+    "site": "https://leap-hand.github.io/",
+    "repo": "https://github.com/leap-hand/LEAP_Hand_API",
+    "sim": "https://github.com/leap-hand/LEAP_Hand_Sim",
+    "paper": "https://arxiv.org/abs/2309.06440"
+   },
+   "sources": [
+    "https://arxiv.org/abs/2309.06440",
+    "https://github.com/leap-hand/LEAP_Hand_API/blob/main/LICENSE"
+   ],
+   "summary": "The $2,000, 16-DOF printed hand on Dynamixel servos that most dexterous-manipulation papers now use.",
+   "verdict": "Reproducible and everywhere; non-commercial terms.",
+   "score": 7.5,
+   "oshwa": false,
+   "modules": [
+    "leap-hands"
+   ]
+  },
+  {
+   "checked": "2026-09-25",
+   "id": "ruka",
+   "name": "RUKA",
+   "org": "New York University",
+   "year": 2025,
+   "form": "hand",
+   "status": "prototype",
+   "height_mm": null,
+   "mass_kg": null,
+   "dof": 15,
+   "actuators": "11 Dynamixel servos in the forearm driving tendons (model not confirmed)",
+   "family": "unknown",
+   "structure": "3D-printed PLA and foaming TPU, fishing-line tendons",
+   "compute": "Host PC",
+   "price_usd": 1300,
+   "price_basis": "published-total",
+   "price_note": "Under $1,300 per the project.",
+   "license_hw": "CC BY-SA 4.0 (project site)",
+   "license_sw": "MIT",
+   "open": {
+    "cad": "yes",
+    "bom": "partial",
+    "docs": "yes",
+    "elec": "yes",
+    "fw": "yes",
+    "sim": "yes",
+    "policy": "yes",
+    "lic": "yes",
+    "built": "partial"
+   },
+   "open_notes": {
+    "cad": "Onshape.",
+    "policy": "Learned joint-to-actuator and fingertip controllers, trained from motion capture.",
+    "built": "Authors' hands and a v2; third-party builds not confirmed."
+   },
+   "links": {
+    "site": "https://ruka-hand.github.io/",
+    "repo": "https://github.com/ruka-hand/RUKA",
+    "v2": "https://ruka-hand-v2.github.io/"
+   },
+   "sources": [
+    "https://ruka-hand.github.io/",
+    "https://github.com/ruka-hand/RUKA"
+   ],
+   "summary": "A tendon-driven 15-DOF printed hand for under $1,300 with learned control and a MuJoCo model.",
+   "verdict": "Meets the definition; new.",
+   "score": 8.0,
+   "oshwa": true,
+   "modules": [
+    "ruka-hands"
+   ]
   }
  ],
  "closed": [
@@ -5006,6 +5131,341 @@
     }
    ],
    "notes": "No BOM total published.",
+   "price_optional_usd": 0,
+   "payload_kg": null
+  },
+  {
+   "id": "so101-arms",
+   "robot": "so-arm101",
+   "slot": "arms",
+   "name": "SO-ARM101 follower arms, pair",
+   "dof": 12,
+   "mass_kg": null,
+   "price_usd": 244,
+   "price_basis": "itemised",
+   "scale_mm": null,
+   "family": "feetech-sts",
+   "integrated_gripper": true,
+   "top": {
+    "joint": "arm base",
+    "mount": "flat-plate",
+    "desc": "Printed base plate, four screws to any flat surface"
+   },
+   "bottom": {
+    "joint": "gripper",
+    "mount": "so101-gripper",
+    "desc": "Parallel jaw gripper is part of the arm"
+   },
+   "bom": [
+    {
+     "item": "SO-ARM101 follower arm: 6 × STS3215, printed parts, bus board, power supply",
+     "qty": 2,
+     "unit": 122,
+     "vendor": "kit vendors listed in the repository",
+     "url": "https://github.com/TheRobotStudio/SO-ARM100",
+     "total": 244.0
+    }
+   ],
+   "notes": "Two follower arms at the repository's ≈ $122 each; grippers included. Desktop arms, 5 kg-cm class servos: not sized for a humanoid's reach or payload.",
+   "price_optional_usd": 0,
+   "payload_kg": null
+  },
+  {
+   "id": "openarm-arms",
+   "robot": "openarm",
+   "slot": "arms",
+   "name": "OpenArm v1 bimanual arms",
+   "dof": 16,
+   "mass_kg": null,
+   "price_usd": 6500,
+   "price_basis": "published-total",
+   "scale_mm": null,
+   "family": "damiao",
+   "integrated_gripper": true,
+   "top": {
+    "joint": "shoulder base",
+    "mount": "openarm-base",
+    "desc": "Machined shoulder base plate bolts to the bimanual body or a stand"
+   },
+   "bottom": {
+    "joint": "gripper",
+    "mount": "openarm-gripper",
+    "desc": "OpenArm gripper included"
+   },
+   "bom": [
+    {
+     "item": "OpenArm v1 bimanual system: two 7-DOF arms on Damiao QDD motors, grippers, CAN interface",
+     "qty": 1,
+     "unit": 6500,
+     "vendor": "licensed vendors (WowRobo, Foxtech)",
+     "url": "https://github.com/enactic/openarm",
+     "total": 6500.0
+    }
+   ],
+   "notes": "Vendor price for the complete bimanual kit; the BOM with meviy part numbers lets you self-source.",
+   "price_optional_usd": 0,
+   "payload_kg": null
+  },
+  {
+   "id": "leap-hands",
+   "robot": "leap",
+   "slot": "hands",
+   "name": "LEAP Hand, pair",
+   "dof": 32,
+   "mass_kg": null,
+   "price_usd": 4000,
+   "price_basis": "published-total",
+   "scale_mm": null,
+   "family": "dynamixel-xl330",
+   "top": {
+    "joint": "wrist",
+    "mount": "flat-flange",
+    "desc": "Printed palm base bolts to a flat wrist plate"
+   },
+   "bom": [
+    {
+     "item": "LEAP Hand: 16 × Dynamixel XC330-M288, printed parts, U2D2, fasteners",
+     "qty": 2,
+     "unit": 2000,
+     "vendor": "see the project BOM",
+     "url": "https://leap-hand.github.io/",
+     "total": 4000.0
+    }
+   ],
+   "notes": "$2,000 per hand per the paper. Non-commercial licence.",
+   "price_optional_usd": 0,
+   "payload_kg": null
+  },
+  {
+   "id": "ruka-hands",
+   "robot": "ruka",
+   "slot": "hands",
+   "name": "RUKA hand, pair",
+   "dof": 30,
+   "mass_kg": null,
+   "price_usd": 2600,
+   "price_basis": "published-total",
+   "scale_mm": null,
+   "family": "unknown",
+   "top": {
+    "joint": "forearm",
+    "mount": "flat-flange",
+    "desc": "Forearm housing with the 11 servos bolts to a flat plate"
+   },
+   "bom": [
+    {
+     "item": "RUKA hand: 11 Dynamixel servos, printed PLA and TPU parts, tendons",
+     "qty": 2,
+     "unit": 1300,
+     "vendor": "see the project guide",
+     "url": "https://github.com/ruka-hand/RUKA",
+     "total": 2600.0
+    }
+   ],
+   "notes": "Under $1,300 per hand per the project; the forearm is part of the hand.",
+   "price_optional_usd": 0,
+   "payload_kg": null
+  },
+  {
+   "id": "lekiwi-base",
+   "robot": "lekiwi",
+   "slot": "lower",
+   "name": "LeKiwi omni base",
+   "dof": 3,
+   "mass_kg": null,
+   "price_usd": 251.5,
+   "price_basis": "itemised",
+   "scale_mm": null,
+   "payload_kg": null,
+   "family": "feetech-sts",
+   "wheeled": true,
+   "top": {
+    "joint": "top plate",
+    "mount": "lekiwi-top-plate",
+    "desc": "Printed top plate with the SO-101 base hole pattern"
+   },
+   "bom": [
+    {
+     "item": "STS3215 drive servos",
+     "qty": 3,
+     "unit": 15,
+     "vendor": "Feetech / Amazon",
+     "url": "https://github.com/SIGRobotics-UIUC/LeKiwi/blob/main/BOM.md",
+     "total": 45.0
+    },
+    {
+     "item": "4-inch omni wheels",
+     "qty": 3,
+     "unit": 9.99,
+     "vendor": "Amazon",
+     "url": "https://github.com/SIGRobotics-UIUC/LeKiwi/blob/main/BOM.md",
+     "total": 29.97
+    },
+    {
+     "item": "Raspberry Pi 5 (4 GB), microSD",
+     "qty": 1,
+     "unit": 71.23,
+     "vendor": "various",
+     "url": "https://github.com/SIGRobotics-UIUC/LeKiwi/blob/main/BOM.md",
+     "total": 71.23
+    },
+    {
+     "item": "12 V battery, 5 A",
+     "qty": 1,
+     "unit": 32.99,
+     "vendor": "Amazon",
+     "url": "https://github.com/SIGRobotics-UIUC/LeKiwi/blob/main/BOM.md",
+     "total": 32.99
+    },
+    {
+     "item": "USB cameras",
+     "qty": 2,
+     "unit": 12.98,
+     "vendor": "Amazon",
+     "url": "https://github.com/SIGRobotics-UIUC/LeKiwi/blob/main/BOM.md",
+     "total": 25.96
+    },
+    {
+     "item": "Printed parts, screws, standoffs, cables",
+     "qty": 1,
+     "unit": 61.31,
+     "vendor": "various",
+     "url": "https://github.com/SIGRobotics-UIUC/LeKiwi/blob/main/BOM.md",
+     "total": 61.31
+    }
+   ],
+   "notes": "The project's 12 V base-only total ($251.50, US prices); the arm is a separate module. Wheeled: no legs, no balance problem.",
+   "price_optional_usd": 0
+  },
+  {
+   "id": "tidybot2-base",
+   "robot": "tidybot2",
+   "slot": "lower",
+   "name": "TidyBot++ holonomic base",
+   "dof": 3,
+   "mass_kg": null,
+   "price_usd": 5500,
+   "price_basis": "published-total",
+   "scale_mm": null,
+   "payload_kg": 120,
+   "family": "unknown",
+   "wheeled": true,
+   "top": {
+    "joint": "top frame",
+    "mount": "tidybot-frame",
+    "desc": "Aluminium extrusion frame top; any arm mounts on it"
+   },
+   "bom": [
+    {
+     "item": "TidyBot++ base: powered casters, frame, battery, compute (see BOM)",
+     "qty": 1,
+     "unit": 5500,
+     "vendor": "see the project BOM",
+     "url": "https://tidybot2.github.io/",
+     "total": 5500.0
+    }
+   ],
+   "notes": "$5,000–6,000 to fabricate per the authors; carries about 120 kg. Wheeled.",
+   "price_optional_usd": 0
+  },
+  {
+   "id": "solo12-lower",
+   "robot": "solo12",
+   "slot": "lower",
+   "name": "Solo 12 quadruped",
+   "dof": 12,
+   "mass_kg": 2.5,
+   "price_usd": 4400,
+   "price_basis": "published-total",
+   "scale_mm": null,
+   "payload_kg": null,
+   "family": "odri",
+   "top": {
+    "joint": "body top",
+    "mount": "solo-body",
+    "desc": "Flat carbon body plate"
+   },
+   "bom": [
+    {
+     "item": "Solo 12: 12 ODRI actuator modules, master board, printed and carbon parts (kit from PAL or self-sourced)",
+     "qty": 1,
+     "unit": 4400,
+     "vendor": "PAL Robotics / ODRI BOM",
+     "url": "https://open-dynamic-robot-initiative.github.io/",
+     "total": 4400.0
+    }
+   ],
+   "notes": "About €4,000 in components for Solo 8 per ODRI; a torso on it makes a centaur, which nobody has built.",
+   "price_optional_usd": 0
+  },
+  {
+   "id": "xlerobot-cart",
+   "robot": "xlerobot",
+   "slot": "torso",
+   "name": "XLeRobot cart body (IKEA cart, wheels, battery)",
+   "dof": 0,
+   "mass_kg": null,
+   "price_usd": 165,
+   "price_basis": "estimate",
+   "scale_mm": null,
+   "family": "none",
+   "wheeled": true,
+   "bottom": {
+    "joint": "ground",
+    "mount": "cart-wheels",
+    "desc": "The cart rolls on its own wheels; no lower body needed"
+   },
+   "side": {
+    "joint": "arm mounts",
+    "mount": "flat-plate",
+    "desc": "Two SO-101 base plates on the cart top"
+   },
+   "top": {
+    "joint": "head mount",
+    "mount": "flat-plate",
+    "desc": "Head pan servo on the cart top"
+   },
+   "bom": [
+    {
+     "item": "IKEA RÅSKOG cart, drive wheels and mounts, Anker power bank, brackets (the $660 total minus base and arms)",
+     "qty": 1,
+     "unit": 165,
+     "vendor": "IKEA / Amazon (see BOM)",
+     "url": "https://github.com/Vector-Wangel/XLeRobot",
+     "total": 165.0
+    }
+   ],
+   "notes": "Estimate: XLeRobot's $660 total minus two SO-101 arms and the LeKiwi base parts. Pick no lower body with it.",
+   "price_optional_usd": 0,
+   "payload_kg": null
+  },
+  {
+   "id": "xlerobot-head",
+   "robot": "xlerobot",
+   "slot": "head",
+   "name": "XLeRobot pan-tilt head",
+   "dof": 2,
+   "mass_kg": null,
+   "price_usd": 60,
+   "price_basis": "estimate",
+   "scale_mm": null,
+   "family": "feetech-sts",
+   "bottom": {
+    "joint": "head mount",
+    "mount": "flat-plate",
+    "desc": "Pan servo bolts to a flat plate"
+   },
+   "bom": [
+    {
+     "item": "2 × STS3215 pan-tilt servos, printed head, RGB cameras",
+     "qty": 1,
+     "unit": 60,
+     "vendor": "see BOM",
+     "url": "https://github.com/Vector-Wangel/XLeRobot",
+     "total": 60.0
+    }
+   ],
+   "notes": "Estimate: two servos, prints and the +$30 camera option.",
    "price_optional_usd": 0,
    "payload_kg": null
   }

@@ -41,6 +41,8 @@ def r2(v, n=4):
 
 
 def fetch(url: str, name: str | None = None) -> Path:
+    if url.startswith("file://"):
+        return Path(url[7:])
     CACHE.mkdir(parents=True, exist_ok=True)
     p = CACHE / (name or re.sub(r"[^A-Za-z0-9._-]", "_", url.split("://", 1)[1]))
     if not p.exists():
@@ -154,8 +156,11 @@ class Urdf:
         return self.world(parent) @ T
 
     def mesh_url(self, fn: str) -> str:
-        # every source keeps its meshes in one folder, so the basename is enough
-        return self.mesh_base + "/" + fn.split("/")[-1]
+        # keep the path below the mesh folder when the source uses sub-folders; otherwise the basename
+        for key in ("meshes/", "assets/"):
+            if key in fn and self.mesh_base.rstrip("/").endswith(key.rstrip("/")):
+                return self.mesh_base.rstrip("/") + "/" + fn.split(key, 1)[1]
+        return self.mesh_base.rstrip("/") + "/" + fn.split("/")[-1]
 
     def link_meshes(self, link) -> list[trimesh.Trimesh]:
         out = []
@@ -190,16 +195,36 @@ class Urdf:
         return out
 
 
-def build_urdf_robot(name, urdf_url, mesh_base, slot_of, side_of, anchors_fn):
+MIRROR_Y = np.diag([1.0, -1.0, 1.0, 1.0])
+
+
+def mirrored(meshes):
+    out = []
+    for m in meshes:
+        c = m.copy(); c.apply_transform(MIRROR_Y); c.invert(); out.append(c)
+    return out
+
+
+def build_urdf_robot(name, urdf_url, mesh_base, slot_of, side_of, anchors_fn, pre=None, pair=False):
+    """pre: 4x4 applied to every mesh (re-pose a single-arm/hand model); pair: duplicate one model into L and R by mirroring Y."""
     print(f"== {name}")
     u = Urdf(urdf_url, mesh_base, name)
+    if pre is not None:
+        for l in u.T:
+            u.T[l] = pre @ u.T[l]
+        u.joint_pos = {k: (pre @ np.append(v, 1))[:3] for k, v in u.joint_pos.items()}
     groups = {}
     for link in u.links:
         slot = slot_of(link)
         if slot is None:
             continue
+        ms = u.link_meshes(link)
+        if pair:
+            groups.setdefault((slot, "L"), []).extend(ms)
+            groups.setdefault((slot, "R"), []).extend(mirrored(ms))
+            continue
         side = side_of(link) if slot in ("arms", "hands") else "C"
-        groups.setdefault((slot, side), []).extend(u.link_meshes(link))
+        groups.setdefault((slot, side), []).extend(ms)
     bounds = {}
     files = {}
     for (slot, side), meshes in groups.items():
@@ -409,11 +434,86 @@ def build_mevita():
     return mods
 
 
+def build_so101():
+    base = "https://raw.githubusercontent.com/TheRobotStudio/SO-ARM100/main/Simulation/SO101"
+    # the arm's zero pose points straight up from its base; hung from a shoulder it points down
+    pre = trimesh.transformations.rotation_matrix(math.pi, [1, 0, 0])
+    def anchors(slot, u, bb):
+        w = u.joint_pos["gripper_frame_joint"]
+        return dict(shoulder_L=[0, 0, 0], shoulder_R=[0, 0, 0], wrist_L=r2(w), wrist_R=r2([w[0], -w[1], w[2]]))
+    mods = build_urdf_robot("so101", base + "/so101_new_calib.urdf", base + "/assets", lambda l: "arms", lambda l: "C", anchors, pre=pre, pair=True)
+    for m in mods.values():
+        m["credit"] = "SO-ARM101 simulation model, The Robot Studio (Apache-2.0)"
+    return {"so101-arms": mods["so101-arms"]}
+
+
+def build_leap():
+    base = "https://raw.githubusercontent.com/leap-hand/LEAP_Hand_Sim/master/assets/leap_hand"
+    def anchors(slot, u, bb):
+        return dict(wrist_L=[0, 0, 0], wrist_R=[0, 0, 0])
+    # the model lies palm-down with fingers along +X; hung from a wrist the fingers point down
+    pre = trimesh.transformations.rotation_matrix(math.pi / 2, [0, 1, 0])
+    mods = build_urdf_robot("leap", base + "/robot.urdf", base, lambda l: "hands", lambda l: "C", anchors, pre=pre, pair=True)
+    for m in mods.values():
+        m["credit"] = "LEAP Hand simulation assets, CMU (MIT)"
+    return {"leap-hands": mods["leap-hands"]}
+
+
+def build_lekiwi():
+    base = "https://raw.githubusercontent.com/SIGRobotics-UIUC/LeKiwi/main/URDF"
+    arm = re.compile(r"Base_08q|Rotation_Pitch|SO_ARM100|Passive_Horn|STS3215_03a|Wrist|Moving_Jaw|Wrist-Camera")
+    def anchors(slot, u, bb):
+        return dict(top=[0, 0, round(float(bb[1][2]), 4)])
+    mods = build_urdf_robot("lekiwi", base + "/LeKiwi.urdf", base + "/meshes", lambda l: None if arm.search(l) else "lower", lambda l: "C", anchors)
+    for m in mods.values():
+        m["credit"] = "LeKiwi URDF, SIGRobotics UIUC (Apache-2.0); arm omitted"
+    return {"lekiwi-base": mods["lekiwi-lower"]}
+
+
+def build_xlerobot():
+    d = CACHE / "xlerobot/x/xlerobot"
+    if not (d / "xlerobot.urdf").exists():
+        print("== xlerobot: unzip simulation/xlerobot_urdf.zip into tools/.cache/geom/xlerobot/x first; skipped")
+        return {}
+    def slot_of(l):
+        if l.startswith(("chassis", "left_wheel", "right_wheel", "top_base_link")):
+            return "torso"
+        if l.startswith("head_"):
+            return "head"
+        return None      # the two SO-101 arms come from the SO-101 module
+    def anchors(slot, u, bb):
+        jp = u.joint_pos
+        if slot == "torso":
+            return dict(bottom=[0, 0, round(float(bb[0][2]), 4)], shoulder_L=r2(jp.get("fixed_Base_2", jp.get("fixed_Base"))), shoulder_R=r2(jp.get("fixed_Base")), top=r2(jp.get("head_pan_joint", jp.get("fixed_Base"))))
+        return dict(bottom=r2(jp.get("head_pan_joint", [0, 0, 0])))
+    mods = build_urdf_robot("xlerobot", f"file://{d / 'xlerobot.urdf'}", f"file://{d / 'meshes/xlerobot/assets'}", slot_of, lambda l: "C", anchors)
+    out = {}
+    if "xlerobot-torso" in mods:
+        out["xlerobot-cart"] = dict(mods["xlerobot-torso"], credit="XLeRobot URDF, Rice University (Apache-2.0); arms omitted")
+    if "xlerobot-head" in mods:
+        out["xlerobot-head"] = dict(mods["xlerobot-head"], credit="XLeRobot URDF, Rice University (Apache-2.0)")
+    return out
+
+
+def build_solo12():
+    urdf = CACHE / "solo/solo12.urdf"
+    if not urdf.exists():
+        print("== solo12: expand robot_properties_solo's solo12.urdf.xacro to tools/.cache/geom/solo/solo12.urdf first; skipped")
+        return {}
+    base = "https://raw.githubusercontent.com/open-dynamic-robot-initiative/robot_properties_solo/master/src/robot_properties_solo/resources/meshes"
+    def anchors(slot, u, bb):
+        return dict(top=[0, 0, round(float(bb[1][2]), 4)])
+    mods = build_urdf_robot("solo12", f"file://{urdf}", base, lambda l: "lower", lambda l: "C", anchors)
+    for m in mods.values():
+        m["credit"] = "Solo 12 model, Open Dynamic Robot Initiative (BSD-3-Clause)"
+    return {"solo12-lower": mods["solo12-lower"]}
+
+
 def main():
     modules = {}
     modules.update(build_foh())
     modules.update(build_duke())
-    for fn in (build_bhl, build_lerobot, build_duck, build_mevita):
+    for fn in (build_bhl, build_lerobot, build_duck, build_mevita, build_so101, build_leap, build_lekiwi, build_xlerobot, build_solo12):
         try:
             modules.update(fn())
         except Exception as e:  # noqa: BLE001

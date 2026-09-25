@@ -521,6 +521,199 @@
    },
    "credit": "MEVITA, JSK Lab, University of Tokyo (MIT)",
    "ground_z": -0.9428
+  },
+  "so101-arms": {
+   "parts": {
+    "L": "assets/geom/so101-arms-L.glb",
+    "R": "assets/geom/so101-arms-R.glb"
+   },
+   "bbox": [
+    [
+     -0.031,
+     -0.0552,
+     -0.2657
+    ],
+    [
+     0.3986,
+     0.0552,
+     0.0024
+    ]
+   ],
+   "anchors": {
+    "shoulder_L": [
+     0,
+     0,
+     0
+    ],
+    "shoulder_R": [
+     0,
+     0,
+     0
+    ],
+    "wrist_L": [
+     0.3914,
+     0.0,
+     -0.2265
+    ],
+    "wrist_R": [
+     0.3914,
+     -0.0,
+     -0.2265
+    ]
+   },
+   "credit": "SO-ARM101 simulation model, The Robot Studio (Apache-2.0)",
+   "ground_z": -0.2657
+  },
+  "leap-hands": {
+   "parts": {
+    "L": "assets/geom/leap-hands-L.glb",
+    "R": "assets/geom/leap-hands-R.glb"
+   },
+   "bbox": [
+    [
+     -0.0389,
+     -0.1386,
+     -0.1315
+    ],
+    [
+     0.0243,
+     0.1386,
+     0.1009
+    ]
+   ],
+   "anchors": {
+    "wrist_L": [
+     0,
+     0,
+     0
+    ],
+    "wrist_R": [
+     0,
+     0,
+     0
+    ]
+   },
+   "credit": "LEAP Hand simulation assets, CMU (MIT)",
+   "ground_z": -0.1315
+  },
+  "lekiwi-base": {
+   "parts": {
+    "C": "assets/geom/lekiwi-lower.glb"
+   },
+   "bbox": [
+    [
+     -0.1441,
+     -0.1616,
+     -0.0329
+    ],
+    [
+     0.1437,
+     0.238,
+     0.1601
+    ]
+   ],
+   "anchors": {
+    "top": [
+     0,
+     0,
+     0.1601
+    ]
+   },
+   "credit": "LeKiwi URDF, SIGRobotics UIUC (Apache-2.0); arm omitted",
+   "ground_z": -0.0329
+  },
+  "xlerobot-cart": {
+   "parts": {
+    "C": "assets/geom/xlerobot-torso.glb"
+   },
+   "bbox": [
+    [
+     -0.1979,
+     -0.2325,
+     0.0015
+    ],
+    [
+     0.1945,
+     0.2336,
+     1.1334
+    ]
+   ],
+   "anchors": {
+    "bottom": [
+     0,
+     0,
+     0.0015
+    ],
+    "shoulder_L": [
+     -0.09,
+     0.11,
+     0.775
+    ],
+    "shoulder_R": [
+     -0.09,
+     -0.11,
+     0.775
+    ],
+    "top": [
+     -0.103,
+     0.0,
+     1.053
+    ]
+   },
+   "credit": "XLeRobot URDF, Rice University (Apache-2.0); arms omitted",
+   "ground_z": 0.0015
+  },
+  "xlerobot-head": {
+   "parts": {
+    "C": "assets/geom/xlerobot-head.glb"
+   },
+   "bbox": [
+    [
+     -0.1346,
+     -0.05,
+     1.1263
+    ],
+    [
+     -0.0623,
+     0.0488,
+     1.1899
+    ]
+   ],
+   "anchors": {
+    "bottom": [
+     -0.103,
+     0.0,
+     1.053
+    ]
+   },
+   "credit": "XLeRobot URDF, Rice University (Apache-2.0)",
+   "ground_z": 1.1263
+  },
+  "solo12-lower": {
+   "parts": {
+    "C": "assets/geom/solo12-lower.glb"
+   },
+   "bbox": [
+    [
+     -0.2336,
+     -0.152,
+     -0.3375
+    ],
+    [
+     0.2336,
+     0.152,
+     0.028
+    ]
+   ],
+   "anchors": {
+    "top": [
+     0,
+     0,
+     0.028
+    ]
+   },
+   "credit": "Solo 12 model, Open Dynamic Robot Initiative (BSD-3-Clause)",
+   "ground_z": -0.3375
   }
  }
 }

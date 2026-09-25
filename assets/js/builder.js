@@ -13,6 +13,9 @@ foh.json("assets/data/catalog.json").then(cat => {
     ["Duke legs, FOH upper body", { lower: "duke2-lower", torso: "foh-torso", arms: "foh-arms", hands: "foh-hands", head: "foh-head" }],
     ["LeRobot legs, FOH upper body", { lower: "lerobot-lower", torso: "foh-torso", arms: "foh-arms", hands: "amazing-hands", head: "foh-head" }],
     ["Cheapest printed", { lower: "lerobot-lower", torso: "bhl-torso", arms: "bhl-arms", hands: "amazing-hands", head: null }],
+    ["Cart + SO-101 arms (XLeRobot)", { lower: null, torso: "xlerobot-cart", arms: "so101-arms", hands: null, head: "xlerobot-head" }],
+    ["Centaur: Solo 12 + FOH upper body", { lower: "solo12-lower", torso: "foh-torso", arms: "foh-arms", hands: "foh-hands", head: "foh-head" }],
+    ["Duke + OpenArm + LEAP", { lower: "duke2-lower", torso: "duke2-torso", arms: "openarm-arms", hands: "leap-hands", head: "duke2-head" }],
   ];
 
   const state = Object.fromEntries(slots.map(s => [s.id, null]));
@@ -42,7 +45,7 @@ foh.json("assets/data/catalog.json").then(cat => {
     const byRobot = {};
     for (const m of opts) (byRobot[m.robot] = byRobot[m.robot] || []).push(m);
     div.innerHTML = `<h3>${esc(s.name)}</h3><p class="d">${esc(s.desc)}</p><select data-slot="${s.id}">` +
-      (s.id === "hands" || s.id === "head" ? `<option value="">none</option>` : "") +
+      `<option value="">none</option>` +
       Object.entries(byRobot).map(([rid, ms]) => `<optgroup label="${esc(robots[rid].name)}">` + ms.map(m => `<option value="${m.id}">${esc(m.name)}${m.price_usd != null ? " · " + money(m.price_usd) + MARK[m.price_basis] : " · price n/a"}</option>`).join("") + `</optgroup>`).join("") +
       `</select><p class="m"></p>`;
     slotsEl.appendChild(div);
@@ -119,6 +122,16 @@ foh.json("assets/data/catalog.json").then(cat => {
     } else if (sel.length) {
       out.push({ st: "adapter", tag: "new work", text: "Software: a mixed body needs a new robot description (URDF/MJCF) with the combined masses, and a controller retrained or retuned on it. No existing stack covers this combination.", sub: "" });
     }
+    // licence: non-commercial or unlicensed donors
+    const nc = [...rs].filter(id => robots[id].open.lic !== "yes");
+    if (nc.length) out.push({ st: "bad", tag: "licence", text: `Licence: ${nc.map(id => robots[id].name + " (" + robots[id].license_hw.split(" (")[0] + ")").join(", ")} ${nc.length > 1 ? "are" : "is"} not open hardware under an OSHWA-compatible licence; the combination inherits those terms.`, sub: "Non-commercial or unstated hardware terms: fine for research, not for a product." });
+    // arms with built-in grippers plus a hands module
+    const armsM = state.arms && modules[state.arms];
+    if (armsM && armsM.integrated_gripper && state.hands) out.push({ st: "unverified", tag: "redundant", text: `Hands: ${armsM.name} already end in grippers; ${modules[state.hands].name} would replace them, which the arm's wrist was not designed for.`, sub: "" });
+    // wheeled body without legs
+    const torsoM = state.torso && modules[state.torso];
+    if (torsoM && torsoM.wheeled && lower) out.push({ st: "adapter", tag: "conflict", text: `${torsoM.name} rolls on its own wheels; putting it on ${lower.name} makes no sense. Pick no lower body with it.`, sub: "" });
+    if (lower && lower.wheeled) out.push({ st: "match", tag: "unverified", text: `Wheeled base: ${lower.name} does not balance, so the payload and software checks are about mounting and mass only; no walking policy is needed.`, sub: "" });
     // reported cross-project builds
     for (const vc of cat.verified_combos) {
       if (vc.modules.every(id => Object.values(state).includes(id))) out.push({ st: "verified", tag: "reported build", text: `${vc.by}: ${vc.evidence}`, sub: vc.url || "" });
@@ -147,7 +160,7 @@ foh.json("assets/data/catalog.json").then(cat => {
     const v = document.getElementById("verdict");
     const rs = new Set(sel.map(m => m.robot));
     if (!sel.length) { v.className = "verdict"; v.innerHTML = "<b>Nothing selected.</b>"; }
-    else if (rs.size === 1 && BUILT.has(robots[[...rs][0]].status)) { v.className = "verdict ok"; v.innerHTML = `<b>Verified: this is ${esc(robots[[...rs][0]].name)} as built.</b> ${n.unverified + n.adapter ? "Some checks still flag missing data." : "Every check is covered by the project's own build."}`; }
+    else if (rs.size === 1 && BUILT.has(robots[[...rs][0]].status) && sel.length >= 2) { v.className = "verdict ok"; v.innerHTML = `<b>Verified: this is ${esc(robots[[...rs][0]].name)} as built.</b> ${n.unverified + n.adapter ? "Some checks still flag missing data." : "Every check is covered by the project's own build."}`; }
     else if (rs.size === 1) { v.className = "verdict design"; v.innerHTML = `<b>Design only: ${esc(robots[[...rs][0]].name)} has not been built.</b> The combination is self-consistent on paper; nothing has been verified in hardware.`; }
     else { v.className = "verdict warn"; v.innerHTML = `<b>Unverified combination.</b> ${n.verified} verified, ${n.unverified} unverified, ${n.adapter} needing adapters or extra work, ${n.unknown} unknown. Nobody has reported building this.`; }
     // totals

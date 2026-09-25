@@ -5,7 +5,8 @@ import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
 THREE.Object3D.DEFAULT_UP.set(0, 0, 1);
 
-const PALETTE = { foh: 0xe8642c, duke2: 0x3b7dd8, bhl: 0x3aa86b, lerobot: 0xd9a400, duck: 0x1fa3a3, mevita: 0x8b5cf6, "amazing-hand": 0xd946a0, hopejr: 0x8a8f98, bolt: 0xa0522d };
+const PALETTE = { foh: 0xe8642c, duke2: 0x3b7dd8, bhl: 0x3aa86b, lerobot: 0xd9a400, duck: 0x1fa3a3, mevita: 0x8b5cf6, "amazing-hand": 0xd946a0, hopejr: 0x8a8f98, bolt: 0xa0522d,
+  "so-arm101": 0xc2410c, openarm: 0x0e7490, leap: 0x7c3aed, ruka: 0xbe185d, lekiwi: 0x65a30d, tidybot2: 0x4b5563, solo12: 0xb45309, xlerobot: 0x2563eb };
 const SLOT_ORDER = ["lower", "torso", "arms", "hands", "head"];
 const V = (a) => new THREE.Vector3(a[0], a[1], a[2]);
 
@@ -100,9 +101,12 @@ async function init() {
     const ex = (i) => explode ? new THREE.Vector3(0, 0, i * 0.18) : new THREE.Vector3();
     // lower body on the ground
     if (built.lower) { off.lower = new THREE.Vector3(0, 0, -built.lower.ground_z); place(built.lower.parts.C, off.lower.clone().add(ex(0))); }
-    const lowerTop = built.lower ? (A(built.lower, "top") || V([0, 0, 0.5])).add(off.lower) : new THREE.Vector3(0, 0, 0.6);
-    // torso: bottom anchor on the lower body's top anchor
-    if (built.torso) { off.torso = lowerTop.clone().sub(A(built.torso, "bottom") || new THREE.Vector3()); place(built.torso.parts.C, off.torso.clone().add(ex(1))); }
+    const lowerTop = built.lower ? (A(built.lower, "top") || V([0, 0, 0.5])).add(off.lower) : new THREE.Vector3(0, 0, 0);
+    // torso: bottom anchor on the lower body's top anchor; with no lower body it stands on the ground
+    if (built.torso) {
+      off.torso = built.lower ? lowerTop.clone().sub(A(built.torso, "bottom") || new THREE.Vector3()) : new THREE.Vector3(0, 0, -built.torso.ground_z);
+      place(built.torso.parts.C, off.torso.clone().add(ex(1)));
+    }
     const shoulder = (s) => built.torso && A(built.torso, "shoulder_" + s) ? A(built.torso, "shoulder_" + s).add(off.torso) : lowerTop.clone().add(new THREE.Vector3(0, s === "L" ? 0.16 : -0.16, 0.3));
     const wrist = {};
     if (built.arms) for (const s of ["L", "R"]) if (built.arms.parts[s]) {

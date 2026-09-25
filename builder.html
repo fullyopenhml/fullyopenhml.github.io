@@ -62,7 +62,7 @@
 
 <main class="page">
   <h1>Mix and match</h1>
-  <p class="lead">Pick a lower body, a torso, arms, hands and a head from any robot in the <a href="catalog.html">catalog</a> that publishes its subsystems separately. The page checks what is known about the combination, adds up the bill of materials, and lists where to buy it.</p>
+  <p class="lead">Pick a lower body (legs, a quadruped or a wheeled base), a torso, arms, hands and a head from any project in the <a href="catalog.html">catalog</a> that publishes the part separately: humanoids, bimanual systems, arms, hands and mobile bases. The page checks what is known about the combination, adds up the bill of materials, and lists where to buy it.</p>
   <div class="toc" data-toc></div>
 
   <div class="banner"><span class="dot"></span><div><b>What "verified" means here.</b> A check is <b>verified</b> only when someone has built that combination: the same-design combinations of robots that walk, and the cross-project builds people have reported. Everything else is <b>unverified</b>: a mechanical bolt pattern that matches on paper, a bus that should talk, a mass that fits the design payload. An unverified combination is a project, not a kit.</div></div>
@@ -75,7 +75,7 @@
   <p>Every module is drawn from its own project's published geometry, posed at zero and placed by matching the joints at the boundaries: the waist output, the shoulders, the wrists, the head mount. Colour is the donor robot. Where two designs meet, what you see is the two parts placed at the same point, not an adapter that exists.</p>
   <div id="mix-viewer" aria-label="3D view of the selected modules"></div>
   <div class="mix-bar"><ul id="mix-legend"></ul><span id="mix-status"></span><span class="btns"><button class="btn small" id="mix-explode">Explode</button><button class="btn small" id="mix-fit">Fit view</button></span></div>
-  <p class="tiny">Geometry: our own model; Duke Humanoid V2's viewer model (Apache-2.0); Berkeley Humanoid Lite assets (CC BY-SA 4.0); LeRobot Humanoid model (Apache-2.0); Open Duck Mini v2 (Apache-2.0); MEVITA (MIT). Each is decimated for the browser; download the originals from the projects.</p>
+  <p class="tiny">Geometry: our own model; Duke Humanoid V2's viewer model (Apache-2.0); Berkeley Humanoid Lite assets (CC BY-SA 4.0); LeRobot Humanoid model (Apache-2.0); Open Duck Mini v2 (Apache-2.0); MEVITA (MIT); SO-ARM101 simulation model (Apache-2.0); LEAP Hand simulation assets (MIT); LeKiwi URDF (Apache-2.0); XLeRobot URDF (Apache-2.0); Solo 12 model (BSD-3-Clause). Each is decimated for the browser; download the originals from the projects.</p>
 
   <h2 id="checks">Compatibility checklist</h2>
   <div class="verdict" id="verdict"></div>
@@ -102,7 +102,8 @@
     <li><b>Scale</b> flags modules from robots whose height differs by more than a third; hip spacing, shoulder width and reach stop making sense before the bolts do.</li>
     <li><b>Software</b>: any mixed combination needs a new robot description and a retrained or retuned controller. The existing stacks only cover their own robot.</li>
   </ul>
-  <p>Prices are the modules' published BOMs where the project itemises them (Fully Open Humanoid, Duke Humanoid V2, LeRobot Humanoid, Amazing Hand) and are marked as estimates where a whole-robot total was split by joint count. Modules without a published price are counted as unknown, never as zero.</p>
+  <p>Prices are the modules' published BOMs where the project itemises them (Fully Open Humanoid, Duke Humanoid V2, LeRobot Humanoid, LeKiwi, SO-ARM101, Amazing Hand), the project's or vendor's published total for a complete unit (OpenArm, LEAP, RUKA, Solo 12, TidyBot++), and are marked as estimates where a total was split by joint count or by subtraction (Berkeley Humanoid Lite, XLeRobot). Modules without a published price are counted as unknown, never as zero.</p>
+  <p>Wheeled bases and carts take the lower-body or torso slot: LeKiwi and TidyBot++ carry a torso, the XLeRobot cart replaces both legs and torso. Arms with built-in grippers (SO-ARM101, OpenArm) do not need a hands module; a licence check flags donors under non-commercial or unstated hardware terms.</p>
 </main>
 
 <footer class="site-footer"><div class="inner"><span>Fully Open Humanoid · catalog and builder · <a href="reference.html#license">MIT / CC BY 4.0</a></span><span>Derived from <a href="https://generalroboticslab.github.io/Duke_Humanoid_V2_OpenSource/">Duke Humanoid V2</a> and <a href="https://berkeley-humanoid-lite.gitbook.io/docs">Berkeley Humanoid Lite</a></span></div></footer>
