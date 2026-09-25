@@ -201,6 +201,9 @@ foh.json("assets/data/catalog.json").then(cat => {
     writeHash();
     window._bomRows = rows;
     const selection = Object.fromEntries(slots.map(s => [s.id, state[s.id] ? modules[state[s.id]] : null]));
+    const linkStatus = {};
+    for (const c of cs) { const k = c.text.startsWith("Waist") ? "waist" : c.text.startsWith("Shoulders") ? "shoulders" : c.text.startsWith("Wrists") ? "wrists" : c.text.startsWith("Head mount") ? "head" : null; if (k) linkStatus[k] = c.st; }
+    selection._links = linkStatus;
     window._mixSelection = selection;
     document.dispatchEvent(new CustomEvent("foh:selection", { detail: selection }));
   }
