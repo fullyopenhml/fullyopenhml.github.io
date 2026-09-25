@@ -9,7 +9,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/site.css">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.1/examples/jsm/"}}
+</script>
 <style>
+#mix-viewer { position: relative; height: 560px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg2); overflow: hidden; }
+#mix-viewer canvas { display: block; width: 100% !important; height: 100% !important; }
+.mix-bar { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; margin: 8px 0 0; font-size: .85rem; color: var(--fg2); }
+.mix-bar ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 14px; }
+.mix-bar li { display: inline-flex; align-items: center; gap: 6px; }
+.mix-bar li i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+.mix-bar .btns { margin-left: auto; }
+@media (max-width: 720px) { #mix-viewer { height: 420px; } }
 .slots { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin: 1em 0; }
 .slot { border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px; background: var(--bg); }
 .slot h3 { margin: 0 0 4px; font-size: .95rem; }
@@ -60,6 +71,12 @@
   <div class="btns" id="presets"></div>
   <div class="slots" id="slots"></div>
 
+  <h2 id="view">The combination</h2>
+  <p>Every module is drawn from its own project's published geometry, posed at zero and placed by matching the joints at the boundaries: the waist output, the shoulders, the wrists, the head mount. Colour is the donor robot. Where two designs meet, what you see is the two parts placed at the same point, not an adapter that exists.</p>
+  <div id="mix-viewer" aria-label="3D view of the selected modules"></div>
+  <div class="mix-bar"><ul id="mix-legend"></ul><span id="mix-status"></span><span class="btns"><button class="btn small" id="mix-explode">Explode</button><button class="btn small" id="mix-fit">Fit view</button></span></div>
+  <p class="tiny">Geometry: our own model; Duke Humanoid V2's viewer model (Apache-2.0); Berkeley Humanoid Lite assets (CC BY-SA 4.0); LeRobot Humanoid model (Apache-2.0); Open Duck Mini v2 (Apache-2.0); MEVITA (MIT). Each is decimated for the browser; download the originals from the projects.</p>
+
   <h2 id="checks">Compatibility checklist</h2>
   <div class="verdict" id="verdict"></div>
   <ul class="checks" id="checklist"></ul>
@@ -92,5 +109,6 @@
 
 <script src="assets/js/site.js"></script>
 <script src="assets/js/builder.js"></script>
+<script type="module" src="assets/js/mix-viewer.js"></script>
 </body>
 </html>

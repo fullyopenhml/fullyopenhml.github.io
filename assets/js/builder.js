@@ -187,6 +187,9 @@ foh.json("assets/data/catalog.json").then(cat => {
     document.getElementById("report").href = `https://github.com/fullyopenhml/fullyopenhml.github.io/issues/new?title=${title}&body=${body}`;
     writeHash();
     window._bomRows = rows;
+    const selection = Object.fromEntries(slots.map(s => [s.id, state[s.id] ? modules[state[s.id]] : null]));
+    window._mixSelection = selection;
+    document.dispatchEvent(new CustomEvent("foh:selection", { detail: selection }));
   }
 
   document.getElementById("csv").addEventListener("click", () => {

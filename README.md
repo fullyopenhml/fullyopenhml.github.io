@@ -19,6 +19,8 @@ Three things in one site, at https://fullyopenhml.github.io/:
 | `index.html`, `design.html`, `viewer.html`, `bom.html`, `printing.html`, `assembly.html`, `electrical.html`, `bringup.html`, `software.html`, `reference.html` | The site: plain HTML, no build step |
 | `catalog.html`, `builder.html`, `assets/js/builder.js` | The catalog and the mix-and-match builder, both rendered from `assets/data/catalog.json` |
 | `tools/catalog_src.py` | **The catalog.** One dictionary per robot with sources, criteria, families, static modules; `tools/build_catalog.py` merges it with the computed modules of our design and Duke V2 |
+| `tools/build_geometry.py` | Builds the builder's 3D modules: one decimated GLB per module in `assets/geom/` plus anchors in `assets/data/module_geom.json`, from our primitives, Duke V2's viewer GLB and the URDFs of BHL, LeRobot Humanoid, Open Duck Mini and MEVITA (meshes cached in `tools/.cache/`) |
+| `assets/js/mix-viewer.js` | The builder's live 3D view (three.js), composes the selected modules by matching anchors |
 | `tools/build_data.py` | **The model.** Every part, joint, price. Writes the three files below |
 | `assets/data/robot.json` | Links, joints, part occurrences as primitive solids, catalogue, poses, specs |
 | `assets/data/bom.json` | Bill of materials by section and tier |
@@ -35,6 +37,8 @@ Three things in one site, at https://fullyopenhml.github.io/:
 python3 tools/build_data.py          # regenerate robot.json, bom.json and the URDF after any change
 python3 tools/check_collisions.py --poses --sweep   # self-collision audit
 python3 tools/build_catalog.py       # regenerate catalog.json after editing tools/catalog_src.py
+uv pip install --python tools/.venv/bin/python open3d DracoPy pycollada
+tools/.venv/bin/python tools/build_geometry.py     # regenerate the builder's module GLBs and anchors
 uv venv tools/.venv --python 3.12 && uv pip install --python tools/.venv/bin/python manifold3d trimesh numpy
 tools/.venv/bin/python tools/build_parts.py         # regenerate the STLs and the manifest
 python3 -m http.server 8000          # then open http://localhost:8000/

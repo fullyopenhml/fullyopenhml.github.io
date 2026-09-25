@@ -119,7 +119,7 @@ foh.json("assets/data/catalog.json").then(cat => {
       const det = document.createElement("tr"); det.className = "details"; det.hidden = true;
       det.innerHTML = `<td colspan="10"><div class="det"><div>
         <p><b>${esc(r.summary)}</b></p><p>${esc(r.verdict)}</p>
-        <p class="tiny">${esc(r.structure)} · ${esc(r.compute)} · ${esc(r.price_note)}</p>
+        <p class="tiny">${esc(r.structure)} · ${esc(r.compute)} · ${esc(r.price_note)}${r.checked ? ` · facts checked ${esc(r.checked)}` : ""}</p>
         <p class="links">${Object.entries(r.links).map(([k, u]) => `<a class="btn small" href="${esc(u)}">${esc(k)}</a>`).join(" ")}${r.modules.length ? ` <a class="btn small primary" href="builder.html#robot=${r.id}">use in the builder</a>` : ""}</p>
         <p class="src">Sources: ${r.sources.map(s => /^https?:/.test(s) ? `<a href="${esc(s)}">${esc(s.replace(/^https?:\/\//, ""))}</a>` : esc(s)).join(" · ")}</p>
         </div><div class="checks">${cat.criteria.map(c => `<b>${esc(c.name)}</b><span><span class="v ${r.open[c.id]}">${r.open[c.id]}</span>${esc((r.open_notes || {})[c.id] || "")}</span>`).join("")}

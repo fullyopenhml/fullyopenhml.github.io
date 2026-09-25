@@ -164,6 +164,7 @@
  },
  "robots": [
   {
+   "checked": "2026-09-25",
    "id": "foh",
    "name": "Fully Open Humanoid v0.2",
    "org": "This site",
@@ -171,7 +172,7 @@
    "type": "full",
    "status": "design",
    "height_mm": 1114,
-   "mass_kg": 27.3,
+   "mass_kg": 27.8,
    "dof": 23,
    "actuators": "RobStride RS03 ×11, RS06 ×6, RS02 ×4, RS05 ×2",
    "family": "robstride-rs",
@@ -221,6 +222,7 @@
    ]
   },
   {
+   "checked": "2026-09-25",
    "id": "bhl",
    "name": "Berkeley Humanoid Lite",
    "org": "UC Berkeley, Hybrid Robotics",
@@ -230,14 +232,14 @@
    "height_mm": 800,
    "mass_kg": 16,
    "dof": 22,
-   "actuators": "22 printed cycloidal actuators (BLDC motor + custom controller board)",
+   "actuators": "22 printed cycloidal actuators (BLDC motor + custom controller board); the paper abstract states only the sub-$5,000 cost",
    "family": "bhl",
    "structure": "FDM-printed PLA/PETG structure and gearboxes; off-the-shelf metal parts",
    "compute": "Onboard computer + microcontroller motor boards",
    "price_usd": 5000,
    "price_basis": "published-total",
    "price_note": "\"Sub-$5,000\" per the project; itemised Google Sheet BOM linked from the docs.",
-   "license_hw": "CC BY-SA 4.0 (repository); MakerWorld files CC BY",
+   "license_hw": "CC BY-SA 4.0 (repository README); MakerWorld files CC BY; the assets repository's LICENCE file",
    "license_sw": "MIT",
    "open": {
     "cad": "yes",
@@ -279,6 +281,7 @@
    ]
   },
   {
+   "checked": "2026-09-25",
    "id": "duke2",
    "name": "Duke Humanoid V2",
    "org": "Duke University, General Robotics Lab",
@@ -287,7 +290,7 @@
    "status": "walking",
    "height_mm": 1256,
    "mass_kg": 35.3,
-   "dof": 33,
+   "dof": 31,
    "actuators": "RobStride RS00 ×2, RS02 ×6, RS03 ×11, RS04 ×2, RS05 ×6, RS06 ×4; 2 Feetech gripper servos",
    "family": "robstride-rs",
    "structure": "Machined aluminium 6061; PLA, TPU and SLS nylon-12 prints",
@@ -295,7 +298,7 @@
    "price_usd": 14882,
    "price_basis": "itemised",
    "price_note": "Team BOM grand total $14,882 (CNC parts $6,390). The curated CSVs on the project's hardware site total about $13,000 without consumables.",
-   "license_hw": "Apache-2.0 per the documentation's licence page (the repository hand-off notes list the licence decision as pending)",
+   "license_hw": "Apache-2.0 (public repository licence, checked 2026-09-25; the docs' licence page says the same for CAD, drawings and BOM)",
    "license_sw": "Apache-2.0",
    "open": {
     "cad": "yes",
@@ -305,14 +308,14 @@
     "fw": "yes",
     "sim": "yes",
     "policy": "partial",
-    "lic": "partial",
+    "lic": "yes",
     "built": "yes"
    },
    "open_notes": {
     "cad": "Fusion 360 source, per-part STEP, module tree and drawings.",
     "elec": "All boards off the shelf: CANable adapters, buck converters, TVS diodes.",
     "policy": "Deploy code and Isaac Lab training are released; a public walking checkpoint for V2 was not confirmed.",
-    "lic": "Documentation states Apache-2.0 for CAD, drawings and BOM; the hand-off notes in the repository say the hardware licence is undecided. Check the LICENSE file before relying on it.",
+    "lic": "The public repository is Apache-2.0 and the documentation applies it to CAD, drawings and BOM. An internal hand-off note in the working copy still calls the decision pending, so confirm the LICENSE file shipped with the CAD release.",
     "built": "Built and walking at Duke (V2 paper, 2026). V1 (2024) was MIT-licensed."
    },
    "links": {
@@ -325,9 +328,9 @@
     "Duke_Humanoid_V2_OpenSource/reference/bom/duke-humanoid-v2_BOM_sheet1_main.csv"
    ],
    "summary": "A 1.26 m, 31-joint RobStride humanoid with two gimballed depth cameras, machined aluminium legs and a fully priced BOM. The design this site's own robot derives from.",
-   "verdict": "Complete release with real build data. The machined parts are the cost and the sourcing burden; the licence should be confirmed in the repository.",
-   "score": 8.0,
-   "oshwa": false,
+   "verdict": "Complete release with real build data under Apache-2.0. The machined parts are the cost and the sourcing burden.",
+   "score": 8.5,
+   "oshwa": true,
    "modules": [
     "duke2-lower",
     "duke2-torso",
@@ -337,6 +340,7 @@
    ]
   },
   {
+   "checked": "2026-09-25",
    "id": "roboto",
    "name": "Roboto Origin",
    "org": "RoboParty (Shanghai)",
@@ -346,10 +350,10 @@
    "height_mm": 1250,
    "mass_kg": 34,
    "dof": 23,
-   "actuators": "RoboParty's own actuators (models not confirmed)",
+   "actuators": "21 servo actuators, 120 N·m legs and 27 N·m arms; models not confirmed",
    "family": "unknown",
    "structure": "Machined and printed parts; ordered through Taobao and JLC per the project",
-   "compute": "Not confirmed",
+   "compute": "Not confirmed; 48 V 15 Ah battery",
    "price_usd": 7000,
    "price_basis": "published-total",
    "price_note": "About ¥50,000 (≈ $7,000) reported by the project and press; kit pre-orders taken.",
@@ -389,6 +393,7 @@
    "modules": []
   },
   {
+   "checked": "2026-09-25",
    "id": "asimov",
    "name": "Asimov v1",
    "org": "Menlo Research",
@@ -443,6 +448,7 @@
    "modules": []
   },
   {
+   "checked": "2026-09-25",
    "id": "poppy",
    "name": "Poppy Humanoid",
    "org": "Inria, Flowers team",
@@ -450,12 +456,12 @@
    "type": "full",
    "status": "archive",
    "height_mm": 830,
-   "mass_kg": null,
+   "mass_kg": 3.5,
    "dof": 25,
-   "actuators": "Dynamixel MX-28 and MX-64",
+   "actuators": "25 Dynamixel MX-28 and MX-64 (5-DOF trunk)",
    "family": "dynamixel-x",
    "structure": "3D-printed (SLS or FDM) structure",
-   "compute": "Odroid or Raspberry Pi in the head",
+   "compute": "Odroid XU4 in the head",
    "price_usd": 8500,
    "price_basis": "published-total",
    "price_note": "$8,000–9,000 per the project (2015 pricing, about 60 % actuators).",
@@ -483,6 +489,7 @@
    },
    "sources": [
     "https://github.com/poppy-project/poppy-humanoid",
+    "https://www.poppy-project.org/en/robots/poppy-humanoid/",
     "https://www.humanoidsdata.com/articles/open-source-humanoid-robots"
    ],
    "summary": "The clearest early example of a full robot released as editable CAD rather than printable meshes. Dated actuators and no walking.",
@@ -492,6 +499,7 @@
    "modules": []
   },
   {
+   "checked": "2026-09-25",
    "id": "nico",
    "name": "NICO",
    "org": "University of Hamburg, WTM",
@@ -508,7 +516,7 @@
    "price_usd": null,
    "price_basis": "unknown",
    "price_note": "No published total.",
-   "license_hw": "CC BY-SA 3.0",
+   "license_hw": "CC BY-SA 3.0 (stated by the project; the CAD repository carries no licence file)",
    "license_sw": "GPL-3.0",
    "open": {
     "cad": "yes",
@@ -540,6 +548,7 @@
    "modules": []
   },
   {
+   "checked": "2026-09-25",
    "id": "sapiens",
    "name": "AI Sapiens K0 / K1",
    "org": "ROBOTIS",
@@ -589,6 +598,7 @@
    "modules": []
   },
   {
+   "checked": "2026-09-25",
    "id": "kbot",
    "name": "K-Bot",
    "org": "K-Scale Labs",
@@ -597,9 +607,9 @@
    "status": "archive",
    "height_mm": 1400,
    "mass_kg": 34,
-   "dof": null,
-   "actuators": "RobStride-class QDD actuators (per K-Scale docs; not itemised)",
-   "family": "unknown",
+   "dof": 20,
+   "actuators": "RobStride RS04 ×4, RS03 ×8, RS02 ×6, RS00 ×2 (5 per leg, 5 per arm)",
+   "family": "robstride-rs",
    "structure": "Machined and printed",
    "compute": "K-OS on an embedded computer",
    "price_usd": 8999,
@@ -625,11 +635,13 @@
    },
    "links": {
     "repo": "https://github.com/kscalelabs/kbot",
-    "site": "https://www.kscale.dev/"
+    "site": "https://www.kscale.dev/",
+    "docs": "https://docs.kscale.dev/robots/k-bot/zeroing/"
    },
    "sources": [
     "https://www.humanoidsdata.com/articles/open-source-humanoid-robots",
-    "https://www.rs-online.com/designspark/k-scale-labs-launches-k-bot-americas-first-open-source-humanoid-robot"
+    "https://www.rs-online.com/designspark/k-scale-labs-launches-k-bot-americas-first-open-source-humanoid-robot",
+    "https://aiwiki.ai/wiki/k_scale_k_bot"
    ],
    "summary": "A 1.4 m open-licensed humanoid whose company dissolved; the CAD and OS remain as a design archive.",
    "verdict": "Not reproducible today. The licence preserved the files, not the suppliers or the documentation work.",
@@ -638,6 +650,7 @@
    "modules": []
   },
   {
+   "checked": "2026-09-25",
    "id": "lerobot",
    "name": "LeRobot Humanoid (biped)",
    "org": "Hugging Face, LeRobot",
@@ -668,7 +681,7 @@
     "built": "partial"
    },
    "open_notes": {
-    "cad": "Public Onshape document organised by subassembly.",
+    "cad": "Public Onshape document organised by subassembly. The model repository's bipedal-platform URDF already carries a folded upper body with RobStride O0 arms, so the upper body exists in CAD; the hardware release covers the biped.",
     "policy": "MuJoCo and MJLab training environments; walking shown by the authors.",
     "built": "Lower body only; upper body on the roadmap. Third-party builds not confirmed."
    },
@@ -690,6 +703,7 @@
    ]
   },
   {
+   "checked": "2026-09-25",
    "id": "agiloped",
    "name": "AGILOped",
    "org": "University of Bonn, NimbRo",
@@ -739,6 +753,7 @@
    "modules": []
   },
   {
+   "checked": "2026-09-25",
    "id": "nimbro",
    "name": "NimbRo-OP2X",
    "org": "University of Bonn, NimbRo",
@@ -755,7 +770,7 @@
    "price_usd": null,
    "price_basis": "unknown",
    "price_note": "\"Similar price range to Baxter\" per the paper; no figure.",
-   "license_hw": "CC BY-NC-SA 3.0",
+   "license_hw": "CC BY-NC-SA 3.0 (stated in the hardware repository; no licence file)",
    "license_sw": "BSD-3-Clause",
    "open": {
     "cad": "yes",
@@ -788,6 +803,7 @@
    "modules": []
   },
   {
+   "checked": "2026-09-25",
    "id": "igus",
    "name": "igus Humanoid Open Platform",
    "org": "University of Bonn, NimbRo with igus",
@@ -835,6 +851,7 @@
    "modules": []
   },
   {
+   "checked": "2026-09-25",
    "id": "toddlerbot",
    "name": "ToddlerBot 2.0",
    "org": "Stanford University",
@@ -886,6 +903,7 @@
    "modules": []
   },
   {
+   "checked": "2026-09-25",
    "id": "microban",
    "name": "Microban",
    "org": "Rhoban, Bordeaux",
@@ -933,19 +951,20 @@
    "modules": []
   },
   {
+   "checked": "2026-09-25",
    "id": "zeroth",
    "name": "Zeroth-01 / Z-Bot",
    "org": "K-Scale Labs (community)",
    "year": 2024,
    "type": "mini",
    "status": "archive",
-   "height_mm": null,
+   "height_mm": 400,
    "mass_kg": null,
    "dof": 16,
-   "actuators": "Feetech STS-series bus servos (per the design; not re-verified)",
+   "actuators": "16 × Feetech STS3215 / STS3250",
    "family": "feetech-sts",
    "structure": "FDM-printed",
-   "compute": "Milk-V Duo S (RISC-V)",
+   "compute": "Milk-V Duo S (RISC-V) in the original; community builds use a Raspberry Pi 4",
    "price_usd": 350,
    "price_basis": "published-total",
    "price_note": "\"BoM starts at $350\" per the repository.",
@@ -969,7 +988,9 @@
     "repo": "https://github.com/zeroth-robotics/zeroth-bot"
    },
    "sources": [
-    "https://github.com/zeroth-robotics/zeroth-bot"
+    "https://github.com/zeroth-robotics/zeroth-bot",
+    "https://circuitdigest.com/news/zeroth-bot-an-opensource-risc-v-powered-humanoid-robot",
+    "https://github.com/Justin-Riekehof/zeroth-01-build"
    ],
    "summary": "A $350, 16-DOF printed mini humanoid with vision and speech on a RISC-V board.",
    "verdict": "Cheap, MIT-licensed, unmaintained.",
@@ -978,6 +999,7 @@
    "modules": []
   },
   {
+   "checked": "2026-09-25",
    "id": "duck",
    "name": "Open Duck Mini v2",
    "org": "Antoine Pirrone (community)",
@@ -986,8 +1008,8 @@
    "status": "walking",
    "height_mm": 420,
    "mass_kg": null,
-   "dof": null,
-   "actuators": "Feetech STS-series bus servos",
+   "dof": 14,
+   "actuators": "14 × Feetech STS3215 (5 per leg, 4 in the neck and head)",
    "family": "feetech-sts",
    "structure": "FDM-printed",
    "compute": "Raspberry Pi Zero 2 W",
@@ -1028,6 +1050,7 @@
    ]
   },
   {
+   "checked": "2026-09-25",
    "id": "bolt",
    "name": "Bolt",
    "org": "Open Dynamic Robot Initiative (MPI-IS, NYU, LAAS)",
@@ -1079,6 +1102,7 @@
    ]
   },
   {
+   "checked": "2026-09-25",
    "id": "mevita",
    "name": "MEVITA",
    "org": "JSK, University of Tokyo",
@@ -1129,6 +1153,7 @@
    ]
   },
   {
+   "checked": "2026-09-25",
    "id": "hopejr",
    "name": "HopeJR",
    "org": "The Robot Studio with Hugging Face",
@@ -1179,6 +1204,7 @@
    ]
   },
   {
+   "checked": "2026-09-25",
    "id": "amazing-hand",
    "name": "Amazing Hand",
    "org": "Pollen Robotics / Hugging Face",
@@ -1227,13 +1253,14 @@
    ]
   },
   {
+   "checked": "2026-09-25",
    "id": "inmoov",
    "name": "InMoov",
    "org": "Gaël Langevin (community)",
    "year": 2012,
    "type": "upper",
    "status": "walking",
-   "height_mm": 1800,
+   "height_mm": null,
    "mass_kg": null,
    "dof": null,
    "actuators": "28 hobby PWM servos",
@@ -1275,6 +1302,7 @@
    "modules": []
   },
   {
+   "checked": "2026-09-25",
    "id": "op3",
    "name": "ROBOTIS OP3",
    "org": "ROBOTIS",
@@ -1323,14 +1351,15 @@
    "modules": []
   },
   {
+   "checked": "2026-09-25",
    "id": "icub",
    "name": "iCub",
    "org": "Istituto Italiano di Tecnologia",
-   "year": 2008,
+   "year": 2009,
    "type": "full",
    "status": "commercial",
    "height_mm": 1040,
-   "mass_kg": null,
+   "mass_kg": 22,
    "dof": 53,
    "actuators": "Custom brushless and brushed motors with in-house boards",
    "family": "unknown",
@@ -1338,8 +1367,8 @@
    "compute": "Onboard PC104 + external cluster",
    "price_usd": null,
    "price_basis": "unknown",
-   "price_note": "Supplied by IIT; research-institution pricing.",
-   "license_hw": "CERN-OHL-W-2.0 for the public subset; CC BY-SA models",
+   "price_note": "Supplied by IIT; about €250,000 per unit is the commonly cited figure (Wikipedia), depending on version.",
+   "license_hw": "CERN-OHL-W-2.0 for the public subset; CC BY-SA models; historically GPL/LGPL",
    "license_sw": "GPL (core), BSD elsewhere",
    "open": {
     "cad": "partial",
@@ -1362,7 +1391,8 @@
     "elec": "https://github.com/icub-tech-iit/electronics-boards-public"
    },
    "sources": [
-    "https://www.humanoidsdata.com/articles/open-source-humanoid-robots"
+    "https://www.humanoidsdata.com/articles/open-source-humanoid-robots",
+    "https://en.wikipedia.org/wiki/ICub"
    ],
    "summary": "The long-running open research humanoid: open software and models, selected open hardware, commercial supply.",
    "verdict": "Calling it closed would be wrong; calling every part open hardware would also be wrong.",
@@ -1371,6 +1401,7 @@
    "modules": []
   },
   {
+   "checked": "2026-09-25",
    "id": "bruce",
    "name": "BRUCE",
    "org": "Westwood Robotics with RoMeLa",
@@ -1418,6 +1449,7 @@
    "modules": []
   },
   {
+   "checked": "2026-09-25",
    "id": "agibot-x1",
    "name": "AgiBot X1 (Lingxi X1)",
    "org": "AgiBot",
@@ -1425,7 +1457,7 @@
    "type": "full",
    "status": "commercial",
    "height_mm": 1300,
-   "mass_kg": null,
+   "mass_kg": 33,
    "dof": 34,
    "actuators": "AgiBot PowerFlow actuators",
    "family": "unknown",
@@ -1457,7 +1489,8 @@
    },
    "sources": [
     "https://github.com/AgibotTech/agibot_x1_hardware",
-    "https://www.humanoidsdata.com/articles/open-source-humanoid-robots"
+    "https://www.humanoidsdata.com/articles/open-source-humanoid-robots",
+    "https://www.agibot.com/products/X1"
    ],
    "summary": "A 1.3 m modular humanoid with native CAD, BOM and SOP published, but no hardware licence.",
    "verdict": "Files without permission: fails the definition on licensing alone.",
@@ -1466,6 +1499,7 @@
    "modules": []
   },
   {
+   "checked": "2026-09-25",
    "id": "fourier-n1",
    "name": "Fourier N1",
    "org": "Fourier",
@@ -1512,6 +1546,7 @@
    "modules": []
   },
   {
+   "checked": "2026-09-25",
    "id": "tienkung",
    "name": "Tien Kung (Tiangong)",
    "org": "X-Humanoid, Beijing Humanoid Robot Innovation Center",
@@ -1558,6 +1593,7 @@
    "modules": []
   },
   {
+   "checked": "2026-09-25",
    "id": "openloong",
    "name": "OpenLoong",
    "org": "Shanghai Humanoid Robot Innovation Center",
