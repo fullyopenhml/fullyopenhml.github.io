@@ -235,9 +235,39 @@ def box(size, c, round=0):
     return d
 
 
+def cone(axis, r0, r1, l, c, w=None):
+    """Frustum along axis: radius r0 at the low end, r1 at the high end; w = wall thickness of an open-ended shell."""
+    d = {"t": "cone", "axis": axis, "r0": r0, "r1": r1, "l": l, "c": list(c)}
+    if w:
+        d["w"] = w
+    return d
+
+
+def sphere(r, c, w=None):
+    d = {"t": "sphere", "r": r, "c": list(c)}
+    if w:
+        d["w"] = w
+    return d
+
+
 def vol(shape):
     if shape["t"] == "box":
-        return math.prod(shape["s"])
+        v = math.prod(shape["s"])
+        if shape.get("w"):   # hollow rounded box: shell volume
+            w = shape["w"]
+            return v - math.prod([max(0.0, d - 2 * w) for d in shape["s"]])
+        return v
+    if shape["t"] == "cone":
+        f = lambda a, b: math.pi * shape["l"] * (a * a + a * b + b * b) / 3
+        v = f(shape["r0"], shape["r1"])
+        if shape.get("w"):
+            v -= f(max(0.0, shape["r0"] - shape["w"]), max(0.0, shape["r1"] - shape["w"]))
+        return v
+    if shape["t"] == "sphere":
+        v = 4 / 3 * math.pi * shape["r"] ** 3
+        if shape.get("w"):
+            v -= 4 / 3 * math.pi * max(0.0, shape["r"] - shape["w"]) ** 3
+        return v
     r_out = shape["r"]
     r_in = shape.get("ri", 0)
     return math.pi * (r_out ** 2 - r_in ** 2) * shape["l"]
@@ -750,9 +780,12 @@ def shape_bbox(shape):
     c = shape["c"]
     if shape["t"] == "box":
         h = [v / 2 for v in shape["s"]]
+    elif shape["t"] == "sphere":
+        h = [shape["r"]] * 3
     else:
         i = "xyz".index(shape["axis"])
-        h = [shape["r"]] * 3
+        r = max(shape["r0"], shape["r1"]) if shape["t"] == "cone" else shape["r"]
+        h = [r] * 3
         h[i] = shape["l"] / 2
     return [c[k] - h[k] for k in range(3)], [c[k] + h[k] for k in range(3)]
 
@@ -1003,11 +1036,14 @@ bom = dict(meta=dict(version=VERSION, priced_as_of=PRICED_AS_OF, currency="USD")
 
 
 def shape_inertia(sh, m):
-    """Inertia tensor (kg m^2) of one shape about its own centre, in metres."""
+    """Inertia tensor (kg m^2) of one shape about its own centre, in metres (cones as mean-radius cylinders)."""
     if sh["t"] == "box":
         a, b, c = [v / 1000 for v in sh["s"]]
         return [m / 12 * (b * b + c * c), m / 12 * (a * a + c * c), m / 12 * (a * a + b * b)]
-    r = sh["r"] / 1000
+    if sh["t"] == "sphere":
+        r = sh["r"] / 1000
+        return [2 / 5 * m * r * r] * 3
+    r = ((sh["r0"] + sh["r1"]) / 2 if sh["t"] == "cone" else sh["r"]) / 1000
     ri = sh.get("ri", 0) / 1000
     l = sh["l"] / 1000
     i_axis = m * (r * r + ri * ri) / 2
@@ -1056,8 +1092,12 @@ def write_urdf(path: Path):
             if sh["t"] == "box":
                 geom = f'<box size="{f(sh["s"][0] / 1000)} {f(sh["s"][1] / 1000)} {f(sh["s"][2] / 1000)}"/>'
                 rpy = "0 0 0"
+            elif sh["t"] == "sphere":
+                geom = f'<sphere radius="{f(sh["r"] / 1000)}"/>'
+                rpy = "0 0 0"
             else:
-                geom = f'<cylinder radius="{f(sh["r"] / 1000)}" length="{f(sh["l"] / 1000)}"/>'
+                r = max(sh["r0"], sh["r1"]) if sh["t"] == "cone" else sh["r"]
+                geom = f'<cylinder radius="{f(r / 1000)}" length="{f(sh["l"] / 1000)}"/>'
                 rpy = {"x": "0 1.5707963 0", "y": "1.5707963 0 0", "z": "0 0 0"}[sh["axis"]]
             org = f'<origin xyz="{f(c[0])} {f(c[1])} {f(c[2])}" rpy="{rpy}"/>'
             out.append(f'    <visual name="{lnk["id"]}.{occ}#{k}">{org}<geometry>{geom}</geometry><material name="{mat}"/></visual>')

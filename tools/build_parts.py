@@ -31,9 +31,9 @@ from manifold3d import Manifold, OpType
 
 ROOT = Path(__file__).resolve().parent.parent
 MODEL = sys.argv[sys.argv.index("--model") + 1] if "--model" in sys.argv else "v0_2"
-MODEL_JSON = {"v0_2": "robot.json", "v1": "robot_v1.json"}[MODEL]
-MANIFEST = {"v0_2": "print_files.json", "v1": "print_files_v1.json"}[MODEL]
-OUT = ROOT / "assets" / ("print" if MODEL == "v0_2" else "print_v1")
+MODEL_JSON = {"v0_2": "robot.json", "v1": "robot_v1.json", "v1a": "robot_v1a.json"}[MODEL]
+MANIFEST = {"v0_2": "print_files.json", "v1": "print_files_v1.json", "v1a": "print_files_v1a.json"}[MODEL]
+OUT = ROOT / "assets" / {"v0_2": "print", "v1": "print_v1", "v1a": "print_v1a"}[MODEL]
 robot = json.loads((ROOT / "assets/data" / MODEL_JSON).read_text())
 VER = robot["meta"]["version"].replace(".", "_")
 SEG = 96          # circle segments for holes and cylinders
@@ -67,7 +67,25 @@ def rbox(size, c, rd=0.0):
 
 def shape_solid(sh):
     if sh["t"] == "box":
-        return rbox(sh["s"], sh["c"], sh.get("rd", 0))
+        m = rbox(sh["s"], sh["c"], sh.get("rd", 0))
+        if sh.get("w"):
+            w = sh["w"]
+            m = m - rbox([d - 2 * w for d in sh["s"]], sh["c"], max(0.0, sh.get("rd", 0) - w))
+        return m
+    if sh["t"] == "sphere":
+        m = Manifold.sphere(sh["r"], 96).translate(list(sh["c"]))
+        if sh.get("w"):
+            m = m - Manifold.sphere(sh["r"] - sh["w"], 96).translate(list(sh["c"]))
+        return m
+    if sh["t"] == "cone":
+        l = sh["l"]
+        m = Manifold.cylinder(l, sh["r0"], sh["r1"], SEG).translate([0, 0, -l / 2])
+        if sh.get("w"):
+            w = sh["w"]
+            m = m - Manifold.cylinder(l + 2, max(0.0, sh["r0"] - w), max(0.0, sh["r1"] - w), SEG).translate([0, 0, -l / 2 - 1])
+        if AXIS_ROT[sh["axis"]]:
+            m = m.rotate(AXIS_ROT[sh["axis"]])
+        return m.translate(list(sh["c"]))
     return cylinder(sh["axis"], sh["r"], sh["l"], sh["c"], sh.get("ri", 0))
 
 

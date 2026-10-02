@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aesthetic variant — Fully Open Humanoid</title>
+<meta name="description" content="Fully Open Humanoid v1a, work in progress: the production design with printed cover shells so it reads as one body, styled after Unitree G1 and ROBOTIS AI Sapiens, whose published models are shown beside it at true scale. Same mechanics, audited for clearance, simulated; cover parts, masses and the cost difference.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.1/examples/jsm/"}}
+</script>
+<style>
+.sim-shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:1.2em 0 .6em}.sim-shots figure{margin:0}.sim-shots img{width:100%;border-radius:var(--radius);border:1px solid var(--line);display:block}
+.compare { position: relative; height: 520px; }
+.compare .legend { position: absolute; left: 0; right: 0; bottom: 0; display: flex; justify-content: space-around; gap: 8px; padding: 8px 10px; font-size: .8rem; color: var(--fg2); pointer-events: none; }
+.compare .legend b { color: var(--fg); display: block; }
+.compare .hint { top: 10px; bottom: auto; }
+.swatch { display: inline-block; width: 14px; height: 14px; border-radius: 4px; border: 1px solid var(--line); vertical-align: -2px; margin-right: 4px; }
+.cues { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin: 1em 0 1.5em; }
+.cues .card h3 { font-size: .98rem; }
+.delta { color: var(--fg2); font-size: .85rem; }
+@media (max-width: 600px) { .compare { height: 360px; } }
+</style>
+</head>
+<body>
+<header class="site-header"><div class="inner">
+  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><use href="assets/img/favicon.svg#mark"/></svg><span class="name">Fully Open Humanoid</span><span class="ver">v1.0a</span></a>
+  <button class="iconbtn nav-toggle" aria-label="Menu">☰</button>
+  <nav class="nav">
+    <a href="catalog.html">Catalog</a><a href="builder.html">Builder</a><a href="production.html">Production</a><a href="aesthetic.html">Aesthetic</a><a href="design.html">Design</a><a href="viewer.html">Viewer</a><a href="bom.html">BOM</a><a href="printing.html">Printing</a><a href="assembly.html">Assembly</a><a href="electrical.html">Electrical</a><a href="bringup.html">Bring-up</a><a href="software.html">Software</a><a href="reference.html">Reference</a>
+    <a class="gh" href="https://github.com/fullyopenhml/fullyopenhml.github.io" title="GitHub">GitHub</a>
+    <button class="iconbtn theme-toggle" aria-label="Toggle theme">◐</button>
+  </nav>
+</div></header>
+
+<main class="page wide">
+  <section class="hero">
+    <div>
+      <h1>The aesthetic variant: v1a <span class="pill warn">work in progress</span></h1>
+      <p class="lead">The <a href="production.html">production design</a> in a body. Printed PLA shells over the tubes, the joint cups, the torso frame, the pelvis and the head, so the robot reads as one continuous figure the way <a href="https://www.unitree.com/g1">Unitree G1</a> and <a href="https://github.com/ROBOTIS-GIT/ai_sapiens">ROBOTIS AI Sapiens</a> do. Nothing structural moves: every actuator, tube, plate and screw is v1's. <span id="lead-specs"></span></p>
+      <div class="btns">
+        <a class="btn primary" href="viewer.html?model=v1a">Explore the model</a>
+        <a class="btn" href="bom.html?model=v1a">Bill of materials</a>
+        <a class="btn" href="printing.html?model=v1a">Printed parts</a>
+        <a class="btn" href="assets/model/foh_v1_0a.urdf" download>URDF</a>
+      </div>
+    </div>
+    <div class="hero-viewer" id="hero-viewer">
+      <div class="hint">Drag to orbit · every part is inspectable in the full viewer</div>
+      <a class="btn small open" href="viewer.html?model=v1a">Open viewer ↗</a>
+    </div>
+  </section>
+
+  <div class="banner"><span class="dot"></span><div><b>Status: work in progress, first pass.</b> The covers are modelled as the primitives the generator knows (tapered shells, discs, rounded boxes, a hollow box torso), placed from the v1 geometry by <code>tools/build_v1a.py</code>, checked for clearance through every joint's range, counted in the mass and the bill of materials, and exported as STL and URDF. What they are not yet: sculpted. The lofted surfaces that blend a cover into its cup, the split lines, the magnet pockets and the panelled torso shell are the next step, listed at the <a href="#next">end</a>. The reference models beside ours are the manufacturers' own published descriptions, shown under their licences for comparison.</div></div>
+
+  <div class="stats" id="stats"></div>
+
+  <div class="toc" data-toc></div>
+
+  <h2 id="language">Design language: what we borrowed, and from whom</h2>
+  <p>Both reference robots hide a skeleton much like ours (actuators at the joints, structure between them) under shells that do three things: they taper each limb so the eye reads a leg instead of a tube with lumps, they make the joints read as round discs, and they keep to two tones so the body stays one object. Their published models, loaded from the <a href="https://github.com/ROBOTIS-GIT/ai_sapiens/tree/main/ai_sapiens_description">AI Sapiens description</a> (Apache-2.0) and <a href="https://github.com/unitreerobotics/unitree_ros/tree/master/robots/g1_description">unitree_ros</a> (BSD-3-Clause), stand beside our model at true scale below.</p>
+  <div class="hero-viewer compare" id="compare">
+    <div class="hint">Drag to orbit · zero pose of each published model · heights from the models</div>
+    <div class="legend" id="compare-legend"></div>
+  </div>
+  <div class="cues">
+    <div class="card"><h3>Tapered limbs</h3><p>G1's thigh and shank are single tapered shells; AI Sapiens' legs the same with a softer line. Ours: four conical shells, thigh Ø92 → Ø80 and shank Ø80 → Ø72, each ending a few millimetres short of the cup at either end so the cup's own ring reads as the joint. Upper arm and forearm the same in Ø72 and Ø88.</p></div>
+    <div class="card"><h3>Joints as discs</h3><p>G1 leaves the knee actuator visible as a dark disc. Ours: a graphite disc on the outer shank plate over the knee coupler screws, and the same disc on the back of each shoulder-roll cup. The RobStride housings themselves are already dark cylinders; the discs give the exposed joints one face.</p></div>
+    <div class="card"><h3>A body, not a frame</h3><p>Both robots have a smooth torso with a chest line. Ours: a rounded shell 200 × 240 × 500 mm around the extrusion frame, 1.6 mm walls, with graphite bezels where the shoulder brackets come through, replacing the four flat polycarbonate panels of v1. A U-shaped cover closes the pelvis under the hip actuators.</p></div>
+    <div class="card"><h3>Head with a visor</h3><p>G1's face is a dark visor with the depth camera behind it; AI Sapiens' head is a rounded block. Ours: a rounded hollow head 120 × 130 × 100 mm on the v1 neck post, the RealSense moved 6 mm back behind a graphite visor strip with a camera window.</p></div>
+    <div class="card"><h3>Shoes</h3><p>G1's feet are low shells. Ours sit on the aluminium foot plate: a rounded toe cap, two rails along the plate edges and a heel cap. The two ankle actuators stay visible between them; a full shoe would need them moved up, which is a mechanical change, not a cover.</p></div>
+    <div class="card"><h3>Two tones</h3><p>Warm white PLA for the shells; graphite PLA for the discs, bezels and visor; the actuators and carbon tubes stay black. Where a shell is split in two to go around a link, the halves meet along the sides and hold with Ø8 magnets in printed pockets, so every cover comes off without tools.</p></div>
+  </div>
+
+  <h2 id="changes">What changes against v1</h2>
+  <p>Twelve cover part types are added and four parts are removed (the three polycarbonate torso panels and the boxy head shell). The table is read from the generated model; masses are from the shell volumes at 1.24 g/cm³.</p>
+  <div class="table-wrap"><table class="compact" id="cover-table"><thead><tr><th>Cover</th><th class="num">Qty</th><th>Colour</th><th class="num">Mass g (each)</th><th class="num">Envelope mm</th><th>Where it sits and how it is held</th></tr></thead><tbody></tbody></table></div>
+  <p id="delta-text"></p>
+
+  <h2 id="fit">Fitting the covers around moving parts</h2>
+  <p>A cover is only an improvement if the robot still moves. Each shell was placed against the swept volume of its neighbours, not against the zero pose, and the audit below confirms it. The cases that set the dimensions:</p>
+  <ul>
+    <li><b>Pelvis cover.</b> The hip-yaw cups (Ø112) reach 84 mm from the centre line at the zero pose and 67 mm when a leg adducts the full 12°, so the bottom panel is 128 mm wide while the front and back panels are 164 mm; the bottom sits 4 mm under the hip-pitch mount rings.</li>
+    <li><b>Shoes.</b> The ankle-pitch actuator hangs 42 mm above the foot plate and the ankle bracket plate sweeps down to 39 mm above it at 30° of roll, so the toe cap starts 58 mm in front of the pitch axis and the rails are 13 mm tall. The heel cap stops 2.5 mm behind the ankle-roll back plate.</li>
+    <li><b>Forearm cover.</b> Ends 1 mm under the elbow yoke's cross member and clears the elbow cup by 15 mm at full flexion (125°). With the arms hanging straight it is the first thing an abducting leg's hip-yaw housing meets, from 15°; v1's bare forearm had the same coupling through the hand at 20°, and the standing pose with bent elbows avoids it in both.</li>
+    <li><b>Shoulder.</b> A drum around the shoulder-roll cup was tried and rejected: the upper-arm yoke's shelf sweeps 51 to 78 mm from the roll axis, so any drum would be Ø160. The bracket keeps a disc on the back instead and a bezel in the torso wall; the 90 mm of exposed bracket beam between them is the one place the figure still shows its frame.</li>
+    <li><b>Torso shell.</b> The shoulder bracket (corner radius 52 mm) turns inside the shell; only the beam passes through the Ø100 opening. The E-stop head comes through the back wall, the breaker moved 3 mm inboard to clear it.</li>
+  </ul>
+
+  <h2 id="audit">Self-collision audit</h2>
+  <p>Same audit as v1, on the covered model: every part pair at the zero pose, in six preset poses, and through each joint's full range in 13 steps, with tubes inside their sockets, actuators inside their cups and the parts a shell encloses declared inside it.</p>
+  <div class="table-wrap"><table class="compact"><thead><tr><th>Check</th><th>Result</th><th>Note</th></tr></thead><tbody id="audit-rows"></tbody></table></div>
+
+  <h2 id="sim">Does it still stand? Physics check</h2>
+  <p>The v1 MuJoCo check on the v1a URDF: the covers add mass to the pelvis, the limbs and the torso, the servos hold the zero pose, no balance controller. The limit in v1 came from the arms swinging into the thighs after a 12 N·s push; with the shells' mass the figure settles at a larger lean but stays up.</p>
+  <div class="sim-shots">
+    <figure><img src="assets/img/sim_v1a/stand.png" alt="MuJoCo frame: v1a standing" loading="lazy"><figcaption>Stand: 5 s after a 10 mm drop.</figcaption></figure>
+    <figure><img src="assets/img/sim_v1a/crouch.png" alt="MuJoCo frame: v1a crouch" loading="lazy"><figcaption>Crouch: hips −35°, knees 70°, ankles −35°.</figcaption></figure>
+    <figure><img src="assets/img/sim_v1a/push_12.png" alt="MuJoCo frame: v1a after a 12 N·s push" loading="lazy"><figcaption>Push: 12 N·s forward on the torso, recovered.</figcaption></figure>
+  </div>
+  <div class="table-wrap"><table class="compact" id="sim-table"><thead><tr><th>Test</th><th>What happens</th><th class="num">Max tilt</th><th class="num">Settled tilt</th><th>Busiest leg joint</th><th>Result</th></tr></thead><tbody></tbody></table></div>
+  <p class="tiny" id="sim-meta"></p>
+<pre><code>python3 tools/build_v1a.py                                  # robot_v1a.json, bom_v1a.json, foh_v1_0a.urdf (runs build_v1.py first)
+python3 tools/check_collisions.py --model v1a --poses --sweep --steps 13
+tools/.venv/bin/python tools/build_parts.py --model v1a        # assets/print_v1a/*.stl + manifest
+tools/.venv/bin/python tools/sim_stand.py --model v1a --render # sim_results_v1a.json, frames</code></pre>
+
+  <h2 id="parts">Printing the shells</h2>
+  <p>The shells print in PLA with 1.6 or 2 mm walls (four or five perimeters, no infill), standing on their open end, no supports. The torso shell is larger than any bed and is meant to print as eight panels with lap joints and magnet pockets; the STL below is the one-piece envelope until that split is drawn. The v1 cups, sockets and brackets are in the same set, unchanged.</p>
+  <div class="btns" id="dl-parts"></div>
+  <div class="table-wrap"><table class="compact" id="parts-table"><thead><tr><th>Part</th><th class="num">Qty</th><th>Material</th><th class="num">Mass g</th><th class="num">Envelope mm</th></tr></thead><tbody></tbody></table></div>
+
+  <h2 id="bom">Bill of materials</h2>
+  <p>Priced <span id="bom-date"></span>, US vendors, against the v1 sections. The full list with vendors and notes is on the <a href="bom.html?model=v1a">BOM page</a>.</p>
+  <div class="table-wrap"><table class="compact" id="bom-table"><thead><tr><th>Section</th><th>Covers</th><th class="num">v1a</th><th class="num">v1</th></tr></thead><tbody></tbody></table></div>
+
+  <h2 id="next">What the aesthetic variant still needs</h2>
+  <ul>
+    <li><b>Sculpted surfaces.</b> Loft each cover into the cup it meets (today the covers stop a few millimetres short of the cups, on purpose, because a cone cannot blend into a ring). This is CAD work on the exported STLs or a surface stage in the generator.</li>
+    <li><b>Split lines and pockets.</b> Every two-piece cover needs its parting plane, lips and Ø8 × 3 magnet pockets in the STL; the torso shell needs its eight panels and lap joints.</li>
+    <li><b>The shoulder gap.</b> A bridging cover between the torso bezel and the shoulder-roll disc, sized against the full roll range (the shelf sweep above), is the piece that would most change the silhouette.</li>
+    <li><b>Hip stack.</b> The roll bracket and yaw housing between the pelvis and the thigh are bare; a cover there has to clear the pelvis cover through 12 to 45° of roll and −90 to 100° of pitch.</li>
+    <li><b>Camera window and visor.</b> Tinted acrylic in place of the printed strip, and a check that the RealSense's field of view clears the window edges.</li>
+    <li><b>Weigh and colour-test the first shells.</b> The masses above are volumes at nominal density; printed walls come out heavier. Test the warm white and graphite PLA together under daylight before committing.</li>
+    <li><b>Everything on the <a href="production.html#next">production page's list</a></b> still applies; the covers do not change the joint-kit test, the tube test or the walking policy.</li>
+  </ul>
+</main>
+
+<footer class="site-footer"><div class="inner"><span>Fully Open Humanoid · v1a aesthetic variant (WIP) · <a href="reference.html#license">MIT / CC BY 4.0</a></span><span>Reference models: <a href="https://github.com/ROBOTIS-GIT/ai_sapiens">ROBOTIS AI Sapiens</a> (Apache-2.0), <a href="https://github.com/unitreerobotics/unitree_ros">Unitree G1</a> (BSD-3-Clause); shown for comparison, not affiliated</span></div></footer>
+
+<script src="assets/js/site.js"></script>
+<script type="module">
+import * as THREE from "three";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { createRobotViewer } from "./assets/js/robot-viewer.js";
+const esc = foh.esc, money = foh.money;
+const [robot, bom, files, sim, robot1, bom1, geom] = await Promise.all(["robot_v1a", "bom_v1a", "print_files_v1a", "sim_results_v1a", "robot_v1", "bom_v1", "module_geom"].map(f => foh.json(`assets/data/${f}.json`)));
+const s = robot.specs, m = s.mass_g, s1 = robot1.specs;
+const dMass = s.mass_total_g - s1.mass_total_g, dCost = bom.tiers.core - bom1.tiers.core;
+const covers = Object.values(robot.catalog).filter(c => c.id.startsWith("3DP_cov"));
+const coverG = covers.reduce((a, c) => a + c.qty * c.mass_g, 0);
+const removed = Object.values(robot1.catalog).filter(c => !robot.catalog[c.id] && c.qty > 0);
+const removedG = removed.reduce((a, c) => a + c.qty * (c.mass_g || 0), 0);
+document.getElementById("lead-specs").textContent = `${(s.height_mm / 1000).toFixed(2)} m, ${(s.mass_total_g / 1000).toFixed(1)} kg, ${money(bom.tiers.core)} in parts: ${(coverG / 1000).toFixed(1)} kg of shells and ${money(dCost)} on top of v1.`;
+document.getElementById("stats").innerHTML = [
+  [(s.height_mm / 1000).toFixed(2) + " m", `tall, ${s.height_mm - s1.height_mm} mm more than v1 for the head`], [(s.mass_total_g / 1000).toFixed(1) + " kg", `estimated, ${dMass >= 0 ? "+" : ""}${(dMass / 1000).toFixed(1)} kg against v1`],
+  [money(bom.tiers.core), `core parts, ${dCost >= 0 ? "+" : ""}${money(dCost)} against v1`], [covers.length, "cover part types, " + covers.reduce((a, c) => a + c.qty, 0) + " pieces"],
+  [(coverG / 1000).toFixed(1) + " kg", "of PLA shell, replacing " + (removedG / 1000).toFixed(1) + " kg of panels"], ["2", "colours: warm white and graphite"],
+].map(([v, k]) => `<div class="stat"><div class="v">${esc(String(v))}</div><div class="k">${esc(k)}</div></div>`).join("");
+try { await createRobotViewer(document.getElementById("hero-viewer"), { data: robot, mode: "hero" }); } catch (e) { document.getElementById("hero-viewer").innerHTML = "<div class='hint'>WebGL is needed for the model.</div>"; }
+
+// covers
+document.querySelector("#cover-table tbody").innerHTML = covers.map(c => `<tr><td><b>${esc(c.name)}</b> <small class="tiny">${esc(c.id)}${c.mirror ? " · mirrored" : ""}</small></td><td class="num">${c.qty}</td><td><i class="swatch" style="background:${robot.materials[c.material].color}"></i>${c.material === "shell_dark" ? "graphite" : "warm white"}</td><td class="num">${c.mass_g}</td><td class="num">${(c.dims || []).map(v => Math.round(v)).join(" × ")}</td><td>${esc(c.notes || "")}</td></tr>`).join("");
+document.getElementById("delta-text").innerHTML = `Removed: ${removed.map(c => `${esc(c.name)} (× ${c.qty})`).join(", ")}, ${(removedG / 1000).toFixed(2)} kg. Added: ${(coverG / 1000).toFixed(2)} kg of shells plus magnets and inserts. Net ${dMass >= 0 ? "+" : ""}${(dMass / 1000).toFixed(2)} kg and ${dCost >= 0 ? "+" : ""}${money(dCost)}; the robot is ${s.height_mm} mm tall with the new head.`;
+
+// audit (static record of the last run; regenerate with the commands below)
+const AUDIT = [
+  ["Zero pose, 428 shapes, 0.5 mm tolerance", "no overlaps", "the first pass had the pelvis cover 4 mm into the hip-yaw cups and 2 mm into the hip-pitch rings, and the shoulder disc 1 mm into the bracket beam; the dimensions above are the corrected ones"],
+  ["Poses: crouch, reach, wave, default standing, abduct 45° with default arms, abduct 45° with arms forward", "no pairs deeper than 1 mm", "the covered thigh clears the hands in the default pose (elbows 30°) through the full abduction range"],
+  ["Sweep: hip pitch −90…100", "clear", "the yaw housing passes 2 mm from the pelvis cover's front panel; v1's limit stands"],
+  ["Sweep: hip roll −12…45 from the zero pose", "hand pairs from 14° on", "the straight-arm zero pose only, as in v1 (where the first contact was at about 20°): the hands meet the thigh cover from 14° and the hanging forearm cover is within the audit's 1 mm margin of the hip-yaw housing from 15°; the default pose (elbows 30°) is clear through 45°, see the poses above"],
+  ["Sweep: hip yaw ±90, knee 0…120, ankle pitch ±50, ankle roll ±30", "clear", "the shoe's toe cap clears the ankle-pitch ring at 30° roll by 3 mm; the knee disc turns with the shank"],
+  ["Sweep: shoulder pitch ±180, shoulder roll 0…150, shoulder yaw ±180, elbow 0…125, wrist ±180", "clear", "the forearm cover's rim passes 15 mm from the elbow cup at full flexion; the shoulder bracket turns inside the torso shell"],
+];
+document.getElementById("audit-rows").innerHTML = AUDIT.map(r => `<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td><td>${esc(r[2])}</td></tr>`).join("");
+
+// sim
+const what = { stand: "Drop from 10 mm at the zero pose, hold 5 s", crouch: "Ramp to the crouch in 1.5 s, hold, return" };
+const keys = ["stand", "crouch"].concat(Object.keys(sim).filter(k => k.startsWith("push_")).sort((a, b) => sim[a].impulse_Ns - sim[b].impulse_Ns));
+document.querySelector("#sim-table tbody").innerHTML = keys.map(k => { const t = sim[k]; const legs = Object.entries(t.torques).filter(([j]) => /^(hip|knee|ankle)/.test(j)); const b = legs[0] || Object.entries(t.torques)[0]; const name = k.startsWith("push_") ? `Push ${t.impulse_Ns} N·s` : k[0].toUpperCase() + k.slice(1); return `<tr><td>${esc(name)}</td><td>${esc(what[k] || `${(t.impulse_Ns / 0.2).toFixed(0)} N forward on the torso for 0.2 s while standing`)}</td><td class="num">${t.max_tilt_deg.toFixed(1)}°</td><td class="num">${t.final_tilt_deg < 89 ? t.final_tilt_deg.toFixed(1) + "°" : "fallen"}</td><td>${esc(b[0])} ${b[1].peak_nm} / ${b[1].limit_nm} N·m</td><td><span class="pill ${t.pass ? "ok" : "bad"}">${t.pass ? "pass" : "fall"}</span></td></tr>`; }).join("");
+document.getElementById("sim-meta").textContent = `MuJoCo, ${(sim.timestep * 1000).toFixed(0)} ms step, ${sim.mass_kg} kg from the URDF, friction 1.0; "busiest joint" is the highest peak torque against its actuator's limit, leg joints only.`;
+
+// parts (covers first)
+if (files.zip) document.getElementById("dl-parts").innerHTML = `<a class="btn primary" href="${files.zip.file}" download>Download all STL (${(files.zip.bytes / 1e6).toFixed(1)} MB zip)</a><a class="btn" href="assets/data/print_files_v1a.json">Manifest with SHA-256</a>`;
+const ordered = files.parts.filter(p => p.id.startsWith("3DP_cov")).concat(files.parts.filter(p => !p.id.startsWith("3DP_cov")));
+document.querySelector("#parts-table tbody").innerHTML = ordered.map(p => `<tr><td><a href="${p.file}" download>${esc(p.name)}</a> <small class="tiny">${esc(p.id)}${p.mirror ? " · mirror for the right side" : ""}</small></td><td class="num">${p.qty}</td><td>${esc(p.material_name)}</td><td class="num">${p.mass_g_est}</td><td class="num">${p.bbox_mm.map(v => Math.round(v)).join(" × ")}</td></tr>`).join("");
+
+// bom
+document.getElementById("bom-date").textContent = bom.meta.priced_as_of;
+const sec1 = Object.fromEntries(bom1.sections.map(x => [x.id, x]));
+document.querySelector("#bom-table tbody").innerHTML = bom.sections.map(sec => `<tr><td><b>${esc(sec.title)}</b> <span class="pill ${sec.tier === "core" ? "acc" : ""}">${sec.tier}</span></td><td>${esc(sec.blurb)}</td><td class="num">${money(sec.subtotal)}</td><td class="num">${sec1[sec.id] ? money(sec1[sec.id].subtotal) : "—"}</td></tr>`).join("") + `<tr><td><b>Core total</b></td><td></td><td class="num"><b>${money(bom.tiers.core)}</b></td><td class="num"><b>${money(bom1.tiers.core)}</b></td></tr>`;
+
+// side-by-side silhouettes
+const REFS = [
+  { key: "k1", y: -0.8, color: 0xd9d9d6, label: "ROBOTIS AI Sapiens K1", lic: "Apache-2.0" },
+  { key: "foh_v1a", y: 0, color: 0xe9e7e2, label: "Fully Open Humanoid v1a", lic: "this site", height: s.height_mm / 1000 },
+  { key: "g1", y: 0.8, color: 0x4b5058, label: "Unitree G1 (29 DOF)", lic: "BSD-3-Clause" },
+];
+(async () => {
+  const el = document.getElementById("compare");
+  try {
+    THREE.Object3D.DEFAULT_UP.set(0, 0, 1);
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.domElement.style.touchAction = "pan-y";
+    el.insertBefore(renderer.domElement, el.firstChild);
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(32, 1, 0.01, 50);
+    camera.position.set(4.6, -1.4, 1.25); camera.up.set(0, 0, 1);
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true; controls.target.set(0, 0, 0.8); controls.enablePan = false;
+    scene.add(new THREE.HemisphereLight(0xffffff, 0x8a8a8a, 0.95));
+    const key = new THREE.DirectionalLight(0xffffff, 1.3); key.position.set(3, -3, 5); scene.add(key);
+    const fill = new THREE.DirectionalLight(0xffffff, 0.45); fill.position.set(-3, 3, 2); scene.add(fill);
+    const grid = new THREE.GridHelper(5, 25, 0x9aa0a8, 0xcfd3d8); grid.rotation.x = Math.PI / 2; grid.material.transparent = true; scene.add(grid);
+    const isDark = () => document.documentElement.dataset.theme === "dark" || (!document.documentElement.dataset.theme && matchMedia("(prefers-color-scheme: dark)").matches);
+    const resize = () => { const w = el.clientWidth, h = el.clientHeight || 480; renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); };
+    new ResizeObserver(resize).observe(el); resize();
+    (function loop() { requestAnimationFrame(loop); controls.update(); grid.material.opacity = isDark() ? 0.35 : 0.6; renderer.render(scene, camera); })();
+    const loader = new GLTFLoader();
+    const legend = [];
+    for (const r of REFS) {
+      const ref = geom.references?.[r.key];
+      if (!ref) continue;
+      const g = await new Promise((res, rej) => loader.load(ref.file, x => res(x.scene), undefined, rej));
+      const mat = new THREE.MeshStandardMaterial({ color: r.color, roughness: 0.6, metalness: 0.08 });
+      g.traverse(o => { if (o.isMesh) { if (!o.geometry.attributes.normal) o.geometry.computeVertexNormals(); o.material = mat; } });
+      const bb = new THREE.Box3().setFromObject(g);
+      const h = bb.max.z - bb.min.z;
+      g.position.set(-(bb.min.x + bb.max.x) / 2, r.y - (bb.min.y + bb.max.y) / 2, -bb.min.z);
+      scene.add(g);
+      legend.push(`<span><b>${esc(r.label)}</b>${(r.height || h).toFixed(2)} m · ${esc(r.lic)}</span>`);
+    }
+    document.getElementById("compare-legend").innerHTML = legend.join("");
+  } catch (e) { el.querySelector(".hint").textContent = "WebGL is needed for the comparison."; console.error(e); }
+})();
+</script>
+</body>
+</html>

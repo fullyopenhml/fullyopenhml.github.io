@@ -15,7 +15,7 @@
   <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><use href="assets/img/favicon.svg#mark"/></svg><span class="name">Fully Open Humanoid</span><span class="ver">v0.2</span></a>
   <button class="iconbtn nav-toggle" aria-label="Menu">☰</button>
   <nav class="nav">
-    <a href="catalog.html">Catalog</a><a href="builder.html">Builder</a><a href="design.html">Design</a><a href="viewer.html">Viewer</a><a href="bom.html">BOM</a><a href="printing.html">Printing</a><a href="assembly.html">Assembly</a><a href="electrical.html">Electrical</a><a href="bringup.html">Bring-up</a><a href="software.html">Software</a><a href="reference.html">Reference</a>
+    <a href="catalog.html">Catalog</a><a href="builder.html">Builder</a><a href="production.html">Production</a><a href="aesthetic.html">Aesthetic</a><a href="design.html">Design</a><a href="viewer.html">Viewer</a><a href="bom.html">BOM</a><a href="printing.html">Printing</a><a href="assembly.html">Assembly</a><a href="electrical.html">Electrical</a><a href="bringup.html">Bring-up</a><a href="software.html">Software</a><a href="reference.html">Reference</a>
     <a class="gh" href="https://github.com/fullyopenhml/fullyopenhml.github.io" title="GitHub">GitHub</a>
     <button class="iconbtn theme-toggle" aria-label="Toggle theme">◐</button>
   </nav>
@@ -48,9 +48,10 @@
 
 <script src="assets/js/site.js"></script>
 <script>
-const MODEL = new URLSearchParams(location.search).get("model") === "v1" ? "v1" : "v0_2";
+const MODEL = ["v1", "v1a"].includes(new URLSearchParams(location.search).get("model")) ? new URLSearchParams(location.search).get("model") : "v0_2";
 if (MODEL === "v1") { document.querySelector(".brand .ver").textContent = "v1.0 production"; const a = document.querySelector('a[href="assets/data/bom.json"]'); if (a) a.href = "assets/data/bom_v1.json"; const f = document.querySelector('a[href="viewer.html"]'); if (f) f.href = "viewer.html?model=v1"; const h = document.querySelector("main h1"); if (h) h.insertAdjacentHTML("afterend", '<div class="banner"><span class="dot"></span><div><b>v1 production design.</b> This is the bill of materials of the <a href="production.html">production design</a>; the <a href="bom.html">v0.2 BOM</a> is the budget printed design.</div></div>'); }
-foh.json(MODEL === "v1" ? "assets/data/bom_v1.json" : "assets/data/bom.json").then(bom => {
+if (MODEL === "v1a") { document.querySelector(".brand .ver").textContent = "v1.0a aesthetic"; const a = document.querySelector('a[href="assets/data/bom.json"]'); if (a) a.href = "assets/data/bom_v1a.json"; const f = document.querySelector('a[href="viewer.html"]'); if (f) f.href = "viewer.html?model=v1a"; const h = document.querySelector("main h1"); if (h) h.insertAdjacentHTML("afterend", '<div class="banner"><span class="dot"></span><div><b>v1a aesthetic variant (WIP).</b> The <a href="aesthetic.html">styled version</a> of the production design: the same mechanics plus printed covers. The <a href="bom.html?model=v1">v1 BOM</a> is the bare production design.</div></div>'); }
+foh.json(MODEL === "v1" ? "assets/data/bom_v1.json" : MODEL === "v1a" ? "assets/data/bom_v1a.json" : "assets/data/bom.json").then(bom => {
   const esc = foh.esc;
   document.getElementById("asof").textContent = bom.meta.priced_as_of;
   const st = document.querySelector("#summary-table tbody");

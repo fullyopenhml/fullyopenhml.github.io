@@ -29,8 +29,18 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 MODEL = sys.argv[sys.argv.index("--model") + 1] if "--model" in sys.argv else "v0_2"
-MODEL_JSON = {"v0_2": "robot.json", "v1": "robot_v1.json"}[MODEL]
+MODEL_JSON = {"v0_2": "robot.json", "v1": "robot_v1.json", "v1a": "robot_v1a.json"}[MODEL]
 robot = json.loads((ROOT / "assets/data" / MODEL_JSON).read_text())
+# cones and spheres are tested as their bounding cylinders (conservative: may over-report, never under)
+for _L in robot["links"]:
+    for _P in _L["parts"]:
+        for _sh in _P["shapes"]:
+            if _sh["t"] == "cone":
+                _sh.update(t="cyl", r=max(_sh["r0"], _sh["r1"]))
+            elif _sh["t"] == "sphere":
+                _sh.update(t="cyl", axis="z", l=2 * _sh["r"])
+            elif _sh["t"] == "box" and _sh.get("w"):
+                pass   # hollow boxes keep their outer solid: the parts they enclose are declared inside
 LINKS = {L["id"]: L for L in robot["links"]}
 JOINT_BY_CHILD = {J["child"]: J for J in robot["joints"]}
 AX = {"x": 0, "y": 1, "z": 2}

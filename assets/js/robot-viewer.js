@@ -105,10 +105,16 @@ export async function createRobotViewer(container, opts = {}) {
 
   const geoCache = new Map();
   function geometry(sh) {
-    const k = JSON.stringify([sh.t, sh.s, sh.rd, sh.axis, sh.r, sh.ri, sh.l]);
+    const k = JSON.stringify([sh.t, sh.s, sh.rd, sh.axis, sh.r, sh.ri, sh.l, sh.r0, sh.r1]);
     if (geoCache.has(k)) return geoCache.get(k);
     let g;
-    if (sh.t === "box") {
+    if (sh.t === "sphere") {
+      g = new THREE.SphereGeometry(sh.r, 48, 32);
+    } else if (sh.t === "cone") {
+      g = new THREE.CylinderGeometry(sh.r1, sh.r0, sh.l, 48, 1, !!sh.w);   // r1 at the high end (+axis)
+      if (sh.axis === "x") g.rotateZ(-Math.PI / 2);
+      else if (sh.axis === "z") g.rotateX(Math.PI / 2);
+    } else if (sh.t === "box") {
       g = sh.rd ? new RoundedBoxGeometry(sh.s[0], sh.s[1], sh.s[2], 3, Math.min(sh.rd, Math.min(...sh.s) / 2.01))
                 : new THREE.BoxGeometry(sh.s[0], sh.s[1], sh.s[2]);
     } else {
@@ -136,9 +142,9 @@ export async function createRobotViewer(container, opts = {}) {
 
   const edgeCache = new Map();
   function edges(sh, g) {
-    const k = JSON.stringify([sh.t, sh.s, sh.rd, sh.axis, sh.r, sh.ri, sh.l]);
+    const k = JSON.stringify([sh.t, sh.s, sh.rd, sh.axis, sh.r, sh.ri, sh.l, sh.r0, sh.r1]);
     if (edgeCache.has(k)) return edgeCache.get(k);
-    const e = new THREE.EdgesGeometry(g, sh.t === "box" && sh.rd ? 40 : 28);
+    const e = new THREE.EdgesGeometry(g, (sh.t === "box" && sh.rd) || sh.t === "sphere" || sh.t === "cone" ? 40 : 28);
     edgeCache.set(k, e);
     return e;
   }

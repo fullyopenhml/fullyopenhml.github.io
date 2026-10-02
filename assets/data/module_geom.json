@@ -882,5 +882,45 @@
    "credit": "Solo 12 model, Open Dynamic Robot Initiative (BSD-3-Clause)",
    "ground_z": -0.3375
   }
+ },
+ "references": {
+  "k1": {
+   "file": "assets/geom/ref-k1.glb",
+   "bbox": [
+    [
+     -0.1205,
+     -0.179,
+     -0.7955
+    ],
+    [
+     0.3645,
+     0.179,
+     0.5663
+    ]
+   ],
+   "credit": "ROBOTIS AI Sapiens K1 description (Apache-2.0)",
+   "ground_z": -0.7955
+  },
+  "g1": {
+   "file": "assets/geom/ref-g1.glb",
+   "bbox": [
+    [
+     -0.0726,
+     -0.1814,
+     -0.7923
+    ],
+    [
+     0.3731,
+     0.1814,
+     0.5304
+    ]
+   ],
+   "credit": "Unitree G1 description, unitree_ros (BSD-3-Clause)",
+   "ground_z": -0.7923
+  },
+  "foh_v1a": {
+   "file": "assets/geom/ref-foh-v1a.glb",
+   "credit": "Fully Open Humanoid v1a (this site)"
+  }
  }
 }

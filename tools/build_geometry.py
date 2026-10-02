@@ -280,6 +280,16 @@ def build_foh(rid="foh", robot_file="robot.json"):
                 c = o + np.array(sh["c"]) / 1000
                 if sh["t"] == "box":
                     m = trimesh.creation.box(extents=np.array(sh["s"]) / 1000)
+                elif sh["t"] == "sphere":
+                    m = trimesh.creation.icosphere(subdivisions=3, radius=sh["r"] / 1000)
+                elif sh["t"] == "cone":
+                    r0, r1, l = sh["r0"] / 1000, sh["r1"] / 1000, sh["l"] / 1000
+                    prof = np.array([[0, -l / 2], [r0, -l / 2], [r1, l / 2], [0, l / 2]])
+                    m = trimesh.creation.revolve(prof, sections=48)
+                    if sh["axis"] == "x":
+                        m.apply_transform(trimesh.transformations.rotation_matrix(math.pi / 2, [0, 1, 0]))
+                    elif sh["axis"] == "y":
+                        m.apply_transform(trimesh.transformations.rotation_matrix(-math.pi / 2, [1, 0, 0]))
                 else:
                     r, l = sh["r"] / 1000, sh["l"] / 1000
                     m = trimesh.creation.cylinder(radius=r, height=l, sections=24)
@@ -314,6 +324,39 @@ def build_foh(rid="foh", robot_file="robot.json"):
         bb = [[min(b[0][i] for b in bounds[mid]) for i in range(3)], [max(b[1][i] for b in bounds[mid]) for i in range(3)]]
         modules[mid] = dict(parts=parts, bbox=bb, anchors=anchors[mid[len(rid) + 1:]], credit=f"Fully Open Humanoid {'v1 production' if v1 else 'v0.2'} model (this site)")
     return modules
+
+
+def export_foh_whole(name, robot_file):
+    robot = json.loads((ROOT / "assets/data" / robot_file).read_text())
+    meshes = []
+    for lnk in robot["links"]:
+        o = np.array(lnk["origin"]) / 1000
+        for part in lnk["parts"]:
+            if part.get("optional"):
+                continue
+            for sh in part["shapes"]:
+                c = o + np.array(sh["c"]) / 1000
+                if sh["t"] == "box":
+                    m = trimesh.creation.box(extents=np.array(sh["s"]) / 1000)
+                elif sh["t"] == "sphere":
+                    m = trimesh.creation.icosphere(subdivisions=3, radius=sh["r"] / 1000)
+                elif sh["t"] == "cone":
+                    r0, r1, l = sh["r0"] / 1000, sh["r1"] / 1000, sh["l"] / 1000
+                    m = trimesh.creation.revolve(np.array([[0, -l / 2], [r0, -l / 2], [r1, l / 2], [0, l / 2]]), sections=48)
+                    if sh["axis"] == "x":
+                        m.apply_transform(trimesh.transformations.rotation_matrix(math.pi / 2, [0, 1, 0]))
+                    elif sh["axis"] == "y":
+                        m.apply_transform(trimesh.transformations.rotation_matrix(-math.pi / 2, [1, 0, 0]))
+                else:
+                    m = trimesh.creation.cylinder(radius=sh["r"] / 1000, height=sh["l"] / 1000, sections=24)
+                    if sh["axis"] == "x":
+                        m.apply_transform(trimesh.transformations.rotation_matrix(math.pi / 2, [0, 1, 0]))
+                    elif sh["axis"] == "y":
+                        m.apply_transform(trimesh.transformations.rotation_matrix(math.pi / 2, [1, 0, 0]))
+                m.apply_translation(c)
+                meshes.append(m)
+    f, b = export_group(name, meshes)
+    return f
 
 
 # ---------------------------------------------------------------- Duke V2 -------------
@@ -522,8 +565,37 @@ def build_solo12():
     return {"solo12-lower": mods["solo12-lower"]}
 
 
+def build_reference(name, urdf_url, mesh_base, credit, budget=60000):
+    """One GLB of a whole robot at its zero pose, for the aesthetic page's side-by-side comparison."""
+    print(f"== reference {name}")
+    u = Urdf(urdf_url, mesh_base, "ref-" + name)
+    meshes = []
+    for link in u.links:
+        meshes.extend(u.link_meshes(link))
+    global FACE_BUDGET
+    keep = FACE_BUDGET; FACE_BUDGET = budget
+    f, b = export_group("ref-" + name, meshes)
+    FACE_BUDGET = keep
+    return {name: dict(file=f, bbox=b, credit=credit, ground_z=round(float(b[0][2]), 4))}
+
+
 def main():
     modules = {}
+    references = {}
+    for name, url, base, credit in (
+        ("k1", "https://raw.githubusercontent.com/ROBOTIS-GIT/ai_sapiens/main/ai_sapiens_description/urdf/k1_rev1/k1.urdf",
+         "https://raw.githubusercontent.com/ROBOTIS-GIT/ai_sapiens/main/ai_sapiens_description/meshes/k1_rev1", "ROBOTIS AI Sapiens K1 description (Apache-2.0)"),
+        ("g1", "https://raw.githubusercontent.com/unitreerobotics/unitree_ros/master/robots/g1_description/g1_29dof_rev_1_0.urdf",
+         "https://raw.githubusercontent.com/unitreerobotics/unitree_ros/master/robots/g1_description/meshes", "Unitree G1 description, unitree_ros (BSD-3-Clause)"),
+    ):
+        try:
+            references.update(build_reference(name, url, base, credit))
+        except Exception as e:  # noqa: BLE001
+            print(f"  reference {name} failed: {e}")
+    try:
+        references.update(dict(foh_v1a=dict(file=export_foh_whole("foh-v1a", "robot_v1a.json"), credit="Fully Open Humanoid v1a (this site)")))
+    except Exception as e:  # noqa: BLE001
+        print(f"  foh-v1a whole export failed: {e}")
     modules.update(build_foh())
     modules.update(build_foh("foh-v1", "robot_v1.json"))
     modules.update(build_duke())
@@ -534,7 +606,7 @@ def main():
             print(f"  {fn.__name__} failed: {e}")
     for mid, m in modules.items():
         m["ground_z"] = round(float(m["bbox"][0][2]), 4)
-    OUT_JSON.write_text(json.dumps(dict(frame="metres, X forward, Y left, Z up, zero pose", modules=modules), indent=1) + "\n")
+    OUT_JSON.write_text(json.dumps(dict(frame="metres, X forward, Y left, Z up, zero pose", modules=modules, references=references), indent=1) + "\n")
     total = sum(p.stat().st_size for p in OUT_DIR.glob("*.glb"))
     print(f"wrote {OUT_JSON.relative_to(ROOT)}: {len(modules)} modules, {total // 1024} kB of GLB")
 
