@@ -241,23 +241,32 @@ def build_urdf_robot(name, urdf_url, mesh_base, slot_of, side_of, anchors_fn, pr
 
 
 # ---------------------------------------------------------------- FOH ------------------
-def build_foh():
-    print("== foh")
-    robot = json.loads((ROOT / "assets/data/robot.json").read_text())
+def build_foh(rid="foh", robot_file="robot.json"):
+    print(f"== {rid}")
+    robot = json.loads((ROOT / "assets/data" / robot_file).read_text())
     joints = {j["id"]: j for j in robot["joints"]}
+    v1 = rid != "foh"
 
     def link_slot(lid):
         if lid == "torso":
             return "torso"
-        if lid == "pelvis" or lid.startswith(("hip_", "thigh", "shank", "ankle", "foot")):
+        if lid == "pelvis":
+            return "torso" if v1 else "lower"
+        if lid.startswith(("hip_", "thigh", "shank", "ankle", "foot")):
             return "lower"
         return "arms"
 
-    def part_slot(pid, lid):
+    def part_slot(pid, lid, occ=""):
+        if occ.startswith("hip_"):            # hip-pitch actuators, bearings and cups live on the root link but belong to the legs
+            return "lower"
         if pid.startswith("3DP_hea") or pid == "EL_CAMERA_D435I":
             return "head"
-        if pid.startswith("3DP_grp") or pid.startswith("EL_SERVO"):
+        if pid.startswith(("3DP_grp", "EL_SERVO", "KIT_AMAZING", "3DP_arm27")):
             return "hands"
+        if pid.startswith(("3DP_pel", "HW_2020_300", "AL_FOOT")):
+            return "lower"
+        if pid.startswith(("EL_", "CB_", "PC_", "AL_TORSO", "HW_2020_4", "3DP_tor")):
+            return "torso"
         return link_slot(lid)
 
     groups = {}
@@ -265,7 +274,7 @@ def build_foh():
     for lnk in robot["links"]:
         o = np.array(lnk["origin"]) / 1000
         for part in lnk["parts"]:
-            slot = part_slot(part["part"], lnk["id"])
+            slot = part_slot(part["part"], lnk["id"], part["occ"])
             side = "C" if slot not in ("arms", "hands") else ("L" if lnk["id"].endswith("_L") else "R")
             for sh in part["shapes"]:
                 c = o + np.array(sh["c"]) / 1000
@@ -285,21 +294,25 @@ def build_foh():
     modules = {}
     files, bounds = {}, {}
     for (slot, side), meshes in groups.items():
-        mid = f"foh-{slot}"
+        mid = f"{rid}-{slot}"
         f, b = export_group(mid if side == "C" else f"{mid}-{side}", meshes)
         files.setdefault(mid, {})[side] = f
         bounds.setdefault(mid, []).append(b)
     J = lambda n: (np.array(joints[n]["origin"]) / 1000).tolist()
+    if v1:   # no waist: the pelvis bars' top face is the lower/torso boundary
+        waist = [0, 0, round((joints["hip_pitch_L"]["origin"][2] + 95) / 1000, 4)]
+    else:
+        waist = J("waist")
     anchors = dict(
-        lower=dict(top=J("waist")),
-        torso=dict(bottom=J("waist"), shoulder_L=J("shoulder_pitch_L"), shoulder_R=J("shoulder_pitch_R"), top=[0, 0, round(head_min, 4)]),
+        lower=dict(top=waist),
+        torso=dict(bottom=waist, shoulder_L=J("shoulder_pitch_L"), shoulder_R=J("shoulder_pitch_R"), top=[0, 0, round(head_min, 4)]),
         arms=dict(shoulder_L=J("shoulder_pitch_L"), shoulder_R=J("shoulder_pitch_R"), wrist_L=J("wrist_roll_L"), wrist_R=J("wrist_roll_R")),
         hands=dict(wrist_L=J("wrist_roll_L"), wrist_R=J("wrist_roll_R")),
         head=dict(bottom=[0, 0, round(head_min, 4)]),
     )
     for mid, parts in files.items():
         bb = [[min(b[0][i] for b in bounds[mid]) for i in range(3)], [max(b[1][i] for b in bounds[mid]) for i in range(3)]]
-        modules[mid] = dict(parts=parts, bbox=bb, anchors=anchors[mid.split("-", 1)[1]], credit="Fully Open Humanoid v0.2 model (this site)")
+        modules[mid] = dict(parts=parts, bbox=bb, anchors=anchors[mid[len(rid) + 1:]], credit=f"Fully Open Humanoid {'v1 production' if v1 else 'v0.2'} model (this site)")
     return modules
 
 
@@ -512,6 +525,7 @@ def build_solo12():
 def main():
     modules = {}
     modules.update(build_foh())
+    modules.update(build_foh("foh-v1", "robot_v1.json"))
     modules.update(build_duke())
     for fn in (build_bhl, build_lerobot, build_duck, build_mevita, build_so101, build_leap, build_lekiwi, build_xlerobot, build_solo12):
         try:

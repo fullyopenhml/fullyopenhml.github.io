@@ -21,7 +21,8 @@ Three things in one site, at https://fullyopenhml.github.io/:
 | `tools/catalog_src.py` | **The catalog.** One dictionary per robot with sources, criteria, families, static modules; `tools/build_catalog.py` merges it with the computed modules of our design and Duke V2 |
 | `tools/build_geometry.py` | Builds the builder's 3D modules: one decimated GLB per module in `assets/geom/` plus anchors in `assets/data/module_geom.json`, from our primitives, Duke V2's viewer GLB and the URDFs of BHL, LeRobot Humanoid, Open Duck Mini and MEVITA (meshes cached in `tools/.cache/`) |
 | `assets/js/mix-viewer.js` | The builder's live 3D view (three.js), composes the selected modules by matching anchors |
-| `tools/build_data.py` | **The model.** Every part, joint, price. Writes the three files below |
+| `tools/build_v1.py` | **The production design (v1).** Reuses the joint kits of `build_data.py`; writes `assets/data/robot_v1.json`, `bom_v1.json`, `assets/model/foh_v1_0.urdf`; `production.html` renders them, and `build_parts.py`, `check_collisions.py` and `sim_stand.py` take `--model v1` |
+| `tools/build_data.py` | **The budget model (v0.2).** Every part, joint, price. Writes the three files below |
 | `assets/data/robot.json` | Links, joints, part occurrences as primitive solids, catalogue, poses, specs |
 | `assets/data/bom.json` | Bill of materials by section and tier |
 | `assets/model/foh_v0_2.urdf` | Robot description with masses and inertias |
@@ -35,6 +36,7 @@ Three things in one site, at https://fullyopenhml.github.io/:
 
 ```bash
 python3 tools/build_data.py          # regenerate robot.json, bom.json and the URDF after any change
+python3 tools/build_v1.py            # the production design: robot_v1.json, bom_v1.json, foh_v1_0.urdf
 python3 tools/check_collisions.py --poses --sweep   # self-collision audit
 python3 tools/build_catalog.py       # regenerate catalog.json after editing tools/catalog_src.py
 uv pip install --python tools/.venv/bin/python open3d DracoPy pycollada

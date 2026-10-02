@@ -698,7 +698,7 @@ def build_arm(side):
     ky.child_plate_features(ua, 12)
     o4 = ke.joint_origin()                                            # (0, 265, 730)
     a4 = link(f"forearm_{S}", f"Forearm ({S})", f"arm_{S}", o4, f"elbow_{S}")
-    joint(f"elbow_{S}", f"Elbow ({S})", a3["id"], a4["id"], o4, (0, 1, 0), (0, 120), "RS02", S, bus, base_id + 3, "pitch")
+    joint(f"elbow_{S}", f"Elbow ({S})", a3["id"], a4["id"], o4, (0, -1, 0), (0, 120), "RS02", S, bus, base_id + 3, "pitch")   # axis -y: positive flexion brings the hand forward
     add_kit(a3, a4, ke, f"elbow_{S}", "3DP_kit02_coupler", mount_owner=ua, collar="full", back=True, stub=True, ring_r=40)
     # --- forearm: two plates, body below, RS05 wrist inside the body ---
     yo = ke.child                                                     # 265

@@ -48,7 +48,9 @@
 
 <script src="assets/js/site.js"></script>
 <script>
-foh.json("assets/data/bom.json").then(bom => {
+const MODEL = new URLSearchParams(location.search).get("model") === "v1" ? "v1" : "v0_2";
+if (MODEL === "v1") { document.querySelector(".brand .ver").textContent = "v1.0 production"; const a = document.querySelector('a[href="assets/data/bom.json"]'); if (a) a.href = "assets/data/bom_v1.json"; const f = document.querySelector('a[href="viewer.html"]'); if (f) f.href = "viewer.html?model=v1"; const h = document.querySelector("main h1"); if (h) h.insertAdjacentHTML("afterend", '<div class="banner"><span class="dot"></span><div><b>v1 production design.</b> This is the bill of materials of the <a href="production.html">production design</a>; the <a href="bom.html">v0.2 BOM</a> is the budget printed design.</div></div>'); }
+foh.json(MODEL === "v1" ? "assets/data/bom_v1.json" : "assets/data/bom.json").then(bom => {
   const esc = foh.esc;
   document.getElementById("asof").textContent = bom.meta.priced_as_of;
   const st = document.querySelector("#summary-table tbody");

@@ -954,7 +954,7 @@
   </joint>
   <joint name="elbow_L" type="revolute">
     <parent link="upper_arm_L"/><child link="forearm_L"/>
-    <origin xyz="0.00000 0.03300 -0.09650" rpy="0 0 0"/><axis xyz="0 1 0"/>
+    <origin xyz="0.00000 0.03300 -0.09650" rpy="0 0 0"/><axis xyz="0 -1 0"/>
     <limit lower="0.0000" upper="2.0944" effort="17" velocity="20"/>
     <dynamics damping="0.2" friction="0.0"/>
   </joint>
@@ -984,7 +984,7 @@
   </joint>
   <joint name="elbow_R" type="revolute">
     <parent link="upper_arm_R"/><child link="forearm_R"/>
-    <origin xyz="0.00000 -0.03300 -0.09650" rpy="0 0 0"/><axis xyz="0 1 0"/>
+    <origin xyz="0.00000 -0.03300 -0.09650" rpy="0 0 0"/><axis xyz="0 -1 0"/>
     <limit lower="0.0000" upper="2.0944" effort="17" velocity="20"/>
     <dynamics damping="0.2" friction="0.0"/>
   </joint>

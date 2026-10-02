@@ -9,6 +9,7 @@ foh.json("assets/data/catalog.json").then(cat => {
 
   const PRESETS = [
     ["Fully Open Humanoid", { lower: "foh-lower", torso: "foh-torso", arms: "foh-arms", hands: "foh-hands", head: "foh-head" }],
+    ["FOH v1 production", { lower: "foh-v1-lower", torso: "foh-v1-torso", arms: "foh-v1-arms", hands: "foh-v1-hands", head: "foh-v1-head" }],
     ["Duke Humanoid V2", { lower: "duke2-lower", torso: "duke2-torso", arms: "duke2-arms", hands: "duke2-hands", head: "duke2-head" }],
     ["Duke legs, FOH upper body", { lower: "duke2-lower", torso: "foh-torso", arms: "foh-arms", hands: "foh-hands", head: "foh-head" }],
     ["LeRobot legs, FOH upper body", { lower: "lerobot-lower", torso: "foh-torso", arms: "foh-arms", hands: "amazing-hands", head: "foh-head" }],

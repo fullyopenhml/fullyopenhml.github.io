@@ -28,7 +28,9 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-robot = json.loads((ROOT / "assets/data/robot.json").read_text())
+MODEL = sys.argv[sys.argv.index("--model") + 1] if "--model" in sys.argv else "v0_2"
+MODEL_JSON = {"v0_2": "robot.json", "v1": "robot_v1.json"}[MODEL]
+robot = json.loads((ROOT / "assets/data" / MODEL_JSON).read_text())
 LINKS = {L["id"]: L for L in robot["links"]}
 JOINT_BY_CHILD = {J["child"]: J for J in robot["joints"]}
 AX = {"x": 0, "y": 1, "z": 2}
@@ -372,6 +374,7 @@ def pass_sweep(tol, steps):
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
+    ap.add_argument("--model", default="v0_2", help="v0_2 (robot.json) or v1 (robot_v1.json)")
     ap.add_argument("--tol", type=float, default=0.5)
     ap.add_argument("--poses", action="store_true")
     ap.add_argument("--sweep", action="store_true")

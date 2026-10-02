@@ -9,7 +9,7 @@ import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
 THREE.Object3D.DEFAULT_UP.set(0, 0, 1);
 
-const PALETTE = { foh: 0xe8642c, duke2: 0x3b7dd8, bhl: 0x3aa86b, lerobot: 0xd9a400, duck: 0x1fa3a3, mevita: 0x8b5cf6, "amazing-hand": 0xd946a0, hopejr: 0x8a8f98, bolt: 0xa0522d,
+const PALETTE = { foh: 0xe8642c, "foh-v1": 0xb91c1c, duke2: 0x3b7dd8, bhl: 0x3aa86b, lerobot: 0xd9a400, duck: 0x1fa3a3, mevita: 0x8b5cf6, "amazing-hand": 0xd946a0, hopejr: 0x8a8f98, bolt: 0xa0522d,
   "so-arm101": 0xc2410c, openarm: 0x0e7490, leap: 0x7c3aed, ruka: 0xbe185d, lekiwi: 0x65a30d, tidybot2: 0x4b5563, solo12: 0xb45309, xlerobot: 0x2563eb };
 const STATUS_COLOR = { verified: 0x22c55e, design: 0x60a5fa, match: 0xf59e0b, unverified: 0xf59e0b, adapter: 0xef4444, bad: 0xef4444, unknown: 0x9ca3af };
 const SLOT_ORDER = ["lower", "torso", "arms", "hands", "head"];

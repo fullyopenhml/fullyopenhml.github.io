@@ -21,18 +21,25 @@ import argparse
 import json
 import math
 import signal
+import sys
 from pathlib import Path
 
 import mujoco
 import numpy as np
 
 ROOT = Path(__file__).resolve().parent.parent
-URDF = ROOT / "assets/model/foh_v0_2.urdf"
-robot = json.loads((ROOT / "assets/data/robot.json").read_text())
+MODEL = sys.argv[sys.argv.index("--model") + 1] if "--model" in sys.argv else "v0_2"
+URDF = ROOT / "assets/model" / {"v0_2": "foh_v0_2.urdf", "v1": "foh_v1_0.urdf"}[MODEL]
+robot = json.loads((ROOT / "assets/data" / {"v0_2": "robot.json", "v1": "robot_v1.json"}[MODEL]).read_text())
+RESULTS = ROOT / "assets/data" / {"v0_2": "sim_results.json", "v1": "sim_results_v1.json"}[MODEL]
+IMG_DIR = ROOT / "assets/img" / {"v0_2": "sim", "v1": "sim_v1"}[MODEL]
 PEAK = {m: a["peak_nm"] for m, a in robot["actuators"].items()}
-GAINS = {"RS03": (220.0, 9.0), "RS06": (150.0, 6.0), "RS02": (80.0, 3.0), "RS05": (25.0, 1.0)}   # kp N.m/rad, kd N.m.s/rad
+GAINS = {"RS04": (320.0, 13.0), "RS03": (220.0, 9.0), "RS06": (150.0, 6.0), "RS02": (80.0, 3.0), "RS05": (25.0, 1.0)}   # kp N.m/rad, kd N.m.s/rad
 JOINT_MODEL = {j["id"]: j["actuator"] for j in robot["joints"]}
 CROUCH = {"hip_pitch_L": -35, "hip_pitch_R": -35, "knee_L": 70, "knee_R": 70, "ankle_pitch_L": -35, "ankle_pitch_R": -35}
+# the pose held between tests: the zero pose, legs and arms straight, for every model (a stiff servo check needs the
+# locked stance; holding bent elbows moves the centre of mass forward and costs more push margin than it saves)
+BASE = {}
 
 
 def build(dt=0.002):
@@ -100,10 +107,11 @@ class Sim:
                 signal.alarm(90)
                 self.renderer = mujoco.Renderer(self.m, 540, 720)
                 self.cam = mujoco.MjvCamera()
-                self.cam.distance = 1.75
+                h = robot["specs"]["height_mm"] / 1000
+                self.cam.distance = 1.75 * h / 1.114
                 self.cam.elevation = -12
                 self.cam.azimuth = 135
-                self.cam.lookat[:] = [0, 0, 0.52]
+                self.cam.lookat[:] = [0, 0, 0.47 * h]
                 signal.alarm(0)
             except Exception as e:  # noqa: BLE001
                 signal.alarm(0)
@@ -119,7 +127,7 @@ class Sim:
 
     def targets(self, pose_deg):
         for i, n in enumerate(self.act_names):
-            self.d.ctrl[i] = math.radians(pose_deg.get(n, 0.0))
+            self.d.ctrl[i] = math.radians(pose_deg.get(n, BASE.get(n, 0.0)))
 
     def step(self, seconds, log, push=None):
         n = int(seconds / self.m.opt.timestep)
@@ -168,8 +176,9 @@ def summarize(log, name, t_from=0.0):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--render", action="store_true")
+    ap.add_argument("--model", default="v0_2")
     args = ap.parse_args()
-    out_img = ROOT / "assets/img/sim"
+    out_img = IMG_DIR
     if args.render:
         out_img.mkdir(parents=True, exist_ok=True)
     sim = Sim(render=args.render)
@@ -181,6 +190,7 @@ def main():
     sim.reset(); sim.targets({}); log = []
     sim.step(5.0, log)
     r = summarize(log, "stand", t_from=1.0)
+    r["base_pose"] = BASE
     r["pass"] = r["final_tilt_deg"] < 2 and r["min_z_mm"] > -30 and all(v["ratio"] < 0.8 for v in r["torques"].values())
     results["stand"] = r
     sim.frame(out_img / "stand.png")
@@ -223,8 +233,8 @@ def main():
         print(f"push {impulse:4.0f} N·s: max tilt {r['max_tilt_deg']}°, final tilt {r['final_tilt_deg']}°, "
               + ", ".join(f"{k} {v['peak_nm']}/{v['limit_nm']}" for k, v in list(r['torques'].items())[:3]) + f"  -> {'PASS' if r['pass'] else 'FAIL'}")
 
-    (ROOT / "assets/data/sim_results.json").write_text(json.dumps(results, indent=1) + "\n")
-    print("wrote assets/data/sim_results.json")
+    RESULTS.write_text(json.dumps(results, indent=1) + "\n")
+    print("wrote", RESULTS.relative_to(ROOT))
 
 
 if __name__ == "__main__":

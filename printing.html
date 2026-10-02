@@ -73,10 +73,12 @@
 
 <script src="assets/js/site.js"></script>
 <script>
-Promise.all([foh.json("assets/data/robot.json"), foh.json("assets/data/print_files.json")]).then(([robot, files]) => {
+const MODEL = new URLSearchParams(location.search).get("model") === "v1" ? "v1" : "v0_2";
+if (MODEL === "v1") { document.querySelector(".brand .ver").textContent = "v1.0 production"; const h = document.querySelector("main h1"); if (h) h.insertAdjacentHTML("afterend", '<div class="banner"><span class="dot"></span><div><b>v1 production design.</b> These are the printed parts of the <a href="production.html">production design</a>: 26 part types, most of them joint cups and sockets; the links are carbon-fibre tube. The <a href="printing.html">v0.2 parts</a> are the all-printed design.</div></div>'); }
+Promise.all([foh.json(MODEL === "v1" ? "assets/data/robot_v1.json" : "assets/data/robot.json"), foh.json(MODEL === "v1" ? "assets/data/print_files_v1.json" : "assets/data/print_files.json")]).then(([robot, files]) => {
   const esc = foh.esc;
   const byId = {}; for (const f of files.parts) byId[f.id] = f;
-  if (files.zip) document.getElementById("dl-all").innerHTML = `<a class="btn primary" href="${files.zip.file}" download>Download all STL (${(files.zip.bytes / 1e6).toFixed(1)} MB zip)</a><a class="btn" href="assets/data/print_files.json">Manifest with SHA-256</a><a class="btn" href="assets/model/foh_v${files.version.replace(".", "_")}.urdf" download>URDF</a>`;
+  if (files.zip) document.getElementById("dl-all").innerHTML = `<a class="btn primary" href="${files.zip.file}" download>Download all STL (${(files.zip.bytes / 1e6).toFixed(1)} MB zip)</a><a class="btn" href="${MODEL === "v1" ? "assets/data/print_files_v1.json" : "assets/data/print_files.json"}">Manifest with SHA-256</a><a class="btn" href="assets/model/foh_v${files.version.replace(".", "_")}.urdf" download>URDF</a>`;
   const printed = Object.values(robot.catalog).filter(p => p.category === "printed");
   const tb = document.querySelector("#parts-table tbody");
   const matName = { petg_cf: "PETG-CF", pla: "PLA", tpu: "TPU 95A" };
@@ -94,7 +96,7 @@ Promise.all([foh.json("assets/data/robot.json"), foh.json("assets/data/print_fil
   }
   const st = document.getElementById("print-stats");
   const stat = (v, k) => `<div class="stat"><div class="v">${v}</div><div class="k">${k}</div></div>`;
-  st.innerHTML = stat(printed.length, "distinct printed parts, all as STL") + stat(n, "printed pieces on one robot") + stat((mass / 1000).toFixed(1) + " kg", "of printed material on the robot") + stat("235 mm", "longest part (foot plate)") + stat("0", "parts that need machining");
+  st.innerHTML = stat(printed.length, "distinct printed parts, all as STL") + stat(n, "printed pieces on one robot") + stat((mass / 1000).toFixed(1) + " kg", "of printed material on the robot") + stat(Math.round(Math.max(...files.parts.map(f => Math.max(...f.bbox_mm)))) + " mm", "longest part (" + files.parts.reduce((a, f) => Math.max(...f.bbox_mm) > Math.max(...a.bbox_mm) ? f : a).name.toLowerCase() + ")") + stat("0", "parts that need machining");
   const ft = document.querySelector("#fil-table tbody");
   const rate = { petg_cf: 20, pla: 25, tpu: 10 };
   for (const [m, g] of Object.entries(byMat)) {
