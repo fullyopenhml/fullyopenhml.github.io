@@ -29,17 +29,19 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parent.parent
 MODEL = sys.argv[sys.argv.index("--model") + 1] if "--model" in sys.argv else "v0_2"
-URDF = ROOT / "assets/model" / {"v0_2": "foh_v0_2.urdf", "v1": "foh_v1_0.urdf"}[MODEL]
-robot = json.loads((ROOT / "assets/data" / {"v0_2": "robot.json", "v1": "robot_v1.json"}[MODEL]).read_text())
-RESULTS = ROOT / "assets/data" / {"v0_2": "sim_results.json", "v1": "sim_results_v1.json"}[MODEL]
-IMG_DIR = ROOT / "assets/img" / {"v0_2": "sim", "v1": "sim_v1"}[MODEL]
+URDF = ROOT / "assets/model" / {"v0_2": "foh_v0_2.urdf", "v1": "foh_v1_0.urdf", "v2": "foh_v2_0.urdf"}[MODEL]
+robot = json.loads((ROOT / "assets/data" / {"v0_2": "robot.json", "v1": "robot_v1.json", "v2": "robot_v2.json"}[MODEL]).read_text())
+RESULTS = ROOT / "assets/data" / {"v0_2": "sim_results.json", "v1": "sim_results_v1.json", "v2": "sim_results_v2.json"}[MODEL]
+IMG_DIR = ROOT / "assets/img" / {"v0_2": "sim", "v1": "sim_v1", "v2": "sim_v2"}[MODEL]
 PEAK = {m: a["peak_nm"] for m, a in robot["actuators"].items()}
 GAINS = {"RS04": (320.0, 13.0), "RS03": (220.0, 9.0), "RS06": (150.0, 6.0), "RS02": (80.0, 3.0), "RS05": (25.0, 1.0)}   # kp N.m/rad, kd N.m.s/rad
+if MODEL == "v2":
+    GAINS["RS03"] = (320.0, 13.0)   # in v2 the RS03 carries the hips and knees: the same servo stiffness v1's RS04 hips get (RobStride's position mode allows kp up to 500 N.m/rad); at 220 the chain of three RS03 servos is softer than gravity in the crouch and the robot topples
 JOINT_MODEL = {j["id"]: j["actuator"] for j in robot["joints"]}
 CROUCH = {"hip_pitch_L": -35, "hip_pitch_R": -35, "knee_L": 70, "knee_R": 70, "ankle_pitch_L": -35, "ankle_pitch_R": -35}
 # the pose held between tests: the zero pose, legs and arms straight, for every model (a stiff servo check needs the
 # locked stance; holding bent elbows moves the centre of mass forward and costs more push margin than it saves)
-BASE = {}
+BASE = {"v2": {"elbow_L": -60.0, "elbow_R": -60.0}}.get(MODEL, {})   # v2's zero pose has the forearms forward (the K1 convention); it stands with them hanging
 
 
 def build(dt=0.002):

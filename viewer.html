@@ -81,10 +81,10 @@ import { createRobotViewer } from "./assets/js/robot-viewer.js";
 const $ = s => document.querySelector(s);
 const esc = window.foh.esc;
 
-const MODEL = new URLSearchParams(location.search).get("model") === "v1" ? "v1" : "v0_2";
-const FILES = MODEL === "v1" ? ["assets/data/robot_v1.json", "assets/data/bom_v1.json"] : ["assets/data/robot.json", "assets/data/bom.json"];
+const MODEL = ["v1", "v2"].includes(new URLSearchParams(location.search).get("model")) ? new URLSearchParams(location.search).get("model") : "v0_2";
+const FILES = MODEL === "v1" ? ["assets/data/robot_v1.json", "assets/data/bom_v1.json"] : MODEL === "v2" ? ["assets/data/robot_v2.json", "assets/data/bom_v2.json"] : ["assets/data/robot.json", "assets/data/bom.json"];
 const [robot, bom] = await Promise.all([foh.json(FILES[0]), foh.json(FILES[1])]);
-document.querySelector(".brand .ver").textContent = "v" + robot.meta.version + (MODEL === "v1" ? " production" : "");
+document.querySelector(".brand .ver").textContent = "v" + robot.meta.version + (MODEL === "v1" ? " production" : MODEL === "v2" ? " K1 skeleton" : "");
 if (MODEL === "v1") document.title = "Viewer, v1 production design — Fully Open Humanoid";
 const bomByPart = {};
 for (const sec of bom.sections) for (const r of sec.rows) bomByPart[r.part_id] = { ...r, section: sec.title, tier: sec.tier };

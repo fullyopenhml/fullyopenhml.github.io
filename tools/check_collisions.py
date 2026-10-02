@@ -29,7 +29,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 MODEL = sys.argv[sys.argv.index("--model") + 1] if "--model" in sys.argv else "v0_2"
-MODEL_JSON = {"v0_2": "robot.json", "v1": "robot_v1.json"}[MODEL]
+MODEL_JSON = {"v0_2": "robot.json", "v1": "robot_v1.json", "v2": "robot_v2.json"}[MODEL]
 robot = json.loads((ROOT / "assets/data" / MODEL_JSON).read_text())
 # cones and spheres are tested as their bounding cylinders (conservative: may over-report, never under)
 for _L in robot["links"]:
