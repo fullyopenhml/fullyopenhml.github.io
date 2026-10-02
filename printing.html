@@ -73,13 +73,12 @@
 
 <script src="assets/js/site.js"></script>
 <script>
-const MODEL = ["v1", "v1a"].includes(new URLSearchParams(location.search).get("model")) ? new URLSearchParams(location.search).get("model") : "v0_2";
+const MODEL = new URLSearchParams(location.search).get("model") === "v1" ? "v1" : "v0_2";
 if (MODEL === "v1") { document.querySelector(".brand .ver").textContent = "v1.0 production"; const h = document.querySelector("main h1"); if (h) h.insertAdjacentHTML("afterend", '<div class="banner"><span class="dot"></span><div><b>v1 production design.</b> These are the printed parts of the <a href="production.html">production design</a>: 26 part types, most of them joint cups and sockets; the links are carbon-fibre tube. The <a href="printing.html">v0.2 parts</a> are the all-printed design.</div></div>'); }
-if (MODEL === "v1a") { document.querySelector(".brand .ver").textContent = "v1.0a aesthetic"; const h = document.querySelector("main h1"); if (h) h.insertAdjacentHTML("afterend", '<div class="banner"><span class="dot"></span><div><b>v1a aesthetic variant (WIP).</b> The printed parts of the <a href="aesthetic.html">styled version</a>: the v1 cups and sockets plus the cover shells, which print in PLA and are split for a 250 mm bed.</div></div>'); }
-Promise.all([foh.json(MODEL === "v1" ? "assets/data/robot_v1.json" : MODEL === "v1a" ? "assets/data/robot_v1a.json" : "assets/data/robot.json"), foh.json(MODEL === "v1" ? "assets/data/print_files_v1.json" : MODEL === "v1a" ? "assets/data/print_files_v1a.json" : "assets/data/print_files.json")]).then(([robot, files]) => {
+Promise.all([foh.json(MODEL === "v1" ? "assets/data/robot_v1.json" : "assets/data/robot.json"), foh.json(MODEL === "v1" ? "assets/data/print_files_v1.json" : "assets/data/print_files.json")]).then(([robot, files]) => {
   const esc = foh.esc;
   const byId = {}; for (const f of files.parts) byId[f.id] = f;
-  if (files.zip) document.getElementById("dl-all").innerHTML = `<a class="btn primary" href="${files.zip.file}" download>Download all STL (${(files.zip.bytes / 1e6).toFixed(1)} MB zip)</a><a class="btn" href="${MODEL === "v1" ? "assets/data/print_files_v1.json" : MODEL === "v1a" ? "assets/data/print_files_v1a.json" : "assets/data/print_files.json"}">Manifest with SHA-256</a><a class="btn" href="assets/model/foh_v${files.version.replace(".", "_")}.urdf" download>URDF</a>`;
+  if (files.zip) document.getElementById("dl-all").innerHTML = `<a class="btn primary" href="${files.zip.file}" download>Download all STL (${(files.zip.bytes / 1e6).toFixed(1)} MB zip)</a><a class="btn" href="${MODEL === "v1" ? "assets/data/print_files_v1.json" : "assets/data/print_files.json"}">Manifest with SHA-256</a><a class="btn" href="assets/model/foh_v${files.version.replace(".", "_")}.urdf" download>URDF</a>`;
   const printed = Object.values(robot.catalog).filter(p => p.category === "printed");
   const tb = document.querySelector("#parts-table tbody");
   const matName = { petg_cf: "PETG-CF", pla: "PLA", tpu: "TPU 95A" };

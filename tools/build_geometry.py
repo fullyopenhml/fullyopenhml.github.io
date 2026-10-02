@@ -326,39 +326,6 @@ def build_foh(rid="foh", robot_file="robot.json"):
     return modules
 
 
-def export_foh_whole(name, robot_file):
-    robot = json.loads((ROOT / "assets/data" / robot_file).read_text())
-    meshes = []
-    for lnk in robot["links"]:
-        o = np.array(lnk["origin"]) / 1000
-        for part in lnk["parts"]:
-            if part.get("optional"):
-                continue
-            for sh in part["shapes"]:
-                c = o + np.array(sh["c"]) / 1000
-                if sh["t"] == "box":
-                    m = trimesh.creation.box(extents=np.array(sh["s"]) / 1000)
-                elif sh["t"] == "sphere":
-                    m = trimesh.creation.icosphere(subdivisions=3, radius=sh["r"] / 1000)
-                elif sh["t"] == "cone":
-                    r0, r1, l = sh["r0"] / 1000, sh["r1"] / 1000, sh["l"] / 1000
-                    m = trimesh.creation.revolve(np.array([[0, -l / 2], [r0, -l / 2], [r1, l / 2], [0, l / 2]]), sections=48)
-                    if sh["axis"] == "x":
-                        m.apply_transform(trimesh.transformations.rotation_matrix(math.pi / 2, [0, 1, 0]))
-                    elif sh["axis"] == "y":
-                        m.apply_transform(trimesh.transformations.rotation_matrix(-math.pi / 2, [1, 0, 0]))
-                else:
-                    m = trimesh.creation.cylinder(radius=sh["r"] / 1000, height=sh["l"] / 1000, sections=24)
-                    if sh["axis"] == "x":
-                        m.apply_transform(trimesh.transformations.rotation_matrix(math.pi / 2, [0, 1, 0]))
-                    elif sh["axis"] == "y":
-                        m.apply_transform(trimesh.transformations.rotation_matrix(math.pi / 2, [1, 0, 0]))
-                m.apply_translation(c)
-                meshes.append(m)
-    f, b = export_group(name, meshes)
-    return f
-
-
 # ---------------------------------------------------------------- Duke V2 -------------
 def build_duke():
     d = ROOT / "Duke_Humanoid_V2_OpenSource/hardware-site/docs/assets/viewer"
@@ -582,20 +549,12 @@ def build_reference(name, urdf_url, mesh_base, credit, budget=60000):
 def main():
     modules = {}
     references = {}
-    for name, url, base, credit in (
-        ("k1", "https://raw.githubusercontent.com/ROBOTIS-GIT/ai_sapiens/main/ai_sapiens_description/urdf/k1_rev1/k1.urdf",
-         "https://raw.githubusercontent.com/ROBOTIS-GIT/ai_sapiens/main/ai_sapiens_description/meshes/k1_rev1", "ROBOTIS AI Sapiens K1 description (Apache-2.0)"),
-        ("g1", "https://raw.githubusercontent.com/unitreerobotics/unitree_ros/master/robots/g1_description/g1_29dof_rev_1_0.urdf",
-         "https://raw.githubusercontent.com/unitreerobotics/unitree_ros/master/robots/g1_description/meshes", "Unitree G1 description, unitree_ros (BSD-3-Clause)"),
-    ):
-        try:
-            references.update(build_reference(name, url, base, credit))
-        except Exception as e:  # noqa: BLE001
-            print(f"  reference {name} failed: {e}")
     try:
-        references.update(dict(foh_v1a=dict(file=export_foh_whole("foh-v1a", "robot_v1a.json"), credit="Fully Open Humanoid v1a (this site)")))
+        references.update(build_reference("k1", "https://raw.githubusercontent.com/ROBOTIS-GIT/ai_sapiens/main/ai_sapiens_description/urdf/k1_rev1/k1.urdf",
+                                          "https://raw.githubusercontent.com/ROBOTIS-GIT/ai_sapiens/main/ai_sapiens_description/meshes/k1_rev1",
+                                          "ROBOTIS AI Sapiens K1 description (hardware CERN-OHL-P-2.0, software Apache-2.0)"))
     except Exception as e:  # noqa: BLE001
-        print(f"  foh-v1a whole export failed: {e}")
+        print(f"  reference k1 failed: {e}")
     modules.update(build_foh())
     modules.update(build_foh("foh-v1", "robot_v1.json"))
     modules.update(build_duke())

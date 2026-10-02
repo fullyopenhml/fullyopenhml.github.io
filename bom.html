@@ -48,10 +48,9 @@
 
 <script src="assets/js/site.js"></script>
 <script>
-const MODEL = ["v1", "v1a"].includes(new URLSearchParams(location.search).get("model")) ? new URLSearchParams(location.search).get("model") : "v0_2";
+const MODEL = new URLSearchParams(location.search).get("model") === "v1" ? "v1" : "v0_2";
 if (MODEL === "v1") { document.querySelector(".brand .ver").textContent = "v1.0 production"; const a = document.querySelector('a[href="assets/data/bom.json"]'); if (a) a.href = "assets/data/bom_v1.json"; const f = document.querySelector('a[href="viewer.html"]'); if (f) f.href = "viewer.html?model=v1"; const h = document.querySelector("main h1"); if (h) h.insertAdjacentHTML("afterend", '<div class="banner"><span class="dot"></span><div><b>v1 production design.</b> This is the bill of materials of the <a href="production.html">production design</a>; the <a href="bom.html">v0.2 BOM</a> is the budget printed design.</div></div>'); }
-if (MODEL === "v1a") { document.querySelector(".brand .ver").textContent = "v1.0a aesthetic"; const a = document.querySelector('a[href="assets/data/bom.json"]'); if (a) a.href = "assets/data/bom_v1a.json"; const f = document.querySelector('a[href="viewer.html"]'); if (f) f.href = "viewer.html?model=v1a"; const h = document.querySelector("main h1"); if (h) h.insertAdjacentHTML("afterend", '<div class="banner"><span class="dot"></span><div><b>v1a aesthetic variant (WIP).</b> The <a href="aesthetic.html">styled version</a> of the production design: the same mechanics plus printed covers. The <a href="bom.html?model=v1">v1 BOM</a> is the bare production design.</div></div>'); }
-foh.json(MODEL === "v1" ? "assets/data/bom_v1.json" : MODEL === "v1a" ? "assets/data/bom_v1a.json" : "assets/data/bom.json").then(bom => {
+foh.json(MODEL === "v1" ? "assets/data/bom_v1.json" : "assets/data/bom.json").then(bom => {
   const esc = foh.esc;
   document.getElementById("asof").textContent = bom.meta.priced_as_of;
   const st = document.querySelector("#summary-table tbody");

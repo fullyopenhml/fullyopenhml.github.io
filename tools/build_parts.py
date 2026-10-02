@@ -31,9 +31,9 @@ from manifold3d import Manifold, OpType
 
 ROOT = Path(__file__).resolve().parent.parent
 MODEL = sys.argv[sys.argv.index("--model") + 1] if "--model" in sys.argv else "v0_2"
-MODEL_JSON = {"v0_2": "robot.json", "v1": "robot_v1.json", "v1a": "robot_v1a.json"}[MODEL]
-MANIFEST = {"v0_2": "print_files.json", "v1": "print_files_v1.json", "v1a": "print_files_v1a.json"}[MODEL]
-OUT = ROOT / "assets" / {"v0_2": "print", "v1": "print_v1", "v1a": "print_v1a"}[MODEL]
+MODEL_JSON = {"v0_2": "robot.json", "v1": "robot_v1.json"}[MODEL]
+MANIFEST = {"v0_2": "print_files.json", "v1": "print_files_v1.json"}[MODEL]
+OUT = ROOT / "assets" / {"v0_2": "print", "v1": "print_v1"}[MODEL]
 robot = json.loads((ROOT / "assets/data" / MODEL_JSON).read_text())
 VER = robot["meta"]["version"].replace(".", "_")
 SEG = 96          # circle segments for holes and cylinders

@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Aesthetic variant — Fully Open Humanoid</title>
-<meta name="description" content="Fully Open Humanoid v1a, work in progress: the production design with printed cover shells so it reads as one body, styled after Unitree G1 and ROBOTIS AI Sapiens, whose published models are shown beside it at true scale. Same mechanics, audited for clearance, simulated; cover parts, masses and the cost difference.">
+<title>Styled design — Fully Open Humanoid</title>
+<meta name="description" content="Fully Open Humanoid v2, work in progress: ROBOTIS' open-hardware AI Sapiens K1 kept as the design, with its DYNAMIXEL-Q actuators, Jetson computer, aluminium frame and rubber hands swapped for RobStride actuators, an N100 PC, printed parts and TPU hands. Joint-by-joint check of which cheaper actuator fits the K1's housings, two variants, cost and mass.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/site.css">
@@ -13,21 +13,20 @@
 {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.1/examples/jsm/"}}
 </script>
 <style>
-.sim-shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:1.2em 0 .6em}.sim-shots figure{margin:0}.sim-shots img{width:100%;border-radius:var(--radius);border:1px solid var(--line);display:block}
-.compare { position: relative; height: 520px; }
-.compare .legend { position: absolute; left: 0; right: 0; bottom: 0; display: flex; justify-content: space-around; gap: 8px; padding: 8px 10px; font-size: .8rem; color: var(--fg2); pointer-events: none; }
-.compare .legend b { color: var(--fg); display: block; }
-.compare .hint { top: 10px; bottom: auto; }
-.swatch { display: inline-block; width: 14px; height: 14px; border-radius: 4px; border: 1px solid var(--line); vertical-align: -2px; margin-right: 4px; }
-.cues { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin: 1em 0 1.5em; }
-.cues .card h3 { font-size: .98rem; }
-.delta { color: var(--fg2); font-size: .85rem; }
-@media (max-width: 600px) { .compare { height: 360px; } }
+.k1view { position: relative; height: 560px; }
+.k1view .bar { position: absolute; left: 12px; top: 12px; display: flex; gap: 6px; flex-wrap: wrap; }
+.k1view .bar .btn.on { background: var(--accent); color: #fff; border-color: var(--accent); }
+.k1view .key { position: absolute; right: 12px; bottom: 36px; font-size: .78rem; color: var(--fg2); background: var(--bg2); border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; }
+.k1view .key i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 5px; vertical-align: -1px; }
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin: 1em 0 1.5em; }
+.two .card h3 { font-size: .98rem; }
+.fit-ok { color: #16a34a; font-weight: 600; } .fit-grow { color: #b45309; font-weight: 600; }
+@media (max-width: 600px) { .k1view { height: 420px; } .k1view .key { display: none; } }
 </style>
 </head>
 <body>
 <header class="site-header"><div class="inner">
-  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><use href="assets/img/favicon.svg#mark"/></svg><span class="name">Fully Open Humanoid</span><span class="ver">v1.0a</span></a>
+  <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><use href="assets/img/favicon.svg#mark"/></svg><span class="name">Fully Open Humanoid</span><span class="ver">v2 wip</span></a>
   <button class="iconbtn nav-toggle" aria-label="Menu">☰</button>
   <nav class="nav">
     <a href="catalog.html">Catalog</a><a href="builder.html">Builder</a><a href="production.html">Production</a><a href="aesthetic.html">Aesthetic</a><a href="design.html">Design</a><a href="viewer.html">Viewer</a><a href="bom.html">BOM</a><a href="printing.html">Printing</a><a href="assembly.html">Assembly</a><a href="electrical.html">Electrical</a><a href="bringup.html">Bring-up</a><a href="software.html">Software</a><a href="reference.html">Reference</a>
@@ -39,159 +38,137 @@
 <main class="page wide">
   <section class="hero">
     <div>
-      <h1>The aesthetic variant: v1a <span class="pill warn">work in progress</span></h1>
-      <p class="lead">The <a href="production.html">production design</a> in a body. Printed PLA shells over the tubes, the joint cups, the torso frame, the pelvis and the head, so the robot reads as one continuous figure the way <a href="https://www.unitree.com/g1">Unitree G1</a> and <a href="https://github.com/ROBOTIS-GIT/ai_sapiens">ROBOTIS AI Sapiens</a> do. Nothing structural moves: every actuator, tube, plate and screw is v1's. <span id="lead-specs"></span></p>
+      <h1>The styled design, take two: AI Sapiens K1, cheaper inside <span class="pill warn">work in progress</span></h1>
+      <p class="lead">ROBOTIS published its <a href="https://github.com/ROBOTIS-GIT/ai_sapiens">AI Sapiens K1</a> humanoid as open hardware (CERN-OHL-P-2.0): the model, the meshes, the drawing, the controllers and the walking policy. So instead of drawing a body of our own, this design keeps the K1 exactly as published, the look, the proportions, the 23 joints, and swaps what makes it expensive: the DYNAMIXEL-Q actuators, which are not on sale yet, become RobStride actuators; the Jetson becomes our N100 and CAN electronics; the aluminium frame is printed where the loads allow; the rubber hands print in TPU from the published mesh. <span id="lead-specs"></span></p>
       <div class="btns">
-        <a class="btn primary" href="viewer.html?model=v1a">Explore the model</a>
-        <a class="btn" href="bom.html?model=v1a">Bill of materials</a>
-        <a class="btn" href="printing.html?model=v1a">Printed parts</a>
-        <a class="btn" href="assets/model/foh_v1_0a.urdf" download>URDF</a>
+        <a class="btn primary" href="https://github.com/ROBOTIS-GIT/ai_sapiens/tree/main/ai_sapiens_description">K1 description (URDF, meshes)</a>
+        <a class="btn" href="https://docs.robotis.com/docs/systems/aisapiens/specifications/hardware">K1 hardware docs</a>
+        <a class="btn" href="https://docs.robotis.com/assets/files/ai_sapiens_k1_hardware_drawing-6ead04ef1edacb5a5730d435101bf0bf.pdf">K1 drawing (PDF)</a>
+        <a class="btn" href="assets/data/k1rs.json">Swap data (JSON)</a>
       </div>
     </div>
-    <div class="hero-viewer" id="hero-viewer">
-      <div class="hint">Drag to orbit · every part is inspectable in the full viewer</div>
-      <a class="btn small open" href="viewer.html?model=v1a">Open viewer ↗</a>
+    <div class="hero-viewer k1view" id="k1view">
+      <div class="bar">
+        <button class="btn small" data-mode="k1">K1 actuators</button>
+        <button class="btn small on" data-mode="shape_first">Shape-first swap</button>
+        <button class="btn small" data-mode="torque_first">Torque-first swap</button>
+      </div>
+      <div class="key"><i style="background:#9ca3af"></i>K1 part &nbsp; <i style="background:#22c55e"></i>fits the housing &nbsp; <i style="background:#f59e0b"></i>housing grows</div>
+      <div class="hint">Drag to orbit · the published K1 model, skins transparent, with the actuator each joint gets</div>
     </div>
   </section>
 
-  <div class="banner"><span class="dot"></span><div><b>Status: work in progress, first pass.</b> The covers are modelled as the primitives the generator knows (tapered shells, discs, rounded boxes, a hollow box torso), placed from the v1 geometry by <code>tools/build_v1a.py</code>, checked for clearance through every joint's range, counted in the mass and the bill of materials, and exported as STL and URDF. What they are not yet: sculpted. The lofted surfaces that blend a cover into its cup, the split lines, the magnet pockets and the panelled torso shell are the next step, listed at the <a href="#next">end</a>. The reference models beside ours are the manufacturers' own published descriptions, shown under their licences for comparison.</div></div>
+  <div class="banner"><span class="dot"></span><div><b>Status: work in progress, second approach.</b> The first attempt (printed cover shells over our v1 skeleton) was retired on 2026-10-02: a body drawn from primitives did not look like a product. This page takes the opposite route, a product's published body with our parts inside, and is honest about the one hard problem: a cheap actuator with the same torque does not fit the K1's housings, so every joint below shows what fits and what it costs in torque, or what torque needs and what it costs in millimetres. ROBOTIS' STEP files, bill of materials and printable covers are announced as coming; the parts of this page that depend on them are marked.</div></div>
 
   <div class="stats" id="stats"></div>
 
   <div class="toc" data-toc></div>
 
-  <h2 id="language">Design language: what we borrowed, and from whom</h2>
-  <p>Both reference robots hide a skeleton much like ours (actuators at the joints, structure between them) under shells that do three things: they taper each limb so the eye reads a leg instead of a tube with lumps, they make the joints read as round discs, and they keep to two tones so the body stays one object. Their published models, loaded from the <a href="https://github.com/ROBOTIS-GIT/ai_sapiens/tree/main/ai_sapiens_description">AI Sapiens description</a> (Apache-2.0) and <a href="https://github.com/unitreerobotics/unitree_ros/tree/master/robots/g1_description">unitree_ros</a> (BSD-3-Clause), stand beside our model at true scale below.</p>
-  <div class="hero-viewer compare" id="compare">
-    <div class="hint">Drag to orbit · zero pose of each published model · heights from the models</div>
-    <div class="legend" id="compare-legend"></div>
-  </div>
-  <div class="cues">
-    <div class="card"><h3>Tapered limbs</h3><p>G1's thigh and shank are single tapered shells; AI Sapiens' legs the same with a softer line. Ours: four conical shells, thigh Ø92 → Ø80 and shank Ø80 → Ø72, each ending a few millimetres short of the cup at either end so the cup's own ring reads as the joint. Upper arm and forearm the same in Ø72 and Ø88.</p></div>
-    <div class="card"><h3>Joints as discs</h3><p>G1 leaves the knee actuator visible as a dark disc. Ours: a graphite disc on the outer shank plate over the knee coupler screws, and the same disc on the back of each shoulder-roll cup. The RobStride housings themselves are already dark cylinders; the discs give the exposed joints one face.</p></div>
-    <div class="card"><h3>A body, not a frame</h3><p>Both robots have a smooth torso with a chest line. Ours: a rounded shell 200 × 240 × 500 mm around the extrusion frame, 1.6 mm walls, with graphite bezels where the shoulder brackets come through, replacing the four flat polycarbonate panels of v1. A U-shaped cover closes the pelvis under the hip actuators.</p></div>
-    <div class="card"><h3>Head with a visor</h3><p>G1's face is a dark visor with the depth camera behind it; AI Sapiens' head is a rounded block. Ours: a rounded hollow head 120 × 130 × 100 mm on the v1 neck post, the RealSense moved 6 mm back behind a graphite visor strip with a camera window.</p></div>
-    <div class="card"><h3>Shoes</h3><p>G1's feet are low shells. Ours sit on the aluminium foot plate: a rounded toe cap, two rails along the plate edges and a heel cap. The two ankle actuators stay visible between them; a full shoe would need them moved up, which is a mechanical change, not a cover.</p></div>
-    <div class="card"><h3>Two tones</h3><p>Warm white PLA for the shells; graphite PLA for the discs, bezels and visor; the actuators and carbon tubes stay black. Where a shell is split in two to go around a link, the halves meet along the sides and hold with Ø8 magnets in printed pockets, so every cover comes off without tools.</p></div>
+  <h2 id="why">Why start from the K1</h2>
+  <div class="two">
+    <div class="card"><h3>It is open hardware, not open-ish</h3><p>Hardware under CERN-OHL-P-2.0 (permissive), software Apache-2.0, documentation CC BY 4.0. Published today: the URDF and STL meshes of every link, an MJCF model, the hardware drawing, ROS 2 bring-up, controllers and a Dynamixel hardware interface, and trained walking, squat and dance policies as ONNX files. Announced as coming: the hardware BOM, STEP files, 3D-printable covers and USD models.</p></div>
+    <div class="card"><h3>It already looks the way we want</h3><p>1355 mm tall, 292 mm across the shoulders, 205 mm deep, 35 kg, 23 joints (6 per leg, 5 per arm, a waist yaw), five-finger hands, a visor head with the depth camera behind it: the G1 class of proportions, with a rounded chest and tapered limbs. Every shell is in the meshes, so nothing has to be designed to look right.</p></div>
+    <div class="card"><h3>Its cost is in parts we can swap</h3><p>Twelve QC060 and eleven QC080 quasi-direct-drive actuators (48 V, RS-485, listed for Q1 2027 without a price), a Jetson Orin NX 16 GB, an aluminium frame, moulded covers. The announced robot price is in the mid-to-low 10 million KRW range, about $7,000 to $8,700. Actuators, computer, frame and covers are exactly the parts our v1 design already sources cheaply.</p></div>
+    <div class="card"><h3>What we owe back</h3><p>The derivative stays under CERN-OHL-P-2.0 with ROBOTIS credited as the source; our changes publish the same way. AI Sapiens and DYNAMIXEL are ROBOTIS' names, used here to say where the design comes from; ROBOTIS is not involved in this project.</p></div>
   </div>
 
-  <h2 id="changes">What changes against v1</h2>
-  <p>Twelve cover part types are added and four parts are removed (the three polycarbonate torso panels and the boxy head shell). The table is read from the generated model; masses are from the shell volumes at 1.24 g/cm³.</p>
-  <div class="table-wrap"><table class="compact" id="cover-table"><thead><tr><th>Cover</th><th class="num">Qty</th><th>Colour</th><th class="num">Mass g (each)</th><th class="num">Envelope mm</th><th>Where it sits and how it is held</th></tr></thead><tbody></tbody></table></div>
-  <p id="delta-text"></p>
+  <h2 id="swap">What stays, what changes</h2>
+  <div class="table-wrap"><table class="compact"><thead><tr><th>Part of the robot</th><th>K1 as published</th><th>This design</th><th>Status</th></tr></thead><tbody>
+    <tr><td><b>Body shells</b></td><td>Polymer covers; link meshes published, printable covers announced</td><td>Printed in PLA from the published meshes, 1.6 mm walls, <span id="shell-kg"></span> by convex-hull area</td><td><span class="pill warn">waiting for the printable covers; the meshes merge skin and internals</span></td></tr>
+    <tr><td><b>Kinematics</b></td><td>23 joints; positions, axes and limits in the URDF</td><td>Unchanged: joint positions, axes and limits copied from the URDF</td><td><span class="pill ok">done, from the model</span></td></tr>
+    <tr><td><b>Actuators</b></td><td>DYNAMIXEL-Q QC080 (Ø78 × 65, 72.6 N·m peak) × 11, QC060 (Ø58 × 60, 30 N·m) × 12</td><td>RobStride on CAN; two variants below</td><td><span class="pill warn">fit checked per joint; torque or shell growth is the trade</span></td></tr>
+    <tr><td><b>Ankle drive</b></td><td>Both ankle actuators sit in the shank and drive the ankle through a push rod (drawing, side view)</td><td>Kept: the substitutes go where the K1's are</td><td><span class="pill warn">rod geometry needs the STEP files</span></td></tr>
+    <tr><td><b>Frame</b></td><td>Aluminium alloy; drawing published, STEP and BOM announced</td><td>Aluminium kept where it carries the leg loads, printed PETG-CF brackets elsewhere, built on our joint kits at the K1's joint positions</td><td><span class="pill warn">placeholder until the STEP files</span></td></tr>
+    <tr><td><b>Computer and bus</b></td><td>Jetson Orin NX 16 GB; RS-485 at 6 Mbit/s</td><td>Intel N100 mini PC; four CAN buses at 1 Mbit/s (the published policies are ONNX files a CPU runs at control rate)</td><td><span class="pill ok">our v1 electronics</span></td></tr>
+    <tr><td><b>Power</b></td><td>46.8 V, 9000 mAh pack (K0 specification)</td><td>Two 6S 8000 mAh packs, 44.4 V nominal, our distribution and E-stop</td><td><span class="pill ok">our v1 electronics</span></td></tr>
+    <tr><td><b>Hands</b></td><td>Passive rubber five-finger hands, 369 g each; mesh published</td><td>The same mesh printed in TPU 95A</td><td><span class="pill ok">printable now</span></td></tr>
+    <tr><td><b>Software</b></td><td>ROS 2 Jazzy bring-up, controllers, Isaac Lab training (cyclo_lab), policies</td><td>Same stack; the walking policy must be retrained with the new actuators' torque limits and dynamics</td><td><span class="pill warn">retraining is the first software task</span></td></tr>
+  </tbody></table></div>
 
-  <h2 id="fit">Fitting the covers around moving parts</h2>
-  <p>A cover is only an improvement if the robot still moves. Each shell was placed against the swept volume of its neighbours, not against the zero pose, and the audit below confirms it. The cases that set the dimensions:</p>
+  <h2 id="fit">Does a cheaper actuator fit? Joint by joint</h2>
+  <p>The K1's STL meshes contain the actuators themselves, not just the skin: a ray cast from a joint axis first hits the actuator's Ø5 or Ø7 hollow shaft and last hits the cover. The last hit, taken in 48 directions at 17 stations along each axis, gives the inscribed radius of the housing around every joint; the table shows the largest. The fit rule is simpler and stricter than that measurement: <b>a substitute fits without changing the shell if its body is no wider than the DYNAMIXEL-Q it replaces</b>, because that is the envelope the housing was drawn around. Anything wider grows the housing by half the difference in diameter. RobStride's actuators have 7.75:1 to 9:1 planetary stages, the Q series 20:1, so at equal torque the RobStride is the wider part; that is the whole trade.</p>
+  <div class="two" id="variant-cards"></div>
+  <div class="table-wrap"><table class="compact" id="joint-table"><thead><tr><th>Joint</th><th>K1 actuator</th><th class="num">Housing skin r, mm</th><th>Shape-first</th><th>Torque-first</th><th>Note</th></tr></thead><tbody></tbody></table></div>
+  <p class="tiny">Left side listed; the right side mirrors it. "Housing skin r" is the measured inscribed radius of the link that holds the actuator, at the best station within ±40 mm of the joint; it is a lower bound (flat faces and link ends pull it down), which is why the rule uses the K1 actuator's own diameter instead. Torque ratios are RobStride peak over DYNAMIXEL-Q peak; rated ratios are in the JSON.</p>
+
+  <h2 id="torque">Is half the torque enough?</h2>
+  <p>The shape-first variant keeps every housing within 3.5 mm of the published shell and gives the legs 36 N·m peak where the K1 has 72.6, on a robot about 3 kg lighter. That is <span id="tpm"></span> at the hip and knee. Our v0.2 budget design has 60 N·m on 28 kg (2.1 N·m per kg) and v1 has 120 N·m on 33 kg (3.6); the K1 itself has 2.1. So the shape-first robot sits at the low end of what walks: slow walking, no jumping, and a policy trained for exactly that. The torque-first variant restores 83 % of the K1's leg torque and 120 % of its arm torque, but grows the arm housings by 13 mm in radius, from Ø58 to Ø84.5 parts, and the leg housings by 10 mm; the arms would visibly change. The middle path that is probably right once the STEP files allow real CAD: torque-first at the hip pitch, hip yaw and knee, where the measured skin (r 45) hides most of an RS03's growth inside the tapered thigh, and shape-first everywhere else.</p>
+
+  <h2 id="bom">Cost and mass</h2>
+  <p>Priced <span id="bom-date"></span>, US vendors. The electronics and harness rows are our v1's; the structure rows are placeholders until ROBOTIS publishes the STEP files and BOM, and are marked so. The K1 itself is announced at about $7,000 to $8,700 complete.</p>
+  <div class="table-wrap"><table class="compact" id="bom-table"><thead><tr><th>Section</th><th>Covers</th><th class="num">Shape-first</th><th class="num">Torque-first</th></tr></thead><tbody></tbody></table></div>
+  <div class="table-wrap"><table class="compact" id="mass-table"><thead><tr><th></th><th class="num">K1 (URDF)</th><th class="num">Shape-first</th><th class="num">Torque-first</th></tr></thead><tbody></tbody></table></div>
+  <p class="tiny">Mass estimates change only the actuators; frame and cover substitutions are not quantified until the STEP files exist. The K1's own actuator prices are not public, so the saving on actuators cannot be stated; the robot-level comparison is against the announced price.</p>
+
+  <h2 id="dims">Dimensions, from the published model</h2>
+  <div class="table-wrap"><table class="compact" id="dims-table"><tbody></tbody></table></div>
+
+  <h2 id="next">What this needs next</h2>
   <ul>
-    <li><b>Pelvis cover.</b> The hip-yaw cups (Ø112) reach 84 mm from the centre line at the zero pose and 67 mm when a leg adducts the full 12°, so the bottom panel is 128 mm wide while the front and back panels are 164 mm; the bottom sits 4 mm under the hip-pitch mount rings.</li>
-    <li><b>Shoes.</b> The ankle-pitch actuator hangs 42 mm above the foot plate and the ankle bracket plate sweeps down to 39 mm above it at 30° of roll, so the toe cap starts 58 mm in front of the pitch axis and the rails are 13 mm tall. The heel cap stops 2.5 mm behind the ankle-roll back plate.</li>
-    <li><b>Forearm cover.</b> Ends 1 mm under the elbow yoke's cross member and clears the elbow cup by 15 mm at full flexion (125°). With the arms hanging straight it is the first thing an abducting leg's hip-yaw housing meets, from 15°; v1's bare forearm had the same coupling through the hand at 20°, and the standing pose with bent elbows avoids it in both.</li>
-    <li><b>Shoulder.</b> A drum around the shoulder-roll cup was tried and rejected: the upper-arm yoke's shelf sweeps 51 to 78 mm from the roll axis, so any drum would be Ø160. The bracket keeps a disc on the back instead and a bezel in the torso wall; the 90 mm of exposed bracket beam between them is the one place the figure still shows its frame.</li>
-    <li><b>Torso shell.</b> The shoulder bracket (corner radius 52 mm) turns inside the shell; only the beam passes through the Ø100 opening. The E-stop head comes through the back wall, the breaker moved 3 mm inboard to clear it.</li>
+    <li><b>ROBOTIS' STEP files and BOM.</b> Everything structural waits for them: the actuator cups get drawn at the K1's joint positions in CAD, the frame split between kept aluminium and printed brackets becomes real, the ankle push-rod geometry is read off rather than inferred from the drawing.</li>
+    <li><b>Printable covers.</b> ROBOTIS lists them as coming; until then the shells are an estimate from the link meshes, which merge skin and internals and are not printable as they are.</li>
+    <li><b>Retrain the walking policy.</b> cyclo_lab (Isaac Lab, Apache-2.0) and the K1 MJCF are published; the actuator model, torque limits and gains change to the RobStride's. The first useful experiment needs no hardware: run the published MJCF with torque clamped at 36 N·m and see what the published policy does.</li>
+    <li><b>An actuator with a 20:1 stage in RobStride's price class</b> would remove the trade on this page. Candidates exist; none has been measured against the housings here, and none goes in the table without manual dimensions.</li>
+    <li><b>Hands.</b> Print the published hand mesh in TPU and compare it with the Amazing Hand on the same wrist; the K1's hands are passive.</li>
+    <li><b>Then the usual:</b> self-collision audit at the new housing sizes, the standing and push check, STL release, and the joint-kit test that everything on this site depends on.</li>
   </ul>
-
-  <h2 id="audit">Self-collision audit</h2>
-  <p>Same audit as v1, on the covered model: every part pair at the zero pose, in six preset poses, and through each joint's full range in 13 steps, with tubes inside their sockets, actuators inside their cups and the parts a shell encloses declared inside it.</p>
-  <div class="table-wrap"><table class="compact"><thead><tr><th>Check</th><th>Result</th><th>Note</th></tr></thead><tbody id="audit-rows"></tbody></table></div>
-
-  <h2 id="sim">Does it still stand? Physics check</h2>
-  <p>The v1 MuJoCo check on the v1a URDF: the covers add mass to the pelvis, the limbs and the torso, the servos hold the zero pose, no balance controller. The limit in v1 came from the arms swinging into the thighs after a 12 N·s push; with the shells' mass the figure settles at a larger lean but stays up.</p>
-  <div class="sim-shots">
-    <figure><img src="assets/img/sim_v1a/stand.png" alt="MuJoCo frame: v1a standing" loading="lazy"><figcaption>Stand: 5 s after a 10 mm drop.</figcaption></figure>
-    <figure><img src="assets/img/sim_v1a/crouch.png" alt="MuJoCo frame: v1a crouch" loading="lazy"><figcaption>Crouch: hips −35°, knees 70°, ankles −35°.</figcaption></figure>
-    <figure><img src="assets/img/sim_v1a/push_12.png" alt="MuJoCo frame: v1a after a 12 N·s push" loading="lazy"><figcaption>Push: 12 N·s forward on the torso, recovered.</figcaption></figure>
-  </div>
-  <div class="table-wrap"><table class="compact" id="sim-table"><thead><tr><th>Test</th><th>What happens</th><th class="num">Max tilt</th><th class="num">Settled tilt</th><th>Busiest leg joint</th><th>Result</th></tr></thead><tbody></tbody></table></div>
-  <p class="tiny" id="sim-meta"></p>
-<pre><code>python3 tools/build_v1a.py                                  # robot_v1a.json, bom_v1a.json, foh_v1_0a.urdf (runs build_v1.py first)
-python3 tools/check_collisions.py --model v1a --poses --sweep --steps 13
-tools/.venv/bin/python tools/build_parts.py --model v1a        # assets/print_v1a/*.stl + manifest
-tools/.venv/bin/python tools/sim_stand.py --model v1a --render # sim_results_v1a.json, frames</code></pre>
-
-  <h2 id="parts">Printing the shells</h2>
-  <p>The shells print in PLA with 1.6 or 2 mm walls (four or five perimeters, no infill), standing on their open end, no supports. The torso shell is larger than any bed and is meant to print as eight panels with lap joints and magnet pockets; the STL below is the one-piece envelope until that split is drawn. The v1 cups, sockets and brackets are in the same set, unchanged.</p>
-  <div class="btns" id="dl-parts"></div>
-  <div class="table-wrap"><table class="compact" id="parts-table"><thead><tr><th>Part</th><th class="num">Qty</th><th>Material</th><th class="num">Mass g</th><th class="num">Envelope mm</th></tr></thead><tbody></tbody></table></div>
-
-  <h2 id="bom">Bill of materials</h2>
-  <p>Priced <span id="bom-date"></span>, US vendors, against the v1 sections. The full list with vendors and notes is on the <a href="bom.html?model=v1a">BOM page</a>.</p>
-  <div class="table-wrap"><table class="compact" id="bom-table"><thead><tr><th>Section</th><th>Covers</th><th class="num">v1a</th><th class="num">v1</th></tr></thead><tbody></tbody></table></div>
-
-  <h2 id="next">What the aesthetic variant still needs</h2>
-  <ul>
-    <li><b>Sculpted surfaces.</b> Loft each cover into the cup it meets (today the covers stop a few millimetres short of the cups, on purpose, because a cone cannot blend into a ring). This is CAD work on the exported STLs or a surface stage in the generator.</li>
-    <li><b>Split lines and pockets.</b> Every two-piece cover needs its parting plane, lips and Ø8 × 3 magnet pockets in the STL; the torso shell needs its eight panels and lap joints.</li>
-    <li><b>The shoulder gap.</b> A bridging cover between the torso bezel and the shoulder-roll disc, sized against the full roll range (the shelf sweep above), is the piece that would most change the silhouette.</li>
-    <li><b>Hip stack.</b> The roll bracket and yaw housing between the pelvis and the thigh are bare; a cover there has to clear the pelvis cover through 12 to 45° of roll and −90 to 100° of pitch.</li>
-    <li><b>Camera window and visor.</b> Tinted acrylic in place of the printed strip, and a check that the RealSense's field of view clears the window edges.</li>
-    <li><b>Weigh and colour-test the first shells.</b> The masses above are volumes at nominal density; printed walls come out heavier. Test the warm white and graphite PLA together under daylight before committing.</li>
-    <li><b>Everything on the <a href="production.html#next">production page's list</a></b> still applies; the covers do not change the joint-kit test, the tube test or the walking policy.</li>
-  </ul>
+<pre><code>tools/.venv/bin/python tools/build_k1rs.py    # downloads the K1 description, measures the housings, writes assets/data/k1rs.json</code></pre>
 </main>
 
-<footer class="site-footer"><div class="inner"><span>Fully Open Humanoid · v1a aesthetic variant (WIP) · <a href="reference.html#license">MIT / CC BY 4.0</a></span><span>Reference models: <a href="https://github.com/ROBOTIS-GIT/ai_sapiens">ROBOTIS AI Sapiens</a> (Apache-2.0), <a href="https://github.com/unitreerobotics/unitree_ros">Unitree G1</a> (BSD-3-Clause); shown for comparison, not affiliated</span></div></footer>
+<footer class="site-footer"><div class="inner"><span>Fully Open Humanoid · v2 K1 derivative (WIP) · <a href="reference.html#license">MIT / CC BY 4.0</a>; the K1 content under <a href="https://docs.robotis.com/docs/systems/aisapiens/resources/open_source">CERN-OHL-P-2.0 / Apache-2.0 / CC BY 4.0</a></span><span>Source design: <a href="https://github.com/ROBOTIS-GIT/ai_sapiens">ROBOTIS AI Sapiens K1</a>; ROBOTIS is not affiliated with this project</span></div></footer>
 
 <script src="assets/js/site.js"></script>
 <script type="module">
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
-import { createRobotViewer } from "./assets/js/robot-viewer.js";
 const esc = foh.esc, money = foh.money;
-const [robot, bom, files, sim, robot1, bom1, geom] = await Promise.all(["robot_v1a", "bom_v1a", "print_files_v1a", "sim_results_v1a", "robot_v1", "bom_v1", "module_geom"].map(f => foh.json(`assets/data/${f}.json`)));
-const s = robot.specs, m = s.mass_g, s1 = robot1.specs;
-const dMass = s.mass_total_g - s1.mass_total_g, dCost = bom.tiers.core - bom1.tiers.core;
-const covers = Object.values(robot.catalog).filter(c => c.id.startsWith("3DP_cov"));
-const coverG = covers.reduce((a, c) => a + c.qty * c.mass_g, 0);
-const removed = Object.values(robot1.catalog).filter(c => !robot.catalog[c.id] && c.qty > 0);
-const removedG = removed.reduce((a, c) => a + c.qty * (c.mass_g || 0), 0);
-document.getElementById("lead-specs").textContent = `${(s.height_mm / 1000).toFixed(2)} m, ${(s.mass_total_g / 1000).toFixed(1)} kg, ${money(bom.tiers.core)} in parts: ${(coverG / 1000).toFixed(1)} kg of shells and ${money(dCost)} on top of v1.`;
+const D = await foh.json("assets/data/k1rs.json");
+const K = D.k1, V = D.variants, RS = D.rs, QC = D.k1_actuators;
+const sf = V.shape_first, tf = V.torque_first;
+document.getElementById("lead-specs").textContent = `Two variants: one keeps every housing within ${sf.shell_growth_max_mm} mm of the published shell at ${Math.round(sf.torque_ratio_min * 100)} to ${Math.round(sf.torque_ratio_max * 100)} % of the K1's torque, about ${money(sf.core_usd)} in parts; the other restores the torque and grows the housings.`;
 document.getElementById("stats").innerHTML = [
-  [(s.height_mm / 1000).toFixed(2) + " m", `tall, ${s.height_mm - s1.height_mm} mm more than v1 for the head`], [(s.mass_total_g / 1000).toFixed(1) + " kg", `estimated, ${dMass >= 0 ? "+" : ""}${(dMass / 1000).toFixed(1)} kg against v1`],
-  [money(bom.tiers.core), `core parts, ${dCost >= 0 ? "+" : ""}${money(dCost)} against v1`], [covers.length, "cover part types, " + covers.reduce((a, c) => a + c.qty, 0) + " pieces"],
-  [(coverG / 1000).toFixed(1) + " kg", "of PLA shell, replacing " + (removedG / 1000).toFixed(1) + " kg of panels"], ["2", "colours: warm white and graphite"],
+  [`${(K.height_mm / 1000).toFixed(2)} m`, `tall, ${K.mass_kg} kg, ${K.dof} joints: the K1 as published`],
+  [money(sf.core_usd), `shape-first parts, about ${sf.mass_kg_est} kg`],
+  [money(tf.core_usd), `torque-first parts, about ${tf.mass_kg_est} kg`],
+  [`${sf.leg_peak_nm} / ${tf.leg_peak_nm}`, `N·m peak at the legs, shape-first / torque-first (K1: ${QC.QC080.peak_nm})`],
+  [`≤ ${sf.shell_growth_max_mm} mm`, "housing growth, shape-first"],
+  [`$${(K.price_usd[0] / 1000).toFixed(0)}–${(K.price_usd[1] / 1000).toFixed(1)}k`, "the K1's announced price, complete"],
 ].map(([v, k]) => `<div class="stat"><div class="v">${esc(String(v))}</div><div class="k">${esc(k)}</div></div>`).join("");
-try { await createRobotViewer(document.getElementById("hero-viewer"), { data: robot, mode: "hero" }); } catch (e) { document.getElementById("hero-viewer").innerHTML = "<div class='hint'>WebGL is needed for the model.</div>"; }
+document.getElementById("shell-kg").textContent = `about ${(D.shell_mass_g / 1000).toFixed(1)} kg`;
+document.getElementById("tpm").textContent = `${(sf.leg_peak_nm / sf.mass_kg_est).toFixed(1)} N·m per kg`;
 
-// covers
-document.querySelector("#cover-table tbody").innerHTML = covers.map(c => `<tr><td><b>${esc(c.name)}</b> <small class="tiny">${esc(c.id)}${c.mirror ? " · mirrored" : ""}</small></td><td class="num">${c.qty}</td><td><i class="swatch" style="background:${robot.materials[c.material].color}"></i>${c.material === "shell_dark" ? "graphite" : "warm white"}</td><td class="num">${c.mass_g}</td><td class="num">${(c.dims || []).map(v => Math.round(v)).join(" × ")}</td><td>${esc(c.notes || "")}</td></tr>`).join("");
-document.getElementById("delta-text").innerHTML = `Removed: ${removed.map(c => `${esc(c.name)} (× ${c.qty})`).join(", ")}, ${(removedG / 1000).toFixed(2)} kg. Added: ${(coverG / 1000).toFixed(2)} kg of shells plus magnets and inserts. Net ${dMass >= 0 ? "+" : ""}${(dMass / 1000).toFixed(2)} kg and ${dCost >= 0 ? "+" : ""}${money(dCost)}; the robot is ${s.height_mm} mm tall with the new head.`;
+// variant cards
+const vc = (name, v) => `<div class="card"><h3>${esc(name)}</h3><p>${Object.entries(v.counts).map(([m, n]) => `${n} × ${m}`).join(", ")}. Housings grow by at most <b>${v.shell_growth_max_mm} mm</b> in radius; peak torque <b>${Math.round(v.torque_ratio_min * 100)}–${Math.round(v.torque_ratio_max * 100)} %</b> of the K1's; actuators ${(v.actuator_mass_g / 1000).toFixed(1)} kg (K1: ${(D.k1_actuator_mass_g / 1000).toFixed(1)}) and ${money(v.actuator_cost)}; core parts ${money(v.core_usd)}; robot about ${v.mass_kg_est} kg.</p></div>`;
+document.getElementById("variant-cards").innerHTML = vc("Shape-first: keep the shell", sf) + vc("Torque-first: keep the torque", tf);
 
-// audit (static record of the last run; regenerate with the commands below)
-const AUDIT = [
-  ["Zero pose, 428 shapes, 0.5 mm tolerance", "no overlaps", "the first pass had the pelvis cover 4 mm into the hip-yaw cups and 2 mm into the hip-pitch rings, and the shoulder disc 1 mm into the bracket beam; the dimensions above are the corrected ones"],
-  ["Poses: crouch, reach, wave, default standing, abduct 45° with default arms, abduct 45° with arms forward", "no pairs deeper than 1 mm", "the covered thigh clears the hands in the default pose (elbows 30°) through the full abduction range"],
-  ["Sweep: hip pitch −90…100", "clear", "the yaw housing passes 2 mm from the pelvis cover's front panel; v1's limit stands"],
-  ["Sweep: hip roll −12…45 from the zero pose", "hand pairs from 14° on", "the straight-arm zero pose only, as in v1 (where the first contact was at about 20°): the hands meet the thigh cover from 14° and the hanging forearm cover is within the audit's 1 mm margin of the hip-yaw housing from 15°; the default pose (elbows 30°) is clear through 45°, see the poses above"],
-  ["Sweep: hip yaw ±90, knee 0…120, ankle pitch ±50, ankle roll ±30", "clear", "the shoe's toe cap clears the ankle-pitch ring at 30° roll by 3 mm; the knee disc turns with the shank"],
-  ["Sweep: shoulder pitch ±180, shoulder roll 0…150, shoulder yaw ±180, elbow 0…125, wrist ±180", "clear", "the forearm cover's rim passes 15 mm from the elbow cup at full flexion; the shoulder bracket turns inside the torso shell"],
-];
-document.getElementById("audit-rows").innerHTML = AUDIT.map(r => `<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td><td>${esc(r[2])}</td></tr>`).join("");
-
-// sim
-const what = { stand: "Drop from 10 mm at the zero pose, hold 5 s", crouch: "Ramp to the crouch in 1.5 s, hold, return" };
-const keys = ["stand", "crouch"].concat(Object.keys(sim).filter(k => k.startsWith("push_")).sort((a, b) => sim[a].impulse_Ns - sim[b].impulse_Ns));
-document.querySelector("#sim-table tbody").innerHTML = keys.map(k => { const t = sim[k]; const legs = Object.entries(t.torques).filter(([j]) => /^(hip|knee|ankle)/.test(j)); const b = legs[0] || Object.entries(t.torques)[0]; const name = k.startsWith("push_") ? `Push ${t.impulse_Ns} N·s` : k[0].toUpperCase() + k.slice(1); return `<tr><td>${esc(name)}</td><td>${esc(what[k] || `${(t.impulse_Ns / 0.2).toFixed(0)} N forward on the torso for 0.2 s while standing`)}</td><td class="num">${t.max_tilt_deg.toFixed(1)}°</td><td class="num">${t.final_tilt_deg < 89 ? t.final_tilt_deg.toFixed(1) + "°" : "fallen"}</td><td>${esc(b[0])} ${b[1].peak_nm} / ${b[1].limit_nm} N·m</td><td><span class="pill ${t.pass ? "ok" : "bad"}">${t.pass ? "pass" : "fall"}</span></td></tr>`; }).join("");
-document.getElementById("sim-meta").textContent = `MuJoCo, ${(sim.timestep * 1000).toFixed(0)} ms step, ${sim.mass_kg} kg from the URDF, friction 1.0; "busiest joint" is the highest peak torque against its actuator's limit, leg joints only.`;
-
-// parts (covers first)
-if (files.zip) document.getElementById("dl-parts").innerHTML = `<a class="btn primary" href="${files.zip.file}" download>Download all STL (${(files.zip.bytes / 1e6).toFixed(1)} MB zip)</a><a class="btn" href="assets/data/print_files_v1a.json">Manifest with SHA-256</a>`;
-const ordered = files.parts.filter(p => p.id.startsWith("3DP_cov")).concat(files.parts.filter(p => !p.id.startsWith("3DP_cov")));
-document.querySelector("#parts-table tbody").innerHTML = ordered.map(p => `<tr><td><a href="${p.file}" download>${esc(p.name)}</a> <small class="tiny">${esc(p.id)}${p.mirror ? " · mirror for the right side" : ""}</small></td><td class="num">${p.qty}</td><td>${esc(p.material_name)}</td><td class="num">${p.mass_g_est}</td><td class="num">${p.bbox_mm.map(v => Math.round(v)).join(" × ")}</td></tr>`).join("");
+// joint table (left side + waist)
+const NAMES = { hip_pitch: "Hip pitch", hip_roll: "Hip roll", hip_yaw: "Hip yaw", knee: "Knee", ankle_pitch: "Ankle pitch", ankle_roll: "Ankle roll", waist_yaw: "Waist yaw", shoulder_pitch: "Shoulder pitch", shoulder_roll: "Shoulder roll", shoulder_yaw: "Shoulder yaw", elbow: "Elbow", wrist_roll: "Wrist roll" };
+const pickCell = (J, pick) => { const m = J[pick], c = J.candidates[m]; return `<b>${m}</b> Ø${RS[m].dia} × ${RS[m].length}, ${RS[m].peak_nm} N·m<br><span class="${c.fits ? "fit-ok" : "fit-grow"}">${c.fits ? "fits" : `+${c.growth_mm} mm`}</span> · ${Math.round(c.torque_ratio * 100)} % torque`; };
+const NOTE = { ankle_pitch: "in the shank, push rod to the ankle; the skin at the joint itself is far too small for any actuator", ankle_roll: "as the ankle pitch", hip_pitch: "inside the pelvis, the widest housing", shoulder_roll: "the tightest housing of the arm", wrist_roll: "the K1's forearm is the hand link; the wrist actuator sits at the elbow end" };
+document.querySelector("#joint-table tbody").innerHTML = D.joints.filter(J => J.side !== "R").map(J => `<tr><td>${esc(NAMES[J.group] || J.group)}${J.side === "C" ? "" : " (L)"}</td><td>${J.k1_actuator} Ø${QC[J.k1_actuator].dia} × ${QC[J.k1_actuator].length}, ${QC[J.k1_actuator].peak_nm} N·m</td><td class="num">${J.linkage ? "—" : J.housing.r_mm}</td><td>${pickCell(J, "shape_first")}</td><td>${pickCell(J, "torque_first")}</td><td><small class="tiny">${esc(NOTE[J.group] || "")}</small></td></tr>`).join("");
 
 // bom
-document.getElementById("bom-date").textContent = bom.meta.priced_as_of;
-const sec1 = Object.fromEntries(bom1.sections.map(x => [x.id, x]));
-document.querySelector("#bom-table tbody").innerHTML = bom.sections.map(sec => `<tr><td><b>${esc(sec.title)}</b> <span class="pill ${sec.tier === "core" ? "acc" : ""}">${sec.tier}</span></td><td>${esc(sec.blurb)}</td><td class="num">${money(sec.subtotal)}</td><td class="num">${sec1[sec.id] ? money(sec1[sec.id].subtotal) : "—"}</td></tr>`).join("") + `<tr><td><b>Core total</b></td><td></td><td class="num"><b>${money(bom.tiers.core)}</b></td><td class="num"><b>${money(bom1.tiers.core)}</b></td></tr>`;
+document.getElementById("bom-date").textContent = D.bom.meta.priced_as_of;
+const BS = D.bom.variants.shape_first.sections, BT = Object.fromEntries(D.bom.variants.torque_first.sections.map(s => [s.id, s]));
+document.querySelector("#bom-table tbody").innerHTML = BS.map(sec => `<tr><td><b>${esc(sec.title)}</b></td><td>${esc(sec.blurb)}</td><td class="num">${money(sec.subtotal)}</td><td class="num">${money(BT[sec.id].subtotal)}</td></tr>`).join("") + `<tr><td><b>Core total</b></td><td>K1 announced: ${money(K.price_usd[0])} to ${money(K.price_usd[1])}</td><td class="num"><b>${money(sf.core_usd)}</b></td><td class="num"><b>${money(tf.core_usd)}</b></td></tr>`;
+document.querySelector("#mass-table tbody").innerHTML = [
+  ["Actuators", `${(D.k1_actuator_mass_g / 1000).toFixed(1)} kg`, `${(sf.actuator_mass_g / 1000).toFixed(1)} kg`, `${(tf.actuator_mass_g / 1000).toFixed(1)} kg`],
+  ["Everything else (frame, covers, electronics, battery, hands)", `${(D.k1_mass_urdf_kg - D.k1_actuator_mass_g / 1000).toFixed(1)} kg`, "as the K1, pending STEP", "as the K1, pending STEP"],
+  ["Robot", `${D.k1_mass_urdf_kg.toFixed(1)} kg`, `~${sf.mass_kg_est} kg`, `~${tf.mass_kg_est} kg`],
+].map(r => `<tr><td><b>${esc(r[0])}</b></td><td class="num">${esc(r[1])}</td><td class="num">${esc(r[2])}</td><td class="num">${esc(r[3])}</td></tr>`).join("");
 
-// side-by-side silhouettes
-const REFS = [
-  { key: "k1", y: -0.8, color: 0xd9d9d6, label: "ROBOTIS AI Sapiens K1", lic: "Apache-2.0" },
-  { key: "foh_v1a", y: 0, color: 0xe9e7e2, label: "Fully Open Humanoid v1a", lic: "this site", height: s.height_mm / 1000 },
-  { key: "g1", y: 0.8, color: 0x4b5058, label: "Unitree G1 (29 DOF)", lic: "BSD-3-Clause" },
-];
+// dims
+const d = D.dims;
+document.querySelector("#dims-table tbody").innerHTML = [
+  ["Height", `${d.height_mm} mm over the meshes; 1355 mm on the drawing`], ["Shoulders", `${d.shoulder_spacing_mm} mm between the roll axes; 292 mm overall on the drawing; shoulder pitch axis at ${d.shoulder_height_mm} mm`],
+  ["Hips", `${d.hip_spacing_mm} mm between the roll axes; hip pitch axis at ${d.hip_pitch_height_mm} mm`], ["Legs", `thigh ${d.thigh_mm} mm (yaw axis to knee), shank ${d.shank_mm} mm, ankle ${d.ankle_height_mm} mm above the ground, foot ${d.foot_length_mm} mm`],
+  ["Arms", `upper arm ${d.upper_arm_mm} mm (yaw axis to elbow), elbow to wrist ${d.forearm_mm} mm, then the hand link`], ["Depth", "205 mm on the drawing"],
+].map(([k, v]) => `<tr><td><b>${esc(k)}</b></td><td>${esc(v)}</td></tr>`).join("");
+
+// viewer: the K1 model with the actuator each joint gets
 (async () => {
-  const el = document.getElementById("compare");
+  const el = document.getElementById("k1view");
   try {
     THREE.Object3D.DEFAULT_UP.set(0, 0, 1);
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -199,34 +176,46 @@ const REFS = [
     renderer.domElement.style.touchAction = "pan-y";
     el.insertBefore(renderer.domElement, el.firstChild);
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(32, 1, 0.01, 50);
-    camera.position.set(4.6, -1.4, 1.25); camera.up.set(0, 0, 1);
+    const camera = new THREE.PerspectiveCamera(30, 1, 0.01, 50);
+    camera.position.set(2.6, -1.9, 1.1); camera.up.set(0, 0, 1);
     const controls = new OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true; controls.target.set(0, 0, 0.8); controls.enablePan = false;
+    controls.enableDamping = true; controls.target.set(0, 0, 0.68); controls.enablePan = false;
     scene.add(new THREE.HemisphereLight(0xffffff, 0x8a8a8a, 0.95));
-    const key = new THREE.DirectionalLight(0xffffff, 1.3); key.position.set(3, -3, 5); scene.add(key);
-    const fill = new THREE.DirectionalLight(0xffffff, 0.45); fill.position.set(-3, 3, 2); scene.add(fill);
-    const grid = new THREE.GridHelper(5, 25, 0x9aa0a8, 0xcfd3d8); grid.rotation.x = Math.PI / 2; grid.material.transparent = true; scene.add(grid);
+    const key = new THREE.DirectionalLight(0xffffff, 1.2); key.position.set(3, -3, 5); scene.add(key);
+    const fill = new THREE.DirectionalLight(0xffffff, 0.4); fill.position.set(-3, 3, 2); scene.add(fill);
+    const grid = new THREE.GridHelper(3, 30, 0x9aa0a8, 0xcfd3d8); grid.rotation.x = Math.PI / 2; grid.material.transparent = true; scene.add(grid);
     const isDark = () => document.documentElement.dataset.theme === "dark" || (!document.documentElement.dataset.theme && matchMedia("(prefers-color-scheme: dark)").matches);
     const resize = () => { const w = el.clientWidth, h = el.clientHeight || 480; renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); };
     new ResizeObserver(resize).observe(el); resize();
     (function loop() { requestAnimationFrame(loop); controls.update(); grid.material.opacity = isDark() ? 0.35 : 0.6; renderer.render(scene, camera); })();
-    const loader = new GLTFLoader();
-    const legend = [];
-    for (const r of REFS) {
-      const ref = geom.references?.[r.key];
-      if (!ref) continue;
-      const g = await new Promise((res, rej) => loader.load(ref.file, x => res(x.scene), undefined, rej));
-      const mat = new THREE.MeshStandardMaterial({ color: r.color, roughness: 0.6, metalness: 0.08 });
-      g.traverse(o => { if (o.isMesh) { if (!o.geometry.attributes.normal) o.geometry.computeVertexNormals(); o.material = mat; } });
-      const bb = new THREE.Box3().setFromObject(g);
-      const h = bb.max.z - bb.min.z;
-      g.position.set(-(bb.min.x + bb.max.x) / 2, r.y - (bb.min.y + bb.max.y) / 2, -bb.min.z);
-      scene.add(g);
-      legend.push(`<span><b>${esc(r.label)}</b>${(r.height || h).toFixed(2)} m · ${esc(r.lic)}</span>`);
+    const g = await new Promise((res, rej) => new GLTFLoader().load(D.meta.model_file, x => res(x.scene), undefined, rej));
+    const skin = new THREE.MeshStandardMaterial({ color: 0xd6d8dc, roughness: 0.6, metalness: 0.05, transparent: true, opacity: 0.32, depthWrite: false });
+    g.traverse(o => { if (o.isMesh) { if (!o.geometry.attributes.normal) o.geometry.computeVertexNormals(); o.material = skin; } });
+    g.position.z = -D.meta.ground_z; g.renderOrder = 2; scene.add(g);
+    const acts = new THREE.Group(); scene.add(acts);
+    const mats = { k1: new THREE.MeshStandardMaterial({ color: 0x9ca3af, roughness: 0.4, metalness: 0.5 }), ok: new THREE.MeshStandardMaterial({ color: 0x22c55e, roughness: 0.4, metalness: 0.5 }), grow: new THREE.MeshStandardMaterial({ color: 0xf59e0b, roughness: 0.4, metalness: 0.5 }) };
+    const Y = new THREE.Vector3(0, 1, 0);
+    function cylinder(o, a, dia, len, mat) {
+      const m = new THREE.Mesh(new THREE.CylinderGeometry(dia / 2000, dia / 2000, len / 1000, 40), mat);
+      m.quaternion.setFromUnitVectors(Y, new THREE.Vector3(...a).normalize()); m.position.set(...o); return m;
     }
-    document.getElementById("compare-legend").innerHTML = legend.join("");
-  } catch (e) { el.querySelector(".hint").textContent = "WebGL is needed for the comparison."; console.error(e); }
+    function show(mode) {
+      acts.clear();
+      for (const J of D.joints) {
+        let o = J.origin, a = J.axis;
+        if (J.linkage) {   // the ankle actuators live in the shank: shown along the shank axis, pitch above roll, placement approximate
+          const S = D.shank[J.side], k = D.joints.find(x => x.id === `${J.side === "L" ? "left" : "right"}_knee_joint`);
+          const t = (J.group === "ankle_pitch" ? 0.11 : 0.19);
+          o = [k.origin[0] + S.axis[0] * t, k.origin[1] + S.axis[1] * t, k.origin[2] + S.axis[2] * t]; a = [0, 1, 0];
+        }
+        if (mode === "k1") { const q = QC[J.k1_actuator]; acts.add(cylinder(o, a, q.dia, q.length, mats.k1)); continue; }
+        const m = J[mode], c = J.candidates[m];
+        acts.add(cylinder(o, a, RS[m].dia, RS[m].length, c.fits ? mats.ok : mats.grow));
+      }
+    }
+    show("shape_first");
+    el.querySelectorAll(".bar .btn").forEach(b => b.addEventListener("click", () => { el.querySelectorAll(".bar .btn").forEach(x => x.classList.remove("on")); b.classList.add("on"); show(b.dataset.mode); }));
+  } catch (e) { el.querySelector(".hint").textContent = "WebGL is needed for the model."; console.error(e); }
 })();
 </script>
 </body>

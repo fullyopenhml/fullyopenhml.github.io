@@ -29,10 +29,10 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parent.parent
 MODEL = sys.argv[sys.argv.index("--model") + 1] if "--model" in sys.argv else "v0_2"
-URDF = ROOT / "assets/model" / {"v0_2": "foh_v0_2.urdf", "v1": "foh_v1_0.urdf", "v1a": "foh_v1_0a.urdf"}[MODEL]
-robot = json.loads((ROOT / "assets/data" / {"v0_2": "robot.json", "v1": "robot_v1.json", "v1a": "robot_v1a.json"}[MODEL]).read_text())
-RESULTS = ROOT / "assets/data" / {"v0_2": "sim_results.json", "v1": "sim_results_v1.json", "v1a": "sim_results_v1a.json"}[MODEL]
-IMG_DIR = ROOT / "assets/img" / {"v0_2": "sim", "v1": "sim_v1", "v1a": "sim_v1a"}[MODEL]
+URDF = ROOT / "assets/model" / {"v0_2": "foh_v0_2.urdf", "v1": "foh_v1_0.urdf"}[MODEL]
+robot = json.loads((ROOT / "assets/data" / {"v0_2": "robot.json", "v1": "robot_v1.json"}[MODEL]).read_text())
+RESULTS = ROOT / "assets/data" / {"v0_2": "sim_results.json", "v1": "sim_results_v1.json"}[MODEL]
+IMG_DIR = ROOT / "assets/img" / {"v0_2": "sim", "v1": "sim_v1"}[MODEL]
 PEAK = {m: a["peak_nm"] for m, a in robot["actuators"].items()}
 GAINS = {"RS04": (320.0, 13.0), "RS03": (220.0, 9.0), "RS06": (150.0, 6.0), "RS02": (80.0, 3.0), "RS05": (25.0, 1.0)}   # kp N.m/rad, kd N.m.s/rad
 JOINT_MODEL = {j["id"]: j["actuator"] for j in robot["joints"]}
