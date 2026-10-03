@@ -319,9 +319,13 @@ def link(lid, name, group, origin, parent_joint=None):
     return d
 
 
-def joint(jid, name, parent, child, origin, axis, limits, actuator, side, can_bus, can_id, kind):
+def joint(jid, name, parent, child, origin, axis, limits, actuator, side, can_bus, can_id, kind, zero_deg=0.0):
+    """zero_deg: a fixed rotation of the child about the joint axis at the zero pose (the child is authored unrotated;
+    the viewer, the audit and the URDF apply it). Limits and poses are relative to that zero."""
     d = dict(id=jid, name=name, parent=parent, child=child, origin=list(origin), axis=list(axis),
              limits=list(limits), actuator=actuator, side=side, bus=can_bus, can_id=can_id, kind=kind)
+    if zero_deg:
+        d["zero_deg"] = zero_deg
     JOINTS.append(d)
     return d
 
@@ -1122,7 +1126,8 @@ def write_urdf(path: Path):
         a = ACTUATORS[j["actuator"]]
         out.append(f'  <joint name="{j["id"]}" type="revolute">')
         out.append(f'    <parent link="{j["parent"]}"/><child link="{j["child"]}"/>')
-        out.append(f'    <origin xyz="{f(o[0])} {f(o[1])} {f(o[2])}" rpy="0 0 0"/><axis xyz="{j["axis"][0]} {j["axis"][1]} {j["axis"][2]}"/>')
+        rpy = [math.radians(j.get("zero_deg", 0.0)) * j["axis"][k] for k in range(3)]   # the fixed zero offset, about the joint axis (axis-aligned)
+        out.append(f'    <origin xyz="{f(o[0])} {f(o[1])} {f(o[2])}" rpy="{rpy[0]:.5f} {rpy[1]:.5f} {rpy[2]:.5f}"/><axis xyz="{j["axis"][0]} {j["axis"][1]} {j["axis"][2]}"/>')
         out.append(f'    <limit lower="{math.radians(j["limits"][0]):.4f}" upper="{math.radians(j["limits"][1]):.4f}" effort="{a["peak_nm"]}" velocity="20"/>')
         out.append('    <dynamics damping="0.2" friction="0.0"/>')
         out.append('  </joint>')

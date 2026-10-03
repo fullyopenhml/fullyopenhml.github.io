@@ -240,23 +240,23 @@
    "id": "3DP_tor14_shoulder_mount",
    "name": "Shoulder-pitch mount",
    "file": "assets/print_v2/3DP_tor14_shoulder_mount_v2_0.stl",
-   "bytes": 390284,
-   "sha256": "868adade60c386f91c8f735f745c8441d249cd0efc1edd417167d81a257a8ba5",
+   "bytes": 356084,
+   "sha256": "d5db3d0b6c43fa6066c30af23faab9dcbc55b1dd8d28a6b8dfc4169e079d8be2",
    "material": "petg_cf",
    "material_name": "PETG-CF, printed",
    "qty": 2,
    "mirror": true,
    "optional": null,
-   "volume_cm3": 614.1,
-   "mass_g_solid": 780,
-   "mass_g_est": 351,
+   "volume_cm3": 226.1,
+   "mass_g_solid": 287,
+   "mass_g_est": 129,
    "bbox_mm": [
-    130.0,
-    107.0,
-    110.0
+    110.0,
+    70.5,
+    120.0
    ],
-   "faces": 7804,
-   "features": 5,
+   "faces": 7120,
+   "features": 6,
    "orientation": "ring face down",
    "source_occurrence": "shoulder_mount_L",
    "bhl": false,
@@ -546,7 +546,7 @@
    "mass_g_est": 126,
    "bbox_mm": [
     110.5,
-    90,
+    90.0,
     73.0
    ],
    "faces": 6176,
@@ -628,7 +628,7 @@
  ],
  "zip": {
   "file": "assets/print_v2/foh_v2_0_printable_parts.zip",
-  "bytes": 996321,
-  "sha256": "50fed383e0cec818d6057de0444ee1fdede3a289f98d927a1675d70dc533c75f"
+  "bytes": 995894,
+  "sha256": "4b98ba5ccfab6b31b84308bd4424ac7b6d1cd7e85e87f4f5a12b95311d78e010"
  }
 }

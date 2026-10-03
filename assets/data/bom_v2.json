@@ -757,15 +757,15 @@
    "id": "filament",
    "title": "Our printed parts (filament)",
    "tier": "core",
-   "blurb": "About 2.9 kg of structural prints (hip stack, sockets, couplers, mount rings and cups added to BHL's cradles) and 0.3 kg of PLA; quantities add 35 % for supports and failed prints. BHL's own parts are in their section.",
+   "blurb": "About 2.6 kg of structural prints (hip stack, sockets, couplers, mount rings and cups added to BHL's cradles) and 0.3 kg of PLA; quantities add 35 % for supports and failed prints. BHL's own parts are in their section.",
    "rows": [
     {
      "id": "MAT_PETG_CF",
      "part_id": "MAT_PETG_CF",
      "description": "PETG-CF filament, 1 kg spool",
-     "qty": 4.0,
+     "qty": 3.5,
      "unit_cost": 30.0,
-     "total": 120.0,
+     "total": 105.0,
      "vendor": "Bambu / Polymaker / Overture",
      "url": "",
      "notes": "Every structural part of ours. PA-CF for the hip cups.",
@@ -784,7 +784,7 @@
      "unit_label": "kg"
     }
    ],
-   "subtotal": 130.0
+   "subtotal": 115.0
   },
   {
    "id": "perception",
@@ -926,7 +926,7 @@
   }
  ],
  "tiers": {
-  "core": 5779.78,
+  "core": 5764.78,
   "optional": 310.0,
   "tools": 1175.0
  }

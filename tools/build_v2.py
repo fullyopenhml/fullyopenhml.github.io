@@ -140,7 +140,7 @@ part("3DP_v2_socket25", "Tube socket flange, Ø25 (arms)", P, "petg_cf", process
 part("AL_TORSO_PLATE", "Torso plate, 5 mm 6061, laser-cut, 130 x 172", H, "al_plate", price=18.0, vendor="SendCutSend / local laser cutter",
      notes="Two per robot (bottom and top). Four M5 for the uprights, four M5 into the pelvis bars (bottom) or the head post (top).")
 part("3DP_tor14_shoulder_mount", "Shoulder-pitch mount", P, "petg_cf", process="FDM", mirror=True,
-     notes="Plate bolted to the outside of the two side uprights with four M5 T-nuts, a beam outboard, and the RS06 cup (mount ring, collar, back plate): the actuator sits outside the cage with its output face outboard, as BHL's shoulder modules do.")
+     notes="The RS06 passes through the side of the cage between the corner uprights, as BHL's shoulder modules do: a plate on the outside of the side panel carries the mount ring and bearing pocket, a plate inside the cage bolted to the uprights backs the actuator; both are one print joined through the panel's hole.")
 part("PC_SIDE_PANEL", "Torso side panel, 3 mm polycarbonate", H, "pc_sheet", price=4.5, vendor="hardware store sheet, hand-cut", mirror=True,
      notes="Under the shoulder mount's plate.")
 part("PC_BACK_PANEL", "Torso back panel, 3 mm polycarbonate", H, "pc_sheet", price=4.5, vendor="hardware store sheet, hand-cut", notes="Carries the E-stop and breaker.")
@@ -192,8 +192,9 @@ TORSO_Z0 = HIP_Z + 95
 UPRIGHT = 480
 SH_Z = TORSO_Z0 + 380       # shoulder-pitch and shoulder-roll axes
 UX, UY = 55, 76             # torso uprights: a cage 130 x 172 outside, as narrow as the 128 mm mini PC allows (BHL's is 140 x 160 around a 115 mm one)
-SPY = 198                   # shoulder-pitch output face: outside the cage on a bracket, as BHL's modules are; the hanging hands then clear the hip-roll cups by 4 mm
-ARM_Y = SPY + 43            # roll / yaw line (BHL's shoulder bracket puts the roll axis 43 mm outboard of the pitch output)
+SPY = 130.5                 # shoulder-pitch output face: the RS06 sits through the side of the cage between the corner uprights, as BHL's modules do (BHL: 133)
+ARM_Y = SPY + 43            # roll / yaw line (BHL's shoulder bracket puts the roll axis 43 mm outboard of the pitch output); BHL's is 176
+ARM_ABDUCT = 10             # the arms hang abducted at the zero pose, as BHL's do (15 deg): the hands then clear the hip stack
 TUBE30, TUBE25 = 30.0, 25.0
 BOND = 40
 Z0 = TORSO_Z0
@@ -281,12 +282,12 @@ place(pelvis, "battery_1", "EL_BATTERY_6S", [box((52, 64, 166), (0, 33, Z0 + 94)
 place(pelvis, "battery_2", "EL_BATTERY_6S", [box((52, 64, 166), (0, -33, Z0 + 94), 3)])
 place(pelvis, "computer", "EL_PC_N100", [box((45, 128, 128), (0, 0, Z0 + 246), 4)])
 place(pelvis, "imu", "EL_IMU", [box((14, 36, 36), (-37, 0, Z0 + 200), 2)])
-for i, (sy, z) in enumerate(((1, 318), (-1, 318), (1, 334), (-1, 334))):
+for i, (sy, z) in enumerate(((1, 316), (-1, 316), (1, 332), (-1, 332))):
     place(pelvis, f"can_adapter_{i}", "EL_CANABLE", [box((60, 25, 12), (0, 32 * sy, Z0 + z))])
-place(pelvis, "usb_hub", "EL_USB_HUB", [box((30, 60, 14), (0, 0, Z0 + 350), 2)])
-place(pelvis, "buck_12v", "EL_BUCK_12V", [box((60, 45, 25), (0, -38, Z0 + 375), 2)])
-place(pelvis, "dist_block", "EL_DIST_BLOCK", [box((50, 60, 20), (0, 30, Z0 + 372), 2)])
-place(pelvis, "contactor", "EL_CONTACTOR", [box((44, 60, 40), (0, 0, Z0 + 420), 3)])
+place(pelvis, "usb_hub", "EL_USB_HUB", [box((30, 60, 14), (0, 0, Z0 + 346), 2)])
+place(pelvis, "buck_12v", "EL_BUCK_12V", [box((60, 45, 25), (0, 0, Z0 + 368), 2)])
+place(pelvis, "dist_block", "EL_DIST_BLOCK", [box((50, 60, 20), (0, 0, Z0 + 397), 2)])
+place(pelvis, "contactor", "EL_CONTACTOR", [box((44, 60, 40), (0, 0, Z0 + 439), 3)])
 place(pelvis, "estop", "EL_ESTOP", [box((10, 44, 44), (-(UX + 18), 0, Z0 + 420)), cyl("x", 20, 22, (-(UX + 34), 0, Z0 + 420))])
 place(pelvis, "breaker", "EL_BREAKER", [box((18, 36, 60), (-(UX + 22), -55, Z0 + 350), 2)])
 place(pelvis, "neck_post", "3DP_hea11_neck_post", [cyl("z", 22, 34, (10, 0, TOP + 17))])
@@ -397,22 +398,26 @@ def build_arm(side):
     S = side
     base_id, bus = {"L": (31, "can2"), "R": (41, "can3")}[S]
     # shoulder pitch: RS06 (BHL's 6512 class) through the torso side, output face outside, as BHL's
-    kp = Kit("RS06", "y", s, (SPY - 22) * s, 0, SH_Z)                 # lug face 22 inside the output face; body, cover and back plate inboard of it
-    y_back = SPY - 22 - 50.5                                           # the kit's back plate starts here (lug 4, body 33, cover 5.5, back 8)
+    kp = Kit("RS06", "y", s, (SPY - 22) * s, 0, SH_Z)                 # lug face 22 inside the output face; the body reaches 37 further in, through the side panel
+    y_lug = SPY - 22
     mount = place(pelvis, f"shoulder_mount_{S}", "3DP_tor14_shoulder_mount", [
-        box((2 * UX + 20, 8, 110), (0, (UY + 13 + 4) * s, SH_Z), 3),                                           # plate on the side panel over both uprights, 4 x M5 T-nuts
-        box((100, y_back - (UY + 21), 96), (0, ((UY + 21) + y_back) / 2 * s, SH_Z), 3),                        # beam out to the cup
+        box((2 * UX, 8, 110), (0, (UY + 13 + 4) * s, SH_Z), 3),                                                # plate on the outside of the side panel, 4 x M5 T-nuts into the uprights
+        cyl("y", 50, y_lug - 4 - (UY + 21), (0, (y_lug - 4 + UY + 21) / 2 * s, SH_Z), r_in=ACT["RS06"]["body_r"] + 0.5),   # sleeve from that plate to the lug sleeve and ring
+        box((2 * (UX - 10), 8, 120), (0, (y_lug - 37 - 5.5 - 4) * s, SH_Z), 3),                                 # plate inside the cage behind the cover, between the uprights
     ])
+    feat_cut_cyl(mount, "y", (0, (UY + 13) * s, SH_Z), 2 * ACT["RS06"]["body_r"] + 1, 0, 8 * s)
     for sx in (1, -1):
-        for dz in (40, -40):
+        for dz in (48, -48):
             feat_cut_cyl(mount, "y", (UX * sx, (UY + 13) * s, SH_Z + dz), CLEAR["M5"], 0, 8 * s)
     o1 = kp.joint_origin()
     a1 = link(f"shoulder_bracket_{S}", f"Shoulder bracket ({S})", f"arm_{S}", o1, f"shoulder_pitch_{S}")
     joint(f"shoulder_pitch_{S}", f"Shoulder pitch ({S})", "pelvis", a1["id"], o1, (0, 1, 0), (-180, 180), "RS06", S, bus, base_id, "pitch")
-    act, mount_occ, cp = add_kit(pelvis, a1, kp, f"shoulder_pitch_{S}", "3DP_kit06_coupler", mount_owner=mount, collar="full", back=True,
+    act, mount_occ, cp = add_kit(pelvis, a1, kp, f"shoulder_pitch_{S}", "3DP_kit06_coupler", mount_owner=mount, collar=None, back=False,
                                  coupler_inside=[f"shoulder_bracket_{S}"])
+    act["inside"] += [f"side_panel_{S}"]
     panel = next(o for o in pelvis["parts"] if o["occ"] == f"side_panel_{S}")
-    panel["inside"] = [f"shoulder_mount_{S}"]
+    panel["inside"] = [f"shoulder_mount_{S}", f"shoulder_pitch_{S}_act"]
+    feat_cut_cyl(panel, "y", (0, (UY + 10) * s, SH_Z), 2 * ACT["RS06"]["body_r"] + 1, 0, 3 * s)
     # BHL's shoulder bracket: pitch output boss to the roll cradle (axis x, output forward)
     sref = (0, SPY * s, SH_Z)
     sb = bhl_piece(a1, f"shoulder_bracket_{S}", "shoulder_bracket", sref, s, inside=[f"shoulder_pitch_{S}_bearing", f"shoulder_pitch_{S}_coupler"],
@@ -421,7 +426,7 @@ def build_arm(side):
     kr = Kit("RS02", "x", +1, 25.5 - 14, ARM_Y * s, SH_Z)              # child face at x = 25.5, BHL's roll output plane
     o2 = kr.joint_origin()
     a2 = link(f"upper_arm_{S}", f"Upper arm ({S})", f"arm_{S}", o2, f"shoulder_roll_{S}")
-    joint(f"shoulder_roll_{S}", f"Shoulder roll ({S})", a1["id"], a2["id"], o2, (1, 0, 0), (0, 150), "RS02", S, bus, base_id + 1, "roll")
+    joint(f"shoulder_roll_{S}", f"Shoulder roll ({S})", a1["id"], a2["id"], o2, (1, 0, 0), (0, 150), "RS02", S, bus, base_id + 1, "roll", zero_deg=ARM_ABDUCT)
     act, mount_occ, cp = add_kit(a1, a2, kr, f"shoulder_roll_{S}", "3DP_kit02_coupler", mount_owner=sb, collar=None, back=False, ring_r=RING_IN_BHL["RS02"],
                                  coupler_inside=[f"upper_arm_upper_{S}"])
     act["inside"] += [f"upper_arm_upper_{S}"]          # BHL's upper arm wraps around the roll module

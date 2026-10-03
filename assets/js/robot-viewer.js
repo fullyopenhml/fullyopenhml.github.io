@@ -239,6 +239,8 @@ export async function createRobotViewer(container, opts = {}) {
     J._group = jg;
     J._axis = new THREE.Vector3(...J.axis).normalize();
     J._angle = 0;
+    J._zero = J.zero_deg || 0;            // fixed offset at the zero pose (e.g. arms hung abducted)
+    if (J._zero) jg.quaternion.setFromAxisAngle(J._axis, THREE.MathUtils.degToRad(J._zero));
     // explode direction along the chain: child centroid (world) - parent centroid (world)
     const cw = child._centroid.map((v, i) => v + child.origin[i]);
     const pw = parent._centroid.map((v, i) => v + parent.origin[i]);
@@ -335,7 +337,7 @@ export async function createRobotViewer(container, opts = {}) {
     const J = jointById[id];
     if (!J) return;
     J._angle = deg;
-    J._group.quaternion.setFromAxisAngle(J._axis, THREE.MathUtils.degToRad(deg));
+    J._group.quaternion.setFromAxisAngle(J._axis, THREE.MathUtils.degToRad(deg + (J._zero || 0)));
   }
   function getJoint(id) { const J = jointById[id]; return J ? J._angle : 0; }
   function setPose(name) {

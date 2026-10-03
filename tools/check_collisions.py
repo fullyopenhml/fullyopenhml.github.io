@@ -157,14 +157,20 @@ def pass_zero(tol):
     shapes = shapes_zero()
     boxes = [aabb(s) for s in shapes]
     seen = {}
+    offset = any(J.get("zero_deg") for J in robot["joints"])   # a joint with a fixed zero offset: links are rotated at the zero pose
     for (ia, a), (ib, b) in itertools.combinations(enumerate(shapes), 2):
         if a["occ"] == b["occ"] or allowed(a, b):
             continue
+        if offset and a["link"] != b["link"]:
+            continue                                            # tested below in the posed frames
         if aabb_pen(boxes[ia], boxes[ib]) <= tol:
             continue
         p = pen_zero(a, b)
         if p > tol:
             key = tuple(sorted((a["occ"], b["occ"])))
+            seen[key] = max(seen.get(key, 0), p)
+    if offset:
+        for key, p in pairs_posed(shapes_posed({}), tol).items():
             seen[key] = max(seen.get(key, 0), p)
     print(f"Zero pose: {len(shapes)} shapes, tolerance {tol} mm")
     for (o1, o2), p in sorted(seen.items(), key=lambda kv: -kv[1]):
@@ -222,7 +228,7 @@ def link_frames(q_by_joint):
         off = [J["origin"][i] - parent["origin"][i] for i in range(3)]
         R = q_mat(pq)
         pos = [pp[i] + v for i, v in enumerate(mat_vec(R, off))]
-        q = q_mul(pq, q_axis(J["axis"], q_by_joint.get(J["id"], 0.0)))
+        q = q_mul(pq, q_axis(J["axis"], q_by_joint.get(J["id"], 0.0) + J.get("zero_deg", 0.0)))
         frames[lid] = (pos, q)
         return frames[lid]
 
