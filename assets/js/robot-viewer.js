@@ -15,6 +15,7 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
 const SEL = 0xff6a1f;
 const HOV = 0xffb347;
@@ -103,8 +104,32 @@ export async function createRobotViewer(container, opts = {}) {
   robot.name = "robot";
   scene.add(robot);
 
+  // mesh shapes (published parts as GLB, vertices in mm relative to the shape's point) are loaded before the build
+  const glbCache = new Map();
+  const glbFiles = new Set();
+  for (const L of data.links) for (const P of L.parts) for (const sh of P.shapes) if (sh.t === "mesh") glbFiles.add(sh.file);
+  if (glbFiles.size) {
+    const loader = new GLTFLoader();
+    await Promise.all([...glbFiles].map(f => new Promise(res => loader.load(f, g => {
+      const geos = [];
+      g.scene.traverse(o => { if (o.isMesh) { o.updateWorldMatrix(true, false); const gg = o.geometry.clone().applyMatrix4(o.matrixWorld); if (!gg.attributes.normal) gg.computeVertexNormals(); geos.push(gg); } });
+      glbCache.set(f, geos);
+      res();
+    }, undefined, () => { glbCache.set(f, []); res(); }))));
+  }
   const geoCache = new Map();
   function geometry(sh) {
+    if (sh.t === "mesh") {
+      const geos = glbCache.get(sh.file) || [];
+      if (geos.length === 1) return geos[0];
+      const g = new THREE.BufferGeometry();
+      if (!geos.length) return new THREE.BoxGeometry(sh.bb[1][0] - sh.bb[0][0], sh.bb[1][1] - sh.bb[0][1], sh.bb[1][2] - sh.bb[0][2]).translate((sh.bb[0][0] + sh.bb[1][0]) / 2, (sh.bb[0][1] + sh.bb[1][1]) / 2, (sh.bb[0][2] + sh.bb[1][2]) / 2);
+      const pos = []; const nrm = [];
+      for (const gg of geos) { const q = gg.index ? gg.toNonIndexed() : gg; pos.push(...q.attributes.position.array); nrm.push(...(q.attributes.normal ? q.attributes.normal.array : [])); }
+      g.setAttribute("position", new THREE.Float32BufferAttribute(pos, 3));
+      if (nrm.length === pos.length) g.setAttribute("normal", new THREE.Float32BufferAttribute(nrm, 3)); else g.computeVertexNormals();
+      return g;
+    }
     const k = JSON.stringify([sh.t, sh.s, sh.rd, sh.axis, sh.r, sh.ri, sh.l, sh.r0, sh.r1]);
     if (geoCache.has(k)) return geoCache.get(k);
     let g;
@@ -142,9 +167,9 @@ export async function createRobotViewer(container, opts = {}) {
 
   const edgeCache = new Map();
   function edges(sh, g) {
-    const k = JSON.stringify([sh.t, sh.s, sh.rd, sh.axis, sh.r, sh.ri, sh.l, sh.r0, sh.r1]);
+    const k = JSON.stringify([sh.t, sh.s, sh.rd, sh.axis, sh.r, sh.ri, sh.l, sh.r0, sh.r1, sh.file]);
     if (edgeCache.has(k)) return edgeCache.get(k);
-    const e = new THREE.EdgesGeometry(g, (sh.t === "box" && sh.rd) || sh.t === "sphere" || sh.t === "cone" ? 40 : 28);
+    const e = new THREE.EdgesGeometry(g, (sh.t === "box" && sh.rd) || sh.t === "sphere" || sh.t === "cone" ? 40 : sh.t === "mesh" ? 60 : 28);
     edgeCache.set(k, e);
     return e;
   }

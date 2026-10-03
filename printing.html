@@ -74,7 +74,7 @@
 <script src="assets/js/site.js"></script>
 <script>
 const MODEL = ["v1", "v2"].includes(new URLSearchParams(location.search).get("model")) ? new URLSearchParams(location.search).get("model") : "v0_2";
-if (MODEL === "v2") { document.querySelector(".brand .ver").textContent = "v2 K1 skeleton"; const h = document.querySelector("main h1"); if (h) h.insertAdjacentHTML("afterend", '<div class="banner"><span class="dot"></span><div><b>v2 K1 skeleton (WIP).</b> The printed parts of the <a href="aesthetic.html">styled design</a>: RobStride cups and sockets at the AI Sapiens K1\'s joint positions; the thigh and shank links are carbon tube, the arms printed blocks. The <a href="printing.html?model=v1">v1 parts</a> are the adult-sized design.</div></div>'); }
+if (MODEL === "v2") { document.querySelector(".brand .ver").textContent = "v2 extended BHL"; const h = document.querySelector("main h1"); if (h) h.insertAdjacentHTML("afterend", '<div class="banner"><span class="dot"></span><div><b>v2 extended BHL (WIP).</b> The printed parts of the <a href="aesthetic.html">styled design</a>: Berkeley Humanoid Lite\'s parts (printed from BHL\'s CAD, cut and re-drilled as noted; our additions to them as STL) and our hip stack, sockets and couplers. The <a href="printing.html?model=v1">v1 parts</a> are our production design.</div></div>'); }
 if (MODEL === "v1") { document.querySelector(".brand .ver").textContent = "v1.0 production"; const h = document.querySelector("main h1"); if (h) h.insertAdjacentHTML("afterend", '<div class="banner"><span class="dot"></span><div><b>v1 production design.</b> These are the printed parts of the <a href="production.html">production design</a>: 26 part types, most of them joint cups and sockets; the links are carbon-fibre tube. The <a href="printing.html">v0.2 parts</a> are the all-printed design.</div></div>'); }
 Promise.all([foh.json(MODEL === "v1" ? "assets/data/robot_v1.json" : MODEL === "v2" ? "assets/data/robot_v2.json" : "assets/data/robot.json"), foh.json(MODEL === "v1" ? "assets/data/print_files_v1.json" : MODEL === "v2" ? "assets/data/print_files_v2.json" : "assets/data/print_files.json")]).then(([robot, files]) => {
   const esc = foh.esc;
@@ -82,7 +82,7 @@ Promise.all([foh.json(MODEL === "v1" ? "assets/data/robot_v1.json" : MODEL === "
   if (files.zip) document.getElementById("dl-all").innerHTML = `<a class="btn primary" href="${files.zip.file}" download>Download all STL (${(files.zip.bytes / 1e6).toFixed(1)} MB zip)</a><a class="btn" href="${MODEL === "v1" ? "assets/data/print_files_v1.json" : MODEL === "v2" ? "assets/data/print_files_v2.json" : "assets/data/print_files.json"}">Manifest with SHA-256</a><a class="btn" href="assets/model/foh_v${files.version.replace(".", "_")}.urdf" download>URDF</a>`;
   const printed = Object.values(robot.catalog).filter(p => p.category === "printed");
   const tb = document.querySelector("#parts-table tbody");
-  const matName = { petg_cf: "PETG-CF", pla: "PLA", tpu: "TPU 95A" };
+  const matName = { petg_cf: "PETG-CF", pla: "PLA", tpu: "TPU 95A", bhl_pla: "PLA (BHL part)" };
   let n = 0, mass = 0;
   const byMat = {};
   for (const p of printed) {
@@ -92,14 +92,14 @@ Promise.all([foh.json(MODEL === "v1" ? "assets/data/robot_v1.json" : MODEL === "
     const f = byId[p.id];
     const massEach = f ? f.mass_g_est : p.mass_g;
     const dims = f ? f.bbox_mm : p.dims;
-    tr.innerHTML = `<td class="mono" style="font-size:.78rem"><a href="${foh.partHref(p.id)}">${esc(p.id)}</a></td><td>${esc(p.name)}${p.optional ? ' <span class="pill acc">kit</span>' : ""}${p.mirror ? ' <span class="pill">mirror</span>' : ""}<span class="sub">${esc(p.notes || "")}</span></td><td>${matName[p.material] || p.material}</td><td class="num">${p.qty}</td><td class="num">${massEach}</td><td class="mono" style="font-size:.78rem">${dims ? dims.map(Math.round).join(" × ") : ""}</td><td class="tiny">${f ? esc(f.orientation) : ""}</td><td>${f ? `<a href="${f.file}" download>STL</a><span class="sub">${(f.bytes / 1024).toFixed(0)} KB · ${f.sha256.slice(0, 8)}</span>` : '<span class="pill warn">pending</span>'}</td>`;
+    tr.innerHTML = `<td class="mono" style="font-size:.78rem"><a href="${foh.partHref(p.id)}">${esc(p.id)}</a></td><td>${esc(p.name)}${p.optional ? ' <span class="pill acc">kit</span>' : ""}${p.mirror ? ' <span class="pill">mirror</span>' : ""}<span class="sub">${esc(p.notes || "")}</span></td><td>${matName[p.material] || p.material}</td><td class="num">${p.qty}</td><td class="num">${massEach}</td><td class="mono" style="font-size:.78rem">${dims ? dims.map(Math.round).join(" × ") : ""}</td><td class="tiny">${f ? esc(f.orientation) : ""}</td><td>${f && f.file ? `<a href="${f.file}" download>${f.bhl ? "additions STL" : "STL"}</a><span class="sub">${(f.bytes / 1024).toFixed(0)} KB · ${f.sha256.slice(0, 8)}</span>${f.bhl ? '<span class="sub"><a href="https://cad.onshape.com/documents/fc6443b1d89dcba950e85b60/w/94a26479973a4098a5884426/e/be3fe37849edbeadc95b9bf8">BHL CAD</a> for the part itself</span>' : ""}` : f && f.bhl ? '<a href="https://cad.onshape.com/documents/fc6443b1d89dcba950e85b60/w/94a26479973a4098a5884426/e/be3fe37849edbeadc95b9bf8">BHL CAD</a><span class="sub">cut as noted, no additions</span>' : '<span class="pill warn">pending</span>'}</td>`;
     tb.appendChild(tr);
   }
   const st = document.getElementById("print-stats");
   const stat = (v, k) => `<div class="stat"><div class="v">${v}</div><div class="k">${k}</div></div>`;
-  st.innerHTML = stat(printed.length, "distinct printed parts, all as STL") + stat(n, "printed pieces on one robot") + stat((mass / 1000).toFixed(1) + " kg", "of printed material on the robot") + stat(Math.round(Math.max(...files.parts.map(f => Math.max(...f.bbox_mm)))) + " mm", "longest part (" + files.parts.reduce((a, f) => Math.max(...f.bbox_mm) > Math.max(...a.bbox_mm) ? f : a).name.toLowerCase() + ")") + stat("0", "parts that need machining");
+  st.innerHTML = stat(printed.length, printed.some(p => p.source === "bhl") ? "distinct printed parts, " + printed.filter(p => p.source === "bhl").length + " of them BHL's" : "distinct printed parts, all as STL") + stat(n, "printed pieces on one robot") + stat((mass / 1000).toFixed(1) + " kg", "of printed material on the robot") + stat(Math.round(Math.max(...files.parts.map(f => Math.max(...f.bbox_mm)))) + " mm", "longest part (" + files.parts.reduce((a, f) => Math.max(...f.bbox_mm) > Math.max(...a.bbox_mm) ? f : a).name.toLowerCase() + ")") + stat("0", "parts that need machining");
   const ft = document.querySelector("#fil-table tbody");
-  const rate = { petg_cf: 20, pla: 25, tpu: 10 };
+  const rate = { petg_cf: 20, pla: 25, tpu: 10, bhl_pla: 25 };
   for (const [m, g] of Object.entries(byMat)) {
     const buy = Math.ceil(g * 1.35 / 1000 * 2) / 2;
     const tr = document.createElement("tr");

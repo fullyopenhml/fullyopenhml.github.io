@@ -12,6 +12,12 @@ Three passes:
   sweep   every joint alone through its range in steps, moving subtree against
           the rest of the robot, same sampled test; reports the worst angle
 
+Published parts (mesh shapes, Berkeley Humanoid Lite's pieces in v2) are tested by
+their surface samples inside the other part's solid; the other way round only
+against a mesh's convex hull when both are meshes, because the hull of a channel
+or a yoke contains the part it holds.  A primitive wholly inside a mesh's solid
+without touching its sampled surface would be missed.
+
 Pairs declared `inside` in the model (a bearing in its seat, a flange through a
 clearance hole, a servo in its housing) are skipped.
 
@@ -41,6 +47,9 @@ for _L in robot["links"]:
                 _sh.update(t="cyl", axis="z", l=2 * _sh["r"])
             elif _sh["t"] == "box" and _sh.get("w"):
                 pass   # hollow boxes keep their outer solid: the parts they enclose are declared inside
+            elif _sh["t"] == "mesh":
+                # a published part: its own surface samples and convex hull planes (relative to its point c)
+                _sh["_pts"] = _sh.pop("pts"); _sh["_hull"] = _sh.pop("hull")
 LINKS = {L["id"]: L for L in robot["links"]}
 JOINT_BY_CHILD = {J["child"]: J for J in robot["joints"]}
 AX = {"x": 0, "y": 1, "z": 2}
@@ -62,6 +71,8 @@ def allowed(a, b):
 
 
 def half_extents(sh):
+    if sh["t"] == "mesh":
+        return [max(abs(sh["bb"][0][i]), abs(sh["bb"][1][i])) for i in range(3)]
     if sh["t"] == "box":
         return [v / 2 for v in sh["s"]]
     h = [sh["r"]] * 3
@@ -114,6 +125,9 @@ def as_box(s):
 
 def pen_zero(a, b):
     A, B = a["sh"], b["sh"]
+    if A["t"] == "mesh" or B["t"] == "mesh":
+        I3 = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
+        return pen_sampled(dict(a, R=I3), dict(b, R=I3))
     if A["t"] == "box" and B["t"] == "box":
         return aabb_pen(aabb(a), aabb(b))
     if A["t"] == "cyl" and B["t"] == "box":
@@ -222,6 +236,8 @@ _sample_cache = {}
 
 def samples_local(sh):
     """Surface sample points of a shape in its own (unrotated) frame, about its centre."""
+    if sh["t"] == "mesh":
+        return sh["_pts"]
     key = json.dumps([sh["t"], sh.get("s"), sh.get("axis"), sh.get("r"), sh.get("ri"), sh.get("l")])
     if key in _sample_cache:
         return _sample_cache[key]
@@ -273,6 +289,8 @@ def samples_local(sh):
 
 def depth_in(sh, local):
     """How deep a point (in the shape's own frame, about its centre) lies inside the solid; <= 0 outside."""
+    if sh["t"] == "mesh":        # inside its convex hull (over-reports for concave parts: pairs that interlock are declared inside)
+        return -max(n[0] * local[0] + n[1] * local[1] + n[2] * local[2] - n[3] for n in sh["_hull"])
     if sh["t"] == "box":
         return min(sh["s"][i] / 2 - abs(local[i]) for i in range(3))
     k = AX[sh["axis"]]
@@ -308,6 +326,8 @@ def pen_sampled(a, b):
     """Max depth of a's surface samples inside b, and b's inside a."""
     best = -1e9
     for src, dst in ((a, b), (b, a)):
+        if dst["sh"]["t"] == "mesh" and src["sh"]["t"] != "mesh":
+            continue        # primitive samples against a mesh's hull: skipped (see the module docstring)
         Rs, Rd = src["R"], dst["R"]
         for p in samples_local(src["sh"]):
             w = [src["c"][i] + v for i, v in enumerate(mat_vec(Rs, p))]

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Styled design — Fully Open Humanoid</title>
-<meta name="description" content="Fully Open Humanoid v2, work in progress: the skeleton of ROBOTIS' open-hardware AI Sapiens K1 (its joint positions, 23 joints, 1.36 m) built with RobStride actuators in printed cups, carbon-fibre tubes and printed blocks. Collision audit, physics check, printed parts, bill of materials, and the deviations from the K1. A skin goes over it later.">
+<meta name="description" content="Fully Open Humanoid v2, work in progress: Berkeley Humanoid Lite's extended, adult-sized configuration built from BHL's own published printed parts, with carbon-fibre tubes between them and RobStride actuators in their cradles. Which parts are BHL's and how each is cut, the actuator map, the tubes, the collision audit, the physics check, printed parts and the bill of materials.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/site.css">
@@ -14,13 +14,9 @@
 </script>
 <style>
 .sim-shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:1.2em 0 .6em}.sim-shots figure{margin:0}.sim-shots img{width:100%;border-radius:var(--radius);border:1px solid var(--line);display:block}
-.ghost { position: relative; height: 560px; }
-.ghost .bar { position: absolute; left: 12px; top: 12px; display: flex; gap: 6px; flex-wrap: wrap; }
-.ghost .bar .btn.on { background: var(--accent); color: #fff; border-color: var(--accent); }
 .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin: 1em 0 1.5em; }
 .two .card h3 { font-size: .98rem; }
-.dev-pos { color: #b45309; } .dev-zero { color: #16a34a; }
-@media (max-width: 600px) { .ghost { height: 420px; } }
+.src-bhl { color: #0e7490; font-weight: 600; } .src-new { color: #b45309; font-weight: 600; } .src-buy { color: var(--fg2); font-weight: 600; }
 </style>
 </head>
 <body>
@@ -37,8 +33,8 @@
 <main class="page wide">
   <section class="hero">
     <div>
-      <h1>The styled design: the K1 skeleton, built our way <span class="pill warn">v2, work in progress</span></h1>
-      <p class="lead">ROBOTIS' <a href="https://github.com/ROBOTIS-GIT/ai_sapiens">AI Sapiens K1</a> (open hardware, CERN-OHL-P-2.0) gives the skeleton: where every joint is, how long every limb is, the 23-joint layout, the 1.36 m size. This design builds that skeleton the way our <a href="production.html">production design</a> is built: RobStride actuators in printed cups, a carbon-fibre tube wherever a link is long enough to have one, printed blocks where it is not, an extrusion torso, Amazing Hands. No covers yet: a 1X-style skin goes over it, so the structure only has to be right. <span id="lead-specs"></span></p>
+      <h1>The styled design: Berkeley Humanoid Lite, extended <span class="pill warn">v2, work in progress</span></h1>
+      <p class="lead">The configuration the <a href="https://lite.berkeley-humanoid.org/static/paper/demonstrating-berkeley-humanoid-lite.pdf">Berkeley Humanoid Lite paper</a> draws in its Fig. 5: the same robot brought to adult size with carbon-fibre tubes between its actuator modules, a hip arranged as pitch, abduction and rotation, and a dexterous hand. This page builds that figure from BHL's own published printed parts (<a href="https://github.com/HybridRobotics/Berkeley-Humanoid-Lite-Assets">CC BY-SA 4.0</a>), cut where a tube takes over and re-drilled where a RobStride replaces a printed cycloidal module. <span id="lead-specs"></span></p>
       <div class="btns">
         <a class="btn primary" href="viewer.html?model=v2">Explore the model</a>
         <a class="btn" href="bom.html?model=v2">Bill of materials</a>
@@ -47,199 +43,139 @@
       </div>
     </div>
     <div class="hero-viewer" id="hero-viewer">
-      <div class="hint">Drag to orbit · zero pose: forearms forward, as the K1's</div>
+      <div class="hint">Drag to orbit · warm white: BHL's parts · grey: ours · every part is inspectable in the full viewer</div>
       <a class="btn small open" href="viewer.html?model=v2">Open viewer ↗</a>
     </div>
   </section>
 
-  <div class="banner"><span class="dot"></span><div><b>Status: work in progress, generated and checked, not built.</b> Every part below comes from <code>tools/build_v2.py</code>, which places our v1 joint kits at the K1's joint positions. The model passes the self-collision audit at the zero pose, in six preset poses and through every joint's range; the standing and push results are in the table below. The parts of the K1 that are not ours (its covers, its frame drawings, its walking policy) are credited where they are used; where our parts are bigger than the K1's, the skeleton moves by the difference and the table of deviations says by how much.</div></div>
+  <div class="banner"><span class="dot"></span><div><b>Status: work in progress, generated and checked, not built.</b> BHL's parts come from its published link meshes: <code>tools/bhl_pieces.py</code> removes the actuator modules and cuts the arms, <code>tools/build_v2.py</code> places the pieces on the adult-sized skeleton with the actuators, tubes and our own parts. The model passes the self-collision audit at the zero pose, in six preset poses and through every joint's range (one coupling documented below), and it stands, crouches and takes a 10 N·s push in MuJoCo. What it is not yet: the cut and re-drilled BHL parts exist here as geometry and notes, not as edited CAD; the <a href="#next">list at the end</a> says what has to happen in Onshape before anything is printed. The skin that will go over this skeleton is a later step.</div></div>
 
   <div class="stats" id="stats"></div>
 
   <div class="toc" data-toc></div>
 
-  <h2 id="skeleton">The skeleton: the K1's joints, our structure</h2>
-  <p>The K1's published URDF fixes the joint positions. Ours sit on them wherever a RobStride cup fits where a DYNAMIXEL-Q sat; where it does not, the joint moves and the deviation is listed. The ghost view below lays the K1's published model over our skeleton at true scale, both at their zero pose (forearms forward).</p>
-  <div class="hero-viewer ghost" id="ghost">
-    <div class="bar"><button class="btn small on" data-k1="1">K1 ghost on</button><button class="btn small" data-k1="0">K1 ghost off</button></div>
-    <div class="hint">Drag to orbit · grey ghost: ROBOTIS' AI Sapiens K1 model (CERN-OHL-P-2.0) · solid: our v2 skeleton</div>
+  <h2 id="figure">What the paper's figure says, and what this takes from it</h2>
+  <p>Berkeley Humanoid Lite is 0.8 m and 16 kg: 22 joints driven by two sizes of printed cycloidal actuator (ten 6512 modules, twelve 5010 modules), a 2020-extrusion torso, PLA parts everywhere else, under $5,000. Section III.D of the paper shows how the same parts become an adult-sized robot: "extending the leg links with carbon fiber tubes transforms Berkeley Humanoid Lite into an adult-scale platform", with the hip rearranged into the pitch, abduction and rotation order most humanoids use and a dexterous hand on the wrist. The figure keeps BHL's modules, brackets, feet and torso and adds tubes, hip brackets and sockets.</p>
+  <div class="two">
+    <div class="card"><h3>Kept from BHL</h3><p>Eleven printed part types, listed below with what is done to each: the knee and ankle cradles at the ends of the thigh and shank, the knee yoke, the ankle bracket, the foot with its shoe, the shoulder bracket, the elbow bracket, and the two ends of each arm link. BHL's 6803 yoke bearings and its shoes stay in the bill of materials.</p></div>
+    <div class="card"><h3>Substituted</h3><p>RobStride actuators in place of the printed cycloidal modules, by BHL's own size classes: an RS02 where BHL has a 5010, an RS06 where it has a 6512 at the shoulder, an RS03 at the knee, where the 6512 class could not hold the crouch at adult size. Each cradle keeps its channel around the body; its mouth is bored for our mount ring with the output support bearing.</p></div>
+    <div class="card"><h3>New</h3><p>The hip stack and pelvis of the figure's inset (pitch in a cup on 2020 bars, abduction on a bracket, rotation hanging under it, all RS03), the 2020 torso with laser-cut plates, four tube socket flanges per side, the hand flange, and the couplers and mount rings of our joint kits. Hands are Pollen Robotics' Amazing Hand; BHL's servo gripper fits the same flange.</p></div>
   </div>
-  <div class="table-wrap"><table class="compact" id="dev-table"><thead><tr><th>Where</th><th class="num">Ours minus the K1, mm</th><th>Why</th></tr></thead><tbody></tbody></table></div>
 
-  <h2 id="joints">Joints and actuators</h2>
-  <p>Actuators by the K1's own torque classes: where the K1 has a QC080 (72.6 N·m peak) in the legs, an RS03 (60 N·m); where it has a QC060 (30 N·m), an RS06 (36 N·m) at the waist, the ankle roll and the two big shoulder joints, and lighter RS02 and RS05 down the arm, as in v1. Limits are software limits set by the collision audit. Left side listed, right side mirrored.</p>
-  <div class="table-wrap"><table class="compact" id="joint-table"><thead><tr><th>Joint</th><th>Actuator</th><th class="num">Peak N·m</th><th>K1 actuator</th><th>Axis</th><th class="num">Range °</th><th>Note</th></tr></thead><tbody></tbody></table></div>
+  <h2 id="parts">Every printed part: whose it is, and what changes</h2>
+  <p>BHL's modules are held in channels at the ends of its arms and closed by front plates with the module's bolt circle; its knee, ankle and elbow are yokes with a second bearing (a 6803 on a stud) in an outer plate. The RobStride mounts by front lugs, so in every cradle the front plate's ring becomes our 12 or 22 mm mount ring, re-drilled to the RobStride's lug pattern, and the channel stays as the collar. Masses are BHL's link masses less their modules, split by surface area; the right side mirrors the left.</p>
+  <div class="table-wrap"><table class="compact" id="parts-table"><thead><tr><th>Part</th><th>Source</th><th class="num">Qty</th><th class="num">Mass g</th><th>What is done to it</th></tr></thead><tbody></tbody></table></div>
 
-  <h2 id="structure">Structure: where the tubes are, and where they are not</h2>
-  <p>At 1.36 m the limbs are short. A link gets a carbon-fibre tube only if, after the actuator cups at both ends, there is tube left to bond: the thigh and the shank qualify (<span id="tube-text"></span>); the upper arm is 115 mm from the shoulder-yaw output to the elbow and is a single printed block with the elbow cup in it; the forearm is a printed yoke with the wrist actuator on its far end, pointing forward as the K1's does. The torso is a 2020 frame 200 mm deep and 150 mm wide (the K1's is 205 × 220) between two laser-cut plates, with the waist actuator hanging under the bottom plate onto a printed waist plate across the pelvis bars. The hip stack is v1's: pitch in the pelvis cup, roll on the bracket, yaw hanging under the roll, with an RS03 everywhere.</p>
-  <div class="table-wrap"><table class="compact" id="tube-table"><thead><tr><th>Link</th><th>Built as</th><th class="num">Length mm</th><th>Between</th></tr></thead><tbody></tbody></table></div>
-  <p>What remains printed is the shape-critical set, <span id="print-count"></span> part types, <span id="print-mass"></span> of filament, every part inside a 200 mm cube.</p>
+  <h2 id="actuators">Actuators: BHL's classes, RobStride's models</h2>
+  <p>BHL's 6512 module is Ø88 × 65 mm and its 5010 Ø70 × 65, measured from the meshes. The RobStride that sits in each cradle is the one whose body fits the channel: the RS02 (Ø65) in every 5010 cradle, the RS06 (Ø84.5) in the shoulder's 6512 cradle. The knee is the exception. On a 29 kg, 0.95 m-hip robot the crouch loads each knee to about 38 N·m, over the RS06's 36, so the knee cradle is bored from Ø88 to Ø101 for an RS03 and its mouth to Ø114 for the ring; that is the one BHL part whose walls are thickened rather than only cut. The hip stack is new and takes RS03s throughout. Limits are software limits set by the audit.</p>
+  <div class="table-wrap"><table class="compact" id="joint-table"><thead><tr><th>Joint</th><th>BHL module</th><th>Here</th><th class="num">Peak N·m</th><th>Where it sits</th><th class="num">Range °</th></tr></thead><tbody></tbody></table></div>
 
-  <h2 id="arms">The forearm-forward zero pose, and what it costs</h2>
-  <p>The K1 hangs its hands beside the pelvis; ours cannot at the K1's arm line, because the RS03 hip stack is wider than the K1's. So the arm keeps the K1's convention: the elbow's zero is 90° of flexion, the forearm points forward, and the hands clear everything. Hanging the arm straight down is outside the range on purpose (the hand would meet the hip-roll actuator); the elbow goes 60° below horizontal, which hangs the hand 30° forward of vertical, clear of the pelvis bars, which were shortened to 240 mm for exactly that. With the forearm forward, an inward shoulder yaw brings the hand to the torso from 13°, so the yaw is limited inward; outward it is free. The torso-side clearance also moved the arm line 10 mm outboard and the shoulder-pitch actuators 13 mm further in than the K1's.</p>
-
-  <h2 id="torso">Torso packaging</h2>
-  <p>The frame is 329 mm tall, the K1's shoulder height minus the waist stack, and the shoulder-pitch actuators sit inside it 17 mm apart, so the electronics live in three layers: the two 6S packs at the back and the computer at the front with the IMU under it, the CAN adapters and the USB hub above the computer, and the contactor, distribution block and buck converter above the shoulder actuators under the top plate. The E-stop and breaker are on the back panel. The electronics tray stops under the shoulder actuators.</p>
+  <h2 id="tubes">The tubes</h2>
+  <p>Each cut BHL arm gets an 8 mm printed socket flange bolted to its end, with a boss into which the tube is bonded 40 mm and cross-bolted. The thigh tube hangs from our socket on the hip-rotation output and ends at the socket on BHL's knee cradle; the shank tube joins BHL's knee yoke to BHL's ankle cradle; the arm tubes join the cut plate ends to the flanges that carried BHL's yaw and wrist modules. BHL's segment lengths and the extension each receives:</p>
+  <div class="table-wrap"><table class="compact" id="tube-table"><thead><tr><th>Segment</th><th class="num">BHL mm</th><th class="num">Extension mm</th><th class="num">Tube cut mm</th><th>Between</th></tr></thead><tbody></tbody></table></div>
 
   <h2 id="audit">Self-collision audit</h2>
-  <p>The audit tests every part pair at the zero pose, in six preset poses (including the arms hanging), and through each joint's full range in 13 steps, with tubes declared inside their sockets and actuators inside their cups.</p>
+  <p>The audit tests every part pair at the zero pose, in six preset poses and through each joint's full range in 13 steps. BHL's pieces are tested by their surface samples against every other part, and by their convex hulls against each other; the parts a cradle or a yoke holds are declared inside it. One coupling remains, the same as the production design's: with the arms hanging straight, the hand reaches the abducting leg's thigh socket from 21°; the default standing pose, with the elbows at 30°, is clear to 45°.</p>
   <div class="table-wrap"><table class="compact"><thead><tr><th>Check</th><th>Result</th><th>Note</th></tr></thead><tbody id="audit-rows"></tbody></table></div>
 
   <h2 id="sim">Does it stand? Physics check</h2>
-  <p>The same MuJoCo check as v1: a floor, a floating base, one torque-limited position servo per joint, no balance controller. The servos hold the standing pose with the forearms hanging (elbows 60° below horizontal); the crouch ramps the legs and returns; the pushes are forward impulses on the torso. One setting differs from v1: the RS03 servos, which carry the hips and knees here, use the stiffness v1 gives its RS04 hips (320 N·m/rad, inside RobStride's position-mode range); at v1's RS03 setting the chain of three leg servos is softer than gravity in the crouch and the robot topples, which is a fact about position servos, not about the structure.</p>
+  <p>The same MuJoCo check as the other designs: a floor, a floating base, one torque-limited position servo per joint with the actuators' own peak torques, no balance controller. One thing this design taught the check: two RS02 ankles at the servo stiffness the budget design uses (80 N·m/rad) are softer than the inverted pendulum they hold (m·g·h is 258 N·m/rad here), and the robot topples at the ankles with no joint error at all. The RS02s are set to 220 N·m/rad, inside RobStride's position-mode range; their 17 N·m limit is what then bounds the push margin.</p>
   <div class="sim-shots">
     <figure><img src="assets/img/sim_v2/stand.png" alt="MuJoCo frame: v2 standing" loading="lazy"><figcaption>Stand: 5 s after a 10 mm drop.</figcaption></figure>
-    <figure><img src="assets/img/sim_v2/crouch.png" alt="MuJoCo frame: v2 crouch" loading="lazy"><figcaption>Crouch: hips −35°, knees 64°, ankles −29° (the thigh and shank differ in length).</figcaption></figure>
+    <figure><img src="assets/img/sim_v2/crouch.png" alt="MuJoCo frame: v2 crouch" loading="lazy"><figcaption>Crouch: hips −35°, knees 70°, ankles −35°.</figcaption></figure>
     <figure><img src="assets/img/sim_v2/push_8.png" alt="MuJoCo frame: v2 after an 8 N·s push" loading="lazy"><figcaption>Push: 8 N·s forward on the torso, recovered.</figcaption></figure>
   </div>
   <div class="table-wrap"><table class="compact" id="sim-table"><thead><tr><th>Test</th><th>What happens</th><th class="num">Max tilt</th><th class="num">Settled tilt</th><th>Busiest leg joint</th><th>Result</th></tr></thead><tbody></tbody></table></div>
   <p class="tiny" id="sim-meta"></p>
-<pre><code>python3 tools/build_v2.py                                   # robot_v2.json, bom_v2.json, foh_v2_0.urdf
+<pre><code>tools/.venv/bin/python tools/bhl_pieces.py                    # BHL's parts: bhl_pieces.json, assets/geom/v2/*.glb
+python3 tools/build_v2.py                                     # robot_v2.json, bom_v2.json, foh_v2_0.urdf
 python3 tools/check_collisions.py --model v2 --poses --sweep --steps 13
-tools/.venv/bin/python tools/build_parts.py --model v2         # assets/print_v2/*.stl + manifest
-tools/.venv/bin/python tools/sim_stand.py --model v2 --render  # sim_results_v2.json, frames</code></pre>
+tools/.venv/bin/python tools/build_parts.py --model v2           # our parts and our additions to BHL's, as STL
+tools/.venv/bin/python tools/sim_stand.py --model v2 --render    # sim_results_v2.json, frames</code></pre>
 
-  <h2 id="parts">Printed parts</h2>
-  <p>Left side as files and mirrored in the slicer where marked. The full table with downloads, masses and print orientation is on the <a href="printing.html?model=v2">printing page</a>.</p>
+  <h2 id="printing">Printing it</h2>
+  <p>BHL's parts are printed from <a href="https://cad.onshape.com/documents/fc6443b1d89dcba950e85b60/w/94a26479973a4098a5884426/e/be3fe37849edbeadc95b9bf8">BHL's Onshape document</a> (or its <a href="https://makerworld.com/en/models/1327260-berkeley-humanoid-lite">MakerWorld plates</a>) with the modifications in the table above applied; the geometry we add to them, the mount rings, cups, studs and the raised foot cradle, is in the STL set as an "additions" file per part, to be unioned in CAD. Our own parts are complete STLs. The full table with masses and orientation is on the <a href="printing.html?model=v2">printing page</a>.</p>
   <div class="btns" id="dl-parts"></div>
-  <div class="table-wrap"><table class="compact" id="parts-table"><thead><tr><th>Part</th><th class="num">Qty</th><th>Material</th><th class="num">Mass g</th><th class="num">Envelope mm</th></tr></thead><tbody></tbody></table></div>
 
   <h2 id="bom">Bill of materials</h2>
-  <p>Priced <span id="bom-date"></span>, US vendors, beside the v1 production design. The full itemised list is on the <a href="bom.html?model=v2">BOM page</a>. The K1 itself is announced at about $7,000 to $8,700 complete, with actuators that are not on sale until 2027.</p>
+  <p>Priced <span id="bom-date"></span>, US vendors, beside our v1 production design of the same figure and BHL's own published total. BHL's $4,312 buys the 0.8 m robot with its printed actuators; this design's actuators alone cost nearly that, and arrive assembled.</p>
   <div class="table-wrap"><table class="compact" id="bom-table"><thead><tr><th>Section</th><th>Covers</th><th class="num">v2</th><th class="num">v1</th></tr></thead><tbody></tbody></table></div>
-
-  <h2 id="fitstudy">Why not keep the K1's shells as they are</h2>
-  <p>Before this skeleton, the question was whether our actuators could simply go inside the K1's published shells. <code>tools/build_k1rs.py</code> measured the housing around every K1 joint from its meshes (the STLs contain the actuators, so the skin is the farthest ray hit) and found the trade: RobStride's 8:1 to 9:1 stages make the actuator wider than the K1's 20:1 DYNAMIXEL-Q at the same torque. Keeping the shells meant half the torque; keeping the torque meant growing the arm housings by 13 mm. The skeleton above resolves it by not keeping the shells: it keeps the joints and the size, takes the torque-first actuators, and leaves the body to a skin. The study's numbers are in <a href="assets/data/k1rs.json">k1rs.json</a>.</p>
-  <div class="two" id="variant-cards"></div>
 
   <h2 id="next">What this needs next</h2>
   <ul>
-    <li><b>The skin.</b> The point of this skeleton is to disappear under a 1X-style soft cover. That is a pattern over the swept volumes of the links, with the joint ranges above as the constraint, and it is not started.</li>
-    <li><b>ROBOTIS' STEP files and BOM</b>, announced as coming, would let the remaining deviations be compared against the K1's real parts rather than its meshes, and would show whether their ankle linkage is worth copying to bring our ankle down from 100 mm to their 64.</li>
-    <li><b>A walking policy.</b> The URDF is ready for Isaac Lab; ROBOTIS' cyclo_lab environment for the K1 (Apache-2.0) is the natural starting point, with our actuator limits.</li>
-    <li><b>The push margin.</b> Under position servos the robot takes 8 N·s and falls at 10, where the 60 N·m hip-pitch actuators saturate; v1 takes 10 with its 120 N·m RS04 hips. A standing policy would do better than a stiff servo; this check has no controller.</li>
+    <li><b>The CAD work on BHL's parts.</b> Each kept part is described here by a cut plane, a bore and a bolt pattern; those edits have to be made in Onshape (BHL's document is public; branch it) before the parts can be printed. The knee cradle also needs its walls thickened around the Ø101 bore.</li>
+    <li><b>The socket flanges on BHL's arm sections.</b> The flange bolts to a cut plate end; whether four M4 through a 9 mm PLA plate end carry the shank's bending is the first thing to test on a printed piece.</li>
     <li><b>The joint-kit test</b> that every design on this site depends on: print one RS03 cup, load it to 60 N·m.</li>
+    <li><b>The yoke bearings.</b> BHL's 6803 stud bearings carry the second side of the knee, ankle and elbow; at adult size the stud is Ø17 steel. Check the outer plate's pocket on the printed yoke.</li>
+    <li><b>A walking policy.</b> BHL publishes its Isaac Lab training environment under MIT; this URDF has the same joint names and order as our v1, so the same path applies.</li>
+    <li><b>The skin.</b> A 1X-style soft cover over this skeleton, patterned over the swept volumes with the joint ranges above as the constraint.</li>
   </ul>
 </main>
 
-<footer class="site-footer"><div class="inner"><span>Fully Open Humanoid · v2 K1 skeleton (WIP) · <a href="reference.html#license">MIT / CC BY 4.0</a>; skeleton derived from <a href="https://github.com/ROBOTIS-GIT/ai_sapiens">ROBOTIS AI Sapiens K1</a> (CERN-OHL-P-2.0)</span><span>ROBOTIS is not affiliated with this project</span></div></footer>
+<footer class="site-footer"><div class="inner"><span>Fully Open Humanoid · v2 extended BHL (WIP) · <a href="reference.html#license">MIT / CC BY 4.0</a>; BHL's parts under <a href="https://github.com/HybridRobotics/Berkeley-Humanoid-Lite-Assets">CC BY-SA 4.0</a></span><span>Derived from <a href="https://lite.berkeley-humanoid.org/">Berkeley Humanoid Lite</a>, Hybrid Robotics, UC Berkeley; not affiliated</span></div></footer>
 
 <script src="assets/js/site.js"></script>
 <script type="module">
-import * as THREE from "three";
-import { OrbitControls } from "three/addons/controls/OrbitControls.js";
-import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { createRobotViewer } from "./assets/js/robot-viewer.js";
 const esc = foh.esc, money = foh.money;
-const [robot, bom, files, sim, bom1, geom, k1rs] = await Promise.all(["robot_v2", "bom_v2", "print_files_v2", "sim_results_v2", "bom_v1", "module_geom", "k1rs"].map(f => foh.json(`assets/data/${f}.json`)));
-const s = robot.specs, m = s.mass_g, K1 = s.k1;
-document.getElementById("lead-specs").textContent = `${(s.height_mm / 1000).toFixed(2)} m, ${(s.mass_total_g / 1000).toFixed(1)} kg, ${s.dof} joints plus two ${s.hand_dof / 2}-DOF hands, ${money(bom.tiers.core)} in parts.`;
+const [robot, bom, files, sim, bom1] = await Promise.all(["robot_v2", "bom_v2", "print_files_v2", "sim_results_v2", "bom_v1"].map(f => foh.json(`assets/data/${f}.json`)));
+const s = robot.specs, m = s.mass_g, B = s.bhl;
+const bhlParts = s.bhl_parts.map(id => robot.catalog[id]);
+const nBhl = bhlParts.reduce((a, c) => a + c.qty, 0);
+document.getElementById("lead-specs").textContent = `${(s.height_mm / 1000).toFixed(2)} m, ${(s.mass_total_g / 1000).toFixed(1)} kg, ${s.dof} joints plus two ${s.hand_dof / 2}-DOF hands, ${money(bom.tiers.core)} in parts; ${nBhl} of its printed pieces are BHL's.`;
 document.getElementById("stats").innerHTML = [
-  [s.dof, `actuated joints (+${s.hand_dof} in the hands), the K1's layout`], [(s.height_mm / 1000).toFixed(2) + " m", `tall; the K1 is ${(K1.height / 1000).toFixed(2)} m`],
-  [(s.mass_total_g / 1000).toFixed(1) + " kg", "estimated, batteries included; the K1 is 35 kg"], [money(bom.tiers.core), "core parts, filament included"],
-  ["4", "carbon-fibre tube links (thighs, shanks)"], ["4", "RobStride models: RS03, RS06, RS02, RS05"],
+  [`${bhlParts.length} / ${bhlParts.length + s.new_printed.length}`, "printed part types that are BHL's"], [(s.height_mm / 1000).toFixed(2) + " m", `tall; BHL is ${(B.height_mm / 1000).toFixed(1)} m`],
+  [(s.mass_total_g / 1000).toFixed(1) + " kg", `estimated; BHL is ${B.mass_kg} kg`], [money(bom.tiers.core), "core parts; BHL's own build $4,312"],
+  ["8", "carbon-fibre tubes"], [s.dof, `joints, BHL's layout with its hip reordered`],
 ].map(([v, k]) => `<div class="stat"><div class="v">${esc(String(v))}</div><div class="k">${esc(k)}</div></div>`).join("");
 try { await createRobotViewer(document.getElementById("hero-viewer"), { data: robot, mode: "hero" }); } catch (e) { document.getElementById("hero-viewer").innerHTML = "<div class='hint'>WebGL is needed for the model.</div>"; }
 
-// deviations from the K1
-const WHY = { "hip pitch height": "kept", "hip roll height": "the roll cup sits at the pitch height, as in v1 (the K1 drops it 30 mm into a tighter stack)", "hip yaw output height": "our yaw actuator hangs under the roll cup; its output lands slightly higher", "knee height": "kept",
-  "ankle height": "an RS03 at the K1's ankle would touch the ground, and at 25° of roll the foot plate rises into the ankle-pitch ring; the K1 drives its ankle from the shank through rods", "hip line (per side)": "the RS03 roll cup is Ø98 where the QC080 is Ø78", "waist height": "the 8 mm waist plate sits on the pelvis bars",
-  "shoulder height": "kept", "shoulder pitch actuator (per side)": "the RS06 ring and the roll cup need the pitch actuator deeper in the torso", "arm line (per side)": "at 120° of shoulder roll the upper-arm yoke reached the pitch ring at the K1's 146 mm", "shoulder yaw output height": "our RS02 yaw stack is taller than the K1's; the elbow stays where the K1's is by shortening the upper arm", "elbow height": "kept",
-  "wrist (forward of the elbow)": "the elbow yoke and the RS05 behind the wrist flange need the length", "head top": "kept" };
-document.querySelector("#dev-table tbody").innerHTML = Object.entries(s.k1_deviation).map(([k, v]) => `<tr><td>${esc(k)}</td><td class="num ${Math.abs(v) < 0.5 ? "dev-zero" : "dev-pos"}">${v > 0 ? "+" : ""}${v}</td><td>${esc(WHY[k] || "")}</td></tr>`).join("");
+// parts table: BHL's (with the modification note), ours, bought structure
+const printed = Object.values(robot.catalog).filter(c => c.category === "printed" && c.qty > 0);
+const bought = ["CF_TUBE_30", "CF_TUBE_25", "HW_2020_480", "HW_2020_300", "AL_TORSO_PLATE", "HW_STUD_17", "HW_6803_2RS"].map(id => robot.catalog[id]).filter(Boolean);
+const rowP = (c, src, note) => `<tr><td><b>${esc(c.name)}</b> <small class="tiny">${esc(c.id)}${c.mirror ? " · mirrored" : ""}</small></td><td><span class="${src === "BHL" ? "src-bhl" : src === "new" ? "src-new" : "src-buy"}">${src}</span></td><td class="num">${c.qty}</td><td class="num">${c.mass_g || ""}</td><td>${esc(note)}</td></tr>`;
+document.querySelector("#parts-table tbody").innerHTML =
+  bhlParts.map(c => rowP(c, "BHL", (c.notes || "").replace(/^Berkeley Humanoid Lite part \([^)]*\)\. /, ""))).join("") +
+  printed.filter(c => c.source !== "bhl").map(c => rowP(c, "new", c.notes || "")).join("") +
+  bought.map(c => rowP(c, "bought", c.notes || "")).join("");
 
 // joints
-const NOTE = { hip_roll: "−8: the yaw collar meets the hip-pitch ring; 45: the yaw housing meets the pelvis", ankle_roll: "25: the foot plate edge rises into the ankle-pitch ring", shoulder_yaw: "inward limited by the torso with the forearm forward", elbow: "zero = forearm horizontal; −60 hangs the hand 30° forward of vertical, clear of the pelvis bars", hip_pitch: "−90: the yaw housing meets the front pelvis bar" };
-const K1A = { hip_pitch: "QC080", hip_roll: "QC080", hip_yaw: "QC080", knee: "QC080", ankle_pitch: "QC080", ankle_roll: "QC060", waist_yaw: "QC080", shoulder_pitch: "QC060", shoulder_roll: "QC060", shoulder_yaw: "QC060", elbow: "QC060", wrist_roll: "QC060" };
-const QC = k1rs.k1_actuators;
-document.querySelector("#joint-table tbody").innerHTML = robot.joints.filter(j => j.side !== "R").map(j => { const k = j.id.replace(/_L$/, ""); const a = robot.actuators[j.actuator]; const q = QC[K1A[k]]; return `<tr><td>${esc(j.name.replace(" (L)", ""))}</td><td>${j.actuator}</td><td class="num">${a.peak_nm}</td><td>${K1A[k]} (${q.peak_nm} N·m, Ø${q.dia})</td><td>${j.axis.join(", ")}</td><td class="num">${j.limits[0]} … ${j.limits[1]}</td><td><small class="tiny">${esc(NOTE[k] || "")}</small></td></tr>`; }).join("");
+const BHL_MOD = { hip_pitch: "6512 (BHL's hip is roll, yaw, pitch at 45°; this stack is the figure's)", hip_roll: "6512", hip_yaw: "6512", knee: "6512", ankle_pitch: "5010", ankle_roll: "5010", shoulder_pitch: "6512", shoulder_roll: "5010", shoulder_yaw: "5010", elbow: "5010", wrist_roll: "5010" };
+const WHERE = { hip_pitch: "our pelvis cup on the 2020 bars", hip_roll: "our bracket on the pitch coupler", hip_yaw: "our housing under the roll cup; output down onto the thigh socket", knee: "BHL's thigh cradle, bored out; output inboard to BHL's shank yoke", ankle_pitch: "BHL's shank cradle; output to BHL's ankle bracket", ankle_roll: "BHL's foot cradle, raised 15 mm; output back to the bracket's boss", shoulder_pitch: "our mount in the torso side; output to BHL's shoulder bracket", shoulder_roll: "BHL's shoulder bracket; output forward to BHL's upper-arm boss", shoulder_yaw: "our cup under BHL's upper-arm flange; output down to BHL's elbow bracket", elbow: "BHL's elbow bracket; output inboard to BHL's forearm yoke", wrist_roll: "our cup under BHL's forearm flange; output down to the hand flange" };
+document.querySelector("#joint-table tbody").innerHTML = robot.joints.filter(j => j.side !== "R").map(j => { const k = j.id.replace(/_L$/, ""); const a = robot.actuators[j.actuator]; return `<tr><td>${esc(j.name.replace(" (L)", ""))}</td><td>${esc(BHL_MOD[k] || "")}</td><td>${j.actuator}</td><td class="num">${a.peak_nm}</td><td>${esc(WHERE[k] || "")}</td><td class="num">${j.limits[0]} … ${j.limits[1]}</td></tr>`; }).join("");
 
-// structure
-const T = s.tube_lengths_mm;
-document.getElementById("tube-text").textContent = `${T.thigh_tube_L} and ${T.shank_tube_L} mm of Ø30 tube`;
-document.querySelector("#tube-table tbody").innerHTML = [["Thigh (× 2)", "Ø30 × 26 carbon tube", T.thigh_tube_L, "hip-yaw socket → knee cup"], ["Shank (× 2)", "Ø30 × 26 carbon tube", T.shank_tube_L, "shank yoke → ankle cup"], ["Upper arm (× 2)", "printed block", s.upper_arm_mm, "shoulder-yaw coupler → elbow cup, one part"], ["Forearm (× 2)", "printed yoke, forward", s.forearm_mm, "elbow coupler → wrist actuator"], ["Torso", "2020 frame, two plates", 329, "waist cup → neck post"]].map(r => `<tr><td>${r[0]}</td><td>${r[1]}</td><td class="num">${r[2]}</td><td>${r[3]}</td></tr>`).join("");
-const printedParts = Object.values(robot.catalog).filter(c => c.category === "printed" && c.qty > 0);
-document.getElementById("print-count").textContent = printedParts.length;
-document.getElementById("print-mass").textContent = `${(printedParts.reduce((a, c) => a + c.qty * c.mass_g, 0) / 1000).toFixed(1)} kg`;
+// tubes
+const T = s.tube_lengths_mm, E = B.extensions_mm;
+document.querySelector("#tube-table tbody").innerHTML = [
+  ["Thigh (hip rotation output to knee)", B.thigh_mm + " (hip pitch to knee)", E.thigh, T.thigh_tube_L, "our thigh socket → socket flange on BHL's knee cradle, Ø30"],
+  ["Shank (knee to ankle)", B.shank_mm, E.shank, T.shank_tube_L, "socket flange under BHL's knee yoke → socket flange on BHL's ankle cradle, Ø30"],
+  ["Upper arm (shoulder roll to yaw)", B.upper_arm_mm, E.upper_arm, T.upper_arm_tube_L, "socket flange on BHL's cut plate → socket flange on BHL's yaw flange, Ø25"],
+  ["Forearm (elbow to wrist)", B.forearm_mm, E.forearm, T.forearm_tube_L, "socket flange under BHL's elbow yoke → socket flange on BHL's wrist flange, Ø25"],
+].map(r => `<tr><td>${esc(r[0])}</td><td class="num">${esc(String(r[1]))}</td><td class="num">+${r[2]}</td><td class="num">${r[3]} × 2</td><td>${esc(r[4])}</td></tr>`).join("");
 
 // audit (static record of the last run)
 const AUDIT = [
-  ["Zero pose, 413 shapes, 0.5 mm tolerance", "no overlaps", "the first pass had the electronics tray through the shoulder actuators, the packs touching, and the ankle cup 7.5 mm into the shank yoke on this short shank; all moved"],
-  ["Poses: crouch, reach, wave, default standing, abduct 45°, arms hanging", "no pairs deeper than 1 mm", "the hanging pose put the hands 10 mm into the 300 mm pelvis bars; the bars are 240 mm now"],
-  ["Sweep: waist ±90, hip pitch −90…100, hip yaw ±90, knee 0…120, ankle pitch ±45", "clear", ""],
-  ["Sweep: hip roll −8…45", "clear", "−12 put the yaw collar 3.4 mm into the hip-pitch ring: the hip line is 10 mm closer than v1's"],
-  ["Sweep: ankle roll ±25", "clear", "at 30 the foot plate edge rose into the ankle-pitch ring and the foot bracket met the ankle cup; the ankle axis went to 100 mm and the roll actuator 4 mm back"],
-  ["Sweep: shoulder pitch ±180, shoulder roll 0…150, shoulder yaw −12…90, elbow −60…40, wrist ±180", "clear", "at the K1's arm line the upper-arm yoke met the shoulder-pitch ring at 120° of roll (arm line +10); inward yaw met the torso from 13°; the hanging hand met the pelvis bars"],
+  ["Zero pose, 407 shapes, 0.5 mm tolerance", "no overlaps", "earlier passes found our RS02 rings at the ankle and the foot meeting at a line (fixed with a 10 mm spacer under the bracket's roll boss and a smaller ring), the arm socket bosses in the shoulder and elbow rings (the arm plates are now cut 44 mm below the axes), and the wrist cup touching the hip-yaw housing (arm line +10 mm)"],
+  ["Poses: crouch, reach, wave, default standing, abduct 45° with default arms", "no pairs deeper than 1 mm", ""],
+  ["Sweep: hip pitch −90…100, hip yaw ±90, knee 0…120, ankle pitch ±45, ankle roll ±25", "clear", "the raised foot cradle and the spacer keep the two ankle rings apart through the ankle's range"],
+  ["Sweep: hip roll −12…45 from the zero pose", "hand pairs from 21° on", "the straight-arm zero pose only, as in v1: the default pose (elbows 30°) is clear through 45°"],
+  ["Sweep: shoulder pitch ±180, shoulder roll 0…150, shoulder yaw ±90, elbow 0…100, wrist ±180", "clear", "BHL allows the elbow 90°; 125° put the forearm's socket flange into the elbow bracket"],
 ];
 document.getElementById("audit-rows").innerHTML = AUDIT.map(r => `<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td><td>${esc(r[2])}</td></tr>`).join("");
 
 // sim
-const what = { stand: "Drop from 10 mm, forearms hanging, hold 5 s", crouch: "Ramp to the crouch in 1.5 s, hold, return" };
+const what = { stand: "Drop from 10 mm at the zero pose, hold 5 s", crouch: "Ramp to the crouch in 1.5 s, hold, return" };
 const keys = ["stand", "crouch"].concat(Object.keys(sim).filter(k => k.startsWith("push_")).sort((a, b) => sim[a].impulse_Ns - sim[b].impulse_Ns));
 document.querySelector("#sim-table tbody").innerHTML = keys.map(k => { const t = sim[k]; const legs = Object.entries(t.torques).filter(([j]) => /^(hip|knee|ankle)/.test(j)); const b = legs[0] || Object.entries(t.torques)[0]; const name = k.startsWith("push_") ? `Push ${t.impulse_Ns} N·s` : k[0].toUpperCase() + k.slice(1); return `<tr><td>${esc(name)}</td><td>${esc(what[k] || `${(t.impulse_Ns / 0.2).toFixed(0)} N forward on the torso for 0.2 s while standing`)}</td><td class="num">${t.max_tilt_deg.toFixed(1)}°</td><td class="num">${t.final_tilt_deg < 89 ? t.final_tilt_deg.toFixed(1) + "°" : "fallen"}</td><td>${esc(b[0])} ${b[1].peak_nm} / ${b[1].limit_nm} N·m</td><td><span class="pill ${t.pass ? "ok" : "bad"}">${t.pass ? "pass" : "fall"}</span></td></tr>`; }).join("");
 document.getElementById("sim-meta").textContent = `MuJoCo, ${(sim.timestep * 1000).toFixed(0)} ms step, ${sim.mass_kg} kg from the URDF, friction 1.0; "busiest joint" is the highest peak torque against its actuator's limit, leg joints only.`;
 
-// parts
-if (files.zip) document.getElementById("dl-parts").innerHTML = `<a class="btn primary" href="${files.zip.file}" download>Download all STL (${(files.zip.bytes / 1e6).toFixed(1)} MB zip)</a><a class="btn" href="assets/data/print_files_v2.json">Manifest with SHA-256</a>`;
-document.querySelector("#parts-table tbody").innerHTML = files.parts.map(p => `<tr><td><a href="${p.file}" download>${esc(p.name)}</a> <small class="tiny">${esc(p.id)}${p.mirror ? " · mirror for the right side" : ""}</small></td><td class="num">${p.qty}</td><td>${esc(p.material_name)}</td><td class="num">${p.mass_g_est}</td><td class="num">${p.bbox_mm.map(v => Math.round(v)).join(" × ")}</td></tr>`).join("");
+// parts download
+if (files.zip) document.getElementById("dl-parts").innerHTML = `<a class="btn primary" href="${files.zip.file}" download>Download our STLs and the additions (${(files.zip.bytes / 1e6).toFixed(1)} MB zip)</a><a class="btn" href="assets/data/print_files_v2.json">Manifest with SHA-256</a><a class="btn" href="https://cad.onshape.com/documents/fc6443b1d89dcba950e85b60/w/94a26479973a4098a5884426/e/be3fe37849edbeadc95b9bf8">BHL's CAD ↗</a>`;
 
 // bom
 document.getElementById("bom-date").textContent = bom.meta.priced_as_of;
 const sec1 = Object.fromEntries(bom1.sections.map(x => [x.id, x]));
-document.querySelector("#bom-table tbody").innerHTML = bom.sections.map(sec => `<tr><td><b>${esc(sec.title)}</b> <span class="pill ${sec.tier === "core" ? "acc" : ""}">${sec.tier}</span></td><td>${esc(sec.blurb)}</td><td class="num">${money(sec.subtotal)}</td><td class="num">${sec1[sec.id] ? money(sec1[sec.id].subtotal) : "—"}</td></tr>`).join("") + `<tr><td><b>Core total</b></td><td></td><td class="num"><b>${money(bom.tiers.core)}</b></td><td class="num"><b>${money(bom1.tiers.core)}</b></td></tr>`;
-
-// the fit study's two variants
-const V = k1rs.variants;
-const vc = (name, v) => `<div class="card"><h3>${esc(name)}</h3><p>${Object.entries(v.counts).map(([mm, n]) => `${n} × ${mm}`).join(", ")}: housings grow by at most <b>${v.shell_growth_max_mm} mm</b> in radius, peak torque <b>${Math.round(v.torque_ratio_min * 100)}–${Math.round(v.torque_ratio_max * 100)} %</b> of the K1's, actuators ${money(v.actuator_cost)}.</p></div>`;
-document.getElementById("variant-cards").innerHTML = vc("Inside the K1 shells, shape-first", V.shape_first) + vc("Inside the K1 shells, torque-first", V.torque_first);
-
-// ghost view: our skeleton from the model's primitives, the K1's published model over it
-(async () => {
-  const el = document.getElementById("ghost");
-  try {
-    THREE.Object3D.DEFAULT_UP.set(0, 0, 1);
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.domElement.style.touchAction = "pan-y";
-    el.insertBefore(renderer.domElement, el.firstChild);
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(30, 1, 0.01, 50);
-    camera.position.set(2.7, -2.0, 1.1); camera.up.set(0, 0, 1);
-    const controls = new OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true; controls.target.set(0, 0, 0.68); controls.enablePan = false;
-    scene.add(new THREE.HemisphereLight(0xffffff, 0x8a8a8a, 0.95));
-    const key = new THREE.DirectionalLight(0xffffff, 1.2); key.position.set(3, -3, 5); scene.add(key);
-    const fill = new THREE.DirectionalLight(0xffffff, 0.4); fill.position.set(-3, 3, 2); scene.add(fill);
-    const grid = new THREE.GridHelper(3, 30, 0x9aa0a8, 0xcfd3d8); grid.rotation.x = Math.PI / 2; grid.material.transparent = true; scene.add(grid);
-    const isDark = () => document.documentElement.dataset.theme === "dark" || (!document.documentElement.dataset.theme && matchMedia("(prefers-color-scheme: dark)").matches);
-    const resize = () => { const w = el.clientWidth, h = el.clientHeight || 480; renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); };
-    new ResizeObserver(resize).observe(el); resize();
-    (function loop() { requestAnimationFrame(loop); controls.update(); grid.material.opacity = isDark() ? 0.35 : 0.6; renderer.render(scene, camera); })();
-    // our skeleton
-    const mats = {};
-    const matOf = (name) => mats[name] || (mats[name] = new THREE.MeshStandardMaterial({ color: new THREE.Color(robot.materials[name]?.color || "#999999"), roughness: 0.55, metalness: name === "actuator" ? 0.5 : 0.1 }));
-    const skel = new THREE.Group(); scene.add(skel);
-    for (const L of robot.links) for (const P of L.parts) {
-      if (P.optional) continue;
-      const mat = matOf(robot.catalog[P.part]?.material || "petg_cf");
-      for (const sh of P.shapes) {
-        let g;
-        if (sh.t === "box") g = new THREE.BoxGeometry(sh.s[0] / 1000, sh.s[1] / 1000, sh.s[2] / 1000);
-        else { g = new THREE.CylinderGeometry(sh.r / 1000, sh.r / 1000, sh.l / 1000, 32); if (sh.axis === "x") g.rotateZ(-Math.PI / 2); else if (sh.axis === "z") g.rotateX(Math.PI / 2); }
-        const mesh = new THREE.Mesh(g, mat);
-        mesh.position.set((L.origin[0] + sh.c[0]) / 1000, (L.origin[1] + sh.c[1]) / 1000, (L.origin[2] + sh.c[2]) / 1000);
-        skel.add(mesh);
-      }
-    }
-    // the K1 ghost
-    const ref = geom.references?.k1;
-    const ghost = await new Promise((res, rej) => new GLTFLoader().load(ref.file, x => res(x.scene), undefined, rej));
-    const skin = new THREE.MeshStandardMaterial({ color: 0x8e9299, roughness: 0.6, metalness: 0.05, transparent: true, opacity: 0.3, depthWrite: false });
-    ghost.traverse(o => { if (o.isMesh) { if (!o.geometry.attributes.normal) o.geometry.computeVertexNormals(); o.material = skin; } });
-    ghost.position.z = -ref.ground_z; ghost.renderOrder = 2; scene.add(ghost);
-    el.querySelectorAll(".bar .btn").forEach(b => b.addEventListener("click", () => { el.querySelectorAll(".bar .btn").forEach(x => x.classList.remove("on")); b.classList.add("on"); ghost.visible = b.dataset.k1 === "1"; }));
-  } catch (e) { el.querySelector(".hint").textContent = "WebGL is needed for the model."; console.error(e); }
-})();
+document.querySelector("#bom-table tbody").innerHTML = bom.sections.map(sec => `<tr><td><b>${esc(sec.title)}</b> <span class="pill ${sec.tier === "core" ? "acc" : ""}">${sec.tier}</span></td><td>${esc(sec.blurb)}</td><td class="num">${money(sec.subtotal)}</td><td class="num">${sec1[sec.id] ? money(sec1[sec.id].subtotal) : "—"}</td></tr>`).join("") + `<tr><td><b>Core total</b></td><td>BHL's own 0.8 m robot: $4,312 (paper, Table III, US prices)</td><td class="num"><b>${money(bom.tiers.core)}</b></td><td class="num"><b>${money(bom1.tiers.core)}</b></td></tr>`;
 </script>
 </body>
 </html>

@@ -251,6 +251,8 @@ def sphere(r, c, w=None):
 
 
 def vol(shape):
+    if shape["t"] == "mesh":
+        return 0.0
     if shape["t"] == "box":
         v = math.prod(shape["s"])
         if shape.get("w"):   # hollow rounded box: shell volume
@@ -778,6 +780,8 @@ for j in JOINTS:
 
 def shape_bbox(shape):
     c = shape["c"]
+    if shape["t"] == "mesh":          # a published part placed by its reference point: bb is its bounding box relative to c
+        return [c[k] + shape["bb"][0][k] for k in range(3)], [c[k] + shape["bb"][1][k] for k in range(3)]
     if shape["t"] == "box":
         h = [v / 2 for v in shape["s"]]
     elif shape["t"] == "sphere":
@@ -1036,7 +1040,10 @@ bom = dict(meta=dict(version=VERSION, priced_as_of=PRICED_AS_OF, currency="USD")
 
 
 def shape_inertia(sh, m):
-    """Inertia tensor (kg m^2) of one shape about its own centre, in metres (cones as mean-radius cylinders)."""
+    """Inertia tensor (kg m^2) of one shape about its own centre, in metres (cones as mean-radius cylinders, meshes as their bounding box)."""
+    if sh["t"] == "mesh":
+        a, b, c = [(sh["bb"][1][k] - sh["bb"][0][k]) / 1000 for k in range(3)]
+        return [m / 12 * (b * b + c * c), m / 12 * (a * a + c * c), m / 12 * (a * a + b * b)]
     if sh["t"] == "box":
         a, b, c = [v / 1000 for v in sh["s"]]
         return [m / 12 * (b * b + c * c), m / 12 * (a * a + c * c), m / 12 * (a * a + b * b)]
@@ -1068,9 +1075,15 @@ def write_urdf(path: Path):
             cat = CATALOG[o["part"]]
             vols = [vol(sh) for sh in o["shapes"]]
             vt = sum(vols) or 1.0
-            mg = cat.get("mass_g", 0)
+            mesh_g = sum(sh.get("mass_g", 0) for sh in o["shapes"] if sh["t"] == "mesh")
+            mg = max(cat.get("mass_g", 0) - mesh_g, 0)
             for sh, v in zip(o["shapes"], vols):
-                shapes.append((sh, mg / 1000 * v / vt, sh.get("m") or cat["material"], o["occ"]))
+                if sh["t"] == "mesh":
+                    bb = sh["bb"]
+                    cen = [sh["c"][k] + (bb[0][k] + bb[1][k]) / 2 for k in range(3)]
+                    shapes.append((dict(t="box", s=[bb[1][k] - bb[0][k] for k in range(3)], c=cen, _mesh=True), sh.get("mass_g", 0) / 1000, sh.get("m") or cat["material"], o["occ"]))
+                else:
+                    shapes.append((sh, mg / 1000 * v / vt, sh.get("m") or cat["material"], o["occ"]))
         mass_kg = sum(s[1] for s in shapes)
         if mass_kg > 0:
             com = [sum(s[1] * s[0]["c"][k] / 1000 for s in shapes) / mass_kg for k in range(3)]

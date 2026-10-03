@@ -1,5 +1,5 @@
 {
- "mass_kg": 28.35,
+ "mass_kg": 28.55,
  "timestep": 0.002,
  "gains": {
   "RS04": [
@@ -11,12 +11,12 @@
    13.0
   ],
   "RS06": [
-   150.0,
-   6.0
+   220.0,
+   9.0
   ],
   "RS02": [
-   80.0,
-   3.0
+   220.0,
+   9.0
   ],
   "RS05": [
    25.0,
@@ -35,59 +35,44 @@
  },
  "stand": {
   "name": "stand",
-  "final_z_mm": -10.5,
-  "final_tilt_deg": 0.09,
-  "max_tilt_deg": 0.14,
-  "min_z_mm": -10.5,
+  "final_z_mm": -0.7,
+  "final_tilt_deg": 0.81,
+  "max_tilt_deg": 1.58,
+  "min_z_mm": -0.7,
   "com_xy_mm": [
-   -0.2,
+   13.5,
    -0.2
   ],
   "torques": {
-   "shoulder_pitch": {
-    "peak_nm": 0.5,
-    "limit_nm": 36,
-    "ratio": 0.01
-   },
    "ankle_pitch": {
-    "peak_nm": 0.5,
-    "limit_nm": 60,
-    "ratio": 0.01
-   },
-   "waist_yaw": {
-    "peak_nm": 0.0,
-    "limit_nm": 36,
-    "ratio": 0.0
-   },
-   "shoulder_roll": {
-    "peak_nm": 0.0,
-    "limit_nm": 36,
-    "ratio": 0.0
-   },
-   "shoulder_yaw": {
-    "peak_nm": 0.0,
+    "peak_nm": 5.3,
     "limit_nm": 17,
-    "ratio": 0.0
-   },
-   "elbow": {
-    "peak_nm": 0.0,
-    "limit_nm": 17,
-    "ratio": 0.0
-   },
-   "wrist_roll": {
-    "peak_nm": 0.0,
-    "limit_nm": 5.5,
-    "ratio": 0.0
+    "ratio": 0.31
    },
    "hip_pitch": {
-    "peak_nm": 0.2,
+    "peak_nm": 0.9,
     "limit_nm": 60,
-    "ratio": 0.0
+    "ratio": 0.01
    },
    "hip_roll": {
-    "peak_nm": 0.1,
+    "peak_nm": 0.4,
     "limit_nm": 60,
-    "ratio": 0.0
+    "ratio": 0.01
+   },
+   "ankle_roll": {
+    "peak_nm": 0.2,
+    "limit_nm": 17,
+    "ratio": 0.01
+   },
+   "shoulder_pitch": {
+    "peak_nm": 0.4,
+    "limit_nm": 36,
+    "ratio": 0.01
+   },
+   "elbow": {
+    "peak_nm": 0.1,
+    "limit_nm": 17,
+    "ratio": 0.01
    },
    "hip_yaw": {
     "peak_nm": 0.0,
@@ -95,61 +80,83 @@
     "ratio": 0.0
    },
    "knee": {
-    "peak_nm": 0.1,
+    "peak_nm": 0.3,
     "limit_nm": 60,
     "ratio": 0.0
    },
-   "ankle_roll": {
-    "peak_nm": 0.1,
-    "limit_nm": 36,
+   "shoulder_roll": {
+    "peak_nm": 0.0,
+    "limit_nm": 17,
+    "ratio": 0.0
+   },
+   "shoulder_yaw": {
+    "peak_nm": 0.0,
+    "limit_nm": 17,
+    "ratio": 0.0
+   },
+   "wrist_roll": {
+    "peak_nm": 0.0,
+    "limit_nm": 17,
     "ratio": 0.0
    }
   },
-  "base_pose": {
-   "elbow_L": -60.0,
-   "elbow_R": -60.0
-  },
+  "base_pose": {},
   "pass": true
  },
  "crouch": {
   "name": "crouch",
-  "final_z_mm": -10.5,
-  "final_tilt_deg": 0.1,
-  "max_tilt_deg": 7.77,
-  "min_z_mm": -137.2,
+  "final_z_mm": -0.7,
+  "final_tilt_deg": 0.89,
+  "max_tilt_deg": 9.14,
+  "min_z_mm": -165.2,
   "com_xy_mm": [
-   -0.6,
+   14.7,
    -0.2
   ],
   "torques": {
    "knee": {
-    "peak_nm": 30.5,
+    "peak_nm": 37.6,
     "limit_nm": 60,
-    "ratio": 0.51
+    "ratio": 0.63
    },
    "ankle_pitch": {
-    "peak_nm": 12.6,
-    "limit_nm": 60,
-    "ratio": 0.21
+    "peak_nm": 9.2,
+    "limit_nm": 17,
+    "ratio": 0.54
    },
    "hip_pitch": {
-    "peak_nm": 3.3,
+    "peak_nm": 3.8,
     "limit_nm": 60,
     "ratio": 0.06
    },
    "shoulder_pitch": {
-    "peak_nm": 1.0,
+    "peak_nm": 2.3,
     "limit_nm": 36,
-    "ratio": 0.03
+    "ratio": 0.06
    },
-   "waist_yaw": {
-    "peak_nm": 0.0,
-    "limit_nm": 36,
-    "ratio": 0.0
+   "ankle_roll": {
+    "peak_nm": 0.3,
+    "limit_nm": 17,
+    "ratio": 0.02
+   },
+   "hip_roll": {
+    "peak_nm": 0.5,
+    "limit_nm": 60,
+    "ratio": 0.01
+   },
+   "hip_yaw": {
+    "peak_nm": 0.4,
+    "limit_nm": 60,
+    "ratio": 0.01
+   },
+   "elbow": {
+    "peak_nm": 0.2,
+    "limit_nm": 17,
+    "ratio": 0.01
    },
    "shoulder_roll": {
     "peak_nm": 0.0,
-    "limit_nm": 36,
+    "limit_nm": 17,
     "ratio": 0.0
    },
    "shoulder_yaw": {
@@ -157,29 +164,9 @@
     "limit_nm": 17,
     "ratio": 0.0
    },
-   "elbow": {
-    "peak_nm": 0.0,
-    "limit_nm": 17,
-    "ratio": 0.0
-   },
    "wrist_roll": {
     "peak_nm": 0.0,
-    "limit_nm": 5.5,
-    "ratio": 0.0
-   },
-   "hip_roll": {
-    "peak_nm": 0.1,
-    "limit_nm": 60,
-    "ratio": 0.0
-   },
-   "hip_yaw": {
-    "peak_nm": 0.1,
-    "limit_nm": 60,
-    "ratio": 0.0
-   },
-   "ankle_roll": {
-    "peak_nm": 0.1,
-    "limit_nm": 36,
+    "limit_nm": 17,
     "ratio": 0.0
    }
   },
@@ -187,73 +174,68 @@
  },
  "push_4Ns": {
   "name": "push_4Ns",
-  "final_z_mm": -10.4,
-  "final_tilt_deg": 0.51,
-  "max_tilt_deg": 2.9,
-  "min_z_mm": -10.5,
+  "final_z_mm": -0.7,
+  "final_tilt_deg": 1.56,
+  "max_tilt_deg": 2.63,
+  "min_z_mm": -1.0,
   "com_xy_mm": [
-   3.9,
-   -0.2
+   23.8,
+   -0.4
   ],
   "torques": {
    "ankle_pitch": {
-    "peak_nm": 11.5,
-    "limit_nm": 60,
-    "ratio": 0.19
+    "peak_nm": 9.0,
+    "limit_nm": 17,
+    "ratio": 0.53
    },
-   "knee": {
-    "peak_nm": 4.5,
+   "elbow": {
+    "peak_nm": 8.4,
+    "limit_nm": 17,
+    "ratio": 0.49
+   },
+   "shoulder_pitch": {
+    "peak_nm": 17.1,
+    "limit_nm": 36,
+    "ratio": 0.48
+   },
+   "hip_pitch": {
+    "peak_nm": 4.9,
+    "limit_nm": 60,
+    "ratio": 0.08
+   },
+   "hip_yaw": {
+    "peak_nm": 4.0,
     "limit_nm": 60,
     "ratio": 0.07
    },
-   "hip_pitch": {
-    "peak_nm": 3.4,
+   "hip_roll": {
+    "peak_nm": 0.4,
     "limit_nm": 60,
-    "ratio": 0.06
+    "ratio": 0.01
    },
-   "shoulder_pitch": {
-    "peak_nm": 0.8,
-    "limit_nm": 36,
-    "ratio": 0.02
+   "knee": {
+    "peak_nm": 0.5,
+    "limit_nm": 60,
+    "ratio": 0.01
    },
-   "waist_yaw": {
-    "peak_nm": 0.0,
-    "limit_nm": 36,
-    "ratio": 0.0
+   "ankle_roll": {
+    "peak_nm": 0.2,
+    "limit_nm": 17,
+    "ratio": 0.01
    },
    "shoulder_roll": {
-    "peak_nm": 0.0,
-    "limit_nm": 36,
-    "ratio": 0.0
+    "peak_nm": 0.1,
+    "limit_nm": 17,
+    "ratio": 0.01
    },
    "shoulder_yaw": {
-    "peak_nm": 0.0,
+    "peak_nm": 0.2,
     "limit_nm": 17,
-    "ratio": 0.0
-   },
-   "elbow": {
-    "peak_nm": 0.0,
-    "limit_nm": 17,
-    "ratio": 0.0
+    "ratio": 0.01
    },
    "wrist_roll": {
     "peak_nm": 0.0,
-    "limit_nm": 5.5,
-    "ratio": 0.0
-   },
-   "hip_roll": {
-    "peak_nm": 0.1,
-    "limit_nm": 60,
-    "ratio": 0.0
-   },
-   "hip_yaw": {
-    "peak_nm": 0.0,
-    "limit_nm": 60,
-    "ratio": 0.0
-   },
-   "ankle_roll": {
-    "peak_nm": 0.1,
-    "limit_nm": 36,
+    "limit_nm": 17,
     "ratio": 0.0
    }
   },
@@ -262,73 +244,68 @@
  },
  "push_6Ns": {
   "name": "push_6Ns",
-  "final_z_mm": -10.4,
-  "final_tilt_deg": 0.54,
-  "max_tilt_deg": 4.32,
-  "min_z_mm": -10.5,
+  "final_z_mm": -0.7,
+  "final_tilt_deg": 2.04,
+  "max_tilt_deg": 3.64,
+  "min_z_mm": -1.2,
   "com_xy_mm": [
-   4.6,
-   -0.2
+   30.3,
+   -0.5
   ],
   "torques": {
+   "elbow": {
+    "peak_nm": 12.5,
+    "limit_nm": 17,
+    "ratio": 0.74
+   },
    "ankle_pitch": {
-    "peak_nm": 14.2,
-    "limit_nm": 60,
-    "ratio": 0.24
-   },
-   "knee": {
-    "peak_nm": 7.2,
-    "limit_nm": 60,
-    "ratio": 0.12
-   },
-   "hip_pitch": {
-    "peak_nm": 4.4,
-    "limit_nm": 60,
-    "ratio": 0.07
+    "peak_nm": 12.3,
+    "limit_nm": 17,
+    "ratio": 0.73
    },
    "shoulder_pitch": {
-    "peak_nm": 1.0,
+    "peak_nm": 25.7,
     "limit_nm": 36,
-    "ratio": 0.03
+    "ratio": 0.72
    },
-   "waist_yaw": {
-    "peak_nm": 0.0,
-    "limit_nm": 36,
-    "ratio": 0.0
+   "hip_pitch": {
+    "peak_nm": 7.6,
+    "limit_nm": 60,
+    "ratio": 0.13
+   },
+   "hip_yaw": {
+    "peak_nm": 5.9,
+    "limit_nm": 60,
+    "ratio": 0.1
+   },
+   "ankle_roll": {
+    "peak_nm": 0.3,
+    "limit_nm": 17,
+    "ratio": 0.02
    },
    "shoulder_roll": {
-    "peak_nm": 0.0,
-    "limit_nm": 36,
-    "ratio": 0.0
+    "peak_nm": 0.3,
+    "limit_nm": 17,
+    "ratio": 0.02
+   },
+   "hip_roll": {
+    "peak_nm": 0.5,
+    "limit_nm": 60,
+    "ratio": 0.01
+   },
+   "knee": {
+    "peak_nm": 0.8,
+    "limit_nm": 60,
+    "ratio": 0.01
    },
    "shoulder_yaw": {
-    "peak_nm": 0.0,
+    "peak_nm": 0.2,
     "limit_nm": 17,
-    "ratio": 0.0
-   },
-   "elbow": {
-    "peak_nm": 0.0,
-    "limit_nm": 17,
-    "ratio": 0.0
+    "ratio": 0.01
    },
    "wrist_roll": {
     "peak_nm": 0.0,
-    "limit_nm": 5.5,
-    "ratio": 0.0
-   },
-   "hip_roll": {
-    "peak_nm": 0.1,
-    "limit_nm": 60,
-    "ratio": 0.0
-   },
-   "hip_yaw": {
-    "peak_nm": 0.0,
-    "limit_nm": 60,
-    "ratio": 0.0
-   },
-   "ankle_roll": {
-    "peak_nm": 0.1,
-    "limit_nm": 36,
+    "limit_nm": 17,
     "ratio": 0.0
    }
   },
@@ -337,73 +314,68 @@
  },
  "push_8Ns": {
   "name": "push_8Ns",
-  "final_z_mm": -10.2,
-  "final_tilt_deg": 1.86,
-  "max_tilt_deg": 7.6,
-  "min_z_mm": -10.5,
+  "final_z_mm": -0.7,
+  "final_tilt_deg": 2.58,
+  "max_tilt_deg": 4.69,
+  "min_z_mm": -1.4,
   "com_xy_mm": [
-   -15.4,
-   -0.2
+   37.5,
+   -1.0
   ],
   "torques": {
-   "ankle_pitch": {
-    "peak_nm": 14.9,
-    "limit_nm": 60,
-    "ratio": 0.25
+   "elbow": {
+    "peak_nm": 16.6,
+    "limit_nm": 17,
+    "ratio": 0.98
    },
-   "knee": {
-    "peak_nm": 10.5,
+   "shoulder_pitch": {
+    "peak_nm": 34.3,
+    "limit_nm": 36,
+    "ratio": 0.95
+   },
+   "ankle_pitch": {
+    "peak_nm": 15.8,
+    "limit_nm": 17,
+    "ratio": 0.93
+   },
+   "hip_pitch": {
+    "peak_nm": 10.2,
     "limit_nm": 60,
     "ratio": 0.17
    },
-   "hip_pitch": {
-    "peak_nm": 5.8,
+   "hip_yaw": {
+    "peak_nm": 8.0,
     "limit_nm": 60,
-    "ratio": 0.1
+    "ratio": 0.13
    },
-   "shoulder_pitch": {
-    "peak_nm": 1.2,
-    "limit_nm": 36,
-    "ratio": 0.03
-   },
-   "waist_yaw": {
-    "peak_nm": 0.0,
-    "limit_nm": 36,
-    "ratio": 0.0
+   "knee": {
+    "peak_nm": 2.2,
+    "limit_nm": 60,
+    "ratio": 0.04
    },
    "shoulder_roll": {
-    "peak_nm": 0.0,
-    "limit_nm": 36,
-    "ratio": 0.0
+    "peak_nm": 0.7,
+    "limit_nm": 17,
+    "ratio": 0.04
+   },
+   "ankle_roll": {
+    "peak_nm": 0.5,
+    "limit_nm": 17,
+    "ratio": 0.03
    },
    "shoulder_yaw": {
-    "peak_nm": 0.0,
+    "peak_nm": 0.3,
     "limit_nm": 17,
-    "ratio": 0.0
+    "ratio": 0.02
    },
-   "elbow": {
-    "peak_nm": 0.0,
-    "limit_nm": 17,
-    "ratio": 0.0
+   "hip_roll": {
+    "peak_nm": 0.7,
+    "limit_nm": 60,
+    "ratio": 0.01
    },
    "wrist_roll": {
     "peak_nm": 0.0,
-    "limit_nm": 5.5,
-    "ratio": 0.0
-   },
-   "hip_roll": {
-    "peak_nm": 0.1,
-    "limit_nm": 60,
-    "ratio": 0.0
-   },
-   "hip_yaw": {
-    "peak_nm": 0.0,
-    "limit_nm": 60,
-    "ratio": 0.0
-   },
-   "ankle_roll": {
-    "peak_nm": 0.1,
-    "limit_nm": 36,
+    "limit_nm": 17,
     "ratio": 0.0
    }
   },
@@ -412,148 +384,138 @@
  },
  "push_10Ns": {
   "name": "push_10Ns",
-  "final_z_mm": 205.0,
-  "final_tilt_deg": 94.92,
-  "max_tilt_deg": 95.56,
-  "min_z_mm": -10.5,
+  "final_z_mm": -0.6,
+  "final_tilt_deg": 3.04,
+  "max_tilt_deg": 6.11,
+  "min_z_mm": -1.5,
   "com_xy_mm": [
-   846.0,
-   -0.1
+   43.7,
+   -2.4
   ],
   "torques": {
-   "hip_pitch": {
-    "peak_nm": 60.0,
-    "limit_nm": 60,
+   "ankle_pitch": {
+    "peak_nm": 17.0,
+    "limit_nm": 17,
     "ratio": 1.0
    },
-   "shoulder_pitch": {
-    "peak_nm": 34.1,
-    "limit_nm": 36,
-    "ratio": 0.95
-   },
-   "knee": {
-    "peak_nm": 40.9,
-    "limit_nm": 60,
-    "ratio": 0.68
-   },
-   "elbow": {
-    "peak_nm": 9.1,
-    "limit_nm": 17,
-    "ratio": 0.54
-   },
-   "wrist_roll": {
-    "peak_nm": 2.3,
-    "limit_nm": 5.5,
-    "ratio": 0.42
-   },
-   "shoulder_roll": {
-    "peak_nm": 12.1,
-    "limit_nm": 36,
-    "ratio": 0.34
-   },
-   "ankle_pitch": {
-    "peak_nm": 15.2,
-    "limit_nm": 60,
-    "ratio": 0.25
-   },
-   "shoulder_yaw": {
-    "peak_nm": 3.7,
-    "limit_nm": 17,
-    "ratio": 0.22
-   },
-   "hip_roll": {
-    "peak_nm": 12.8,
-    "limit_nm": 60,
-    "ratio": 0.21
-   },
-   "hip_yaw": {
-    "peak_nm": 5.5,
-    "limit_nm": 60,
-    "ratio": 0.09
-   },
-   "waist_yaw": {
-    "peak_nm": 0.3,
-    "limit_nm": 36,
-    "ratio": 0.01
-   },
-   "ankle_roll": {
-    "peak_nm": 0.4,
-    "limit_nm": 36,
-    "ratio": 0.01
-   }
-  },
-  "impulse_Ns": 10.0,
-  "pass": false
- },
- "push_12Ns": {
-  "name": "push_12Ns",
-  "final_z_mm": 205.0,
-  "final_tilt_deg": 94.92,
-  "max_tilt_deg": 95.21,
-  "min_z_mm": -10.5,
-  "com_xy_mm": [
-   846.4,
-   -0.2
-  ],
-  "torques": {
    "shoulder_pitch": {
     "peak_nm": 36.0,
     "limit_nm": 36,
     "ratio": 1.0
    },
+   "elbow": {
+    "peak_nm": 17.0,
+    "limit_nm": 17,
+    "ratio": 1.0
+   },
+   "hip_pitch": {
+    "peak_nm": 11.2,
+    "limit_nm": 60,
+    "ratio": 0.19
+   },
+   "hip_yaw": {
+    "peak_nm": 10.4,
+    "limit_nm": 60,
+    "ratio": 0.17
+   },
+   "knee": {
+    "peak_nm": 4.0,
+    "limit_nm": 60,
+    "ratio": 0.07
+   },
+   "shoulder_roll": {
+    "peak_nm": 1.2,
+    "limit_nm": 17,
+    "ratio": 0.07
+   },
+   "ankle_roll": {
+    "peak_nm": 1.0,
+    "limit_nm": 17,
+    "ratio": 0.06
+   },
+   "hip_roll": {
+    "peak_nm": 2.6,
+    "limit_nm": 60,
+    "ratio": 0.04
+   },
+   "shoulder_yaw": {
+    "peak_nm": 0.3,
+    "limit_nm": 17,
+    "ratio": 0.02
+   },
+   "wrist_roll": {
+    "peak_nm": 0.0,
+    "limit_nm": 17,
+    "ratio": 0.0
+   }
+  },
+  "impulse_Ns": 10.0,
+  "pass": true
+ },
+ "push_12Ns": {
+  "name": "push_12Ns",
+  "final_z_mm": 89.9,
+  "final_tilt_deg": 90.0,
+  "max_tilt_deg": 93.17,
+  "min_z_mm": -1.4,
+  "com_xy_mm": [
+   1125.4,
+   14.4
+  ],
+  "torques": {
    "hip_pitch": {
     "peak_nm": 60.0,
     "limit_nm": 60,
     "ratio": 1.0
    },
-   "elbow": {
-    "peak_nm": 9.3,
+   "ankle_pitch": {
+    "peak_nm": 17.0,
     "limit_nm": 17,
-    "ratio": 0.55
+    "ratio": 1.0
    },
-   "wrist_roll": {
-    "peak_nm": 2.4,
-    "limit_nm": 5.5,
-    "ratio": 0.43
+   "shoulder_pitch": {
+    "peak_nm": 36.0,
+    "limit_nm": 36,
+    "ratio": 1.0
+   },
+   "elbow": {
+    "peak_nm": 17.0,
+    "limit_nm": 17,
+    "ratio": 1.0
    },
    "knee": {
-    "peak_nm": 22.1,
+    "peak_nm": 40.7,
     "limit_nm": 60,
-    "ratio": 0.37
+    "ratio": 0.68
    },
-   "shoulder_roll": {
-    "peak_nm": 12.5,
-    "limit_nm": 36,
-    "ratio": 0.35
-   },
-   "ankle_pitch": {
-    "peak_nm": 15.5,
-    "limit_nm": 60,
-    "ratio": 0.26
-   },
-   "shoulder_yaw": {
-    "peak_nm": 4.1,
-    "limit_nm": 17,
-    "ratio": 0.24
-   },
-   "hip_roll": {
-    "peak_nm": 12.8,
+   "hip_yaw": {
+    "peak_nm": 12.4,
     "limit_nm": 60,
     "ratio": 0.21
    },
-   "hip_yaw": {
-    "peak_nm": 5.9,
-    "limit_nm": 60,
-    "ratio": 0.1
-   },
    "ankle_roll": {
-    "peak_nm": 0.8,
-    "limit_nm": 36,
-    "ratio": 0.02
+    "peak_nm": 3.6,
+    "limit_nm": 17,
+    "ratio": 0.21
    },
-   "waist_yaw": {
-    "peak_nm": 0.3,
-    "limit_nm": 36,
+   "shoulder_roll": {
+    "peak_nm": 1.8,
+    "limit_nm": 17,
+    "ratio": 0.11
+   },
+   "hip_roll": {
+    "peak_nm": 5.7,
+    "limit_nm": 60,
+    "ratio": 0.09
+   },
+   "shoulder_yaw": {
+    "peak_nm": 0.9,
+    "limit_nm": 17,
+    "ratio": 0.05
+   },
+   "wrist_roll": {
+    "peak_nm": 0.1,
+    "limit_nm": 17,
     "ratio": 0.01
    }
   },

@@ -532,29 +532,8 @@ def build_solo12():
     return {"solo12-lower": mods["solo12-lower"]}
 
 
-def build_reference(name, urdf_url, mesh_base, credit, budget=60000):
-    """One GLB of a whole robot at its zero pose, for the aesthetic page's side-by-side comparison."""
-    print(f"== reference {name}")
-    u = Urdf(urdf_url, mesh_base, "ref-" + name)
-    meshes = []
-    for link in u.links:
-        meshes.extend(u.link_meshes(link))
-    global FACE_BUDGET
-    keep = FACE_BUDGET; FACE_BUDGET = budget
-    f, b = export_group("ref-" + name, meshes)
-    FACE_BUDGET = keep
-    return {name: dict(file=f, bbox=b, credit=credit, ground_z=round(float(b[0][2]), 4))}
-
-
 def main():
     modules = {}
-    references = {}
-    try:
-        references.update(build_reference("k1", "https://raw.githubusercontent.com/ROBOTIS-GIT/ai_sapiens/main/ai_sapiens_description/urdf/k1_rev1/k1.urdf",
-                                          "https://raw.githubusercontent.com/ROBOTIS-GIT/ai_sapiens/main/ai_sapiens_description/meshes/k1_rev1",
-                                          "ROBOTIS AI Sapiens K1 description (hardware CERN-OHL-P-2.0, software Apache-2.0)"))
-    except Exception as e:  # noqa: BLE001
-        print(f"  reference k1 failed: {e}")
     modules.update(build_foh())
     modules.update(build_foh("foh-v1", "robot_v1.json"))
     modules.update(build_duke())
@@ -565,7 +544,7 @@ def main():
             print(f"  {fn.__name__} failed: {e}")
     for mid, m in modules.items():
         m["ground_z"] = round(float(m["bbox"][0][2]), 4)
-    OUT_JSON.write_text(json.dumps(dict(frame="metres, X forward, Y left, Z up, zero pose", modules=modules, references=references), indent=1) + "\n")
+    OUT_JSON.write_text(json.dumps(dict(frame="metres, X forward, Y left, Z up, zero pose", modules=modules), indent=1) + "\n")
     total = sum(p.stat().st_size for p in OUT_DIR.glob("*.glb"))
     print(f"wrote {OUT_JSON.relative_to(ROOT)}: {len(modules)} modules, {total // 1024} kB of GLB")
 

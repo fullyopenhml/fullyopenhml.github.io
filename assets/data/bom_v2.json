@@ -1,7 +1,7 @@
 {
  "meta": {
   "version": "2.0",
-  "variant": "k1-skeleton",
+  "variant": "extended-bhl",
   "priced_as_of": "2026-10",
   "currency": "USD"
  },
@@ -10,64 +10,52 @@
    "id": "actuators",
    "title": "Actuators",
    "tier": "core",
-   "blurb": "Twenty-three RobStride actuators in four models, chosen by the K1's own torque classes: RS03 (60 N\u00b7m) where the K1 has a QC080 in the legs, RS06 (36 N\u00b7m) at the waist, the ankle roll and the two big shoulder joints, RS02 and RS05 down the arm.",
+   "blurb": "Twenty-two RobStride actuators by BHL's own classes, one step up at the knee: RS02 (17 N\u00b7m) where BHL has a 5010, RS06 (36 N\u00b7m) where it has a 6512 at the shoulder pitch, RS03 (60 N\u00b7m) in the new hip stack and in the knee cradle, which is bored out for it (the 6512 class could not hold the crouch at adult size). BHL's 6512 costs $189 and its 5010 $136 in parts, each with a week of printing and assembly; the RobStrides cost more and arrive assembled.",
    "rows": [
     {
      "id": "ACT_RS03",
      "part_id": "ACT_RS03",
      "description": "RobStride RS03 (60 N\u00b7m peak)",
-     "qty": 10,
+     "qty": 8,
      "unit_cost": 225.0,
-     "total": 2250.0,
+     "total": 1800.0,
      "vendor": "RobStride / Amazon US / AiFitLab",
      "url": "https://www.amazon.com/RobStride-60N-m-Integrated-Actuator-Module/dp/B0GY8PJ1MF",
-     "notes": "Joints: Ankle pitch, Hip pitch, Hip roll, Hip yaw, Knee.",
+     "notes": "Joints: Hip pitch, Hip roll, Hip yaw, Knee.",
      "unit_label": "ea"
     },
     {
      "id": "ACT_RS06",
      "part_id": "ACT_RS06",
      "description": "RobStride RS06 (36 N\u00b7m peak)",
-     "qty": 7,
+     "qty": 2,
      "unit_cost": 210.0,
-     "total": 1470.0,
+     "total": 420.0,
      "vendor": "RobStride / Amazon US / AiFitLab",
      "url": "https://www.robstride.com/",
-     "notes": "Joints: Ankle roll, Shoulder pitch, Shoulder roll, Waist yaw.",
+     "notes": "Joints: Shoulder pitch.",
      "unit_label": "ea"
     },
     {
      "id": "ACT_RS02",
      "part_id": "ACT_RS02",
      "description": "RobStride RS02 (17 N\u00b7m peak)",
-     "qty": 4,
+     "qty": 12,
      "unit_cost": 145.0,
-     "total": 580.0,
+     "total": 1740.0,
      "vendor": "RobStride / Amazon US / AiFitLab",
      "url": "https://www.amazon.com/RobStride-Integrated-Actuator-Module-Encoders/dp/B0GS5945VP",
-     "notes": "Joints: Elbow, Shoulder yaw.",
-     "unit_label": "ea"
-    },
-    {
-     "id": "ACT_RS05",
-     "part_id": "ACT_RS05",
-     "description": "RobStride RS05 (5.5 N\u00b7m peak)",
-     "qty": 2,
-     "unit_cost": 110.0,
-     "total": 220.0,
-     "vendor": "RobStride / Amazon US / AiFitLab",
-     "url": "https://www.robstride.com/",
-     "notes": "Joints: Wrist roll.",
+     "notes": "Joints: Ankle pitch, Ankle roll, Elbow, Shoulder roll, Shoulder yaw, Wrist roll.",
      "unit_label": "ea"
     }
    ],
-   "subtotal": 4520.0
+   "subtotal": 3960.0
   },
   {
    "id": "hands",
    "title": "Hands",
    "tier": "core",
-   "blurb": "Pollen Robotics' Amazing Hand, printed, eight bus servos each. The K1's own hands are passive rubber; their published mesh printed in TPU is the cheaper option on the same flange.",
+   "blurb": "The figure's dexterous hand, as an open design: Pollen Robotics' Amazing Hand, printed, eight bus servos each. BHL's own servo gripper fits the same flange.",
    "rows": [
     {
      "id": "KIT_AMAZING_HAND",
@@ -85,10 +73,67 @@
    "subtotal": 440.0
   },
   {
+   "id": "bhl",
+   "title": "Berkeley Humanoid Lite parts (printed from BHL's CAD)",
+   "tier": "core",
+   "blurb": "The 11 BHL part types this design keeps, 2.43 kg of PLA as BHL prints them, each cut or re-drilled as its note says; print from BHL's Onshape document (CC BY-SA 4.0) with the modifications applied. Their bearings and shoes come from BHL's bill of materials.",
+   "rows": [
+    {
+     "id": "MAT_PLA_BHL",
+     "part_id": "MAT_PLA_BHL",
+     "description": "PLA filament for the BHL parts, 1 kg spool",
+     "qty": 3.5,
+     "unit_cost": 26.0,
+     "total": 91.0,
+     "vendor": "Bambu Lab / Hatchbox (BHL's choices)",
+     "url": "https://berkeley-humanoid-lite.gitbook.io/docs/getting-started-with-hardware/materials-and-parts-bom",
+     "notes": "35 % for supports and failed prints.",
+     "unit_label": "kg"
+    },
+    {
+     "id": "MAT_TPU_SHOE",
+     "part_id": "MAT_TPU_SHOE",
+     "description": "TPU 95A filament for the shoes, 1 kg spool",
+     "qty": 0.5,
+     "unit_cost": 28.0,
+     "total": 14.0,
+     "vendor": "Any",
+     "url": "",
+     "notes": "BHL's shoe on the foot plate.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "HW_6803_2RS",
+     "part_id": "HW_6803_2RS",
+     "description": "Ball bearing 6803-2RS, 17 x 26 x 5 mm",
+     "qty": 6,
+     "unit_cost": 2.87,
+     "total": 17.22,
+     "vendor": "Amazon (BHL BOM)",
+     "url": "https://www.amazon.com/dp/B09P21T5QV",
+     "notes": "BHL's yoke bearing: the outer plate of the knee, ankle and elbow yokes rides on it. Six per robot, as in BHL.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "HW_STUD_17",
+     "part_id": "HW_STUD_17",
+     "description": "Yoke stud, \u00d817 steel dowel, 30 mm",
+     "qty": 6,
+     "unit_cost": 1.5,
+     "total": 9.0,
+     "vendor": "McMaster / Amazon",
+     "url": "",
+     "notes": "Through the cradle's end cap into the yoke's 6803 bearing: the second bearing of BHL's knee, ankle and elbow joints.",
+     "unit_label": "ea"
+    }
+   ],
+   "subtotal": 131.22
+  },
+  {
    "id": "structure",
    "title": "Tubes, extrusion and plates",
    "tier": "core",
-   "blurb": "One carbon-fibre tube per thigh and shank; the arms are too short for tubes at this size and are printed blocks. Aluminium where a flat plate is cheaper than a print.",
+   "blurb": "Carbon-fibre tubes between BHL's parts, as in the paper's figure; aluminium where a flat plate is cheaper than a print.",
    "rows": [
     {
      "id": "CF_TUBE_30",
@@ -99,7 +144,19 @@
      "total": 23.0,
      "vendor": "Amazon",
      "url": "https://www.amazon.com/s?k=carbon+fiber+tube+30mm+26mm+1000mm",
-     "notes": "Cut: thigh 130.5 mm x 2, shank 87.5 mm x 2 = 436 mm.",
+     "notes": "Cut: thigh 185.5 mm x 2, shank 259 mm x 2 = 889 mm.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "CF_TUBE_25",
+     "part_id": "CF_TUBE_25",
+     "description": "Carbon-fibre tube \u00d825 x 22 mm, 3K roll-wrapped, 1000 mm",
+     "qty": 1,
+     "unit_cost": 18.0,
+     "total": 18.0,
+     "vendor": "Amazon",
+     "url": "https://www.amazon.com/s?k=carbon+fiber+tube+25mm+22mm+1000mm",
+     "notes": "Cut: upper arm 142 mm x 2, forearm 115 mm x 2 = 514 mm.",
      "unit_label": "ea"
     },
     {
@@ -115,51 +172,39 @@
      "unit_label": "ea"
     },
     {
-     "id": "HW_2020_330",
-     "part_id": "HW_2020_330",
-     "description": "Aluminium 2020 extrusion, 329 mm, ends tapped M5",
+     "id": "HW_2020_480",
+     "part_id": "HW_2020_480",
+     "description": "Aluminium 2020 extrusion, 480 mm, ends tapped M5",
      "qty": 4,
-     "unit_cost": 4.0,
-     "total": 16.0,
+     "unit_cost": 5.0,
+     "total": 20.0,
      "vendor": "Amazon / Misumi",
      "url": "",
      "notes": "Torso uprights.",
      "unit_label": "ea"
     },
     {
-     "id": "HW_2020_240",
-     "part_id": "HW_2020_240",
-     "description": "Aluminium 2020 extrusion, 240 mm",
+     "id": "HW_2020_300",
+     "part_id": "HW_2020_300",
+     "description": "Aluminium 2020 extrusion, 300 mm",
      "qty": 2,
-     "unit_cost": 3.5,
-     "total": 7.0,
+     "unit_cost": 4.0,
+     "total": 8.0,
      "vendor": "Amazon / Misumi",
      "url": "",
-     "notes": "Pelvis bars: the hip cups and the waist plate bolt to them with T-nuts. 240 mm so the hanging hands pass beside them.",
+     "notes": "Pelvis bars: the hip cups and the torso bottom plate bolt to them with T-nuts.",
      "unit_label": "ea"
     },
     {
      "id": "AL_TORSO_PLATE",
      "part_id": "AL_TORSO_PLATE",
-     "description": "Torso plate, 5 mm 6061, laser-cut, 200 x 150",
+     "description": "Torso plate, 5 mm 6061, laser-cut, 180 x 360",
      "qty": 2,
-     "unit_cost": 22.0,
-     "total": 44.0,
+     "unit_cost": 28.0,
+     "total": 56.0,
      "vendor": "SendCutSend",
      "url": "https://sendcutsend.com/",
-     "notes": "Two per robot (bottom and top). Four M5 for the uprights; the bottom one carries the waist cup, the top one the neck post.",
-     "unit_label": "ea"
-    },
-    {
-     "id": "AL_FOOT_PLATE",
-     "part_id": "AL_FOOT_PLATE",
-     "description": "Foot plate, 3 mm 6061, laser-cut, 215 x 90",
-     "qty": 2,
-     "unit_cost": 8.0,
-     "total": 16.0,
-     "vendor": "SendCutSend",
-     "url": "https://sendcutsend.com/",
-     "notes": "Four M5 holes for the bracket, eight M4 for the sole. DXF generated from the model.",
+     "notes": "Two per robot (bottom and top). Four M5 for the uprights, four M5 into the pelvis bars (bottom) or the head post (top).",
      "unit_label": "ea"
     },
     {
@@ -183,7 +228,7 @@
      "total": 9.0,
      "vendor": "Amazon",
      "url": "",
-     "notes": "Pelvis bars, waist plate, torso plates.",
+     "notes": "Pelvis bars, plates, uprights.",
      "unit_label": "ea"
     },
     {
@@ -199,13 +244,13 @@
      "unit_label": "ea"
     }
    ],
-   "subtotal": 150.4
+   "subtotal": 169.4
   },
   {
    "id": "electronics",
    "title": "Electronics and power",
    "tier": "core",
-   "blurb": "As v1: one computer, one IMU, four CAN buses, two 6S packs in series (44.4 V), breaker, contactor, E-stop. The K1 has a Jetson Orin NX and a 46.8 V pack; the published policies are ONNX files the N100 runs at control rate.",
+   "blurb": "As v1: one computer, one IMU, four CAN buses, two 6S packs in series (44.4 V, inside every RobStride model's 24-60 V range), breaker, contactor, E-stop. BHL runs 24 V with one 6S pack; the RobStrides want 48 V.",
    "rows": [
     {
      "id": "EL_PC_N100",
@@ -240,7 +285,7 @@
      "total": 83.2,
      "vendor": "Amazon",
      "url": "https://www.amazon.com/",
-     "notes": "One per bus: left leg and waist, right leg, left arm, right arm.",
+     "notes": "One per bus: left leg, right leg, left arm, right arm.",
      "unit_label": "ea"
     },
     {
@@ -370,7 +415,7 @@
    "id": "harness",
    "title": "Cables and connectors",
    "tier": "core",
-   "blurb": "Every limb is a daisy chain of XT30(2+2) drops; the leg tubes carry the loom inside them.",
+   "blurb": "Every limb is a daisy chain of XT30(2+2) drops; the tubes carry the loom inside them.",
    "rows": [
     {
      "id": "CB_XT30_2P2_F",
@@ -399,10 +444,10 @@
     {
      "id": "CB_WIRE_18",
      "part_id": "CB_WIRE_18",
-     "description": "18 AWG silicone wire, red + black, 10 m each",
+     "description": "18 AWG silicone wire, red + black, 12 m each",
      "qty": 1,
-     "unit_cost": 20.0,
-     "total": 20.0,
+     "unit_cost": 24.0,
+     "total": 24.0,
      "vendor": "Amazon",
      "url": "",
      "notes": "Actuator drops.",
@@ -423,10 +468,10 @@
     {
      "id": "CB_CAT5",
      "part_id": "CB_CAT5",
-     "description": "Ethernet cable, 10 m (twisted pairs for CAN)",
+     "description": "Ethernet cable, 12 m (twisted pairs for CAN)",
      "qty": 1,
-     "unit_cost": 8.0,
-     "total": 8.0,
+     "unit_cost": 9.0,
+     "total": 9.0,
      "vendor": "Amazon",
      "url": "",
      "notes": "",
@@ -481,7 +526,7 @@
      "unit_label": "ea"
     }
    ],
-   "subtotal": 132.0
+   "subtotal": 137.0
   },
   {
    "id": "hardware",
@@ -493,9 +538,9 @@
      "id": "HW_6809_2RS",
      "part_id": "HW_6809_2RS",
      "description": "Ball bearing 6809-2RS, 45 x 58 x 7 mm",
-     "qty": 10,
+     "qty": 8,
      "unit_cost": 3.0,
-     "total": 30.0,
+     "total": 24.0,
      "vendor": "Amazon",
      "url": "",
      "notes": "Output support bearing of every RS03 joint.",
@@ -505,9 +550,9 @@
      "id": "HW_6807_2RS",
      "part_id": "HW_6807_2RS",
      "description": "Ball bearing 6807-2RS, 35 x 47 x 7 mm",
-     "qty": 7,
+     "qty": 2,
      "unit_cost": 4.0,
-     "total": 28.0,
+     "total": 8.0,
      "vendor": "Amazon",
      "url": "",
      "notes": "Output support bearing of every RS06 joint.",
@@ -517,33 +562,33 @@
      "id": "HW_6707_2RS",
      "part_id": "HW_6707_2RS",
      "description": "Ball bearing 6707-2RS, 35 x 44 x 5 mm",
-     "qty": 8,
+     "qty": 12,
      "unit_cost": 3.0,
-     "total": 24.0,
+     "total": 36.0,
      "vendor": "Amazon",
      "url": "",
-     "notes": "Output support bearing of every RS02 joint, and the inner-plate support bearing at the knees and elbows.",
+     "notes": "Output support bearing of every RS02 joint.",
      "unit_label": "ea"
     },
     {
      "id": "HW_OUT_RS03",
      "part_id": "HW_OUT_RS03",
      "description": "M4 x 30 socket-head screw, output couplers (RS03)",
-     "qty": 60,
+     "qty": 48,
      "unit_cost": 0.15,
-     "total": 9.0,
+     "total": 7.2,
      "vendor": "Amazon / McMaster",
      "url": "",
-     "notes": "6 per joint through the 10 mm child plate and the coupler into the output boss; 5.1 mm engaged of 6.",
+     "notes": "6 per joint through the child plate and the coupler into the output boss; 5.1 mm engaged of 6.",
      "unit_label": "ea"
     },
     {
      "id": "HW_LUG_RS03",
      "part_id": "HW_LUG_RS03",
      "description": "M4 x 25 socket-head screw, mount rings (RS03)",
-     "qty": 80,
+     "qty": 64,
      "unit_cost": 0.12,
-     "total": 9.6,
+     "total": 7.68,
      "vendor": "Amazon / McMaster",
      "url": "",
      "notes": "8 per joint through the 22 mm ring (counterbored) into the front lugs; 7.3 mm engaged of 8.",
@@ -553,21 +598,21 @@
      "id": "HW_OUT_RS06",
      "part_id": "HW_OUT_RS06",
      "description": "M4 x 25 socket-head screw, output couplers (RS06)",
-     "qty": 42,
+     "qty": 12,
      "unit_cost": 0.15,
-     "total": 6.3,
+     "total": 1.8,
      "vendor": "Amazon / McMaster",
      "url": "",
-     "notes": "6 per joint through the 8 mm child plate and the coupler into the output boss; 5.5 mm engaged of 6.",
+     "notes": "6 per joint through the child plate and the coupler into the output boss; 5.5 mm engaged of 6.",
      "unit_label": "ea"
     },
     {
      "id": "HW_LUG_RS06",
      "part_id": "HW_LUG_RS06",
      "description": "M3 x 25 socket-head screw, mount rings (RS06)",
-     "qty": 56,
+     "qty": 16,
      "unit_cost": 0.12,
-     "total": 6.72,
+     "total": 1.92,
      "vendor": "Amazon / McMaster",
      "url": "",
      "notes": "8 per joint through the 20 mm ring (counterbored) into the front lugs; 8.3 mm engaged of 8.5.",
@@ -577,57 +622,33 @@
      "id": "HW_OUT_RS02",
      "part_id": "HW_OUT_RS02",
      "description": "M4 x 25 socket-head screw, output couplers (RS02)",
-     "qty": 24,
+     "qty": 72,
      "unit_cost": 0.15,
-     "total": 3.6,
+     "total": 10.8,
      "vendor": "Amazon / McMaster",
      "url": "",
-     "notes": "6 per joint through the 8 mm child plate and the coupler into the output boss; 6.5 mm engaged of 7.",
+     "notes": "6 per joint through the child plate and the coupler into the output boss; 6.5 mm engaged of 7.",
      "unit_label": "ea"
     },
     {
      "id": "HW_LUG_RS02",
      "part_id": "HW_LUG_RS02",
      "description": "M3 x 16 socket-head screw, mount rings (RS02)",
-     "qty": 36,
+     "qty": 108,
      "unit_cost": 0.12,
-     "total": 4.32,
+     "total": 12.96,
      "vendor": "Amazon / McMaster",
      "url": "",
      "notes": "9 per joint through the 12 mm ring (counterbored) into the front lugs; 7.3 mm engaged of 8.",
      "unit_label": "ea"
     },
     {
-     "id": "HW_OUT_RS05",
-     "part_id": "HW_OUT_RS05",
-     "description": "M4 x 8 socket-head screw, output couplers (RS05)",
-     "qty": 12,
-     "unit_cost": 0.15,
-     "total": 1.8,
-     "vendor": "Amazon / McMaster",
-     "url": "",
-     "notes": "6 per joint through the 5 mm child plate and the coupler into the output boss; 3 mm engaged of 3.5.",
-     "unit_label": "ea"
-    },
-    {
-     "id": "HW_REAR_RS05",
-     "part_id": "HW_REAR_RS05",
-     "description": "M3 x 10 socket-head screw, wrist mount (RS05)",
-     "qty": 8,
-     "unit_cost": 0.12,
-     "total": 0.96,
-     "vendor": "Amazon / McMaster",
-     "url": "",
-     "notes": "",
-     "unit_label": "ea"
-    },
-    {
      "id": "HW_PIN_4X10",
      "part_id": "HW_PIN_4X10",
      "description": "Dowel pin \u00d84 x 10 mm, steel",
-     "qty": 69,
+     "qty": 66,
      "unit_cost": 0.3,
-     "total": 20.7,
+     "total": 19.8,
      "vendor": "Amazon / McMaster",
      "url": "",
      "notes": "Three per joint.",
@@ -637,12 +658,24 @@
      "id": "HW_TUBE_BOLT",
      "part_id": "HW_TUBE_BOLT",
      "description": "M4 x 45 socket-head screw + nyloc, tube cross bolts",
-     "qty": 8,
+     "qty": 16,
      "unit_cost": 0.2,
-     "total": 1.6,
+     "total": 3.2,
      "vendor": "Amazon / McMaster",
      "url": "",
      "notes": "Two per tube end, drilled through the tube after bonding.",
+     "unit_label": "ea"
+    },
+    {
+     "id": "HW_SOCKET_BOLT",
+     "part_id": "HW_SOCKET_BOLT",
+     "description": "M4 x 16 socket-head screw + nyloc, socket flanges",
+     "qty": 56,
+     "unit_cost": 0.15,
+     "total": 8.4,
+     "vendor": "Amazon / McMaster",
+     "url": "",
+     "notes": "Four per socket flange into the cut BHL arm.",
      "unit_label": "ea"
     },
     {
@@ -718,52 +751,40 @@
      "unit_label": "ea"
     }
    ],
-   "subtotal": 224.6
+   "subtotal": 219.76
   },
   {
    "id": "filament",
-   "title": "Printed parts (filament)",
+   "title": "Our printed parts (filament)",
    "tier": "core",
-   "blurb": "About 5.1 kg of structural prints, 0.5 kg of PLA and 0.2 kg of TPU; quantities add 35 % for supports and failed prints.",
+   "blurb": "About 2.5 kg of structural prints (hip stack, sockets, couplers, mount rings and cups added to BHL's cradles) and 0.3 kg of PLA; quantities add 35 % for supports and failed prints. BHL's own parts are in their section.",
    "rows": [
     {
      "id": "MAT_PETG_CF",
      "part_id": "MAT_PETG_CF",
      "description": "PETG-CF filament, 1 kg spool",
-     "qty": 7.0,
+     "qty": 3.5,
      "unit_cost": 30.0,
-     "total": 210.0,
+     "total": 105.0,
      "vendor": "Bambu / Polymaker / Overture",
      "url": "",
-     "notes": "Every structural part. PA-CF for the hip and knee cups.",
+     "notes": "Every structural part of ours. PA-CF for the hip cups.",
      "unit_label": "kg"
     },
     {
      "id": "MAT_PLA",
      "part_id": "MAT_PLA",
      "description": "PLA filament, 1 kg spool",
-     "qty": 1.0,
+     "qty": 0.5,
      "unit_cost": 20.0,
-     "total": 20.0,
+     "total": 10.0,
      "vendor": "Any",
      "url": "",
      "notes": "Head, cradles.",
      "unit_label": "kg"
-    },
-    {
-     "id": "MAT_TPU",
-     "part_id": "MAT_TPU",
-     "description": "TPU 95A filament, 1 kg spool",
-     "qty": 0.5,
-     "unit_cost": 28.0,
-     "total": 14.0,
-     "vendor": "Any",
-     "url": "",
-     "notes": "Soles.",
-     "unit_label": "kg"
     }
    ],
-   "subtotal": 244.0
+   "subtotal": 115.0
   },
   {
    "id": "perception",
@@ -891,7 +912,7 @@
     {
      "id": "TL_STAND",
      "part_id": "TL_STAND",
-     "description": "Gantry or hoist rated 60 kg, 1.7 m clear height",
+     "description": "Gantry or hoist rated 60 kg, 1.9 m clear height",
      "qty": 1,
      "unit_cost": 180.0,
      "total": 180.0,
@@ -905,7 +926,7 @@
   }
  ],
  "tiers": {
-  "core": 6323.4,
+  "core": 5784.78,
   "optional": 310.0,
   "tools": 1175.0
  }

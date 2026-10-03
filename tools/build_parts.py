@@ -139,7 +139,9 @@ def build_part(pid):
                     occ = P
     if occ is None:
         raise KeyError(pid)
-    solids = [shape_solid(sh) for sh in occ["shapes"]]
+    solids = [shape_solid(sh) for sh in occ["shapes"] if sh["t"] != "mesh"]
+    if not solids:
+        return occ, None
     m = Manifold.batch_boolean(solids, OpType.Add) if len(solids) > 1 else solids[0]
     feats = [feature_solid(f) for f in occ.get("features", [])]
     if feats:
@@ -230,10 +232,16 @@ def main():
     for pid in pids:
         c = cat[pid]
         occ, m = build_part(pid)
+        bhl = c.get("source") == "bhl"
+        if m is None:
+            print(f"  {pid:34s} BHL part, no additions: print from BHL's CAD")
+            manifest["parts"].append(dict(id=pid, name=c["name"], file=None, bhl=True, material=c["material"], material_name=mats[c["material"]]["name"], qty=c["qty"],
+                                          mirror=bool(c.get("mirror")), mass_g_est=c.get("mass_g", 0), bbox_mm=c.get("dims"), notes=c.get("notes", "")))
+            continue
         tm = to_trimesh(m)
         if not tm.is_watertight:
             print(f"  WARNING {pid}: mesh not watertight")
-        fname = f"{pid}_v{VER}.stl"
+        fname = f"{pid}_v{VER}{'_additions' if bhl else ''}.stl"
         path = OUT / fname
         tm.export(path, file_type="stl")
         data = path.read_bytes()
@@ -246,8 +254,10 @@ def main():
             optional=c.get("optional"), volume_cm3=round(vol, 1), mass_g_solid=round(vol * mat["density"]),
             mass_g_est=round(vol * mat["density"] * mat["fill"]), bbox_mm=[round(float(v), 1) for v in (bb[1] - bb[0])],
             faces=int(len(tm.faces)), features=len(occ.get("features", [])), orientation=ORIENTATION.get(pid, ""),
-            source_occurrence=occ["occ"],
+            source_occurrence=occ["occ"], bhl=bhl, notes=c.get("notes", "") if bhl else "",
         )
+        if bhl:
+            entry["mass_g_est"] = c.get("mass_g", entry["mass_g_est"]); entry["bbox_mm"] = c.get("dims", entry["bbox_mm"])
         manifest["parts"].append(entry)
         files.append(path)
         print(f"  {pid:34s} {vol:8.1f} cm3  {entry['mass_g_est']:5d} g  {entry['bbox_mm']}  {entry['faces']} faces  {'MIRROR' if entry['mirror'] else ''}")
