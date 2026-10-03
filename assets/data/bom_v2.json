@@ -133,7 +133,7 @@
    "id": "structure",
    "title": "Tubes, extrusion and plates",
    "tier": "core",
-   "blurb": "Carbon-fibre tubes between BHL's parts, as in the paper's figure; aluminium where a flat plate is cheaper than a print.",
+   "blurb": "Carbon-fibre tubes between BHL's parts, as in the paper's figure; a 2020 cage of BHL's proportion around the electronics, 130 x 172 outside; aluminium where a flat plate is cheaper than a print.",
    "rows": [
     {
      "id": "CF_TUBE_30",
@@ -198,10 +198,10 @@
     {
      "id": "AL_TORSO_PLATE",
      "part_id": "AL_TORSO_PLATE",
-     "description": "Torso plate, 5 mm 6061, laser-cut, 180 x 360",
+     "description": "Torso plate, 5 mm 6061, laser-cut, 130 x 172",
      "qty": 2,
-     "unit_cost": 28.0,
-     "total": 56.0,
+     "unit_cost": 18.0,
+     "total": 36.0,
      "vendor": "SendCutSend",
      "url": "https://sendcutsend.com/",
      "notes": "Two per robot (bottom and top). Four M5 for the uprights, four M5 into the pelvis bars (bottom) or the head post (top).",
@@ -210,7 +210,7 @@
     {
      "id": "PC_SHEET",
      "part_id": "PC_SHEET",
-     "description": "Polycarbonate sheet 3 mm, 600 x 600 (panels and tray)",
+     "description": "Polycarbonate sheet 3 mm, 600 x 600 (panels)",
      "qty": 1,
      "unit_cost": 18.0,
      "total": 18.0,
@@ -244,7 +244,7 @@
      "unit_label": "ea"
     }
    ],
-   "subtotal": 169.4
+   "subtotal": 149.4
   },
   {
    "id": "electronics",
@@ -757,15 +757,15 @@
    "id": "filament",
    "title": "Our printed parts (filament)",
    "tier": "core",
-   "blurb": "About 2.5 kg of structural prints (hip stack, sockets, couplers, mount rings and cups added to BHL's cradles) and 0.3 kg of PLA; quantities add 35 % for supports and failed prints. BHL's own parts are in their section.",
+   "blurb": "About 2.9 kg of structural prints (hip stack, sockets, couplers, mount rings and cups added to BHL's cradles) and 0.3 kg of PLA; quantities add 35 % for supports and failed prints. BHL's own parts are in their section.",
    "rows": [
     {
      "id": "MAT_PETG_CF",
      "part_id": "MAT_PETG_CF",
      "description": "PETG-CF filament, 1 kg spool",
-     "qty": 3.5,
+     "qty": 4.0,
      "unit_cost": 30.0,
-     "total": 105.0,
+     "total": 120.0,
      "vendor": "Bambu / Polymaker / Overture",
      "url": "",
      "notes": "Every structural part of ours. PA-CF for the hip cups.",
@@ -784,7 +784,7 @@
      "unit_label": "kg"
     }
    ],
-   "subtotal": 115.0
+   "subtotal": 130.0
   },
   {
    "id": "perception",
@@ -926,7 +926,7 @@
   }
  ],
  "tiers": {
-  "core": 5784.78,
+  "core": 5779.78,
   "optional": 310.0,
   "tools": 1175.0
  }

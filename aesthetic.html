@@ -59,7 +59,7 @@
   <div class="two">
     <div class="card"><h3>Kept from BHL</h3><p>Eleven printed part types, listed below with what is done to each: the knee and ankle cradles at the ends of the thigh and shank, the knee yoke, the ankle bracket, the foot with its shoe, the shoulder bracket, the elbow bracket, and the two ends of each arm link. BHL's 6803 yoke bearings and its shoes stay in the bill of materials.</p></div>
     <div class="card"><h3>Substituted</h3><p>RobStride actuators in place of the printed cycloidal modules, by BHL's own size classes: an RS02 where BHL has a 5010, an RS06 where it has a 6512 at the shoulder, an RS03 at the knee, where the 6512 class could not hold the crouch at adult size. Each cradle keeps its channel around the body; its mouth is bored for our mount ring with the output support bearing.</p></div>
-    <div class="card"><h3>New</h3><p>The hip stack and pelvis of the figure's inset (pitch in a cup on 2020 bars, abduction on a bracket, rotation hanging under it, all RS03), the 2020 torso with laser-cut plates, four tube socket flanges per side, the hand flange, and the couplers and mount rings of our joint kits. Hands are Pollen Robotics' Amazing Hand; BHL's servo gripper fits the same flange.</p></div>
+    <div class="card"><h3>New</h3><p>The hip stack and pelvis of the figure's inset (pitch in a cup on 2020 bars, abduction on a bracket, rotation hanging under it, all RS03), a 2020 cage of BHL's proportion (130 × 172 mm outside, as narrow as the mini PC allows; BHL's is 140 × 160) with laser-cut end plates and the shoulder actuators bolted to its outside as BHL's modules are, four tube socket flanges per side, the hand flange, and the couplers and mount rings of our joint kits. Hands are Pollen Robotics' Amazing Hand; BHL's servo gripper fits the same flange.</p></div>
   </div>
 
   <h2 id="parts">Every printed part: whose it is, and what changes</h2>
@@ -108,6 +108,7 @@ tools/.venv/bin/python tools/sim_stand.py --model v2 --render    # sim_results_v
     <li><b>The joint-kit test</b> that every design on this site depends on: print one RS03 cup, load it to 60 N·m.</li>
     <li><b>The yoke bearings.</b> BHL's 6803 stud bearings carry the second side of the knee, ankle and elbow; at adult size the stud is Ø17 steel. Check the outer plate's pocket on the printed yoke.</li>
     <li><b>A walking policy.</b> BHL publishes its Isaac Lab training environment under MIT; this URDF has the same joint names and order as our v1, so the same path applies.</li>
+    <li><b>The shoulder brackets.</b> The cage is BHL-narrow, but our hip stack is wider than BHL's 45° hip, so the hanging hands clear the hip-roll cups only with the shoulder actuators 110 mm outside the cage, on a printed beam. BHL hangs its arms 15° abducted instead; that pose is not expressible in this generator yet, and would let the shoulders come in.</li>
     <li><b>The skin.</b> A 1X-style soft cover over this skeleton, patterned over the swept volumes with the joint ranges above as the constraint.</li>
   </ul>
 </main>
@@ -155,7 +156,7 @@ document.querySelector("#tube-table tbody").innerHTML = [
 
 // audit (static record of the last run)
 const AUDIT = [
-  ["Zero pose, 407 shapes, 0.5 mm tolerance", "no overlaps", "earlier passes found our RS02 rings at the ankle and the foot meeting at a line (fixed with a 10 mm spacer under the bracket's roll boss and a smaller ring), the arm socket bosses in the shoulder and elbow rings (the arm plates are now cut 44 mm below the axes), and the wrist cup touching the hip-yaw housing (arm line +10 mm)"],
+  ["Zero pose, 408 shapes, 0.5 mm tolerance", "no overlaps", "earlier passes found our RS02 rings at the ankle and the foot meeting at a line (fixed with a 10 mm spacer under the bracket's roll boss and a smaller ring), the arm socket bosses in the shoulder and elbow rings (the arm plates are now cut 44 mm below the axes), and the wrist cup touching the hip-yaw housing (arm line +10 mm)"],
   ["Poses: crouch, reach, wave, default standing, abduct 45° with default arms", "no pairs deeper than 1 mm", ""],
   ["Sweep: hip pitch −90…100, hip yaw ±90, knee 0…120, ankle pitch ±45, ankle roll ±25", "clear", "the raised foot cradle and the spacer keep the two ankle rings apart through the ankle's range"],
   ["Sweep: hip roll −12…45 from the zero pose", "hand pairs from 21° on", "the straight-arm zero pose only, as in v1: the default pose (elbows 30°) is clear through 45°"],

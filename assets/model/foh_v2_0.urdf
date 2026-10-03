@@ -22,7 +22,7 @@
   <material name="pc_sheet"><color rgba="0.788 0.808 0.839 1"/></material>
   <material name="hand"><color rgba="0.541 0.576 0.627 1"/></material>
   <link name="pelvis">
-    <inertial><origin xyz="-0.00510 -0.00042 1.22120" rpy="0 0 0"/><mass value="11.7530"/><inertia ixx="6.143825e-01" ixy="-4.227080e-04" ixz="-4.268105e-03" iyy="5.113159e-01" iyz="8.603303e-04" izz="1.524434e-01"/></inertial>
+    <inertial><origin xyz="-0.00039 -0.00069 1.23318" rpy="0 0 0"/><mass value="10.2640"/><inertia ixx="4.968273e-01" ixy="-3.783621e-04" ixz="-9.993497e-04" iyy="4.431775e-01" iyz="1.211722e-03" izz="7.852118e-02"/></inertial>
     <visual name="pelvis.pelvis_bar_F#0"><origin xyz="0.06650 0.00000 1.03500" rpy="0 0 0"/><geometry><box size="0.02000 0.30000 0.02000"/></geometry><material name="al_ext"/></visual>
     <collision name="pelvis.pelvis_bar_F#0.col"><origin xyz="0.06650 0.00000 1.03500" rpy="0 0 0"/><geometry><box size="0.02000 0.30000 0.02000"/></geometry></collision>
     <visual name="pelvis.pelvis_bar_B#1"><origin xyz="-0.06650 0.00000 1.03500" rpy="0 0 0"/><geometry><box size="0.02000 0.30000 0.02000"/></geometry><material name="al_ext"/></visual>
@@ -55,144 +55,146 @@
     <collision name="pelvis.hip_cup_R#14.col"><origin xyz="-0.05275 -0.02225 0.95000" rpy="0 0 0"/><geometry><box size="0.00650 0.03950 0.02000"/></geometry></collision>
     <visual name="pelvis.hip_cup_R#15"><origin xyz="0.00000 -0.02225 0.89725" rpy="0 0 0"/><geometry><box size="0.02000 0.03950 0.00650"/></geometry><material name="petg_cf"/></visual>
     <collision name="pelvis.hip_cup_R#15.col"><origin xyz="0.00000 -0.02225 0.89725" rpy="0 0 0"/><geometry><box size="0.02000 0.03950 0.00650"/></geometry></collision>
-    <visual name="pelvis.bottom_plate#16"><origin xyz="0.00000 0.00000 1.04750" rpy="0 0 0"/><geometry><box size="0.18000 0.36000 0.00500"/></geometry><material name="al_plate"/></visual>
-    <collision name="pelvis.bottom_plate#16.col"><origin xyz="0.00000 0.00000 1.04750" rpy="0 0 0"/><geometry><box size="0.18000 0.36000 0.00500"/></geometry></collision>
-    <visual name="pelvis.top_plate#17"><origin xyz="0.00000 0.00000 1.53250" rpy="0 0 0"/><geometry><box size="0.18000 0.36000 0.00500"/></geometry><material name="al_plate"/></visual>
-    <collision name="pelvis.top_plate#17.col"><origin xyz="0.00000 0.00000 1.53250" rpy="0 0 0"/><geometry><box size="0.18000 0.36000 0.00500"/></geometry></collision>
-    <visual name="pelvis.upright_FL#18"><origin xyz="0.06650 0.16000 1.29000" rpy="0 0 0"/><geometry><box size="0.02000 0.02000 0.48000"/></geometry><material name="al_ext"/></visual>
-    <collision name="pelvis.upright_FL#18.col"><origin xyz="0.06650 0.16000 1.29000" rpy="0 0 0"/><geometry><box size="0.02000 0.02000 0.48000"/></geometry></collision>
-    <visual name="pelvis.upright_FR#19"><origin xyz="0.06650 -0.16000 1.29000" rpy="0 0 0"/><geometry><box size="0.02000 0.02000 0.48000"/></geometry><material name="al_ext"/></visual>
-    <collision name="pelvis.upright_FR#19.col"><origin xyz="0.06650 -0.16000 1.29000" rpy="0 0 0"/><geometry><box size="0.02000 0.02000 0.48000"/></geometry></collision>
-    <visual name="pelvis.upright_BL#20"><origin xyz="-0.06650 0.16000 1.29000" rpy="0 0 0"/><geometry><box size="0.02000 0.02000 0.48000"/></geometry><material name="al_ext"/></visual>
-    <collision name="pelvis.upright_BL#20.col"><origin xyz="-0.06650 0.16000 1.29000" rpy="0 0 0"/><geometry><box size="0.02000 0.02000 0.48000"/></geometry></collision>
-    <visual name="pelvis.upright_BR#21"><origin xyz="-0.06650 -0.16000 1.29000" rpy="0 0 0"/><geometry><box size="0.02000 0.02000 0.48000"/></geometry><material name="al_ext"/></visual>
-    <collision name="pelvis.upright_BR#21.col"><origin xyz="-0.06650 -0.16000 1.29000" rpy="0 0 0"/><geometry><box size="0.02000 0.02000 0.48000"/></geometry></collision>
-    <visual name="pelvis.side_panel_L#22"><origin xyz="0.00000 0.17150 1.29000" rpy="0 0 0"/><geometry><box size="0.14500 0.00300 0.46000"/></geometry><material name="pc_sheet"/></visual>
-    <collision name="pelvis.side_panel_L#22.col"><origin xyz="0.00000 0.17150 1.29000" rpy="0 0 0"/><geometry><box size="0.14500 0.00300 0.46000"/></geometry></collision>
-    <visual name="pelvis.side_panel_R#23"><origin xyz="0.00000 -0.17150 1.29000" rpy="0 0 0"/><geometry><box size="0.14500 0.00300 0.46000"/></geometry><material name="pc_sheet"/></visual>
-    <collision name="pelvis.side_panel_R#23.col"><origin xyz="0.00000 -0.17150 1.29000" rpy="0 0 0"/><geometry><box size="0.14500 0.00300 0.46000"/></geometry></collision>
-    <visual name="pelvis.back_panel#24"><origin xyz="-0.07950 0.00000 1.29000" rpy="0 0 0"/><geometry><box size="0.00300 0.33000 0.48000"/></geometry><material name="pc_sheet"/></visual>
-    <collision name="pelvis.back_panel#24.col"><origin xyz="-0.07950 0.00000 1.29000" rpy="0 0 0"/><geometry><box size="0.00300 0.33000 0.48000"/></geometry></collision>
-    <visual name="pelvis.front_panel#25"><origin xyz="0.07950 0.00000 1.29000" rpy="0 0 0"/><geometry><box size="0.00300 0.33000 0.48000"/></geometry><material name="pc_sheet"/></visual>
-    <collision name="pelvis.front_panel#25.col"><origin xyz="0.07950 0.00000 1.29000" rpy="0 0 0"/><geometry><box size="0.00300 0.33000 0.48000"/></geometry></collision>
-    <visual name="pelvis.electronics_tray#26"><origin xyz="0.00200 0.00000 1.21500" rpy="0 0 0"/><geometry><box size="0.00300 0.14000 0.30000"/></geometry><material name="pc_sheet"/></visual>
-    <collision name="pelvis.electronics_tray#26.col"><origin xyz="0.00200 0.00000 1.21500" rpy="0 0 0"/><geometry><box size="0.00300 0.14000 0.30000"/></geometry></collision>
-    <visual name="pelvis.battery_cradle_L#27"><origin xyz="-0.03200 0.04000 1.05300" rpy="0 0 0"/><geometry><box size="0.05600 0.07000 0.00600"/></geometry><material name="pla"/></visual>
-    <collision name="pelvis.battery_cradle_L#27.col"><origin xyz="-0.03200 0.04000 1.05300" rpy="0 0 0"/><geometry><box size="0.05600 0.07000 0.00600"/></geometry></collision>
-    <visual name="pelvis.battery_cradle_R#28"><origin xyz="-0.03200 -0.04000 1.05300" rpy="0 0 0"/><geometry><box size="0.05600 0.07000 0.00600"/></geometry><material name="pla"/></visual>
-    <collision name="pelvis.battery_cradle_R#28.col"><origin xyz="-0.03200 -0.04000 1.05300" rpy="0 0 0"/><geometry><box size="0.05600 0.07000 0.00600"/></geometry></collision>
-    <visual name="pelvis.battery_1#29"><origin xyz="-0.03200 0.04000 1.13900" rpy="0 0 0"/><geometry><box size="0.05200 0.06400 0.16600"/></geometry><material name="battery"/></visual>
-    <collision name="pelvis.battery_1#29.col"><origin xyz="-0.03200 0.04000 1.13900" rpy="0 0 0"/><geometry><box size="0.05200 0.06400 0.16600"/></geometry></collision>
-    <visual name="pelvis.battery_2#30"><origin xyz="-0.03200 -0.04000 1.13900" rpy="0 0 0"/><geometry><box size="0.05200 0.06400 0.16600"/></geometry><material name="battery"/></visual>
-    <collision name="pelvis.battery_2#30.col"><origin xyz="-0.03200 -0.04000 1.13900" rpy="0 0 0"/><geometry><box size="0.05200 0.06400 0.16600"/></geometry></collision>
-    <visual name="pelvis.computer#31"><origin xyz="0.02800 0.00000 1.13000" rpy="0 0 0"/><geometry><box size="0.04500 0.12800 0.12800"/></geometry><material name="enclosure"/></visual>
-    <collision name="pelvis.computer#31.col"><origin xyz="0.02800 0.00000 1.13000" rpy="0 0 0"/><geometry><box size="0.04500 0.12800 0.12800"/></geometry></collision>
-    <visual name="pelvis.can_adapter_0#32"><origin xyz="0.03400 0.04500 1.20200" rpy="0 0 0"/><geometry><box size="0.06000 0.02500 0.01200"/></geometry><material name="pcb"/></visual>
-    <collision name="pelvis.can_adapter_0#32.col"><origin xyz="0.03400 0.04500 1.20200" rpy="0 0 0"/><geometry><box size="0.06000 0.02500 0.01200"/></geometry></collision>
-    <visual name="pelvis.can_adapter_1#33"><origin xyz="0.03400 -0.04500 1.20200" rpy="0 0 0"/><geometry><box size="0.06000 0.02500 0.01200"/></geometry><material name="pcb"/></visual>
-    <collision name="pelvis.can_adapter_1#33.col"><origin xyz="0.03400 -0.04500 1.20200" rpy="0 0 0"/><geometry><box size="0.06000 0.02500 0.01200"/></geometry></collision>
-    <visual name="pelvis.can_adapter_2#34"><origin xyz="0.03400 0.04500 1.22000" rpy="0 0 0"/><geometry><box size="0.06000 0.02500 0.01200"/></geometry><material name="pcb"/></visual>
-    <collision name="pelvis.can_adapter_2#34.col"><origin xyz="0.03400 0.04500 1.22000" rpy="0 0 0"/><geometry><box size="0.06000 0.02500 0.01200"/></geometry></collision>
-    <visual name="pelvis.can_adapter_3#35"><origin xyz="0.03400 -0.04500 1.22000" rpy="0 0 0"/><geometry><box size="0.06000 0.02500 0.01200"/></geometry><material name="pcb"/></visual>
-    <collision name="pelvis.can_adapter_3#35.col"><origin xyz="0.03400 -0.04500 1.22000" rpy="0 0 0"/><geometry><box size="0.06000 0.02500 0.01200"/></geometry></collision>
-    <visual name="pelvis.usb_hub#36"><origin xyz="0.01900 0.00000 1.20200" rpy="0 0 0"/><geometry><box size="0.03000 0.06000 0.01400"/></geometry><material name="enclosure"/></visual>
-    <collision name="pelvis.usb_hub#36.col"><origin xyz="0.01900 0.00000 1.20200" rpy="0 0 0"/><geometry><box size="0.03000 0.06000 0.01400"/></geometry></collision>
-    <visual name="pelvis.buck_12v#37"><origin xyz="-0.03000 0.00000 1.24000" rpy="0 0 0"/><geometry><box size="0.06000 0.04500 0.02500"/></geometry><material name="enclosure"/></visual>
-    <collision name="pelvis.buck_12v#37.col"><origin xyz="-0.03000 0.00000 1.24000" rpy="0 0 0"/><geometry><box size="0.06000 0.04500 0.02500"/></geometry></collision>
-    <visual name="pelvis.dist_block#38"><origin xyz="0.02900 0.00000 1.24800" rpy="0 0 0"/><geometry><box size="0.05000 0.06000 0.02000"/></geometry><material name="enclosure"/></visual>
-    <collision name="pelvis.dist_block#38.col"><origin xyz="0.02900 0.00000 1.24800" rpy="0 0 0"/><geometry><box size="0.05000 0.06000 0.02000"/></geometry></collision>
-    <visual name="pelvis.contactor#39"><origin xyz="-0.03000 0.00000 1.28600" rpy="0 0 0"/><geometry><box size="0.04400 0.06000 0.04000"/></geometry><material name="enclosure"/></visual>
-    <collision name="pelvis.contactor#39.col"><origin xyz="-0.03000 0.00000 1.28600" rpy="0 0 0"/><geometry><box size="0.04400 0.06000 0.04000"/></geometry></collision>
-    <visual name="pelvis.imu#40"><origin xyz="0.03000 0.00000 1.05750" rpy="0 0 0"/><geometry><box size="0.03600 0.03600 0.01400"/></geometry><material name="pcb"/></visual>
-    <collision name="pelvis.imu#40.col"><origin xyz="0.03000 0.00000 1.05750" rpy="0 0 0"/><geometry><box size="0.03600 0.03600 0.01400"/></geometry></collision>
-    <visual name="pelvis.estop#41"><origin xyz="-0.08650 0.00000 1.46500" rpy="0 0 0"/><geometry><box size="0.01000 0.04400 0.04400"/></geometry><material name="estop"/></visual>
-    <collision name="pelvis.estop#41.col"><origin xyz="-0.08650 0.00000 1.46500" rpy="0 0 0"/><geometry><box size="0.01000 0.04400 0.04400"/></geometry></collision>
-    <visual name="pelvis.estop#42"><origin xyz="-0.10250 0.00000 1.46500" rpy="0 1.5707963 0"/><geometry><cylinder radius="0.02000" length="0.02200"/></geometry><material name="estop"/></visual>
-    <collision name="pelvis.estop#42.col"><origin xyz="-0.10250 0.00000 1.46500" rpy="0 1.5707963 0"/><geometry><cylinder radius="0.02000" length="0.02200"/></geometry></collision>
-    <visual name="pelvis.breaker#43"><origin xyz="-0.09050 -0.05500 1.39500" rpy="0 0 0"/><geometry><box size="0.01800 0.03600 0.06000"/></geometry><material name="enclosure"/></visual>
-    <collision name="pelvis.breaker#43.col"><origin xyz="-0.09050 -0.05500 1.39500" rpy="0 0 0"/><geometry><box size="0.01800 0.03600 0.06000"/></geometry></collision>
-    <visual name="pelvis.neck_post#44"><origin xyz="0.01000 0.00000 1.55200" rpy="0 0 0"/><geometry><cylinder radius="0.02200" length="0.03400"/></geometry><material name="petg_cf"/></visual>
-    <collision name="pelvis.neck_post#44.col"><origin xyz="0.01000 0.00000 1.55200" rpy="0 0 0"/><geometry><cylinder radius="0.02200" length="0.03400"/></geometry></collision>
-    <visual name="pelvis.head_shell#45"><origin xyz="0.01500 0.00000 1.60400" rpy="0 0 0"/><geometry><box size="0.09000 0.11000 0.07000"/></geometry><material name="pla"/></visual>
-    <collision name="pelvis.head_shell#45.col"><origin xyz="0.01500 0.00000 1.60400" rpy="0 0 0"/><geometry><box size="0.09000 0.11000 0.07000"/></geometry></collision>
-    <visual name="pelvis.camera#46"><origin xyz="0.05500 0.00000 1.61400" rpy="0 0 0"/><geometry><box size="0.02600 0.09000 0.02600"/></geometry><material name="camera"/></visual>
-    <collision name="pelvis.camera#46.col"><origin xyz="0.05500 0.00000 1.61400" rpy="0 0 0"/><geometry><box size="0.02600 0.09000 0.02600"/></geometry></collision>
-    <visual name="pelvis.hip_pitch_L_act#47"><origin xyz="0.00000 0.02225 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04900" length="0.03950"/></geometry><material name="actuator"/></visual>
-    <collision name="pelvis.hip_pitch_L_act#47.col"><origin xyz="0.00000 0.02225 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04900" length="0.03950"/></geometry></collision>
-    <visual name="pelvis.hip_pitch_L_act#48"><origin xyz="0.00000 0.04600 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05300" length="0.00800"/></geometry><material name="flange"/></visual>
-    <collision name="pelvis.hip_pitch_L_act#48.col"><origin xyz="0.00000 0.04600 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05300" length="0.00800"/></geometry></collision>
-    <visual name="pelvis.hip_pitch_L_act#49"><origin xyz="0.00000 0.05330 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.03975" length="0.00660"/></geometry><material name="actuator"/></visual>
-    <collision name="pelvis.hip_pitch_L_act#49.col"><origin xyz="0.00000 0.05330 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.03975" length="0.00660"/></geometry></collision>
-    <visual name="pelvis.hip_pitch_L_act#50"><origin xyz="0.00000 0.05785 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.03500" length="0.00250"/></geometry><material name="flange"/></visual>
-    <collision name="pelvis.hip_pitch_L_act#50.col"><origin xyz="0.00000 0.05785 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.03500" length="0.00250"/></geometry></collision>
-    <visual name="pelvis.hip_pitch_L_act#51"><origin xyz="0.00000 0.00400 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04300" length="0.00300"/></geometry><material name="enclosure"/></visual>
-    <collision name="pelvis.hip_pitch_L_act#51.col"><origin xyz="0.00000 0.00400 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04300" length="0.00300"/></geometry></collision>
-    <visual name="pelvis.hip_pitch_L_bearing#52"><origin xyz="0.00000 0.06850 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.02900" length="0.00700"/></geometry><material name="steel"/></visual>
-    <collision name="pelvis.hip_pitch_L_bearing#52.col"><origin xyz="0.00000 0.06850 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.02900" length="0.00700"/></geometry></collision>
-    <visual name="pelvis.hip_pitch_R_act#53"><origin xyz="0.00000 -0.02225 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04900" length="0.03950"/></geometry><material name="actuator"/></visual>
-    <collision name="pelvis.hip_pitch_R_act#53.col"><origin xyz="0.00000 -0.02225 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04900" length="0.03950"/></geometry></collision>
-    <visual name="pelvis.hip_pitch_R_act#54"><origin xyz="0.00000 -0.04600 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05300" length="0.00800"/></geometry><material name="flange"/></visual>
-    <collision name="pelvis.hip_pitch_R_act#54.col"><origin xyz="0.00000 -0.04600 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05300" length="0.00800"/></geometry></collision>
-    <visual name="pelvis.hip_pitch_R_act#55"><origin xyz="0.00000 -0.05330 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.03975" length="0.00660"/></geometry><material name="actuator"/></visual>
-    <collision name="pelvis.hip_pitch_R_act#55.col"><origin xyz="0.00000 -0.05330 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.03975" length="0.00660"/></geometry></collision>
-    <visual name="pelvis.hip_pitch_R_act#56"><origin xyz="0.00000 -0.05785 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.03500" length="0.00250"/></geometry><material name="flange"/></visual>
-    <collision name="pelvis.hip_pitch_R_act#56.col"><origin xyz="0.00000 -0.05785 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.03500" length="0.00250"/></geometry></collision>
-    <visual name="pelvis.hip_pitch_R_act#57"><origin xyz="0.00000 -0.00400 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04300" length="0.00300"/></geometry><material name="enclosure"/></visual>
-    <collision name="pelvis.hip_pitch_R_act#57.col"><origin xyz="0.00000 -0.00400 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04300" length="0.00300"/></geometry></collision>
-    <visual name="pelvis.hip_pitch_R_bearing#58"><origin xyz="0.00000 -0.06850 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.02900" length="0.00700"/></geometry><material name="steel"/></visual>
-    <collision name="pelvis.hip_pitch_R_bearing#58.col"><origin xyz="0.00000 -0.06850 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.02900" length="0.00700"/></geometry></collision>
-    <visual name="pelvis.shoulder_mount_L#59"><origin xyz="0.00000 0.13700 1.50250" rpy="0 0 0"/><geometry><box size="0.03000 0.02000 0.05500"/></geometry><material name="petg_cf"/></visual>
-    <collision name="pelvis.shoulder_mount_L#59.col"><origin xyz="0.00000 0.13700 1.50250" rpy="0 0 0"/><geometry><box size="0.03000 0.02000 0.05500"/></geometry></collision>
-    <visual name="pelvis.shoulder_mount_L#60"><origin xyz="0.00000 0.20450 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.01300"/></geometry><material name="petg_cf"/></visual>
-    <collision name="pelvis.shoulder_mount_L#60.col"><origin xyz="0.00000 0.20450 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.01300"/></geometry></collision>
-    <visual name="pelvis.shoulder_mount_L#61"><origin xyz="0.00000 0.21450 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.00700"/></geometry><material name="petg_cf"/></visual>
-    <collision name="pelvis.shoulder_mount_L#61.col"><origin xyz="0.00000 0.21450 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.00700"/></geometry></collision>
-    <visual name="pelvis.shoulder_mount_L#62"><origin xyz="0.00000 0.19600 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.00400"/></geometry><material name="petg_cf"/></visual>
-    <collision name="pelvis.shoulder_mount_L#62.col"><origin xyz="0.00000 0.19600 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.00400"/></geometry></collision>
-    <visual name="pelvis.shoulder_mount_L#63"><origin xyz="0.00000 0.17750 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.03300"/></geometry><material name="petg_cf"/></visual>
-    <collision name="pelvis.shoulder_mount_L#63.col"><origin xyz="0.00000 0.17750 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.03300"/></geometry></collision>
-    <visual name="pelvis.shoulder_mount_L#64"><origin xyz="0.00000 0.15825 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.00550"/></geometry><material name="petg_cf"/></visual>
-    <collision name="pelvis.shoulder_mount_L#64.col"><origin xyz="0.00000 0.15825 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.00550"/></geometry></collision>
-    <visual name="pelvis.shoulder_mount_L#65"><origin xyz="0.00000 0.15150 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.00800"/></geometry><material name="petg_cf"/></visual>
-    <collision name="pelvis.shoulder_mount_L#65.col"><origin xyz="0.00000 0.15150 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.00800"/></geometry></collision>
-    <visual name="pelvis.shoulder_pitch_L_act#66"><origin xyz="0.00000 0.17750 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04225" length="0.03300"/></geometry><material name="actuator"/></visual>
-    <collision name="pelvis.shoulder_pitch_L_act#66.col"><origin xyz="0.00000 0.17750 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04225" length="0.03300"/></geometry></collision>
-    <visual name="pelvis.shoulder_pitch_L_act#67"><origin xyz="0.00000 0.19600 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04600" length="0.00400"/></geometry><material name="flange"/></visual>
-    <collision name="pelvis.shoulder_pitch_L_act#67.col"><origin xyz="0.00000 0.19600 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04600" length="0.00400"/></geometry></collision>
-    <visual name="pelvis.shoulder_pitch_L_act#68"><origin xyz="0.00000 0.20250 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04100" length="0.00900"/></geometry><material name="actuator"/></visual>
-    <collision name="pelvis.shoulder_pitch_L_act#68.col"><origin xyz="0.00000 0.20250 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04100" length="0.00900"/></geometry></collision>
-    <visual name="pelvis.shoulder_pitch_L_act#69"><origin xyz="0.00000 0.20775 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.02600" length="0.00150"/></geometry><material name="flange"/></visual>
-    <collision name="pelvis.shoulder_pitch_L_act#69.col"><origin xyz="0.00000 0.20775 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.02600" length="0.00150"/></geometry></collision>
-    <visual name="pelvis.shoulder_pitch_L_act#70"><origin xyz="0.00000 0.15825 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.03500" length="0.00550"/></geometry><material name="enclosure"/></visual>
-    <collision name="pelvis.shoulder_pitch_L_act#70.col"><origin xyz="0.00000 0.15825 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.03500" length="0.00550"/></geometry></collision>
-    <visual name="pelvis.shoulder_pitch_L_bearing#71"><origin xyz="0.00000 0.21450 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.02350" length="0.00700"/></geometry><material name="steel"/></visual>
-    <collision name="pelvis.shoulder_pitch_L_bearing#71.col"><origin xyz="0.00000 0.21450 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.02350" length="0.00700"/></geometry></collision>
-    <visual name="pelvis.shoulder_mount_R#72"><origin xyz="0.00000 -0.13700 1.50250" rpy="0 0 0"/><geometry><box size="0.03000 0.02000 0.05500"/></geometry><material name="petg_cf"/></visual>
-    <collision name="pelvis.shoulder_mount_R#72.col"><origin xyz="0.00000 -0.13700 1.50250" rpy="0 0 0"/><geometry><box size="0.03000 0.02000 0.05500"/></geometry></collision>
-    <visual name="pelvis.shoulder_mount_R#73"><origin xyz="0.00000 -0.20450 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.01300"/></geometry><material name="petg_cf"/></visual>
-    <collision name="pelvis.shoulder_mount_R#73.col"><origin xyz="0.00000 -0.20450 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.01300"/></geometry></collision>
-    <visual name="pelvis.shoulder_mount_R#74"><origin xyz="0.00000 -0.21450 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.00700"/></geometry><material name="petg_cf"/></visual>
-    <collision name="pelvis.shoulder_mount_R#74.col"><origin xyz="0.00000 -0.21450 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.00700"/></geometry></collision>
-    <visual name="pelvis.shoulder_mount_R#75"><origin xyz="0.00000 -0.19600 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.00400"/></geometry><material name="petg_cf"/></visual>
-    <collision name="pelvis.shoulder_mount_R#75.col"><origin xyz="0.00000 -0.19600 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.00400"/></geometry></collision>
-    <visual name="pelvis.shoulder_mount_R#76"><origin xyz="0.00000 -0.17750 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.03300"/></geometry><material name="petg_cf"/></visual>
-    <collision name="pelvis.shoulder_mount_R#76.col"><origin xyz="0.00000 -0.17750 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.03300"/></geometry></collision>
-    <visual name="pelvis.shoulder_mount_R#77"><origin xyz="0.00000 -0.15825 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.00550"/></geometry><material name="petg_cf"/></visual>
-    <collision name="pelvis.shoulder_mount_R#77.col"><origin xyz="0.00000 -0.15825 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.00550"/></geometry></collision>
-    <visual name="pelvis.shoulder_mount_R#78"><origin xyz="0.00000 -0.15150 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.00800"/></geometry><material name="petg_cf"/></visual>
-    <collision name="pelvis.shoulder_mount_R#78.col"><origin xyz="0.00000 -0.15150 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.00800"/></geometry></collision>
-    <visual name="pelvis.shoulder_pitch_R_act#79"><origin xyz="0.00000 -0.17750 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04225" length="0.03300"/></geometry><material name="actuator"/></visual>
-    <collision name="pelvis.shoulder_pitch_R_act#79.col"><origin xyz="0.00000 -0.17750 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04225" length="0.03300"/></geometry></collision>
-    <visual name="pelvis.shoulder_pitch_R_act#80"><origin xyz="0.00000 -0.19600 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04600" length="0.00400"/></geometry><material name="flange"/></visual>
-    <collision name="pelvis.shoulder_pitch_R_act#80.col"><origin xyz="0.00000 -0.19600 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04600" length="0.00400"/></geometry></collision>
-    <visual name="pelvis.shoulder_pitch_R_act#81"><origin xyz="0.00000 -0.20250 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04100" length="0.00900"/></geometry><material name="actuator"/></visual>
-    <collision name="pelvis.shoulder_pitch_R_act#81.col"><origin xyz="0.00000 -0.20250 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04100" length="0.00900"/></geometry></collision>
-    <visual name="pelvis.shoulder_pitch_R_act#82"><origin xyz="0.00000 -0.20775 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.02600" length="0.00150"/></geometry><material name="flange"/></visual>
-    <collision name="pelvis.shoulder_pitch_R_act#82.col"><origin xyz="0.00000 -0.20775 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.02600" length="0.00150"/></geometry></collision>
-    <visual name="pelvis.shoulder_pitch_R_act#83"><origin xyz="0.00000 -0.15825 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.03500" length="0.00550"/></geometry><material name="enclosure"/></visual>
-    <collision name="pelvis.shoulder_pitch_R_act#83.col"><origin xyz="0.00000 -0.15825 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.03500" length="0.00550"/></geometry></collision>
-    <visual name="pelvis.shoulder_pitch_R_bearing#84"><origin xyz="0.00000 -0.21450 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.02350" length="0.00700"/></geometry><material name="steel"/></visual>
-    <collision name="pelvis.shoulder_pitch_R_bearing#84.col"><origin xyz="0.00000 -0.21450 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.02350" length="0.00700"/></geometry></collision>
+    <visual name="pelvis.bottom_plate#16"><origin xyz="0.00000 0.00000 1.04750" rpy="0 0 0"/><geometry><box size="0.13000 0.17200 0.00500"/></geometry><material name="al_plate"/></visual>
+    <collision name="pelvis.bottom_plate#16.col"><origin xyz="0.00000 0.00000 1.04750" rpy="0 0 0"/><geometry><box size="0.13000 0.17200 0.00500"/></geometry></collision>
+    <visual name="pelvis.top_plate#17"><origin xyz="0.00000 0.00000 1.53250" rpy="0 0 0"/><geometry><box size="0.13000 0.17200 0.00500"/></geometry><material name="al_plate"/></visual>
+    <collision name="pelvis.top_plate#17.col"><origin xyz="0.00000 0.00000 1.53250" rpy="0 0 0"/><geometry><box size="0.13000 0.17200 0.00500"/></geometry></collision>
+    <visual name="pelvis.upright_FL#18"><origin xyz="0.05500 0.07600 1.29000" rpy="0 0 0"/><geometry><box size="0.02000 0.02000 0.48000"/></geometry><material name="al_ext"/></visual>
+    <collision name="pelvis.upright_FL#18.col"><origin xyz="0.05500 0.07600 1.29000" rpy="0 0 0"/><geometry><box size="0.02000 0.02000 0.48000"/></geometry></collision>
+    <visual name="pelvis.upright_FR#19"><origin xyz="0.05500 -0.07600 1.29000" rpy="0 0 0"/><geometry><box size="0.02000 0.02000 0.48000"/></geometry><material name="al_ext"/></visual>
+    <collision name="pelvis.upright_FR#19.col"><origin xyz="0.05500 -0.07600 1.29000" rpy="0 0 0"/><geometry><box size="0.02000 0.02000 0.48000"/></geometry></collision>
+    <visual name="pelvis.upright_BL#20"><origin xyz="-0.05500 0.07600 1.29000" rpy="0 0 0"/><geometry><box size="0.02000 0.02000 0.48000"/></geometry><material name="al_ext"/></visual>
+    <collision name="pelvis.upright_BL#20.col"><origin xyz="-0.05500 0.07600 1.29000" rpy="0 0 0"/><geometry><box size="0.02000 0.02000 0.48000"/></geometry></collision>
+    <visual name="pelvis.upright_BR#21"><origin xyz="-0.05500 -0.07600 1.29000" rpy="0 0 0"/><geometry><box size="0.02000 0.02000 0.48000"/></geometry><material name="al_ext"/></visual>
+    <collision name="pelvis.upright_BR#21.col"><origin xyz="-0.05500 -0.07600 1.29000" rpy="0 0 0"/><geometry><box size="0.02000 0.02000 0.48000"/></geometry></collision>
+    <visual name="pelvis.side_panel_L#22"><origin xyz="0.00000 0.08750 1.29000" rpy="0 0 0"/><geometry><box size="0.13000 0.00300 0.46000"/></geometry><material name="pc_sheet"/></visual>
+    <collision name="pelvis.side_panel_L#22.col"><origin xyz="0.00000 0.08750 1.29000" rpy="0 0 0"/><geometry><box size="0.13000 0.00300 0.46000"/></geometry></collision>
+    <visual name="pelvis.side_panel_R#23"><origin xyz="0.00000 -0.08750 1.29000" rpy="0 0 0"/><geometry><box size="0.13000 0.00300 0.46000"/></geometry><material name="pc_sheet"/></visual>
+    <collision name="pelvis.side_panel_R#23.col"><origin xyz="0.00000 -0.08750 1.29000" rpy="0 0 0"/><geometry><box size="0.13000 0.00300 0.46000"/></geometry></collision>
+    <visual name="pelvis.back_panel#24"><origin xyz="-0.06650 0.00000 1.29000" rpy="0 0 0"/><geometry><box size="0.00300 0.17200 0.48000"/></geometry><material name="pc_sheet"/></visual>
+    <collision name="pelvis.back_panel#24.col"><origin xyz="-0.06650 0.00000 1.29000" rpy="0 0 0"/><geometry><box size="0.00300 0.17200 0.48000"/></geometry></collision>
+    <visual name="pelvis.front_panel#25"><origin xyz="0.06650 0.00000 1.29000" rpy="0 0 0"/><geometry><box size="0.00300 0.17200 0.48000"/></geometry><material name="pc_sheet"/></visual>
+    <collision name="pelvis.front_panel#25.col"><origin xyz="0.06650 0.00000 1.29000" rpy="0 0 0"/><geometry><box size="0.00300 0.17200 0.48000"/></geometry></collision>
+    <visual name="pelvis.battery_cradle_L#26"><origin xyz="0.00000 0.03300 1.05300" rpy="0 0 0"/><geometry><box size="0.05600 0.06400 0.00600"/></geometry><material name="pla"/></visual>
+    <collision name="pelvis.battery_cradle_L#26.col"><origin xyz="0.00000 0.03300 1.05300" rpy="0 0 0"/><geometry><box size="0.05600 0.06400 0.00600"/></geometry></collision>
+    <visual name="pelvis.battery_cradle_R#27"><origin xyz="0.00000 -0.03300 1.05300" rpy="0 0 0"/><geometry><box size="0.05600 0.06400 0.00600"/></geometry><material name="pla"/></visual>
+    <collision name="pelvis.battery_cradle_R#27.col"><origin xyz="0.00000 -0.03300 1.05300" rpy="0 0 0"/><geometry><box size="0.05600 0.06400 0.00600"/></geometry></collision>
+    <visual name="pelvis.battery_1#28"><origin xyz="0.00000 0.03300 1.13900" rpy="0 0 0"/><geometry><box size="0.05200 0.06400 0.16600"/></geometry><material name="battery"/></visual>
+    <collision name="pelvis.battery_1#28.col"><origin xyz="0.00000 0.03300 1.13900" rpy="0 0 0"/><geometry><box size="0.05200 0.06400 0.16600"/></geometry></collision>
+    <visual name="pelvis.battery_2#29"><origin xyz="0.00000 -0.03300 1.13900" rpy="0 0 0"/><geometry><box size="0.05200 0.06400 0.16600"/></geometry><material name="battery"/></visual>
+    <collision name="pelvis.battery_2#29.col"><origin xyz="0.00000 -0.03300 1.13900" rpy="0 0 0"/><geometry><box size="0.05200 0.06400 0.16600"/></geometry></collision>
+    <visual name="pelvis.computer#30"><origin xyz="0.00000 0.00000 1.29100" rpy="0 0 0"/><geometry><box size="0.04500 0.12800 0.12800"/></geometry><material name="enclosure"/></visual>
+    <collision name="pelvis.computer#30.col"><origin xyz="0.00000 0.00000 1.29100" rpy="0 0 0"/><geometry><box size="0.04500 0.12800 0.12800"/></geometry></collision>
+    <visual name="pelvis.imu#31"><origin xyz="-0.03700 0.00000 1.24500" rpy="0 0 0"/><geometry><box size="0.01400 0.03600 0.03600"/></geometry><material name="pcb"/></visual>
+    <collision name="pelvis.imu#31.col"><origin xyz="-0.03700 0.00000 1.24500" rpy="0 0 0"/><geometry><box size="0.01400 0.03600 0.03600"/></geometry></collision>
+    <visual name="pelvis.can_adapter_0#32"><origin xyz="0.00000 0.03200 1.36300" rpy="0 0 0"/><geometry><box size="0.06000 0.02500 0.01200"/></geometry><material name="pcb"/></visual>
+    <collision name="pelvis.can_adapter_0#32.col"><origin xyz="0.00000 0.03200 1.36300" rpy="0 0 0"/><geometry><box size="0.06000 0.02500 0.01200"/></geometry></collision>
+    <visual name="pelvis.can_adapter_1#33"><origin xyz="0.00000 -0.03200 1.36300" rpy="0 0 0"/><geometry><box size="0.06000 0.02500 0.01200"/></geometry><material name="pcb"/></visual>
+    <collision name="pelvis.can_adapter_1#33.col"><origin xyz="0.00000 -0.03200 1.36300" rpy="0 0 0"/><geometry><box size="0.06000 0.02500 0.01200"/></geometry></collision>
+    <visual name="pelvis.can_adapter_2#34"><origin xyz="0.00000 0.03200 1.37900" rpy="0 0 0"/><geometry><box size="0.06000 0.02500 0.01200"/></geometry><material name="pcb"/></visual>
+    <collision name="pelvis.can_adapter_2#34.col"><origin xyz="0.00000 0.03200 1.37900" rpy="0 0 0"/><geometry><box size="0.06000 0.02500 0.01200"/></geometry></collision>
+    <visual name="pelvis.can_adapter_3#35"><origin xyz="0.00000 -0.03200 1.37900" rpy="0 0 0"/><geometry><box size="0.06000 0.02500 0.01200"/></geometry><material name="pcb"/></visual>
+    <collision name="pelvis.can_adapter_3#35.col"><origin xyz="0.00000 -0.03200 1.37900" rpy="0 0 0"/><geometry><box size="0.06000 0.02500 0.01200"/></geometry></collision>
+    <visual name="pelvis.usb_hub#36"><origin xyz="0.00000 0.00000 1.39500" rpy="0 0 0"/><geometry><box size="0.03000 0.06000 0.01400"/></geometry><material name="enclosure"/></visual>
+    <collision name="pelvis.usb_hub#36.col"><origin xyz="0.00000 0.00000 1.39500" rpy="0 0 0"/><geometry><box size="0.03000 0.06000 0.01400"/></geometry></collision>
+    <visual name="pelvis.buck_12v#37"><origin xyz="0.00000 -0.03800 1.42000" rpy="0 0 0"/><geometry><box size="0.06000 0.04500 0.02500"/></geometry><material name="enclosure"/></visual>
+    <collision name="pelvis.buck_12v#37.col"><origin xyz="0.00000 -0.03800 1.42000" rpy="0 0 0"/><geometry><box size="0.06000 0.04500 0.02500"/></geometry></collision>
+    <visual name="pelvis.dist_block#38"><origin xyz="0.00000 0.03000 1.41700" rpy="0 0 0"/><geometry><box size="0.05000 0.06000 0.02000"/></geometry><material name="enclosure"/></visual>
+    <collision name="pelvis.dist_block#38.col"><origin xyz="0.00000 0.03000 1.41700" rpy="0 0 0"/><geometry><box size="0.05000 0.06000 0.02000"/></geometry></collision>
+    <visual name="pelvis.contactor#39"><origin xyz="0.00000 0.00000 1.46500" rpy="0 0 0"/><geometry><box size="0.04400 0.06000 0.04000"/></geometry><material name="enclosure"/></visual>
+    <collision name="pelvis.contactor#39.col"><origin xyz="0.00000 0.00000 1.46500" rpy="0 0 0"/><geometry><box size="0.04400 0.06000 0.04000"/></geometry></collision>
+    <visual name="pelvis.estop#40"><origin xyz="-0.07300 0.00000 1.46500" rpy="0 0 0"/><geometry><box size="0.01000 0.04400 0.04400"/></geometry><material name="estop"/></visual>
+    <collision name="pelvis.estop#40.col"><origin xyz="-0.07300 0.00000 1.46500" rpy="0 0 0"/><geometry><box size="0.01000 0.04400 0.04400"/></geometry></collision>
+    <visual name="pelvis.estop#41"><origin xyz="-0.08900 0.00000 1.46500" rpy="0 1.5707963 0"/><geometry><cylinder radius="0.02000" length="0.02200"/></geometry><material name="estop"/></visual>
+    <collision name="pelvis.estop#41.col"><origin xyz="-0.08900 0.00000 1.46500" rpy="0 1.5707963 0"/><geometry><cylinder radius="0.02000" length="0.02200"/></geometry></collision>
+    <visual name="pelvis.breaker#42"><origin xyz="-0.07700 -0.05500 1.39500" rpy="0 0 0"/><geometry><box size="0.01800 0.03600 0.06000"/></geometry><material name="enclosure"/></visual>
+    <collision name="pelvis.breaker#42.col"><origin xyz="-0.07700 -0.05500 1.39500" rpy="0 0 0"/><geometry><box size="0.01800 0.03600 0.06000"/></geometry></collision>
+    <visual name="pelvis.neck_post#43"><origin xyz="0.01000 0.00000 1.55200" rpy="0 0 0"/><geometry><cylinder radius="0.02200" length="0.03400"/></geometry><material name="petg_cf"/></visual>
+    <collision name="pelvis.neck_post#43.col"><origin xyz="0.01000 0.00000 1.55200" rpy="0 0 0"/><geometry><cylinder radius="0.02200" length="0.03400"/></geometry></collision>
+    <visual name="pelvis.head_shell#44"><origin xyz="0.01500 0.00000 1.60400" rpy="0 0 0"/><geometry><box size="0.09000 0.11000 0.07000"/></geometry><material name="pla"/></visual>
+    <collision name="pelvis.head_shell#44.col"><origin xyz="0.01500 0.00000 1.60400" rpy="0 0 0"/><geometry><box size="0.09000 0.11000 0.07000"/></geometry></collision>
+    <visual name="pelvis.camera#45"><origin xyz="0.05500 0.00000 1.61400" rpy="0 0 0"/><geometry><box size="0.02600 0.09000 0.02600"/></geometry><material name="camera"/></visual>
+    <collision name="pelvis.camera#45.col"><origin xyz="0.05500 0.00000 1.61400" rpy="0 0 0"/><geometry><box size="0.02600 0.09000 0.02600"/></geometry></collision>
+    <visual name="pelvis.hip_pitch_L_act#46"><origin xyz="0.00000 0.02225 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04900" length="0.03950"/></geometry><material name="actuator"/></visual>
+    <collision name="pelvis.hip_pitch_L_act#46.col"><origin xyz="0.00000 0.02225 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04900" length="0.03950"/></geometry></collision>
+    <visual name="pelvis.hip_pitch_L_act#47"><origin xyz="0.00000 0.04600 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05300" length="0.00800"/></geometry><material name="flange"/></visual>
+    <collision name="pelvis.hip_pitch_L_act#47.col"><origin xyz="0.00000 0.04600 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05300" length="0.00800"/></geometry></collision>
+    <visual name="pelvis.hip_pitch_L_act#48"><origin xyz="0.00000 0.05330 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.03975" length="0.00660"/></geometry><material name="actuator"/></visual>
+    <collision name="pelvis.hip_pitch_L_act#48.col"><origin xyz="0.00000 0.05330 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.03975" length="0.00660"/></geometry></collision>
+    <visual name="pelvis.hip_pitch_L_act#49"><origin xyz="0.00000 0.05785 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.03500" length="0.00250"/></geometry><material name="flange"/></visual>
+    <collision name="pelvis.hip_pitch_L_act#49.col"><origin xyz="0.00000 0.05785 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.03500" length="0.00250"/></geometry></collision>
+    <visual name="pelvis.hip_pitch_L_act#50"><origin xyz="0.00000 0.00400 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04300" length="0.00300"/></geometry><material name="enclosure"/></visual>
+    <collision name="pelvis.hip_pitch_L_act#50.col"><origin xyz="0.00000 0.00400 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04300" length="0.00300"/></geometry></collision>
+    <visual name="pelvis.hip_pitch_L_bearing#51"><origin xyz="0.00000 0.06850 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.02900" length="0.00700"/></geometry><material name="steel"/></visual>
+    <collision name="pelvis.hip_pitch_L_bearing#51.col"><origin xyz="0.00000 0.06850 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.02900" length="0.00700"/></geometry></collision>
+    <visual name="pelvis.hip_pitch_R_act#52"><origin xyz="0.00000 -0.02225 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04900" length="0.03950"/></geometry><material name="actuator"/></visual>
+    <collision name="pelvis.hip_pitch_R_act#52.col"><origin xyz="0.00000 -0.02225 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04900" length="0.03950"/></geometry></collision>
+    <visual name="pelvis.hip_pitch_R_act#53"><origin xyz="0.00000 -0.04600 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05300" length="0.00800"/></geometry><material name="flange"/></visual>
+    <collision name="pelvis.hip_pitch_R_act#53.col"><origin xyz="0.00000 -0.04600 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05300" length="0.00800"/></geometry></collision>
+    <visual name="pelvis.hip_pitch_R_act#54"><origin xyz="0.00000 -0.05330 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.03975" length="0.00660"/></geometry><material name="actuator"/></visual>
+    <collision name="pelvis.hip_pitch_R_act#54.col"><origin xyz="0.00000 -0.05330 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.03975" length="0.00660"/></geometry></collision>
+    <visual name="pelvis.hip_pitch_R_act#55"><origin xyz="0.00000 -0.05785 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.03500" length="0.00250"/></geometry><material name="flange"/></visual>
+    <collision name="pelvis.hip_pitch_R_act#55.col"><origin xyz="0.00000 -0.05785 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.03500" length="0.00250"/></geometry></collision>
+    <visual name="pelvis.hip_pitch_R_act#56"><origin xyz="0.00000 -0.00400 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04300" length="0.00300"/></geometry><material name="enclosure"/></visual>
+    <collision name="pelvis.hip_pitch_R_act#56.col"><origin xyz="0.00000 -0.00400 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04300" length="0.00300"/></geometry></collision>
+    <visual name="pelvis.hip_pitch_R_bearing#57"><origin xyz="0.00000 -0.06850 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.02900" length="0.00700"/></geometry><material name="steel"/></visual>
+    <collision name="pelvis.hip_pitch_R_bearing#57.col"><origin xyz="0.00000 -0.06850 0.95000" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.02900" length="0.00700"/></geometry></collision>
+    <visual name="pelvis.shoulder_mount_L#58"><origin xyz="0.00000 0.09300 1.42500" rpy="0 0 0"/><geometry><box size="0.13000 0.00800 0.11000"/></geometry><material name="petg_cf"/></visual>
+    <collision name="pelvis.shoulder_mount_L#58.col"><origin xyz="0.00000 0.09300 1.42500" rpy="0 0 0"/><geometry><box size="0.13000 0.00800 0.11000"/></geometry></collision>
+    <visual name="pelvis.shoulder_mount_L#59"><origin xyz="0.00000 0.11125 1.42500" rpy="0 0 0"/><geometry><box size="0.10000 0.02850 0.09600"/></geometry><material name="petg_cf"/></visual>
+    <collision name="pelvis.shoulder_mount_L#59.col"><origin xyz="0.00000 0.11125 1.42500" rpy="0 0 0"/><geometry><box size="0.10000 0.02850 0.09600"/></geometry></collision>
+    <visual name="pelvis.shoulder_mount_L#60"><origin xyz="0.00000 0.18250 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.01300"/></geometry><material name="petg_cf"/></visual>
+    <collision name="pelvis.shoulder_mount_L#60.col"><origin xyz="0.00000 0.18250 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.01300"/></geometry></collision>
+    <visual name="pelvis.shoulder_mount_L#61"><origin xyz="0.00000 0.19250 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.00700"/></geometry><material name="petg_cf"/></visual>
+    <collision name="pelvis.shoulder_mount_L#61.col"><origin xyz="0.00000 0.19250 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.00700"/></geometry></collision>
+    <visual name="pelvis.shoulder_mount_L#62"><origin xyz="0.00000 0.17400 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.00400"/></geometry><material name="petg_cf"/></visual>
+    <collision name="pelvis.shoulder_mount_L#62.col"><origin xyz="0.00000 0.17400 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.00400"/></geometry></collision>
+    <visual name="pelvis.shoulder_mount_L#63"><origin xyz="0.00000 0.15550 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.03300"/></geometry><material name="petg_cf"/></visual>
+    <collision name="pelvis.shoulder_mount_L#63.col"><origin xyz="0.00000 0.15550 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.03300"/></geometry></collision>
+    <visual name="pelvis.shoulder_mount_L#64"><origin xyz="0.00000 0.13625 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.00550"/></geometry><material name="petg_cf"/></visual>
+    <collision name="pelvis.shoulder_mount_L#64.col"><origin xyz="0.00000 0.13625 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.00550"/></geometry></collision>
+    <visual name="pelvis.shoulder_mount_L#65"><origin xyz="0.00000 0.12950 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.00800"/></geometry><material name="petg_cf"/></visual>
+    <collision name="pelvis.shoulder_mount_L#65.col"><origin xyz="0.00000 0.12950 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.00800"/></geometry></collision>
+    <visual name="pelvis.shoulder_pitch_L_act#66"><origin xyz="0.00000 0.15550 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04225" length="0.03300"/></geometry><material name="actuator"/></visual>
+    <collision name="pelvis.shoulder_pitch_L_act#66.col"><origin xyz="0.00000 0.15550 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04225" length="0.03300"/></geometry></collision>
+    <visual name="pelvis.shoulder_pitch_L_act#67"><origin xyz="0.00000 0.17400 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04600" length="0.00400"/></geometry><material name="flange"/></visual>
+    <collision name="pelvis.shoulder_pitch_L_act#67.col"><origin xyz="0.00000 0.17400 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04600" length="0.00400"/></geometry></collision>
+    <visual name="pelvis.shoulder_pitch_L_act#68"><origin xyz="0.00000 0.18050 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04100" length="0.00900"/></geometry><material name="actuator"/></visual>
+    <collision name="pelvis.shoulder_pitch_L_act#68.col"><origin xyz="0.00000 0.18050 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04100" length="0.00900"/></geometry></collision>
+    <visual name="pelvis.shoulder_pitch_L_act#69"><origin xyz="0.00000 0.18575 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.02600" length="0.00150"/></geometry><material name="flange"/></visual>
+    <collision name="pelvis.shoulder_pitch_L_act#69.col"><origin xyz="0.00000 0.18575 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.02600" length="0.00150"/></geometry></collision>
+    <visual name="pelvis.shoulder_pitch_L_act#70"><origin xyz="0.00000 0.13625 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.03500" length="0.00550"/></geometry><material name="enclosure"/></visual>
+    <collision name="pelvis.shoulder_pitch_L_act#70.col"><origin xyz="0.00000 0.13625 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.03500" length="0.00550"/></geometry></collision>
+    <visual name="pelvis.shoulder_pitch_L_bearing#71"><origin xyz="0.00000 0.19250 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.02350" length="0.00700"/></geometry><material name="steel"/></visual>
+    <collision name="pelvis.shoulder_pitch_L_bearing#71.col"><origin xyz="0.00000 0.19250 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.02350" length="0.00700"/></geometry></collision>
+    <visual name="pelvis.shoulder_mount_R#72"><origin xyz="0.00000 -0.09300 1.42500" rpy="0 0 0"/><geometry><box size="0.13000 0.00800 0.11000"/></geometry><material name="petg_cf"/></visual>
+    <collision name="pelvis.shoulder_mount_R#72.col"><origin xyz="0.00000 -0.09300 1.42500" rpy="0 0 0"/><geometry><box size="0.13000 0.00800 0.11000"/></geometry></collision>
+    <visual name="pelvis.shoulder_mount_R#73"><origin xyz="0.00000 -0.11125 1.42500" rpy="0 0 0"/><geometry><box size="0.10000 0.02850 0.09600"/></geometry><material name="petg_cf"/></visual>
+    <collision name="pelvis.shoulder_mount_R#73.col"><origin xyz="0.00000 -0.11125 1.42500" rpy="0 0 0"/><geometry><box size="0.10000 0.02850 0.09600"/></geometry></collision>
+    <visual name="pelvis.shoulder_mount_R#74"><origin xyz="0.00000 -0.18250 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.01300"/></geometry><material name="petg_cf"/></visual>
+    <collision name="pelvis.shoulder_mount_R#74.col"><origin xyz="0.00000 -0.18250 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.01300"/></geometry></collision>
+    <visual name="pelvis.shoulder_mount_R#75"><origin xyz="0.00000 -0.19250 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.00700"/></geometry><material name="petg_cf"/></visual>
+    <collision name="pelvis.shoulder_mount_R#75.col"><origin xyz="0.00000 -0.19250 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.00700"/></geometry></collision>
+    <visual name="pelvis.shoulder_mount_R#76"><origin xyz="0.00000 -0.17400 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.00400"/></geometry><material name="petg_cf"/></visual>
+    <collision name="pelvis.shoulder_mount_R#76.col"><origin xyz="0.00000 -0.17400 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.00400"/></geometry></collision>
+    <visual name="pelvis.shoulder_mount_R#77"><origin xyz="0.00000 -0.15550 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.03300"/></geometry><material name="petg_cf"/></visual>
+    <collision name="pelvis.shoulder_mount_R#77.col"><origin xyz="0.00000 -0.15550 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.03300"/></geometry></collision>
+    <visual name="pelvis.shoulder_mount_R#78"><origin xyz="0.00000 -0.13625 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.00550"/></geometry><material name="petg_cf"/></visual>
+    <collision name="pelvis.shoulder_mount_R#78.col"><origin xyz="0.00000 -0.13625 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.00550"/></geometry></collision>
+    <visual name="pelvis.shoulder_mount_R#79"><origin xyz="0.00000 -0.12950 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.00800"/></geometry><material name="petg_cf"/></visual>
+    <collision name="pelvis.shoulder_mount_R#79.col"><origin xyz="0.00000 -0.12950 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.05000" length="0.00800"/></geometry></collision>
+    <visual name="pelvis.shoulder_pitch_R_act#80"><origin xyz="0.00000 -0.15550 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04225" length="0.03300"/></geometry><material name="actuator"/></visual>
+    <collision name="pelvis.shoulder_pitch_R_act#80.col"><origin xyz="0.00000 -0.15550 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04225" length="0.03300"/></geometry></collision>
+    <visual name="pelvis.shoulder_pitch_R_act#81"><origin xyz="0.00000 -0.17400 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04600" length="0.00400"/></geometry><material name="flange"/></visual>
+    <collision name="pelvis.shoulder_pitch_R_act#81.col"><origin xyz="0.00000 -0.17400 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04600" length="0.00400"/></geometry></collision>
+    <visual name="pelvis.shoulder_pitch_R_act#82"><origin xyz="0.00000 -0.18050 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04100" length="0.00900"/></geometry><material name="actuator"/></visual>
+    <collision name="pelvis.shoulder_pitch_R_act#82.col"><origin xyz="0.00000 -0.18050 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.04100" length="0.00900"/></geometry></collision>
+    <visual name="pelvis.shoulder_pitch_R_act#83"><origin xyz="0.00000 -0.18575 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.02600" length="0.00150"/></geometry><material name="flange"/></visual>
+    <collision name="pelvis.shoulder_pitch_R_act#83.col"><origin xyz="0.00000 -0.18575 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.02600" length="0.00150"/></geometry></collision>
+    <visual name="pelvis.shoulder_pitch_R_act#84"><origin xyz="0.00000 -0.13625 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.03500" length="0.00550"/></geometry><material name="enclosure"/></visual>
+    <collision name="pelvis.shoulder_pitch_R_act#84.col"><origin xyz="0.00000 -0.13625 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.03500" length="0.00550"/></geometry></collision>
+    <visual name="pelvis.shoulder_pitch_R_bearing#85"><origin xyz="0.00000 -0.19250 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.02350" length="0.00700"/></geometry><material name="steel"/></visual>
+    <collision name="pelvis.shoulder_pitch_R_bearing#85.col"><origin xyz="0.00000 -0.19250 1.42500" rpy="1.5707963 0 0"/><geometry><cylinder radius="0.02350" length="0.00700"/></geometry></collision>
   </link>
   <link name="hip_roll_bracket_L">
     <inertial><origin xyz="0.00150 0.06245 0.00006" rpy="0 0 0"/><mass value="1.1060"/><inertia ixx="1.557343e-03" ixy="-6.943389e-05" ixz="-2.218828e-06" iyy="1.136432e-03" iyz="8.734988e-06" izz="1.323901e-03"/></inertial>
@@ -978,7 +980,7 @@
   </joint>
   <joint name="shoulder_pitch_L" type="revolute">
     <parent link="pelvis"/><child link="shoulder_bracket_L"/>
-    <origin xyz="0.00000 0.22000 1.42500" rpy="0 0 0"/><axis xyz="0 1 0"/>
+    <origin xyz="0.00000 0.19800 1.42500" rpy="0 0 0"/><axis xyz="0 1 0"/>
     <limit lower="-3.1416" upper="3.1416" effort="36" velocity="20"/>
     <dynamics damping="0.2" friction="0.0"/>
   </joint>
@@ -1008,7 +1010,7 @@
   </joint>
   <joint name="shoulder_pitch_R" type="revolute">
     <parent link="pelvis"/><child link="shoulder_bracket_R"/>
-    <origin xyz="0.00000 -0.22000 1.42500" rpy="0 0 0"/><axis xyz="0 1 0"/>
+    <origin xyz="0.00000 -0.19800 1.42500" rpy="0 0 0"/><axis xyz="0 1 0"/>
     <limit lower="-3.1416" upper="3.1416" effort="36" velocity="20"/>
     <dynamics damping="0.2" friction="0.0"/>
   </joint>

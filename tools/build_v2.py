@@ -137,15 +137,14 @@ part("3DP_v2_socket30", "Tube socket flange, Ø30 (legs)", P, "petg_cf", process
 part("3DP_v2_socket25", "Tube socket flange, Ø25 (arms)", P, "petg_cf", process="FDM",
      notes="8 mm flange with M4 holes, bolted to the cut end of a BHL arm plate (36 x 50 at the upper arm, 50 x 14 under the elbow yoke) or the top of a wrist or yaw flange (50 x 50); Ø25 tube boss, 40 mm bond, two M4 cross bolts.")
 # torso and head
-part("AL_TORSO_PLATE", "Torso plate, 5 mm 6061, laser-cut, 180 x 360", H, "al_plate", price=28.0, vendor="SendCutSend / local laser cutter",
+part("AL_TORSO_PLATE", "Torso plate, 5 mm 6061, laser-cut, 130 x 172", H, "al_plate", price=18.0, vendor="SendCutSend / local laser cutter",
      notes="Two per robot (bottom and top). Four M5 for the uprights, four M5 into the pelvis bars (bottom) or the head post (top).")
 part("3DP_tor14_shoulder_mount", "Shoulder-pitch mount", P, "petg_cf", process="FDM", mirror=True,
-     notes="RS06 mount ring, collar and back plate hung from the top plate; the actuator passes through the side panel, its output face outside the torso as BHL's does.")
+     notes="Plate bolted to the outside of the two side uprights with four M5 T-nuts, a beam outboard, and the RS06 cup (mount ring, collar, back plate): the actuator sits outside the cage with its output face outboard, as BHL's shoulder modules do.")
 part("PC_SIDE_PANEL", "Torso side panel, 3 mm polycarbonate", H, "pc_sheet", price=4.5, vendor="hardware store sheet, hand-cut", mirror=True,
-     notes="Clearance hole for the shoulder-pitch actuator.")
+     notes="Under the shoulder mount's plate.")
 part("PC_BACK_PANEL", "Torso back panel, 3 mm polycarbonate", H, "pc_sheet", price=4.5, vendor="hardware store sheet, hand-cut", notes="Carries the E-stop and breaker.")
 part("PC_FRONT_PANEL", "Torso front panel, 3 mm polycarbonate", H, "pc_sheet", price=4.5, vendor="hardware store sheet, hand-cut", notes="Removable; magnets.")
-part("PC_TRAY", "Electronics tray, 3 mm polycarbonate", H, "pc_sheet", price=4.5, vendor="hardware store sheet, hand-cut")
 part("3DP_tor19_battery_cradle", "Battery cradle", P, "pla", process="FDM", notes="One per pack.")
 part("3DP_hea11_neck_post", "Neck post", P, "petg_cf", process="FDM")
 part("3DP_hea12_head_shell", "Head shell", P, "pla", process="FDM", notes="Blank head with a RealSense pocket. Camera optional.")
@@ -192,9 +191,9 @@ BAR_Z = HIP_Z + 85          # pelvis 2020 bars (z HIP_Z+75..+95)
 TORSO_Z0 = HIP_Z + 95
 UPRIGHT = 480
 SH_Z = TORSO_Z0 + 380       # shoulder-pitch and shoulder-roll axes
-SPY = 220                   # shoulder-pitch output face (BHL's shoulder bracket puts the roll axis 43 mm outboard of it)
-ARM_Y = SPY + 43            # roll / yaw line
-UX, UY = 66.5, 160          # torso uprights
+UX, UY = 55, 76             # torso uprights: a cage 130 x 172 outside, as narrow as the 128 mm mini PC allows (BHL's is 140 x 160 around a 115 mm one)
+SPY = 198                   # shoulder-pitch output face: outside the cage on a bracket, as BHL's modules are; the hanging hands then clear the hip-roll cups by 4 mm
+ARM_Y = SPY + 43            # roll / yaw line (BHL's shoulder bracket puts the roll axis 43 mm outboard of the pitch output)
 TUBE30, TUBE25 = 30.0, 25.0
 BOND = 40
 Z0 = TORSO_Z0
@@ -262,8 +261,8 @@ for S, s in (("L", 1), ("R", -1)):
         for yy in (55, 67):
             feat_cut_cyl(cup, "z", (66.5 * sx, yy * s, HIP_Z + 60), CLEAR["M5"], 0, 15)
     cups[S] = cup
-bp = place(pelvis, "bottom_plate", "AL_TORSO_PLATE", [box((180, 2 * UY + 40, 5), (0, 0, Z0 + 2.5))])
-tp = place(pelvis, "top_plate", "AL_TORSO_PLATE", [box((180, 2 * UY + 40, 5), (0, 0, Z0 + 5 + UPRIGHT + 2.5))])
+bp = place(pelvis, "bottom_plate", "AL_TORSO_PLATE", [box((2 * UX + 20, 2 * UY + 20, 5), (0, 0, Z0 + 2.5))])
+tp = place(pelvis, "top_plate", "AL_TORSO_PLATE", [box((2 * UX + 20, 2 * UY + 20, 5), (0, 0, Z0 + 5 + UPRIGHT + 2.5))])
 for sx in (1, -1):
     for sy in (1, -1):
         feat_cut_cyl(bp, "z", (UX * sx, UY * sy, Z0), CLEAR["M5"], 0, 5)
@@ -271,24 +270,25 @@ for sx in (1, -1):
         tag = ("F" if sx > 0 else "B") + ("L" if sy > 0 else "R")
         place(pelvis, f"upright_{tag}", "HW_2020_480", [box((20, 20, UPRIGHT), (UX * sx, UY * sy, Z0 + 5 + UPRIGHT / 2))])
 for S, s in (("L", 1), ("R", -1)):
-    place(pelvis, f"side_panel_{S}", "PC_SIDE_PANEL", [box((145, 3, UPRIGHT - 20), (0, (UY + 11.5) * s, Z0 + 5 + UPRIGHT / 2))])
-place(pelvis, "back_panel", "PC_BACK_PANEL", [box((3, 2 * UY + 10, UPRIGHT), (-(UX + 13), 0, Z0 + 5 + UPRIGHT / 2))])
-place(pelvis, "front_panel", "PC_FRONT_PANEL", [box((3, 2 * UY + 10, UPRIGHT), (UX + 13, 0, Z0 + 5 + UPRIGHT / 2))])
-place(pelvis, "electronics_tray", "PC_TRAY", [box((3, 140, 300), (2, 0, Z0 + 170))])
-place(pelvis, "battery_cradle_L", "3DP_tor19_battery_cradle", [box((56, 70, 6), (-32, 40, Z0 + 8), 2)])
-place(pelvis, "battery_cradle_R", "3DP_tor19_battery_cradle", [box((56, 70, 6), (-32, -40, Z0 + 8), 2)])
-place(pelvis, "battery_1", "EL_BATTERY_6S", [box((52, 64, 166), (-32, 40, Z0 + 94), 3)])
-place(pelvis, "battery_2", "EL_BATTERY_6S", [box((52, 64, 166), (-32, -40, Z0 + 94), 3)])
-place(pelvis, "computer", "EL_PC_N100", [box((45, 128, 128), (28, 0, Z0 + 85), 4)])
-for i, (sy, z) in enumerate(((1, 157), (-1, 157), (1, 175), (-1, 175))):
-    place(pelvis, f"can_adapter_{i}", "EL_CANABLE", [box((60, 25, 12), (34, 45 * sy, Z0 + z))])
-place(pelvis, "usb_hub", "EL_USB_HUB", [box((30, 60, 14), (19, 0, Z0 + 157), 2)])
-place(pelvis, "buck_12v", "EL_BUCK_12V", [box((60, 45, 25), (-30, 0, Z0 + 195), 2)])
-place(pelvis, "dist_block", "EL_DIST_BLOCK", [box((50, 60, 20), (29, 0, Z0 + 203), 2)])
-place(pelvis, "contactor", "EL_CONTACTOR", [box((44, 60, 40), (-30, 0, Z0 + 241), 3)])
-place(pelvis, "imu", "EL_IMU", [box((36, 36, 14), (30, 0, Z0 + 12.5), 2)])
-place(pelvis, "estop", "EL_ESTOP", [box((10, 44, 44), (-(UX + 20), 0, Z0 + 420)), cyl("x", 20, 22, (-(UX + 36), 0, Z0 + 420))])
-place(pelvis, "breaker", "EL_BREAKER", [box((18, 36, 60), (-(UX + 24), -55, Z0 + 350), 2)])
+    place(pelvis, f"side_panel_{S}", "PC_SIDE_PANEL", [box((2 * UX + 20, 3, UPRIGHT - 20), (0, (UY + 11.5) * s, Z0 + 5 + UPRIGHT / 2))])
+place(pelvis, "back_panel", "PC_BACK_PANEL", [box((3, 2 * UY + 20, UPRIGHT), (-(UX + 11.5), 0, Z0 + 5 + UPRIGHT / 2))])
+place(pelvis, "front_panel", "PC_FRONT_PANEL", [box((3, 2 * UY + 20, UPRIGHT), (UX + 11.5, 0, Z0 + 5 + UPRIGHT / 2))])
+# the cage is 90 x 132 inside: the two packs side by side at the bottom, the computer above them, the small boards above
+# that, the power parts under the top plate; the shoulder actuators are outside the cage
+place(pelvis, "battery_cradle_L", "3DP_tor19_battery_cradle", [box((56, 64, 6), (0, 33, Z0 + 8), 2)])
+place(pelvis, "battery_cradle_R", "3DP_tor19_battery_cradle", [box((56, 64, 6), (0, -33, Z0 + 8), 2)])
+place(pelvis, "battery_1", "EL_BATTERY_6S", [box((52, 64, 166), (0, 33, Z0 + 94), 3)])
+place(pelvis, "battery_2", "EL_BATTERY_6S", [box((52, 64, 166), (0, -33, Z0 + 94), 3)])
+place(pelvis, "computer", "EL_PC_N100", [box((45, 128, 128), (0, 0, Z0 + 246), 4)])
+place(pelvis, "imu", "EL_IMU", [box((14, 36, 36), (-37, 0, Z0 + 200), 2)])
+for i, (sy, z) in enumerate(((1, 318), (-1, 318), (1, 334), (-1, 334))):
+    place(pelvis, f"can_adapter_{i}", "EL_CANABLE", [box((60, 25, 12), (0, 32 * sy, Z0 + z))])
+place(pelvis, "usb_hub", "EL_USB_HUB", [box((30, 60, 14), (0, 0, Z0 + 350), 2)])
+place(pelvis, "buck_12v", "EL_BUCK_12V", [box((60, 45, 25), (0, -38, Z0 + 375), 2)])
+place(pelvis, "dist_block", "EL_DIST_BLOCK", [box((50, 60, 20), (0, 30, Z0 + 372), 2)])
+place(pelvis, "contactor", "EL_CONTACTOR", [box((44, 60, 40), (0, 0, Z0 + 420), 3)])
+place(pelvis, "estop", "EL_ESTOP", [box((10, 44, 44), (-(UX + 18), 0, Z0 + 420)), cyl("x", 20, 22, (-(UX + 34), 0, Z0 + 420))])
+place(pelvis, "breaker", "EL_BREAKER", [box((18, 36, 60), (-(UX + 22), -55, Z0 + 350), 2)])
 place(pelvis, "neck_post", "3DP_hea11_neck_post", [cyl("z", 22, 34, (10, 0, TOP + 17))])
 hs = place(pelvis, "head_shell", "3DP_hea12_head_shell", [box((90, 110, 70), (15, 0, TOP + 34 + 35), 8)])
 feat_cut_box(hs, (84, 104, 64), (15, 0, TOP + 34 + 32))
@@ -397,19 +397,22 @@ def build_arm(side):
     S = side
     base_id, bus = {"L": (31, "can2"), "R": (41, "can3")}[S]
     # shoulder pitch: RS06 (BHL's 6512 class) through the torso side, output face outside, as BHL's
-    kp = Kit("RS06", "y", s, (SPY - 22) * s, 0, SH_Z)                 # body inboard of the lug face, ring outside the panel, child face at SPY
+    kp = Kit("RS06", "y", s, (SPY - 22) * s, 0, SH_Z)                 # lug face 22 inside the output face; body, cover and back plate inboard of it
+    y_back = SPY - 22 - 50.5                                           # the kit's back plate starts here (lug 4, body 33, cover 5.5, back 8)
     mount = place(pelvis, f"shoulder_mount_{S}", "3DP_tor14_shoulder_mount", [
-        box((30, 20, TOP - 5 - (SH_Z + 50)), (0, (UY - 23) * s, (TOP - 5 + SH_Z + 50) / 2), 2),   # tab up to the top plate, inside the uprights
+        box((2 * UX + 20, 8, 110), (0, (UY + 13 + 4) * s, SH_Z), 3),                                           # plate on the side panel over both uprights, 4 x M5 T-nuts
+        box((100, y_back - (UY + 21), 96), (0, ((UY + 21) + y_back) / 2 * s, SH_Z), 3),                        # beam out to the cup
     ])
+    for sx in (1, -1):
+        for dz in (40, -40):
+            feat_cut_cyl(mount, "y", (UX * sx, (UY + 13) * s, SH_Z + dz), CLEAR["M5"], 0, 8 * s)
     o1 = kp.joint_origin()
     a1 = link(f"shoulder_bracket_{S}", f"Shoulder bracket ({S})", f"arm_{S}", o1, f"shoulder_pitch_{S}")
     joint(f"shoulder_pitch_{S}", f"Shoulder pitch ({S})", "pelvis", a1["id"], o1, (0, 1, 0), (-180, 180), "RS06", S, bus, base_id, "pitch")
     act, mount_occ, cp = add_kit(pelvis, a1, kp, f"shoulder_pitch_{S}", "3DP_kit06_coupler", mount_owner=mount, collar="full", back=True,
-                                 coupler_inside=[f"side_panel_{S}", f"shoulder_bracket_{S}"])
-    act["inside"] += [f"side_panel_{S}"]
+                                 coupler_inside=[f"shoulder_bracket_{S}"])
     panel = next(o for o in pelvis["parts"] if o["occ"] == f"side_panel_{S}")
-    panel["inside"] = [f"shoulder_mount_{S}", f"shoulder_pitch_{S}_act", f"shoulder_pitch_{S}_bearing"]
-    feat_cut_cyl(panel, "y", (0, (UY + 10) * s, SH_Z), 2 * RING_IN_BHL["RS06"] + 1, 0, 3 * s)
+    panel["inside"] = [f"shoulder_mount_{S}"]
     # BHL's shoulder bracket: pitch output boss to the roll cradle (axis x, output forward)
     sref = (0, SPY * s, SH_Z)
     sb = bhl_piece(a1, f"shoulder_bracket_{S}", "shoulder_bracket", sref, s, inside=[f"shoulder_pitch_{S}_bearing", f"shoulder_pitch_{S}_coupler"],
@@ -559,7 +562,7 @@ section("bhl", "Berkeley Humanoid Lite parts (printed from BHL's CAD)", "core",
             row("HW_STUD_17", CATALOG["HW_STUD_17"]["name"], CATALOG["HW_STUD_17"]["qty"], 1.5, "McMaster / Amazon", "", CATALOG["HW_STUD_17"]["notes"]),
         ])
 section("structure", "Tubes, extrusion and plates", "core",
-        "Carbon-fibre tubes between BHL's parts, as in the paper's figure; aluminium where a flat plate is cheaper than a print.", [
+        "Carbon-fibre tubes between BHL's parts, as in the paper's figure; a 2020 cage of BHL's proportion around the electronics, 130 x 172 outside; aluminium where a flat plate is cheaper than a print.", [
             row("CF_TUBE_30", CATALOG["CF_TUBE_30"]["name"] + ", 1000 mm", 1, 23.0, "Amazon", "https://www.amazon.com/s?k=carbon+fiber+tube+30mm+26mm+1000mm",
                 f"Cut: thigh {tube_lengths['thigh_tube_L']} mm x 2, shank {tube_lengths['shank_tube_L']} mm x 2 = {2*tube_lengths['thigh_tube_L'] + 2*tube_lengths['shank_tube_L']:.0f} mm."),
             row("CF_TUBE_25", CATALOG["CF_TUBE_25"]["name"] + ", 1000 mm", 1, 18.0, "Amazon", "https://www.amazon.com/s?k=carbon+fiber+tube+25mm+22mm+1000mm",
@@ -567,8 +570,8 @@ section("structure", "Tubes, extrusion and plates", "core",
             row("HW_EPOXY", "Structural epoxy, 25 ml (tube bonds)", 1, 9.0, "Amazon / hardware store", "", "Loctite EA 9460 class or JB Weld original. Abrade the tube ends; 40 mm bond length; cross bolts carry the torque."),
             row("HW_2020_480", CATALOG["HW_2020_480"]["name"], CATALOG["HW_2020_480"]["qty"], 5.0, "Amazon / Misumi", "", CATALOG["HW_2020_480"]["notes"]),
             row("HW_2020_300", CATALOG["HW_2020_300"]["name"], CATALOG["HW_2020_300"]["qty"], 4.0, "Amazon / Misumi", "", CATALOG["HW_2020_300"]["notes"]),
-            row("AL_TORSO_PLATE", CATALOG["AL_TORSO_PLATE"]["name"], CATALOG["AL_TORSO_PLATE"]["qty"], 28.0, "SendCutSend", "https://sendcutsend.com/", CATALOG["AL_TORSO_PLATE"]["notes"]),
-            row("PC_SHEET", "Polycarbonate sheet 3 mm, 600 x 600 (panels and tray)", 1, 18.0, "hardware store", "", "Cut by hand to the panel drawings."),
+            row("AL_TORSO_PLATE", CATALOG["AL_TORSO_PLATE"]["name"], CATALOG["AL_TORSO_PLATE"]["qty"], 18.0, "SendCutSend", "https://sendcutsend.com/", CATALOG["AL_TORSO_PLATE"]["notes"]),
+            row("PC_SHEET", "Polycarbonate sheet 3 mm, 600 x 600 (panels)", 1, 18.0, "hardware store", "", "Cut by hand to the panel drawings."),
             row("HW_TNUT_M5", "2020 T-nuts, M5, 50 pack", 1, 9.0, "Amazon", "", "Pelvis bars, plates, uprights."),
             row("HW_CORNER", "2020 inner corner brackets", 12, 0.7, "Amazon"),
         ])

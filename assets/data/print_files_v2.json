@@ -240,23 +240,23 @@
    "id": "3DP_tor14_shoulder_mount",
    "name": "Shoulder-pitch mount",
    "file": "assets/print_v2/3DP_tor14_shoulder_mount_v2_0.stl",
-   "bytes": 314884,
-   "sha256": "212aaece65cfdaed5609aae7a6c336379bb976a400b205f0636e7e76c0e01c11",
+   "bytes": 390284,
+   "sha256": "868adade60c386f91c8f735f745c8441d249cd0efc1edd417167d81a257a8ba5",
    "material": "petg_cf",
    "material_name": "PETG-CF, printed",
    "qty": 2,
    "mirror": true,
    "optional": null,
-   "volume_cm3": 263.2,
-   "mass_g_solid": 334,
-   "mass_g_est": 150,
+   "volume_cm3": 614.1,
+   "mass_g_solid": 780,
+   "mass_g_est": 351,
    "bbox_mm": [
-    100.0,
-    91.0,
-    155.0
+    130.0,
+    107.0,
+    110.0
    ],
-   "faces": 6296,
-   "features": 1,
+   "faces": 7804,
+   "features": 5,
    "orientation": "ring face down",
    "source_occurrence": "shoulder_mount_L",
    "bhl": false,
@@ -267,18 +267,18 @@
    "name": "Battery cradle",
    "file": "assets/print_v2/3DP_tor19_battery_cradle_v2_0.stl",
    "bytes": 22284,
-   "sha256": "88ac7fc0db4b7e4c18ab73988efe0f11e82d30b81b786f360f196d8bf6839832",
+   "sha256": "c879fb6ffb1a0ba5419095997d6619a77115bfd347580b243bd076bfa361b04e",
    "material": "pla",
    "material_name": "PLA, printed",
    "qty": 2,
    "mirror": false,
    "optional": null,
-   "volume_cm3": 23.1,
-   "mass_g_solid": 29,
-   "mass_g_est": 10,
+   "volume_cm3": 21.1,
+   "mass_g_solid": 26,
+   "mass_g_est": 9,
    "bbox_mm": [
     56.0,
-    70.0,
+    64.0,
     6.0
    ],
    "faces": 444,
@@ -628,7 +628,7 @@
  ],
  "zip": {
   "file": "assets/print_v2/foh_v2_0_printable_parts.zip",
-  "bytes": 981501,
-  "sha256": "4c16681fea14e15ddc3720f4f4482e3897dbdf6339c7400cd52c3315b668181c"
+  "bytes": 996321,
+  "sha256": "50fed383e0cec818d6057de0444ee1fdede3a289f98d927a1675d70dc533c75f"
  }
 }
