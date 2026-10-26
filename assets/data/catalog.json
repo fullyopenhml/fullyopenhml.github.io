@@ -1,8 +1,8 @@
 {
  "meta": {
-  "generated": "2026-10-01",
-  "robots": 40,
-  "modules": 34,
+  "generated": "2026-10-17",
+  "robots": 41,
+  "modules": 38,
   "foh_mass_kg": 27.27
  },
  "criteria": [
@@ -185,6 +185,12 @@
    "bus": "CAN 2.0",
    "protocol": "Damiao MIT-mode",
    "voltage_v": null
+  },
+  "romomo": {
+   "name": "RoboParty ROMOMO joint module",
+   "bus": "CAN-FD (EtherCAT listed for the 10062 and 6562)",
+   "protocol": "ROMOMO CAN-FD protocol (public manual)",
+   "voltage_v": 48
   },
   "hobby-pwm": {
    "name": "Hobby PWM servo",
@@ -443,9 +449,9 @@
    ]
   },
   {
-   "checked": "2026-09-25",
+   "checked": "2026-10-17",
    "id": "roboto",
-   "name": "Roboto Origin",
+   "name": "Roboto Origin (RPO)",
    "org": "RoboParty (Shanghai)",
    "year": 2025,
    "form": "humanoid",
@@ -453,13 +459,13 @@
    "height_mm": 1250,
    "mass_kg": 34,
    "dof": 23,
-   "actuators": "21 servo actuators, 120 N·m legs and 27 N·m arms; models not confirmed",
-   "family": "unknown",
-   "structure": "Machined and printed parts; ordered through Taobao and JLC per the project",
-   "compute": "Not confirmed; 48 V 15 Ah battery",
+   "actuators": "Damiao DM-J10010L ×9 (120 N·m), DM-J4340P ×14 (27 N·m), 48 V",
+   "family": "damiao",
+   "structure": "CNC aluminium frame, sandblasted and anodised (70 machined parts), printed soles and fixtures; ordered through Taobao and JLC per the project",
+   "compute": "RDK X5 (8 GB); 48 V 15 Ah battery",
    "price_usd": 7000,
-   "price_basis": "published-total",
-   "price_note": "About ¥50,000 (≈ $7,000) reported by the project and press; kit pre-orders taken.",
+   "price_basis": "itemised",
+   "price_note": "Internal BOM (assets/BOM_EN.md) totals ¥49,713: 23 motors ¥31,187, CNC parts ¥15,670, the rest battery, RDK X5, boards, IMU and cables; fasteners unpriced. ≈ $7,000 at 7.1 CNY/USD; kit pre-orders were taken via Taobao.",
    "license_hw": "CERN-OHL-W-2.0 (hardware, PCB, BOM, URDF); CC BY-SA 4.0 (docs)",
    "license_sw": "GPL-3.0 (firmware, deploy); BSD-3-Clause (training)",
    "open": {
@@ -475,25 +481,101 @@
    },
    "open_notes": {
     "cad": "Native SolidWorks parts and assemblies plus manufacturing drawings.",
+    "bom": "assets/BOM_EN.md: every machined part, motor, board and cable with quantity and CNY price, Taobao links for purchased parts. Motors: 9 × DM-J10010L-2EC (120 N·m peak, 40 rated, 10:1) and 14 × DM-J4340P-2EC (27 N·m peak, 9 rated, 40:1); the BOM gives counts, not joints.",
     "elec": "Gerbers and schematics; V2 integrates the boards into one core PCB.",
     "built": "Built, walking and jumping; ~100 kit pre-orders reported. Builders must match mechanical, PCB and firmware revisions."
    },
    "links": {
     "repo": "https://github.com/Roboparty/roboto_origin",
     "hardware": "https://github.com/Roboparty/rpo_hardware",
+    "bom": "https://github.com/Roboparty/roboto_origin/blob/main/assets/BOM_EN.md",
     "hub": "https://hub.roboparty.com/documents/"
    },
    "sources": [
     "https://github.com/Roboparty/roboto_origin",
+    "https://github.com/Roboparty/roboto_origin/blob/main/assets/BOM_EN.md",
     "https://github.com/Roboparty/rpo_hardware",
+    "https://eckstein-shop.de/damiao-dm-j10010l-2ec-brushless-servo-joint-motor",
+    "https://openelab.com/products/damiao-brushless-servo-dm-j4340p",
     "https://www.humanoidsdata.com/articles/open-source-humanoid-robots",
     "https://interestingengineering.com/ai-robotics/worlds-first-full-stack-humanoid-robot-open-sourced"
    ],
-   "summary": "A 1.25 m full-stack release: native CAD, drawings, PCB source, firmware, URDF/MJCF, ROS 2 deployment and Isaac Lab training, all licensed.",
-   "verdict": "The strongest large full-stack release found. Needs CNC work and Chinese sourcing; freeze matching revisions before ordering.",
+   "summary": "A 1.25 m full-stack release on Damiao actuators: native CAD, drawings, PCB source, firmware, URDF/MJCF, ROS 2 deployment and Isaac Lab training, all licensed and priced. Succeeded by RP1 in October 2026.",
+   "verdict": "The strongest large full-stack release found, and the one with a priced BOM. Needs CNC work and Chinese sourcing; freeze matching revisions before ordering.",
    "score": 9,
    "oshwa": true,
    "modules": []
+  },
+  {
+   "checked": "2026-10-17",
+   "id": "rp1",
+   "name": "RP1 (ROBOTO 01)",
+   "org": "RoboParty (Shanghai)",
+   "year": 2026,
+   "form": "humanoid",
+   "status": "walking",
+   "height_mm": 1350,
+   "mass_kg": 39,
+   "dof": 24,
+   "actuators": "ROMOMO RMM10062 ×8 (160 N·m), RMM8463 ×4 (42 N·m), RMM6562 ×12 (35 N·m); 7-DoF arms add RZW5552 ×4",
+   "family": "romomo",
+   "structure": "CNC AL6061/7075 frame and joint housings, printed PLA covers and fixtures, EPDM pads; 14 custom PCBs including an RK3588S main board",
+   "compute": "RK3588 (8 GB) plus a real-time MCU; Pro adds an A733 and an Orin NX 16 GB. 48 V 10 Ah main pack with a 30 V hot-swap backup, 3 h",
+   "price_usd": null,
+   "price_basis": "unknown",
+   "price_note": "Not published. The BOMs carry part numbers and quantities, no prices. A third-party listing shows $16,000, unverified; mass production is promised for Q4 2026.",
+   "license_hw": "CERN-OHL-W-2.0 (CAD, drawings, PCB, harness, BOM); CC BY-SA 4.0 (docs); CC BY 4.0 (ROMOMO datasheets and test reports)",
+   "license_sw": "GPL-3.0 (firmware, deploy); BSD-3-Clause (training)",
+   "open": {
+    "cad": "yes",
+    "bom": "partial",
+    "docs": "partial",
+    "elec": "partial",
+    "fw": "yes",
+    "sim": "yes",
+    "policy": "partial",
+    "lic": "yes",
+    "built": "partial"
+   },
+   "open_notes": {
+    "cad": "Release v0.1.0 (2026-09-30): SolidWorks assembly and parts (2.1 GB), Parasolid whole-robot model and editable SolidWorks drawings; STEP and PDF for every CNC, printed and rubber part.",
+    "bom": "Two configurations (5-DoF and 7-DoF arms, motion head) with part numbers, quantities, revisions and materials; no prices or vendors. The 24-DoF BOM places 6 RMM10062 (160 N·m peak, 44 rated, 22:1, 1.2 kg) in the hip block, 2 RMM8463 in the chest for the waist, and per leg 1 RMM10062, 1 RMM8463 and 2 RMM6562 (35 N·m peak, 19.5:1, 0.53 kg) on the shank; 4 RMM6562 per 5-DoF arm. The Pro adds a 2-axis head for 30 DoF.",
+    "docs": "Hardware architecture PDF, harness fabrication spec, CMF finish specs and deploy docs; no assembly guide yet.",
+    "elec": "Board BOM, Gerbers, placement data, STEP and PCB PDF for all 14 boards; no schematics or layout sources.",
+    "fw": "RP1_firmware: RK3588 BSP, USB-CAN-FD bridge and APT SDK packages; roboparty_deploy has the motor and IMU SDK with RP1 zeroing configs. The ROMOMO module firmware itself is not released.",
+    "sim": "rp1_description: 24- and 28-joint URDF with masses, MJCF, meshes and terrain assets, with no licence file in that repository. The Isaac Lab tasks live in a robolab submodule that is not public.",
+    "policy": "The docs say 24-DoF velocity-tracking and dance policies are released; no policy file was found in the public repositories on 2026-10-17.",
+    "built": "Built and demonstrated by RoboParty at IROS 2026 (walking, push and kick recovery, getting up); not yet reproduced or sold. Actuator pre-orders are open."
+   },
+   "links": {
+    "site": "https://roboparty.com/products/RP1",
+    "repo": "https://github.com/Roboparty/RP1",
+    "hardware": "https://github.com/Roboparty/RP1_hardware",
+    "actuators": "https://github.com/Roboparty/ROMOMO",
+    "docs": "https://roboparty.com/documents/roboto-01",
+    "video": "https://www.youtube.com/watch?v=f4VMNqX5wm0"
+   },
+   "sources": [
+    "https://github.com/Roboparty/RP1_hardware",
+    "https://github.com/Roboparty/ROMOMO",
+    "https://github.com/Roboparty/rp1_description",
+    "https://github.com/Roboparty/RP1_firmware",
+    "https://github.com/Roboparty/roboparty_deploy",
+    "https://roboparty.com/products/RP1",
+    "https://roboparty.com/documents/roboto-01",
+    "https://www.prnewswire.com/news-releases/roboparty-unveils-rp1-a-high-performance-full-stack-open-source-humanoid-robot-at-iros-302897655.html",
+    "https://gagadget.com/en/730400-robopartys-rp1-humanoid-is-open-source-but-not-yet-open/"
+   ],
+   "summary": "RoboParty's 1.35 m successor to Roboto Origin on its own 160 N·m ROMOMO modules: SolidWorks sources, manufacturing files, 14 PCBs and a URDF under CERN-OHL-W within days of the IROS 2026 debut.",
+   "verdict": "The hardware release is real and large; prices, schematics, an assembly guide and the walking policy are not there yet. Treat the actuator modules as a purchased part.",
+   "score": 6.5,
+   "oshwa": true,
+   "modules": [
+    "rp1-lower",
+    "rp1-torso",
+    "rp1-arms",
+    "rp1-hands"
+   ]
   },
   {
    "checked": "2026-09-25",
@@ -6209,6 +6291,197 @@
     }
    ],
    "notes": "Estimate: 10 of 22 joints, pro rata.",
+   "price_optional_usd": 0,
+   "payload_kg": null
+  },
+  {
+   "id": "rp1-lower",
+   "robot": "rp1",
+   "slot": "lower",
+   "name": "RP1 legs and hip block",
+   "dof": 12,
+   "mass_kg": 21.6,
+   "price_usd": null,
+   "price_basis": "unknown",
+   "scale_mm": 1350,
+   "payload_kg": 17.5,
+   "family": "romomo",
+   "top": {
+    "joint": "waist roll",
+    "mount": "rp1-waist",
+    "desc": "The hip block's top face; the waist-roll ROMOMO sits in the chest above it"
+   },
+   "bom": [
+    {
+     "item": "ROMOMO RMM10062-2E joint modules (160 N·m peak): six in the hip block, one per leg",
+     "qty": 8,
+     "unit": null,
+     "vendor": "RoboParty (pre-order)",
+     "url": "https://roboparty.com/products/ROMOMO",
+     "total": null
+    },
+    {
+     "item": "ROMOMO RMM8463-2E joint modules, one per leg",
+     "qty": 2,
+     "unit": null,
+     "vendor": "RoboParty (pre-order)",
+     "url": "https://roboparty.com/products/ROMOMO",
+     "total": null
+    },
+    {
+     "item": "ROMOMO RMM6562-2E joint modules (35 N·m peak), two per shank for the ankle",
+     "qty": 4,
+     "unit": null,
+     "vendor": "RoboParty (pre-order)",
+     "url": "https://roboparty.com/products/ROMOMO",
+     "total": null
+    },
+    {
+     "item": "CNC AL6061 hip block, thigh and shank parts, printed covers, EPDM pads, harness (RP1_BOM_5DOF_MotionHead.xlsx)",
+     "qty": 1,
+     "unit": null,
+     "vendor": "see RP1_hardware",
+     "url": "https://github.com/Roboparty/RP1_hardware/tree/main/04_BOM",
+     "total": null
+    }
+   ],
+   "notes": "Module counts are read from the BOM's assembly tree, which lists 14 modules under the hip block and legs for 12 joints; the per-joint mapping is not published. Payload is the upper body it carries in its own robot (39.1 − 21.6 kg).",
+   "price_optional_usd": 0
+  },
+  {
+   "id": "rp1-torso",
+   "robot": "rp1",
+   "slot": "torso",
+   "name": "RP1 torso with waist and motion head",
+   "dof": 2,
+   "mass_kg": 9.9,
+   "price_usd": null,
+   "price_basis": "unknown",
+   "scale_mm": 1350,
+   "family": "romomo",
+   "bottom": {
+    "joint": "waist roll",
+    "mount": "rp1-waist",
+    "desc": "Waist-roll ROMOMO in the chest, output down to the hip block"
+   },
+   "side": {
+    "joint": "shoulder pitch",
+    "mount": "rp1-shoulder",
+    "desc": "The arm's shoulder-pitch ROMOMO housing bolts to the chest side"
+   },
+   "top": {
+    "joint": "head mount",
+    "mount": "rp1-head",
+    "desc": "Interchangeable heads (motion, perception, interaction, data collection); the motion head is part of this module's mesh"
+   },
+   "bom": [
+    {
+     "item": "ROMOMO RMM8463-2E joint modules: waist roll and yaw",
+     "qty": 2,
+     "unit": null,
+     "vendor": "RoboParty (pre-order)",
+     "url": "https://roboparty.com/products/ROMOMO",
+     "total": null
+    },
+    {
+     "item": "RK3588S main board and 13 other RoboParty PCBs (board BOMs and Gerbers in RP1_hardware)",
+     "qty": 1,
+     "unit": null,
+     "vendor": "see RP1_hardware",
+     "url": "https://github.com/Roboparty/RP1_hardware/tree/main/02_PCB",
+     "total": null
+    },
+    {
+     "item": "48 V 10 Ah main battery, 30 V hot-swap backup, 140 W USB-C charging, six-axis IMU",
+     "qty": 1,
+     "unit": null,
+     "vendor": "see RP1_hardware",
+     "url": "https://github.com/Roboparty/RP1_hardware/tree/main/04_BOM",
+     "total": null
+    },
+    {
+     "item": "CNC frame, chest and back shells, handles, e-stop, motion head",
+     "qty": 1,
+     "unit": null,
+     "vendor": "see RP1_hardware",
+     "url": "https://github.com/Roboparty/RP1_hardware/tree/main/04_BOM",
+     "total": null
+    }
+   ],
+   "notes": "Mass is the two waist links of the URDF (9.9 kg), which carry the batteries, electronics and head. No prices published.",
+   "price_optional_usd": 0,
+   "payload_kg": null
+  },
+  {
+   "id": "rp1-arms",
+   "robot": "rp1",
+   "slot": "arms",
+   "name": "RP1 arms, 5-DoF pair",
+   "dof": 10,
+   "mass_kg": 7.6,
+   "price_usd": null,
+   "price_basis": "unknown",
+   "scale_mm": 1350,
+   "family": "romomo",
+   "top": {
+    "joint": "shoulder pitch",
+    "mount": "rp1-shoulder",
+    "desc": "Shoulder-pitch ROMOMO housing on the chest side"
+   },
+   "bottom": {
+    "joint": "wrist",
+    "mount": "rp1-wrist",
+    "desc": "Wrist flange for the prosthetic hand, RP Hand or a gripper; 24 V hand power on the arm harness"
+   },
+   "bom": [
+    {
+     "item": "ROMOMO RMM6562-2E joint modules (35 N·m peak), four per arm",
+     "qty": 8,
+     "unit": null,
+     "vendor": "RoboParty (pre-order)",
+     "url": "https://roboparty.com/products/ROMOMO",
+     "total": null
+    },
+    {
+     "item": "CNC AL6061 upper-arm and forearm bodies, printed covers, harness; the fifth joint's actuator is not a listed ROMOMO line",
+     "qty": 1,
+     "unit": null,
+     "vendor": "see RP1_hardware",
+     "url": "https://github.com/Roboparty/RP1_hardware/tree/main/04_BOM",
+     "total": null
+    }
+   ],
+   "notes": "5 kg arm payload per the product page. The 7-DoF Pro arms add two RZW5552 wrist modules per side.",
+   "price_optional_usd": 0,
+   "payload_kg": null
+  },
+  {
+   "id": "rp1-hands",
+   "robot": "rp1",
+   "slot": "hands",
+   "name": "RP Hand, pair (6-DoF dexterous)",
+   "dof": 12,
+   "mass_kg": null,
+   "price_usd": null,
+   "price_basis": "unknown",
+   "scale_mm": null,
+   "family": "unknown",
+   "top": {
+    "joint": "wrist",
+    "mount": "rp1-wrist",
+    "desc": "RP1 wrist flange; CAN-FD on the arm bus, 24 V"
+   },
+   "bom": [
+    {
+     "item": "RP Hand (RoboParty 6-DoF dexterous hand), sold on Taobao; CAN-FD driver and SDK in rp_dexhand",
+     "qty": 2,
+     "unit": null,
+     "vendor": "RoboParty (Taobao)",
+     "url": "https://github.com/Roboparty/rp_dexhand",
+     "total": null
+    }
+   ],
+   "notes": "The 24-DoF RP1 ships with a passive prosthetic hand; the RP Hand is the Pro's standard end effector. No published price or mass, no public geometry.",
    "price_optional_usd": 0,
    "payload_kg": null
   },

@@ -4,7 +4,7 @@
 Sources
   foh      primitives from assets/data/robot.json
   duke2    the project's published viewer model (Draco GLB), split by assembly path
-  bhl, lerobot, duck, mevita   the projects' URDFs and STL meshes on GitHub, posed at zero
+  bhl, rp1, lerobot, duck, mevita   the projects' URDFs and STL meshes on GitHub, posed at zero
 
 Meshes are cached in tools/.cache/geom (git-ignored), decimated and merged per module,
 and written to assets/geom/<module>[-L|-R].glb. Anchors (metres, X forward, Y left,
@@ -422,6 +422,31 @@ def build_bhl():
     return mods
 
 
+def build_rp1():
+    """RoboParty RP1 (ROBOTO 01), 24-joint configuration: URDF and STL meshes from rp1_description."""
+    base = "https://raw.githubusercontent.com/Roboparty/rp1_description/master"
+    def slot_of(l):
+        return "torso" if l.startswith("waist_") else "arms" if any(k in l for k in ("shoulder", "elbow", "wrist")) else "lower"
+    def side_of(l):
+        return "L" if l.startswith("left_") else "R"
+    def anchors(slot, u, bb):
+        jp = u.joint_pos
+        waist = jp["waist_roll_joint"]
+        def flange(link, elbow, wrist):   # the hand flange: the far end of the wrist link along the forearm (the zero pose holds the forearms forward)
+            d = jp[wrist] - jp[elbow]; d = d / np.linalg.norm(d)
+            ms = u.link_meshes(link)
+            t = max(float(((m.vertices - jp[wrist]) @ d).max()) for m in ms) if ms else 0.0
+            return r2(jp[wrist] + d * t)
+        a = dict(lower=dict(top=r2(waist)),
+                 torso=dict(bottom=r2(waist), shoulder_L=r2(jp["left_shoulder_pitch_joint"]), shoulder_R=r2(jp["right_shoulder_pitch_joint"]), top=[0, 0, round(float(bb[1][2]), 4)]),
+                 arms=dict(shoulder_L=r2(jp["left_shoulder_pitch_joint"]), shoulder_R=r2(jp["right_shoulder_pitch_joint"]), wrist_L=flange("left_wrist_link", "left_elbow_joint", "left_wrist_joint"), wrist_R=flange("right_wrist_link", "right_elbow_joint", "right_wrist_joint")))
+        return a[slot]
+    mods = build_urdf_robot("rp1", base + "/urdf/rp1_24dof.urdf", base + "/meshes", slot_of, side_of, anchors)
+    for m in mods.values():
+        m["credit"] = "RP1 URDF and meshes, RoboParty (rp1_description; the hardware docs state CERN-OHL-W-2.0, the repository has no licence file)"
+    return mods
+
+
 def build_lerobot():
     base = "https://raw.githubusercontent.com/huggingface/lerobot-humanoid-model/main/models/bipedal_plateform/urdf"
     def anchors(slot, u, bb):
@@ -537,7 +562,7 @@ def main():
     modules.update(build_foh())
     modules.update(build_foh("foh-v1", "robot_v1.json"))
     modules.update(build_duke())
-    for fn in (build_bhl, build_lerobot, build_duck, build_mevita, build_so101, build_leap, build_lekiwi, build_xlerobot, build_solo12):
+    for fn in (build_bhl, build_rp1, build_lerobot, build_duck, build_mevita, build_so101, build_leap, build_lekiwi, build_xlerobot, build_solo12):
         try:
             modules.update(fn())
         except Exception as e:  # noqa: BLE001

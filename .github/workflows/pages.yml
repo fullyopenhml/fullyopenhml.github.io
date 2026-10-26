@@ -26,10 +26,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Enable GitHub Pages for this repository (no-op once enabled)
+      # The default GITHUB_TOKEN cannot create or re-enable a Pages site, so this
+      # step only checks that Pages is on.  If it fails with "Get Pages site
+      # failed", re-enable it by hand: Settings -> Pages -> Source: GitHub Actions.
+      - name: Check GitHub Pages is enabled
         uses: actions/configure-pages@v5
-        with:
-          enablement: true
       - name: Collect site files
         run: |
           mkdir -p _site

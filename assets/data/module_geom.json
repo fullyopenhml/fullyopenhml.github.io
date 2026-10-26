@@ -611,6 +611,115 @@
    "credit": "Berkeley Humanoid Lite assets, Hybrid Robotics (CC BY-SA 4.0)",
    "ground_z": 0.0409
   },
+  "rp1-lower": {
+   "parts": {
+    "C": "assets/geom/rp1-lower.glb"
+   },
+   "bbox": [
+    [
+     -0.1024,
+     -0.1865,
+     -0.7754
+    ],
+    [
+     0.1256,
+     0.1805,
+     0.106
+    ]
+   ],
+   "anchors": {
+    "top": [
+     -0.0076,
+     -0.003,
+     0.053
+    ]
+   },
+   "credit": "RP1 URDF and meshes, RoboParty (rp1_description; the hardware docs state CERN-OHL-W-2.0, the repository has no licence file)",
+   "ground_z": -0.7754
+  },
+  "rp1-torso": {
+   "parts": {
+    "C": "assets/geom/rp1-torso.glb"
+   },
+   "bbox": [
+    [
+     -0.1855,
+     -0.1289,
+     -0.002
+    ],
+    [
+     0.0599,
+     0.123,
+     0.5454
+    ]
+   ],
+   "anchors": {
+    "bottom": [
+     -0.0076,
+     -0.003,
+     0.053
+    ],
+    "shoulder_L": [
+     -0.0384,
+     0.1135,
+     0.3195
+    ],
+    "shoulder_R": [
+     -0.0384,
+     -0.1195,
+     0.3195
+    ],
+    "top": [
+     0,
+     0,
+     0.5454
+    ]
+   },
+   "credit": "RP1 URDF and meshes, RoboParty (rp1_description; the hardware docs state CERN-OHL-W-2.0, the repository has no licence file)",
+   "ground_z": -0.002
+  },
+  "rp1-arms": {
+   "parts": {
+    "L": "assets/geom/rp1-arms-L.glb",
+    "R": "assets/geom/rp1-arms-R.glb"
+   },
+   "bbox": [
+    [
+     -0.0798,
+     -0.227,
+     0.0395
+    ],
+    [
+     0.309,
+     0.221,
+     0.355
+    ]
+   ],
+   "anchors": {
+    "shoulder_L": [
+     -0.0384,
+     0.1135,
+     0.3195
+    ],
+    "shoulder_R": [
+     -0.0384,
+     -0.1195,
+     0.3195
+    ],
+    "wrist_L": [
+     0.2888,
+     0.2284,
+     0.0477
+    ],
+    "wrist_R": [
+     0.2888,
+     -0.2344,
+     0.0477
+    ]
+   },
+   "credit": "RP1 URDF and meshes, RoboParty (rp1_description; the hardware docs state CERN-OHL-W-2.0, the repository has no licence file)",
+   "ground_z": 0.0395
+  },
   "lerobot-lower": {
    "parts": {
     "C": "assets/geom/lerobot-lower.glb"
